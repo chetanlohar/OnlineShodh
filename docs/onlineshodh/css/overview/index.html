@@ -1,0 +1,62 @@
+ld-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_result</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Compiles and runs SELECT statement based on the already
+called Query Builder methods.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::get_where">
+<tt class="descname">get_where</tt><big>(</big><span class="optional">[</span><em>$table = ''</em><span class="optional">[</span>, <em>$where = NULL</em><span class="optional">[</span>, <em>$limit = NULL</em><span class="optional">[</span>, <em>$offset = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::get_where" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$table</strong> (<em>mixed</em>) &#8211; The table(s) to fetch data from; string or array</li>
+<li><strong>$where</strong> (<em>string</em>) &#8211; The WHERE clause</li>
+<li><strong>$limit</strong> (<em>int</em>) &#8211; The LIMIT clause</li>
+<li><strong>$offset</strong> (<em>int</em>) &#8211; The OFFSET clause</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_DB_result instance (method chaining)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_result</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Same as <tt class="docutils literal"><span class="pre">get()</span></tt>, but also allows the WHERE to be added directly.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::select">
+<tt class="descname">select</tt><big>(</big><span class="optional">[</span><em>$select = '*'</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::select" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$select</strong> (<em>string</em>) &#8211; The SELECT portion of a query</li>
+<li><strong>$escape</strong> (<em>bool</em>) &#8211; Whether to escape values and identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_DB_query_builder instance (method chaining)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_query_builder</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Adds a SELECT clause to a query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::select_avg">
+<tt class="descname">select_avg</tt><big>(</big><span class="optional">[</span><em>$select = ''</em><span class="optional">[</span>, <em>$alias = ''</

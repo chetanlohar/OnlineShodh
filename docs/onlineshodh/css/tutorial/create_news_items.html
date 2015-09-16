@@ -1,0 +1,165 @@
+ass="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_DB_query_builder instance (method chaining)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_query_builder</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Adds a HAVING clause to a query, separating multiple calls with OR.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::group_by">
+<tt class="descname">group_by</tt><big>(</big><em>$by</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::group_by" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$by</strong> (<em>mixed</em>) &#8211; Field(s) to group by; string or array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_DB_query_builder instance (method chaining)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_query_builder</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Adds a GROUP BY clause to a query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::order_by">
+<tt class="descname">order_by</tt><big>(</big><em>$orderby</em><span class="optional">[</span>, <em>$direction = ''</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::order_by" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$orderby</strong> (<em>string</em>) &#8211; Field to order by</li>
+<li><strong>$direction</strong> (<em>string</em>) &#8211; The order requested - ASC, DESC or random</li>
+<li><strong>$escape</strong> (<em>bool</em>) &#8211; Whether to escape values and identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_DB_query_builder instance (method chaining)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_query_builder</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Adds an ORDER BY clause to a query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::limit">
+<tt class="descname">limit</tt><big>(</big><em>$value</em><span class="optional">[</span>, <em>$offset = 0</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::limit" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$value</strong> (<em>int</em>) &#8211; Number of rows to limit the results to</li>
+<li><strong>$offset</strong> (<em>int</em>) &#8211; Number of rows to skip</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_DB_query_builder instance (method chaining)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_query_builder</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Adds LIMIT and OFFSET clauses to a query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::offset">
+<tt class="descname">offset</tt><big>(</big><em>$offset</em><big>)</big><a class="headerlink" href="#CI_DB_query_builder::offset" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$offset</strong> (<em>int</em>) &#8211; Number of rows to skip</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_DB_query_builder instance (method chaining)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_query_builder</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Adds an OFFSET clause to a query.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::set">
+<tt class="descname">set</tt><big>(</big><em>$key</em><span class="optional">[</span>, <em>$value = ''</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::set" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Field name, or an array of field/value pairs</li>
+<li><strong>$value</strong> (<em>string</em>) &#8211; Field value, if $key is a single field</li>
+<li><strong>$escape</strong> (<em>bool</em>) &#8211; Whether to escape values and identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">CI_DB_query_builder instance (method chaining)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">CI_DB_query_builder</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Adds field/value pairs to be passed later to <tt class="docutils literal"><span class="pre">insert()</span></tt>,
+<tt class="docutils literal"><span class="pre">update()</span></tt> or <tt class="docutils literal"><span class="pre">replace()</span></tt>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::insert">
+<tt class="descname">insert</tt><big>(</big><span class="optional">[</span><em>$table = ''</em><span class="optional">[</span>, <em>$set = NULL</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::insert" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$table</strong> (<em>string</em>) &#8211; Table name</li>
+<li><strong>$set</strong> (<em>array</em>) &#8211; An associative array of field/value pairs</li>
+<li><strong>$escape</strong> (<em>bool</em>) &#8211; Whether to escape values and identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">TRUE on success, FALSE on failure</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Compiles and executes an INSERT statement.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::insert_batch">
+<tt class="descname">insert_batch</tt><big>(</big><span class="optional">[</span><em>$table = ''</em><span class="optional">[</span>, <em>$set = NULL</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::insert_batch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td c

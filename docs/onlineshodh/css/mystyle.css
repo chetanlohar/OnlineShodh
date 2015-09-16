@@ -1,0 +1,354 @@
+/* CSS Document */
+
+body
+{
+font-family: 'Abel', sans-serif;
+font-size:16px;
+}
+
+#footer
+{
+	background-color:#0F1F7A;
+	padding:20px;
+	color:#FFFFFF;
+	margin-top:5px;
+	
+}
+
+
+#logo
+{
+	margin:10px;
+	padding:10px;
+	text-align:center;
+	margin-bottom:20px;
+	
+}
+
+#searchbar
+{
+	/*background-image:url(../images/bg.png);*/
+	background-color:#F7D417;
+	margin-top:10px;
+	padding:10px;
+	padding-top:3px;
+	padding-bottom:3px;
+}
+
+.navbar
+{
+	background-color:#0F1F7A;
+}
+
+li .active
+{
+	color:#FFFF00;
+}
+
+input
+{
+	height:40px;
+	border-color:#0F1F7A;
+	margin:5px;
+	border-width:thin;
+	
+}
+
+#searchbutton
+{
+	height:40px;
+	background-color:#000099;
+	color:#FFFFFF;
+	margin:5px;
+	width:70px;
+	text-align:center;
+	border-radius:5px;
+	padding:10px;
+}
+
+input:hover
+{
+	border-width:thin;
+	border-color:#0000FF;
+}
+
+#contentbar
+{
+	//background-image:url(../images/background1.jpg);
+	padding:20px;
+}
+
+#cat
+{
+	padding:20px;
+	
+}
+
+.col-xs-3 img
+{
+   /* box-shadow: 0px 5px 1px #888888;*/
+}
+
+.col-xs-3 img:hover
+{
+	width:90px;
+   /* box-shadow: 0px 5px 1px #888888;*/
+}
+/*
+.col-xs-4 img:hover
+{
+	width:81px;
+}*/
+
+.col-xs-4
+{
+	text-align:center;
+}
+
+.col-xs-4 img
+{
+	width:35px;
+}
+
+.col-xs-4 #catname
+{
+	font-size:14px;
+	margin:2px;
+	/*font-weight:bold;*/
+}
+
+#center
+{
+	text-align:center;
+}
+
+#font12
+{
+	font-size:15px;
+}
+
+.well
+{
+	 background-color:#0F1F7A;
+	 border-color:#0F1F7A;
+}
+
+#webheader
+{
+	padding:2px;
+}
+
+#bar
+{
+	background-color:#F7D417;
+	height:5px;
+	border-radius:10px;
+}
+
+#blisting
+{
+	padding:10px;
+	margin-top:15px;
+	margin-bottom:15px;
+	border-color:#000000;
+	border-width:thin;
+	border-style:solid;
+	box-shadow:8px 8px 5px #F7D417;
+	/*background-image:url(../images/background.jpg);*/
+
+}
+
+/*#blisting:hover
+{
+	border-color:#000099;
+	box-shadow:8px 8px 5px #000099;
+}*/
+#blistingimg
+{
+	text-align:center;
+	height:180px;
+	background-color:#FFFFFF;
+
+}
+
+
+
+#blistinginfo
+{
+	//background-color:#FFFF99;
+	padding:10px;
+	
+}
+
+#blisting #bname
+{
+	border-bottom-color:#000099;
+	border-bottom-width:thin;
+	border-bottom-style:solid;
+	text-align:center;
+	padding:5px;
+	border-radius:5px;
+	font-weight:bold;
+	font-size:18px;
+	//box-shadow:0px 2px 2px #888;
+	margin-bottom:5px;
+	text-transform:capitalize;
+}
+
+#blisting #bname a
+{
+	text-decoration:none;
+}
+#blisting #baddr
+{
+	padding:2px;
+	margin-top:2px;
+	margin-bottom:2px;
+}
+#blistingdivider
+{
+	background-color:#000099;
+	height:2px;
+	
+}
+
+#keywords
+{
+	//border-style:solid;
+	//border-width:thin;
+	//border-color:#0000FF;
+	margin-top:10px;
+	margin-bottom:10px;
+	margin-left:50px;
+	background-color:#CCCCCC;
+	
+}
+
+#keywords #header
+{
+	height:30px;
+	border-bottom-color:#000000;
+	border-bottom-style:double;
+	border-bottom-width:thin;
+	font-weight:bold;
+	margin-top:10px;
+}
+
+#keywords #categories
+{
+	border-bottom-color:#000000;
+	border-bottom-style:dotted;
+	border-bottom-width:thin;
+	height:25px;
+	padding:2px;
+	padding-left:5px;
+	color:#000000;
+	
+	
+
+}
+
+#keywords #categories:hover
+{
+	background-color:#000099;
+	font-weight:bold;
+	color:#F7D417;
+}
+
+#pagination
+{
+	text-align:right;
+}
+
+.breadcrumb
+{
+	margin-top:5px;
+	background-color:#FFFFFF;
+}
+
+#businessname
+{
+	background-color:#F7D417;
+	//height:100px;	
+	padding:10px;
+	margin-top:15px;
+	box-shadow:0 0 5px #F7D417;
+
+}
+
+#businessname h1
+{
+	color:#000099;
+	font-weight:bold;
+}
+
+
+#imageslider
+{
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+
+#contactinfo
+{
+	margin-top:10px;
+	margin-bottom:10px;
+	border-color:#000000;
+	border-style:solid;
+	border-width:thin;
+	padding:20px;
+}
+
+#contactinfo #contacts
+{
+	border-left:solid;
+	border-left-color:#000099;
+	border-left-width:medium;
+}
+
+#contactinfo #description
+{
+	text-align:justify;
+	
+	
+}
+
+#personname
+{
+	font-size:18px;
+	color:#0000FF;
+	font-weight:bold;
+	margin:5px;
+	text-transform:uppercase;
+}
+
+#addr
+{
+	font-size:16px;
+	margin:5px;
+}
+
+#myh2
+{
+
+	border-bottom-width:medium;
+	border-bottom-style:solid;
+	border-bottom-color:#F7D417;
+	margin-top:50px;
+	margin-bottom:25px;
+	padding-bottom:10px;
+	color:#000099;
+	
+}
+
+.form-control
+{
+	border-radius:0px;
+}
+
+#generalinformation #gi
+{
+	padding:10px;	
+	
+}

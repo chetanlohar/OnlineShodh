@@ -1,0 +1,185 @@
+lass="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Name of field to compare, or associative array</li>
+<li><strong>$value</strong> (<em>mixed</em>) &#8211; If a single key, compared to this value</li>
+<li><strong>$escape</strong> (<em>boolean</em>) &#8211; Whether to escape values and identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DB_query_builder instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">object</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Generates the WHERE portion of the query.
+Separates multiple calls with &#8216;AND&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::or_where">
+<tt class="descname">or_where</tt><big>(</big><em>$key</em><span class="optional">[</span>, <em>$value = NULL</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::or_where" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>mixed</em>) &#8211; Name of field to compare, or associative array</li>
+<li><strong>$value</strong> (<em>mixed</em>) &#8211; If a single key, compared to this value</li>
+<li><strong>$escape</strong> (<em>boolean</em>) &#8211; Whether to escape values and identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DB_query_builder instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">object</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Generates the WHERE portion of the query.
+Separates multiple calls with &#8216;OR&#8217;.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::or_where_in">
+<tt class="descname">or_where_in</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">[</span>, <em>$values = NULL</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::or_where_in" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>string</em>) &#8211; The field to search</li>
+<li><strong>$values</strong> (<em>array</em>) &#8211; The values searched on</li>
+<li><strong>$escape</strong> (<em>boolean</em>) &#8211; Whether to escape identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DB_query_builder instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">object</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Generates a WHERE field IN(&#8216;item&#8217;, &#8216;item&#8217;) SQL query,
+joined with &#8216;OR&#8217; if appropriate.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::or_where_not_in">
+<tt class="descname">or_where_not_in</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">[</span>, <em>$values = NULL</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::or_where_not_in" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>string</em>) &#8211; The field to search</li>
+<li><strong>$values</strong> (<em>array</em>) &#8211; The values searched on</li>
+<li><strong>$escape</strong> (<em>boolean</em>) &#8211; Whether to escape identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DB_query_builder instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">object</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Generates a WHERE field NOT IN(&#8216;item&#8217;, &#8216;item&#8217;) SQL query,
+joined with &#8216;OR&#8217; if appropriate.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::where_in">
+<tt class="descname">where_in</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">[</span>, <em>$values = NULL</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::where_in" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>string</em>) &#8211; Name of field to examine</li>
+<li><strong>$values</strong> (<em>array</em>) &#8211; Array of target values</li>
+<li><strong>$escape</strong> (<em>boolean</em>) &#8211; Whether to escape identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DB_query_builder instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">object</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Generates a WHERE field IN(&#8216;item&#8217;, &#8216;item&#8217;) SQL query,
+joined with &#8216;AND&#8217; if appropriate.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::where_not_in">
+<tt class="descname">where_not_in</tt><big>(</big><span class="optional">[</span><em>$key = NULL</em><span class="optional">[</span>, <em>$values = NULL</em><span class="optional">[</span>, <em>$escape = NULL</em><span class="optional">]</span><span class="optional">]</span><span class="optional">]</span><big>)</big><a class="headerlink" href="#CI_DB_query_builder::where_not_in" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (<em>string</em>) &#8211; Name of field to examine</li>
+<li><strong>$values</strong> (<em>array</em>) &#8211; Array of target values</li>
+<li><strong>$escape</strong> (<em>boolean</em>) &#8211; Whether to escape identifiers</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">DB_query_builder instance</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">object</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Generates a WHERE field NOT IN(&#8216;item&#8217;, &#8216;item&#8217;) SQL query,
+joined with &#8216;AND&#8217; if appropriate.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::group_start">
+<tt class="descname">group_start</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_query_builder::group_start" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">CI_DB_query_builder instance (method chaining)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">CI_DB_query_builder</td>
+</tr>
+</tbody>
+</table>
+<p>Starts a group expression, using ANDs for the conditions inside it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::or_group_start">
+<tt class="descname">or_group_start</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_query_builder::or_group_start" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">CI_DB_query_builder instance (method chaining)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">CI_DB_query_builder</td>
+</tr>
+</tbody>
+</table>
+<p>Starts a group expression, using ORs for the conditions inside it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="CI_DB_query_builder::not_group_start">
+<tt class="descname">not_group_start</tt><big>(</big><big>)</big><a class="headerlink" href="#CI_DB_query_builder::not_group_start" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-

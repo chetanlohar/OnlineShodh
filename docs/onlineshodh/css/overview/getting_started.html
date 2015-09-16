@@ -1,0 +1,45 @@
+an class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;tablename&#39;</span><span class="p">);</span>
+<span class="c1">//Generates:  SELECT `field1`, `field2` FROM (`tablename`)</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">flush_cache</span><span class="p">();</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;field2&#39;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;tablename&#39;</span><span class="p">);</span>
+<span class="c1">//Generates:  SELECT `field2` FROM (`tablename`)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The following statements can be cached: select, from, join,
+where, like, group_by, having, order_by, set</p>
+</div>
+</div>
+</div>
+<div class="section" id="resetting-query-builder">
+<h2><a class="toc-backref" href="#id12">Resetting Query Builder</a><a class="headerlink" href="#resetting-query-builder" title="Permalink to this headline">¶</a></h2>
+<p><strong>$this-&gt;db-&gt;reset_query()</strong></p>
+<p>Resetting Query Builder allows you to start fresh with your query without
+executing it first using a method like $this-&gt;db-&gt;get() or $this-&gt;db-&gt;insert().
+Just like the methods that execute a query, this will <em>not</em> reset items you&#8217;ve
+cached using <a class="reference internal" href="#query-builder-caching">Query Builder Caching</a>.</p>
+<p>This is useful in situations where you are using Query Builder to generate SQL
+(ex. <tt class="docutils literal"><span class="pre">$this-&gt;db-&gt;get_compiled_select()</span></tt>) but then choose to, for instance,
+run the query:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="c1">// Note that the second parameter of the get_compiled_select method is FALSE</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;field1&#39;</span><span class="p">,</span><span class="s1">&#39;field2&#39;</span><span class="p">))</span>
+                                <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="s1">&#39;field3&#39;</span><span class="p">,</span><span class="mi">5</span><span class="p">)</span>
+                                <span class="o">-&gt;</span><span class="na">get_compiled_select</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">);</span>
+
+<span class="c1">// ...</span>
+<span class="c1">// Do something crazy with the SQL code... like add it to a cron script for</span>
+<span class="c1">// later execution or something...</span>
+<span class="c1">// ...</span>
+
+<span class="nv">$data</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">result_array</span><span class="p">();</span>
+
+<span class="c1">// Would execute and return an array of results of the following query:</span>
+<span class="c1">// SELECT field1, field1 from mytable where field3 = 5;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Double calls to <tt cla

@@ -1,0 +1,52 @@
+ble&#39;</span><span class="p">,</span> <span class="k">FALSE</span><span class="p">);</span>
+
+<span class="c1">// Produces string: INSERT INTO mytable (title) VALUES (&#39;My Title&#39;)</span>
+
+<span class="k">echo</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;My Content&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">get_compiled_insert</span><span class="p">();</span>
+
+<span class="c1">// Produces string: INSERT INTO mytable (title, content) VALUES (&#39;My Title&#39;, &#39;My Content&#39;)</span>
+</pre></div>
+</div>
+<p>The key thing to notice in the above example is that the second query did not
+utlize <cite>$this-&gt;db-&gt;from()</cite> nor did it pass a table name into the first
+parameter. The reason this worked is because the query has not been executed
+using <cite>$this-&gt;db-&gt;insert()</cite> which resets values or reset directly using
+<cite>$this-&gt;db-&gt;reset_query()</cite>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method doesn&#8217;t work for batched inserts.</p>
+</div>
+<p><strong>$this-&gt;db-&gt;insert_batch()</strong></p>
+<p>Generates an insert string based on the data you supply, and runs the
+query. You can either pass an <strong>array</strong> or an <strong>object</strong> to the
+function. Here is an example using an array:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span class="nv">$data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;My title&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;My Name&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;My date&#39;</span>
+        <span class="p">),</span>
+        <span class="k">array</span><span class="p">(</span>
+                <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Another title&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Another Name&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;date&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Another date&#39;</span>
+        <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">insert_batch</span><span class="p">(</span><span class="s1">&#39;mytable&#39;</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+<span class="c1">// Produces: INSERT INTO mytable (title, name, date) VALUES (&#39;My title&#39;, &#39;My name&#39;, &#39;My date&#39;),  (&#39;Another title&#39;, &#39;Another name&#39;, &#39;Another date&#39;)</span>
+</pre></div>
+</div>
+<p>The first parameter will contain the table name, the second is an
+associative array of values.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All values are escaped automatically producing safer queries.</p>
+</div>
+</div>
+<div class="section" id="updating-data">
+<h2><a class="toc-backref" href="#id8">Updating Data</a><a class="headerlink" href="#updating-data" title="Permalink to this headline">¶</a></h2>
+<p><strong>$this-&gt;db-&gt;replace()</strong></p>
+<p>This method executes a REPLACE statement, which is basically the SQL
+standard for (optional) DELETE + INSERT, using <em>PRIMARY</em> and <em>UNIQUE</em>
+keys as the determi
