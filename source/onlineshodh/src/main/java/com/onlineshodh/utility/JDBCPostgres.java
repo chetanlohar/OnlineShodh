@@ -31,7 +31,7 @@ public class JDBCPostgres {
 		try {
 
 			connection = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5433/onlineshodh", "postgres",
+					"jdbc:postgresql://localhost:5432/onlineshodh", "postgres",
 					"root");
 
 		} catch (SQLException e) {

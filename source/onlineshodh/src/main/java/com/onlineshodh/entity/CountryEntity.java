@@ -7,14 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope(value="prototype")
 @Entity
 @Table(name="country")
 public class CountryEntity implements Serializable{
 
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	/*Country id of the Country*/
@@ -38,7 +40,5 @@ public class CountryEntity implements Serializable{
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
-	
-	
 	
 }
