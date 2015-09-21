@@ -1,10 +1,15 @@
 package com.onlineshodh.controller;
 
 import java.util.List;
-import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
@@ -22,29 +27,33 @@ public class CountryController {
 	@Autowired
 	public CountryService countryService;
 	
-	@RequestMapping(value="/manageCountries")
-	public String showManageCountries(Map<String,Object> map)
+	@RequestMapping(value={"/",""})
+	public String showManageCountries(ModelMap model)
 	{
 		List<CountryEntity> countries = countryService.getAllCountries();
-		System.out.println(countries.size());
-		for(CountryEntity country:countries)
-			System.out.println(country.getCountryName());
-		
-		CountryEntity country = context.getBean("countryEntity", CountryEntity.class);
-		country.setCountryId(4);
-		country.setCountryName("Germany");
-		System.out.println(country);
-		countryService.saveCountry(country);
-		return "login";
+		model.addAttribute("countries", countries);
+		model.addAttribute("country",new CountryEntity());
+		return "manageCountries";
 	}
 	
-	@RequestMapping(value="/saveCountry", method=RequestMethod.POST)
-	public String saveCountry()
+	@RequestMapping(value="/save", method=RequestMethod.POST)
+	public String saveCountry(ModelMap model,@Valid @ModelAttribute("country") CountryEntity country, BindingResult result)
 	{
-		return "";
+		List<CountryEntity> countries = countryService.getAllCountries();
+		model.addAttribute("countries", countries);
+		model.addAttribute("country",new CountryEntity());
+		System.out.println(country);
+		if(result.hasErrors())
+		{
+			System.out.println(result.getErrorCount());
+			List<FieldError> errors = result.getFieldErrors();
+			for(FieldError error:errors)
+				System.out.println(error.getDefaultMessage());
+		}
+		return "manageCountries";
 	}
 	
-	@RequestMapping(value="/editCountry", method=RequestMethod.POST)
+	@RequestMapping(value="/edit", method=RequestMethod.POST)
 	public String editCountry()
 	{
 		
