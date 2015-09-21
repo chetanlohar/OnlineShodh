@@ -31,7 +31,7 @@ public class JDBCPostgres {
 		try {
 
 			connection = DriverManager.getConnection(
-					"jdbc:postgresql://localhost:5432/onlineshodh", "postgres",
+					"jdbc:postgresql://localhost:5433/onlineshodh", "postgres",
 					"root");
 
 		} catch (SQLException e) {
@@ -43,7 +43,7 @@ public class JDBCPostgres {
 		}
 
 		if (connection != null) {
-			System.out.println("You made it, take control your database now!");
+			System.out.println("You made it, take control of your database now!");
 		} else {
 			System.out.println("Failed to make connection!");
 		}
