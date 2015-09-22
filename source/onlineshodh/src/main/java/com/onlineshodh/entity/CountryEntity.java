@@ -5,7 +5,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -23,13 +25,14 @@ public class CountryEntity implements Serializable{
 	
 	/*Country id of the Country*/
 	@Id
-	@Column(name="countryid")
-	@GeneratedValue
+	@SequenceGenerator(name="pk_sequence",sequenceName="seq_country_countryid", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
+	@Column(name="countryid",unique=true,nullable=false)
 	private Integer countryId;
 	
 	/*Country Name of the Country*/
 	@Column(name="countryname")
-	@NotEmpty
+	@NotEmpty(message="Country Name is Mandatory!")
 	private String countryName;
 	
 	public Integer getCountryId() {

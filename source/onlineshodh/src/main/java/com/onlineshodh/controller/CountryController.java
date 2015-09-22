@@ -39,10 +39,6 @@ public class CountryController {
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String saveCountry(ModelMap model,@Valid @ModelAttribute("country") CountryEntity country, BindingResult result)
 	{
-		List<CountryEntity> countries = countryService.getAllCountries();
-		model.addAttribute("countries", countries);
-		model.addAttribute("country",new CountryEntity());
-		System.out.println(country);
 		if(result.hasErrors())
 		{
 			System.out.println(result.getErrorCount());
@@ -50,6 +46,11 @@ public class CountryController {
 			for(FieldError error:errors)
 				System.out.println(error.getDefaultMessage());
 		}
+		else
+			countryService.saveCountry(country);
+		List<CountryEntity> countries = countryService.getAllCountries();
+		model.addAttribute("countries", countries);
+		model.addAttribute("country",new CountryEntity());
 		return "manageCountries";
 	}
 	
