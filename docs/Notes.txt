@@ -1,0 +1,11 @@
+22-Sept-2015
+
+Add sequence for Country
+
+create sequence seq_country_countryid
+    start 1
+    increment 1
+    NO MAXVALUE
+    CACHE 1;
+ALTER TABLE country
+OWNER TO postgres;
