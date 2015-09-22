@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 @Scope(value="prototype")
 @Entity
 @Table(name="country")
-public class CountryEntity implements Serializable{
+public class CountryEntity implements Comparable<CountryEntity>,Serializable{
 
 	
 	private static final long serialVersionUID = 1L;
@@ -51,6 +51,13 @@ public class CountryEntity implements Serializable{
 	public String toString() {
 		return "CountryEntity [countryId=" + countryId + ", countryName="
 				+ countryName + "]";
+	}
+	@Override
+	public int compareTo(CountryEntity country) {
+		if(this.getCountryId() < country.getCountryId())
+			return -1;
+		else
+			return 1;
 	}
 	
 }

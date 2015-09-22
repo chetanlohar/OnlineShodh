@@ -34,13 +34,14 @@ public abstract class AbstractJpaDao<T extends Serializable>{
 	@SuppressWarnings("unchecked")
 	public List<T> findAll()
 	{
-		return entityManager.createQuery("from "+clazz.getName()).getResultList();
+		return entityManager.createQuery("from "+clazz.getName()+" order by 1").getResultList();
 	}
 	
 	/*creates the new Entity (Record) in Persistence Storage*/
 	public void create(T entity)
 	{
 		entityManager.persist(entity);
+		entityManager.flush();
 	}
 	
 	/*Updates the Existing Entity (Record) in Persistence Storage*/

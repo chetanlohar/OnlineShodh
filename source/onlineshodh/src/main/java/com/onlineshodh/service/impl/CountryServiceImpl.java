@@ -24,8 +24,26 @@ public class CountryServiceImpl implements CountryService {
 
 	@Override
 	@Transactional
-	public void saveCountry(CountryEntity country) {
-		countryDao.saveCountry(country);
+	public boolean saveCountry(CountryEntity country) {
+		return countryDao.saveCountry(country);
 	}
 
+
+	@Override
+	@Transactional
+	public CountryEntity getCountryById(Integer countryId) {
+		return countryDao.getCountryById(countryId);
+	}
+
+	@Override
+	@Transactional
+	public void updateCountry(CountryEntity country) {
+		countryDao.updateCountry(country);
+	}
+
+
+	@Override
+	public CountryEntity getCountryByName(String countryName) {
+		return countryDao.getCountryByName(countryName);
+	}
 }
