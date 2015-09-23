@@ -25,12 +25,6 @@ public class CountryDaoImpl extends AbstractJpaDao<CountryEntity> implements Cou
 
 	@Override
 	public boolean saveCountry(CountryEntity country) {
-		/*if(getCountryByName(country.getCountryName())==null)
-		{
-			create(country);
-			return true;
-		}
-		return false;*/
 		create(country);
 		return true;
 	}
