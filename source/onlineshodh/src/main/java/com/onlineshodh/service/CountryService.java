@@ -10,6 +10,7 @@ public interface CountryService {
 	public boolean saveCountry(CountryEntity country);
 	public CountryEntity getCountryById(Integer countryId);
 	public void updateCountry(CountryEntity country);
+	public void deleteCountry(Integer countryId);
 	public CountryEntity getCountryByName(String countryName);
 
 }

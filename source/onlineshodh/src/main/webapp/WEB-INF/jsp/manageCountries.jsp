@@ -28,7 +28,7 @@
 				<tr>
 					<td style="text-align: center;">${country.countryId}</td>
 					<td>${country.countryName}</td>
-					<td><a href="${pageContext.request.contextPath}/countries/edit/${country.countryId}">edit</a>&nbsp|&nbsp<a href="#">delete</a></td>
+					<td><a href="${pageContext.request.contextPath}/countries/edit/${country.countryId}">edit</a>&nbsp|&nbsp<a href="${pageContext.request.contextPath}/countries/delete/${country.countryId}" onclick="confirm('Do you want to Remove Country: ${country.countryName}')">remove</a></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -66,4 +66,10 @@ public class CountryDaoImpl extends AbstractJpaDao<CountryEntity> implements Cou
 			return null;
 		}
 	}
+
+	@Override
+	public void deleteCountry(Integer countryId) {
+		CountryEntity country = getCountryById(countryId);
+		delete(country);
+	}
 }

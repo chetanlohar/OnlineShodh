@@ -21,13 +21,13 @@ public class CountryServiceImpl implements CountryService {
 		return countryDao.getAllCountries();
 	}
 
-
 	@Override
 	@Transactional
 	public boolean saveCountry(CountryEntity country) {
+		String countryName = country.getCountryName().toUpperCase();
+		country.setCountryName(countryName);
 		return countryDao.saveCountry(country);
 	}
-
 
 	@Override
 	@Transactional
@@ -38,6 +38,8 @@ public class CountryServiceImpl implements CountryService {
 	@Override
 	@Transactional
 	public void updateCountry(CountryEntity country) {
+		String countryName = country.getCountryName().toUpperCase();
+		country.setCountryName(countryName);
 		countryDao.updateCountry(country);
 	}
 
@@ -45,5 +47,11 @@ public class CountryServiceImpl implements CountryService {
 	@Override
 	public CountryEntity getCountryByName(String countryName) {
 		return countryDao.getCountryByName(countryName);
+	}
+
+	@Override
+	@Transactional
+	public void deleteCountry(Integer countryId) {
+		countryDao.deleteCountry(countryId);
 	}
 }
