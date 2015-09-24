@@ -13,11 +13,11 @@
 		method="POST" modelAttribute="state">
 
 		<p>
-			<label for="countryName">Country Name :</label>
+			<label>Country Name :</label>
 			<form:select path="country.countryId">
 				<c:forEach var="country" items="${countries}">
 					<form:option value="${country.countryId}">${country.countryName}</form:option>
-					<form:errors path="country.countryId" cssClass="errors"/>
+					<form:errors path="country.countryId" cssClass="errors" />
 				</c:forEach>
 
 			</form:select>
@@ -46,11 +46,7 @@
 				<tr>
 					<td style="text-align: center;">${state.stateId}</td>
 					<td>${state.stateName}</td>
-					
-					<c:forEach var="statecountry" items="${statesCountry}" begin="${count}" end="${count}">
-					<td>${statecountry.countryName}(${state.country.countryId})</td>
-					
-				   </c:forEach>
+					<td>${state.country.countryName}&nbsp|&nbsp(${state.country.countryId})</td>
 					<td><a
 						href="${pageContext.request.contextPath}/states/edit/${state.stateId}/${state.country.countryId}">edit</a>&nbsp|&nbsp<a
 						href="${pageContext.request.contextPath}/states/delete/${state.stateId}"

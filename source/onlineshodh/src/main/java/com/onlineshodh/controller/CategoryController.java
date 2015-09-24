@@ -13,6 +13,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,6 +21,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.CategoryEntity;
+import com.onlineshodh.entity.CountryEntity;
 import com.onlineshodh.service.CategoryService;
 
 @Controller
@@ -96,4 +98,18 @@ public class CategoryController {
 		return "category/manageCategories";
 	}
 	
+	@RequestMapping(value="/edit/{categoryId}", method=RequestMethod.GET)
+	public String editCountry(ModelMap model, @PathVariable("countryId") Integer categoryId)
+	{
+		/*CountryEntity country = countryService.getCountryById(countryId);
+		model.addAttribute("country", country);*/
+		return "category/updateCategory";
+	}
+	
+	@RequestMapping(value="/delete/{categoryId}", method=RequestMethod.GET)
+	public String deleteCountry(ModelMap model, @PathVariable("categoryId") Integer categoryId)
+	{
+		/*countryService.deleteCountry(countryId);*/
+		return "redirect:/categories";
+	}
 }

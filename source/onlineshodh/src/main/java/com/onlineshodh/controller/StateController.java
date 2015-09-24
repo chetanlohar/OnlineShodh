@@ -1,6 +1,5 @@
 package com.onlineshodh.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -17,23 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.onlineshodh.entity.CountryEntity;
 import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.service.CountryService;
 import com.onlineshodh.service.StateService;
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @Controller
 @RequestMapping(value = "/states")
 public class StateController {
 
-	List<CountryEntity> statesCountryList;
-	public StateController() {
-	
-		 statesCountryList=new ArrayList<CountryEntity>();
-		
-	}
-	
 	@Autowired
 	WebApplicationContext context;
 	@Autowired
@@ -43,29 +33,8 @@ public class StateController {
 
 	@RequestMapping(value = { "/", "" })
 	public String ShowManageStates(ModelMap model) {
-       List<CountryEntity> country=countryService.getAllCountries();
-       
-       List<StateEntity> state=stateService.getAllStates();
-       /*statesCountryList.clear();
-       for(StateEntity stateEntity:state){
-    	    CountryEntity countryEntity=new CountryEntity();
-    	    CountryEntity statesCountry=countryService.getCountryById(stateEntity.getCountryId());
-    	    countryEntity.setCountryId(stateEntity.getCountryId());
-    	    countryEntity.setCountryName(statesCountry.getCountryName());
-    	    System.out.println("CountryName :"+countryEntity.getCountryName()+"Satate Size :"+state.size()+"Sate Name :"+stateEntity.getStateName());
-    	    statesCountryList.add(countryEntity);
-       }*/
-       model.addAttribute("countries",country);
-       model.addAttribute("states",state);
-       
-       for(CountryEntity countryEntity:statesCountryList){
-    	   
-    	   System.out.println("Country From List"+countryEntity.getCountryName());
-       }
-       
-       
-       
-       model.addAttribute("statesCountry", statesCountryList);
+       model.addAttribute("states",stateService.getAllStates());
+       model.addAttribute("countries",countryService.getAllCountries());
 	   model.addAttribute("state", new StateEntity());
 		return "state/manageStates";
 	}
