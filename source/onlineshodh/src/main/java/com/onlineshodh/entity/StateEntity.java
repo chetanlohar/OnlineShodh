@@ -37,6 +37,8 @@ public class StateEntity implements Comparable<StateEntity>, Serializable {
 	private String stateName;
 	@Column(name="countryid",nullable=false)
 	private Integer countryId;
+	
+	/*private CountryEntity country;*/
 
 	public Integer getStateId() {
 		return stateId;

@@ -35,7 +35,6 @@ public class StateServiceImpl implements StateService {
 
 	@Override
 	public List<StateEntity> getAllStates() {
-		
 		return stateDao.getAllStates();
 	}
 

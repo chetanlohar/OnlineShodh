@@ -14,7 +14,6 @@ public class StateDaoImpl extends AbstractJpaDao<StateEntity> implements StateDa
 
 	@Override
 	public boolean saveState(StateEntity state) {
-
 		create(state);
 		return true;
 	}

@@ -46,7 +46,7 @@ public class StateController {
        List<CountryEntity> country=countryService.getAllCountries();
        
        List<StateEntity> state=stateService.getAllStates();
-       statesCountryList.clear();
+       /*statesCountryList.clear();
        for(StateEntity stateEntity:state){
     	    CountryEntity countryEntity=new CountryEntity();
     	    CountryEntity statesCountry=countryService.getCountryById(stateEntity.getCountryId());
@@ -54,7 +54,7 @@ public class StateController {
     	    countryEntity.setCountryName(statesCountry.getCountryName());
     	    System.out.println("CountryName :"+countryEntity.getCountryName()+"Satate Size :"+state.size()+"Sate Name :"+stateEntity.getStateName());
     	    statesCountryList.add(countryEntity);
-       }
+       }*/
        model.addAttribute("countries",country);
        model.addAttribute("states",state);
        

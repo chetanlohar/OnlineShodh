@@ -20,7 +20,6 @@
 					<form:option value="${country.countryId}">${country.countryName}</form:option>
 					<form:errors path="countryId" cssClass="errors" />
 				</c:forEach>
-
 			</form:select>
 		</p> --%>
 

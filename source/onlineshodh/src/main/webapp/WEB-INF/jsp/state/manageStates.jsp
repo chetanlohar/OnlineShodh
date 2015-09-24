@@ -9,7 +9,6 @@
 <title>Manage States</title>
 </head>
 <body>
-
 	<form:form action="${pageContext.request.contextPath}/states/save"
 		method="POST" modelAttribute="state">
 
