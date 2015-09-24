@@ -70,6 +70,15 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${spring.security.version}</version>
 		</dependency>
+		
+		<!-- Spring Test -->
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.0.5.RELEASE</version>
+		</dependency>
+
 
 		<!-- Hibernate Dependency -->
 
@@ -102,11 +111,11 @@
 
 		<!-- Postgress Dependency -->
 
-		<!-- <dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>9.4-1200-jdbc41</version>
-		</dependency> -->
+		</dependency>
 
 
 		<!-- JSON Dependency -->

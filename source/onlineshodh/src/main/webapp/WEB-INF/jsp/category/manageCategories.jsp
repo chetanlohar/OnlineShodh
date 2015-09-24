@@ -40,7 +40,7 @@
 			<c:forEach var="category" items="${categories}">
 				<tr>
 					<td style="text-align: center;">${category.categoryId}</td>
-					<td><%-- <img src="${pageContext.request.contextPath}/resources/images/automobile.png"/> --%>Logo</td>
+					<td><img src="${pageContext.request.contextPath}/resources/images/automobile.png" height="50" width="50"/></td>
 					<td>${category.categoryName}</td>
 					<td>${category.categoryDesc}</td>
 					<td>${category.popularity}</td>

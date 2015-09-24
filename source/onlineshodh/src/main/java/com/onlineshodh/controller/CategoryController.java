@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,6 +26,9 @@ import com.onlineshodh.service.CategoryService;
 @RequestMapping(value="/categories")
 public class CategoryController {
 
+
+	private static final Logger logger = Logger.getLogger(CategoryController.class);
+	
 	@Autowired
 	public WebApplicationContext context;
 	
@@ -42,12 +47,15 @@ public class CategoryController {
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String saveCategory(ModelMap model,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("category") CategoryEntity category, BindingResult result) throws IOException
 	{
+		System.out.println(category);
 		if(result.hasErrors())
 		{
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
 			for(FieldError error:errors)
-				System.out.println(error.getDefaultMessage());
+			{
+				logger.info(error.getDefaultMessage());
+			}
 		}
 		else
 		{
@@ -55,10 +63,33 @@ public class CategoryController {
 			category.setCategoryLogo(categoryLogo);
 			String categoryName = category.getCategoryName().toUpperCase();
 			category.setCategoryName(categoryName);
-			
 			String categoryDesc = category.getCategoryDesc().toUpperCase();
 			category.setCategoryDesc(categoryDesc);
-			categoryService.saveCategory(category);
+			if(category.getPopularity()==null)
+				category.setPopularity(0);
+			try
+			{
+				categoryService.saveCategory(category);
+			}
+			catch(DataIntegrityViolationException e)
+			{
+				FieldError countryNameAvailableError;
+				if(e.getMostSpecificCause().getMessage().contains("unique"))
+				{
+					countryNameAvailableError = new FieldError("category","categoryName","*CategoryName is already Exists!");
+					logger.info("*CategoryName is already Exists!",new Exception("*CategoryName is already Exists!"));
+				}
+				else
+				{
+					countryNameAvailableError = new FieldError("category","categoryName","*Only Alphabets allowed for Country Name!");
+					logger.info("*Only Alphabets allowed for Country Name!",new Exception("*Only Alphabets allowed for Country Name!"));
+				}
+				result.addError(countryNameAvailableError);
+			}
+			catch(Exception e)
+			{
+				logger.debug("Exception Occured!",new Exception(e));
+			}
 		}
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("categories", categories);
