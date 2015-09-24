@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -35,11 +38,14 @@ public class StateEntity implements Comparable<StateEntity>, Serializable {
 	@Column(name = "statename")
 	@NotEmpty(message = "State Name is Mandatory!")
 	private String stateName;
-	@Column(name="countryid",nullable=false)
-	private Integer countryId;
 	
-	/*private CountryEntity country;*/
-
+	/*@Column(name="countryid",nullable=false)
+	private Integer countryId;*/
+	
+	@ManyToOne(targetEntity=CountryEntity.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="countryId")
+	private CountryEntity country;
+	
 	public Integer getStateId() {
 		return stateId;
 	}
@@ -55,20 +61,19 @@ public class StateEntity implements Comparable<StateEntity>, Serializable {
 	public void setStateName(String stateName) {
 		this.stateName = stateName;
 	}
-	
-	public Integer getCountryId() {
-		return countryId;
+
+	public CountryEntity getCountry() {
+		return country;
 	}
 
-	public void setCountryId(Integer countryId) {
-		this.countryId = countryId;
+	public void setCountry(CountryEntity country) {
+		this.country = country;
 	}
 
 	@Override
 	public String toString() {
-		
-		return "StateEntity [stateId=" + stateId + ", StateName="
-				+ stateName + "]";
+		return "StateEntity [stateId=" + stateId + ", stateName=" + stateName
+				+ ", country=" + country + "]";
 	}
 
 	@Override

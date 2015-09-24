@@ -14,10 +14,10 @@
 
 		<p>
 			<label for="countryName">Country Name :</label>
-			<form:select path="countryId">
+			<form:select path="country.countryId">
 				<c:forEach var="country" items="${countries}">
 					<form:option value="${country.countryId}">${country.countryName}</form:option>
-					<form:errors path="countryId" cssClass="errors"/>
+					<form:errors path="country.countryId" cssClass="errors"/>
 				</c:forEach>
 
 			</form:select>
@@ -48,11 +48,11 @@
 					<td>${state.stateName}</td>
 					
 					<c:forEach var="statecountry" items="${statesCountry}" begin="${count}" end="${count}">
-					<td>${statecountry.countryName}(${state.countryId})</td>
+					<td>${statecountry.countryName}(${state.country.countryId})</td>
 					
 				   </c:forEach>
 					<td><a
-						href="${pageContext.request.contextPath}/states/edit/${state.stateId}/${state.countryId}">edit</a>&nbsp|&nbsp<a
+						href="${pageContext.request.contextPath}/states/edit/${state.stateId}/${state.country.countryId}">edit</a>&nbsp|&nbsp<a
 						href="${pageContext.request.contextPath}/states/delete/${state.stateId}"
 						onclick="confirm('Do you want to Remove State: ${state.stateName}')">remove</a></td>
 				</tr>

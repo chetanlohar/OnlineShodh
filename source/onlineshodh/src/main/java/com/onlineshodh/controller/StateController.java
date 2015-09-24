@@ -67,7 +67,7 @@ public class StateController {
        
        model.addAttribute("statesCountry", statesCountryList);
 	   model.addAttribute("state", new StateEntity());
-		return "manageStates";
+		return "state/manageStates";
 	}
 
 	@RequestMapping(value = "/save")
@@ -84,7 +84,7 @@ public class StateController {
 		} else {
 
 			try {
-				System.out.println("CountryID : "+state.getCountryId());
+				System.out.println("CountryID : "+state.getCountry().getCountryId());
 				stateService.updateState(state);
 				return "redirect:/states";
 			} catch (DataIntegrityViolationException exception) {
@@ -110,10 +110,10 @@ public class StateController {
 	@RequestMapping(value="/edit/{stateId}/{countryId}",method=RequestMethod.GET)
 	public String editState(ModelMap model,@PathVariable("stateId")Integer stateId,@PathVariable("countryId")Integer countryId)
 	{
-		StateEntity state=stateService.getStateById(stateId);
+		/*StateEntity state=stateService.getStateById(stateId);
 		state.setCountryId(countryId);
 		System.out.println("State Country ID"+countryId);
-		model.addAttribute("state", state);
+		model.addAttribute("state", state);*/
 		return "updateState";
 	}
 	@RequestMapping(value="/delete/{stateId}", method=RequestMethod.GET)
