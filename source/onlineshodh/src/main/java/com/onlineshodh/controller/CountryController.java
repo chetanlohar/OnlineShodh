@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -60,15 +59,14 @@ public class CountryController {
 			catch(DataIntegrityViolationException e)
 			{
 				FieldError countryNameAvailableError;
-				System.out.println(e.getMostSpecificCause().getMessage());
 				if(e.getMostSpecificCause().getMessage().contains("unique"))
 					countryNameAvailableError = new FieldError("country","countryName","*CountryName is already Exists!");
 				else
 					countryNameAvailableError = new FieldError("country","countryName","*Only Alphabets allowed for Country Name!");
 				result.addError(countryNameAvailableError);
-				model.addAttribute("countries", countryService.getAllCountries());
 			}
 		}
+		model.addAttribute("countries", countryService.getAllCountries());
 		return "manageCountries";
 	}
 	
@@ -83,7 +81,6 @@ public class CountryController {
 	@RequestMapping(value="/delete/{countryId}", method=RequestMethod.GET)
 	public String deleteCountry(ModelMap model, @PathVariable("countryId") Integer countryId)
 	{
-		System.out.println(countryId);
 		countryService.deleteCountry(countryId);
 		return "redirect:/countries";
 	}
