@@ -79,11 +79,12 @@ public class StateController {
 	@RequestMapping(value="/edit/{stateId}/{countryId}",method=RequestMethod.GET)
 	public String editState(ModelMap model,@PathVariable("stateId")Integer stateId,@PathVariable("countryId")Integer countryId)
 	{
-		/*StateEntity state=stateService.getStateById(stateId);
-		state.setCountryId(countryId);
-		System.out.println("State Country ID"+countryId);
-		model.addAttribute("state", state);*/
-		return "updateState";
+		StateEntity state=stateService.getStateById(stateId);
+		//state.setCountryId(countryId);
+		//System.out.println("State Country ID"+countryId);
+		model.addAttribute("state", state);
+		System.out.println(" In UpDate Controller");
+		return "state/updateState";
 	}
 	@RequestMapping(value="/delete/{stateId}", method=RequestMethod.GET)
 	public String deleteCountry(ModelMap model, @PathVariable("stateId") Integer stateId)

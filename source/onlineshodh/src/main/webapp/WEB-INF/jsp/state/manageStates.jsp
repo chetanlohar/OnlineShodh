@@ -9,9 +9,7 @@
 <title>Manage States</title>
 </head>
 <body>
-	<form:form action="${pageContext.request.contextPath}/states/save"
-		method="POST" modelAttribute="state">
-
+	<form:form action="${pageContext.request.contextPath}/states/save" method="POST" modelAttribute="state">
 		<p>
 			<label>Country Name :</label>
 			<form:select path="country.countryId">

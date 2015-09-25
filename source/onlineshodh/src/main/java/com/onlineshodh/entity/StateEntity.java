@@ -21,15 +21,15 @@ import org.springframework.stereotype.Component;
 @Scope(value = "prototype")
 @Entity
 @Table(name = "state")
-public class StateEntity implements Comparable<StateEntity>, Serializable {
+public class StateEntity implements  Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	/* State Id Of State */
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence", sequenceName = "seq_state_stateid", allocationSize = 1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
+	@SequenceGenerator(name = "pk_sequence_state", sequenceName = "seq_state_stateid", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_state")
 	@Column(name = "stateid",unique=true,nullable=false)
 	private Integer stateId;
 
@@ -76,12 +76,6 @@ public class StateEntity implements Comparable<StateEntity>, Serializable {
 				+ ", country=" + country + "]";
 	}
 
-	@Override
-	public int compareTo(StateEntity stateEntity) {
-		if (this.getStateId() < stateEntity.getStateId())
-			return -1;
-		else
-			return 1;
-	}
+	
 
 }

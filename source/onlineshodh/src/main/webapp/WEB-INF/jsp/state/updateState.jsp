@@ -12,18 +12,8 @@
 	<form:form action="${pageContext.request.contextPath}/states/save"
 		method="POST" modelAttribute="state">
 		 <form:hidden path="stateId" /> 
-		 <form:hidden path="countryId"/>
-		<%-- <p>
-			<label for="countryName">Country Name :</label>
-			<form:select path="countryId">
-				<c:forEach var="country" items="${countries}">
-					<form:option value="${country.countryId}">${country.countryName}</form:option>
-					<form:errors path="countryId" cssClass="errors" />
-				</c:forEach>
-			</form:select>
-		</p> --%>
-
-		<p>
+		 <form:hidden path="country.countryId"/>
+			<p>
 			<label for="stateName">State Name:</label>
 		<p>
 			<form:errors path="stateName" cssClass="errors" />
