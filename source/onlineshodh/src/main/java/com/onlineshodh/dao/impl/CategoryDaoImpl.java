@@ -21,4 +21,15 @@ public class CategoryDaoImpl extends AbstractJpaDao<CategoryEntity>implements Ca
 	public void saveCategory(CategoryEntity category) {
 		update(category);
 	}
+
+	@Override
+	public void deleteCategory(Integer categoryId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public CategoryEntity getCategoryById(Integer categoryId) {
+		return findOne(categoryId);
+	}
 }

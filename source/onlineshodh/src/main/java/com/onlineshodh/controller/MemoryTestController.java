@@ -22,7 +22,7 @@ public class MemoryTestController {
 		model.addAttribute("maxjvmmemory", maxjvmmemory);
 		model.addAttribute("freejvmmemory", freejvmmemory);
 		model.addAttribute("usedjvmmemory", usedjvmmemory);
-		return "MemoryUtilized";
+		return "utility/MemoryUtilized";
 	}
 	
 	@RequestMapping("/status/KB")
@@ -39,6 +39,6 @@ public class MemoryTestController {
 		model.addAttribute("maxjvmmemory", maxjvmmemory);
 		model.addAttribute("freejvmmemory", freejvmmemory);
 		model.addAttribute("usedjvmmemory", usedjvmmemory);
-		return "MemoryUtilized";
+		return "utility/MemoryUtilized";
 	}
 }

@@ -1,10 +1,14 @@
 package com.onlineshodh.controller;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -21,7 +25,6 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.CategoryEntity;
-import com.onlineshodh.entity.CountryEntity;
 import com.onlineshodh.service.CategoryService;
 
 @Controller
@@ -49,7 +52,8 @@ public class CategoryController {
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String saveCategory(ModelMap model,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("category") CategoryEntity category, BindingResult result) throws IOException
 	{
-		System.out.println(category);
+		List<CategoryEntity> categories = categoryService.getAllCategories();
+		model.addAttribute("categories", categories);
 		if(result.hasErrors())
 		{
 			System.out.println(result.getErrorCount());
@@ -72,6 +76,7 @@ public class CategoryController {
 			try
 			{
 				categoryService.saveCategory(category);
+				return "redirect:/categories/";
 			}
 			catch(DataIntegrityViolationException e)
 			{
@@ -93,16 +98,13 @@ public class CategoryController {
 				logger.debug("Exception Occured!",new Exception(e));
 			}
 		}
-		List<CategoryEntity> categories = categoryService.getAllCategories();
-		model.addAttribute("categories", categories);
 		return "category/manageCategories";
 	}
 	
 	@RequestMapping(value="/edit/{categoryId}", method=RequestMethod.GET)
-	public String editCountry(ModelMap model, @PathVariable("countryId") Integer categoryId)
+	public String editCountry(ModelMap model, @PathVariable("categoryId") Integer categoryId)
 	{
-		/*CountryEntity country = countryService.getCountryById(countryId);
-		model.addAttribute("country", country);*/
+		model.addAttribute("category", categoryService.getCategoryById(categoryId));
 		return "category/updateCategory";
 	}
 	
@@ -111,5 +113,26 @@ public class CategoryController {
 	{
 		/*countryService.deleteCountry(countryId);*/
 		return "redirect:/categories";
+	}
+	
+	@RequestMapping("/load/logo/{categoryId}")
+	public String downloadPicture(@PathVariable("categoryId") Integer categoryId, HttpServletResponse response)
+	{
+		CategoryEntity category = categoryService.getCategoryById(categoryId);
+		try
+		{
+			response.setHeader("Content-Disposition", "inline;filename=\""+category.getCategoryName()+"\"");
+			OutputStream out = response.getOutputStream();
+			response.setContentType("image/gif");
+			ByteArrayInputStream bis = new ByteArrayInputStream(category.getCategoryLogo());
+			IOUtils.copy(bis, out);
+			out.flush();
+			out.close();
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

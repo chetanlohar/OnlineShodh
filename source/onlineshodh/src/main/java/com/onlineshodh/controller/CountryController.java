@@ -31,7 +31,7 @@ public class CountryController {
 		List<CountryEntity> countries = countryService.getAllCountries();
 		model.addAttribute("countries", countries);
 		model.addAttribute("country",new CountryEntity());
-		return "manageCountries";
+		return "country/manageCountries";
 	}
 	
 	@RequestMapping(value="/save", method=RequestMethod.POST)
@@ -63,7 +63,7 @@ public class CountryController {
 			}
 		}
 		model.addAttribute("countries", countryService.getAllCountries());
-		return "manageCountries";
+		return "country/manageCountries";
 	}
 	
 	@RequestMapping(value="/edit/{countryId}", method=RequestMethod.GET)
@@ -71,7 +71,7 @@ public class CountryController {
 	{
 		CountryEntity country = countryService.getCountryById(countryId);
 		model.addAttribute("country", country);
-		return "updateCountry";
+		return "country/updateCountry";
 	}
 	
 	@RequestMapping(value="/delete/{countryId}", method=RequestMethod.GET)

@@ -26,4 +26,16 @@ public class CategoryServiceIml implements CategoryService {
 	public void saveCategory(CategoryEntity category) {
 		categoryDao.saveCategory(category);
 	}
+
+	@Override
+	@Transactional
+	public void deleteCategory(Integer categoryId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public CategoryEntity getCategoryById(Integer categoryId) {
+		return categoryDao.getCategoryById(categoryId);
+	}
 }
