@@ -27,8 +27,8 @@ public class CountryEntity implements Comparable<CountryEntity>,Serializable{
 	 * Country id of the Country
 	 */
 	@Id
-	@SequenceGenerator(name="pk_sequence",sequenceName="seq_country_countryid", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
+	@SequenceGenerator(name="pk_sequence_countryid",sequenceName="seq_country_countryid", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_countryid")
 	@Column(name="countryid",unique=true,nullable=false)
 	private Integer countryId;
 	

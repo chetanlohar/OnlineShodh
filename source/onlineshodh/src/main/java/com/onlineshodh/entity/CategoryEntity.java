@@ -31,8 +31,8 @@ public class CategoryEntity implements Serializable {
 	 * Describes Category Id
 	 */
 	@Id
-	@SequenceGenerator(name="pk_sequence_category",sequenceName="seq_category_categoryid", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_category")
+	@SequenceGenerator(name="pk_sequence_categoryid",sequenceName="seq_category_categoryid", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_categoryid")
 	@Column(name="categoryid", nullable=false, unique=true)
 	private Integer categoryId;
 	

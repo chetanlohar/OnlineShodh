@@ -28,8 +28,8 @@ public class StateEntity implements  Serializable {
 	/* State Id Of State */
 
 	@Id
-	@SequenceGenerator(name = "pk_sequence_state", sequenceName = "seq_state_stateid", allocationSize = 1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_state")
+	@SequenceGenerator(name = "pk_sequence_stateid", sequenceName = "seq_state_stateid", allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_stateid")
 	@Column(name = "stateid",unique=true,nullable=false)
 	private Integer stateId;
 

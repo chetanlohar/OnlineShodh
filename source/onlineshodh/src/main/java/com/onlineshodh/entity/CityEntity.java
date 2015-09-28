@@ -26,7 +26,7 @@ public class CityEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@SequenceGenerator(name="pk_sequence_cityid",sequenceName="seq_city_cityid",allocationSize=1 )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_cityid")
 	@Column(name="cityid",unique=true,nullable=false)
     private Integer cityId;
 	@Column(name="cityname")
