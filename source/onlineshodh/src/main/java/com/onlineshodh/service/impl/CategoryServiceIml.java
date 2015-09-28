@@ -30,8 +30,7 @@ public class CategoryServiceIml implements CategoryService {
 	@Override
 	@Transactional
 	public void deleteCategory(Integer categoryId) {
-		// TODO Auto-generated method stub
-		
+		categoryDao.deleteCategory(categoryId);
 	}
 
 	@Override

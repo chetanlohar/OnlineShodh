@@ -17,6 +17,7 @@
 	<context:component-scan base-package="com.onlineshodh" />
 	<tx:annotation-driven />
 	<mvc:default-servlet-handler/>
+	<context:property-placeholder location="classpath:properties/validation_messages.properties"/>
 
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/OnlineShodhDB" />

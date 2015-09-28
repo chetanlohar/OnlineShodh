@@ -26,99 +26,106 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.CategoryEntity;
+import com.onlineshodh.entity.SubCategoryEntity;
 import com.onlineshodh.service.CategoryService;
+import com.onlineshodh.service.SubCategoryService;
 
 @Controller
-@RequestMapping(value = "/categories")
-public class CategoryController {
-
+@RequestMapping(value="/admin/subcategories")
+public class SubCategoryController {
+	
 	private static final Logger logger = Logger
-			.getLogger(CategoryController.class);
-
+			.getLogger(SubCategoryController.class);
+	
 	@Autowired
-	public WebApplicationContext context;
-
+	WebApplicationContext context;
+	
 	@Autowired
-	public CategoryService categoryService;
+	SubCategoryService subCategoryService;
+	
+	@Autowired
+	CategoryService categoryService;
 	
 	@Value("${onlyAlphabets}")
 	String onlyAlphabets;
 	
 	@Value("${alreadyExist}")
 	String alreadyExist;
-
-	@RequestMapping(value = { "/", "" })
-	public String showManageCategory(ModelMap model) {
+	
+	@RequestMapping(value={"/",""},method=RequestMethod.GET)
+	public String showManageSubCategories(ModelMap model)
+	{
+		List<SubCategoryEntity> subcategories=subCategoryService.getAllSubCategories();
 		List<CategoryEntity> categories = categoryService.getAllCategories();
+		model.addAttribute("subcategories", subcategories);
 		model.addAttribute("categories", categories);
-		model.addAttribute("category",
-				context.getBean("categoryEntity", CategoryEntity.class));
-		return "category/manageCategories";
+		model.addAttribute("subcategory",context.getBean("subCategoryEntity", SubCategoryEntity.class));
+		return "category/manageSubCategory";
 	}
-
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveCategory(ModelMap model,
-			@RequestParam("file") MultipartFile file,
-			@Valid @ModelAttribute("category") CategoryEntity category,
-			BindingResult result) throws IOException {
-		logger.info(file.isEmpty());
-		List<CategoryEntity> categories = categoryService.getAllCategories();
-		model.addAttribute("categories", categories);
-		if (result.hasErrors()) {
-			System.out.println(result.getErrorCount());
+	public String saveCategory(ModelMap model,	@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("subcategory") SubCategoryEntity subCategory,BindingResult result) throws IOException {
+		
+		logger.info("file isEmpty: "+file.isEmpty());
+		logger.info(subCategory);
+		
+		model.addAttribute("subcategories", subCategoryService.getAllSubCategories());
+		model.addAttribute("categories", categoryService.getAllCategories());
+		
+		/*if (result.hasErrors()) {
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError error : errors) {
 				logger.info(error.getDefaultMessage());
 			}
 		} else {
 			if (!file.isEmpty()) {
-				byte[] categoryLogo = file.getBytes();
-				category.setCategoryLogo(categoryLogo);
+				byte[] sbuCategoryLogo = file.getBytes();
+				subCategory.setSubCategoryLogo(sbuCategoryLogo);
 			}
-			String categoryName = category.getCategoryName().toUpperCase();
-			category.setCategoryName(categoryName);
-			String categoryDesc = category.getCategoryDesc().toUpperCase();
-			category.setCategoryDesc(categoryDesc);
-			if (category.getPopularity() == null)
-				category.setPopularity(0);
+			
+			String subCategoryName = subCategory.getSubCategoryName().toUpperCase();
+			subCategory.setSubCategoryName(subCategoryName);
+			String subCategoryDesc = subCategory.getSubCategoryDesc().toUpperCase();
+			subCategory.setSubCategoryDesc(subCategoryDesc);
+			if (subCategory.getPopularity() == null)
+				subCategory.setPopularity(0);
 			try {
 				categoryService.saveCategory(category);
 				return "redirect:/categories/";
 			} catch (DataIntegrityViolationException e) {
 				FieldError countryNameAvailableError;
 				if (e.getMostSpecificCause().getMessage().contains("unique")) {
-					countryNameAvailableError = new FieldError("category","categoryName", alreadyExist);
+					countryNameAvailableError = new FieldError("subCategory","subCategoryName", alreadyExist);
 					logger.info(alreadyExist);
 				} else {
-					countryNameAvailableError = new FieldError("category","categoryName",onlyAlphabets);
+					countryNameAvailableError = new FieldError("subCategory","subCategoryName",onlyAlphabets);
 					logger.info(onlyAlphabets);
 				}
 				result.addError(countryNameAvailableError);
 			} catch (Exception e) {
 				logger.debug("Exception Occured!", new Exception(e));
 			}
-		}
-		return "category/manageCategories";
+		}*/
+		return "category/manageSubCategories";
 	}
 
-	@RequestMapping(value = "/edit/{categoryId}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/edit/{subCategoryId}", method = RequestMethod.GET)
 	public String editCountry(ModelMap model,
-			@PathVariable("categoryId") Integer categoryId) {
-		model.addAttribute("category",
-				categoryService.getCategoryById(categoryId));
-		return "category/updateCategory";
-	}
+			@PathVariable("subCategoryId") Integer subCategoryId) {
+		model.addAttribute("category",categoryService.getCategoryById(subCategoryId));
+		return "category/updateSubCategory";
+	}*/
 
-	@RequestMapping(value = "/delete/{categoryId}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/delete/{subCategoryId}", method = RequestMethod.GET)
 	public String deleteCountry(ModelMap model,
-			@PathVariable("categoryId") Integer categoryId) {
-		categoryService.deleteCategory(categoryId);
+			@PathVariable("subCategoryId") Integer subCategoryId) {
+		categoryService.deleteCategory(subCategoryId);
 		return "redirect:/categories";
-	}
+	}*/
 
-	@RequestMapping("/load/logo/{categoryId}")
+	/*@RequestMapping("/load/logo/{subCategoryId}")
 	public String downloadPicture(
-			@PathVariable("categoryId") Integer categoryId,
+			@PathVariable("subCategoryId") Integer subCategoryId,
 			HttpServletResponse response) {
 		CategoryEntity category = categoryService.getCategoryById(categoryId);
 		try {
@@ -137,5 +144,5 @@ public class CategoryController {
 			logger.info("File Not Found");
 		}
 		return null;
-	}
+	}*/
 }

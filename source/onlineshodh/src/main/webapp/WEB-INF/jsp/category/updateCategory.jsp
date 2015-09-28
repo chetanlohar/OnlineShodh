@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script	src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script	src="${pageContext.request.contextPath}/resources/js/commonjs.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Update Country</title>
 </head>
@@ -12,6 +14,7 @@
 	<form:form action="${pageContext.request.contextPath}/categories/save" method="post" modelAttribute="category" enctype="multipart/form-data">
 	<form:hidden path="categoryId"/>
 	<form:hidden path="popularity"/>
+	<form:hidden path="categoryLogo"/>
 		<p>
 			<label for="categoryName">Category Name*: </label>
 			<form:input path="categoryName" title="Category Name" maxlength="25" size="51"/>
@@ -24,7 +27,9 @@
 		</p>
 		<p>
 			<label for="categoryLogo">Category Picture: </label>
-			<input type="file" id="file" name="file" value="Browse">
+			<input type="file" id="file" name="file" value="Browse" onchange="changeImage(this);">
+			<img src="${pageContext.request.contextPath}/categories/load/logo/${category.categoryId}" id="categorylogo" height="50" width="50"/>
+			
 		</p>
 		<p>
 			<input type="submit" id="saveCategory" name="saveCategory" value="Save" />

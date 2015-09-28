@@ -24,8 +24,7 @@ public class CategoryDaoImpl extends AbstractJpaDao<CategoryEntity>implements Ca
 
 	@Override
 	public void deleteCategory(Integer categoryId) {
-		// TODO Auto-generated method stub
-		
+		deleteById(categoryId);
 	}
 
 	@Override

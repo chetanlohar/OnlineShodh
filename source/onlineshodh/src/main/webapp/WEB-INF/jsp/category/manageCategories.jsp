@@ -25,7 +25,7 @@
 		<p>
 			<label for="categoryLogo">Category Picture: </label>
 			<input type="file" id="file" name="file" value="Browse" onchange="changeImage(this);">
-			<img src="${pageContext.request.contextPath}/resources/images/automobile.png" id="categorylogo" height="50" width="50"/>
+			<img id="categorylogo" height="50" width="50"/>
 		</p>
 		<p>
 			<input type="submit" id="saveCategory" name="saveCategory" value="Save" />
@@ -43,7 +43,7 @@
 			<c:forEach var="category" items="${categories}">
 				<tr>
 					<td style="text-align: center;">${category.categoryId}</td>
-					<td><img src="${pageContext.request.contextPath}/categories/load/logo/${category.categoryId}" height="50" width="50"/></td>
+					<td><img src="${pageContext.request.contextPath}/categories/load/logo/${category.categoryId}" height="50" width="50" alt="*No Image"/></td>
 					<td>${category.categoryName}</td>
 					<td>${category.categoryDesc}</td>
 					<td>${category.popularity}</td>
