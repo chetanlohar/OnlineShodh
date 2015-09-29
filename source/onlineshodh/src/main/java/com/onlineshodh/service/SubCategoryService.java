@@ -18,4 +18,20 @@ public interface SubCategoryService {
 	 */
 	public List<SubCategoryEntity> getAllSubCategories();
 	
+	/**
+	 * @param subCategory the subCategory to be save in Persistance Storage
+	 */
+	public void saveSubCategory(SubCategoryEntity subCategory);
+	
+	/**
+	 * @param subCategoryId
+	 * @return SubCategoryEntity of subCategoryId
+	 */
+	public SubCategoryEntity getSubCategoryById(Integer subCategoryId);
+	
+	/**
+	 * @param subCategoryId SubCategory to delete
+	 */
+	public void deleteSubCategory(Integer subCategoryId);
+	
 }

@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.SubCategoryDao;
 import com.onlineshodh.entity.SubCategoryEntity;
@@ -28,5 +29,25 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 	@Override
 	public List<SubCategoryEntity> getAllSubCategories() {
 		return subcategorydao.getAllSubCategories();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.onlineshodh.service.SubCategoryService#saveSubCategory(com.onlineshodh.entity.SubCategoryEntity)
+	 */
+	@Override
+	@Transactional
+	public void saveSubCategory(SubCategoryEntity subCategory) {
+		subcategorydao.saveSubCategory(subCategory);
+	}
+
+	@Override
+	public SubCategoryEntity getSubCategoryById(Integer subCategoryId) {
+		return subcategorydao.getSubCategoryById(subCategoryId);
+	}
+
+	@Override
+	@Transactional
+	public void deleteSubCategory(Integer subCategoryId) {
+		subcategorydao.deleteSubCategory(subCategoryId);
 	}
 }

@@ -102,7 +102,7 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "/edit/{categoryId}", method = RequestMethod.GET)
-	public String editCountry(ModelMap model,
+	public String editCategory(ModelMap model,
 			@PathVariable("categoryId") Integer categoryId) {
 		model.addAttribute("category",
 				categoryService.getCategoryById(categoryId));
@@ -110,7 +110,7 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "/delete/{categoryId}", method = RequestMethod.GET)
-	public String deleteCountry(ModelMap model,
+	public String deleteCategory(ModelMap model,
 			@PathVariable("categoryId") Integer categoryId) {
 		categoryService.deleteCategory(categoryId);
 		return "redirect:/categories";

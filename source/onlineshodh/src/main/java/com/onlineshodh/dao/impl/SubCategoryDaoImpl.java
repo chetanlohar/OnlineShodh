@@ -16,4 +16,20 @@ public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implem
 		setClazz(SubCategoryEntity.class);
 		return findAll();
 	}
+
+	@Override
+	public void saveSubCategory(SubCategoryEntity subCategory) {
+		update(subCategory);
+	}
+
+	@Override
+	public SubCategoryEntity getSubCategoryById(Integer subCategoryId) {
+		setClazz(SubCategoryEntity.class);
+		return findOne(subCategoryId);
+	}
+
+	@Override
+	public void deleteSubCategory(Integer subCategoryId) {
+		deleteById(subCategoryId);
+	}
 }

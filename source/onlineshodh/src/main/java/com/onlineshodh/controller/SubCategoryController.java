@@ -52,6 +52,9 @@ public class SubCategoryController {
 	@Value("${alreadyExist}")
 	String alreadyExist;
 	
+	@Value("${mandatory}")
+	String mandatory;
+	
 	@RequestMapping(value={"/",""},method=RequestMethod.GET)
 	public String showManageSubCategories(ModelMap model)
 	{
@@ -60,29 +63,50 @@ public class SubCategoryController {
 		model.addAttribute("subcategories", subcategories);
 		model.addAttribute("categories", categories);
 		model.addAttribute("subcategory",context.getBean("subCategoryEntity", SubCategoryEntity.class));
-		return "category/manageSubCategory";
+		return "category/manageSubCategories";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.GET)
+	public String saveCategoryGET(ModelMap model)
+	{
+		return "redirect:/admin/subcategories";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveCategory(ModelMap model,	@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("subcategory") SubCategoryEntity subCategory,BindingResult result) throws IOException {
+	public String saveCategory(ModelMap model,	@RequestParam("operationType") String operationType,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("subcategory") SubCategoryEntity subCategory,BindingResult result) throws IOException {
 		
-		logger.info("file isEmpty: "+file.isEmpty());
-		logger.info(subCategory);
+		boolean flag = false;
 		
 		model.addAttribute("subcategories", subCategoryService.getAllSubCategories());
 		model.addAttribute("categories", categoryService.getAllCategories());
 		
-		/*if (result.hasErrors()) {
+		if (result.hasErrors()) {
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError error : errors) {
 				logger.info(error.getDefaultMessage());
 			}
-		} else {
+			flag = true;
+		}
+		if(file.isEmpty() && subCategory.getSubCategoryLogo()==null)
+		{
+			FieldError categoryNotSelected = new FieldError("subCategory", "subCategoryLogo", mandatory);
+			result.addError(categoryNotSelected);
+			flag = true;
+		}
+		if(subCategory.getCategory().getCategoryId()==0)
+		{
+			FieldError categoryNotSelected = new FieldError("subCategory", "category.categoryId", mandatory);
+			result.addError(categoryNotSelected);
+			flag = true;
+		}
+		if(flag)
+			return "category/manageSubCategories";
+		else {
 			if (!file.isEmpty()) {
-				byte[] sbuCategoryLogo = file.getBytes();
-				subCategory.setSubCategoryLogo(sbuCategoryLogo);
+				logger.info("file is not empty...");
+				byte[] subCategoryLogo = file.getBytes();
+				subCategory.setSubCategoryLogo(subCategoryLogo);
 			}
-			
 			String subCategoryName = subCategory.getSubCategoryName().toUpperCase();
 			subCategory.setSubCategoryName(subCategoryName);
 			String subCategoryDesc = subCategory.getSubCategoryDesc().toUpperCase();
@@ -90,8 +114,8 @@ public class SubCategoryController {
 			if (subCategory.getPopularity() == null)
 				subCategory.setPopularity(0);
 			try {
-				categoryService.saveCategory(category);
-				return "redirect:/categories/";
+				subCategoryService.saveSubCategory(subCategory);
+				return "redirect:/admin/subcategories";
 			} catch (DataIntegrityViolationException e) {
 				FieldError countryNameAvailableError;
 				if (e.getMostSpecificCause().getMessage().contains("unique")) {
@@ -105,44 +129,45 @@ public class SubCategoryController {
 			} catch (Exception e) {
 				logger.debug("Exception Occured!", new Exception(e));
 			}
-		}*/
-		return "category/manageSubCategories";
+		}
+		if(operationType.equalsIgnoreCase("save"))
+			return "category/manageSubCategories";
+		else
+			return "category/updateSubCategory";
 	}
 
-	/*@RequestMapping(value = "/edit/{subCategoryId}", method = RequestMethod.GET)
-	public String editCountry(ModelMap model,
-			@PathVariable("subCategoryId") Integer subCategoryId) {
-		model.addAttribute("category",categoryService.getCategoryById(subCategoryId));
+	@RequestMapping(value = "/edit/{subCategoryId}", method = RequestMethod.GET)
+	public String editSubCategory(ModelMap model,@PathVariable("subCategoryId") Integer subCategoryId) {
+		model.addAttribute("categories", categoryService.getAllCategories());
+		model.addAttribute("subcategory",subCategoryService.getSubCategoryById(subCategoryId));
 		return "category/updateSubCategory";
-	}*/
+	}
 
-	/*@RequestMapping(value = "/delete/{subCategoryId}", method = RequestMethod.GET)
-	public String deleteCountry(ModelMap model,
+	@RequestMapping(value = "/delete/{subCategoryId}", method = RequestMethod.GET)
+	public String deleteSubCategory(ModelMap model,
 			@PathVariable("subCategoryId") Integer subCategoryId) {
-		categoryService.deleteCategory(subCategoryId);
-		return "redirect:/categories";
-	}*/
+		subCategoryService.deleteSubCategory(subCategoryId);
+		return "redirect:/admin/subcategories";
+	}
 
-	/*@RequestMapping("/load/logo/{subCategoryId}")
-	public String downloadPicture(
-			@PathVariable("subCategoryId") Integer subCategoryId,
-			HttpServletResponse response) {
-		CategoryEntity category = categoryService.getCategoryById(categoryId);
+	@RequestMapping("/load/logo/{subCategoryId}")
+	public String downloadPicture(@PathVariable("subCategoryId") Integer subCategoryId,HttpServletResponse response) {
+		SubCategoryEntity subCategory = subCategoryService.getSubCategoryById(subCategoryId);
 		try {
 			response.setHeader("Content-Disposition", "inline;filename=\""
-					+ category.getCategoryName() + "\"");
+					+ subCategory.getSubCategoryName() + "\"");
 			OutputStream out = response.getOutputStream();
 			response.setContentType("image/gif");
 			ByteArrayInputStream bis = new ByteArrayInputStream(
-					category.getCategoryLogo());
+					subCategory.getSubCategoryLogo());
 			IOUtils.copy(bis, out);
 			out.flush();
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}catch (NullPointerException e) {
-			logger.info("File Not Found");
+			logger.info("File Not Found for subCategoryId: "+subCategoryId);
 		}
 		return null;
-	}*/
+	}
 }

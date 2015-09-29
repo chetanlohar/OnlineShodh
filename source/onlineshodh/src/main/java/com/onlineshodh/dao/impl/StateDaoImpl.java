@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.StateDao;
-import com.onlineshodh.entity.CountryEntity;
 import com.onlineshodh.entity.StateEntity;
 
 @Repository

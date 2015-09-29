@@ -8,12 +8,27 @@
 </head>
 <body>
 	<ul>
-		<li><a href="${pageContext.request.contextPath}/categories">Category Management</a></li>
-		<li><a href="${pageContext.request.contextPath}/admin/subcategories">Sub-Category Management</a></li>
-		<li><a href="${pageContext.request.contextPath}/countries">Country Management</a></li>
-		<li><a href="${pageContext.request.contextPath}/states">State Management</a></li>
-		<li><a href="#">City Management</a></li>
-		<li><a href="#">Town Management</a></li>
+		<li>Category Management
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/categories">Category Management</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/subcategories">Sub-Category Management</a></li>
+			</ul>
+		</li>
+		<li>
+			Location Management
+			<ul>
+				<li><a href="${pageContext.request.contextPath}/countries">Country Management</a></li>
+				<li><a href="${pageContext.request.contextPath}/states">State Management</a></li>
+				<li><a href="#">City Management</a></li>
+				<li><a href="#">Town Management</a></li>
+			</ul>
+		</li>
+		<li>Client Management
+			<ul>
+				<li><a href="#">Manage Clients</a></li>
+			</ul>
+		</li>
+		
 	</ul>
 </body>
 </html>

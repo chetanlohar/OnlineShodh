@@ -50,14 +50,12 @@ public class SubCategoryEntity implements Serializable {
 	 * Describes Subcategory Logo (Picture)
 	 */
 	@Column(name="subcategorylogo", nullable=false)
-	@NotEmpty(message="SubCategory Picture is Mandatory!")
 	private byte [] subCategoryLogo;
 	
 	/**
 	 * Describes Popularity (hits) of Subcategory
 	 */
 	@Column(name="popularity",nullable=false)
-	@NotEmpty(message="Popularity is Mandatory!")
 	private Integer popularity;
 	
 	/**

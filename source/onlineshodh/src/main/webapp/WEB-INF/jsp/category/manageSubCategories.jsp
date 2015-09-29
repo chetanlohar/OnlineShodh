@@ -15,15 +15,16 @@
 		<h3>SubCategory Management</h3>
 	</center>
 	<form:form action="${pageContext.request.contextPath}/admin/subcategories/save" method="post" modelAttribute="subcategory" enctype="multipart/form-data">
+	<input type="hidden" name="operationType" value="save"/>
 		<p>
 			<label>Category Name:</label>
-			<form:select path="category.categoryId">
-				<form:option value="None" label="--- Select ---" />
+			<form:select path="category.categoryId" required="">
+				<form:option value="0" label="--- Select ---"/>
 				<c:forEach var="category" items="${categories}">
 					<form:option value="${category.categoryId}">${category.categoryName}</form:option>
-					<form:errors path="category.categoryId" cssClass="errors" />
 				</c:forEach>
 			</form:select>
+			<form:errors path="category.categoryId" cssClass="errors" />
 		</p>
 		<p>
 			<label for="subCategoryName">Sub-Category Name*: </label>
@@ -38,6 +39,7 @@
 		<p>
 			<label for="file">Sub-Category Picture: </label>
 			<input type="file" id="file" name="file" value="Browse" onchange="changeImage(this);">
+			<form:errors path="subCategoryLogo" cssClass="errors" />
 			<img id="categorylogo" height="50" width="50"/>
 		</p>
 		<p>
@@ -57,7 +59,7 @@
 			<c:forEach var="subcategory" items="${subcategories}">
 				<tr>
 					<td style="text-align: center;">${subcategory.subCategoryId}</td>
-					<td><img src="${pageContext.request.contextPath}/admin/subcategories/load/logo/${category.categoryId}" height="50" width="50" alt="*No Image"/></td>
+					<td><img src="${pageContext.request.contextPath}/admin/subcategories/load/logo/${subcategory.subCategoryId}" height="50" width="50" alt="*No Image"/></td>
 					<td>${subcategory.subCategoryName}</td>
 					<td>${subcategory.subCategoryDesc}</td>
 					<td>${subcategory.category.categoryName}&nbsp|&nbsp(${subcategory.category.categoryId})</td>
