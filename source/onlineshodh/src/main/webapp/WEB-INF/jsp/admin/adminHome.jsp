@@ -25,7 +25,7 @@
 		</li>
 		<li>Client Management
 			<ul>
-				<li><a href="#">Manage Clients</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/clients">Manage Clients</a></li>
 			</ul>
 		</li>
 		
