@@ -9,25 +9,40 @@
 <title>Update State</title>
 </head>
 <body>
+<center>
 	<form:form action="${pageContext.request.contextPath}/states/save"
 		method="POST" modelAttribute="state">
-		 <form:hidden path="stateId" /> 
-		 <form:hidden path="country.countryId"/>
-			<p>
-			<label for="stateName">State Name:</label>
+		<form:hidden path="stateId" />
+		
 		<p>
-			<form:errors path="stateName" cssClass="errors" />
+			<label>Country Name:</label>
 		</p>
+		<p>
+			<form:select path="country.countryId" id="countryId">
+
+				<form:option value="0">Select</form:option>
+				<c:forEach var="country" items="${countries}">
+					<form:option value="${country.countryId}">${country.countryName}</form:option>
+					
+				</c:forEach>
+			</form:select>
+	      <form:errors path="country.countryId" />		
+		</p>
+		<p>
+			<label for="stateName">State Name:</label>
+		
 		</p>
 		<p>
 			<form:input path="stateName" title="State Name" maxlength="25"
 				size="50" />
-			<input type="submit" id="saveSate" name="saveState" value="Update">
+		
+			<form:errors path="stateName" cssClass="errors" />
 		</p>
+			<input type="submit" id="saveSate" name="saveState" value="Update">
 		<a href="${pageContext.request.contextPath}/states/">Go Back</a>
 
 	</form:form>
 
-
+</center>
 </body>
 </html>

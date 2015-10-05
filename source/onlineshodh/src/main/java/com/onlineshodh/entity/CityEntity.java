@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -33,8 +34,15 @@ public class CityEntity implements Serializable {
 	@NotEmpty(message="City Name is Mandatory!")
 	private String cityName;
 	@ManyToOne(targetEntity=StateEntity.class,fetch=FetchType.EAGER)
-	private StateEntity stateEntity; 
+	@JoinColumn(name="stateId")
+	private StateEntity state; 
 	
+	public StateEntity getState() {
+		return state;
+	}
+	public void setState(StateEntity state) {
+		this.state = state;
+	}
 	public Integer getCityId() {
 		return cityId;
 	}
@@ -47,16 +55,11 @@ public class CityEntity implements Serializable {
 	public void setCityName(String cityName) {
 		this.cityName = cityName;
 	}
-	public StateEntity getStateEntity() {
-		return stateEntity;
-	}
-	public void setStateEntity(StateEntity stateEntity) {
-		this.stateEntity = stateEntity;
-	}
+	
 	@Override
 	public String toString() {
 		return "CityEntity [cityId=" + cityId + ", cityName=" + cityName
-				+ ", stateEntity=" + stateEntity + "]";
+				+ ", stateEntity=" + state + "]";
 	}
 	
 

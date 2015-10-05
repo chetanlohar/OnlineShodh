@@ -13,24 +13,26 @@
 		<p>
 			<label>Country Name :</label>
 			<form:select path="country.countryId">
+                <form:option value="0">Select</form:option>   			
 				<c:forEach var="country" items="${countries}">
 					<form:option value="${country.countryId}">${country.countryName}</form:option>
-					<form:errors path="country.countryId" cssClass="errors" />
 				</c:forEach>
 			</form:select>
+		    <form:errors path="country.countryId" cssClass="errors" />  
 		</p>
 
 		<p>
 			<label for="stateName">State Name:</label>
-		<p>
-			<form:errors path="stateName" cssClass="errors" />
-		</p>
-		</p>
+		</p>	
 		<p>
 			<form:input path="stateName" title="State Name" maxlength="25"
 				size="50" />
-			<input type="submit" id="saveSate" name="saveState" value="Save">
+		</p>		
+		<p>
+			<form:errors path="stateName" cssClass="errors" />
 		</p>
+			<input type="submit" id="saveSate" name="saveState" value="Save">
+		</form:form>	
 		<table>
 			<tr>
 				<th>State Id</th>
@@ -53,7 +55,7 @@
 			</c:forEach>
 		</table>
 
-	</form:form>
+	
 
 
 

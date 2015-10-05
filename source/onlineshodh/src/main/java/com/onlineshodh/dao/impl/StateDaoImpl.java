@@ -2,15 +2,20 @@ package com.onlineshodh.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.StateDao;
+
 import com.onlineshodh.entity.StateEntity;
 
 @Repository
 public class StateDaoImpl extends AbstractJpaDao<StateEntity> implements StateDao {
 
+	EntityManager em;
+	
 	@Override
 	public boolean saveState(StateEntity state) {
 		create(state);
@@ -29,7 +34,20 @@ public class StateDaoImpl extends AbstractJpaDao<StateEntity> implements StateDa
 		setClazz(StateEntity.class);
 		return findAll();
 	}
+	
+	
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<StateEntity> getAllStates(Integer countryId) {
+		em = getEntityManager();
+		String query = "from StateEntity state where state.country.countryId = :countryId";
+		List<StateEntity> result = em.createQuery(query)
+		.setParameter("countryId",countryId)
+		.getResultList();
+		return result;
+	}
+	
 	@Override
 	public StateEntity getStateById(Integer stateId) {
 		setClazz(StateEntity.class);

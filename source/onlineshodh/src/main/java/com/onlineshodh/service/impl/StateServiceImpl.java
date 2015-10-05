@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.StateDao;
+
 import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.service.StateService;
 
@@ -38,6 +39,11 @@ public class StateServiceImpl implements StateService {
 		return stateDao.getAllStates();
 	}
 
+	@Override
+	public List<StateEntity> getAllStates(Integer countryId) {
+			return stateDao.getAllStates(countryId);
+	}
+	
 	@Override
 	public StateEntity getStateById(Integer stateId) {
 		
