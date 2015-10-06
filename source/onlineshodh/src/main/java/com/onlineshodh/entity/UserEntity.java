@@ -1,7 +1,7 @@
 package com.onlineshodh.entity;
 
 import java.io.Serializable;
-import java.util.UUID;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -73,8 +73,8 @@ public class UserEntity implements Serializable {
 	/**
 	 * Describes when user is Created
 	 */
-	@Column(name="createdOn",nullable=false)
-	private String cratedOn;
+	@Column(name="createdon",nullable=false)
+	private Timestamp createdOn;
 	
 	
 	/**
@@ -121,7 +121,7 @@ public class UserEntity implements Serializable {
 	 * UUID for Eemail Verification Link
 	 */
 	@Column(name="uuidforemail",nullable=false)
-	private UUID uuidForEmail;
+	private String uuidForEmail;
 
 
 	/**
@@ -207,16 +207,16 @@ public class UserEntity implements Serializable {
 	/**
 	 * @return the cratedOn
 	 */
-	public String getCratedOn() {
-		return cratedOn;
+	public Timestamp getCreatedOn() {
+		return createdOn;
 	}
 
 
 	/**
 	 * @param cratedOn the cratedOn to set
 	 */
-	public void setCratedOn(String cratedOn) {
-		this.cratedOn = cratedOn;
+	public void setCreatedOn(Timestamp createdOn) {
+		this.createdOn = createdOn;
 	}
 
 
@@ -303,7 +303,7 @@ public class UserEntity implements Serializable {
 	/**
 	 * @return the uuidforemail
 	 */
-	public UUID getUuidforemail() {
+	public String getUuidforemail() {
 		return uuidForEmail;
 	}
 
@@ -311,7 +311,7 @@ public class UserEntity implements Serializable {
 	/**
 	 * @param uuidforemail the uuidforemail to set
 	 */
-	public void setUuidforemail(UUID uuidforemail) {
+	public void setUuidforemail(String uuidforemail) {
 		this.uuidForEmail = uuidforemail;
 	}
 	
@@ -322,7 +322,7 @@ public class UserEntity implements Serializable {
 		this.accountNonLocked = true;
 		this.credentialsNonExpired = true;
 		this.emailVerified = false;
-		this.uuidForEmail = UUID.randomUUID();
+		this.uuidForEmail = null;
 		this.role = "client";
 	}
 
@@ -333,7 +333,7 @@ public class UserEntity implements Serializable {
 	public String toString() {
 		return "UserEntity [userId=" + userId + ", username=" + userName
 				+ ", password=" + password + ", enabled=" + enabled + ", role="
-				+ role + ", cratedOn=" + cratedOn + ", createdBy=" + createdBy
+				+ role + ", cratedOn=" + createdOn + ", createdBy=" + createdBy
 				+ ", accountNonExpired=" + accountNonExpired
 				+ ", accountNonLocked=" + accountNonLocked + ", emailVerified="
 				+ emailVerified + ", credentialsNonExpired="

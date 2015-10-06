@@ -19,7 +19,8 @@
 
 	<form:form
 		action="${pageContext.request.contextPath}/admin/clients/save"
-		modelAttribute="clientdetails">
+		modelAttribute="clientdetails" enctype="multipart/form-data">
+		
 		<p>
 			<label>Email</label>
 			<form:input path="user.userName" title="Email Id" maxlength="25" size="51" />
@@ -27,25 +28,33 @@
 		</p>
 		<p>
 			<label>Password</label>
-			<form:password path="user.password" title="Password" maxlength="25"
-				size="51" />
+			<form:password path="user.password" title="Password" maxlength="25" size="25" />
 			<form:errors path="user.password" cssClass="errors" />
 		</p>
 		<p>
-			<label>CountryId</label>
-			<form:input path="country.countryId" title="Country Id" maxlength="25" size="51" />
-			<form:errors path="country.countryId" cssClass="errors" />
+			<label>Name</label>
+			<form:input path="userDetails.name" title="Name" maxlength="25" size="51" />
+			<form:errors path="userDetails.name" cssClass="errors" />
 		</p>
 		<p>
-			<label>Country Name</label>
-			<form:input path="country.countryName" title="Country Name" maxlength="25"
-				size="51" />
-			<form:errors path="country.countryName" cssClass="errors" />
+			<label>Primary Contact</label>
+			<form:input path="userDetails.phone1" title="Primary Contact" maxlength="25" size="51" />
+			<form:errors path="userDetails.phone1" cssClass="errors" />
+		</p>
+		<p>
+			<label>Secondary Contact</label>
+			<form:input path="userDetails.phone2" title="Secondary Contact" maxlength="25" size="51" />
+		</p>
+		<p>
+			<label>Photograph</label>
+			<input type="file" id="file" name="file" value="Browse">
+			<form:errors path="userDetails.photograph" cssClass="errors" />
 		</p>
 		<p>
 			<input type="submit" id="saveClient" name="saveClient" value="Save" />
-			<input type="reset" value="Reset" />
+			<input type="reset" value="Reset"/>
 		</p>
+		
 	</form:form>
 </body>
 </html>
