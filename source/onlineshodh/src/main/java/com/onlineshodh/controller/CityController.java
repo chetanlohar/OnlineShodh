@@ -77,6 +77,8 @@ public class CityController {
 		
 		System.out.println(city);
 		
+
+		
 		if (result.hasErrors()) {
 
 			System.out.println(result.getErrorCount());
@@ -100,6 +102,9 @@ public class CityController {
 		}
 		
 		if(flag){
+			model.addAttribute("countries", countryService.getAllCountries());
+			 model.addAttribute("states",stateService.getAllStates(city.getState().getCountry().getCountryId()));       	
+			  
 			return "city/manageCities";	
 		}
 		else {
@@ -112,18 +117,18 @@ public class CityController {
 
 			} catch (DataIntegrityViolationException e) {
 				FieldError cityNameAvailableError;
+				System.out.println(" Cause "+e.getMostSpecificCause().getMessage());
 				if (e.getMostSpecificCause().getMessage().contains("unique"))
-					cityNameAvailableError = new FieldError("city", "cityName",
-							alreadyExist);
+					cityNameAvailableError = new FieldError("city", "cityName",	alreadyExist);
 				else
-					cityNameAvailableError = new FieldError("city", "cityName",
-							onlyAlphabets);
+					cityNameAvailableError = new FieldError("city", "cityName",	onlyAlphabets);
+				
 				result.addError(cityNameAvailableError);
 			}
 
 		}
 
-		return "redirect:/cities";
+		return "city/manageCities";
 
 	}
 

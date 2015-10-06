@@ -36,7 +36,10 @@
 		</p>
 		<p>
 			<form:select path="state.stateId" id="countryStates">
-				<form:option value="0">Select</form:option>
+				<form:option value="0">Select</form:option>states
+				 <c:forEach var="state" items="${states}">
+					<form:option value="${state.stateId}">${state.stateName}</form:option>
+				</c:forEach>
 			</form:select>
 			<form:errors path="state.stateId" />
 		</p>

@@ -35,6 +35,9 @@
 		<p>
 			<form:select path="city.state.stateId" id="townStates" onchange="getCity()">
 				<form:option value="0" label="---Select-------" />
+				<c:forEach var="state" items="${states}">
+					<form:option value="${state.stateId}">${state.stateName}</form:option>
+				</c:forEach>
 			</form:select>
 			<form:errors path="city.state.stateId" />
 		</p>
@@ -45,6 +48,9 @@
 		<p>
 			<form:select path="city.cityId" id="stateCities">
 				<form:option value="0" label="---Select-------" />
+				<c:forEach var="city" items="${cities}">
+					<form:option value="${city.cityId}">${city.cityName}</form:option>
+				</c:forEach>
 			</form:select>
 			<form:errors path="city.cityId" />
 		</p>

@@ -125,7 +125,11 @@ public class TownController {
 		}
 		
 		if(flag){
-			return "town/manageTowns";
+			model.addAttribute("countries", countryService.getAllCountries());
+			 model.addAttribute("states",stateService.getAllStates(town.getCity().getState().getCountry().getCountryId())); 
+			 model.addAttribute("cities",cityService.getAllCities(town.getCity().getState().getStateId()));
+			 
+			 return "town/manageTowns";
 		}
 		else{
 			 
@@ -145,7 +149,7 @@ public class TownController {
 			}
 		}
 		
-		return "redirect:/towns";
+		return "town/manageTowns";
 	}
 	
 	@RequestMapping(value="/edit/{townId}/{countryId}/{stateId}",method=RequestMethod.GET)

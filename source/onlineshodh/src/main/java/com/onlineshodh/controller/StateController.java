@@ -82,7 +82,9 @@ public class StateController {
 			result.addError(CountryIdNullError);
 		}
 		if(flag){
+		   model.addAttribute("countries",countryService.getAllCountries());
 			return "state/manageStates"; 
+			/*return "redirect:/states";*/
 		}
 		
 		else {

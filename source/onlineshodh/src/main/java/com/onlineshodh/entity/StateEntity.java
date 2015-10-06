@@ -39,9 +39,7 @@ public class StateEntity implements  Serializable {
 	@NotEmpty(message = "State Name is Mandatory!")
 	private String stateName;
 	
-	/*@Column(name="countryid",nullable=false)
-	private Integer countryId;*/
-	
+		
 	@ManyToOne(targetEntity=CountryEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="countryId")
 	private CountryEntity country;
