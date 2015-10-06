@@ -1,8 +1,8 @@
 package com.onlineshodh.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.util.Arrays;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -68,7 +68,7 @@ public class UserDetailsEntity implements Serializable {
 	 * Registration Date of the User
 	 */
 	@Column(name="regdate",nullable=false)
-	private String regdate;
+	private Date regDate;
 	
 	/**
 	 * Photograph of the User
@@ -154,15 +154,15 @@ public class UserDetailsEntity implements Serializable {
 	/**
 	 * @return the regdate
 	 */
-	public String getRegdate() {
-		return regdate;
+	public Date getRegDate() {
+		return regDate;
 	}
 
 	/**
 	 * @param regdate the regdate to set
 	 */
-	public void setRegdate(String regdate) {
-		this.regdate = regdate;
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
 	/**
@@ -194,7 +194,7 @@ public class UserDetailsEntity implements Serializable {
 	}
 
 	public UserDetailsEntity() {
-		this.regdate = new Date().toString();
+		/*this.regdate = new Date().toString();*/
 		
 		
 	}
@@ -206,7 +206,7 @@ public class UserDetailsEntity implements Serializable {
 	public String toString() {
 		return "UserDetailsEntity [userDetailsId=" + userDetailsId + ", name="
 				+ name + ", email=" + email + ", phone1=" + phone1
-				+ ", phone2=" + phone2 + ", regdate=" + regdate
+				+ ", phone2=" + phone2 + ", regdate=" + regDate
 				+ ", photograph=" + Arrays.toString(photograph) + ", userId="
 				+ userId + "]";
 	}

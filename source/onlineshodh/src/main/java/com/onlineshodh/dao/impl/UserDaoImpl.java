@@ -13,7 +13,7 @@ public class UserDaoImpl extends AbstractJpaDao<UserEntity> implements UserDao {
 	@Override
 	@Transactional
 	public void saveUser(UserEntity user) {
-		update(user);
+			create(user);
 	}
 
 	@Override

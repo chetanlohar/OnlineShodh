@@ -118,6 +118,7 @@ public class SubCategoryController {
 				return "redirect:/admin/subcategories";
 			} catch (DataIntegrityViolationException e) {
 				FieldError countryNameAvailableError;
+				System.out.println(e.getMostSpecificCause().getMessage());
 				if (e.getMostSpecificCause().getMessage().contains("unique")) {
 					countryNameAvailableError = new FieldError("subCategory","subCategoryName", alreadyExist);
 					logger.info(alreadyExist);

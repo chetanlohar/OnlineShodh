@@ -1,6 +1,7 @@
 package com.onlineshodh.service;
 
 import com.onlineshodh.entity.UserEntity;
+import com.onlineshodh.exception.ConstraintViolationException;
 
 /**
  * @author Softinfology - Chetan Lohar (TL-Java)
@@ -11,8 +12,9 @@ public interface UserService {
 	/**
 	 * @param user describes the User Information which 
 	 * will be stored in Database
+	 * @throws ConstraintViolationException 
 	 */
-	public void saveUser(UserEntity user);
+	public void saveUser(UserEntity user) throws ConstraintViolationException;
 	
 	/**
 	 * @param userId is the userId of the User

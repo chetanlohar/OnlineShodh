@@ -55,6 +55,31 @@
 			<input type="reset" value="Reset"/>
 		</p>
 		
+		<table>
+			<tr>
+				<th>ClientId</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Primary Phone</th>
+				<th>Secondary Phone</th>
+				<th>Registration Date</th>
+				<th>Photograph</th>
+				<th>Action</th>
+			</tr>
+			<c:forEach var="userdetail" items="${userDetails}">
+				<tr>
+					<td style="text-align: center;">${userdetail.userDetailsId}</td>
+					<td>${userdetail.name}</td>
+					<td>${userdetail.email}</td>
+					<td>${userdetail.phone1}</td>
+					<td>${userdetail.phone2}</td>
+					<td>${userdetail.regDate}</td>
+					<td><img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}" height="50" width="50" alt="*No Image"/></td>
+					<td><a href="${pageContext.request.contextPath}/admin/clients/edit/${userdetail.userDetailsId}">edit</a>&nbsp|&nbsp<a href="${pageContext.request.contextPath}/admin/clients/delete/${userdetail.userDetailsId}" onclick="confirm('Do you want to Remove : ${userdetail.name}')">remove</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+		
 	</form:form>
 </body>
 </html>

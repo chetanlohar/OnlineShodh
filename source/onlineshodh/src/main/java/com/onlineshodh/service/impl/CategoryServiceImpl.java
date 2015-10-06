@@ -11,7 +11,7 @@ import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.service.CategoryService;
 
 @Service
-public class CategoryServiceIml implements CategoryService {
+public class CategoryServiceImpl implements CategoryService {
 
 	@Autowired
 	public CategoryDao categoryDao;

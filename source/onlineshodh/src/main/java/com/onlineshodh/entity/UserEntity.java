@@ -118,7 +118,7 @@ public class UserEntity implements Serializable {
 	
 	
 	/**
-	 * UUID for Eemail Verification Link
+	 * UUID for Email Verification Link
 	 */
 	@Column(name="uuidforemail",nullable=false)
 	private String uuidForEmail;
