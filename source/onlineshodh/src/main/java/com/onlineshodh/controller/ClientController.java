@@ -11,6 +11,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -45,6 +46,9 @@ public class ClientController {
 	@Autowired
 	UserDetailsService userDetailsService;
 	
+	@Autowired
+	BCryptPasswordEncoder encoder;
+	
 	@Value("${mandatory}")
 	String mandatory;
 	
@@ -65,10 +69,10 @@ public class ClientController {
 			for(FieldError error:result.getFieldErrors())
 				System.out.println(error.getDefaultMessage());
 		}
-		if(file.isEmpty() && clientdetails.getUserDetails().getPhotograph()==null)
+		else if(file.isEmpty() && clientdetails.getUserDetails().getPhotograph()==null)
 		{
-			FieldError categoryNotSelected = new FieldError("clientdetails", "userDetails.photograph", mandatory);
-			result.addError(categoryNotSelected);
+			FieldError error = new FieldError("clientdetails", "userDetails.photograph", mandatory);
+			result.addError(error);
 		}
 		else
 		{
@@ -76,19 +80,27 @@ public class ClientController {
 			FieldError error;
 			try
 			{
-				userService.saveUser(user);
-				UserDetailsEntity userDetails = clientdetails.getUserDetails();
-				userDetails.setUserId(user.getUserId());
-				userDetails.setEmail(user.getUserName());
-				String name = userDetails.getName().toUpperCase();
-				userDetails.setName(name);
-				try {
-					if(!file.isEmpty())
-						userDetails.setPhotograph(file.getBytes());
-				} catch (IOException e) {
-					e.printStackTrace();
+				if(user!=null)
+				{
+					String encryptedPassword = encoder.encode(user.getPassword());
+					user.setPassword(encryptedPassword);
+					userService.saveUser(user);
 				}
-				userDetailsService.saveUserDetails(userDetails);
+				UserDetailsEntity userDetails = clientdetails.getUserDetails();
+				if(userDetails!=null)
+				{
+					userDetails.setUserId(user.getUserId());
+					userDetails.setEmail(user.getUserName());
+					String name = userDetails.getName().toUpperCase();
+					userDetails.setName(name);
+					try {
+						if(!file.isEmpty())
+							userDetails.setPhotograph(file.getBytes());
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					userDetailsService.saveUserDetails(userDetails);
+				}
 			}
 			catch(ConstraintViolationException e)
 			{
@@ -100,10 +112,45 @@ public class ClientController {
 			{
 				error = new FieldError("clientdetails", "user.userName", "*Invalid Data");
 				e.printStackTrace();
+				return "client/manageClients";
 			}
 			return "redirect:/admin/clients";
 		}
 		return "client/manageClients";
+	}
+	
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String updateUserDetails(ModelMap model,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute UserDetailsEntity userDetails, BindingResult result)
+	{
+		if(result.hasErrors())
+		{
+			if(file.isEmpty() && userDetails.getPhotograph()==null)
+			{
+				FieldError error = new FieldError("userDetails", "photograph", mandatory);
+				result.addError(error);
+			}
+			return "client/updateClient";
+		}
+		else if(file.isEmpty() && userDetails.getPhotograph()==null)
+		{
+			FieldError error = new FieldError("userDetails", "photograph", mandatory);
+			result.addError(error);
+		}
+		else
+		{
+			try
+			{
+				userDetailsService.saveUserDetails(userDetails);
+				return "redirect:/admin/clients";
+			}
+			catch(ConstraintViolationException e)
+			{
+				FieldError error = new FieldError("userDetails", e.getField(), e.getMsg());
+				result.addError(error);
+				return "client/manageClients";
+			}
+		}
+		return "client/updateClient";
 	}
 	
 	@RequestMapping("/load/logo/{userDetailsId}")
@@ -125,6 +172,20 @@ public class ClientController {
 			logger.info("File Not Found for subCategoryId: "+userDetailsId);
 		}
 		return null;
+	}
+	
+	@RequestMapping(value = "/delete/{userDetailsId}", method = RequestMethod.GET)
+	public String deleteSubCategory(ModelMap model,
+			@PathVariable("userDetailsId") Integer userDetailsId) {
+		userDetailsService.deteteUserDetails(userDetailsId);
+		
+		return "redirect:/admin/clients";
+	}
+	
+	@RequestMapping(value = "/edit/{userDetailsId}", method = RequestMethod.GET)
+	public String editSubCategory(ModelMap model,@PathVariable("userDetailsId") Integer userDetailsId) {
+		model.addAttribute("userDetails", userDetailsService.getAllUserDetails());
+		return "client/updateClient";
 	}
 
 }

@@ -3,6 +3,7 @@ package com.onlineshodh.service;
 import java.util.List;
 
 import com.onlineshodh.entity.UserDetailsEntity;
+import com.onlineshodh.exception.ConstraintViolationException;
 
 /**
  * @author Softinfology - Chetan Lohar - (TL-Java)
@@ -12,8 +13,9 @@ public interface UserDetailsService {
 
 	/**
 	 * @param userDetails User Details to be stored in Persistance Storage
+	 * @throws ConstraintViolationException 
 	 */
-	public void saveUserDetails(UserDetailsEntity userDetails);
+	public void saveUserDetails(UserDetailsEntity userDetails) throws ConstraintViolationException;
 	
 	/**
 	 * @param userDetailsId User Details Id to get the details of User's Details

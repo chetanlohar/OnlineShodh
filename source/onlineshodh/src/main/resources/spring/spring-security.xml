@@ -11,13 +11,16 @@
 		<intercept-url pattern="/security/role1" access="ROLE_USER" />
 		<form-login 
 			login-page="/security/login" 
-			default-target-url="/welcome"
+			default-target-url="/"
 			authentication-failure-url="/security/login?error" 
 			username-parameter="username"
 			password-parameter="password" />
 		<logout logout-success-url="/security/login?logout" />
 		<!-- <csrf /> -->
 	</http>
+	
+	<beans:bean id="encoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 	<authentication-manager>
 		<authentication-provider>

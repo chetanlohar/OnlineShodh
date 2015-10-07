@@ -75,7 +75,7 @@
 					<td>${userdetail.phone2}</td>
 					<td>${userdetail.regDate}</td>
 					<td><img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}" height="50" width="50" alt="*No Image"/></td>
-					<td><a href="${pageContext.request.contextPath}/admin/clients/edit/${userdetail.userDetailsId}">edit</a>&nbsp|&nbsp<a href="${pageContext.request.contextPath}/admin/clients/delete/${userdetail.userDetailsId}" onclick="confirm('Do you want to Remove : ${userdetail.name}')">remove</a></td>
+					<td><a href="${pageContext.request.contextPath}/admin/clients/edit/${userdetail.userDetailsId}">edit</a>&nbsp|&nbsp<a href="${pageContext.request.contextPath}/admin/clients/delete/${userdetail.userDetailsId}" onclick="return confirm('Do you want to Remove : ${userdetail.name}')">remove</a></td>
 				</tr>
 			</c:forEach>
 		</table>
