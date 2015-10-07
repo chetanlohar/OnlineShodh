@@ -10,6 +10,12 @@ public class AdminController {
 	@RequestMapping(value={"/","/home"})
 	public String home()
 	{
+		return "admin/admin";
+	}
+	
+	@RequestMapping(value="/oldhome")
+	public String home1()
+	{
 		return "admin/adminHome";
 	}
 
