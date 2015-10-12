@@ -83,7 +83,7 @@
                                         <tr class="odd gradeX">
                                             <td>${country.countryId}</td>
                                             <td>${country.countryName}</td>
-                                            <td><a href="${pageContext.request.contextPath}/admin/countries/edit/${country.countryId}" class="edit" id="edits"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>  Edit</button></a></td>
+                                            <td><a href="${pageContext.request.contextPath}/admin/countries/edit/${country.countryId}">Edit</a></td>
                                             <td class="center"><a href="${pageContext.request.contextPath}/admin/countries/delete/${country.countryId}" onclick="return confirm('Do you want to Remove Country: ${country.countryName}')"> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></a></td>
                                        </c:forEach>     
                                         </tr>

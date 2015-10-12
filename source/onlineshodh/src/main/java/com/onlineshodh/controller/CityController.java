@@ -66,7 +66,7 @@ public class CityController {
 
 	@RequestMapping(value="/save",method=RequestMethod.GET)
 	public String redirectTosaveCity(){
-		return "redirect:/cities";
+		return "redirect:/admin/cities";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)

@@ -3,7 +3,7 @@ function getState() {
 	
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/towns/showStates",
+		url : "/onlineshodh/admin/towns/showStates",
 		dataType : 'json',
 		data : {
 			"countryID" : countryId
@@ -39,7 +39,7 @@ function getCity() {
 	
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/towns/showCities",
+		url : "/onlineshodh/admin/towns/showCities",
 		dataType : 'json',
 		data : {
 			"stateID" : StateId

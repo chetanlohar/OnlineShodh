@@ -97,25 +97,25 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:set var="count" value="0" scope="page" />
+								
 								<c:forEach var="state" items="${states}">
 									<tr class="odd gradeX">
 										<td>${state.stateId}</td>
 										<td>${state.stateName}</td>
 										<td>${state.country.countryName}&nbsp|&nbsp(${state.country.countryId})</td>
-										<td><a
-											href="${pageContext.request.contextPath}/admin/states/edit/${state.stateId}/${state.country.countryId}"
+										<td><%-- <a
+											href="${pageContext.request.contextPath}/states/edit/${state.stateId}/${state.country.countryId}"
 											class="edit"><button class="btn btn-info btn-xs ">
 													<i class="fa fa-pencil"></i> Edit
-												</button></a></td>
-										<td class="center"><a
-											href="${pageContext.request.contextPath}/admin/states/delete/${state.stateId}"
-											onclick="return confirm('Do you want to Remove State: ${state.stateName}')"
-											class="edit"><button class="btn btn-danger btn-xs">
-													<i class="fa fa-trash"></i> Delete
-												</button></a></td>
+												</button></a> --%>
+												<a
+											href="${pageContext.request.contextPath}/admin/states/edit/${state.stateId}/${state.country.countryId}">Edit</a>
+												</td>
+										<td class="center"><a href="${pageContext.request.contextPath}/admin/states/delete/${state.stateId}"
+											onclick="return confirm('Do you want to Remove State: ${state.stateName}')"> Delete
+												</a></td>
 									</tr>
-									<c:set var="count" value="${count + 1}" scope="page" />
+									
 								</c:forEach>
 							</tbody>
 						</table>

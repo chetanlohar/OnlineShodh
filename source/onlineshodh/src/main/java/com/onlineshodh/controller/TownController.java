@@ -35,6 +35,7 @@ import com.onlineshodh.service.StateService;
 import com.onlineshodh.service.TownService;
 import com.onlineshodh.entity.StateEntity;
 
+
 @Controller
 @RequestMapping(value="/admin/towns")
 public class TownController {
@@ -155,7 +156,7 @@ public class TownController {
 	@RequestMapping(value="/edit/{townId}/{countryId}/{stateId}",method=RequestMethod.GET)
 	public String editCity(ModelMap model,@PathVariable("townId")Integer townId,@PathVariable("countryId")Integer countryId,@PathVariable("stateId")Integer stateId)
 	{
-		 
+		
 		List<StateEntity> states=null;
 		List<CityEntity> cities=null;
 		states = stateService.getAllStates(countryId);
@@ -166,8 +167,10 @@ public class TownController {
 		model.addAttribute("cities", cities);
 		model.addAttribute("states",states);
 		model.addAttribute("countries",countryService.getAllCountries());
+		
 		return "town/updateTown";
 	}
+	
 	
 	@RequestMapping(value="/delete/{townId}", method=RequestMethod.GET)
 	public String deleteTown(ModelMap model, @PathVariable("townId") Integer townId)

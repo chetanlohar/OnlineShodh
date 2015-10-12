@@ -3,7 +3,7 @@ function getState() {
 	
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/cities/showstates",
+		url : "/onlineshodh/admin/cities/showstates",
 		dataType : 'json',
 		data : {
 			"countryID" : countryId

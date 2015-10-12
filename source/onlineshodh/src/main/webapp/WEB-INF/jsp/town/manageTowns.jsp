@@ -144,9 +144,7 @@
 										<td>${town.city.cityName}&nbsp|&nbsp(${town.city.cityId})</td>
 										<td><a
 											href="${pageContext.request.contextPath}/admin/towns/edit/${town.townId}/${town.city.state.country.countryId}/${town.city.state.stateId}"
-											class="edit"><button class="btn btn-info btn-xs">
-													<i class="fa fa-pencil"></i> Edit
-												</button></a></td>
+											>Edit</a></td>
 										<td class="center"><a
 											href="${pageContext.request.contextPath}/admin/towns/delete/${town.townId}"
 											onclick="return confirm('Do you want to Remove Town ${town.townName}')"><button
