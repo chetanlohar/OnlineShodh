@@ -6,58 +6,145 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/ManageCity.js"></script>
-<script type="text/javascript"
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<title>Update City</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manage City</title>
+
+<!-- BOOTSTRAP STYLES-->
+<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+	rel="stylesheet" />
+<!-- FONTAWESOME ICONS STYLES-->
+<link
+	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	rel="stylesheet" />
+
+<!-- DATA TABLE STYLES-->
+<link
+	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	rel="stylesheet" />
+
+<!-- metis STYLES-->
+<link
+	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	rel="stylesheet" />
+<!--CUSTOM STYLES-->
+<link href="<%=request.getContextPath()%>/resources/css/timeline.css"
+	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+	rel="stylesheet" />
+
+</head>
 </head>
 <body>
-<center>
-	<form:form action="${pageContext.request.contextPath}/cities/save"
-		method="POST" modelAttribute="city">
-		<form:hidden path="cityId" />
-		<p>
-			<label>Country Name:</label>
-		</p>
-		<p>
-			<form:select path="state.country.countryId" id="countryId"
-				onchange="getState()">
-				<form:option value="0">Select</form:option>
-				<c:forEach var="country" items="${countries}">
-					<form:option value="${country.countryId}">${country.countryName}</form:option>
-				</c:forEach>
-			</form:select>
-			<form:errors path="state.country.countryId" />
-		</p>
 
-		<p>
-			<label>State Name: </label>
-		</p>
-		<p>
-			<form:select path="state.stateId" id="countryStates">
+	<div class="col-lg-12 edit-page">
+		<h1 class="page-header">City Update</h1>
+	</div>
+	<!-- /.col-lg-12 -->
+	</div>
+	<!-- /.row -->
+	<div class="row">
+		<div class="col-lg-9">
 
-				<c:forEach var="state" items="${states}">
-					<form:option value="${state.stateId}">${state.stateName}</form:option>
-				</c:forEach>
-			</form:select>
-			<form:errors path="state.stateId" />
-		</p>
-		<p>
-			<label for="cityName">City Name:</label>
-		<p>
-			<form:input path="cityName" title="City Name" maxlength="25"
+			<form:form action="${pageContext.request.contextPath}/cities/save"
+				method="POST" modelAttribute="city" class="form-horizontal"
+				id="cityupdate">
+				<form:hidden path="cityId" />
+
+				<label class="col-md-3">Country Name:</label>
+				<div class="form-group input-group col-md-9">
+
+
+
+					<form:select path="state.country.countryId" class="form-control"
+						id="countryId" onchange="getState()">
+						<form:option value="0">Select</form:option>
+						<c:forEach var="country" items="${countries}">
+							<form:option value="${country.countryId}">${country.countryName}</form:option>
+						</c:forEach>
+					</form:select>
+					<form:errors path="state.country.countryId" />
+
+
+				</div>
+				<label for="country" class="col-md-3">State Name:</label>
+				<div class="form-group input-group col-md-9">
+					<form:select path="state.stateId" id="countryStates"
+						class="form-control" name="Cstate">
+
+						<c:forEach var="state" items="${states}">
+							<form:option value="${state.stateId}">${state.stateName}</form:option>
+						</c:forEach>
+					</form:select>
+					<form:errors path="state.stateId" />
+				</div>
+				<label for="cityName" class="col-md-3">City Name:</label>
+				<div class="form-group input-group col-md-9">
+
+					
+
+                    <form:input path="cityName" title="City Name" maxlength="25" class="form-control" name="Ccity"
 				size="50" />
 
-			<form:errors path="cityName" cssClass="errors" />
-		</p>
-		<input type="submit" id="updateCity" name="updateCity" value="Update">
+			<form:errors path="cityName" cssClass="errors" /> 
+
+				</div>
+				<div class="col-lg-6 col-lg-offset-6 ">
+					<button class="btn btn-success add" type="submit" id="updateCity" name="updateCity">UPDATE</button>
 
 
-		<a href="${pageContext.request.contextPath}/cities/">Go Back</a>
+					<a href="${pageContext.request.contextPath}/cities/"
+						class="back">GoBack</a>
 
-	</form:form>
-</center>
+				</div>
+
+
+			</form:form>
+
+		</div>
+		<!-- /.col-lg-9 -->
+
+	</div>
+	<!-- /.row -->
+
+
+
+
+	<!-- /. PAGE INNER  -->
+	<footer class="space"> &copy; 2015 OnlineShodh | By : <a
+		href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+
+
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+
+	<!-- validation SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+
+	<!-- METIMENU SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+
+	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/jquery.dataTables.min.js"></script>
+
+	<!-- CUSTOM SCRIPTS -->
+	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+
+	<!-- CUSTOM SCRIPTS -->
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/ManageCity.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+
 
 </body>
 </html>
