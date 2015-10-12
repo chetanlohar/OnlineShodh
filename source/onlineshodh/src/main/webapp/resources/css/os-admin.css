@@ -38,6 +38,15 @@ body {
     padding: 10px;
     min-height: 800px;
 }
+.error{
+	display: inline;
+	color: red;
+}
+.error1{
+	display: inline;
+	color: red;
+	margin-left: 215px;
+}
 
 .page-head-line {
     font-size: 30px;
@@ -335,6 +344,13 @@ footer {
 .about-data{
     padding-bottom: 15px;
     border-bottom: 3px dotted #0099ff;
+}
+
+.back{
+	padding: 9px;
+	color:#fff;
+	margin-left:5px;
+	background: #31b0d5;	
 }
 
 /*==============================================

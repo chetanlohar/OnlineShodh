@@ -27,7 +27,7 @@ import com.onlineshodh.service.StateService;
 
 
 @Controller
-@RequestMapping(value = "/cities")
+@RequestMapping(value = "/admin/cities")
 public class CityController {
 
 	@Autowired
@@ -113,7 +113,7 @@ public class CityController {
 
 				
 				cityService.updateCity(city);
-				return "redirect:/cities";
+				return "redirect:/admin/cities";
 
 			} catch (DataIntegrityViolationException e) {
 				FieldError cityNameAvailableError;
@@ -163,7 +163,7 @@ public class CityController {
 	{
 		System.out.println("In Delete File :"+cityId);
 		cityService.deleteCity(cityId);
-		return "redirect:/cities";
+		return "redirect:/admin/cities";
 	}
 	
 

@@ -19,7 +19,7 @@ import com.onlineshodh.entity.CountryEntity;
 import com.onlineshodh.service.CountryService;
 
 @Controller
-@RequestMapping(value="/countries")
+@RequestMapping(value="/admin/countries")
 public class CountryController {
 
 	@Autowired
@@ -50,7 +50,7 @@ public class CountryController {
 			try
 			{
 				countryService.updateCountry(country);
-				return "redirect:/countries";
+				return "redirect:/admin/countries";
 			}
 			catch(DataIntegrityViolationException e)
 			{
@@ -78,6 +78,6 @@ public class CountryController {
 	public String deleteCountry(ModelMap model, @PathVariable("countryId") Integer countryId)
 	{
 		countryService.deleteCountry(countryId);
-		return "redirect:/countries";
+		return "redirect:/admin/countries";
 	}
 }

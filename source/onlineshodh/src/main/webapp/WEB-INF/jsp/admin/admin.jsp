@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,6 +15,8 @@
         <link href="<%=request.getContextPath()%>/resources/css/font-awesome.css" rel="stylesheet" />
         <!-- metis STYLES-->
         <link href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css" rel="stylesheet" />
+        <!--PACE STYLES-->
+         <link href="<%=request.getContextPath()%>/resources/css/pace.css" rel="stylesheet" />
         <!--CUSTOM STYLES-->
          <link href="<%=request.getContextPath()%>/resources/css/os-admin.css" rel="stylesheet" />
          
@@ -151,24 +155,24 @@
                              <li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 							Category Management<span class="fa arrow"></span></a>
 						     <ul class="nav nav-second-level">
-							<li><a href="flot.html"><i class="fa fa-list"></i> Category Management</a></li>
-							<li><a href="morris.html"> <i class="fa fa-list"></i> Sub-Category Management</a></li>
+							<li><a href="<%=request.getContextPath()%>/prashant/categorymanage"><i class="fa fa-list"></i> Category Management</a></li>
+							<li><a href="<%=request.getContextPath()%>/prashant/subcategorymanage"> <i class="fa fa-list"></i> Sub-Category Management</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 						
 						<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
 							Location Management<span class="fa arrow"></span></a>
 						<ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/prashant/countymanage">Country Management</a>
+                                    <a href="${pageContext.request.contextPath}/admin/countries">Country Management</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/prashant/statemanage">State Management</a>
+                                    <a href="${pageContext.request.contextPath}/admin/states">State Management</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/prashant/citymanage">City Management</a>
+                                    <a href="${pageContext.request.contextPath}/admin/cities">City Management</a>
                                 </li>
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/prashant/Townmanage">Town Management</a>
+                                    <a href="${pageContext.request.contextPath}/admin/towns">Town Management</a>
                                 </li>
                             </ul>
 						 <!-- /.nav-second-level of location management --></li>
@@ -341,6 +345,9 @@
         <script src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+        
+        <!-- PACE SCRIPTS -->
+        <script src="<%=request.getContextPath()%>/resources/js/pace.js"></script>
         
         <!-- CUSTOM SCRIPTS -->
         <script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>

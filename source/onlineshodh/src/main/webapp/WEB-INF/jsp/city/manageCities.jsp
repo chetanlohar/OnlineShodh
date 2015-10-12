@@ -10,24 +10,24 @@
 <title>Manage City</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 <!-- CUSTOM SCRIPTS -->
 	<script type="text/javascript"
@@ -49,7 +49,7 @@
 		<div class="col-lg-9">
 
 
-			<form:form action="${pageContext.request.contextPath}/cities/save"
+			<form:form action="${pageContext.request.contextPath}/admin/cities/save"
 				method="POST" modelAttribute="City" class="form-horizontal"
 				id="citymanage">
 
@@ -130,12 +130,12 @@
 										<td>${city.state.country.countryName}&nbsp|&nbsp(${city.state.country.countryId})</td>
 										<td>${city.state.stateName}&nbsp|&nbsp(${city.state.stateId})</td>
 										<td><a
-											href="${pageContext.request.contextPath}/cities/edit/${city.cityId}/${city.state.country.countryId}"
+											href="${pageContext.request.contextPath}/admin/cities/edit/${city.cityId}/${city.state.country.countryId}"
 											class="edit"><button class="btn btn-info btn-xs">
 													<i class="fa fa-pencil"></i> Edit
 												</button></a></td>
 										<td class="center"><a
-											href="${pageContext.request.contextPath}/cities/delete/${city.cityId}"
+											href="${pageContext.request.contextPath}/admin/cities/delete/${city.cityId}"
 											onclick="return confirm('Do you want to Remove City ${city.cityName}')"><button
 													class="btn btn-danger btn-xs">
 													<i class="fa fa-trash"></i> Delete
@@ -168,32 +168,32 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 
 
 
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
 	<script type="text/javascript"

@@ -10,24 +10,24 @@
 <title>Country</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 	
 	<!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 	
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -43,7 +43,7 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-9">
-				<form:form action="${pageContext.request.contextPath}/countries/save" method="post" modelAttribute="country" class="form-horizontal" id="countryupdate">
+				<form:form action="${pageContext.request.contextPath}/admin/countries/save" method="post" modelAttribute="country" class="form-horizontal" id="countryupdate">
 				<form:hidden path="countryId"/>
 				<label for="countryName" class="col-md-3">Country Name:</label>
 					<div class="form-group input-group col-md-9">
@@ -52,7 +52,7 @@
 					</div>
 						<div class="col-lg-6 col-lg-offset-6 ">
 				<button class="btn btn-success add" type="submit" id="saveCountry" name="saveCountry">UPDATE</button>
-				<a href="${pageContext.request.contextPath}/countries/" class="back">GoBack</a>
+				<a href="${pageContext.request.contextPath}/admin/countries/" class="back">GoBack</a>
 				
 				</div>
 					</form:form>
@@ -71,31 +71,31 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 	
 	
 <script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 		<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 		
 				<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 		
 		
 		
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 		
 		<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 </body>
 </html>

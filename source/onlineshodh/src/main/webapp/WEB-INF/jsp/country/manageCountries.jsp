@@ -43,7 +43,7 @@
 			<!-- /.row -->
 			<div class="row">
 				<div class="col-lg-9">
-				<form:form action="${pageContext.request.contextPath}/countries/save" method="post" modelAttribute="country" class="form-horizontal" id="countrymanage">
+				<form:form action="${pageContext.request.contextPath}/admin/countries/save" method="post" modelAttribute="country" class="form-horizontal" id="countrymanage">
 				<label for="countryName" class="col-md-3">Country Name:</label>
 					<div class="form-group input-group col-md-9">
 					
@@ -83,8 +83,8 @@
                                         <tr class="odd gradeX">
                                             <td>${country.countryId}</td>
                                             <td>${country.countryName}</td>
-                                            <td><a href="${pageContext.request.contextPath}/countries/edit/${country.countryId}" class="edit" id="edits"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>  Edit</button></a></td>
-                                            <td class="center"><a href="${pageContext.request.contextPath}/countries/delete/${country.countryId}" onclick="return confirm('Do you want to Remove Country: ${country.countryName}')"> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></a></td>
+                                            <td><a href="${pageContext.request.contextPath}/admin/countries/edit/${country.countryId}" class="edit" id="edits"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>  Edit</button></a></td>
+                                            <td class="center"><a href="${pageContext.request.contextPath}/admin/countries/delete/${country.countryId}" onclick="return confirm('Do you want to Remove Country: ${country.countryName}')"> <button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></a></td>
                                        </c:forEach>     
                                         </tr>
                                        </tbody>

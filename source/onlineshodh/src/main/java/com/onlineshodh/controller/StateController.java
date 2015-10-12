@@ -22,7 +22,7 @@ import com.onlineshodh.service.CountryService;
 import com.onlineshodh.service.StateService;
 
 @Controller
-@RequestMapping(value = "/states")
+@RequestMapping(value = "/admin/states")
 public class StateController {
 
 	@Autowired
@@ -92,7 +92,7 @@ public class StateController {
 			try {
 				System.out.println("CountryID : "+state.getCountry().getCountryId());
 				stateService.updateState(state);
-				return "redirect:/states";
+				return "redirect:/admin/states";
 			} catch (DataIntegrityViolationException exception) {
 				FieldError stateNameAvailableError;
 				System.out.println(exception.getMostSpecificCause()
@@ -128,12 +128,12 @@ public class StateController {
 	{
 		System.out.println("In Delete File :"+stateId);
 		stateService.deleteState(stateId);
-		return "redirect:/states";
+		return "redirect:/admin/states";
 	}
 	
 	@RequestMapping(value = "/save",method=RequestMethod.GET)
 	public String saveState(ModelMap model){
-		return "redirect:/states";
+		return "redirect:/admin/states";
 	}
 
 }

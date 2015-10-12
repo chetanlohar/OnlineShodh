@@ -10,26 +10,26 @@
 <title>Manage State</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/timeline.css"
+<link href="${pageContext.request.contextPath}/resources/css/timeline.css"
 	rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -45,7 +45,7 @@
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-9">
-			<form:form action="${pageContext.request.contextPath}/states/save"
+			<form:form action="${pageContext.request.contextPath}/admin/states/save"
 				method="POST" modelAttribute="state" class="form-horizontal"
 				id="statemanage">
 				<label class="col-md-3">Country Name:</label>
@@ -104,12 +104,12 @@
 										<td>${state.stateName}</td>
 										<td>${state.country.countryName}&nbsp|&nbsp(${state.country.countryId})</td>
 										<td><a
-											href="${pageContext.request.contextPath}/states/edit/${state.stateId}/${state.country.countryId}"
+											href="${pageContext.request.contextPath}/admin/states/edit/${state.stateId}/${state.country.countryId}"
 											class="edit"><button class="btn btn-info btn-xs ">
 													<i class="fa fa-pencil"></i> Edit
 												</button></a></td>
 										<td class="center"><a
-											href="${pageContext.request.contextPath}/states/delete/${state.stateId}"
+											href="${pageContext.request.contextPath}/admin/states/delete/${state.stateId}"
 											onclick="return confirm('Do you want to Remove State: ${state.stateName}')"
 											class="edit"><button class="btn btn-danger btn-xs">
 													<i class="fa fa-trash"></i> Delete
@@ -140,31 +140,31 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 
 
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 
 
 
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 	<script>
 		$(document).ready(function() {

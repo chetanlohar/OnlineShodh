@@ -36,7 +36,7 @@ import com.onlineshodh.service.TownService;
 import com.onlineshodh.entity.StateEntity;
 
 @Controller
-@RequestMapping(value="/towns")
+@RequestMapping(value="/admin/towns")
 public class TownController {
 
 	private static final Logger logger=Logger.getLogger(TownController.class);
@@ -90,7 +90,7 @@ public class TownController {
 	
 	@RequestMapping(value="/save",method=RequestMethod.GET)
 	public String saveTown(ModelMap model){
-	return "redirect:/towns"; 
+	return "redirect:/admin/towns"; 
 	}
 	
 	
@@ -136,7 +136,7 @@ public class TownController {
 			try{
 				System.out.println(town);
 				townService.updateTown(town);
-				return "redirect:/towns";
+				return "redirect:/admin/towns";
 				
 			}catch(DataIntegrityViolationException e){
 				FieldError townNameAvailableError;
@@ -174,7 +174,7 @@ public class TownController {
 	{
 		System.out.println("In Delete File :"+townId);
 		townService.deleteTown(townId);
-		return "redirect:/towns";
+		return "redirect:/admin/towns";
 	}
 	
 	

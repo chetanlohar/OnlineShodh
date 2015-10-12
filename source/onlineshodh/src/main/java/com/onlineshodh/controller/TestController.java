@@ -68,4 +68,26 @@ public class TestController {
 	{
 		return "client/createClient";
 	}
+	
+
+	@RequestMapping(value="/clientupdate")
+	public String doupdate()
+	{
+		return "client/updateClient";
+	}
+	
+	
+	@RequestMapping(value="/categorymanage")
+	public String docategorym()
+	{
+		return "category/categorymanage";
+	}
+	
+	
+
+	@RequestMapping(value="/subcategorymanage")
+	public String dosubcategorym()
+	{
+		return "category/subcatmanage";
+	}
 }

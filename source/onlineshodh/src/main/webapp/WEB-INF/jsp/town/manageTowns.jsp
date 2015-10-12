@@ -16,26 +16,26 @@
 		src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/timeline.css"
+<link href="${pageContext.request.contextPath}/resources/css/timeline.css"
 	rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -50,7 +50,7 @@
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-9">
-			<form:form action="${pageContext.request.contextPath}/towns/save"
+			<form:form action="${pageContext.request.contextPath}/admin/towns/save"
 				class="form-horizontal" id="townmanage" modelAttribute="Town"
 				method="POST">
 
@@ -143,12 +143,12 @@
 										<td>${town.city.state.stateName}&nbsp|&nbsp(${town.city.state.stateId})</td>
 										<td>${town.city.cityName}&nbsp|&nbsp(${town.city.cityId})</td>
 										<td><a
-											href="${pageContext.request.contextPath}/towns/edit/${town.townId}/${town.city.state.country.countryId}/${town.city.state.stateId}"
+											href="${pageContext.request.contextPath}/admin/towns/edit/${town.townId}/${town.city.state.country.countryId}/${town.city.state.stateId}"
 											class="edit"><button class="btn btn-info btn-xs">
 													<i class="fa fa-pencil"></i> Edit
 												</button></a></td>
 										<td class="center"><a
-											href="${pageContext.request.contextPath}/towns/delete/${town.townId}"
+											href="${pageContext.request.contextPath}/admin/towns/delete/${town.townId}"
 											onclick="return confirm('Do you want to Remove Town ${town.townName}')"><button
 													class="btn btn-danger btn-xs">
 													<i class="fa fa-trash"></i> Delete
@@ -180,29 +180,29 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 
 
 
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 	
 	<script>
