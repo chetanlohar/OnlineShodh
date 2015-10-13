@@ -85,21 +85,21 @@ public class ClientController {
 					String encryptedPassword = encoder.encode(user.getPassword());
 					user.setPassword(encryptedPassword);
 					userService.saveUser(user);
-				}
-				UserDetailsEntity userDetails = clientdetails.getUserDetails();
-				if(userDetails!=null)
-				{
-					userDetails.setUserId(user.getUserId());
-					userDetails.setEmail(user.getUserName());
-					String name = userDetails.getName().toUpperCase();
-					userDetails.setName(name);
-					try {
-						if(!file.isEmpty())
-							userDetails.setPhotograph(file.getBytes());
-					} catch (IOException e) {
-						e.printStackTrace();
+					UserDetailsEntity userDetails = clientdetails.getUserDetails();
+					if(userDetails!=null)
+					{
+						userDetails.setUserId(user.getUserId());
+						userDetails.setEmail(user.getUserName());
+						String name = userDetails.getName().toUpperCase().trim();
+						userDetails.setName(name);
+						try {
+							if(!file.isEmpty())
+								userDetails.setPhotograph(file.getBytes());
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						userDetailsService.saveUserDetails(userDetails);
 					}
-					userDetailsService.saveUserDetails(userDetails);
 				}
 			}
 			catch(ConstraintViolationException e)
@@ -120,7 +120,7 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public String updateUserDetails(ModelMap model,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute UserDetailsEntity userDetails, BindingResult result)
+	public String updateUserDetails(ModelMap model,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("userDetails") UserDetailsEntity userDetails, BindingResult result)
 	{
 		if(result.hasErrors())
 		{
@@ -140,7 +140,9 @@ public class ClientController {
 		{
 			try
 			{
-				userDetailsService.saveUserDetails(userDetails);
+				if(!file.isEmpty())
+					userDetails.setPhotograph(file.getBytes());
+				userDetailsService.updateUserDetails(userDetails);
 				return "redirect:/admin/clients";
 			}
 			catch(ConstraintViolationException e)
@@ -148,6 +150,8 @@ public class ClientController {
 				FieldError error = new FieldError("userDetails", e.getField(), e.getMsg());
 				result.addError(error);
 				return "client/manageClients";
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
 		}
 		return "client/updateClient";
@@ -178,13 +182,13 @@ public class ClientController {
 	public String deleteSubCategory(ModelMap model,
 			@PathVariable("userDetailsId") Integer userDetailsId) {
 		userDetailsService.deteteUserDetails(userDetailsId);
-		
+		userService.deleteUser(userDetailsService.getUserDetails(userDetailsId).getUserId());
 		return "redirect:/admin/clients";
 	}
 	
 	@RequestMapping(value = "/edit/{userDetailsId}", method = RequestMethod.GET)
 	public String editSubCategory(ModelMap model,@PathVariable("userDetailsId") Integer userDetailsId) {
-		model.addAttribute("userDetails", userDetailsService.getAllUserDetails());
+		model.addAttribute("userDetails", userDetailsService.getUserDetails(userDetailsId));
 		return "client/updateClient";
 	}
 

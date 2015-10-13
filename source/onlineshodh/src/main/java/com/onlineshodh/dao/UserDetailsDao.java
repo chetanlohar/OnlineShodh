@@ -16,6 +16,11 @@ public interface UserDetailsDao {
 	public void saveUserDetails(UserDetailsEntity userDetails);
 	
 	/**
+	 * @param userDetails Updates the User Details in Persistance Storage
+	 */
+	public void updateUserDetails(UserDetailsEntity userDetails);
+	
+	/**
 	 * @param userDetailsId User Details Id to get the details of User's Details
 	 * @return User Details
 	 */

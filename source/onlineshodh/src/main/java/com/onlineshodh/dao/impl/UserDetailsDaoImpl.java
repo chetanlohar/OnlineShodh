@@ -34,4 +34,9 @@ public class UserDetailsDaoImpl extends AbstractJpaDao<UserDetailsEntity> implem
 		return findAll();
 	}
 
+	@Override
+	public void updateUserDetails(UserDetailsEntity userDetails) {
+		update(userDetails);
+	}
+
 }

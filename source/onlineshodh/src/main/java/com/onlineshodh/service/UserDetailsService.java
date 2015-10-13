@@ -17,6 +17,13 @@ public interface UserDetailsService {
 	 */
 	public void saveUserDetails(UserDetailsEntity userDetails) throws ConstraintViolationException;
 	
+	
+	/**
+	 * @param userDetails Updates the User Details in Persistance Storage
+	 * @throws ConstraintViolationException
+	 */
+	public void updateUserDetails(UserDetailsEntity userDetails) throws ConstraintViolationException;
+	
 	/**
 	 * @param userDetailsId User Details Id to get the details of User's Details
 	 * @return User Details

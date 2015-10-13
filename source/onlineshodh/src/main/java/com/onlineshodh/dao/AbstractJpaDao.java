@@ -41,6 +41,7 @@ public abstract class AbstractJpaDao<T extends Serializable>{
 	public void create(T entity)
 	{
 		entityManager.persist(entity);
+		entityManager.flush();
 	}
 	
 	/*Updates the Existing Entity (Record) in Persistence Storage*/

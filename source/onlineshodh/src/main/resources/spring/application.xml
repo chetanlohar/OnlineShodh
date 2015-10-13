@@ -12,12 +12,13 @@
 		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-	
+
 	<mvc:annotation-driven />
 	<context:component-scan base-package="com.onlineshodh" />
 	<tx:annotation-driven />
-	<mvc:default-servlet-handler/>
-	<context:property-placeholder location="classpath:properties/validation_messages.properties"/>
+	<mvc:default-servlet-handler />
+	<context:property-placeholder
+		location="classpath:properties/validation_messages.properties" />
 
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="jndiName" value="java:comp/env/jdbc/OnlineShodhDB" />
@@ -25,8 +26,8 @@
 
 	<bean id="emf"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" />
-		<property name="persistenceUnitName" value="onlineshodhunit" /> -->
+		<!-- <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml" 
+			/> <property name="persistenceUnitName" value="onlineshodhunit" /> -->
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="com.onlineshodh.entity" />
 		<property name="jpaVendorAdapter">
@@ -40,22 +41,27 @@
 			</value>
 		</property>
 	</bean>
+	
+	<!-- <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean> -->
 
 	<!--Add Transaction support -->
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
-	
+
 	<!-- bind messages.properties -->
 	<bean class="org.springframework.context.support.ResourceBundleMessageSource"
 		id="messageSource">
 		<property name="basename" value="messages" />
 	</bean>
-	
+
 	<!-- MultipartResolver Support -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="100000" />
-    </bean>
+	</bean>
 
 </beans>

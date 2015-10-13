@@ -193,21 +193,28 @@ public class UserDetailsEntity implements Serializable {
 		this.userId = userId;
 	}
 
-	public UserDetailsEntity() {
-		/*this.regdate = new Date().toString();*/
+	
+	/*public UserDetailsEntity(UserDetailsEntity userDetails) {
 		
-		
-	}
+		this.userId = userDetails.getUserId();
+		this.email = userDetails.getEmail();
+		this.name = userDetails.getName();
+		this.phone1 = userDetails.getPhone1();
+		this.phone2 = userDetails.getPhone2();
+		this.photograph = userDetails.getPhotograph();
+		this.regDate = userDetails.getRegDate();
+		this.userDetailsId = userDetails.getUserDetailsId();
+	}*/
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
-	@Override
+	/*@Override
 	public String toString() {
 		return "UserDetailsEntity [userDetailsId=" + userDetailsId + ", name="
 				+ name + ", email=" + email + ", phone1=" + phone1
 				+ ", phone2=" + phone2 + ", regdate=" + regDate
 				+ ", photograph=" + Arrays.toString(photograph) + ", userId="
 				+ userId + "]";
-	}
+	}*/
 }

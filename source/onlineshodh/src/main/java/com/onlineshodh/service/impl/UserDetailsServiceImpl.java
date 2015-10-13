@@ -25,6 +25,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Value("${onlyDigits}")
 	String onlyDigits;
 	
+	@Value("${onlyAlphabets}")
+	String onlyAlphabets;
+	
 	@Override
 	@Transactional
 	public void saveUserDetails(UserDetailsEntity userDetails) throws ConstraintViolationException {
@@ -40,6 +43,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 				throw new ConstraintViolationException("phone1",onlyDigits);
 			else if(e.getMostSpecificCause().getMessage().contains("chk_userdetails_phone2"))
 				throw new ConstraintViolationException("phone2",onlyDigits);
+		}
+		catch(Exception e)
+		{
+			throw new ConstraintViolationException("userName","**Invalid Data in Some Fields");
 		}
 	}
 
@@ -57,6 +64,27 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public List<UserDetailsEntity> getAllUserDetails() {
 		return userDetailsDao.getAllUserDetails();
+	}
+
+	@Override
+	@Transactional
+	public void updateUserDetails(UserDetailsEntity userDetails)
+			throws ConstraintViolationException {
+		try
+		{
+			userDetailsDao.updateUserDetails(userDetails);
+		}
+		catch(DataIntegrityViolationException e)
+		{
+			if(e.getMostSpecificCause().getMessage().contains("chk_userdetails_name"))
+				throw new ConstraintViolationException("userName",alreadyExist);
+			else if(e.getMostSpecificCause().getMessage().contains("chk_userdetails_phone1"))
+				throw new ConstraintViolationException("phone1",onlyDigits);
+			else if(e.getMostSpecificCause().getMessage().contains("chk_userdetails_phone2"))
+				throw new ConstraintViolationException("phone2",onlyDigits);
+			else if(e.getMostSpecificCause().getMessage().contains("chk_userdetails_name"))
+				throw new ConstraintViolationException("name",onlyAlphabets);
+		}
 	}
 
 }

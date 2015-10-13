@@ -20,7 +20,11 @@
 	<form:form
 		action="${pageContext.request.contextPath}/admin/clients/update"
 		modelAttribute="userDetails" enctype="multipart/form-data">
-		
+		<form:hidden path="userDetailsId"/>
+		<form:hidden path="userId"/>
+		<form:hidden path="regDate"/>
+		<form:hidden path="email"/>
+		<form:hidden path="photograph"/>
 		<p>
 			<label>Name</label>
 			<form:input path="name" title="Name" maxlength="25" size="51" />
@@ -38,6 +42,7 @@
 		<p>
 			<label>Photograph</label>
 			<input type="file" id="file" name="file" value="Browse">
+			<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDetails.userDetailsId}" id="userDetailsLogo" height="50" width="50"/>
 			<form:errors path="photograph" cssClass="errors" />
 		</p>
 		<p>
