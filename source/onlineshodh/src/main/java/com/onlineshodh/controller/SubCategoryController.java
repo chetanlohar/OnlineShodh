@@ -63,7 +63,7 @@ public class SubCategoryController {
 		model.addAttribute("subcategories", subcategories);
 		model.addAttribute("categories", categories);
 		model.addAttribute("subcategory",context.getBean("subCategoryEntity", SubCategoryEntity.class));
-		return "category/manageSubCategories";
+		return "category/subcatmanage";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.GET)
@@ -100,7 +100,7 @@ public class SubCategoryController {
 			flag = true;
 		}
 		if(flag)
-			return "category/manageSubCategories";
+			return "category/subcatmanage";
 		else {
 			if (!file.isEmpty()) {
 				logger.info("file is not empty...");
@@ -132,7 +132,7 @@ public class SubCategoryController {
 			}
 		}
 		if(operationType.equalsIgnoreCase("save"))
-			return "category/manageSubCategories";
+			return "category/subcatmanage";
 		else
 			return "category/updateSubCategory";
 	}

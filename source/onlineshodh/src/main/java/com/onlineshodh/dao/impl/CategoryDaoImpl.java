@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.CategoryDao;
 import com.onlineshodh.entity.CategoryEntity;
+import com.onlineshodh.entity.CityEntity;
 
 @Repository
 public class CategoryDaoImpl extends AbstractJpaDao<CategoryEntity>implements CategoryDao {
@@ -19,6 +20,7 @@ public class CategoryDaoImpl extends AbstractJpaDao<CategoryEntity>implements Ca
 
 	@Override
 	public void saveCategory(CategoryEntity category) {
+		setClazz(CategoryEntity.class);
 		update(category);
 	}
 

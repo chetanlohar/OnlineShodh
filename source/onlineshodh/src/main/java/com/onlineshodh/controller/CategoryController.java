@@ -29,7 +29,7 @@ import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.service.CategoryService;
 
 @Controller
-@RequestMapping(value = "/categories")
+@RequestMapping(value = "/admin/categories")
 public class CategoryController {
 
 	private static final Logger logger = Logger
@@ -49,11 +49,15 @@ public class CategoryController {
 
 	@RequestMapping(value = { "/", "" })
 	public String showManageCategory(ModelMap model) {
+		model.addAttribute("category",context.getBean("categoryEntity", CategoryEntity.class));
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("categories", categories);
-		model.addAttribute("category",
-				context.getBean("categoryEntity", CategoryEntity.class));
-		return "category/manageCategories";
+		return "category/categorymanage";
+	}
+	
+	@RequestMapping(value = "/save", method = RequestMethod.GET)
+	public String redirectToSaveCategory(ModelMap model){
+		return "redirect:/admin/categories";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -83,7 +87,7 @@ public class CategoryController {
 				category.setPopularity(0);
 			try {
 				categoryService.saveCategory(category);
-				return "redirect:/categories/";
+				return "redirect:/admin/categories/";
 			} catch (DataIntegrityViolationException e) {
 				FieldError countryNameAvailableError;
 				if (e.getMostSpecificCause().getMessage().contains("unique")) {
@@ -98,7 +102,7 @@ public class CategoryController {
 				logger.debug("Exception Occured!", new Exception(e));
 			}
 		}
-		return "category/manageCategories";
+		return "category/categorymanage";
 	}
 
 	@RequestMapping(value = "/edit/{categoryId}", method = RequestMethod.GET)
@@ -106,14 +110,14 @@ public class CategoryController {
 			@PathVariable("categoryId") Integer categoryId) {
 		model.addAttribute("category",
 				categoryService.getCategoryById(categoryId));
-		return "category/updateCategory";
+		return "category/categoryupdate";
 	}
 
 	@RequestMapping(value = "/delete/{categoryId}", method = RequestMethod.GET)
 	public String deleteCategory(ModelMap model,
 			@PathVariable("categoryId") Integer categoryId) {
 		categoryService.deleteCategory(categoryId);
-		return "redirect:/categories";
+		return "redirect:/admin/categories";
 	}
 
 	@RequestMapping("/load/logo/{categoryId}")

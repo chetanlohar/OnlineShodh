@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.onlineshodh.entity.CountryEntity;
 import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.service.CountryService;
 import com.onlineshodh.service.StateService;
@@ -64,7 +65,7 @@ public class StateController {
 				System.out.println(error.getDefaultMessage());
 		}
 		
-		try{
+		//try{
 		if(state.getCountry().getCountryId()==0){
 			FieldError countryNotSelected=new FieldError("state", "country.countryId",mandatory);
 			result.addError(countryNotSelected);
@@ -75,25 +76,28 @@ public class StateController {
 			result.addError(stateNameNotSelected);
 			flag=true;
 		}
-		}catch(NullPointerException e){
+	//	}
+	/*catch(NullPointerException e){
 			FieldError CountryIdNullError=null;
 			if(e.getMessage().contains("Null"))
  			CountryIdNullError =new FieldError("state","country.countryId" , "Country  Not Selected!");
 			result.addError(CountryIdNullError);
-		}
+		}*/
 		if(flag){
 		   model.addAttribute("countries",countryService.getAllCountries());
 			return "state/manageStates"; 
-			/*return "redirect:/states";*/
+			
 		}
 		
 		else {
 
-			try {
+			//try {
 				System.out.println("CountryID : "+state.getCountry().getCountryId());
 				stateService.updateState(state);
+				model.addAttribute("states",stateService.getAllStates());
 				return "redirect:/admin/states";
-			} catch (DataIntegrityViolationException exception) {
+			//}
+		/* catch (DataIntegrityViolationException exception) {
 				FieldError stateNameAvailableError;
 				System.out.println(exception.getMostSpecificCause()
 						.getMessage());
@@ -107,11 +111,11 @@ public class StateController {
 							onlyAlphabets);
 				result.addError(stateNameAvailableError);
 
-			}
+			}*/
 		}
 
-		model.addAttribute("states",stateService.getAllStates());
-		return "state/manageStates";
+		
+		//return "state/manageStates";
 	}
 	
 	@RequestMapping(value="/edit/{stateId}/{countryId}",method=RequestMethod.GET)
@@ -135,5 +139,28 @@ public class StateController {
 	public String saveState(ModelMap model){
 		return "redirect:/admin/states";
 	}
+	
+	@RequestMapping(value="/exception/{excetiontype}")
+	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("state") StateEntity state, BindingResult result)
+	{
+		FieldError stateNameAvailableError;
+		
+		if(exception.equalsIgnoreCase("unique")){
+			stateNameAvailableError = new FieldError("state",
+					"stateName", alreadyExist);
+			}else{
+				stateNameAvailableError = new FieldError("state",
+						"stateName",
+						onlyAlphabets);
+			}
+		result.addError(stateNameAvailableError);
+		model.addAttribute("countries", countryService.getAllCountries());
+		model.addAttribute("states",stateService.getAllStates());
+		return "state/manageStates";
+		
+		
+	}
+	
+	
 
 }

@@ -159,8 +159,8 @@
                              <li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 							Category Management<span class="fa arrow"></span></a>
 						     <ul class="nav nav-second-level">
-							<li><a href="<%=request.getContextPath()%>/prashant/categorymanage"><i class="fa fa-list"></i> Category Management</a></li>
-							<li><a href="<%=request.getContextPath()%>/prashant/subcategorymanage"> <i class="fa fa-list"></i> Sub-Category Management</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/categories"><i class="fa fa-list"></i> Category Management</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/subcategories"> <i class="fa fa-list"></i> Sub-Category Management</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 						
 						<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>

@@ -9,6 +9,7 @@ import java.util.List;
 
 
 
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -134,12 +135,12 @@ public class TownController {
 		}
 		else{
 			 
-			try{
-				System.out.println(town);
+			//try{
+				//System.out.println(town);
 				townService.updateTown(town);
 				return "redirect:/admin/towns";
 				
-			}catch(DataIntegrityViolationException e){
+			/*}catch(DataIntegrityViolationException e){
 				FieldError townNameAvailableError;
 				if(e.getMostSpecificCause().getMessage().contains("unique"))
 					townNameAvailableError=new FieldError("town", "townName", alreadyExist);
@@ -148,9 +149,9 @@ public class TownController {
 							onlyAlphabets);
 				result.addError(townNameAvailableError);	
 			}
-		}
+*/		}
 		
-		return "town/manageTowns";
+		//return "town/manageTowns";
 	}
 	
 	@RequestMapping(value="/edit/{townId}/{countryId}/{stateId}",method=RequestMethod.GET)
@@ -180,6 +181,23 @@ public class TownController {
 		return "redirect:/admin/towns";
 	}
 	
+	@RequestMapping(value="/exception/{excetiontype}")
+	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("Town") TownEntity town, BindingResult result)
+	{
+		FieldError townNameAvailableError;
+		
+		if(exception.equalsIgnoreCase("unique")){
+			townNameAvailableError=new FieldError("town", "townName", alreadyExist);
+			}else{
+				townNameAvailableError = new FieldError("town", "townName",
+						onlyAlphabets);
+			}
+		result.addError(townNameAvailableError);
+		model.addAttribute("countries", countryService.getAllCountries());
+		model.addAttribute("towns", townService.getAllTowns());
+		return "town/manageTowns";
+		
+	}
 	
 	
 	

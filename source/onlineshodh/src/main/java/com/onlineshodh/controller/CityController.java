@@ -109,13 +109,13 @@ public class CityController {
 		}
 		else {
 
-			try {
+			//try {
 
 				
 				cityService.updateCity(city);
 				return "redirect:/admin/cities";
 
-			} catch (DataIntegrityViolationException e) {
+			/*} catch (DataIntegrityViolationException e) {
 				FieldError cityNameAvailableError;
 				System.out.println(" Cause "+e.getMostSpecificCause().getMessage());
 				if (e.getMostSpecificCause().getMessage().contains("unique"))
@@ -124,11 +124,11 @@ public class CityController {
 					cityNameAvailableError = new FieldError("city", "cityName",	onlyAlphabets);
 				
 				result.addError(cityNameAvailableError);
-			}
+			}*/
 
 		}
 
-		return "city/manageCities";
+		//return "city/manageCities";
 
 	}
 
@@ -154,7 +154,6 @@ public class CityController {
 		model.addAttribute("city", city);
 		model.addAttribute("states",states);
 		model.addAttribute("countries",countryService.getAllCountries());
-		System.out.println(" In UpDate Controller");
 		return "city/updateCity";
 	}
 	
@@ -164,6 +163,23 @@ public class CityController {
 		System.out.println("In Delete File :"+cityId);
 		cityService.deleteCity(cityId);
 		return "redirect:/admin/cities";
+	}
+	
+	@RequestMapping(value="/exception/{excetiontype}")
+	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("City") CityEntity city, BindingResult result)
+	{
+		FieldError cityNameAvailableError;
+		
+		if(exception.equalsIgnoreCase("unique")){
+			cityNameAvailableError = new FieldError("city", "cityName",	alreadyExist);
+			}else{
+				cityNameAvailableError = new FieldError("city", "cityName",	onlyAlphabets);
+			}
+		result.addError(cityNameAvailableError);
+		model.addAttribute("countries", countryService.getAllCountries());
+		model.addAttribute("cities", cityService.getAllCities());
+		return "city/manageCities";
+		
 	}
 	
 

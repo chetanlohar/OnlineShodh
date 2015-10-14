@@ -49,7 +49,7 @@
 	<div class="row">
 		<div class="col-lg-9">
 			<form:form
-				action="${pageContext.request.contextPath}/categories/save"
+				action="${pageContext.request.contextPath}/admin/categories/save"
 				method="post" modelAttribute="category"
 				enctype="multipart/form-data" class="form-horizontal"
 				id="categorymanage">
@@ -82,9 +82,9 @@
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-preview thumbnail" data-trigger="fileinput"
 							style="width: 200px; height: 150px;">
-							<img
+							<%-- <img
 								src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-								alt="...">
+								alt="..."> --%>
 
 						</div>
 						<div>
@@ -140,21 +140,19 @@
 									<tr class="odd gradeX">
 										<td>${category.categoryId}</td>
 										<td><img
-											src="${pageContext.request.contextPath}/categories/load/logo/${category.categoryId}"
+											src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}"
 											class="img-responsive" width="50px " height="50px;" /></td>
 										<td>${category.categoryName}</td>
 										<td>${category.categoryDesc}</td>
 										<td>${category.popularity}</td>
 										<td><a
-											href="${pageContext.request.contextPath}/categories/edit/${category.categoryId}"
+											href="${pageContext.request.contextPath}/admin/categories/edit/${category.categoryId}"
 											class="edit"><button class="btn btn-info btn-xs">
 													<i class="fa fa-pencil"></i> Edit
 												</button></a></td>
-										<td class="center"><button class="btn btn-danger btn-xs">
-												<i class="fa fa-trash"></i> Delete
-											</button></td>
+										
 										<td class="center"><a
-											href="${pageContext.request.contextPath}/categories/delete/${category.categoryId}"
+											href="${pageContext.request.contextPath}/admin/categories/delete/${category.categoryId}"
 											onclick="confirm('Do you want to Remove Country: ${category.categoryName}')"><button
 													class="btn btn-danger btn-xs">
 													<i class="fa fa-trash"></i> Delete
