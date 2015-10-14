@@ -39,6 +39,19 @@ $(document).ready(function () {
     /*======================================
     PAGE LODING SCRIPT FOR EDIT PAGE USING AJAX
 ========================================*/
+    
+    /*======================================
+    PAGE LODING previous PAGE USING AJAX
+========================================*/
+    $("#goBack").on('click',function(e){
+    	e.preventDefault();
+    	var old =document.referrer;
+    	alert("ld refeor= "+old)
+    	
+    })
+    
+    
+    
     $('.sandbox-container input').datepicker({
         orientation: "top left",
         autoclose: true

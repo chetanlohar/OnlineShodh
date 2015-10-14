@@ -52,7 +52,7 @@
 					</div>
 						<div class="col-lg-6 col-lg-offset-6 ">
 				<button class="btn btn-success add" type="submit" id="saveCountry" name="saveCountry">UPDATE</button>
-				<a href="${pageContext.request.contextPath}/admin/countries/" class="back">GoBack</a>
+				<a href="${pageContext.request.contextPath}/admin/countries/" id="goBack" class="back">GoBack1</a>
 				
 				</div>
 					</form:form>

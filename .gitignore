@@ -1,6 +1,6 @@
-source/onlineshodh/target/
+source/onlineshodh/target/.
 .metadata
-target
+target/
 bin
 */**/target
 *.log
