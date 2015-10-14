@@ -27,5 +27,11 @@ public interface UserDao {
 	 * Delete the User for the given userId
 	 */
 	public void deleteUser(Integer userId);
+	
+	/**
+	 * @param username Username to Check that already exists or not.
+	 * @return True if Exists and False if not exists
+	 */
+	public boolean isUserExists(String username);
 
 }

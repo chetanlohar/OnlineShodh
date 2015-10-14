@@ -58,4 +58,12 @@ public class UserServiceImpl implements UserService {
 		userDao.deleteUser(userId);
 	}
 
+
+	@Override
+	public boolean isUserExists(String username) {
+		return userDao.isUserExists(username);
+	}
+	
+	
+
 }

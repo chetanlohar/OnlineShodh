@@ -1,5 +1,8 @@
 package com.onlineshodh.dao.impl;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +13,8 @@ import com.onlineshodh.entity.UserEntity;
 @Repository
 public class UserDaoImpl extends AbstractJpaDao<UserEntity> implements UserDao {
 
+	EntityManager entityManager;
+	
 	@Override
 	@Transactional
 	public void saveUser(UserEntity user) {
@@ -27,6 +32,28 @@ public class UserDaoImpl extends AbstractJpaDao<UserEntity> implements UserDao {
 	public void deleteUser(Integer userId) {
 		setClazz(UserEntity.class);
 		delete(findOne(userId));
+	}
+
+	@Override
+	public boolean isUserExists(String username) {
+		
+		String query = "from UserEntity user where user.userName=?";
+		entityManager = getEntityManager();
+		TypedQuery<UserEntity> query1 = entityManager.createQuery(query,UserEntity.class);
+		query1.setParameter(1, username.trim());
+		UserEntity userentity = null;
+		try
+		{
+			userentity = query1.getSingleResult();
+			if(userentity!=null)
+				return true;
+		}
+		catch(javax.persistence.NoResultException e)
+		{
+			System.out.println("Session Expired...No result found for userid(null)");
+			return false;
+		}
+		return false;
 	}
 
 }

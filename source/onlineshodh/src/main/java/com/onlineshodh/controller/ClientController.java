@@ -52,6 +52,12 @@ public class ClientController {
 	@Value("${mandatory}")
 	String mandatory;
 	
+	@Value("${alreadyExist}")
+	String alreadyExist;
+	
+	@Value("${onlyDigits}")
+	String onlyDigits;
+	
 	@RequestMapping(value={"/",""})
 	public String manageClients(ModelMap model)
 	{
@@ -63,20 +69,49 @@ public class ClientController {
 	@RequestMapping(value="/save",method=RequestMethod.POST)
 	public String saveClient(ModelMap model,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("clientdetails") ClientDetails clientdetails, BindingResult result)
 	{
+		
+		
 		model.addAttribute("userDetails", userDetailsService.getAllUserDetails());
+		UserEntity user = clientdetails.getUser();
+		UserDetailsEntity userDetails = clientdetails.getUserDetails();
+		System.out.println("phone1"+userDetails.getPhone1());
+		System.out.println("phone2"+userDetails.getPhone2());
+		boolean flag = false;
+		String regex = "[0-9]+";
+		
+		if(!userDetails.getPhone1().matches(regex))
+		{
+			FieldError error = new FieldError("clientdetails", "userDetails.phone1", onlyDigits);
+			result.addError(error);
+			flag = true;
+		}
+		if(!userDetails.getPhone2().matches(regex) && userDetails.getPhone2()!="")
+		{
+			FieldError error = new FieldError("clientdetails", "userDetails.phone2", onlyDigits);
+			result.addError(error);
+			flag = true;
+		}
+		
+		boolean isUserExists = userService.isUserExists(clientdetails.getUser().getUserName());
+		
+		if(isUserExists)
+		{
+			FieldError error = new FieldError("clientdetails", "user.userName", alreadyExist);
+			result.addError(error);
+			flag = true;
+		}
 		if(result.hasErrors())
 		{
-			for(FieldError error:result.getFieldErrors())
-				System.out.println(error.getDefaultMessage());
+			flag = true;
 		}
-		else if(file.isEmpty() && clientdetails.getUserDetails().getPhotograph()==null)
+		if(file.isEmpty() && clientdetails.getUserDetails().getPhotograph()==null)
 		{
 			FieldError error = new FieldError("clientdetails", "userDetails.photograph", mandatory);
 			result.addError(error);
+			flag = true;
 		}
-		else
+		if(!flag)
 		{
-			UserEntity user = clientdetails.getUser();
 			FieldError error;
 			try
 			{
@@ -85,7 +120,6 @@ public class ClientController {
 					String encryptedPassword = encoder.encode(user.getPassword());
 					user.setPassword(encryptedPassword);
 					userService.saveUser(user);
-					UserDetailsEntity userDetails = clientdetails.getUserDetails();
 					if(userDetails!=null)
 					{
 						userDetails.setUserId(user.getUserId());
@@ -122,21 +156,31 @@ public class ClientController {
 	@RequestMapping(value="/update",method=RequestMethod.POST)
 	public String updateUserDetails(ModelMap model,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("userDetails") UserDetailsEntity userDetails, BindingResult result)
 	{
+		String regex = "[0-9]+";
+		boolean flag = false;
+		if(!userDetails.getPhone1().matches(regex))
+		{
+			FieldError error = new FieldError("clientdetails", "phone1", onlyDigits);
+			result.addError(error);
+			flag = true;
+		}
+		if(!userDetails.getPhone2().matches(regex))
+		{
+			FieldError error = new FieldError("clientdetails", "phone2", onlyDigits);
+			result.addError(error);
+			flag = true;
+		}
 		if(result.hasErrors())
 		{
-			if(file.isEmpty() && userDetails.getPhotograph()==null)
-			{
-				FieldError error = new FieldError("userDetails", "photograph", mandatory);
-				result.addError(error);
-			}
-			return "client/updateClient";
+			flag = true;
 		}
-		else if(file.isEmpty() && userDetails.getPhotograph()==null)
+		if(file.isEmpty() && userDetails.getPhotograph()==null)
 		{
 			FieldError error = new FieldError("userDetails", "photograph", mandatory);
 			result.addError(error);
+			flag = true;
 		}
-		else
+		if(!flag)
 		{
 			try
 			{
@@ -181,7 +225,6 @@ public class ClientController {
 	@RequestMapping(value = "/delete/{userDetailsId}", method = RequestMethod.GET)
 	public String deleteSubCategory(ModelMap model,
 			@PathVariable("userDetailsId") Integer userDetailsId) {
-		userDetailsService.deteteUserDetails(userDetailsId);
 		userService.deleteUser(userDetailsService.getUserDetails(userDetailsId).getUserId());
 		return "redirect:/admin/clients";
 	}
