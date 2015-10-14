@@ -83,11 +83,45 @@ public class TestController {
 		return "category/categorymanage";
 	}
 	
+
+	@RequestMapping(value="/categoryupdate")
+	public String docategoryu()
+	{
+		return "category/categoryupdate";
+	}
+	
 	
 
 	@RequestMapping(value="/subcategorymanage")
 	public String dosubcategorym()
 	{
 		return "category/subcatmanage";
+	}
+	
+	@RequestMapping(value="/subcategoryupdate")
+	public String dosubcategoryu()
+	{
+		return "category/Subcategoryupdate";
+	}
+	
+
+	@RequestMapping(value="/businessmanage")
+	public String dobmanage()
+	{
+		return "business/addbusiness";
+	}
+	
+	@RequestMapping(value="/newbusinessmanage")
+	public String donewbmanage()
+	{
+		return "business/newbusiness";
+	}
+	
+	//banner controller
+	
+	@RequestMapping(value="/bannermanage")
+	public String dobanner()
+	{
+		return "banner/bannermanage";
 	}
 }

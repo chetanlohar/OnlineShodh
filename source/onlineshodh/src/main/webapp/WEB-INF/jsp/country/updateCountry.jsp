@@ -94,8 +94,61 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/jquery.dataTables.min.js"></script>
 
+<script type="text/javascript">
+$(document).ready(function(){
+
+	
+
+
+
+
+	
+	$('.back').click(function(){
+		 alert("fgd");
+		    doAjax($(this).attr('href'));
+		    return false;
+		  });
+		  function doAjax(url){
+		    if(url.match('^http')){
+		      var errormsg = 'AJAX cannot load external content';
+		      container.html(errormsg);
+		    } else {
+		      $.ajax({
+		        url: url,
+		        timeout:5000,
+		        success: function(data){
+
+		          container.html(data);
+		          location.reload();
+		        },
+		        error: function(req,error){
+		          if(error === 'error'){error = req.statusText;}
+		          var errormsg = 'There was a communication error: '+error;
+		          container.html(errormsg);
+		        },
+		        beforeSend: function(data){
+		          container.html('<p>Loading...</p>');
+		        }
+		      });
+		    }
+		  }
+	
+	
+});
+
+
+</script>
+
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-
+	
+<script type="text/javascript">
+$(document).ready(function(){
+function pageload() {
+	
+	alert("work");
+}
+});
+</script>
 </body>
 </html>

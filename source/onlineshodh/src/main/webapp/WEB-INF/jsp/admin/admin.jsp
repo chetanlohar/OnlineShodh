@@ -15,6 +15,10 @@
         <link href="<%=request.getContextPath()%>/resources/css/font-awesome.css" rel="stylesheet" />
         <!-- metis STYLES-->
         <link href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css" rel="stylesheet" />
+        <!-- Datepicker STYLES-->
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker3.min.css"
+	rel="stylesheet" />
         <!--PACE STYLES-->
          <link href="<%=request.getContextPath()%>/resources/css/pace.css" rel="stylesheet" />
         <!--CUSTOM STYLES-->
@@ -182,6 +186,32 @@
 						<ul class="nav nav-second-level">
 							<li><a href="<%=request.getContextPath()%>/prashant/clientcreate">Manage Client</a></li>
 						</ul></li>
+						
+						
+                        <li>
+                            <a href="#"><i class="fa fa-"></i>Business Management  <span class="fa arrow"></span></a>
+                            <ul class=" nav nav-second-level">
+                                <li>
+                                    <a href="<%=request.getContextPath()%>/prashant/businessmanage">
+                                        <i class="fa fa-user-plus"></i>
+                                       Add Business
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        List Business
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        Upgrade Businesss
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
 
                         <li>
                             <a href="add-client.html"><i class="fa fa-rss"></i>Advt. Management  <span class="fa arrow"></span></a>
@@ -215,11 +245,11 @@
 
 
                         <li>
-                            <a href="forms.html"><i class="fa fa-photo "></i>Advt. Banner<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-photo "></i>Advt. Banner<span class="fa arrow"></span></a>
 
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#"><i class="fa fa-cogs "></i>Add New Advt. Banner</a>
+                                    <a href="<%=request.getContextPath()%>/prashant/bannermanage"><i class="fa fa-cogs "></i>Add New Advt. Banner</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bullhorn "></i>List All Advt. Banner</a>
@@ -343,11 +373,16 @@
          <script src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script> 
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+        
+        
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
         
         <!-- PACE SCRIPTS -->
         <script src="<%=request.getContextPath()%>/resources/js/pace.js"></script>
+        	<!-- Datepicker SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
         
         <!-- CUSTOM SCRIPTS -->
         <script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>

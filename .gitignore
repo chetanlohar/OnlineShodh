@@ -1,0 +1,10 @@
+.metadata
+target
+bin
+*/**/target
+*.log
+Servers
+activemq-data
+.DS_Store
+.settings
+RemoteSystemsTempFiles
