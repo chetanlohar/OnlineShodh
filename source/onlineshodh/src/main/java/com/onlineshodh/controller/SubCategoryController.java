@@ -134,14 +134,14 @@ public class SubCategoryController {
 		if(operationType.equalsIgnoreCase("save"))
 			return "category/subcatmanage";
 		else
-			return "category/updateSubCategory";
+			return "category/Subcategoryupdate";
 	}
 
 	@RequestMapping(value = "/edit/{subCategoryId}", method = RequestMethod.GET)
 	public String editSubCategory(ModelMap model,@PathVariable("subCategoryId") Integer subCategoryId) {
 		model.addAttribute("categories", categoryService.getAllCategories());
 		model.addAttribute("subcategory",subCategoryService.getSubCategoryById(subCategoryId));
-		return "category/updateSubCategory";
+		return "category/Subcategoryupdate";
 	}
 
 	@RequestMapping(value = "/delete/{subCategoryId}", method = RequestMethod.GET)

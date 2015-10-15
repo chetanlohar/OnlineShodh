@@ -55,7 +55,7 @@ public class CategoryEntity implements Serializable {
 	/**
 	 * Describes Category Logo
 	 */
-	@Column(name="categorylogo")
+	@Column(name="categorylogo",nullable=false)
 	private byte [] categoryLogo;
 	
 	

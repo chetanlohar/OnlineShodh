@@ -91,7 +91,10 @@
 							<span class="btn btn-default btn-file"><span
 								class="fileinput-new">Select image</span><span
 								class="fileinput-exists">Change</span><input type="file"
-								id="file" name="file" onchange="changeImage(this);"></span>
+								id="file" name="file" onchange="changeImage(this);">
+								<form:errors path="categoryLogo" cssClass="errors" />
+			                     <img id="categorylogo" height="50" width="50"/>
+								</span>
 							<!-- <img id="categorylogo" height="50" width="50"/> -->
 							<a href="#" class="btn btn-default fileinput-exists"
 								data-dismiss="fileinput">Remove</a>

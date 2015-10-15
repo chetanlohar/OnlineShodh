@@ -85,8 +85,6 @@
 					<label for="address" class="col-sm-5 control-label">Description</label>
 					<div class="input-group">
 						<span class="input-group-addon"><span class="fa fa-road"></span></span>
-						<textarea class="form-control" rows="3" id="subcategorydesc"
-							name="subcategorydesc"></textarea>
 						<form:textarea path="subCategoryDesc" class="form-control"
 							rows="3" id="subcategorydesc" name="subcategorydesc" />
 						<form:errors path="subCategoryDesc" cssClass="errors" />
@@ -97,16 +95,16 @@
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-preview thumbnail" data-trigger="fileinput"
 							style="width: 200px; height: 150px;">
-							<img
-								src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-								alt="...">
-
+							<%-- img
+							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							alt="..."> --%>
 						</div>
 						<div>
 							<span class="btn btn-default btn-file"><span
 								class="fileinput-new">Select image</span><span
-								class="fileinput-exists">Change</span><input type="file"
-								name="..."></span> <a href="#"
+								class="fileinput-exists">Change</span> <input type="file"
+								id="file" name="file" onchange="changeImage(this);"> <form:errors
+									path="subCategoryLogo" cssClass="errors" /></span> <a href="#"
 								class="btn btn-default fileinput-exists"
 								data-dismiss="fileinput">Remove</a>
 						</div>
@@ -116,7 +114,8 @@
 
 
 				<div class="col-lg-6 col-lg-offset-6 space">
-					<button type="submit" class="btn btn-success" id="display">Submit</button>
+					<button type="submit" class="btn btn-success" id="display"
+						id="saveSubCategory" name="saveSubCategory">Submit</button>
 					<button type="reset" class="btn btn-danger">Cancel</button>
 				</div>
 			</form:form>
@@ -148,42 +147,33 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr class="odd gradeX">
-									<td>1</td>
-									<td><img
-										src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-										class="img-responsive" width="50px " height="50px;" /></td>
-									<td>1</td>
-									<td>India</td>
-									<td>India</td>
-									<td>1</td>
-									<td><a
-										href="<%=request.getContextPath()%>/prashant/subcategoryupdate"
-										class="edit"><button class="btn btn-info btn-xs">
-												<i class="fa fa-pencil"></i> Edit
-											</button></a></td>
-									<td class="center"><button class="btn btn-danger btn-xs">
-											<i class="fa fa-trash"></i> Delete
-										</button></td>
+								<c:forEach var="subcategory" items="${subcategories}">
+									<tr class="odd gradeX">
+										<td>${subcategory.subCategoryId}</td>
+										<td><img
+											src="${pageContext.request.contextPath}/admin/subcategories/load/logo/${subcategory.subCategoryId}"
+											class="img-responsive" width="50px " height="50px;" /></td>
+										<td>${subcategory.subCategoryName}</td>
+										<td>${subcategory.subCategoryDesc}</td>
+										<td>${subcategory.category.categoryName}&nbsp|&nbsp(${subcategory.category.categoryId})</td>
+										<td>${subcategory.popularity}</td>
+										<td><a
+											href="${pageContext.request.contextPath}/admin/subcategories/edit/${subcategory.subCategoryId}"
+											class="edit"><button class="btn btn-info btn-xs">
+													<i class="fa fa-pencil"></i> Edit
+												</button></a></td>
+										<td class="center"><a
+											href="${pageContext.request.contextPath}/admin/subcategories/delete/${subcategory.subCategoryId}"
+											onclick="return confirm('Do you want to Remove SubCategory: ${subcategory.subCategoryName}')">
+												<button class="btn btn-danger btn-xs">
+													<i class="fa fa-trash"></i> Delete
+												</button>
+										</a></td>
 
-								</tr>
-								<tr class="even gradeC">
-									<td>2</td>
-									<td>America</td>
-									<td>1</td>
-									<td>India</td>
-									<td>India</td>
-									<td>1</td>
-									<td><a
-										href="<%=request.getContextPath()%>/prashant/countyupdate"><button
-												class="btn btn-info btn-xs">
-												<i class="fa fa-pencil"></i> Edit
-											</button></a></td>
-									<td class="center"><button class="btn btn-danger btn-xs">
-											<i class="fa fa-trash"></i> Delete
-										</button></td>
 
-								</tr>
+									</tr>
+								</c:forEach>
+
 
 							</tbody>
 						</table>

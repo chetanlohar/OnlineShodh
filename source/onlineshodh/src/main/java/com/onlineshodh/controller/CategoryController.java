@@ -46,6 +46,9 @@ public class CategoryController {
 	
 	@Value("${alreadyExist}")
 	String alreadyExist;
+	
+	@Value("${mandatory}")
+	String mandatory;
 
 	@RequestMapping(value = { "/", "" })
 	public String showManageCategory(ModelMap model) {
@@ -65,6 +68,7 @@ public class CategoryController {
 			@RequestParam("file") MultipartFile file,
 			@Valid @ModelAttribute("category") CategoryEntity category,
 			BindingResult result) throws IOException {
+		boolean flag = false;
 		logger.info(file.isEmpty());
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("categories", categories);
@@ -74,7 +78,15 @@ public class CategoryController {
 			for (FieldError error : errors) {
 				logger.info(error.getDefaultMessage());
 			}
-		} else {
+		} 
+		if(file.isEmpty() && category.getCategoryLogo()==null)
+		{
+			FieldError categoryNotSelected = new FieldError("category", "categoryLogo", mandatory);
+			result.addError(categoryNotSelected);
+			flag = true;
+		}if(flag)
+			return "category/categorymanage";
+		else {
 			if (!file.isEmpty()) {
 				byte[] categoryLogo = file.getBytes();
 				category.setCategoryLogo(categoryLogo);
@@ -83,8 +95,10 @@ public class CategoryController {
 			category.setCategoryName(categoryName);
 			String categoryDesc = category.getCategoryDesc().toUpperCase();
 			category.setCategoryDesc(categoryDesc);
-			if (category.getPopularity() == null)
+			if (category.getPopularity() == null){
 				category.setPopularity(0);
+			}
+			
 			try {
 				categoryService.saveCategory(category);
 				return "redirect:/admin/categories/";
