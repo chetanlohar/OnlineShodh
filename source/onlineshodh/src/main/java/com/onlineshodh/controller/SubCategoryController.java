@@ -127,6 +127,7 @@ public class SubCategoryController {
 					logger.info(onlyAlphabets);
 				}
 				result.addError(countryNameAvailableError);
+				
 			} catch (Exception e) {
 				logger.debug("Exception Occured!", new Exception(e));
 			}

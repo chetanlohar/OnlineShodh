@@ -191,7 +191,7 @@ public class TownController {
 			}else{
 				townNameAvailableError = new FieldError("town", "townName",
 						onlyAlphabets);
-			}
+			}	
 		result.addError(townNameAvailableError);
 		model.addAttribute("countries", countryService.getAllCountries());
 		model.addAttribute("towns", townService.getAllTowns());

@@ -9,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +22,6 @@ import org.springframework.stereotype.Component;
 @Table(name="country")
 public class CountryEntity implements Comparable<CountryEntity>,Serializable{
 
-	
 	private static final long serialVersionUID = 1L;
 	
 	/**
@@ -37,6 +38,7 @@ public class CountryEntity implements Comparable<CountryEntity>,Serializable{
 	 */
 	@Column(name="countryname")
 	@NotEmpty
+	@Pattern(regexp="[a-zA-Z]",message="onlyAlphabets")
 	private String countryName;
 	
 	

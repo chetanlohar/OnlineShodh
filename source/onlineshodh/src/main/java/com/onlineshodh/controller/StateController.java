@@ -148,11 +148,11 @@ public class StateController {
 		if(exception.equalsIgnoreCase("unique")){
 			stateNameAvailableError = new FieldError("state",
 					"stateName", alreadyExist);
-			}else{
+		}else{
 				stateNameAvailableError = new FieldError("state",
 						"stateName",
 						onlyAlphabets);
-			}
+	}
 		result.addError(stateNameAvailableError);
 		model.addAttribute("countries", countryService.getAllCountries());
 		model.addAttribute("states",stateService.getAllStates());

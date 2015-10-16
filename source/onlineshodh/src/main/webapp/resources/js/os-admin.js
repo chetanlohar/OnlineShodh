@@ -52,18 +52,15 @@ $(document).ready(function () {
     
     
     
-    $('.sandbox-container input').datepicker({
-        orientation: "top left",
-        autoclose: true
-    });
-    
     
 });
 
 
 $(document).ready(function(){
 	  var container = $('#page-inner');
+	  alert("hi out of ajax");
 	  $('.edit').click(function(){
+		  alert(" hi in ajax");
 	    doAjax($(this).attr('href'));
 	    return false;
 	  });
@@ -90,4 +87,9 @@ $(document).ready(function(){
 	    }
 	  }
 
+	    
+	    $('.sandbox-container input').datepicker({
+	        orientation: "top left",
+	        autoclose: true
+	    });
 });

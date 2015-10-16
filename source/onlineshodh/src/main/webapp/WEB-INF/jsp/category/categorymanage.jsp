@@ -82,9 +82,9 @@
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-preview thumbnail" data-trigger="fileinput"
 							style="width: 200px; height: 150px;">
-							<%-- <img
+							<img id="categorylogo"
 								src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-								alt="..."> --%>
+								alt="...">
 
 						</div>
 						<div>

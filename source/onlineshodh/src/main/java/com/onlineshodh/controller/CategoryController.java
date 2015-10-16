@@ -26,6 +26,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.CategoryEntity;
+import com.onlineshodh.entity.PlanEntity;
 import com.onlineshodh.service.CategoryService;
 
 @Controller
@@ -99,10 +100,10 @@ public class CategoryController {
 				category.setPopularity(0);
 			}
 			
-			try {
+			//try {
 				categoryService.saveCategory(category);
-				return "redirect:/admin/categories/";
-			} catch (DataIntegrityViolationException e) {
+				//return "redirect:/admin/categories/";
+			/*} catch (DataIntegrityViolationException e) {
 				FieldError countryNameAvailableError;
 				if (e.getMostSpecificCause().getMessage().contains("unique")) {
 					countryNameAvailableError = new FieldError("category","categoryName", alreadyExist);
@@ -114,7 +115,7 @@ public class CategoryController {
 				result.addError(countryNameAvailableError);
 			} catch (Exception e) {
 				logger.debug("Exception Occured!", new Exception(e));
-			}
+			}*/
 		}
 		return "category/categorymanage";
 	}
@@ -156,4 +157,22 @@ public class CategoryController {
 		}
 		return null;
 	}
+	@RequestMapping(value="/exception/{excetiontype}")
+	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("category") CategoryEntity category, BindingResult result)
+	{
+		FieldError categoryNameAvailableError;
+		if(exception.equalsIgnoreCase("unique")){
+			categoryNameAvailableError = new FieldError("category","categoryName", alreadyExist);
+			logger.info(alreadyExist);
+			
+		
+		}else{
+			categoryNameAvailableError = new FieldError("category","categoryName",onlyAlphabets);
+			logger.info(onlyAlphabets);
+			}
+		result.addError(categoryNameAvailableError);
+		return "category/categorymanage";
+	
+	}
+		
 }

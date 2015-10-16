@@ -42,8 +42,27 @@ public class GlobalExceptionController {
 						.contains("chk_town_townname")) {
 			return "redirect:/admin/towns/exception/" + exceptionType;
 		}
+		if (ex.getMostSpecificCause().getMessage()
+				.contains("unq_Plan_details_planname")
+				|| ex.getMostSpecificCause().getMessage()
+						.contains("chk_Plan_details_planname")) {
+			return "redirect:/admin/plans/exception/" + exceptionType;
+		}
+		if (ex.getMostSpecificCause().getMessage()
+				.contains("UNQ_category_categoryname")
+				|| ex.getMostSpecificCause().getMessage()
+						.contains("chk_category_categoryname")) {
+			return "redirect:/admin/categories/exception/" + exceptionType;
+		}if (ex.getMostSpecificCause().getMessage()
+				.contains("UNQ_category_categoryname")
+				|| ex.getMostSpecificCause().getMessage()
+						.contains("chk_category_categoryname")) {
+			return "redirect:/admin/categories/exception/" + exceptionType;
+		}
+	
 		return "redirect:/admin/";
 	}
+	
 
 	/*@ExceptionHandler(Exception.class)
 	public ModelAndView handleAllException(Exception ex) {

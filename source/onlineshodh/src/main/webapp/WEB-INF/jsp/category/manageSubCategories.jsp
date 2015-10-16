@@ -40,7 +40,7 @@
 			<label for="file">Sub-Category Picture: </label>
 			<input type="file" id="file" name="file" value="Browse" onchange="changeImage(this);">
 			<form:errors path="subCategoryLogo" cssClass="errors" />
-			<img id="categorylogo" height="50" width="50"/>
+			
 		</p>
 		<p>
 			<input type="submit" id="saveSubCategory" name="saveSubCategory" value="Save" />

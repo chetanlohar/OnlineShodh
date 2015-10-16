@@ -174,8 +174,9 @@ public class CityController {
 			cityNameAvailableError = new FieldError("city", "cityName",	alreadyExist);
 			}else{
 				cityNameAvailableError = new FieldError("city", "cityName",	onlyAlphabets);
-			}
+			}	
 		result.addError(cityNameAvailableError);
+		
 		model.addAttribute("countries", countryService.getAllCountries());
 		model.addAttribute("cities", cityService.getAllCities());
 		return "city/manageCities";

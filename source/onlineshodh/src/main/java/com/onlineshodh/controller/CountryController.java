@@ -38,11 +38,12 @@ public class CountryController {
 		FieldError countryNameAvailableError;
 		if(exception.equalsIgnoreCase("unique")){
 		countryNameAvailableError = new FieldError("country","countryName",alreadyExist);
-		}else{
-			countryNameAvailableError = new FieldError("country","countryName",onlyAlphabets);
-		}
-		
 		result.addError(countryNameAvailableError);
+		}/*else{
+			//countryNameAvailableError = new FieldError("country","countryName",onlyAlphabets);
+		}
+		*/
+		
 		model.addAttribute("countries", countryService.getAllCountries());
 		return "country/manageCountries";
 		
@@ -57,6 +58,11 @@ public class CountryController {
 		return "country/manageCountries";
 	}
 	
+	@RequestMapping(value="/save", method=RequestMethod.GET)
+	public String saveCountry(ModelMap model)
+	{
+		return "redirect:/admin/countries";
+	}
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String saveCountry(ModelMap model,@Valid @ModelAttribute("country") CountryEntity country, BindingResult result)
 	{

@@ -45,7 +45,7 @@
 		<p>
 			<input type="submit" id="saveSubCategory" name="saveSubCategory" value="Update" />
 			<input type="reset" value="Reset"/>
-			<a href="${pageContext.request.contextPath}/admin/subcategories">Go Back</a>
+			<a href="${pageContext.request.contextPath}/admin/subcategories" class="back">Go Back</a>
 		</p>
 	</form:form>
 </body>

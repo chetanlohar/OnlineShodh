@@ -41,7 +41,38 @@
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
+<script type="text/javascript">
+var container = $('#page-inner');
+alert("hi out of ajax");
+$('.back').click(function(){
+	  alert(" hi in ajax");
+  doAjax($(this).attr('href'));
+  return false;
+});
+function doAjax(url){
+  if(url.match('^http')){
+    var errormsg = 'AJAX cannot load external content';
+    container.html(errormsg);
+  } else {
+    $.ajax({
+      url: url,
+      timeout:5000,
+      success: function(data){
+        container.html(data);
+      },
+      error: function(req,error){
+        if(error === 'error'){error = req.statusText;}
+        var errormsg = 'There was a communication error: '+error;
+        container.html(errormsg);
+      },
+      beforeSend: function(data){
+        container.html('<p>Loading...</p>');
+      }
+    });
+  }
+}
 
+</script>
 </head>
 </head>
 <body>
@@ -133,7 +164,7 @@
 				<div class="col-lg-6 col-lg-offset-6 space">
 					<button type="submit" class="btn btn-success" id="display" id="saveSubCategory" name="saveSubCategory">Update</button>
 					<button type="reset" class="btn btn-danger">Cancel</button>
-			        <a href="${pageContext.request.contextPath}/admin/subcategories" class="btn btn-success">Go Back</a>
+			        <a href="${pageContext.request.contextPath}/admin/subcategories" class="btn btn-success" class="back">Go Back</a>
 				</div>
 			</form:form>
 		</div>

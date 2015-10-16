@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
@@ -38,8 +39,6 @@ public class StateEntity implements  Serializable {
 	@Column(name = "statename")
 	@NotEmpty(message = "State Name is Mandatory!")
 	private String stateName;
-	
-		
 	@ManyToOne(targetEntity=CountryEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="countryId")
 	private CountryEntity country;
