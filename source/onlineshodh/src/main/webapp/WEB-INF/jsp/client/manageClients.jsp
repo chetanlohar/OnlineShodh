@@ -49,6 +49,7 @@
 			<label>Photograph</label>
 			<input type="file" id="file" name="file" value="Browse">
 			<form:errors path="userDetails.photograph" cssClass="errors" />
+			<img src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg" height="50" width="50" alt="*No Image"/>
 		</p>
 		<p>
 			<input type="submit" id="saveClient" name="saveClient" value="Save" />

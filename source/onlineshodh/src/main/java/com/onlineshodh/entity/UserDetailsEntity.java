@@ -2,7 +2,6 @@ package com.onlineshodh.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

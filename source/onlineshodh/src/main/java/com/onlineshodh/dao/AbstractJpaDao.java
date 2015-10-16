@@ -30,6 +30,12 @@ public abstract class AbstractJpaDao<T extends Serializable>{
 		return entityManager.find(clazz, id);
 	}
 	
+	/*Selects the Entity (Record) from Persistence Storage for given id*/
+	public T findOne(Long id)
+	{
+		return entityManager.find(clazz, id);
+	}
+	
 	/*Selects all the Entities (Records) from the Persistence Storage*/
 	@SuppressWarnings("unchecked")
 	public List<T> findAll()
