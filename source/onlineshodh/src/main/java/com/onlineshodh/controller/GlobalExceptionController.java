@@ -1,9 +1,21 @@
 package com.onlineshodh.controller;
 
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.onlineshodh.entity.StateEntity;
 
 @ControllerAdvice
 public class GlobalExceptionController {
@@ -53,24 +65,32 @@ public class GlobalExceptionController {
 				|| ex.getMostSpecificCause().getMessage()
 						.contains("chk_category_categoryname")) {
 			return "redirect:/admin/categories/exception/" + exceptionType;
-		}if (ex.getMostSpecificCause().getMessage()
+		}
+		if (ex.getMostSpecificCause().getMessage()
 				.contains("UNQ_category_categoryname")
 				|| ex.getMostSpecificCause().getMessage()
 						.contains("chk_category_categoryname")) {
 			return "redirect:/admin/categories/exception/" + exceptionType;
 		}
-	
+
 		return "redirect:/admin/";
 	}
-	
 
-	/*@ExceptionHandler(Exception.class)
-	public ModelAndView handleAllException(Exception ex) {
+	@ExceptionHandler(TransactionSystemException.class)
+	public String HandleBeanException(TransactionSystemException ex) {
+		String exceptionType = null;
+		return "redirect:/admin/states/exception/" + exceptionType;
 
-		ModelAndView model = new ModelAndView("error/generic_error");
-		model.addObject("errMsg", "this is Exception.class");
-		return model;
+	}
 
-	}*/
+	/*
+	 * @ExceptionHandler(Exception.class) public ModelAndView
+	 * handleAllException(Exception ex) {
+	 * 
+	 * ModelAndView model = new ModelAndView("error/generic_error");
+	 * model.addObject("errMsg", "this is Exception.class"); return model;
+	 * 
+	 * }
+	 */
 
 }

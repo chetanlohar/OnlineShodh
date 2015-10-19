@@ -1,5 +1,6 @@
 package com.onlineshodh.exception;
 
+import org.springframework.stereotype.Component;
 public class ConstraintViolationException extends Exception {
 	
 	private static final long serialVersionUID = 1L;

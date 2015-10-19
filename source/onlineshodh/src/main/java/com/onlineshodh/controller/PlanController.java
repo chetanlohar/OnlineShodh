@@ -74,13 +74,12 @@ public class PlanController {
 		
 		if(exception.equalsIgnoreCase("unique")){
 			planNameAvailableError = new FieldError("plan", "planName",	alreadyExist);
-			
-		
-		/*else{
-				planNameAvailableError = new FieldError("plan", "planName",alphaNumeric);
-			}*/
-		result.addError(planNameAvailableError);
 		}
+		else{
+				planNameAvailableError = new FieldError("plan", "planName",alphaNumeric);
+			}
+		
+		result.addError(planNameAvailableError);
 		return "plan/managePlans";
 		
 	}

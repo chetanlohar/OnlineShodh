@@ -328,8 +328,6 @@
 							action="${pageContext.request.contextPath}/admin/banners/save"
 							modelAttribute="banner" method="POST"
 							enctype="multipart/form-data">
-							<form:hidden path="bannerId" />
-							<form:hidden path="bannerLogo" />
 
 							<label for="category" class="col-sm-2 control-label">Category</label>
 							<div class="input-group">
@@ -409,7 +407,7 @@
 									<img id="categorylogo" height="50" width="50" /> </span> <a href="#"
 									class="btn btn-default fileinput-exists"
 									data-dismiss="fileinput">Remove</a>
-								<form:errors path="bannerLogo" cssClass="errors" />
+									<form:errors path="bannerLogo" cssClass="errors" />
 							</div>
 						</div>
 					</div>
@@ -428,8 +426,8 @@
 							<span class="input-group-addon"><span
 								class="fa fa-calendar"></span></span>
 
-							<form:input path="startDate" class="form-control"
-								name="startdate"/>
+							<form:input path="startDate" class="form-control" name="startdate"
+								 id="datepicker" />
 							<form:errors path="startDate" cssClass="errors" />
 
 						</div>
@@ -442,7 +440,7 @@
 								class="fa fa-calendar"></span></span>
 
 							<form:input path="expiryDate" class="form-control"
-								name="Expirydate"/>
+								name="Expirydate"  id="datepicker2" />
 							<form:errors path="expiryDate" cssClass="errors" />
 						</div>
 					</div>
@@ -454,13 +452,13 @@
 								class="fa fa-calendar"></span></span>
 
 							<form:input path="regDate" class="form-control" name="rgdate"
-								/>
+								 id="datepicker3" />
 							<form:errors path="regDate" cssClass="errors" />
 						</div>
 					</div>
 					<div class="col-lg-6 col-lg-offset-5 space">
 						<button type="submit" class="btn btn-success" id="display"
-							name="save" value="Save ">Submit</button>
+							name="update">Update</button>
 						<button type="reset" class="btn btn-danger">Cancel</button>
 						</form:form>
 					</div>
@@ -470,68 +468,7 @@
 				<div class="row">
 					<div class="col-lg-12 space">
 						<div class="panel panel-default">
-							<div class="panel-heading">Banner Management Table</div>
-							<!-- /.panel-heading -->
-							<div class="panel-body">
-								<div class="dataTable_wrapper table-responsive">
-									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
-										<thead>
-											<tr>
-
-
-												<th>Banner ID</th>
-												<th>Category ID</th>
-												<th>City ID</th>
-												<th>Banner Picture</th>
-												<th>Register Date</th>
-												<th>Start Date</th>
-												<th>Expiry Date</th>
-												<th>URL Link</th>
-												<th>Total Hits</th>
-												<th>Status</th>
-
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="odd gradeX">
-												<c:forEach var="banner" items="${banners}">
-													<td>${banner.bannerId}</td>
-													<td>${banner.category.categoryId}</td>
-													<td>${banner.city.cityId}</td>
-													<td class="text-center"><img
-														src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
-														class="img-responsive" width="50px " height="50px;" /></td>
-
-													<td>${banner.regDate}</td>
-													<td>${banner.startDate}</td>
-													<td>${banner.expiryDate}</td>
-													<td>${banner.urlLink}</td>
-													<td>${banner.totalHit}</td>
-													<td>${banner.status}</td>
-
-
-													<td><a
-														href="${pageContext.request.contextPath}/admin/banners/edit/${banner.bannerId}"
-														class="edit"><button class="btn btn-info btn-xs">
-																<i class="fa fa-pencil"></i> Edit
-															</button></a></td>
-													<td class="center"><a
-														href="${pageContext.request.contextPath}/admin/banners/delete/${banner.bannerId}"
-														onclick="return confirm('Do you want to Remove Banner: ${banner.bannerId}')"><button
-																class="btn btn-danger btn-xs">
-																<i class="fa fa-trash"></i> Delete
-															</button> </a></td>
-											</tr>
-
-											</c:forEach>
-										</tbody>
-									</table>
-								</div>
-								<!-- /.table-responsive -->
-
-							</div>
-							<!-- /.panel-body -->
+							
 						</div>
 						<!-- /.panel -->
 					</div>

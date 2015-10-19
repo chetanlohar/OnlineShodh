@@ -94,6 +94,7 @@
 				<label>Banner : </label> <input type="file" id="file" name="file"
 					value="Browse" onchange="changeImage(this);"> <img
 					id="categorylogo" height="50" width="50" />
+					
 			</p>
 
 			<p>

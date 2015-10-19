@@ -38,7 +38,7 @@ public class CountryEntity implements Comparable<CountryEntity>,Serializable{
 	 */
 	@Column(name="countryname")
 	@NotEmpty
-	@Pattern(regexp="[a-zA-Z]",message="onlyAlphabets")
+	@Pattern(regexp="^[a-zA-Z]+$",message="onlyAlphabets")
 	private String countryName;
 	
 	

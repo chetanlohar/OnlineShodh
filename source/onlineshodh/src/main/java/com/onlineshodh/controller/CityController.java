@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -24,7 +23,7 @@ import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.service.CityService;
 import com.onlineshodh.service.CountryService;
 import com.onlineshodh.service.StateService;
-
+import com.onlineshodh.support.validator.CityEntityValidator;
 
 @Controller
 @RequestMapping(value = "/admin/cities")
@@ -41,19 +40,23 @@ public class CityController {
 
 	@Autowired
 	CountryService countryService;
-	
+
 	@Value("${onlyAlphabets}")
-	String onlyAlphabets;  
-	
+	String onlyAlphabets;
+
 	@Value("${alreadyExist}")
-	String alreadyExist;   
-	
-	
+	String alreadyExist;
+
 	@Value("${mandatory}")
 	String mandatory;
-	
-	
-	
+
+	CityEntityValidator cityEntityValidator;
+
+	@Autowired
+	public CityController(CityEntityValidator cityEntityValidator) {
+		super();
+		this.cityEntityValidator = cityEntityValidator;
+	}
 
 	@RequestMapping(value = { "", "/" })
 	public String showManageCities(ModelMap model) {
@@ -64,124 +67,100 @@ public class CityController {
 		return "city/manageCities";
 	}
 
-	@RequestMapping(value="/save",method=RequestMethod.GET)
-	public String redirectTosaveCity(){
+	@RequestMapping(value = "/save", method = RequestMethod.GET)
+	public String redirectTosaveCity() {
 		return "redirect:/admin/cities";
 	}
-	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveCity(ModelMap model,
 			@Valid @ModelAttribute(value = "City") CityEntity city,
 			BindingResult result) {
-		boolean flag=false;
-		
-		System.out.println(city);
-		
+		boolean flag = false;
 
-		
+		System.out.println(city);
+
+		cityEntityValidator.validate(city, result);
 		if (result.hasErrors()) {
 
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError error : errors)
 				System.out.println(error.getDefaultMessage());
+			flag = true;
 		}
-		if(city.getState().getCountry().getCountryId()==0){
-			FieldError countryNotSelected=new FieldError("city", "state.country.countryId", mandatory);
-		    result.addError(countryNotSelected); 
-		    flag=true;
-		}if(city.getState().getStateId()==0){
-			
-			FieldError stateNotSelected=new FieldError("city", "state.stateId", mandatory);
-			result.addError(stateNotSelected);
-			flag=true;
-		}if(city.getCityName().equalsIgnoreCase("")){
-			FieldError cityNameNotEnter= new FieldError("city","cityName",mandatory);
-			result.addError(cityNameNotEnter);
-			flag=true;
-		}
-		
-		if(flag){
+
+		if (flag) {
 			model.addAttribute("countries", countryService.getAllCountries());
-			 model.addAttribute("states",stateService.getAllStates(city.getState().getCountry().getCountryId()));       	
-			  
-			return "city/manageCities";	
-		}
-		else {
+			model.addAttribute(
+					"states",
+					stateService.getAllStates(city.getState().getCountry()
+							.getCountryId()));
 
-			//try {
+			return "city/manageCities";
+		} else {
 
-				
-				cityService.updateCity(city);
-				return "redirect:/admin/cities";
-
-			/*} catch (DataIntegrityViolationException e) {
-				FieldError cityNameAvailableError;
-				System.out.println(" Cause "+e.getMostSpecificCause().getMessage());
-				if (e.getMostSpecificCause().getMessage().contains("unique"))
-					cityNameAvailableError = new FieldError("city", "cityName",	alreadyExist);
-				else
-					cityNameAvailableError = new FieldError("city", "cityName",	onlyAlphabets);
-				
-				result.addError(cityNameAvailableError);
-			}*/
+			cityService.updateCity(city);
+			return "redirect:/admin/cities";
 
 		}
-
-		//return "city/manageCities";
 
 	}
 
 	@RequestMapping(value = "/showstates", method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody List<StateEntity> showStates(ModelMap model,@RequestParam("countryID")Integer countryData) {
-		List<StateEntity> states=null;
-		 states = stateService.getAllStates(countryData);
+	public @ResponseBody List<StateEntity> showStates(ModelMap model,
+			@RequestParam("countryID") Integer countryData) {
+		List<StateEntity> states = null;
+		states = stateService.getAllStates(countryData);
 		for (StateEntity state : states)
 			System.out.println(" States :" + state.getStateName());
 
 		return states;
 	}
-	
-	@RequestMapping(value="/edit/{cityId}/{countryId}",method=RequestMethod.GET)
-	public String editCity(ModelMap model,@PathVariable("cityId")Integer cityId,@PathVariable("countryId")Integer countryId)
-	{
-		 
-		List<StateEntity> states=null;
+
+	@RequestMapping(value = "/edit/{cityId}/{countryId}", method = RequestMethod.GET)
+	public String editCity(ModelMap model,
+			@PathVariable("cityId") Integer cityId,
+			@PathVariable("countryId") Integer countryId) {
+
+		List<StateEntity> states = null;
 		states = stateService.getAllStates(countryId);
 		for (StateEntity state : states)
 			System.out.println(" States :" + state.getStateName());
-		CityEntity city=cityService.getCityById(cityId);
+		CityEntity city = cityService.getCityById(cityId);
 		model.addAttribute("city", city);
-		model.addAttribute("states",states);
-		model.addAttribute("countries",countryService.getAllCountries());
+		model.addAttribute("states", states);
+		model.addAttribute("countries", countryService.getAllCountries());
 		return "city/updateCity";
 	}
-	
-	@RequestMapping(value="/delete/{cityId}", method=RequestMethod.GET)
-	public String deleteCity(ModelMap model, @PathVariable("cityId") Integer cityId)
-	{
-		System.out.println("In Delete File :"+cityId);
+
+	@RequestMapping(value = "/delete/{cityId}", method = RequestMethod.GET)
+	public String deleteCity(ModelMap model,
+			@PathVariable("cityId") Integer cityId) {
+		System.out.println("In Delete File :" + cityId);
 		cityService.deleteCity(cityId);
 		return "redirect:/admin/cities";
 	}
-	
-	@RequestMapping(value="/exception/{excetiontype}")
-	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("City") CityEntity city, BindingResult result)
-	{
+
+	@RequestMapping(value = "/exception/{excetiontype}")
+	public String HandleException(ModelMap model,
+			@PathVariable("excetiontype") String exception,
+			@ModelAttribute("City") CityEntity city, BindingResult result) {
 		FieldError cityNameAvailableError;
-		
-		if(exception.equalsIgnoreCase("unique")){
-			cityNameAvailableError = new FieldError("city", "cityName",	alreadyExist);
-			}else{
-				cityNameAvailableError = new FieldError("city", "cityName",	onlyAlphabets);
-			}	
+
+		if (exception.equalsIgnoreCase("unique")) {
+			cityNameAvailableError = new FieldError("city", "cityName",
+					alreadyExist);
+		} else {
+			cityNameAvailableError = new FieldError("city", "cityName",
+					onlyAlphabets);
+		}
 		result.addError(cityNameAvailableError);
-		
+
 		model.addAttribute("countries", countryService.getAllCountries());
 		model.addAttribute("cities", cityService.getAllCities());
 		return "city/manageCities";
-		
+
 	}
-	
 
 }

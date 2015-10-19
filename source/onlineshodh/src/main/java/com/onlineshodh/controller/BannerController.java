@@ -37,6 +37,7 @@ import com.onlineshodh.service.CityService;
 import com.onlineshodh.service.CountryService;
 import com.onlineshodh.service.StateService;
 import com.onlineshodh.service.TownService;
+import com.onlineshodh.support.validator.BannerEntityValidator;
 
 @Controller
 @RequestMapping(value = "/admin/banners")
@@ -74,6 +75,14 @@ public class BannerController {
 
 	@Value("${mandatory}")
 	String mandatory;
+	
+	BannerEntityValidator bannerEntityValidator; 
+
+	@Autowired
+	public BannerController(BannerEntityValidator bannerEntityValidator) {
+		super();
+		this.bannerEntityValidator = bannerEntityValidator;
+	}
 
 	@RequestMapping(value = { "/", "" })
 	public String showManageBanner(ModelMap model) {
@@ -82,7 +91,7 @@ public class BannerController {
 		model.addAttribute("categories", categoryService.getAllCategories());
 		System.out.println(" list of Banners" + bannerService.getAllBanners());
 		model.addAttribute("banners", bannerService.getAllBanners());
-		return "banner/manageBanner";
+		return "banner/bannermanage";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.GET)
@@ -99,90 +108,20 @@ public class BannerController {
 		boolean flag = false;
 
 		System.out.println(banner);
+		bannerEntityValidator.validate(banner, result);
+
 		logger.info(file.isEmpty());
 		if (result.hasErrors()) {
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError error : errors) {
 				logger.info(error.getDefaultMessage());
+				flag = true;
 			}
 		}
-
-		if (banner.getCategory().getCategoryId() == 0) {
-			FieldError categoryNotSelected = new FieldError("banner",
-					"category.categoryId", mandatory);
-			result.addError(categoryNotSelected);
-			flag = true;
-		}
-		if (banner.getCity().getState().getCountry().getCountryId() == 0) {
-			FieldError countryNotSelected = new FieldError("banner",
-					"city.state.country.countryId", mandatory);
-			result.addError(countryNotSelected);
-			flag = true;
-		}
-		if (banner.getCity().getState().getStateId() == 0) {
-			FieldError stateNotSelected = new FieldError("banner",
-					"city.state.stateId", mandatory);
-			result.addError(stateNotSelected);
-			flag = true;
-		}
-		if (banner.getCity().getCityId() == 0) {
-			FieldError cityNotSelected = new FieldError("banner",
-					"city.cityId", mandatory);
-			result.addError(cityNotSelected);
-			flag = true;
-		}
-		if (banner.getUrlLink().equalsIgnoreCase("")) {
-			FieldError urlLinkNotEnter = new FieldError("banner", "urlLink",
-					mandatory);
-			result.addError(urlLinkNotEnter);
-			flag = true;
-		}
-		try {
-			if (banner.getStartDate().getDate() == 0) {
-				logger.info("Start Date Empty");
-
-			}
-		} catch (NullPointerException e) {
-			FieldError DateNotEnter = new FieldError("banner", "startDate",
-					"Please Enter Start Date");
-			result.addError(DateNotEnter);
-			flag = true;
-		} catch (java.lang.IllegalArgumentException exception) {
-			FieldError DateNotEnter = new FieldError("banner", "startDate",
-					"Please Enter Start Date");
-			result.addError(DateNotEnter);
-			flag = true;
-		}
-		try {
-			if (banner.getExpiryDate().getDate() == 0) {
-				logger.info("Expiry Date Empty");
-			}
-		} catch (NullPointerException e) {
-			FieldError DateNotEnter = new FieldError("banner", "expiryDate",
-					"Please Enter Expiry Date");
-			result.addError(DateNotEnter);
-			flag = true;
-		} catch (java.lang.IllegalArgumentException exception) {
-			FieldError DateNotEnter = new FieldError("banner", "expiryDate",
-					"Please  Enter Expiry Date");
-			result.addError(DateNotEnter);
-			flag = true;
-		}
-		try {
-			if (banner.getRegDate().getDate() == 0) {
-				logger.info("Register Date Empty");
-			}
-		} catch (NullPointerException e) {
-			FieldError DateNotEnter = new FieldError("banner", "regDate",
-					"Please Enter Register Date");
-			result.addError(DateNotEnter);
-			flag = true;
-		} catch (java.lang.IllegalArgumentException exception) {
-			FieldError DateNotEnter = new FieldError("banner", "regDate",
-					"Please Enter Register Date");
-			result.addError(DateNotEnter);
-			flag = true;
+		if(file.isEmpty()){
+			
+			flag=true;
 		}
 
 		if (flag) {
@@ -198,7 +137,7 @@ public class BannerController {
 					cityService.getAllCities(banner.getCity().getState()
 							.getStateId()));
 
-			return "banner/manageBanner";
+			return "banner/bannermanage";
 		} else {
 			if (!file.isEmpty()) {
 				byte[] bannerLogo = file.getBytes();
@@ -226,7 +165,7 @@ public class BannerController {
 			}
 		}
 
-		return "banner/manageBanner";
+		return "banner/bannermanage";
 	}
 
 	@RequestMapping("/load/logo/{bannerId}")
@@ -267,7 +206,7 @@ public class BannerController {
 		model.addAttribute("states", states);
 		model.addAttribute("categories", categoryService.getAllCategories());
 		model.addAttribute("countries", countryService.getAllCountries());
-		return "banner/updateBanner";
+		return "banner/Bannerupdate";
 	}
 
 	@RequestMapping(value = "/delete/{bannerId}", method = RequestMethod.GET)

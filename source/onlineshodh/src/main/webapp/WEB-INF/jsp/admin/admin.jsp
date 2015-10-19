@@ -249,7 +249,9 @@
 
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/prashant/bannermanage"><i class="fa fa-cogs "></i>Add New Advt. Banner</a>
+                                    <a href="${pageContext.request.contextPath}/admin/banners"><i class="fa fa-cogs "></i>Add New Advt. Banner</a>
+                              
+                              
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-bullhorn "></i>List All Advt. Banner</a>
