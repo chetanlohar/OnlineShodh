@@ -354,6 +354,24 @@ footer {
 }
 
 /*==============================================
+    clent infopage Style
+  =============================================*/
+  .detail-title{
+  font-size: 15px;
+  padding: 5px 10px;
+  background:rgba(195,180,5,0.9);
+  color: #fff;
+  
+  }
+  .detail-wraper{
+  background: #f4f4f4;
+  } 
+  .detail-wraper table tr .lable{
+  width: 200px;
+  
+  }
+
+/*==============================================
     Tabs Style   
   =============================================*/
   .nav-tabs>li.active>a{

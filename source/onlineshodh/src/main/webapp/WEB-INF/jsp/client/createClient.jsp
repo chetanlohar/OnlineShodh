@@ -14,27 +14,21 @@
 <link
 	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
 	rel="stylesheet" />
-	
-	<!-- FONTAWESOME ICONS STYLES-->
+
+<!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/intlTelInput.css"
+	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
-	
-	<!-- DATA TABLE STYLES-->
+
+<!-- DATA TABLE STYLES-->
 <link
 	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
-	
+
 <!-- metis STYLES-->
 <link
 	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
-	
-<!--Jancy STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
-	rel="stylesheet" />
-	
-	
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
@@ -42,323 +36,613 @@
 </head>
 </head>
 <body>
-<div class="row">
-				<div class="col-lg-12">
-					<h1 class="page-header">Client Management</h1>
+
+	<div id="wrapper">
+		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
+			style="margin-bottom: 0">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".sidebar-collapse">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="index.html">Online Shodh </a>
+		</div>
+
+		<div class="notifications-wrapper">
+			<ul class="nav">
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" aria-expanded="false"> <i
+						class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-tasks">
+						<li><a href="#">
+								<div>
+									<p>
+										<strong>Task 1</strong> <span class="pull-right text-muted">60%
+											Complete</span>
+									</p>
+									<div class="progress progress-striped active">
+										<div class="progress-bar progress-bar-danger"
+											role="progressbar" aria-valuenow="60" aria-valuemin="0"
+											aria-valuemax="100" style="width: 60%">
+											<span class="sr-only">60% Complete (danger)</span>
+										</div>
+									</div>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<p>
+										<strong>Task 2</strong> <span class="pull-right text-muted">30%
+											Complete</span>
+									</p>
+									<div class="progress progress-striped active">
+										<div class="progress-bar progress-bar-info" role="progressbar"
+											aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"
+											style="width: 30%">
+											<span class="sr-only">30% Complete</span>
+										</div>
+									</div>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<p>
+										<strong>Task 3</strong> <span class="pull-right text-muted">80%
+											Complete</span>
+									</p>
+									<div class="progress progress-striped active">
+										<div class="progress-bar progress-bar-warning"
+											role="progressbar" aria-valuenow="80" aria-valuemin="0"
+											aria-valuemax="100" style="width: 80%">
+											<span class="sr-only">80% Complete (warning)</span>
+										</div>
+									</div>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a href="#">
+								<div>
+									<p>
+										<strong>Task 4</strong> <span class="pull-right text-muted">90%
+											Complete</span>
+									</p>
+									<div class="progress progress-striped active">
+										<div class="progress-bar progress-bar-success"
+											role="progressbar" aria-valuenow="90" aria-valuemin="0"
+											aria-valuemax="100" style="width: 90%">
+											<span class="sr-only">90% Complete (success)</span>
+										</div>
+									</div>
+								</div>
+						</a></li>
+						<li class="divider"></li>
+						<li><a class="text-center" href="#"> <strong>See
+									Tasks List + </strong>
+						</a></li>
+					</ul></li>
+
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#"> <i class="fa fa-user-plus"></i>
+						<i class="fa fa-caret-down"></i>
+				</a>
+					<ul class="dropdown-menu dropdown-user">
+						<li><a href="#"><i class="fa fa-user-plus"></i> My
+								Profile</a></li>
+						<li class="divider"></li>
+						<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+					</ul></li>
+			</ul>
+
+		</div>
+		</nav>
+		<!-- /. NAV TOP  -->
+		<nav class="navbar-default navbar-side" role="navigation">
+		<div class="sidebar-collapse">
+			<ul class="nav" id="main-menu">
+				<li>
+					<div class="user-img-div">
+						<img
+							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							class="img-circle" />
+
+
+					</div>
+
+				</li>
+				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
+
+				<li><a href="<%=request.getContextPath()%>/admin/home"><i
+						class="fa fa-home "></i>Home</a></li>
+				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
+						Category Management<span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/categories"><i
+								class="fa fa-list"></i> Category Management</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/subcategories">
+								<i class="fa fa-list"></i> Sub-Category Management
+						</a></li>
+					</ul> <!-- /.nav-second-level --></li>
+
+				<li ><a href="tables.html"><i
+						class="fa fa-globe fa-fw"></i> Location Management<span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a 
+							href="${pageContext.request.contextPath}/admin/countries">Country
+								Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/states">State
+								Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/cities">City
+								Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/towns">Town
+								Management</a></li>
+					</ul> <!-- /.nav-second-level of location management --></li>
+
+				<li class="active"><a href="forms.html"><i class="fa fa-user fa-fw"></i>
+						Client Management<span class="fa arrow"></a>
+					<ul class="nav nav-second-level">
+						<li><a class="active-menu"
+							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+								Client</a></li>
+					</ul></li>
+
+
+				<li><a href="#"><i class="fa fa-"></i>Business Management <span
+						class="fa arrow"></span></a>
+					<ul class=" nav nav-second-level">
+						<li><a
+							href="<%=request.getContextPath()%>/prashant/businessmanage">
+								<i class="fa fa-user-plus"></i> Add Business
+						</a></li>
+						<li><a href="#"> <i class="fa fa-list"></i> List Business
+						</a></li>
+						<li><a href="#"> <i class="fa fa-list"></i> Upgrade
+								Businesss
+						</a></li>
+
+					</ul></li>
+
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+						Management <span class="fa arrow"></span></a>
+					<ul class=" nav nav-second-level">
+						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
+								Add
+						</a></li>
+						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						</a></li>
+						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
+								payment
+						</a></li>
+						<li><a href="#"> <i class="fa fa-list"></i> List All
+								Advt. Payment
+						</a></li>
+					</ul></li>
+
+
+				<li><a href="#"><i class="fa fa-photo "></i>Advt. Banner<span
+						class="fa arrow"></span></a>
+
+					<ul class="nav nav-second-level">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/banners"><i
+								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
+								Advt. Banner</a></li>
+					</ul></li>
+
+				<li><a href="#"><i class="fa fa-sitemap "></i>Category
+						Management <span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All
+								Category</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
+								Category</a></li>
+						<li><a href="#">List Sub Category</a></li></li>
+			</ul>
+			</li>
+			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+			</li>
+			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
+				</ul></li>
+			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+					</li>
+
+				</ul></li>
+			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
+					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
+					</li>
+					<li><a href="#">Second Level<span class="fa arrow"></span></a>
+						<ul class="nav nav-third-level">
+							<li><a href="#">Third Link</a></li>
+							<li><a href="#">Third Link</a></li>
+
+						</ul></li>
+				</ul></li>
+
+
+			</ul>
+		</div>
+
+		</nav>
+		<!-- /. SIDEBAR MENU (navbar-side) -->
+		<div id="page-wrapper" class="page-wrapper-cls">
+			<div id="page-inner">
+
+				<div class="row">
+					<div class="col-lg-12">
+						<h1 class="page-header">Client Management</h1>
+					</div>
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
-			<div class="row">
-				<div class="col-lg-12">
-				<form class="form-horizontal" name="clientform" id="clientform">
-                                <div class="col-lg-6">
-                                    <div class="col-lg-12 space">
-                                        <label for="mailid" class="col-sm-5 control-label">Email Id</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-envelope"></span></span> 
-                                            <input type="text" class="form-control" id="clientname" name="clietmail" placeholder="example@mail.com">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 space">
-                                        <label for="password" class="col-sm-5 control-label">Password</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-key"></span></span> 
-                                            <input type="password" class="form-control" id="clientpass" name="clietpass" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 space">
-                                        <label for="password" class="col-sm-5 control-label">Confirm Password</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-key"></span></span> 
-                                            <input type="password" class="form-control" id="clientCpass" name="clietCpass" >
-                                        </div>
-                                    </div>
+				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-12">
+						<form class="form-horizontal" name="clientform" id="clientform">
+							<div class="col-lg-6">
+								<div class="col-lg-12 space">
+									<label for="mailid" class="col-sm-5 control-label">Email
+										Id</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-envelope"></span></span> <input type="text"
+											class="form-control" id="clientname" name="clietmail"
+											placeholder="example@mail.com">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="password" class="col-sm-5 control-label">Password</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span class="fa fa-key"></span></span>
+										<input type="password" class="form-control" id="clientpass"
+											name="clietpass">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="password" class="col-sm-5 control-label">Confirm
+										Password</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span class="fa fa-key"></span></span>
+										<input type="password" class="form-control" id="clientCpass"
+											name="clietCpass">
+									</div>
+								</div>
 
-                                    <div class="col-lg-12 space">
-                                        <label for="Name" class="col-sm-5 control-label">Name</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-user"></span></span> 
-                                            <input type="text" class="form-control" id="clientname" name="clietname" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 space">
-                                        <label for="Name" class="col-sm-5 control-label">Contact</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-phone"></span></span> 
-                                            <input type="tel" class="form-control mobile-number" name="clietphone" >
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-lg-12 space">
-                                        <label for="Name" class="col-sm-5 control-label"> Secondary Contact</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-phone"></span></span> 
-                                            <input type="tel" class="form-control mobile-number" name="clietphone2" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-lg-offset-5 space">
-                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;">
-                                                <img src="<%=request.getContextPath()%>/resources/images/user_pic.jpg" alt="...">
+								<div class="col-lg-12 space">
+									<label for="Name" class="col-sm-5 control-label">Name</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="clientname" name="clietname">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="Name" class="col-sm-5 control-label">Contact</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-phone"></span></span> <input type="tel"
+											class="form-control mobile-number" name="clietphone">
+									</div>
+								</div>
 
-                                            </div>
-                                            <div>
-                                                <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
-                                                <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
+								<div class="col-lg-12 space">
+									<label for="Name" class="col-sm-5 control-label">
+										Secondary Contact</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-phone"></span></span> <input type="tel"
+											class="form-control mobile-number" name="clietphone2">
+									</div>
+								</div>
+								<div class="col-lg-6 col-lg-offset-5 space">
+									<div class="fileinput fileinput-new" data-provides="fileinput">
+										<div class="fileinput-preview thumbnail"
+											data-trigger="fileinput" style="width: 200px; height: 150px;">
+											<img
+												src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+												alt="...">
 
-                                    <div class="col-lg-12 space">
-                                        <label for="address" class="col-sm-5 control-label">Address</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-road"></span></span> 
-                                            <textarea class="form-control" rows="3" id="clientadd" name="address" ></textarea>
-                                        </div>
-                                    </div>
+										</div>
+										<div>
+											<span class="btn btn-default btn-file"><span
+												class="fileinput-new">Select image</span><span
+												class="fileinput-exists">Change</span><input type="file"
+												name="..."></span> <a href="#"
+												class="btn btn-default fileinput-exists"
+												data-dismiss="fileinput">Remove</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6">
 
-                                    <div class="col-lg-12 space">
-                                        <label for="country" class="col-sm-5 control-label">Country</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-flag"></span></span> 
-                                            <select class="form-control" name="clientcountry">
-                                                <option value="">Select</option>
-                                                <option value="india">India</option>
-                                            </select>
-                                        </div>
-                                    </div>
+								<div class="col-lg-12 space">
+									<label for="address" class="col-sm-5 control-label">Address</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-road"></span></span>
+										<textarea class="form-control" rows="3" id="clientadd"
+											name="address"></textarea>
+									</div>
+								</div>
 
-                                    <div class="col-lg-12 space">
-                                        <label for="state" class="col-sm-5 control-label">State</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-user"></span></span> 
-                                            <select class="form-control" name="clientstate">
-                                            <option value="">Select</option>
-                                                <option value="mharastra">maharastra</option>
-                                            </select>
-                                        </div>
-                                    </div>
+								<div class="col-lg-12 space">
+									<label for="country" class="col-sm-5 control-label">Country</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-flag"></span></span> <select class="form-control"
+											name="clientcountry">
+											<option value="">Select</option>
+											<option value="india">India</option>
+										</select>
+									</div>
+								</div>
 
-                                    <div class="col-lg-12 space">
-                                        <label for="city" class="col-sm-5 control-label">City</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-user"></span></span> 
-                                            <select class="form-control" name="clientcity">
-                                            <option value="">Select</option>
-                                                <option value="pune">pune</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 space">
-                                        <label for="town" class="col-sm-5 control-label">Town</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-user"></span></span> 
-                                            <select class="form-control" id="town" name="clinettown">
-                                            <option value="">Select</option>
-                                                <option value="kharadi">Kharadi</option>
-                                                <option value="Other">Other Town</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 space hide-div ">
-                                        <label for="Otown" class="col-sm-5 control-label">Town</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-user"></span></span> 
-                                            <input type="text" class="form-control" id="Otown" name="otown" >
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 space">
-                                        <label for="pincode" class="col-sm-5 control-label">Pincode</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon"><span
-                                                    class="fa fa-user"></span></span> 
-                                            <input type="text" class="form-control" id="clientpin" name="clietpin" >
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-lg-offset-6 space">
-                                    <button type="submit" class="btn btn-success" id="display">Submit</button>
-                                    <button type="reset" class="btn btn-danger">Cancel</button>
-                                </div>
-                            </form>
+								<div class="col-lg-12 space">
+									<label for="state" class="col-sm-5 control-label">State</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											name="clientstate">
+											<option value="">Select</option>
+											<option value="mharastra">maharastra</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-12 space">
+									<label for="city" class="col-sm-5 control-label">City</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											name="clientcity">
+											<option value="">Select</option>
+											<option value="pune">pune</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="town" class="col-sm-5 control-label">Town</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											id="town" name="clinettown">
+											<option value="">Select</option>
+											<option value="kharadi">Kharadi</option>
+											<option value="Other">Other Town</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-12 space hide-div ">
+									<label for="Otown" class="col-sm-5 control-label">Town</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="Otown" name="otown">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="clientpin" name="clietpin">
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-6 col-lg-offset-6 space">
+								<button type="submit" class="btn btn-success" id="display">Submit</button>
+								<button type="reset" class="btn btn-danger">Cancel</button>
+							</div>
+						</form>
+					</div>
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.col-lg-12 -->
+				<!-- /.row -->
+
+				<div class="row">
+					<div class="col-lg-12 space">
+						<div class="panel panel-default">
+							<div class="panel-heading">Client Management Table</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="dataTable_wrapper table-responsive">
+									<table class="table table-striped table-bordered table-hover"
+										id="dataTables-example">
+										<thead>
+											<tr>
+												<th>Client ID</th>
+												<th>Client Name</th>
+												<th>Email</th>
+												<th>Contact</th>
+												<th>Address</th>
+												<th>Reg. Date</th>
+												<th>Photograph</th>
+												<th>Edit</th>
+												<th>Delete</th>
+
+											</tr>
+										</thead>
+										<tbody>
+											<tr class="odd gradeX">
+												<td>1</td>
+												<td>Pune</td>
+												<td>Maharastra</td>
+												<td>India</td>
+												<td>Pune</td>
+												<td>Maharastra</td>
+												<td class="text-center"><img
+													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+													class="img-responsive" width="50px " height="50px;" /></td>
+
+												<td><button class="btn btn-info btn-xs">
+														<i class="fa fa-pencil"></i> Edit
+													</button></td>
+												<td class="center"><button
+														class="btn btn-danger btn-xs">
+														<i class="fa fa-trash"></i> Delete
+													</button></td>
+
+											</tr>
+											<tr class="even gradeC">
+												<td>2</td>
+												<td>Kept Home</td>
+												<td>New York</td>
+												<td>America</td>
+												<td>Pune</td>
+												<td>Maharastra</td>
+												<td><img
+													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+													class="img-responsive" width="50px " height="50px;" /></td>
+												<td><button class="btn btn-info btn-xs">
+														<i class="fa fa-pencil"></i> Edit
+													</button></td>
+												<td class="center"><button
+														class="btn btn-danger btn-xs">
+														<i class="fa fa-trash"></i> Delete
+													</button></td>
+
+											</tr>
+											<tr class="even gradeC">
+												<td>2</td>
+												<td>Kept Home</td>
+												<td>New York</td>
+												<td>America</td>
+												<td>Pune</td>
+												<td>Maharastra</td>
+												<td><img
+													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+													class="img-responsive" width="50px " height="50px;" /></td>
+												<td><a
+													href="<%=request.getContextPath()%>/prashant/clientupdate"
+													class="edit"><button class="btn btn-info btn-xs">
+															<i class="fa fa-pencil"></i> Edit
+														</button></a></td>
+												<td class="center"><button
+														class="btn btn-danger btn-xs">
+														<i class="fa fa-trash"></i> Delete
+													</button></td>
+
+											</tr>
+											<tr class="even gradeC">
+												<td>2</td>
+												<td>Kept Home</td>
+												<td>New York</td>
+												<td>America</td>
+												<td>Pune</td>
+												<td>Maharastra</td>
+												<td><img
+													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+													class="img-responsive" width="50px " height="50px;" /></td>
+												<td><button class="btn btn-info btn-xs">
+														<i class="fa fa-pencil"></i> Edit
+													</button></td>
+												<td class="center"><button
+														class="btn btn-danger btn-xs">
+														<i class="fa fa-trash"></i> Delete
+													</button></td>
+
+											</tr>
+
+										</tbody>
+									</table>
+								</div>
+								<!-- /.table-responsive -->
+
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
+
+
+
+				<!-- /. PAGE INNER  -->
+				<footer> &copy; 2015 OnlineShodh | By : <a
+					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			<!-- /.row -->
-			
-            <div class="row">
-                <div class="col-lg-12 space">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                           Client Management Table
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="dataTable_wrapper table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>Client ID</th>
-                                            <th>Client Name</th>
-                                            <th>Email</th>
-                                            <th>Contact</th>
-                                            <th>Address</th>
-                                            <th>Reg. Date</th>
-                                            <th>Photograph</th>
-                                            <th>Edit</th>
-                                            <th>Delete</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>1</td>
-                                            <td>Pune</td>
-                                            <td>Maharastra</td>
-                                            <td>India</td>
-                                            <td>Pune</td>
-                                            <td>Maharastra</td>
-                                            <td class="text-center"> <img src="<%=request.getContextPath()%>/resources/images/user_pic.jpg" class="img-responsive"  width="50px " height="50px;"/>
-                                            </td>
-                                            
-                                            <td><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>  Edit</button></td>
-                                            <td class="center"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></td>
-                                            
-                                        </tr>
-                                        <tr class="even gradeC">
-                                            <td>2</td>
-                                            <td>Kept Home</td>
-                                            <td>New York</td>
-                                            <td>America</td>
-                                            <td>Pune</td>
-                                            <td>Maharastra</td>
-                                            <td> <img src="<%=request.getContextPath()%>/resources/images/user_pic.jpg" class="img-responsive"  width="50px " height="50px;"/>
-                                            </td>
-                                            <td><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>  Edit</button></td>
-                                            <td class="center"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></td>
-                                            
-                                        </tr>
-                                         <tr class="even gradeC">
-                                            <td>2</td>
-                                            <td>Kept Home</td>
-                                            <td>New York</td>
-                                            <td>America</td>
-                                            <td>Pune</td>
-                                            <td>Maharastra</td>
-                                            <td> <img src="<%=request.getContextPath()%>/resources/images/user_pic.jpg" class="img-responsive"  width="50px " height="50px;"/>
-                                            </td>
-                                            <td><a href="<%=request.getContextPath()%>/prashant/clientupdate" class="edit"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>  Edit</button></a></td>
-                                            <td class="center"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></td>
-                                            
-                                        </tr>
-                                         <tr class="even gradeC">
-                                            <td>2</td>
-                                            <td>Kept Home</td>
-                                            <td>New York</td>
-                                            <td>America</td>
-                                            <td>Pune</td>
-                                            <td>Maharastra</td>
-                                            <td> <img src="<%=request.getContextPath()%>/resources/images/user_pic.jpg" class="img-responsive"  width="50px " height="50px;"/>
-                                            </td>
-                                            <td><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>  Edit</button></td>
-                                            <td class="center"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i>  Delete</button></td>
-                                            
-                                        </tr>
-            
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- /.table-responsive -->
-                            
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
+			<!-- /. PAGE WRAPPER  -->
+		</div>
 
+	</div>
+	<!-- /. WRAPPER  -->
 
-                    <!-- /. PAGE INNER  -->
-                     <footer >
-            &copy; 2015 OnlineShodh | By : <a href="www.softinfology.com" target="_blank">Softinfology</a>
-        </footer>
-             
-      
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
-		
-		<!-- validation SCRIPTS -->
+
+	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
-		<!-- BOOTSTRAP SCRIPTS -->
+	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
-		
-				<!-- validation SCRIPTS -->
+
+	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
-		
-		
-		
-			<!-- JANSY BOOTSTRAP SCRIPTS -->
+
+
+
+	<!-- JANSY BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
-		
+
 	<!-- METIMENU SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
-		
-		
-		
-		<!-- Input Telephone SCRIPTS -->
+
+
+
+	<!-- Input Telephone SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
-		
-		<!-- DATATABLE SCRIPTS -->
+
+	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
 	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
 
-<script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-                responsive: true
-        });
-        
-        $(".mobile-number").intlTelInput();
-        
-        $("#town").change(function(e){
-           
-           if($('#town').val()=='Other'){
-           $(".hide-div").show();
-       }
-       else{
-           $(".hide-div").hide();
-       }
-           
-        });
-    });
-    </script>
+	<script>
+		$(document).ready(function() {
+			$('#dataTables-example').DataTable({
+				responsive : true
+			});
+
+			$(".mobile-number").intlTelInput();
+
+			$("#town").change(function(e) {
+
+				if ($('#town').val() == 'Other') {
+					$(".hide-div").show();
+				} else {
+					$(".hide-div").hide();
+				}
+
+			});
+		});
+	</script>
 </body>
 </html>

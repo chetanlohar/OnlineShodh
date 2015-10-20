@@ -117,6 +117,31 @@ public class TestController {
 		return "business/newbusiness";
 	}
 	
+	@RequestMapping(value="/businessdetail")
+	public String dobusinessdetail()
+	{
+		return "business/BusinessDetails";
+	}
+	
+	@RequestMapping(value="/businessdetailedit")
+	public String dobusinessdetailedit()
+	{
+		return "business/Bclientupdate";
+	}
+	
+	@RequestMapping(value="/businessdetailupdate")
+	public String dobusinessdetailupdate()
+	{
+		return "business/businessdetailupdate";
+	}
+	
+	@RequestMapping(value="/businessaddressupdate")
+	public String dobusinessaddressupdate()
+	{
+		return "business/busiaddressupdate";
+	}
+	
+	
 	//banner controller
 	
 	@RequestMapping(value="/bannermanage")

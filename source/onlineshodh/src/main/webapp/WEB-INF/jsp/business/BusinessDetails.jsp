@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Manage City</title>
+<title>Business Details</title>
 
 <!-- BOOTSTRAP STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
@@ -17,9 +15,9 @@
 	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
-<!--Jancy STYLES-->
+<!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="<%=request.getContextPath()%>/resources/css/intlTelInput.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
@@ -31,6 +29,13 @@
 <link
 	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
+
+<!--Jancy STYLES-->
+<link
+	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	rel="stylesheet" />
+
+
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
@@ -38,7 +43,6 @@
 </head>
 </head>
 <body>
-
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
 			style="margin-bottom: 0">
@@ -161,20 +165,19 @@
 
 				<li><a href="<%=request.getContextPath()%>/admin/home"><i
 						class="fa fa-home "></i>Home</a></li>
-				<li><a href="#"><i
-						class="fa fa-sitemap fa-fw"></i> Category Management<span
-						class="fa arrow"></span></a>
+				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
+						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/categories"><i
+							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
 								class="fa fa-list"></i> Category Management</a></li>
-						<li><a 
-							href="${pageContext.request.contextPath}/admin/subcategories">
+						<li><a
+							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 
-				<li class="active"><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
+				<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
 						Location Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
@@ -182,7 +185,7 @@
 								Management</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/states">State
 								Management</a></li>
-						<li><a class="active-menu" href="${pageContext.request.contextPath}/admin/cities">City
+						<li><a href="${pageContext.request.contextPath}/admin/cities">City
 								Management</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/towns">Town
 								Management</a></li>
@@ -197,10 +200,10 @@
 					</ul></li>
 
 
-				<li><a href="#"><i class="fa fa-"></i>Business Management <span
-						class="fa arrow"></span></a>
+				<li class="active"><a href="#"><i class="fa fa-"></i>Business
+						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a
+						<li><a class="active-menu"
 							href="<%=request.getContextPath()%>/prashant/businessmanage">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
@@ -234,7 +237,7 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/banners"><i
+							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
@@ -272,7 +275,7 @@
 					</li>
 					<li><a href="#">Second Level<span class="fa arrow"></span></a>
 						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>
+							<li><a href="#">Third Link</a></li>s
 							<li><a href="#">Third Link</a></li>
 
 						</ul></li>
@@ -288,180 +291,277 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">City Management</h1>
-					</div>
-					<!-- /.col-lg-12 -->
-				</div>
-				<!-- 	/.row -->
-				<div class="row">
-					<div class="col-lg-9">
-
-
-						<form:form
-							action="${pageContext.request.contextPath}/admin/cities/save"
-							method="POST" modelAttribute="City" class="form-horizontal"
-							id="citymanage">
-
-							<label class="col-md-3">Country Name:<span
-								style="color: red; font-size: 18px;">*</span></label>
-							<div class="form-group input-group col-md-9">
-
-
-
-								<form:select path="state.country.countryId" id="countryId"
-									class="form-control" name="country" onchange="getState()">
-									<form:option value="0" label="--- Select ---" />
-									<c:forEach var="country" items="${countries}">
-										<form:option value="${country.countryId}">${country.countryName}</form:option>
-									</c:forEach>
-								</form:select>
-								<form:errors path="state.country.countryId" />
-							</div>
-							<label class="col-md-3">State Name:<span
-								style="color: red; font-size: 18px;">*</span></label>
-							<div class="form-group input-group col-md-9">
-
-
-								<form:select path="state.stateId" class="form-control"
-									name="state" id="countryStates">
-									<form:option value="0">Select</form:option>states
-				 <c:forEach var="state" items="${states}">
-										<form:option value="${state.stateId}">${state.stateName}</form:option>
-									</c:forEach>
-								</form:select>
-								<form:errors path="state.stateId" />
-
-							</div>
-							<label for="cityName" class="col-md-3">City Name:<span
-								style="color: red; font-size: 18px;">*</span></label>
-							<div class="form-group input-group col-md-9">
-
-								<form:input path="cityName" title="City Name"
-									class="form-control" name="city" maxlength="25" size="50" />
-								<form:errors path="cityName" cssClass="errors" />
-							</div>
-							<div class="col-md-5 col-md-offset-6">
-								<button type="submit" class="btn btn-success" id="saveCity"
-									name="saveCity">ADD</button>
-							</div>
-						</form:form>
-					</div>
-					<!-- 	/.col-lg-12 -->
-				</div>
-				<!-- 			/.row -->
-
-				<div class="row space">
-					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">State Management Table</div>
-							<!--  /.panel-heading -->
-							<div class="panel-body">
-								<div class="dataTable_wrapper table-responsive">
-									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
-										<thead>
-											<tr>
-												<th>City ID</th>
-												<th>City Name</th>
-												<th>State Name</th>
-												<th>Country/ID</th>
-												<th>Edit</th>
-												<th>Delete</th>
-
-											</tr>
-										</thead>
-										<tbody>
-											<c:set var="count" value="0" scope="page" />
-											<c:forEach var="city" items="${cities}">
-												<tr class="odd gradeX">
-													<td>${city.cityId}</td>
-													<td>${city.cityName}</td>
-													<td>${city.state.country.countryName}&nbsp|&nbsp(${city.state.country.countryId})</td>
-													<td>${city.state.stateName}&nbsp|&nbsp(${city.state.stateId})</td>
-													<td><a
-														href="${pageContext.request.contextPath}/admin/cities/edit/${city.cityId}/${city.state.country.countryId}"
-														class="edit"><button class="btn btn-info btn-xs">
-																<i class="fa fa-pencil"></i> Edit
-															</button></a></td>
-													<td class="center"><a
-														href="${pageContext.request.contextPath}/admin/cities/delete/${city.cityId}"
-														onclick="return confirm('Do you want to Remove City ${city.cityName}')"><button
-																class="btn btn-danger btn-xs">
-																<i class="fa fa-trash"></i> Delete
-															</button></a></td>
-
-												</tr>
-												<c:set var="count" value="${count + 1}" scope="page" />
-											</c:forEach>
-
-										</tbody>
-									</table>
-								</div>
-								<!--  /.table-responsive -->
-
-							</div>
-							<!-- /.panel-body -->
+						<div class="detail-title">
+							<span class="detail-titile-header font17">Client Personal
+								Information</span> <a href="<%=request.getContextPath()%>/prashant/businessdetailedit/">&nbsp;<i class="fa fa-pencil"></i>
+								Edit
+							</a>
 						</div>
-						<!-- /.panel -->
-					</div>
-					<!--    /.col-lg-12 -->
-				</div>
-				<!-- row -->
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td class="lable">Client Id</td>
+									<td>Os-pra007</td>
+								</tr>
+								<tr>
+									<td class="lable">Client Name</td>
+									<td>MindHacker Is Back</td>
+								</tr>
+								<tr>
+									<td class="lable">Registration Date</td>
+									<td>25/10/2015</td>
+								</tr>
+								<tr>
+									<td class="lable">Email Id</td>
+									<td>Clent@mail.com</td>
+								</tr>
+								<tr>
+									<td class="lable">Primary Contact</td>
+									<td>86002494565</td>
+								</tr>
+								<tr>
+									<td class="lable">Secondary Contact</td>
+									<td>44654654545</td>
+								</tr>
+								<tr>
+									<td class="lable">Address</td>
+									<td>khardi pune dist-pune maharastra</td>
+								</tr>
+								<tr>
+									<td class="lable">Photograph</td>
+									<td><img
+										src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+										class="img-responsive" width="50px " height="50px;" /></td>
+								</tr>
+							</table>
 
-				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
+						</div>
+
+					</div>
+
+				</div>
+				<!-- /. row  -->
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="detail-title">
+							<span class="detail-titile-header font17">Business
+								Information</span>
+						</div>
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td>1.</td>
+									<td>Business name</td>
+									<td>Shri Ram Group Of Company</td>
+									<td><a href="<%=request.getContextPath()%>/prashant/businessdetailupdate/"><button class="btn btn-info btn-xs">
+												<i class="fa fa-pencil"></i> Edit
+											</button></a></td>
+								</tr>
+								<tr>
+									<td>2.</td>
+									<td>Business name</td>
+									<td>Shri Ram Group Of Company</td>
+									<td>Edit</td>
+								</tr>
+
+							</table>
+
+						</div>
+						<a href="#"><button class="btn btn-info btn-xs">
+								<i class="fa fa-plus"></i> Add New Business
+							</button></a>
+					</div>
+
+				</div>
+				<!-- /. row  -->
+				
+					<div class="row space">
+					<div class="col-lg-12">
+						<div class="detail-title">
+							<span class="detail-titile-header font17">Address
+								Information</span><a href="<%=request.getContextPath()%>/prashant/businessaddressupdate">&nbsp;<i class="fa fa-pencil"></i>
+								Edit
+							</a>
+						</div>
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td>Address</td>
+									<td>kesnand Wagholi pune</td>
+								
+								</tr>
+								<tr>
+									<td>Street</td>
+									<td>Taleranwadi</td>
+									
+								</tr>
+								<tr>
+									<td>Landmark</td>
+									<td>Wika colony</td>
+									
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td>America</td>
+									
+								</tr>
+								<tr>
+									<td>State</td>
+									<td>W.c</td>
+									
+								</tr>
+								<tr>
+									<td>City</td>
+									<td>New York</td>
+									
+								</tr>
+								<tr>
+									<td>Town</td>
+									<td>florida</td>
+									
+								</tr>
+								<tr>
+									<td>Pincode</td>
+									<td>4546555555</td>
+									
+								</tr>
+
+							</table>
+
+						</div>
+						<a href="#"><button class="btn btn-info btn-xs">
+								<i class="fa fa-plus"></i> Add New Address
+							</button></a>
+					</div>
+
+				</div>
+				<!-- /. row  -->
+				
+				
+					<div class="row space">
+					<div class="col-lg-12">
+						<div class="detail-title">
+							<span class="detail-titile-header font17">Contact
+								Information</span>
+						</div>
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td>1</td>
+									<td>Contact1</td>
+									<td>8600249455</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>Contact1</td>
+									<td>8600249455</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+
+							</table>
+
+						</div>
+						<a href="#"><button class="btn btn-info btn-xs">
+								<i class="fa fa-plus"></i> Add New Phone
+							</button></a>
+					</div>
+
+				</div>
+				<!-- /. row  -->
+				
+				
+					<div class="row space">
+					<div class="col-lg-12">
+						<div class="detail-title">
+							<span class="detail-titile-header font17">Business Features/facilities</span>
+						</div>
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td>1</td>
+									<td>Nice</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Good</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+								
+
+							</table>
+
+						</div>
+						<a href="#"><button class="btn btn-info btn-xs">
+								<i class="fa fa-plus"></i> Add Features
+							</button></a>
+					</div>
+
+				</div>
+				<!-- /. row  -->
+				
+				
+
+				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
+			<!-- /. PAGE INNER  -->
 			<!-- /. PAGE WRAPPER  -->
 		</div>
 
 	</div>
 	<!-- /. WRAPPER  -->
 
-				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-				<!-- JQUERY SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-				<!-- validation SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
-				<!-- BOOTSTRAP SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
 
-				<!-- validation SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
+	<!-- validation SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
 
-
-
-				<!-- METIMENU SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-
-				<!-- DATATABLE SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+	<!-- validation SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
 
 
 
-				<!-- CUSTOM SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<!-- JANSY BOOTSTRAP SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
 
-				<!-- CUSTOM SCRIPTS -->
-				<script type="text/javascript"
-					src="${pageContext.request.contextPath}/resources/js/ManageCity.js"></script>
-				<script type="text/javascript"
-					src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+	<!-- METIMENU SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
 
 
-				<script>
-					$(document).ready(function() {
-						$('#dataTables-example').DataTable({
-							responsive : true
-						});
-					});
-				</script>
+
+	<!-- Input Telephone SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
+
+	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+
+	<!-- CUSTOM SCRIPTS -->
+	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+
+
+
 </body>
 </html>
