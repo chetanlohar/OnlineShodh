@@ -9,8 +9,11 @@
 <title>Manage Business</title>
 </head>
 <body>
-	<form:form action="" modelAttribute="">
-		
+	<form:form action="${pageContext.request.contextPath}/admin/business" modelAttribute="businessDetailsEntity">
+	<form:select path="">
+     <>   	
+	
+	</form:select>	
 	
 	</form:form>
 </body>

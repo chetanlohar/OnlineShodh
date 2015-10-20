@@ -34,6 +34,8 @@ public class SearchController {
 		
 		List<BusinessDetailsEntity> list = new ArrayList<BusinessDetailsEntity>();
 		list.add(businessDetailsService.getBusinessDetails(Long.valueOf(keyword)));
+		
+		
 		return list;
 		
 	}
