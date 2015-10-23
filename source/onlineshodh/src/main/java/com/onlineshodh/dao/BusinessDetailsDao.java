@@ -1,6 +1,9 @@
 package com.onlineshodh.dao;
 
+import java.util.List;
+
 import com.onlineshodh.entity.BusinessDetailsEntity;
+import com.onlineshodh.entity.UserDetailsEntity;
 
 public interface BusinessDetailsDao {
 	
@@ -19,5 +22,13 @@ public interface BusinessDetailsDao {
 	 * @return BusinessDetails of specified BusinessId
 	 */
 	public BusinessDetailsEntity getBusinessDetails(Long businessId);
+	
+	public List<BusinessDetailsEntity> getBusinessDetais(String name);
+	
+	public List<BusinessDetailsEntity> getBusinessDetaisByUserName(String userName); 
+	
+	public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName);
+    
+	
 
 }

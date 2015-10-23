@@ -35,4 +35,14 @@ public interface UserDetailsDao {
 	 * @return List of all User's Information
 	 */
 	public List<UserDetailsEntity> getAllUserDetails();
+	
+	public List<UserDetailsEntity> getUserDeatilsByName(String Name);
+	
+	public UserDetailsEntity getUserDetailsByUserId(Integer userId);
+	
+/*	public List<UserDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName);
+*/
+	
+	
+	
 }

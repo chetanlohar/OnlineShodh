@@ -34,5 +34,7 @@ public interface UserService {
 	 * @return True if Exists and False if not exists
 	 */
 	public boolean isUserExists(String username);
+	
+	public UserEntity getUserByName(String userName);
 
 }

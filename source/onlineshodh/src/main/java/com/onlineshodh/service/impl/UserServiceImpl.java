@@ -63,6 +63,12 @@ public class UserServiceImpl implements UserService {
 	public boolean isUserExists(String username) {
 		return userDao.isUserExists(username);
 	}
+
+
+	@Override
+	public UserEntity getUserByName(String userName) {
+		return userDao.getUserByName(userName);
+	}
 	
 	
 

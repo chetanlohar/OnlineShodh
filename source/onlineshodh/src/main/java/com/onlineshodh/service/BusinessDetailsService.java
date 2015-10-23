@@ -1,5 +1,7 @@
 package com.onlineshodh.service;
 
+import java.util.List;
+
 import com.onlineshodh.entity.BusinessDetailsEntity;
 
 public interface BusinessDetailsService {
@@ -20,6 +22,8 @@ public interface BusinessDetailsService {
 	 */
 	public BusinessDetailsEntity getBusinessDetails(Long businessId);
 	
-	
+ public	List<BusinessDetailsEntity> getBusinessDetais(String name);
+ public List<BusinessDetailsEntity> getBusinessDetaisByUserName(String userName);
+ public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName);
 
 }

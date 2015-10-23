@@ -1,5 +1,7 @@
 package com.onlineshodh.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +14,7 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 
 	@Autowired
 	BusinessDetailsDao businessDetailsDao;
-	
+
 	@Override
 	public void saveBusinessDetails(BusinessDetailsEntity business) {
 		// TODO Auto-generated method stub
@@ -30,4 +32,20 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 		return businessDetailsDao.getBusinessDetails(businessId);
 	}
 
+	@Override
+	public List<BusinessDetailsEntity> getBusinessDetais(String name) {
+		return businessDetailsDao.getBusinessDetais(name);
+	}
+
+	
+
+	@Override
+	public List<BusinessDetailsEntity> getBusinessDetaisByUserName(
+			String userName) {
+		return businessDetailsDao.getBusinessDetaisByUserName(userName);
+	}
+
+	public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName){
+		return businessDetailsDao.getBusinessDetailsByBusinessName(bussinessName);
+	}
 }

@@ -82,7 +82,6 @@ public class GlobalExceptionController {
 		return "redirect:/admin/states/exception/" + exceptionType;
 
 	}
-
 	/*
 	 * @ExceptionHandler(Exception.class) public ModelAndView
 	 * handleAllException(Exception ex) {

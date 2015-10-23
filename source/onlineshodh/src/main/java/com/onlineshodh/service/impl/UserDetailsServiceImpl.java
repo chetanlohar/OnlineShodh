@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.UserDetailsDao;
 import com.onlineshodh.entity.UserDetailsEntity;
+import com.onlineshodh.entity.UserEntity;
 import com.onlineshodh.exception.ConstraintViolationException;
 import com.onlineshodh.service.UserDetailsService;
 
@@ -87,4 +88,19 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		}
 	}
 
+	@Override
+	public List<UserDetailsEntity> getUserDeatilsByName(String Name) {
+		return userDetailsDao.getUserDeatilsByName(Name);
+	}
+
+	@Override
+	public UserDetailsEntity getUserDetailsByUserId(Integer userId) {
+		return userDetailsDao.getUserDetailsByUserId(userId);
+	}
+
+	/*public List<UserDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName){
+		return userDetailsDao.getBusinessDetailsByBusinessName(bussinessName);
+	}*/
+
+	
 }

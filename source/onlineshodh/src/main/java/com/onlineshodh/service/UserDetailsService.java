@@ -3,6 +3,7 @@ package com.onlineshodh.service;
 import java.util.List;
 
 import com.onlineshodh.entity.UserDetailsEntity;
+import com.onlineshodh.entity.UserEntity;
 import com.onlineshodh.exception.ConstraintViolationException;
 
 /**
@@ -39,4 +40,11 @@ public interface UserDetailsService {
 	 * @return List of All the User's Information
 	 */
 	public List<UserDetailsEntity> getAllUserDetails();
+	
+	public List<UserDetailsEntity> getUserDeatilsByName(String Name);
+	
+	public UserDetailsEntity getUserDetailsByUserId(Integer userId);
+	
+/*	public List<UserDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName);
+*/
 }

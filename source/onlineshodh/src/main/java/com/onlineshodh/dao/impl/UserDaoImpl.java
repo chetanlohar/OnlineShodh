@@ -14,11 +14,11 @@ import com.onlineshodh.entity.UserEntity;
 public class UserDaoImpl extends AbstractJpaDao<UserEntity> implements UserDao {
 
 	EntityManager entityManager;
-	
+
 	@Override
 	@Transactional
 	public void saveUser(UserEntity user) {
-			create(user);
+		create(user);
 	}
 
 	@Override
@@ -36,24 +36,35 @@ public class UserDaoImpl extends AbstractJpaDao<UserEntity> implements UserDao {
 
 	@Override
 	public boolean isUserExists(String username) {
-		
+
 		String query = "from UserEntity user where user.userName=?";
 		entityManager = getEntityManager();
-		TypedQuery<UserEntity> query1 = entityManager.createQuery(query,UserEntity.class);
+		TypedQuery<UserEntity> query1 = entityManager.createQuery(query,
+				UserEntity.class);
 		query1.setParameter(1, username.trim());
 		UserEntity userentity = null;
-		try
-		{
+		try {
 			userentity = query1.getSingleResult();
-			if(userentity!=null)
+			if (userentity != null)
 				return true;
-		}
-		catch(javax.persistence.NoResultException e)
-		{
-			System.out.println("Session Expired...No result found for userid(null)");
+		} catch (javax.persistence.NoResultException e) {
+			System.out
+					.println("Session Expired...No result found for userid(null)");
 			return false;
 		}
 		return false;
+	}
+
+	@Override
+	public UserEntity getUserByName(String userName) {
+
+		
+		entityManager = getEntityManager();
+		return entityManager
+				.createQuery(
+						"from UserEntity user where user.userName=:userName",
+						UserEntity.class).setParameter("userName", userName)
+				.getSingleResult();
 	}
 
 }

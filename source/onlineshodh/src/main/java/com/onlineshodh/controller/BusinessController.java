@@ -22,6 +22,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.onlineshodh.entity.BannerEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
+import com.onlineshodh.entity.BusinessSearchEntity;
 import com.onlineshodh.entity.UserDetailsEntity;
 import com.onlineshodh.entity.UserEntity;
 import com.onlineshodh.service.BusinessDetailsService;
@@ -44,6 +45,7 @@ public class BusinessController {
 	public String manageBusinessDetails(ModelMap model)
 	{
 		model.addAttribute("businessDetails", context.getBean("businessDetailsEntity",BusinessDetailsEntity.class));
+		model.addAttribute("SearchBusiness", context.getBean("businessSearchEntity",BusinessSearchEntity.class));
 		return "business/BusinessManagement";
 	}
 	
@@ -53,12 +55,6 @@ public class BusinessController {
 		
 		return "";
 	}
-	
-     public @ResponseBody String getBusiness(ModelMap model,@RequestParam("searchCriterion")String searchBy ){
-    	 System.out.println("searchBy :"+searchBy);
-    	 return "business/BusinessManagement";
-     } 
-	 
      @RequestMapping("/load/logo/{userDetailsId}")
  	public String downloadPicture(@PathVariable("userDetailsId") Integer userDetailsId,
  			HttpServletResponse response) {

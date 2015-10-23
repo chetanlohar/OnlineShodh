@@ -528,80 +528,112 @@
 <script
 	src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
 <script type="text/javascript">
-	function getClientDetails() {
-		$
-				.ajax({
-					type : "POST",
-					url : "/onlineshodh/admin/search/business/client",
-					dataType : 'json',
-					data : {
-						"searchBy" : $('#searchBy').val(),
-						"keyword" : $('#keyword').val()
-					},
-					success : function(response) {
-						var json = response;
-						console.log(response)
+	$(function() {
+		$('#searchButton')
+				.click(
+						function() {
+							$
+									.ajax({
+										type : "POST",
+										url : "/onlineshodh/admin/search/business/client",
+										dataType : 'json',
+										data : {
+											"searchBy" : $('#searchBy').val(),
+											"keyword" : $('#keyword').val()
+										},
+										success : function(response) {
 
-						$('#dataTables-example').find('option').remove().end();
-						jQuery
-								.each(
-										response,
-										function(index, item) {
+											console.log(response)
 
-											for ( var i in json) {
+											$('#dataTables-example')
+													.find('.ab').remove();
+											jQuery
+													.each(
+															response,
+															function(index,
+																	item) {
 
-												alert(json[i].userDetails.userId)
-												var newRow = jQuery('<tr><td>'
-														+ json[i].userDetails.userId
-														+ '</td><td>'
-														+ json[i].userDetails.regDate
-														+ '</td><td>'
-														+ json[i].userDetails.name
-														+ '</td><td>'
-														+ json[i].email
-														+ '</td><td>'
-														+ json[i].userDetails.phone1
-														+ '</td><td>'
-														+ json[i].userDetails.phone2
-														+ '</td><td>'
-														+ json[i].userDetails.userId
-														+ '</td><td><img src=${pageContext.request.contextPath}/admin/business/load/logo/'+json[i].userDetails.userDetailsId+'/>'
+																var json = response;
+																for ( var i in json) {
+                                                                  if(i == 1){
+                                                                	  break;
+                                                                  }
+																	alert(json[i].userDetailsId)
+																	alert(json[i].length)
+																	var newRow = jQuery('<tr class="ab"><td>'
+																			+ json[i].userDetailsId
+																			+ '</td><td>'
+																			+ json[i].regDate
+																			+ '</td><td>'
+																			+ json[i].name
+																			+ '</td><td>'
+																			+ json[i].email
+																			+ '</td><td>'
+																			+ json[i].phone1
+																			+ '</td><td>'
+																			+ json[i].phone2
+																			+ '</td><td>'
+																			+ json[i].userId
+																			+ '</td><td><img src=${pageContext.request.contextPath}/admin/business/load/logo/'+json[i].userDetailsId+'/>'
 
-														+ '</td><td>'
-														+ '<a href="${pageContext.request.contextPath}/prashant/businessdetail/">'
-														+ 'Select'
-														+ '</a></td></tr>');
-												jQuery('#dataTables-example')
-														.append(newRow);
+																			+ '</td><td>'
+																			+ '<a href="${pageContext.request.contextPath}/prashant/businessdetail/">'
+																			+ 'Select'
+																			+ '</a></td></tr>');
+																	jQuery(
+																			'#dataTables-example')
+																			.append(
+																					newRow);
 
-											}
+																}
+                                                               
+															});
 
-										});
+										},
+										error : function(e) {
+											console.log(e)
+										}
+									})
 
-					},
-					error : function(e) {
-						console.log(e)
-					}
-				});
-	}
+						});
+	});
 </script>
 </head>
 <body>
-	<form method="post" action="#">
+	<form>
 		<p>
 			<label>Search By</label> <select id="searchBy" name="searchBy">
 				<option value="1">By Id</option>
 				<option value="2">By Name</option>
 				<option value="3">By Username</option>
+				<option value="4">By Businessname</option>
 			</select>
 		</p>
 		<p>
 			<input id="keyword" type="text" name="keyword">
 		</p>
 		<p>
-			<input type="button" value="Search" onclick="getClientDetails();">
+			<input type="button" value="Search" id="searchButton">
 		</p>
 	</form>
+
+	<%-- <form:form method="POST" action="#" modelAttribute="SearchBusiness">
+		<p>
+			<label>Search By</label> <form:select path="searchBy" id="searchBy" name="searchBy">
+                <form:option value="1" label="By Id"/>
+                <form:option value="2" label="By Name"/>
+                <form:option value="3" label="By Username"/>
+                </form:select>
+                <form:errors path="searchBy"/>
+		</p>
+		<p>
+			<form:input path="searchText" id="keyword" name="keyword"/>
+			 <form:errors path="searchText"/>
+		</p>
+		<p>
+			<button type="button" onclick="getClientDetails();">Search</button>
+		</p>
+	</form:form> --%>
 
 	<table class="table table-striped table-bordered table-hover"
 		id="dataTables-example">
