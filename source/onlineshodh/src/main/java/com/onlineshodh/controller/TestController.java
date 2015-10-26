@@ -122,6 +122,17 @@ public class TestController {
 	{
 		return "business/BusinessDetails";
 	}
+	@RequestMapping(value="/businessnew")
+	public String dobusinessnew()
+	{
+		return "business/businessadd";
+	}
+	
+	@RequestMapping(value="/businessnewadd")
+	public String dobusinessnewadd()
+	{
+		return "business/newbusnessaddress";
+	}
 	
 	@RequestMapping(value="/businessdetailedit")
 	public String dobusinessdetailedit()

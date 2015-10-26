@@ -300,7 +300,7 @@
 											<div class="detail-title">
 							<span class="detail-titile-header font17">Business
 								Information</span><a href="<%=request.getContextPath()%>/prashant/editbusiness">&nbsp;<i class="fa fa-pencil"></i>
-								Edit
+								Add
 							</a>
 						</div>
 						<div class="detail-wraper">

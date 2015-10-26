@@ -4,9 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Business Details</title>
-
+<title>Add Business</title>
 <!-- BOOTSTRAP STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
 	rel="stylesheet" />
@@ -291,162 +289,122 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Client Personal
-								Information</span> <a href="<%=request.getContextPath()%>/prashant/businessdetailedit/">&nbsp;<i class="fa fa-pencil"></i>
-								Edit
-							</a>
-						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td class="lable">Client Id</td>
-									<td>Os-pra007</td>
-								</tr>
-								<tr>
-									<td class="lable">Client Name</td>
-									<td>MindHacker Is Back</td>
-								</tr>
-								<tr>
-									<td class="lable">Registration Date</td>
-									<td>25/10/2015</td>
-								</tr>
-								<tr>
-									<td class="lable">Email Id</td>
-									<td>Clent@mail.com</td>
-								</tr>
-								<tr>
-									<td class="lable">Primary Contact</td>
-									<td>86002494565</td>
-								</tr>
-								<tr>
-									<td class="lable">Secondary Contact</td>
-									<td>44654654545</td>
-								</tr>
-								<tr>
-									<td class="lable">Address</td>
-									<td>khardi pune dist-pune maharastra</td>
-								</tr>
-								<tr>
-									<td class="lable">Photograph</td>
-									<td><img
-										src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-										class="img-responsive" width="50px " height="50px;" /></td>
-								</tr>
-							</table>
-
-						</div>
-
+						<h3 class="page-header">Add Business Details</h3>
 					</div>
-
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /. row  -->
-				
-					<div class="row ">
+				<!-- /.row -->
+				<div class="row">
 					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Client Address
-								Information</span><a href="<%=request.getContextPath()%>/prashant/clientaddupdate">&nbsp;<i class="fa fa-pencil"></i>
-								Edit
-							</a>
-						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td>Address</td>
-									<td>kesnand Wagholi pune</td>
+						 <form class="form-horizontal" name="bclientupdate"
+							id="bclientupdate">
+							<div class="col-lg-8">
+								<div class="col-lg-12 space">
+									<label for="businessid" class="col-sm-5 control-label">Business
+										Id</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-chain"></span></span> <input type="text"
+											class="form-control" id="businessid" name="businessid"
+											placeholder="">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="businame" class="col-sm-5 control-label">Business
+										Name</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-calendar"></span></span> <input type="text"
+											class="form-control" id="businame" name="businame">
+									</div>
+								</div>
+
+								<div class="col-lg-12 space">
+									<label for="Logo" class="col-sm-5 control-label">Business
+										Logo</label>
+									<div class="fileinput fileinput-new input-group"
+										data-provides="fileinput">
+										<div class="form-control" data-trigger="fileinput">
+											<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
+												class="fileinput-filename"></span>
+										</div>
+										<span class="input-group-addon btn btn-default btn-file"><span
+											class="fileinput-new">Select file</span><span
+											class="fileinput-exists">Change</span><input type="file"
+											name="..."></span> <a href="#"
+											class="input-group-addon btn btn-default fileinput-exists"
+											data-dismiss="fileinput">Remove</a>
+									</div>
+								</div>
+                                 <div class="col-lg-12 space">
+									<label for="pname" class="col-sm-5 control-label">Person Name
+										</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="personname" name="personname">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="busiEmail" class="col-sm-5 control-label">Email
+										Id</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-envelope"></span></span> <input type="text"
+											class="form-control" id="busimail" name="busimail">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="web" class="col-sm-5 control-label">
+									WebSite</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-globe"></span></span> <input type="text"
+											class="form-control" name="Website">
+									</div>
+								</div>
+
+								<div class="col-lg-12 space">
+									<label for="busicategory" class="col-sm-5 control-label">
+										Category</label>
+									<div class="input-group col-lg-7">
+										<select class="form-control">
+										<option value="FOOD">FOOD</option>
+										</select>
+									</div>
+								</div>
 								
-								</tr>
-								<tr>
-									<td>Street</td>
-									<td>Taleranwadi</td>
-									
-								</tr>
-								<tr>
-									<td>Landmark</td>
-									<td>Wika colony</td>
-									
-								</tr>
-								<tr>
-									<td>Country</td>
-									<td>America</td>
-									
-								</tr>
-								<tr>
-									<td>State</td>
-									<td>W.c</td>
-									
-								</tr>
-								<tr>
-									<td>City</td>
-									<td>New York</td>
-									
-								</tr>
-								<tr>
-									<td>Town</td>
-									<td>florida</td>
-									
-								</tr>
-								<tr>
-									<td>Pincode</td>
-									<td>4546555555</td>
-									
-								</tr>
+								
+								<div class="col-lg-12 space">
+									<label for="busisubcategory" class="col-sm-5 control-label">
+										Sub-Category</label>
+									<div class="input-group col-lg-7">
+										<select class="form-control">
+										<option value="Non-Veg">Non-Veg</option>
+										</select>
+									</div>
+								</div>
+								
 
-							</table>
+								</div>
+							
 
-						</div>
-						
-					</div>
+							<div class="col-lg-6 col-lg-offset-4 space">
+								<button type="submit" class="btn btn-success" id="update">Add</button>
 
-				</div>
-				<!-- /. row  -->
-
-				<div class="row space">
-					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Business
-								Information</span>
-						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td>1.</td>
-									<td>Business name</td>
-									<td>Shri Ram Group Of Company</td>
-									<td><a href="<%=request.getContextPath()%>/prashant/businessdetailupdate/"><button class="btn btn-info btn-xs">
-												<i class="fa fa-pencil"></i> Edit
-											</button></a></td>
-								</tr>
-								<tr>
-									<td>2.</td>
-									<td>Business name</td>
-									<td>Shri Ram Group Of Company</td>
-									<td>Edit</td>
-								</tr>
-
-							</table>
-
-						</div>
-						<a href="<%=request.getContextPath()%>/prashant/newbusinessmanage/"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add New Business
-							</button></a>
-					</div>
-
-				</div>
-				<!-- /. row  -->
-				
-				
-				
-				
+							</div>
+						</form>
+ 				</div><!-- /.row -->
 					
+									</div><!-- /. PAGE INNER  -->
 				
 				
+
 
 				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			<!-- /. PAGE INNER  -->
+			
 			<!-- /. PAGE WRAPPER  -->
 		</div>
 
@@ -491,8 +449,6 @@
 
 	<!-- CUSTOM SCRIPTS -->
 	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
-
-
 
 </body>
 </html>

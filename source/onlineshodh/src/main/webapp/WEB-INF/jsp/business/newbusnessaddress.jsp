@@ -4,9 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Business Details</title>
-
+<title>Add Address Details</title>
 <!-- BOOTSTRAP STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
 	rel="stylesheet" />
@@ -291,157 +289,119 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Client Personal
-								Information</span> <a href="<%=request.getContextPath()%>/prashant/businessdetailedit/">&nbsp;<i class="fa fa-pencil"></i>
-								Edit
-							</a>
-						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td class="lable">Client Id</td>
-									<td>Os-pra007</td>
-								</tr>
-								<tr>
-									<td class="lable">Client Name</td>
-									<td>MindHacker Is Back</td>
-								</tr>
-								<tr>
-									<td class="lable">Registration Date</td>
-									<td>25/10/2015</td>
-								</tr>
-								<tr>
-									<td class="lable">Email Id</td>
-									<td>Clent@mail.com</td>
-								</tr>
-								<tr>
-									<td class="lable">Primary Contact</td>
-									<td>86002494565</td>
-								</tr>
-								<tr>
-									<td class="lable">Secondary Contact</td>
-									<td>44654654545</td>
-								</tr>
-								<tr>
-									<td class="lable">Address</td>
-									<td>khardi pune dist-pune maharastra</td>
-								</tr>
-								<tr>
-									<td class="lable">Photograph</td>
-									<td><img
-										src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-										class="img-responsive" width="50px " height="50px;" /></td>
-								</tr>
-							</table>
-
-						</div>
-
+						<h3 class="page-header">Edit Address Details</h3>
 					</div>
-
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /. row  -->
-				
-					<div class="row ">
+				<!-- /.row -->
+				<div class="row">
 					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Client Address
-								Information</span><a href="<%=request.getContextPath()%>/prashant/clientaddupdate">&nbsp;<i class="fa fa-pencil"></i>
-								Edit
-							</a>
-						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td>Address</td>
-									<td>kesnand Wagholi pune</td>
-								
-								</tr>
-								<tr>
-									<td>Street</td>
-									<td>Taleranwadi</td>
-									
-								</tr>
-								<tr>
-									<td>Landmark</td>
-									<td>Wika colony</td>
-									
-								</tr>
-								<tr>
-									<td>Country</td>
-									<td>America</td>
-									
-								</tr>
-								<tr>
-									<td>State</td>
-									<td>W.c</td>
-									
-								</tr>
-								<tr>
-									<td>City</td>
-									<td>New York</td>
-									
-								</tr>
-								<tr>
-									<td>Town</td>
-									<td>florida</td>
-									
-								</tr>
-								<tr>
-									<td>Pincode</td>
-									<td>4546555555</td>
-									
-								</tr>
+						<form class="form-horizontal" name="bclientupdate"
+							id="bclientupdate">
+							<div class="col-lg-8">
+								<div class="col-lg-12 space">
+									<label for="address" class="col-sm-5 control-label">Address</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-road"></span></span>
+										<textarea class="form-control" rows="3" id="clientadd"
+											name="address"></textarea>
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="Street" class="col-sm-5 control-label">Street</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="clientpin" name="clietpin">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="LandMark" class="col-sm-5 control-label">LandMark</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="clientpin" name="clietpin">
+									</div>
+								</div>
 
-							</table>
+								<div class="col-lg-12 space">
+									<label for="country" class="col-sm-5 control-label">Country</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-flag"></span></span> <select class="form-control"
+											name="clientcountry">
+											<option value="">Select</option>
+											<option value="india">India</option>
+										</select>
+									</div>
+								</div>
 
-						</div>
-						
+								<div class="col-lg-12 space">
+									<label for="state" class="col-sm-5 control-label">State</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											name="clientstate">
+											<option value="">Select</option>
+											<option value="mharastra">maharastra</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-12 space">
+									<label for="city" class="col-sm-5 control-label">City</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											name="clientcity">
+											<option value="">Select</option>
+											<option value="pune">pune</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="town" class="col-sm-5 control-label">Town</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											id="town" name="clinettown">
+											<option value="">Select</option>
+											<option value="kharadi">Kharadi</option>
+											<option value="Other">Other Town</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-12 space hide-div ">
+									<label for="Otown" class="col-sm-5 control-label">Town</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="Otown" name="otown">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="clientpin" name="clietpin">
+									</div>
+								</div>
+
+								</div>
+							</div>
+
+							<div class="col-lg-6 col-lg-offset-4 space">
+								<button type="submit" class="btn btn-success" id="update">Add</button>
+
+							</div>
+						</form>
 					</div>
-
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /. row  -->
+				<!-- /.row -->
 
-				<div class="row space">
-					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Business
-								Information</span>
-						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td>1.</td>
-									<td>Business name</td>
-									<td>Shri Ram Group Of Company</td>
-									<td><a href="<%=request.getContextPath()%>/prashant/businessdetailupdate/"><button class="btn btn-info btn-xs">
-												<i class="fa fa-pencil"></i> Edit
-											</button></a></td>
-								</tr>
-								<tr>
-									<td>2.</td>
-									<td>Business name</td>
-									<td>Shri Ram Group Of Company</td>
-									<td>Edit</td>
-								</tr>
-
-							</table>
-
-						</div>
-						<a href="<%=request.getContextPath()%>/prashant/newbusinessmanage/"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add New Business
-							</button></a>
-					</div>
-
-				</div>
-				<!-- /. row  -->
-				
-				
-				
-				
-					
-				
-				
 
 				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
@@ -491,8 +451,6 @@
 
 	<!-- CUSTOM SCRIPTS -->
 	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
-
-
 
 </body>
 </html>
