@@ -140,7 +140,16 @@ public class TestController {
 	{
 		return "business/busiaddressupdate";
 	}
-	
+	@RequestMapping(value="/clientaddupdate")
+	public String doclientaddupdate()
+	{
+		return "business/clientaddupdate";
+	}
+	@RequestMapping(value="/editbusiness")
+	public String doeditbusiness()
+	{
+		return "business/editbusiness";
+	}
 	
 	//banner controller
 	

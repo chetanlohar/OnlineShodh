@@ -341,46 +341,12 @@
 
 				</div>
 				<!-- /. row  -->
-
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Business
-								Information</span>
-						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td>1.</td>
-									<td>Business name</td>
-									<td>Shri Ram Group Of Company</td>
-									<td><a href="<%=request.getContextPath()%>/prashant/businessdetailupdate/"><button class="btn btn-info btn-xs">
-												<i class="fa fa-pencil"></i> Edit
-											</button></a></td>
-								</tr>
-								<tr>
-									<td>2.</td>
-									<td>Business name</td>
-									<td>Shri Ram Group Of Company</td>
-									<td>Edit</td>
-								</tr>
-
-							</table>
-
-						</div>
-						<a href="#"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add New Business
-							</button></a>
-					</div>
-
-				</div>
-				<!-- /. row  -->
 				
-					<div class="row space">
+					<div class="row ">
 					<div class="col-lg-12">
 						<div class="detail-title">
-							<span class="detail-titile-header font17">Address
-								Information</span><a href="<%=request.getContextPath()%>/prashant/businessaddressupdate">&nbsp;<i class="fa fa-pencil"></i>
+							<span class="detail-titile-header font17">Client Address
+								Information</span><a href="<%=request.getContextPath()%>/prashant/clientaddupdate">&nbsp;<i class="fa fa-pencil"></i>
 								Edit
 							</a>
 						</div>
@@ -430,45 +396,40 @@
 							</table>
 
 						</div>
-						<a href="#"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add New Address
-							</button></a>
+						
 					</div>
 
 				</div>
 				<!-- /. row  -->
-				
-				
-					<div class="row space">
+
+				<div class="row space">
 					<div class="col-lg-12">
 						<div class="detail-title">
-							<span class="detail-titile-header font17">Contact
+							<span class="detail-titile-header font17">Business
 								Information</span>
 						</div>
 						<div class="detail-wraper">
 							<table class="table">
 								<tr>
-									<td>1</td>
-									<td>Contact1</td>
-									<td>8600249455</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
+									<td>1.</td>
+									<td>Business name</td>
+									<td>Shri Ram Group Of Company</td>
+									<td><a href="<%=request.getContextPath()%>/prashant/businessdetailupdate/"><button class="btn btn-info btn-xs">
+												<i class="fa fa-pencil"></i> Edit
+											</button></a></td>
 								</tr>
 								<tr>
-									<td>1</td>
-									<td>Contact1</td>
-									<td>8600249455</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
+									<td>2.</td>
+									<td>Business name</td>
+									<td>Shri Ram Group Of Company</td>
+									<td>Edit</td>
 								</tr>
 
 							</table>
 
 						</div>
 						<a href="#"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add New Phone
+								<i class="fa fa-plus"></i> Add New Business
 							</button></a>
 					</div>
 
@@ -476,39 +437,9 @@
 				<!-- /. row  -->
 				
 				
-					<div class="row space">
-					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Business Features/facilities</span>
-						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td>1</td>
-									<td>Nice</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Good</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
-								</tr>
-								
-
-							</table>
-
-						</div>
-						<a href="#"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add Features
-							</button></a>
-					</div>
-
-				</div>
-				<!-- /. row  -->
+				
+				
+					
 				
 				
 

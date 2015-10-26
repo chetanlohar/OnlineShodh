@@ -296,7 +296,62 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-						<form class="form-horizontal" name="bclientupdate"
+					
+											<div class="detail-title">
+							<span class="detail-titile-header font17">Business
+								Information</span><a href="<%=request.getContextPath()%>/prashant/editbusiness">&nbsp;<i class="fa fa-pencil"></i>
+								Edit
+							</a>
+						</div>
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td>Business Id</td>
+									<td>ke45</td>
+								
+								</tr>
+								<tr>
+									<td>Business Name</td>
+									<td>Taleranwadi</td>
+									
+								</tr>
+								<tr>
+									<td>Business Logo</td>
+									<td>Wika colony</td>
+									
+								</tr>
+								<tr>
+									<td>Person Name</td>
+									<td>America</td>
+									
+								</tr>
+								<tr>
+									<td>Email Id</td>
+									<td>W.c</td>
+									
+								</tr>
+								<tr>
+									<td>Website</td>
+									<td>New York</td>
+									
+								</tr>
+								<tr>
+									<td>Category</td>
+									<td>florida</td>
+									
+								</tr>
+								<tr>
+									<td>Sub-Category	</td>
+									<td>4546555555</td>
+									
+								</tr>
+
+							</table>
+
+						</div>
+						
+					</div>
+						<!-- <form class="form-horizontal" name="bclientupdate"
 							id="bclientupdate">
 							<div class="col-lg-8">
 								<div class="col-lg-12 space">
@@ -394,16 +449,146 @@
 
 							</div>
 						</form>
+ -->					</div><!-- /.row -->
+					
+					<div class="row space ">
+					<div class="col-lg-12">
+						<div class="detail-title">
+							<span class="detail-titile-header font17">Business Address
+								Information</span><a href="<%=request.getContextPath()%>/prashant/businessaddressupdate">&nbsp;<i class="fa fa-pencil"></i>
+								Edit
+							</a>
+						</div>
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td>Address</td>
+									<td>kesnand Wagholi pune</td>
+								
+								</tr>
+								<tr>
+									<td>Street</td>
+									<td>Taleranwadi</td>
+									
+								</tr>
+								<tr>
+									<td>Landmark</td>
+									<td>Wika colony</td>
+									
+								</tr>
+								<tr>
+									<td>Country</td>
+									<td>America</td>
+									
+								</tr>
+								<tr>
+									<td>State</td>
+									<td>W.c</td>
+									
+								</tr>
+								<tr>
+									<td>City</td>
+									<td>New York</td>
+									
+								</tr>
+								<tr>
+									<td>Town</td>
+									<td>florida</td>
+									
+								</tr>
+								<tr>
+									<td>Pincode</td>
+									<td>4546555555</td>
+									
+								</tr>
+
+							</table>
+
+						</div>
+						
 					</div>
-					<!-- /.col-lg-12 -->
+
 				</div>
-				<!-- /.row -->
+				<!-- /. row  -->
+				<div class="row space">
+					<div class="col-lg-12">
+						<div class="detail-title">
+							<span class="detail-titile-header font17">Contact
+								Information</span>
+						</div>
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td>1</td>
+									<td>Contact1</td>
+									<td>8600249455</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+								<tr>
+									<td>1</td>
+									<td>Contact1</td>
+									<td>8600249455</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+
+							</table>
+
+						</div>
+						<a href="#"><button class="btn btn-info btn-xs">
+								<i class="fa fa-plus"></i> Add New Phone
+							</button></a>
+					</div>
+
+				</div>
+				<!-- /. row  -->
+				
+				
+					<div class="row space">
+					<div class="col-lg-12">
+						<div class="detail-title">
+							<span class="detail-titile-header font17">Business Features/facilities</span>
+						</div>
+						<div class="detail-wraper">
+							<table class="table">
+								<tr>
+									<td>1</td>
+									<td>Nice</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+								<tr>
+									<td>2</td>
+									<td>Good</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+								
+
+							</table>
+
+						</div>
+						<a href="#"><button class="btn btn-info btn-xs">
+								<i class="fa fa-plus"></i> Add Features
+							</button></a>
+					</div>
+
+				</div>
+				<!-- /. row  -->
+				</div><!-- /. PAGE INNER  -->
+				
+				
 
 
 				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			<!-- /. PAGE INNER  -->
+			
 			<!-- /. PAGE WRAPPER  -->
 		</div>
 

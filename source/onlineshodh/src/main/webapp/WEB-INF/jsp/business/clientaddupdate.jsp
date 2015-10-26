@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Business Management</title>
+<title>Edit Client Address Details</title>
+
 
 <!-- BOOTSTRAP STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
@@ -43,7 +43,6 @@
 </head>
 </head>
 <body>
-
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
 			style="margin-bottom: 0">
@@ -170,10 +169,10 @@
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/categories"><i
+							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/admin/subcategories">
+							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -192,18 +191,17 @@
 								Management</a></li>
 					</ul> <!-- /.nav-second-level of location management --></li>
 
-				<li ><a href="forms.html"><i
-						class="fa fa-user fa-fw"></i> Client Management<span
-						class="fa arrow"></a>
+				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
+						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
-						<li><a 
+						<li><a
 							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
 
-				<li class="active"><a href="#"><i class="fa fa-"></i>Business Management <span
-						class="fa arrow"></span></a>
+				<li class="active"><a href="#"><i class="fa fa-"></i>Business
+						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
 							href="<%=request.getContextPath()%>/prashant/businessmanage">
@@ -239,7 +237,7 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/banners"><i
+							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
@@ -277,7 +275,7 @@
 					</li>
 					<li><a href="#">Second Level<span class="fa arrow"></span></a>
 						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>
+							<li><a href="#">Third Link</a></li>s
 							<li><a href="#">Third Link</a></li>
 
 						</ul></li>
@@ -293,110 +291,124 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Business Management</h1>
+						<h3 class="page-header">Edit Address Details</h3>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
 				<!-- /.row -->
 				<div class="row">
-					<div class="col-lg-10">
-						<form class="form-horizontal" name="clientsearch"
-							id="clientsearch">
-							<div class="col-lg-10">
-								<div class="col-lg-6 space">
-									<label for="mailid" class="col-sm-5 control-label">Search
-										By:</label>
+					<div class="col-lg-12">
+						<form class="form-horizontal" name="bclientupdate"
+							id="bclientupdate">
+							<div class="col-lg-8">
+								<div class="col-lg-12 space">
+									<label for="address" class="col-sm-5 control-label">Address</label>
 									<div class="input-group">
-										<select class="form-control" name="sortclient">
-											<option value="ID">ID</option>
-											<option value="Name">Name</option>
-											<option value="UserName">UserName</option>
-										</select>
+										<span class="input-group-addon"><span
+											class="fa fa-road"></span></span>
+										<textarea class="form-control" rows="3" id="clientadd"
+											name="address"></textarea>
 									</div>
 								</div>
-								<div class="col-lg-6 space">
+								<div class="col-lg-12 space">
+									<label for="Street" class="col-sm-5 control-label">Street</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientsearchbox"
-											name="clientsearchbox">
+											class="form-control" id="clientpin" name="clietpin">
 									</div>
 								</div>
-								<div class="col-lg-6 col-lg-offset-6 space">
-									<button type="submit" class="btn btn-info" id="display">
-										<i class="fa fa-search"></i> Search
-									</button>
+								<div class="col-lg-12 space">
+									<label for="LandMark" class="col-sm-5 control-label">LandMark</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="clientpin" name="clietpin">
+									</div>
+								</div>
+
+								<div class="col-lg-12 space">
+									<label for="country" class="col-sm-5 control-label">Country</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-flag"></span></span> <select class="form-control"
+											name="clientcountry">
+											<option value="">Select</option>
+											<option value="india">India</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-12 space">
+									<label for="state" class="col-sm-5 control-label">State</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											name="clientstate">
+											<option value="">Select</option>
+											<option value="mharastra">maharastra</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-12 space">
+									<label for="city" class="col-sm-5 control-label">City</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											name="clientcity">
+											<option value="">Select</option>
+											<option value="pune">pune</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="town" class="col-sm-5 control-label">Town</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <select class="form-control"
+											id="town" name="clinettown">
+											<option value="">Select</option>
+											<option value="kharadi">Kharadi</option>
+											<option value="Other">Other Town</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-lg-12 space hide-div ">
+									<label for="Otown" class="col-sm-5 control-label">Town</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="Otown" name="otown">
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> <input type="text"
+											class="form-control" id="clientpin" name="clietpin">
+									</div>
+								</div>
 
 								</div>
+							</div>
+
+							<div class="col-lg-6 col-lg-offset-4 space">
+								<button type="submit" class="btn btn-success" id="update">Update</button>
+
+							</div>
 						</form>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
 				<!-- /.row -->
 
-				<div class="row">
-					<div class="col-lg-12 space">
-						<div class="panel panel-default">
-							<div class="panel-heading">Client Table</div>
-							<!-- /.panel-heading -->
-							<div class="panel-body">
-								<div class="dataTable_wrapper table-responsive">
-									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
-										<thead>
-											<tr>
-												<th>Client ID</th>
-												<th>Registration Date</th>
-												<th>Name</th>
-												<th>Email Id</th>
-												<th>Primary Contact</th>
-												<th>Secondary Contact</th>
-												<th>Address</th>
-												<th>Photo</th>
-												<th>Select</th>
 
-											</tr>
-										</thead>
-										<tbody>
-											<tr class="odd gradeX">
-												<td>1</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
-												<td>India</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
-												<td class="text-center"></td>
-
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-													class="img-responsive" width="50px " height="50px;" /></td>
-												<td class="center"><a
-													href="<%=request.getContextPath()%>/prashant/businessdetail/"><button
-															class="btn btn-info btn-xs">
-															<i class="fa fa-check"></i> Select
-														</button></a></td>
-
-											</tr>
-
-										</tbody>
-									</table>
-								</div>
-								<!-- /.table-responsive -->
-
-							</div>
-							<!-- /.panel-body -->
-						</div>
-						<!-- /.panel -->
-					</div>
-					<!-- /.col-lg-12 -->
-				</div>
-				<!-- /.row -->
-
-
-				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
+				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
+			<!-- /. PAGE INNER  -->
 			<!-- /. PAGE WRAPPER  -->
 		</div>
 
@@ -442,10 +454,5 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
 
-	<script>
-		$(document).ready(function() {
-
-		});
-	</script>
 </body>
 </html>
