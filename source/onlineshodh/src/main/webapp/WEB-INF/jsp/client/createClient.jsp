@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -171,11 +173,10 @@
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 
-				<li ><a href="tables.html"><i
-						class="fa fa-globe fa-fw"></i> Location Management<span
-						class="fa arrow"></span></a>
+				<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
+						Location Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a 
+						<li><a
 							href="${pageContext.request.contextPath}/admin/countries">Country
 								Management</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/states">State
@@ -186,8 +187,9 @@
 								Management</a></li>
 					</ul> <!-- /.nav-second-level of location management --></li>
 
-				<li class="active"><a href="forms.html"><i class="fa fa-user fa-fw"></i>
-						Client Management<span class="fa arrow"></a>
+				<li class="active"><a href="forms.html"><i
+						class="fa fa-user fa-fw"></i> Client Management<span
+						class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a class="active-menu"
 							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
@@ -294,24 +296,32 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-						<form class="form-horizontal" name="clientform" id="clientform">
+						<form:form
+							action="${pageContext.request.contextPath}/admin/clients/save"
+							modelAttribute="clientdetails" enctype="multipart/form-data"
+							class="form-horizontal" name="clientform" id="clientform">
+
 							<div class="col-lg-6">
 								<div class="col-lg-12 space">
 									<label for="mailid" class="col-sm-5 control-label">Email
 										Id</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-envelope"></span></span> <input type="text"
-											class="form-control" id="clientname" name="clietmail"
-											placeholder="example@mail.com">
+											class="fa fa-envelope"></span></span>
+										<form:input path="user.userName" class="form-control"
+											id="clientname" name="clietmail"
+											placeholder="example@mail.com" />
+										<form:errors path="user.userName" cssClass="errors" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="password" class="col-sm-5 control-label">Password</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-key"></span></span>
-										<input type="password" class="form-control" id="clientpass"
-											name="clietpass">
+										<form:password path="user.password" class="form-control"
+											id="clientpass" name="clietpass" />
+										<form:errors path="user.password" cssClass="errors" />
+
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -319,8 +329,9 @@
 										Password</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-key"></span></span>
-										<input type="password" class="form-control" id="clientCpass"
-											name="clietCpass">
+										<form:password path="user.password" class="form-control"
+											id="clientpass" name="clietpass" />
+										<form:errors path="user.password" cssClass="errors" />
 									</div>
 								</div>
 
@@ -328,16 +339,23 @@
 									<label for="Name" class="col-sm-5 control-label">Name</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientname" name="clietname">
+											class="fa fa-user"></span></span>
+
+										<form:input path="userDetails.name" class="form-control"
+											id="clientname" name="clietname" />
+										<form:errors path="userDetails.name" cssClass="errors" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
-									<label for="Name" class="col-sm-5 control-label">Contact</label>
+									<label for="Name" class="col-sm-5 control-label">Primary
+										Contact</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-phone"></span></span> <input type="tel"
-											class="form-control mobile-number" name="clietphone">
+											class="fa fa-phone"></span></span>
+										<form:input path="userDetails.phone1"
+											class="form-control mobile-number" name="clietphone" />
+										<form:errors path="userDetails.phone1" cssClass="errors" />
+
 									</div>
 								</div>
 
@@ -346,8 +364,12 @@
 										Secondary Contact</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-phone"></span></span> <input type="tel"
-											class="form-control mobile-number" name="clietphone2">
+											class="fa fa-phone"></span></span>
+
+										<form:input path="userDetails.phone2"
+											class="form-control mobile-number" name="clietphone2" />
+										<form:errors path="userDetails.phone2" cssClass="errors" />
+
 									</div>
 								</div>
 								<div class="col-lg-6 col-lg-offset-5 space">
@@ -362,9 +384,13 @@
 										<div>
 											<span class="btn btn-default btn-file"><span
 												class="fileinput-new">Select image</span><span
-												class="fileinput-exists">Change</span><input type="file"
-												name="..."></span> <a href="#"
-												class="btn btn-default fileinput-exists"
+												class="fileinput-exists">Change</span> <input type="file"
+												id="file" name="file"> <form:errors
+													path="userDetails.photograph" cssClass="errors" /></span>
+											<!-- <img
+												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
+												height="50" width="50" alt="*No Image" />  -->
+											<a href="#" class="btn btn-default fileinput-exists"
 												data-dismiss="fileinput">Remove</a>
 										</div>
 									</div>
@@ -372,7 +398,7 @@
 							</div>
 							<div class="col-lg-6">
 
-								<div class="col-lg-12 space">
+								<!-- <div class="col-lg-12 space">
 									<label for="address" class="col-sm-5 control-label">Address</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
@@ -443,145 +469,89 @@
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> <input type="text"
 											class="form-control" id="clientpin" name="clietpin">
-									</div>
-								</div>
+									</div> -->
 							</div>
-							<div class="col-lg-6 col-lg-offset-6 space">
-								<button type="submit" class="btn btn-success" id="display">Submit</button>
-								<button type="reset" class="btn btn-danger">Cancel</button>
-							</div>
-						</form>
 					</div>
-					<!-- /.col-lg-12 -->
+					<div class="col-lg-6 col-lg-offset-6 space">
+						<button type="submit" name="saveClient" class="btn btn-success"
+							id="display">Submit</button>
+						<button type="reset" class="btn btn-danger">Cancel</button>
+					</div>
+
 				</div>
-				<!-- /.row -->
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
 
-				<div class="row">
-					<div class="col-lg-12 space">
-						<div class="panel panel-default">
-							<div class="panel-heading">Client Management Table</div>
-							<!-- /.panel-heading -->
-							<div class="panel-body">
-								<div class="dataTable_wrapper table-responsive">
-									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
-										<thead>
-											<tr>
-												<th>Client ID</th>
-												<th>Client Name</th>
-												<th>Email</th>
-												<th>Contact</th>
-												<th>Address</th>
-												<th>Reg. Date</th>
-												<th>Photograph</th>
-												<th>Edit</th>
-												<th>Delete</th>
+			<div class="row">
+				<div class="col-lg-12 space">
+					<div class="panel panel-default">
+						<div class="panel-heading">Client Management Table</div>
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="dataTable_wrapper table-responsive">
+								<table class="table table-striped table-bordered table-hover"
+									id="dataTables-example">
+									<thead>
+										<tr>
+											<th>Client ID</th>
+											<th>Client Name</th>
+											<th>Email</th>
+											<th>Contact</th>
+											<th>Address</th>
+											<th>Reg. Date</th>
+											<th>Photograph</th>
+											<th>Edit</th>
+											<th>Delete</th>
 
-											</tr>
-										</thead>
-										<tbody>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="userdetail" items="${userDetails}">
 											<tr class="odd gradeX">
-												<td>1</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
-												<td>India</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
+												<td style="text-align: center;">${userdetail.userDetailsId}</td>
+												<td>${userdetail.name}</td>
+												<td>${userdetail.email}</td>
+												<td>${userdetail.phone1}<br>${userdetail.phone2}</td>
+												<td></td>
+												<td>${userdetail.regDate}</td>
 												<td class="text-center"><img
-													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-													class="img-responsive" width="50px " height="50px;" /></td>
-
-												<td><button class="btn btn-info btn-xs">
-														<i class="fa fa-pencil"></i> Edit
-													</button></td>
-												<td class="center"><button
-														class="btn btn-danger btn-xs">
-														<i class="fa fa-trash"></i> Delete
-													</button></td>
-
-											</tr>
-											<tr class="even gradeC">
-												<td>2</td>
-												<td>Kept Home</td>
-												<td>New York</td>
-												<td>America</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-													class="img-responsive" width="50px " height="50px;" /></td>
-												<td><button class="btn btn-info btn-xs">
-														<i class="fa fa-pencil"></i> Edit
-													</button></td>
-												<td class="center"><button
-														class="btn btn-danger btn-xs">
-														<i class="fa fa-trash"></i> Delete
-													</button></td>
-
-											</tr>
-											<tr class="even gradeC">
-												<td>2</td>
-												<td>Kept Home</td>
-												<td>New York</td>
-												<td>America</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-													class="img-responsive" width="50px " height="50px;" /></td>
+													src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}"
+													height="50" width="50" alt="*No Image" /></td>
 												<td><a
-													href="<%=request.getContextPath()%>/prashant/clientupdate"
+													href="${pageContext.request.contextPath}/admin/clients/edit/${userdetail.userDetailsId}"
 													class="edit"><button class="btn btn-info btn-xs">
 															<i class="fa fa-pencil"></i> Edit
 														</button></a></td>
-												<td class="center"><button
-														class="btn btn-danger btn-xs">
-														<i class="fa fa-trash"></i> Delete
-													</button></td>
-
+												<td class="center"><a
+													href="${pageContext.request.contextPath}/admin/clients/delete/${userdetail.userDetailsId}"
+													onclick="return confirm('Do you want to Remove : ${userdetail.name}'">Delete</a>
+												</td>
 											</tr>
-											<tr class="even gradeC">
-												<td>2</td>
-												<td>Kept Home</td>
-												<td>New York</td>
-												<td>America</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-													class="img-responsive" width="50px " height="50px;" /></td>
-												<td><button class="btn btn-info btn-xs">
-														<i class="fa fa-pencil"></i> Edit
-													</button></td>
-												<td class="center"><button
-														class="btn btn-danger btn-xs">
-														<i class="fa fa-trash"></i> Delete
-													</button></td>
-
-											</tr>
-
-										</tbody>
-									</table>
-								</div>
-								<!-- /.table-responsive -->
-
+										</c:forEach>
+									</tbody>
+								</table>
+								</form:form>
 							</div>
-							<!-- /.panel-body -->
+							<!-- /.table-responsive -->
+
 						</div>
-						<!-- /.panel -->
+						<!-- /.panel-body -->
 					</div>
-					<!-- /.col-lg-12 -->
+					<!-- /.panel -->
 				</div>
-				<!-- /.row -->
-
-
-
-				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
-					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+				<!-- /.col-lg-12 -->
 			</div>
-			<!-- /. PAGE WRAPPER  -->
+			<!-- /.row -->
+
+
+
+			<!-- /. PAGE INNER  -->
+			<footer> &copy; 2015 OnlineShodh | By : <a
+				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 		</div>
+		<!-- /. PAGE WRAPPER  -->
+	</div>
 
 	</div>
 	<!-- /. WRAPPER  -->

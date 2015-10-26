@@ -3,32 +3,35 @@ package com.onlineshodh.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import javax.xml.ws.BindingType;
 
+import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.TransactionSystemException;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.BannerEntity;
-import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.entity.CityEntity;
 import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.service.BannerService;
@@ -86,10 +89,12 @@ public class BannerController {
 
 	@RequestMapping(value = { "/", "" })
 	public String showManageBanner(ModelMap model) {
-		model.addAttribute("banner", new BannerEntity());
+		BannerEntity banner=new BannerEntity();
+	    banner.setStatus("disActive");
+	    banner.setRegDate(new Date());      
+		model.addAttribute("banner",banner);
 		model.addAttribute("countries", countryService.getAllCountries());
 		model.addAttribute("categories", categoryService.getAllCategories());
-		System.out.println(" list of Banners" + bannerService.getAllBanners());
 		model.addAttribute("banners", bannerService.getAllBanners());
 		return "banner/bannermanage";
 	}
@@ -99,18 +104,37 @@ public class BannerController {
 		return "redirect:/admin/banners";
 	}
 
-	@SuppressWarnings("deprecation")
+	
+	@RequestMapping(value = "/exception")
+	public String HandleFileSizeExceedException(ModelMap model,
+			@ModelAttribute("banner") BannerEntity banner, BindingResult result) {
+		FieldError FileSizeExceedException;
+		model.addAttribute("countries", countryService.getAllCountries());
+		model.addAttribute("categories", categoryService.getAllCategories());
+		model.addAttribute("banners", bannerService.getAllBanners());
+		FileSizeExceedException = new FieldError("banner", "bannerLogo",
+				"Please Select Image Less than 100000 Bytes");
+		
+		
+		result.addError(FileSizeExceedException);
+		return "banner/bannermanage";
+
+	}
+	
+	
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveBanner(ModelMap model,
 			@RequestParam("file") MultipartFile file,
 			@Valid @ModelAttribute("banner") BannerEntity banner,
-			BindingResult result) throws IOException {
+			BindingResult result) throws IOException,MaxUploadSizeExceededException {
 		boolean flag = false;
 
 		System.out.println(banner);
+		
 		bannerEntityValidator.validate(banner, result);
-
 		logger.info(file.isEmpty());
+		
 		if (result.hasErrors()) {
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
@@ -119,34 +143,38 @@ public class BannerController {
 				flag = true;
 			}
 		}
-		if(file.isEmpty()){
-			
+		if(file.isEmpty() && banner.getBannerLogo()==null){
+			FieldError bannerNotSelected = new FieldError("banner", "bannerLogo", mandatory);
+			result.addError(bannerNotSelected);
+			flag=true;
+		}else if(file.getSize()>100000){
+			FieldError bannerSizeExceed = new FieldError("banner", "bannerLogo", "Please Select Image Less than 100000 Bytes");
+			result.addError(bannerSizeExceed);
 			flag=true;
 		}
-
-		if (flag) {
+			if (flag) {
 			model.addAttribute("categories", categoryService.getAllCategories());
 			model.addAttribute("banners", bannerService.getAllBanners());
 			model.addAttribute("countries", countryService.getAllCountries());
-			model.addAttribute(
+			/*model.addAttribute(
 					"states",
 					stateService.getAllStates(banner.getCity().getState()
 							.getCountry().getCountryId()));
 			model.addAttribute(
 					"cities",
 					cityService.getAllCities(banner.getCity().getState()
-							.getStateId()));
+							.getStateId()));*/
 
 			return "banner/bannermanage";
 		} else {
 			if (!file.isEmpty()) {
 				byte[] bannerLogo = file.getBytes();
 				banner.setBannerLogo(bannerLogo);
+				System.out.println(" file lenght"+file.getBytes().length);
+				System.out.println(" file size "+file.getSize());
 			}
 
-			System.out.println(" Banner Link" + banner.getUrlLink());
 			banner.setTotalHit(1);
-			banner.setStatus("Uploaded");
 			try {
 				bannerService.saveBanner(banner);
 				return "redirect:/admin/banners";

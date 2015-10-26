@@ -323,13 +323,14 @@
 				</div>
 				<!-- /.row -->
 				<div class="row">
-					<div class="col-lg-10 space">
-						<form:form
+				<form:form
 							action="${pageContext.request.contextPath}/admin/banners/save"
 							modelAttribute="banner" method="POST"
 							enctype="multipart/form-data">
 							<form:hidden path="bannerId" />
 							<form:hidden path="bannerLogo" />
+					<div class="col-lg-10 space">
+						
 
 							<label for="category" class="col-sm-2 control-label">Category</label>
 							<div class="input-group">
@@ -396,20 +397,21 @@
 							data-provides="fileinput">
 							<div class="fileinput-preview thumbnail" data-trigger="fileinput"
 								style="width: 200px; height: 150px;">
-								<img
+								<%-- <img
 									src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-									alt="...">
-
-							</div>
+									alt="..." required> --%>
+									
+					</div>
 							<div>
 								<span class="btn btn-default btn-file"><span
 									class="fileinput-new">Select image</span><span
 									class="fileinput-exists">Change</span> <input type="file"
-									name="file" value="Browse" onchange="changeImage(this);">
-									<img id="categorylogo" height="50" width="50" /> </span> <a href="#"
+									id="file" name="file" onchange="changeImage(this);">
+									<form:errors path="bannerLogo" cssClass="errors" />
+									<img id="bannerLogo" height="50" width="50" /> </span> <a href="#"
 									class="btn btn-default fileinput-exists"
 									data-dismiss="fileinput">Remove</a>
-								<form:errors path="bannerLogo" cssClass="errors" />
+								
 							</div>
 						</div>
 					</div>
@@ -453,11 +455,20 @@
 							<span class="input-group-addon"><span
 								class="fa fa-calendar"></span></span>
 
-							<form:input path="regDate" class="form-control" name="rgdate"
-								/>
+							<form:input path="regDate" class="form-control" name="rgdate"/>
 							<form:errors path="regDate" cssClass="errors" />
 						</div>
 					</div>
+						<div class="col-lg-10 space">
+						<label for="status" class="col-sm-2 control-label">Status</label>
+						<div class="input-group">
+							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
+							<form:input path="status" class="form-control" id="status" />
+							<form:errors path="status" cssClass="errors" />
+						</div>
+					</div>
+					
+					
 					<div class="col-lg-6 col-lg-offset-5 space">
 						<button type="submit" class="btn btn-success" id="display"
 							name="save" value="Save ">Submit</button>

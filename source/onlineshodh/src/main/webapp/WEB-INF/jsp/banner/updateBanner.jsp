@@ -94,8 +94,8 @@
 
 			<p>
 				<label>Banner : </label> <input type="file" id="file" name="file"
-					value="Browse" onchange="changeImage(this);"> <img
-					id="categorylogo"
+					 onchange="changeImage(this);"> <img
+					id="bannerLogo"
 					src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
 					height="50" width="50" />
 			</p>

@@ -140,17 +140,17 @@ public class ClientController {
 			{
 				error = new FieldError("clientdetails", "user."+e.getField(), e.getMsg());
 				result.addError(error);
-				return "client/manageClients";
+				return "client/createClient";
 			}
 			catch(Exception e)
 			{
 				error = new FieldError("clientdetails", "user.userName", "*Invalid Data");
 				e.printStackTrace();
-				return "client/manageClients";
+				return "client/createClient";
 			}
 			return "redirect:/admin/clients";
 		}
-		return "client/manageClients";
+		return "client/createClient";
 	}
 	
 	@RequestMapping(value="/update",method=RequestMethod.POST)
@@ -193,12 +193,12 @@ public class ClientController {
 			{
 				FieldError error = new FieldError("userDetails", e.getField(), e.getMsg());
 				result.addError(error);
-				return "client/manageClients";
+				return "client/createClient";
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		return "client/updateClient";
+		return "client/clientUpdate";
 	}
 	
 	@RequestMapping("/load/logo/{userDetailsId}")
@@ -232,7 +232,7 @@ public class ClientController {
 	@RequestMapping(value = "/edit/{userDetailsId}", method = RequestMethod.GET)
 	public String editSubCategory(ModelMap model,@PathVariable("userDetailsId") Integer userDetailsId) {
 		model.addAttribute("userDetails", userDetailsService.getUserDetails(userDetailsId));
-		return "client/updateClient";
+		return "client/clientUpdate";
 	}
 
 }

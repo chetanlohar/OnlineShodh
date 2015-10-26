@@ -184,7 +184,7 @@
                            <li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
 							Client Management<span class="fa arrow"></a>
 						<ul class="nav nav-second-level">
-							<li><a href="<%=request.getContextPath()%>/prashant/clientcreate">Manage Client</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/clients">Manage Client</a></li>
 						</ul></li>
 						
 						

@@ -31,6 +31,28 @@
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+<!-- Spring File Filter- -->
+<filter>
+    <filter-name>meh</filter-name>
+    <filter-class>com.onlineshodh.supportclass.MultipartExceptionHandler</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>meh</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+<filter>
+    <description>
+        Allows the application to accept multipart file data.
+    </description>
+    <display-name>springMultipartFilter</display-name>
+    <filter-name>springMultipartFilter</filter-name>
+    <filter-class>org.springframework.web.multipart.support.MultipartFilter</filter-class>
+ </filter>
+<filter-mapping>
+    <filter-name>springMultipartFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+
 
 	<!-- Spring Security -->
 

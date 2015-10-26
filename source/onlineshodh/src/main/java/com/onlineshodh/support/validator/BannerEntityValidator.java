@@ -3,6 +3,7 @@ package com.onlineshodh.support.validator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
@@ -35,6 +36,10 @@ public class BannerEntityValidator implements Validator {
 		}
 		if (banner.getCity().getCityId() == 0) {
 			errors.rejectValue("city.cityId", "11", mandatory);
+		}if(banner.getBannerLogo().length==0){
+			errors.rejectValue("bannerLogo", "11", mandatory);
+		}if(banner.getBannerLogo().length>100000){
+			errors.rejectValue("bannerLogo", "11", "Please Select Image Less than 100000 Bytes");
 		}
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "urlLink", "11",
 				mandatory);

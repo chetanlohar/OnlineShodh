@@ -44,7 +44,7 @@ public class BannerEntity implements Serializable{
 	@ManyToOne(targetEntity=CityEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="cityid")
 	private CityEntity city;
-	@Column(name="banner")
+	@Column(name="banner",nullable=false)
 	private byte[] bannerLogo;
 	@Column(name="urllink")
 	@NotEmpty(message="Url Should not Empty")
@@ -131,10 +131,7 @@ public class BannerEntity implements Serializable{
 		this.status = status;
 	}
 	
-	public BannerEntity()
-	{
-		regDate = new Date();
-	}
+	
 	@Override
 	public String toString() {
 		return "BannerEntity [bannerId=" + bannerId + ", category=" + category

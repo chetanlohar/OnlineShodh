@@ -1,32 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Banner</title>
+<title>Client</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
+<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
-	rel="stylesheet" />
-
-<!-- DATA TABLE STYLES-->
-<link
-	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
-	rel="stylesheet" />
-
-
-<!-- Datepicker STYLES-->
-<link
-	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker3.min.css"
+	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
@@ -34,41 +22,23 @@
 	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
+<!-- DATA TABLE STYLES-->
+<link
+	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
+	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link
-	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
+<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
-
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/commonjs.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
-<script>
-	$(function() {
-		$("#datepicker").datepicker();
-	});
-	$(function() {
-		$("#datepicker2").datepicker();
-	});
-	$(function() {
-		$("#datepicker3").datepicker();
-	});
-</script>
-
-
 
 </head>
 </head>
 <body>
+
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
 			style="margin-bottom: 0">
@@ -195,10 +165,10 @@
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/admin/categories"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/admin/subcategories">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -217,10 +187,11 @@
 								Management</a></li>
 					</ul> <!-- /.nav-second-level of location management --></li>
 
-				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
-						Client Management<span class="fa arrow"></a>
+				<li class="active"><a href="forms.html"><i
+						class="fa fa-user fa-fw"></i> Client Management<span
+						class="fa arrow"></a>
 					<ul class="nav nav-second-level">
-						<li><a
+						<li><a class="active-menu"
 							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
@@ -258,12 +229,12 @@
 					</ul></li>
 
 
-				<li class="active"><a href="#"><i class="fa fa-photo "></i>Advt.
-						Banner<span class="fa arrow"></span></a>
+				<li><a href="#"><i class="fa fa-photo "></i>Advt. Banner<span
+						class="fa arrow"></span></a>
 
 					<ul class="nav nav-second-level">
-						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
+						<li><a
+							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
@@ -301,7 +272,7 @@
 					</li>
 					<li><a href="#">Second Level<span class="fa arrow"></span></a>
 						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>s
+							<li><a href="#">Third Link</a></li>
 							<li><a href="#">Third Link</a></li>
 
 						</ul></li>
@@ -315,223 +286,232 @@
 		<!-- /. SIDEBAR MENU (navbar-side) -->
 		<div id="page-wrapper" class="page-wrapper-cls">
 			<div id="page-inner">
+
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Banner Management</h1>
+						<h1 class="page-header">Client Management</h1>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
 				<!-- /.row -->
-				
 				<div class="row">
-				<form:form
-							action="${pageContext.request.contextPath}/admin/banners/save"
-							modelAttribute="banner" method="POST"
-							enctype="multipart/form-data">
-			<form:hidden path="bannerId" />
-             <form:hidden path="bannerLogo" />  			
-					<div class="col-lg-10 space">
-					
-						
+					<div class="col-lg-12">
+						<form:form
+							action="${pageContext.request.contextPath}/admin/clients/update"
+							modelAttribute="userDetails" enctype="multipart/form-data"
+							class="form-horizontal" name="clientform" id="clientform">
 
-							<label for="category" class="col-sm-2 control-label">Category</label>
+							<div class="col-lg-12 space">
+								<label for="Name" class="col-sm-5 control-label">Name</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-user"></span></span>
+
+									<form:input path="name" class="form-control" id="clientname"
+										name="clietname" />
+									<form:errors path="name" cssClass="errors" />
+								</div>
+							</div>
+							<div class="col-lg-12 space">
+								<label for="Name" class="col-sm-5 control-label">
+									Primary Contact</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span
+										class="fa fa-phone"></span></span>
+									<form:input path="phone1" class="form-control mobile-number"
+										name="clietphone" />
+									<form:errors path="phone1" cssClass="errors" />
+
+								</div>
+							</div>
+
+							<div class="col-lg-12 space">
+								<label for="Name" class="col-sm-5 control-label">
+									Secondary Contact</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span
+										class="fa fa-phone"></span></span>
+
+									<form:input path="phone2" class="form-control mobile-number"
+										name="clietphone2" />
+									<form:errors path="phone2" cssClass="errors" />
+
+								</div>
+							</div>
+							<div class="col-lg-6 col-lg-offset-5 space">
+								<div class="fileinput fileinput-new" data-provides="fileinput">
+									<div class="fileinput-preview thumbnail"
+										data-trigger="fileinput" style="width: 200px; height: 150px;">
+										<img
+											src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDetails.userDetailsId}"
+											id="userDetailsLogo" height="50" width="50" /> 
+
+									</div>
+									<div>
+										<span class="btn btn-default btn-file"><span
+											class="fileinput-new">Select image</span><span
+											class="fileinput-exists">Change</span> <input type="file"
+											id="file" name="file"> <form:errors
+												path="photograph" cssClass="errors" /></span>
+										<!-- <img
+												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
+												height="50" width="50" alt="*No Image" />  -->
+										<a href="#" class="btn btn-default fileinput-exists"
+											data-dismiss="fileinput">Remove</a>
+									</div>
+								</div>
+							</div>
+					</div>
+					<div class="col-lg-6">
+
+						<div class="col-lg-12 space">
+							<label for="address" class="col-sm-5 control-label">Address</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-road"></span></span>
+								<textarea class="form-control" rows="3" id="clientadd"
+									name="address"></textarea>
+							</div>
+						</div>
+
+						<div class="col-lg-12 space">
+							<label for="country" class="col-sm-5 control-label">Country</label>
 							<div class="input-group">
 								<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-								<form:select path="category.categoryId" id="categoryId"
-									class="form-control" name="bannercategory">
-									<form:option value="0" label="---Select-------" />
-									<c:forEach var="category" items="${categories}">
-										<form:option value="${category.categoryId}">${category.categoryName}</form:option>
-									</c:forEach>
-								</form:select>
-								<form:errors path="category.categoryId" />
-
+								<select class="form-control" name="clientcountry">
+									<option value="">Select</option>
+									<option value="india">India</option>
+								</select>
 							</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="Country" class="col-sm-2 control-label">Country</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-
-							<form:select path="city.state.country.countryId" id="countryId"
-								onchange="getState()" class="form-control" name="bannerCountry">
-								<form:option value="0" label="---Select-------" />
-								<c:forEach var="country" items="${countries}">
-									<form:option value="${country.countryId}">${country.countryName}</form:option>
-								</c:forEach>
-							</form:select>
-							<form:errors path="city.state.country.countryId" />
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="state" class="col-sm-2 control-label">state</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-							<form:select path="city.state.stateId" id="townStates"
-								onchange="getCity()" class="form-control" name="bannerstate">
-								<form:option value="0" label="---Select-------" />
-								<c:forEach var="state" items="${states}">
-									<form:option value="${state.stateId}">${state.stateName}</form:option>
-								</c:forEach>
-							</form:select>
-							<form:errors path="city.state.stateId" />
 
-						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="city" class="col-sm-2 control-label">city</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-							<form:select path="city.cityId" id="stateCities"
-								class="form-control" name="bannercity">
-								<form:option value="0" label="---Select-------" />
-								<c:forEach var="city" items="${cities}">
-									<form:option value="${city.cityId}">${city.cityName}</form:option>
-								</c:forEach>
-							</form:select>
-							<form:errors path="city.cityId" />
-
-						</div>
-					</div>
-					<div class="col-lg-7  space">
-						<label for="banner" class="col-sm-2 control-label">Banner</label>
-						<div class="fileinput fileinput-new col-lg-offset-1"
-							data-provides="fileinput">
-							<div class="fileinput-preview thumbnail" data-trigger="fileinput"
-								style="width: 200px; height: 150px;">
-								<img id="bannerLogo"
-									src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
-									height="50" width="50" />
-
+						<div class="col-lg-12 space">
+							<label for="state" class="col-sm-5 control-label">State</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-user"></span></span>
+								<select class="form-control" name="clientstate">
+									<option value="">Select</option>
+									<option value="mharastra">maharastra</option>
+								</select>
 							</div>
-							<div>
-								<span class="btn btn-default btn-file"><span
-									class="fileinput-new">Select image</span><span
-									class="fileinput-exists">Change</span> <input type="file"
-									name="file" value="Browse" onchange="changeImage(this);">
-									<%-- <img id="bannerLogo"
-									src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
-									height="50" width="50" /> --%> </span> <a href="#"
-									class="btn btn-default fileinput-exists"
-									data-dismiss="fileinput">Remove</a>
-								<form:errors path="bannerLogo" cssClass="errors" />
+						</div>
+
+						<div class="col-lg-12 space">
+							<label for="city" class="col-sm-5 control-label">City</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-user"></span></span>
+								<select class="form-control" name="clientcity">
+									<option value="">Select</option>
+									<option value="pune">pune</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-12 space">
+							<label for="town" class="col-sm-5 control-label">Town</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-user"></span></span>
+								<select class="form-control" id="town" name="clinettown">
+									<option value="">Select</option>
+									<option value="kharadi">Kharadi</option>
+									<option value="Other">Other Town</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-12 space hide-div ">
+							<label for="Otown" class="col-sm-5 control-label">Town</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-user"></span></span>
+								<input type="text" class="form-control" id="Otown" name="otown">
+							</div>
+						</div>
+						<div class="col-lg-12 space">
+							<label for="pincode" class="col-sm-5 control-label">Pincode</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-user"></span></span>
+								<input type="text" class="form-control" id="clientpin"
+									name="clietpin">
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-10 space">
-						<label for="url" class="col-sm-2 control-label">UrlLink</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
-							<form:input path="urlLink" class="form-control" id="bannerurl" />
-							<form:errors path="urlLink" cssClass="errors" />
-						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="date" class="col-sm-2 control-label">Start
-							Date</label>
-						<div class="input-group sandbox-container">
-							<span class="input-group-addon"><span
-								class="fa fa-calendar"></span></span>
-
-							<form:input path="startDate" class="form-control"
-								name="startdate" id="datepicker" />
-							<form:errors path="startDate" cssClass="errors" />
-
-						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="date" class="col-sm-2 control-label">Expiry
-							Date</label>
-						<div class="input-group sandbox-container">
-							<span class="input-group-addon"><span
-								class="fa fa-calendar"></span></span>
-
-							<form:input path="expiryDate" class="form-control"
-								name="Expirydate" id="datepicker2" />
-							<form:errors path="expiryDate" cssClass="errors" />
-						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="date" class="col-sm-2 control-label">Registration
-							Date</label>
-						<div class="input-group sandbox-container">
-							<span class="input-group-addon"><span
-								class="fa fa-calendar"></span></span>
-
-							<form:input path="regDate" class="form-control" name="rgdate"
-								id="datepicker3" />
-							<form:errors path="regDate" cssClass="errors" />
-						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="status" class="col-sm-2 control-label">Status</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
-							<form:input path="status" class="form-control" id="status" />
-							<form:errors path="status" cssClass="errors" />
-						</div>
-					</div>
-					
-					<div class="col-lg-6 col-lg-offset-5 space">
-						<button type="submit" class="btn btn-success" id="display"
-							name="update">Update</button>
+					<div class="col-lg-6 col-lg-offset-6 space">
+						<button type="submit" name="saveClient" class="btn btn-success"
+							id="display">Submit</button>
 						<button type="reset" class="btn btn-danger">Cancel</button>
-						</form:form>
 					</div>
+					</form:form>
 				</div>
-				<!-- /.row -->
-
-				<div class="row">
-					<div class="col-lg-12 space">
-						<div class="panel panel-default"></div>
-						<!-- /.panel -->
-					</div>
-					<!-- /.col-lg-12 -->
-				</div>
-				<!-- /.row -->
-
-				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
-					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+				<!-- /.col-lg-12 -->
 			</div>
-			<!-- /. PAGE WRAPPER  -->
+			<!-- /.row -->
+
+
+
+
+			<!-- /. PAGE INNER  -->
+			<footer> &copy; 2015 OnlineShodh | By : <a
+				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 		</div>
+		<!-- /. PAGE WRAPPER  -->
+	</div>
 
 	</div>
 	<!-- /. WRAPPER  -->
+
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-
-	<!-- Datepicker SCRIPTS -->
+		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+
+	<!-- validation SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+
+
 
 	<!-- JANSY BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
 
-
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+
+
+
+	<!-- Input Telephone SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+
 	<!-- CUSTOM SCRIPTS -->
 	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			$('#dataTables-example').DataTable({
+				responsive : true
+			});
+
+			$(".mobile-number").intlTelInput();
+
+			$("#town").change(function(e) {
+
+				if ($('#town').val() == 'Other') {
+					$(".hide-div").show();
+				} else {
+					$(".hide-div").hide();
+				}
+
+			});
+		});
+	</script>
 </body>
 </html>

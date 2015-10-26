@@ -52,10 +52,6 @@ public class SearchController {
 
 	@Autowired
 	WebApplicationContext context; 
-	
-	
-	
-	
 	BusinessSearchEntityValidator validator;
 	
 	@Autowired
