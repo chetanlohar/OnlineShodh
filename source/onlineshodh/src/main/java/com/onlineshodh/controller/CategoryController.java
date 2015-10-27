@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
+import org.mockito.internal.stubbing.answers.ThrowsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.onlineshodh.entity.BannerEntity;
 import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.entity.PlanEntity;
 import com.onlineshodh.service.CategoryService;
@@ -53,7 +55,8 @@ public class CategoryController {
 
 	@RequestMapping(value = { "/", "" })
 	public String showManageCategory(ModelMap model) {
-		model.addAttribute("category",context.getBean("categoryEntity", CategoryEntity.class));
+		//model.addAttribute("category",context.getBean("categoryEntity", CategoryEntity.class));
+         model.addAttribute("category",new CategoryEntity());  		
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("categories", categories);
 		return "category/categorymanage";
@@ -100,10 +103,10 @@ public class CategoryController {
 				category.setPopularity(0);
 			}
 			
-			//try {
+			try {
 				categoryService.saveCategory(category);
-				//return "redirect:/admin/categories/";
-			/*} catch (DataIntegrityViolationException e) {
+				return "redirect:/admin/categories/";
+			} catch (DataIntegrityViolationException e) {
 				FieldError countryNameAvailableError;
 				if (e.getMostSpecificCause().getMessage().contains("unique")) {
 					countryNameAvailableError = new FieldError("category","categoryName", alreadyExist);
@@ -115,7 +118,7 @@ public class CategoryController {
 				result.addError(countryNameAvailableError);
 			} catch (Exception e) {
 				logger.debug("Exception Occured!", new Exception(e));
-			}*/
+			}
 		}
 		return "category/categorymanage";
 	}
@@ -157,16 +160,42 @@ public class CategoryController {
 		}
 		return null;
 	}
-	@RequestMapping(value="/exception/{excetiontype}")
+	
+	
+	@RequestMapping(value = "/exception")
+	public String HandleFileSizeExceedException(ModelMap model,
+			@ModelAttribute("category") CategoryEntity category, BindingResult result) {
+		FieldError FileSizeExceedException;
+		model.addAttribute("categories", categoryService.getAllCategories());
+		FileSizeExceedException = new FieldError("category", "categoryLogo",
+				"Please Select Image Less than 100000 Bytes");
+		
+		
+		result.addError(FileSizeExceedException);
+		return "category/categorymanage";
+
+	}
+	
+	
+	/*@RequestMapping(value = "/exception")
+	public String redirectAfterException() {
+		return "redirect:/admin/categories";
+	}
+	*/
+	
+	/*@RequestMapping(value="/exception/{excetiontype}")
 	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("category") CategoryEntity category, BindingResult result)
 	{
+		System.out.println(" In category Controoleer Exception :"+exception);
 		FieldError categoryNameAvailableError;
 		if(exception.equalsIgnoreCase("unique")){
+			System.out.println(" In category Controoleer Exception :"+exception);
 			categoryNameAvailableError = new FieldError("category","categoryName", alreadyExist);
 			logger.info(alreadyExist);
 			
 		
 		}else{
+			System.out.println(" In category Controoleer Exception :"+exception);
 			categoryNameAvailableError = new FieldError("category","categoryName",onlyAlphabets);
 			logger.info(onlyAlphabets);
 			}
@@ -174,5 +203,11 @@ public class CategoryController {
 		return "category/categorymanage";
 	
 	}
+	@RequestMapping(value={"/exception/Integer","/exception/unique"})
+	public String redirectAfterException()
+	{
+		return "redirect:/admin/categories";
+	}
+	*/
 		
 }

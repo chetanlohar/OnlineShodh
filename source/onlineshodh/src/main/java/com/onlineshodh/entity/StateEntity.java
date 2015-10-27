@@ -38,7 +38,6 @@ public class StateEntity implements  Serializable {
 
 	@Column(name = "statename")
 	@NotEmpty(message = "State Name is Mandatory!")
-	@Pattern(regexp="^[a-zA-Z]+$",message="OnlyAlphabets")
 	private String stateName;
 	@ManyToOne(targetEntity=CountryEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="countryId")

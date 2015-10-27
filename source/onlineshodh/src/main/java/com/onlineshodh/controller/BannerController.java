@@ -131,25 +131,20 @@ public class BannerController {
 		boolean flag = false;
 
 		System.out.println(banner);
-		
 		bannerEntityValidator.validate(banner, result);
 		logger.info(file.isEmpty());
 		
 		if (result.hasErrors()) {
-			System.out.println(result.getErrorCount());
+			System.out.println("Total Errors: "+result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError error : errors) {
 				logger.info(error.getDefaultMessage());
 				flag = true;
 			}
 		}
-		if(file.isEmpty() && banner.getBannerLogo()==null){
+		if(file.isEmpty() && banner.getBannerLogo().length==0){
 			FieldError bannerNotSelected = new FieldError("banner", "bannerLogo", mandatory);
 			result.addError(bannerNotSelected);
-			flag=true;
-		}else if(file.getSize()>100000){
-			FieldError bannerSizeExceed = new FieldError("banner", "bannerLogo", "Please Select Image Less than 100000 Bytes");
-			result.addError(bannerSizeExceed);
 			flag=true;
 		}
 			if (flag) {
@@ -244,4 +239,5 @@ public class BannerController {
 		return "redirect:/admin/banners";
 	}
 
+	
 }

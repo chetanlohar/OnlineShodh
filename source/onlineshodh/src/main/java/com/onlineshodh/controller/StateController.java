@@ -157,16 +157,18 @@ public class StateController {
 	{
 		FieldError stateNameAvailableError;
 		
+		System.out.println(" i am in exception controller"+exception);
+		
 		if(exception.equalsIgnoreCase("unique")){
 			stateNameAvailableError = new FieldError("state",
 					"stateName", alreadyExist);
-			result.addError(stateNameAvailableError);
-		}/*else{
+		}else{
 				stateNameAvailableError = new FieldError("state",
 						"stateName",
 						onlyAlphabets);
-	}*/
-		else
+				
+	}
+		/*else
 		{
 			System.out.println(" hi");
 			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -181,8 +183,8 @@ public class StateController {
 		           
 		        }
 		    }
-		}
-		
+		}*/
+		result.addError(stateNameAvailableError);
 		model.addAttribute("countries", countryService.getAllCountries());
 		model.addAttribute("states",stateService.getAllStates());
 		return "state/manageStates";

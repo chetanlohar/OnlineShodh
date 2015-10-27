@@ -329,7 +329,7 @@
 
 
 								<a
-									href="${pageContext.request.contextPath}/admin/states/
+									href="${pageContext.request.contextPath}/admin/states/"
 						class="back">GoBack</a>
 
 							</div>

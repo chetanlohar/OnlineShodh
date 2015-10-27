@@ -36,12 +36,15 @@ public class BannerEntityValidator implements Validator {
 		}
 		if (banner.getCity().getCityId() == 0) {
 			errors.rejectValue("city.cityId", "11", mandatory);
-		}if(banner.getBannerLogo().length==0){
+		}/*if(banner.getBannerLogo().length==0){
+			System.out.println("Banner Image Not Selected");
 			errors.rejectValue("bannerLogo", "11", mandatory);
-		}if(banner.getBannerLogo().length>100000){
+		}*/
+		/*if(banner.getBannerLogo().length>100000){
+			System.out.println("Banner Image Size Greater");
 			errors.rejectValue("bannerLogo", "11", "Please Select Image Less than 100000 Bytes");
 		}
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "urlLink", "11",
+*/		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "urlLink", "11",
 				mandatory);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "startDate", "11",
 				mandatory);

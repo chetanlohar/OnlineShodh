@@ -451,6 +451,9 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+		
+		<script type="text/javascript"
+					src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
 
 
 	<script>

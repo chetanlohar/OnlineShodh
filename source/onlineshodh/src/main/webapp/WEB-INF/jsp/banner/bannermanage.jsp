@@ -368,9 +368,9 @@
 							<form:select path="city.state.stateId" id="townStates"
 								onchange="getCity()" class="form-control" name="bannerstate">
 								<form:option value="0" label="---Select-------" />
-								<c:forEach var="state" items="${states}">
+								 <c:forEach var="state" items="${states}">
 									<form:option value="${state.stateId}">${state.stateName}</form:option>
-								</c:forEach>
+								</c:forEach> 
 							</form:select>
 							<form:errors path="city.state.stateId" />
 
@@ -383,9 +383,9 @@
 							<form:select path="city.cityId" id="stateCities"
 								class="form-control" name="bannercity">
 								<form:option value="0" label="---Select-------" />
-								<c:forEach var="city" items="${cities}">
+								 <c:forEach var="city" items="${cities}">
 									<form:option value="${city.cityId}">${city.cityName}</form:option>
-								</c:forEach>
+								</c:forEach> 
 							</form:select>
 							<form:errors path="city.cityId" />
 

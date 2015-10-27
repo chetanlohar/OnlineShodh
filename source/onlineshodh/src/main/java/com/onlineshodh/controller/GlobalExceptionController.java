@@ -24,6 +24,8 @@ public class GlobalExceptionController {
 	public String handleDatatIntegrityViolExcep(
 			DataIntegrityViolationException ex) {
 		String exceptionType = null;
+		
+		System.out.println("Yes Exception Caught");
 
 		if (ex.getMostSpecificCause().getMessage().contains("unique")) {
 			exceptionType = "unique";
@@ -34,46 +36,47 @@ public class GlobalExceptionController {
 				.contains("UNQ_country_countryName")
 				|| ex.getMostSpecificCause().getMessage()
 						.contains("chk_country_countryname")) {
+			System.out.println("Yes Exception Redirect to "+exceptionType);
 			return "redirect:/admin/countries/exception/" + exceptionType;
 		}
 		if (ex.getMostSpecificCause().getMessage()
 				.contains("unq_state_statename")
 				|| ex.getMostSpecificCause().getMessage()
 						.contains("chk_state_statename")) {
+			System.out.println("Yes Exception Redirect to "+exceptionType);
 			return "redirect:/admin/states/exception/" + exceptionType;
 		}
 		if (ex.getMostSpecificCause().getMessage()
 				.contains("unq_city_cityname")
 				|| ex.getMostSpecificCause().getMessage()
 						.contains("chk_city_cityname")) {
+			System.out.println("Yes Exception Redirect to "+exceptionType);
 			return "redirect:/admin/cities/exception/" + exceptionType;
 		}
 		if (ex.getMostSpecificCause().getMessage()
 				.contains("unq_town_townname")
 				|| ex.getMostSpecificCause().getMessage()
 						.contains("chk_town_townname")) {
+			System.out.println("Yes Exception Redirect to "+exceptionType);
 			return "redirect:/admin/towns/exception/" + exceptionType;
 		}
 		if (ex.getMostSpecificCause().getMessage()
 				.contains("unq_Plan_details_planname")
 				|| ex.getMostSpecificCause().getMessage()
 						.contains("chk_Plan_details_planname")) {
+			System.out.println("Yes Exception Redirect to "+exceptionType);
 			return "redirect:/admin/plans/exception/" + exceptionType;
 		}
 		if (ex.getMostSpecificCause().getMessage()
 				.contains("UNQ_category_categoryname")
 				|| ex.getMostSpecificCause().getMessage()
 						.contains("chk_category_categoryname")) {
+			System.out.println("Yes Exception Redirect to category "+exceptionType);
 			return "redirect:/admin/categories/exception/" + exceptionType;
-		}
-		if (ex.getMostSpecificCause().getMessage()
-				.contains("UNQ_category_categoryname")
-				|| ex.getMostSpecificCause().getMessage()
-						.contains("chk_category_categoryname")) {
-			return "redirect:/admin/categories/exception/" + exceptionType;
-		}
-
-		return "redirect:/admin/";
+		}else{
+			return "redirect:/admin/";
+			}
+		//return "redirect:/admin/";
 	}
 
 	@ExceptionHandler(TransactionSystemException.class)

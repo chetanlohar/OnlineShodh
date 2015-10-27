@@ -363,7 +363,7 @@
 											<tr>
 												<th>City ID</th>
 												<th>City Name</th>
-												<th>State Name</th>
+												<th>State/ID </th>
 												<th>Country/ID</th>
 												<th>Edit</th>
 												<th>Delete</th>
@@ -376,8 +376,8 @@
 												<tr class="odd gradeX">
 													<td>${city.cityId}</td>
 													<td>${city.cityName}</td>
-													<td>${city.state.country.countryName}&nbsp|&nbsp(${city.state.country.countryId})</td>
 													<td>${city.state.stateName}&nbsp|&nbsp(${city.state.stateId})</td>
+													<td>${city.state.country.countryName}&nbsp|&nbsp(${city.state.country.countryId})</td>
 													<td><a
 														href="${pageContext.request.contextPath}/admin/cities/edit/${city.cityId}/${city.state.country.countryId}"
 														class="edit"><button class="btn btn-info btn-xs">
