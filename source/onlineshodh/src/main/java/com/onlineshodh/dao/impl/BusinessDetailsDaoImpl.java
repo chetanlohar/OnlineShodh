@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.BusinessDetailsDao;
 import com.onlineshodh.entity.BusinessDetailsEntity;
-import com.onlineshodh.entity.UserDetailsEntity;
 
 @Repository
 public class BusinessDetailsDaoImpl extends
@@ -69,6 +68,14 @@ public class BusinessDetailsDaoImpl extends
 		entityManager=getEntityManager();
 		return entityManager.createQuery("from BusinessDetailsEntity business where business.businessName=:businessName", BusinessDetailsEntity.class).setParameter("businessName",bussinessName).getResultList();
 	       
+	}
+
+	@Override
+	public List<BusinessDetailsEntity> getBusinessDetailsByUserDetailsId(Long userDetailsId) {
+		
+		entityManager = getEntityManager();
+		setClazz(BusinessDetailsEntity.class);
+		return entityManager.createQuery("from BusinessDetailsEntity business where business.userDetails.userDetailsId = :userDetailsId", BusinessDetailsEntity.class).setParameter("userDetailsId", userDetailsId.intValue()).getResultList();
 	}
 	
 	

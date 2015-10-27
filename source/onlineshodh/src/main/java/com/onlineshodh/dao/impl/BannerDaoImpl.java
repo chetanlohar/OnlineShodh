@@ -33,5 +33,4 @@ public class BannerDaoImpl extends AbstractJpaDao<BannerEntity> implements Banne
 		BannerEntity bannerEntity=getBannerById(bannerId);
 		delete(bannerEntity); 
 	}
-
 }

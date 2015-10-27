@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -301,27 +303,27 @@
 							<table class="table">
 								<tr>
 									<td class="lable">Client Id</td>
-									<td>Os-pra007</td>
+									<td>${userdetails.userDetailsId}</td>
 								</tr>
 								<tr>
 									<td class="lable">Client Name</td>
-									<td>MindHacker Is Back</td>
+									<td>${userdetails.name}</td>
 								</tr>
 								<tr>
 									<td class="lable">Registration Date</td>
-									<td>25/10/2015</td>
+									<td>${userdetails.regDate}</td>
 								</tr>
 								<tr>
 									<td class="lable">Email Id</td>
-									<td>Clent@mail.com</td>
+									<td>${userdetails.email}</td>
 								</tr>
 								<tr>
 									<td class="lable">Primary Contact</td>
-									<td>86002494565</td>
+									<td>${userdetails.phone1}</td>
 								</tr>
 								<tr>
 									<td class="lable">Secondary Contact</td>
-									<td>44654654545</td>
+									<td>${userdetails.phone2}</td>
 								</tr>
 								<tr>
 									<td class="lable">Address</td>
@@ -330,7 +332,7 @@
 								<tr>
 									<td class="lable">Photograph</td>
 									<td><img
-										src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+										src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetails.userDetailsId}"
 										class="img-responsive" width="50px " height="50px;" /></td>
 								</tr>
 							</table>
@@ -354,42 +356,42 @@
 							<table class="table">
 								<tr>
 									<td>Address</td>
-									<td>kesnand Wagholi pune</td>
+									<td>${userdetails.address.address}</td>
 								
 								</tr>
 								<tr>
 									<td>Street</td>
-									<td>Taleranwadi</td>
+									<td>${userdetails.address.street}</td>
 									
 								</tr>
 								<tr>
 									<td>Landmark</td>
-									<td>Wika colony</td>
+									<td>${userdetails.address.landMark}</td>
 									
 								</tr>
 								<tr>
 									<td>Country</td>
-									<td>America</td>
+									<td>${userdetails.address.city.state.country.countryName}</td>
 									
 								</tr>
 								<tr>
 									<td>State</td>
-									<td>W.c</td>
+									<td>${userdetails.address.city.state.stateName}</td>
 									
 								</tr>
 								<tr>
 									<td>City</td>
-									<td>New York</td>
+									<td>${userdetails.address.city.cityName}</td>
 									
 								</tr>
 								<tr>
 									<td>Town</td>
-									<td>florida</td>
+									<td>${userdetails.address.town.townName}</td>
 									
 								</tr>
 								<tr>
 									<td>Pincode</td>
-									<td>4546555555</td>
+									<td>${userdetails.address.pincode}</td>
 									
 								</tr>
 
@@ -410,23 +412,17 @@
 						</div>
 						<div class="detail-wraper">
 							<table class="table">
-								<tr>
-									<td>1.</td>
-									<td>Business name</td>
-									<td>Shri Ram Group Of Company</td>
-									<td><a href="<%=request.getContextPath()%>/prashant/businessdetailupdate/"><button class="btn btn-info btn-xs">
-												<i class="fa fa-pencil"></i> Edit
-											</button></a></td>
-								</tr>
-								<tr>
-									<td>2.</td>
-									<td>Business name</td>
-									<td>Shri Ram Group Of Company</td>
-									<td>Edit</td>
-								</tr>
-
+								<c:forEach var="business" items="${businessDetails}">
+									<tr>
+										<td>${business.businessId}</td>
+										<td>${business.businessName}</td>
+										<td>${business.website}</td>
+										<td><a href="${pageContext.request.contextPath}/admin/business/${userdetails.userDetailsId}/update/${business.businessId}"><button class="btn btn-info btn-xs">
+													<i class="fa fa-pencil"></i> Edit
+												</button></a></td>
+									</tr>
+								</c:forEach>
 							</table>
-
 						</div>
 						<a href="<%=request.getContextPath()%>/prashant/newbusinessmanage/"><button class="btn btn-info btn-xs">
 								<i class="fa fa-plus"></i> Add New Business
