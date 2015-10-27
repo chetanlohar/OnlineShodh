@@ -6,36 +6,36 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit Business Details</title>
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/intlTelInput.css"
+	href="${pageContext.request.contextPath}/resources/css/intlTelInput.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -152,7 +152,7 @@
 				<li>
 					<div class="user-img-div">
 						<img
-							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
 							class="img-circle" />
 
 
@@ -161,16 +161,16 @@
 				</li>
 				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
 
-				<li><a href="<%=request.getContextPath()%>/admin/home"><i
+				<li><a href="${pageContext.request.contextPath}/admin/home"><i
 						class="fa fa-home "></i>Home</a></li>
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/prashant/categorymanage"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/prashant/subcategorymanage">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -193,7 +193,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -202,7 +202,7 @@
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/prashant/businessmanage">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -235,7 +235,7 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
+							href="${pageContext.request.contextPath}/prashant/bannermanage"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
@@ -299,7 +299,7 @@
 					
 											<div class="detail-title">
 							<span class="detail-titile-header font17">Business
-								Information</span><a href="<%=request.getContextPath()%>/prashant/editbusiness">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span><a href="${pageContext.request.contextPath}/prashant/editbusiness">&nbsp;<i class="fa fa-pencil"></i>
 								Add
 							</a>
 						</div>
@@ -455,7 +455,7 @@
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Business Address
-								Information</span><a href="<%=request.getContextPath()%>/prashant/businessaddressupdate">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span><a href="${pageContext.request.contextPath}/prashant/businessaddressupdate">&nbsp;<i class="fa fa-pencil"></i>
 								Edit
 							</a>
 						</div>
@@ -598,41 +598,41 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 
 
 
 	<!-- JANSY BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
 
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 
 
 
 	<!-- Input Telephone SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/intlTelInput.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 </body>
 </html>

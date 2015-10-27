@@ -3,7 +3,6 @@ package com.onlineshodh.dao;
 import java.util.List;
 
 import com.onlineshodh.entity.BusinessDetailsEntity;
-import com.onlineshodh.entity.UserDetailsEntity;
 
 public interface BusinessDetailsDao {
 	
@@ -28,6 +27,8 @@ public interface BusinessDetailsDao {
 	public List<BusinessDetailsEntity> getBusinessDetaisByUserName(String userName); 
 	
 	public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName);
+	
+	public List<BusinessDetailsEntity> getBusinessDetailsByUserDetailsId(Long userDetailsId);
     
 	
 

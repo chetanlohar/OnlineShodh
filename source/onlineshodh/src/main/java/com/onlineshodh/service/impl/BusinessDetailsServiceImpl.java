@@ -48,4 +48,10 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 	public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName){
 		return businessDetailsDao.getBusinessDetailsByBusinessName(bussinessName);
 	}
+
+	@Override
+	public List<BusinessDetailsEntity> getBusinessDetailsByUserDetailsId(
+			Long userDetailsId) {
+		return businessDetailsDao.getBusinessDetailsByUserDetailsId(userDetailsId);
+	}
 }

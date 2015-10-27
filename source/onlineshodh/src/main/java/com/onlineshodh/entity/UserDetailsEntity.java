@@ -10,17 +10,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-
-import com.sun.xml.internal.ws.policy.sourcemodel.ModelNode.Type;
 
 /**
  * @author Softinfology - Chetan Lohar (TL-Java)
@@ -87,6 +83,9 @@ public class UserDetailsEntity implements Serializable {
 	@Column(name="userid",nullable=false)
 	private Integer userId;
 
+	@ManyToOne(targetEntity=AddressEntity.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="addressId")
+	private AddressEntity address;
 	
 	/*@ManyToMany(targetEntity=UserEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="userid")*/
@@ -214,7 +213,20 @@ public class UserDetailsEntity implements Serializable {
 		this.userId = userId;
 	}
 
-	
+	/**
+	 * @return the address
+	 */
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+
 	/*public UserDetailsEntity(UserDetailsEntity userDetails) {
 		
 		this.userId = userDetails.getUserId();

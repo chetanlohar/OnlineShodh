@@ -558,8 +558,8 @@
                                                                   if(i == 1){
                                                                 	  break;
                                                                   }
-																	alert(json[i].userDetailsId)
-																	alert(json[i].length)
+																	/* alert(json[i].userDetailsId)
+																	alert(json[i].length) */
 																	var newRow = jQuery('<tr class="ab"><td>'
 																			+ json[i].userDetailsId
 																			+ '</td><td>'
@@ -577,7 +577,7 @@
 																			+ '</td><td><img src=${pageContext.request.contextPath}/admin/business/load/logo/'+json[i].userDetailsId+'/>'
 
 																			+ '</td><td>'
-																			+ '<a href="${pageContext.request.contextPath}/prashant/businessdetail/">'
+																			+ '<a href=${pageContext.request.contextPath}/admin/business/'+json[i].userDetailsId+'>'
 																			+ 'Select'
 																			+ '</a></td></tr>');
 																	jQuery(
