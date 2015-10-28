@@ -90,7 +90,7 @@ public class BannerController {
 	@RequestMapping(value = { "/", "" })
 	public String showManageBanner(ModelMap model) {
 		BannerEntity banner=new BannerEntity();
-	    banner.setStatus("disActive");
+	    banner.setStatus("NotActive");
 	    banner.setRegDate(new Date());      
 		model.addAttribute("banner",banner);
 		model.addAttribute("countries", countryService.getAllCountries());

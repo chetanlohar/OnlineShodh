@@ -79,8 +79,8 @@ public class StateController {
 		
 		//try{
 		if(state.getCountry().getCountryId()==0){
-			/*FieldError countryNotSelected=new FieldError("state", "country.countryId",mandatory);
-			result.addError(countryNotSelected);*/
+			FieldError countryNotSelected=new FieldError("state", "country.countryId",mandatory);
+			result.addError(countryNotSelected);
 			flag=true; 
 		}if(state.getStateName().equalsIgnoreCase("")){
 			
@@ -103,13 +103,13 @@ public class StateController {
 		
 		else {
 
-			//try {
+			try {
 				System.out.println("CountryID : "+state.getCountry().getCountryId());
 				stateService.updateState(state);
 				model.addAttribute("states",stateService.getAllStates());
 				return "redirect:/admin/states";
-			//}
-		/* catch (DataIntegrityViolationException exception) {
+			}
+		 catch (DataIntegrityViolationException exception) {
 				FieldError stateNameAvailableError;
 				System.out.println(exception.getMostSpecificCause()
 						.getMessage());
@@ -123,11 +123,11 @@ public class StateController {
 							onlyAlphabets);
 				result.addError(stateNameAvailableError);
 
-			}*/
+			}
 		}
 
 		
-		//return "state/manageStates";
+		return "state/manageStates";
 	}
 	
 	@RequestMapping(value="/edit/{stateId}/{countryId}",method=RequestMethod.GET)
@@ -152,7 +152,7 @@ public class StateController {
 		return "redirect:/admin/states";
 	}
 	
-	@RequestMapping(value="/exception/{excetiontype}")
+	/*@RequestMapping(value="/exception/{excetiontype}")
 	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("state") StateEntity state, BindingResult result)
 	{
 		FieldError stateNameAvailableError;
@@ -168,7 +168,7 @@ public class StateController {
 						onlyAlphabets);
 				
 	}
-		/*else
+		else
 		{
 			System.out.println(" hi");
 			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -183,12 +183,12 @@ public class StateController {
 		           
 		        }
 		    }
-		}*/
+		}
 		result.addError(stateNameAvailableError);
 		model.addAttribute("countries", countryService.getAllCountries());
 		model.addAttribute("states",stateService.getAllStates());
 		return "state/manageStates";
 		
 		
-	}
+	}*/
 }

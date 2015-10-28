@@ -135,12 +135,12 @@ public class TownController {
 		}
 		else{
 			 
-			//try{
+			try{
 				//System.out.println(town);
 				townService.updateTown(town);
 				return "redirect:/admin/towns";
 				
-			/*}catch(DataIntegrityViolationException e){
+			}catch(DataIntegrityViolationException e){
 				FieldError townNameAvailableError;
 				if(e.getMostSpecificCause().getMessage().contains("unique"))
 					townNameAvailableError=new FieldError("town", "townName", alreadyExist);
@@ -149,9 +149,9 @@ public class TownController {
 							onlyAlphabets);
 				result.addError(townNameAvailableError);	
 			}
-*/		}
+		}
 		
-		//return "town/manageTowns";
+		return "town/manageTowns";
 	}
 	
 	@RequestMapping(value="/edit/{townId}/{countryId}/{stateId}",method=RequestMethod.GET)

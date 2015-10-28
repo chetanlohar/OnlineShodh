@@ -293,7 +293,10 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12 plan_create">
-						<form method="get">
+						<form:form
+							action="${pageContext.request.contextPath}/admin/plans/save"
+							method="POST" modelAttribute="plan">
+
 							<div class="col-lg-5">
 								<h4>Plan Detail</h4>
 								<div class="col-lg-12 space">
@@ -301,8 +304,10 @@
 										Plan Name</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text "
-											class="form-control" name="plan_name">
+											class="fa fa-user"></span></span>
+										<form:input path="planName" class="form-control"
+											name="plan_name" />
+										<form:errors path="planName" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -311,7 +316,11 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-list"></span></span>
-										<textarea class="form-control" name="plan_description"></textarea>
+
+										<form:textarea path="planDescription" class="form-control"
+											name="plan_description" />
+										<form:errors path="planDescription" />
+
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -319,8 +328,10 @@
 										Priority</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-flag"></span></span> <input type="text "
-											class="form-control" name="priority">
+											class="fa fa-flag"></span></span>
+										<form:input path="priority" class="form-control"
+											name="priority" />
+										<form:errors path="priority" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -328,17 +339,20 @@
 										Validity In Month</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span> <input type="text "
-											class="form-control" name="plan_validity">
+											class="fa fa-calendar"></span></span>
+										<form:input path="validityInMonths" class="form-control"
+											name="plan_validity" />
+										<form:errors path="validityInMonths" />
+
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="amount" class="col-sm-4 control-label">
 										Amount</label>
 									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-inr"></span></span> <input type="text "
-											class="form-control" name="amount">
+										<span class="input-group-addon"><span class="fa fa-inr"></span></span>
+										<form:input path="amount" class="form-control" name="amount" />
+										<form:errors path="amount" />
 									</div>
 								</div>
 							</div>
@@ -346,124 +360,115 @@
 								<h4>Business Details</h4>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-6 control-label">Business
-										Name </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="business" value="Yes" class="active" type="radio" checked="checked">Yes
-									</label>
-									<label class="btn btn-default"> <input
-										name="business" value="No" class="active" type="radio">No
-									</label>
+										Name </label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="business"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input
+											name="business" value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Business
-										Address </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="address" value="Yes" class="active" type="radio" checked="checked">Yes
-									</label>
-									<label class="btn btn-default"> <input
-										name="address" value="No" class="active" type="radio">No
-									</label>
+										Address </label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="address"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input name="address"
+											value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-6 control-label">Person
-										Name </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="p_name" value="Yes" class="active" type="radio" checked="checked">Yes
-									</label>
-									<label class="btn btn-default"> <input
-										name="p_name" value="No" class="active" type="radio">No
-									</label>
+										Name </label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="p_name"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input name="p_name"
+											value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">
-										Description </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="desc" value="Yes" class="active" type="radio" checked="checked">Yes
-									</label>
-									<label class="btn btn-default"> <input
-										name="desc" value="No" class="active" type="radio">No
-									</label>
+										Description </label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="desc"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input name="desc"
+											value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-6 control-label">Email
-										 </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="email" value="Yes" class="active" type="radio" checked="checked">Yes
 									</label>
-									<label class="btn btn-default"> <input
-										name="email" value="No" class="active" type="radio">No
-									</label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="email"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input name="email"
+											value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Enquiry
-										Form </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="form" value="Yes" class="active" type="radio" checked="checked">Yes
-									</label>
-									<label class="btn btn-default"> <input
-										name="form" value="No" class="active" type="radio">No
-									</label>
+										Form </label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="form"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input name="form"
+											value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-6 control-label">General
-										Info </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="info" value="Yes" class="active" type="radio" checked="checked">Yes
-									</label>
-									<label class="btn btn-default"> <input
-										name="info" value="No" class="active" type="radio">No
-									</label>
+										Info </label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="info"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input name="info"
+											value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Website
-										 </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="website" value="Yes" class="active" type="radio" checked="checked">Yes
 									</label>
-									<label class="btn btn-default"> <input
-										name="website" value="No" class="active" type="radio">No
-									</label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="website"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input name="website"
+											value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
-									<label for="mailid" class="col-sm-3 control-label">
-									Add Map </label> 
-										<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input
-										name="map" value="Yes" class="active" type="radio" checked="checked">Yes
-									</label>
-									<label class="btn btn-default"> <input
-										name="map" value="No" class="active" type="radio">No
-									</label>
+									<label for="mailid" class="col-sm-3 control-label"> Add
+										Map </label>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input name="map"
+											value="Yes" class="active" type="radio" checked="checked">Yes
+										</label> <label class="btn btn-default"> <input name="map"
+											value="No" class="active" type="radio">No
+										</label>
 									</div>
 								</div>
-									<div class="col-lg-6 space">
-									<label for="mailid" class="col-sm-4 control-label">
-										No. Contact</label>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-4 control-label"> No.
+										Contact</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-phone"></span></span> <input type="text "
 											class="form-control">
 									</div>
 								</div>
-									<div class="col-lg-6 space">
-									<label for="mailid" class="col-sm-4 control-label">
-										No. Images</label>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-4 control-label"> No.
+										Images</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-photo"></span></span> <input type="text "
@@ -473,13 +478,13 @@
 							</div>
 
 
-<div class="col-lg-5 col-lg-offset-5 space">
-<button class="btn btn-success" type="submit">Add</button>
-<button class="btn btn-danger" type="reset">Reset</button>
+							<div class="col-lg-5 col-lg-offset-5 space">
+								<button class="btn btn-success" type="submit">Add</button>
+								<button class="btn btn-danger" type="reset">Reset</button>
 
-</div>
+							</div>
 
-						</form>
+						</form:form>
 
 
 					</div>

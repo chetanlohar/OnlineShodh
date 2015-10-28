@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -100,8 +101,25 @@ public class CityController {
 			return "city/manageCities";
 		} else {
 
+			try{
 			cityService.updateCity(city);
 			return "redirect:/admin/cities";
+			}
+			catch (DataIntegrityViolationException exception) {
+				FieldError cityNameAvailableError;
+				System.out.println(exception.getMostSpecificCause()
+						.getMessage());
+				if (exception.getMostSpecificCause().getMessage()
+						.contains("unique"))
+					cityNameAvailableError = new FieldError("city", "cityName",
+							alreadyExist);
+				else
+					cityNameAvailableError = new FieldError("city", "cityName",
+							onlyAlphabets);
+				result.addError(cityNameAvailableError);
+
+			}
+			return "city/manageCities";
 
 		}
 
@@ -142,7 +160,7 @@ public class CityController {
 		return "redirect:/admin/cities";
 	}
 
-	@RequestMapping(value = "/exception/{excetiontype}")
+	/*@RequestMapping(value = "/exception/{excetiontype}")
 	public String HandleException(ModelMap model,
 			@PathVariable("excetiontype") String exception,
 			@ModelAttribute("City") CityEntity city, BindingResult result) {
@@ -161,6 +179,6 @@ public class CityController {
 		model.addAttribute("cities", cityService.getAllCities());
 		return "city/manageCities";
 
-	}
+	}*/
 
 }

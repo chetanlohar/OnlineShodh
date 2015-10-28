@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 import com.onlineshodh.entity.CountryEntity;
@@ -32,22 +34,22 @@ public class CountryController {
 	@Value("${alreadyExist}")
 	String alreadyExist; 
 	
-	@RequestMapping(value="/exception/{excetiontype}")
+	/*@RequestMapping(value="/exception/{excetiontype}")
 	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("country") CountryEntity country, BindingResult result)
 	{
 		FieldError countryNameAvailableError;
 		if(exception.equalsIgnoreCase("unique")){
 		countryNameAvailableError = new FieldError("country","countryName",alreadyExist);
 		result.addError(countryNameAvailableError);
-		}/*else{
+		}else{
 			//countryNameAvailableError = new FieldError("country","countryName",onlyAlphabets);
 		}
-		*/
+		
 		
 		model.addAttribute("countries", countryService.getAllCountries());
 		return "country/manageCountries";
 		
-	}
+	}*/
 	
 	@RequestMapping(value={"/",""})
 	public String showManageCountries(ModelMap model)
@@ -76,20 +78,20 @@ public class CountryController {
 		}
 		else
 		{
-			//try
-			//{
+			try
+			{
 				countryService.updateCountry(country);
 				return "redirect:/admin/countries";
-			//}
-			/*catch(DataIntegrityViolationException e)
+			}
+			catch(DataIntegrityViolationException e)
 			{
 				FieldError countryNameAvailableError;
 				if(e.getMostSpecificCause().getMessage().contains("unique"))
-					countryNameAvailableError = new FieldError("country","countryName","*CountryName is already Exists!");
+					countryNameAvailableError = new FieldError("country","countryName",alreadyExist);
 				else
-					countryNameAvailableError = new FieldError("country","countryName","*Only Alphabets allowed for Country Name!");
+					countryNameAvailableError = new FieldError("country","countryName",onlyAlphabets);
 				result.addError(countryNameAvailableError);
-			}*/
+			}
 		}
 		model.addAttribute("countries", countryService.getAllCountries());
 		return "country/manageCountries";
