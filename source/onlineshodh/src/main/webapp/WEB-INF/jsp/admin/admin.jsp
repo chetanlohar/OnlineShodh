@@ -214,12 +214,12 @@
                         </li>
 
                         <li>
-                            <a href="add-client.html"><i class="fa fa-rss"></i>Advt. Management  <span class="fa arrow"></span></a>
+                            <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
                             <ul class=" nav nav-second-level">
                                 <li>
-                                    <a href="#">
+                                    <a href="${pageContext.request.contextPath}/prashant/addplan">
                                         <i class="fa fa-user-plus"></i>
-                                        Add New Add
+                                        Add New Plan
                                     </a>
                                 </li>
                                 <li>

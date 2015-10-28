@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Add Address Details</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Add Plan</title>
+
 <!-- BOOTSTRAP STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
 	rel="stylesheet" />
@@ -13,9 +17,9 @@
 	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
-<!-- FONTAWESOME ICONS STYLES-->
+<!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/intlTelInput.css"
+	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
@@ -27,13 +31,6 @@
 <link
 	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
-
-<!--Jancy STYLES-->
-<link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
-	rel="stylesheet" />
-
-
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
@@ -41,6 +38,7 @@
 </head>
 </head>
 <body>
+
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
 			style="margin-bottom: 0">
@@ -167,10 +165,10 @@
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/admin/categories"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/admin/subcategories">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -192,16 +190,16 @@
 				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
-						<li><a
+						<li><a class="active-menu"
 							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
 
-				<li class="active"><a href="#"><i class="fa fa-"></i>Business
-						Management <span class="fa arrow"></span></a>
+				<li><a href="#"><i class="fa fa-"></i>Business Management <span
+						class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a class="active-menu"
+						<li><a
 							href="<%=request.getContextPath()%>/prashant/businessmanage">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
@@ -213,7 +211,7 @@
 
 					</ul></li>
 
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
@@ -235,7 +233,7 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
+							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
@@ -273,7 +271,7 @@
 					</li>
 					<li><a href="#">Second Level<span class="fa arrow"></span></a>
 						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>s
+							<li><a href="#">Third Link</a></li>
 							<li><a href="#">Third Link</a></li>
 
 						</ul></li>
@@ -289,124 +287,211 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-lg-12">
-						<h3 class="page-header">Add Address Details</h3>
+						<h1 class="page-header">Create Plan</h1>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.row -->
 				<div class="row">
-					<div class="col-lg-12">
-						<form class="form-horizontal" name="bclientupdate"
-							id="bclientupdate">
-							<div class="col-lg-8">
+					<div class="col-lg-12 plan_create">
+						<form method="get">
+							<div class="col-lg-5">
+								<h4>Plan Detail</h4>
 								<div class="col-lg-12 space">
-									<label for="address" class="col-sm-5 control-label">Address</label>
+									<label for="planname" class="col-sm-4 control-label">
+										Plan Name</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-road"></span></span>
-										<textarea class="form-control" rows="3" id="clientadd"
-											name="address"></textarea>
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="Street" class="col-sm-5 control-label">Street</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientpin" name="clietpin">
+											class="fa fa-user"></span></span> <input type="text "
+											class="form-control" name="plan_name">
 									</div>
 								</div>
 								<div class="col-lg-12 space">
-									<label for="LandMark" class="col-sm-5 control-label">LandMark</label>
+									<label for="plandesc" class="col-sm-4 control-label">
+										Plan Description</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientpin" name="clietpin">
-									</div>
-								</div>
-
-								<div class="col-lg-12 space">
-									<label for="country" class="col-sm-5 control-label">Country</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-flag"></span></span> <select class="form-control"
-											name="clientcountry">
-											<option value="">Select</option>
-											<option value="india">India</option>
-										</select>
-									</div>
-								</div>
-
-								<div class="col-lg-12 space">
-									<label for="state" class="col-sm-5 control-label">State</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
-											name="clientstate">
-											<option value="">Select</option>
-											<option value="mharastra">maharastra</option>
-										</select>
-									</div>
-								</div>
-
-								<div class="col-lg-12 space">
-									<label for="city" class="col-sm-5 control-label">City</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
-											name="clientcity">
-											<option value="">Select</option>
-											<option value="pune">pune</option>
-										</select>
+											class="fa fa-list"></span></span>
+										<textarea class="form-control" name="plan_description"></textarea>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
-									<label for="town" class="col-sm-5 control-label">Town</label>
+									<label for="plan_proirity" class="col-sm-4 control-label">
+										Priority</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
-											id="town" name="clinettown">
-											<option value="">Select</option>
-											<option value="kharadi">Kharadi</option>
-											<option value="Other">Other Town</option>
-										</select>
-									</div>
-								</div>
-								<div class="col-lg-12 space hide-div ">
-									<label for="Otown" class="col-sm-5 control-label">Town</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="Otown" name="otown">
+											class="fa fa-flag"></span></span> <input type="text "
+											class="form-control" name="priority">
 									</div>
 								</div>
 								<div class="col-lg-12 space">
-									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
+									<label for="plan_validity" class="col-sm-4 control-label">
+										Validity In Month</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientpin" name="clietpin">
+											class="fa fa-calendar"></span></span> <input type="text "
+											class="form-control" name="plan_validity">
 									</div>
 								</div>
-
+								<div class="col-lg-12 space">
+									<label for="amount" class="col-sm-4 control-label">
+										Amount</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-inr"></span></span> <input type="text "
+											class="form-control" name="amount">
+									</div>
 								</div>
-							
-
-							<div class="col-lg-6 col-lg-offset-4 space">
-								<button type="submit" class="btn btn-success" id="update">Add</button>
-
 							</div>
+							<div class="col-lg-6">
+								<h4>Business Details</h4>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-6 control-label">Business
+										Name </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="business" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="business" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-5 control-label">Business
+										Address </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="address" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="address" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-6 control-label">Person
+										Name </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="p_name" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="p_name" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-5 control-label">
+										Description </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="desc" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="desc" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-6 control-label">Email
+										 </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="email" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="email" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-5 control-label">Enquiry
+										Form </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="form" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="form" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-6 control-label">General
+										Info </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="info" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="info" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+								<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-5 control-label">Website
+										 </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="website" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="website" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="mailid" class="col-sm-3 control-label">
+									Add Map </label> 
+										<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default"> <input
+										name="map" value="Yes" class="active" type="radio" checked="checked">Yes
+									</label>
+									<label class="btn btn-default"> <input
+										name="map" value="No" class="active" type="radio">No
+									</label>
+									</div>
+								</div>
+									<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-4 control-label">
+										No. Contact</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-phone"></span></span> <input type="text "
+											class="form-control">
+									</div>
+								</div>
+									<div class="col-lg-6 space">
+									<label for="mailid" class="col-sm-4 control-label">
+										No. Images</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-photo"></span></span> <input type="text "
+											class="form-control">
+									</div>
+								</div>
+							</div>
+
+
+<div class="col-lg-5 col-lg-offset-5 space">
+<button class="btn btn-success" type="submit">Add</button>
+<button class="btn btn-danger" type="reset">Reset</button>
+
+</div>
+
 						</form>
+
+
 					</div>
-					<!-- /.col-lg-12 -->
+
 				</div>
-				<!-- /.row -->
 
 
+
+				<!-- /. PAGE INNER  -->
 				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			<!-- /. PAGE INNER  -->
 			<!-- /. PAGE WRAPPER  -->
 		</div>
 
@@ -451,6 +536,7 @@
 
 	<!-- CUSTOM SCRIPTS -->
 	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+
 
 </body>
 </html>
