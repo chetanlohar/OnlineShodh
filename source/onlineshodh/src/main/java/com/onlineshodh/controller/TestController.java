@@ -169,4 +169,17 @@ public class TestController {
 	{
 		return "banner/bannermanage";
 	}
+	
+	//plan controller
+	@RequestMapping(value="/addplan")
+	public String doaddplan()
+	{
+		return "plan/Create_plan";
+	}
+	@RequestMapping(value="/plan_price")
+	public String doplan_price()
+	{
+		return "plan/plantable";
+	}
+	
 }
