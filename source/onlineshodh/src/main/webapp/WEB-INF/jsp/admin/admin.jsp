@@ -217,7 +217,7 @@
                             <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
                             <ul class=" nav nav-second-level">
                                 <li>
-                                    <a href="${pageContext.request.contextPath}/prashant/addplan">
+                                    <a href="${pageContext.request.contextPath}/admin/plans">
                                         <i class="fa fa-user-plus"></i>
                                         Add New Plan
                                     </a>

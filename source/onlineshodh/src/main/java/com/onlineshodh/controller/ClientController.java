@@ -63,7 +63,7 @@ public class ClientController {
 	{
 		model.addAttribute("clientdetails", context.getBean("clientDetails",ClientDetails.class));
 		model.addAttribute("userDetails", userDetailsService.getAllUserDetails());
-		return "client/manageClients";
+		return "client/createClient";
 	}
 	
 	@RequestMapping(value="/save",method=RequestMethod.POST)

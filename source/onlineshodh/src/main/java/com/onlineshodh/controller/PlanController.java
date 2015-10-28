@@ -5,6 +5,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -46,7 +47,7 @@ public class PlanController {
 	public String showManagePlan(ModelMap model){
 		model.addAttribute("plan", new PlanEntity());
 		model.addAttribute("plans", planservice.getAllPlans());
-		return "plan/managePlan";
+		return "plan/Create_plan";
 	}
 	
 	@RequestMapping(value="/save",method=RequestMethod.POST)
@@ -59,15 +60,27 @@ public class PlanController {
 				System.out.println(error.getDefaultMessage());
 			
 		}else{
-			
+			try{
 			planservice.savePlan(Plan);
 			return "redirect:/admin/plans";
+			}catch (DataIntegrityViolationException exception) {
+				FieldError planNameAvailableError;
+				System.out.println(exception.getMostSpecificCause()
+						.getMessage());
+				if (exception.getMostSpecificCause().getMessage()
+						.contains("unique"))
+					planNameAvailableError = new FieldError("plan", "planName",	alreadyExist);
+				else
+					planNameAvailableError = new FieldError("plan", "planName",alphaNumeric);
+				result.addError(planNameAvailableError);
+
+			}
 		}
-		return "plan/managePlan";
+		return "plan/Create_plan";
 		
 	}
 	
-	@RequestMapping(value="/exception/{excetiontype}")
+	/*@RequestMapping(value="/exception/{excetiontype}")
 	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("plan") PlanEntity plan, BindingResult result)
 	{
 		FieldError planNameAvailableError;
@@ -82,7 +95,7 @@ public class PlanController {
 		result.addError(planNameAvailableError);
 		return "plan/managePlans";
 		
-	}
+	}*/
 	@RequestMapping(value="/edit/{planId}",method=RequestMethod.GET)
 	public String editPlan(ModelMap model,@PathVariable("planId")Integer planId){
 		PlanEntity planEntity=planservice.getPlan(planId);
