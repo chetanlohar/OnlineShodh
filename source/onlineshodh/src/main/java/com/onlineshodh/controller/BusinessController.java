@@ -20,7 +20,6 @@ import org.springframework.web.context.WebApplicationContext;
 import com.onlineshodh.entity.BusinessAddressEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
 import com.onlineshodh.entity.BusinessSearchEntity;
-import com.onlineshodh.entity.UserDetailsEntity;
 import com.onlineshodh.service.BusinessAddressService;
 import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.UserDetailsService;
@@ -57,19 +56,20 @@ public class BusinessController {
 		return "";
 	}
 
-	@RequestMapping("/load/logo/{userDetailsId}")
+	@RequestMapping("/load/logo/{businessId}")
 	public String downloadPicture(
-			@PathVariable("userDetailsId") Integer userDetailsId,
+			@PathVariable("businessId") Long businessId,
 			HttpServletResponse response) {
-		UserDetailsEntity user = userDetailsService
-				.getUserDetails(userDetailsId);
+		
+		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
+		
 		try {
 			response.setHeader("Content-Disposition", "inline;filename=\""
-					+ user.getName() + "\"");
+					+ business.getBusinessName() + "\"");
 			OutputStream out = response.getOutputStream();
 			response.setContentType("image/gif");
 			ByteArrayInputStream bis = new ByteArrayInputStream(
-					user.getPhotograph());
+					business.getBusinessLogo());
 			IOUtils.copy(bis, out);
 			out.flush();
 			out.close();

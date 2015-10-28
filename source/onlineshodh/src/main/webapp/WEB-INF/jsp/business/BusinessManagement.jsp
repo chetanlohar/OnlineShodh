@@ -574,7 +574,7 @@
 																			+ json[i].phone2
 																			+ '</td><td>'
 																			+ json[i].userId
-																			+ '</td><td><img src=${pageContext.request.contextPath}/admin/business/load/logo/'+json[i].userDetailsId+'/>'
+																			+ '</td><td><img src=${pageContext.request.contextPath}/admin/clients/load/logo/'+json[i].userDetailsId+'/>'
 
 																			+ '</td><td>'
 																			+ '<a href=${pageContext.request.contextPath}/admin/business/'+json[i].userDetailsId+'>'

@@ -45,5 +45,4 @@ public class ClientDetails implements Serializable {
 	public void setUserDetails(UserDetailsEntity userDetails) {
 		this.userDetails = userDetails;
 	}
-	
 }

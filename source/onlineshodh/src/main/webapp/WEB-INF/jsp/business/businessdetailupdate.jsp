@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -307,49 +309,47 @@
 							<table class="table">
 								<tr>
 									<td>Business Id</td>
-									<td>ke45</td>
+									<td>${businessDetails.business.businessId}</td>
 								
 								</tr>
 								<tr>
 									<td>Business Name</td>
-									<td>Taleranwadi</td>
+									<td>${businessDetails.business.businessName}</td>
 									
 								</tr>
 								<tr>
 									<td>Business Logo</td>
-									<td>Wika colony</td>
+									<td><img
+										src="${pageContext.request.contextPath}/admin/business/load/logo/${userdetails.userDetailsId}"
+										class="img-responsive" width="50px " height="50px;" /></td>
 									
 								</tr>
 								<tr>
 									<td>Person Name</td>
-									<td>America</td>
+									<td>${businessDetails.business.personName}</td>
 									
 								</tr>
 								<tr>
 									<td>Email Id</td>
-									<td>W.c</td>
+									<td>${businessDetails.business.email}</td>
 									
 								</tr>
 								<tr>
 									<td>Website</td>
-									<td>New York</td>
+									<td>${businessDetails.business.website}</td>
 									
 								</tr>
 								<tr>
 									<td>Category</td>
-									<td>florida</td>
+									<td>${businessDetails.business.subCategory.category.categoryName}</td>
 									
 								</tr>
 								<tr>
 									<td>Sub-Category	</td>
-									<td>4546555555</td>
-									
+									<td>${businessDetails.business.subCategory.subCategoryName}</td>
 								</tr>
-
 							</table>
-
 						</div>
-						
 					</div>
 						<!-- <form class="form-horizontal" name="bclientupdate"
 							id="bclientupdate">
@@ -463,43 +463,42 @@
 							<table class="table">
 								<tr>
 									<td>Address</td>
-									<td>kesnand Wagholi pune</td>
+									<td>${businessDetails.address.address}</td>
 								
 								</tr>
 								<tr>
 									<td>Street</td>
-									<td>Taleranwadi</td>
+									<td>${businessDetails.address.street}</td>
 									
 								</tr>
 								<tr>
 									<td>Landmark</td>
-									<td>Wika colony</td>
+									<td>${businessDetails.address.landMark}</td>
 									
 								</tr>
 								<tr>
 									<td>Country</td>
-									<td>America</td>
+									<td>${businessDetails.address.city.state.country.countryName}</td>
 									
 								</tr>
 								<tr>
 									<td>State</td>
-									<td>W.c</td>
+									<td>${businessDetails.address.city.state.stateName}</td>
 									
 								</tr>
 								<tr>
 									<td>City</td>
-									<td>New York</td>
+									<td>${businessDetails.address.city.cityName}</td>
 									
 								</tr>
 								<tr>
 									<td>Town</td>
-									<td>florida</td>
+									<td>${businessDetails.address.town.townName}</td>
 									
 								</tr>
 								<tr>
 									<td>Pincode</td>
-									<td>4546555555</td>
-									
+									<td>${businessDetails.address.pincode}</td>
 								</tr>
 
 							</table>

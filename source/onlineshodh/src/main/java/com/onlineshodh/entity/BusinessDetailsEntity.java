@@ -49,6 +49,11 @@ public class BusinessDetailsEntity implements Serializable {
 	@NotEmpty(message="Person Name is Mandatory")
 	private String personName;
 	
+	
+	@Column(name="businesslogo",nullable=false)
+	private byte [] businessLogo;
+	
+	
 	/**
 	 * Describes Business Email
 	 */
@@ -120,6 +125,20 @@ public class BusinessDetailsEntity implements Serializable {
 	 */
 	public void setPersonName(String personName) {
 		this.personName = personName;
+	}
+
+	/**
+	 * @return the businessLogo
+	 */
+	public byte[] getBusinessLogo() {
+		return businessLogo;
+	}
+
+	/**
+	 * @param businessLogo the businessLogo to set
+	 */
+	public void setBusinessLogo(byte[] businessLogo) {
+		this.businessLogo = businessLogo;
 	}
 
 	/**
