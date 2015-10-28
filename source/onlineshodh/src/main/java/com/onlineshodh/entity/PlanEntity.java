@@ -68,6 +68,7 @@ public class PlanEntity implements Serializable {
 	private boolean website;
 	@Column(name="priority",nullable=false)
 	@NotNull(message="Priority should Not Empty!")
+	@NotEmpty(message="Priority should Not Empty!")
 	private String priority;
 	@Column(name="validityinmonths")
 	@NotNull(message="Months should Not Empty!")

@@ -362,99 +362,120 @@
 									<label for="mailid" class="col-sm-6 control-label">Business
 										Name </label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="business"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input
-											name="business" value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="businessName" class="active" checked="checked"
+												label="Yes" value="true" />
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="businessName" class="active" label="No" value="false" />
 										</label>
+										<form:errors path="businessName" />
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Business
 										Address </label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="address"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input name="address"
-											value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="businessAddress" class="active" checked="checked"
+												label="Yes" value="true" />
+
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="businessAddress" label="No" class="active"
+												value="false" />
 										</label>
+										<form:errors path="businessAddress" />
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-6 control-label">Person
 										Name </label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="p_name"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input name="p_name"
-											value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="personName" class="active" checked="checked"
+												label="Yes" value="true" />
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="personName" class="active" label="No" value="false" />
 										</label>
+										<form:errors path="personName" />
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">
 										Description </label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="desc"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input name="desc"
-											value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="businessDescription" class="active" checked="checked"
+												label="Yes" value="true" />
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="businessDescription" class="active" label="No"
+												value="false" />
 										</label>
+										<form:errors path="businessDescription" />
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-6 control-label">Email
 									</label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="email"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input name="email"
-											value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="email" class="active" checked="checked" label="Yes"
+												value="true" />
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="email" class="active" label="No" value="false" />
 										</label>
+										<form:errors path="email" />
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Enquiry
 										Form </label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="form"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input name="form"
-											value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="enquiryForm" class="active" checked="checked"
+												label="Yes" value="true" />
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="enquiryForm" class="active" label="No" value="false" />
 										</label>
+										<form:errors path="enquiryForm" />
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-6 control-label">General
 										Info </label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="info"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input name="info"
-											value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="generalInfo" class="active" checked="checked"
+												label="Yes" value="true" />
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="generalInfo" class="active" label="No" value="false" />
 										</label>
+										<form:errors path="generalInfo" />
 									</div>
 								</div>
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Website
 									</label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="website"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input name="website"
-											value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="website" class="active" checked="checked" label="Yes"
+												value="true" />
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="website" class="active" label="No" value="false" />
 										</label>
+										<form:errors path="website" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="mailid" class="col-sm-3 control-label"> Add
 										Map </label>
 									<div class="btn-group" data-toggle="buttons">
-										<label class="btn btn-default"> <input name="map"
-											value="Yes" class="active" type="radio" checked="checked">Yes
-										</label> <label class="btn btn-default"> <input name="map"
-											value="No" class="active" type="radio">No
+										<label class="btn btn-default"> <form:radiobutton
+												path="map" class="active" checked="checked" label="Yes"
+												value="true" />
+										</label> <label class="btn btn-default"> <form:radiobutton
+												path="map" class="active" label="No" value="false" />
 										</label>
+										<form:errors path="map" />
 									</div>
 								</div>
 								<div class="col-lg-6 space">
@@ -462,8 +483,11 @@
 										Contact</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-phone"></span></span> <input type="text "
-											class="form-control">
+											class="fa fa-phone"></span></span>
+										<form:input path="noOfContacts" class="form-control" />
+										<form:errors path="noOfContacts" />
+
+
 									</div>
 								</div>
 								<div class="col-lg-6 space">
@@ -471,8 +495,11 @@
 										Images</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-photo"></span></span> <input type="text "
-											class="form-control">
+											class="fa fa-photo"></span></span>
+										<form:input path="noOfImages" class="form-control" />
+										<form:errors path="noOfImages" cssClass="has-error" />
+
+
 									</div>
 								</div>
 							</div>
