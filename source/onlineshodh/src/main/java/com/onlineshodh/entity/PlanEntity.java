@@ -67,12 +67,11 @@ public class PlanEntity implements Serializable {
 	@Column(name="view_website")
 	private boolean website;
 	@Column(name="priority",nullable=false)
-	@NotNull(message="Priority should Not Empty!")
 	@NotEmpty(message="Priority should Not Empty!")
 	private String priority;
 	@Column(name="validityinmonths")
 	@NotNull(message="Months should Not Empty!")
-	@Digits(integer=1,fraction=0,message="PlzEnter Valid No Of Months")
+	@Digits(integer=2,fraction=0,message="PlzEnter Valid No Of Months")
 	@Min(value=0,message="Plz Enter valid No Of Months(months>=0) )")
 	private Integer validityInMonths;
 	@Column(name="amount")

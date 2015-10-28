@@ -47,7 +47,7 @@ public class PlanController {
 	public String showManagePlan(ModelMap model){
 		model.addAttribute("plan", new PlanEntity());
 		model.addAttribute("plans", planservice.getAllPlans());
-		return "plan/managePlan";
+		return "plan/Create_plan";
 	}
 	
 	@RequestMapping(value="/save",method=RequestMethod.POST)
@@ -76,7 +76,7 @@ public class PlanController {
 
 			}
 		}
-		return "plan/managePlan";
+		return "plan/Create_plan";
 		
 	}
 	

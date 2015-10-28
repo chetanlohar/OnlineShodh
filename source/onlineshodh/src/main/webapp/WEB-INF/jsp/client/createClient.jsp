@@ -398,7 +398,7 @@
 							</div>
 							<div class="col-lg-6">
 
-								<!-- <div class="col-lg-12 space">
+								 <div class="col-lg-12 space">
 									<label for="address" class="col-sm-5 control-label">Address</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
@@ -469,7 +469,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> <input type="text"
 											class="form-control" id="clientpin" name="clietpin">
-									</div> -->
+									</div> 
 							</div>
 					</div>
 					<div class="col-lg-6 col-lg-offset-6 space">
