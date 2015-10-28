@@ -176,6 +176,12 @@ public class TestController {
 	{
 		return "plan/Create_plan";
 	}
+	@RequestMapping(value="/plan_edit")
+	public String doplan_edit()
+	{
+		return "plan/edit_plan";
+	}
+	
 	@RequestMapping(value="/plan_price")
 	public String doplan_price()
 	{
