@@ -296,22 +296,23 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-					
-											<div class="detail-title">
+
+						<div class="detail-title">
 							<span class="detail-titile-header font17">Business
-								Information</span><a href="<%=request.getContextPath()%>/prashant/businessnew">&nbsp;<i class="fa fa-pencil"></i>
-								Add
+								Information</span><a
+								href="<%=request.getContextPath()%>/prashant/businessnew">&nbsp;<i
+								class="fa fa-pencil"></i> Add
 							</a>
 						</div>
 						<div class="detail-wraper">
 							<table class="table">
-								
+
 							</table>
 
 						</div>
-						
+
 					</div>
-						<!-- <form class="form-horizontal" name="bclientupdate"
+					<!-- <form class="form-horizontal" name="bclientupdate"
 							id="bclientupdate">
 							<div class="col-lg-8">
 								<div class="col-lg-12 space">
@@ -409,24 +410,27 @@
 
 							</div>
 						</form>
- -->					</div><!-- /.row -->
-					
-					<div class="row space ">
+ -->
+				</div>
+				<!-- /.row -->
+
+				<div class="row space ">
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Business Address
-								Information</span><a href="<%=request.getContextPath()%>/prashant/businessnewadd">&nbsp;<i class="fa fa-pencil"></i>
-								Add
+								Information</span><a
+								href="<%=request.getContextPath()%>/prashant/businessnewadd">&nbsp;<i
+								class="fa fa-pencil"></i> Add
 							</a>
 						</div>
 						<div class="detail-wraper">
 							<table class="table">
-							
+
 
 							</table>
 
 						</div>
-						
+
 					</div>
 
 				</div>
@@ -437,50 +441,72 @@
 							<span class="detail-titile-header font17">Contact
 								Information</span>
 						</div>
+						<div class="add_contact space">
+							<form action="" class="form-inline" id="bus_contact">
+								<div class="form-group">
+									<label for="contact">Add Contact:</label> <input
+										type="text" class="form-control" id="contact"
+										placeholder="Contact">
+								</div>
+								<button type="submit" class="btn btn-success">Add</button>
+							</form>
+
+						</div>
 						<div class="detail-wraper">
 							<table class="table">
-							
+
 
 							</table>
 
 						</div>
-						
+
 					</div>
 
 				</div>
 				<!-- /. row  -->
-				
-				
-					<div class="row space">
+
+
+				<div class="row space">
 					<div class="col-lg-12">
 						<div class="detail-title">
-							<span class="detail-titile-header font17">Business Features/facilities</span>
+							<span class="detail-titile-header font17">Business
+								Features/facilities</span>
+						</div>
+						<div class="add_contact space">
+							<form action="" class="form-inline" id="bus_feature">
+								<div class="form-group">
+									<label for="Features">Add Features:</label> <input
+										type="text" class="form-control" id="Features"
+										placeholder="Features">
+								</div>
+								<button type="submit" class="btn btn-success">Add</button>
+							</form>
+
 						</div>
 						<div class="detail-wraper">
 							<table class="table">
-								
+
 
 							</table>
 
 						</div>
-						<a href="#"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add Features
-							</button></a>
+
 					</div>
 
 				</div>
 				<!-- /. row  -->
-				</div><!-- /. PAGE INNER  -->
-				
-				
-
-
-				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
-					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			
-			<!-- /. PAGE WRAPPER  -->
+			<!-- /. PAGE INNER  -->
+
+
+
+
+			<footer class="space"> &copy; 2015 OnlineShodh | By : <a
+				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 		</div>
+
+		<!-- /. PAGE WRAPPER  -->
+	</div>
 
 	</div>
 	<!-- /. WRAPPER  -->
