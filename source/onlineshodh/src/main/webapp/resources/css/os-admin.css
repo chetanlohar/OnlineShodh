@@ -395,8 +395,30 @@ footer {
 /*==============================================
   Plan css   
   =============================================*/
+.plan_create{
+	 font-family: 'Raleway', sans-serif;
+	 font-size: 12px;
+}
 
-  
+.plan-table{
+	text-align:center;
+}
+.plan-table th{
+	font-size:14px;
+	font-weight:800;
+	color:#080808;
+	text-shadow: 1px 0px 1px red;
+}
+.plan-table img{
+	width: 20px;
+	height: 20px;
+	margin: 0px auto;
+}
+.plan-table .price_data{
+	background: #026D96;
+	color: #fff;
+	
+}
   
 
 /*==============================================

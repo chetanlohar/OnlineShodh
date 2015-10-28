@@ -293,7 +293,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12 "></div>
-					<table class="table">
+					<table class="table plan-table">
 						<thead>
 							<tr>
 								<th>#</th>
@@ -301,68 +301,243 @@
 								<th>Priority</th>
 								<th>Business</th>
 								<th>Address</th>
-								<th>Person</th>
-								<th>Image</th>
+								<th>Person Name</th>
+								<th>Images</th>
 								<th>Description</th>
 								<th>Email</th>
 								<th>Contact</th>
-								<th>Enquiry</th>
+								<th>Enquiry Form</th>
 								<th>Information</th>
 								<th>Map</th>
 								<th>Website</th>
-								<th colspan="3"  bgcolor="skyblue">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plan Price<br>
-								1 Year&nbsp; 2Year&nbsp; 3Year
-								
-								</th>
+								<th colspan="3" class="price_data text-center">plan Price</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td><img
-										src="<%=request.getContextPath()%>/resources/images/No1.png"
-										class="img-responsive" width="25px" height="25px"  /></td>
-							<td><img
-										src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-										class="img-responsive" width="25px" height="25px"  /></td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td bgcolor="skyblue">ghh</td>
-							<td bgcolor="skyblue">ghh</td>
-							<td bgcolor="skyblue">ghh</td>
-							
-							
-							
+								<td>1</td>
+								<td>Plan 1</td>
+								<td>Very Low</td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								
+								<td class="price_data"><span><strong>1 Year</strong></span><br>Free</td>
+								<td class="price_data"><span><strong>2 Year</strong></span><br>Free</td>
+								<td class="price_data"><span><strong>3 Year</strong></span><br>Free</td>
+
+
+
 							</tr>
 							<tr>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td>ghh</td>
-							<td bgcolor="skyblue">6564654654</td>
-							<td bgcolor="skyblue">ghh</td>
-							<td bgcolor="skyblue">ghh</td>
-							
-							
+								<td>2</td>
+								<td>Plan 2</td>
+								<td>Low</td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								
+								<td class="price_data"><span><strong>Rs</strong></span><br>685</td>
+								<td  class="price_data"><span><strong>Rs</strong></span><br>456</td>
+								<td  class="price_data"><span><strong>Rs</strong></span><br>748</td>
+
+
+
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Plan 3</td>
+								<td>Medium</td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								
+								<td  class="price_data"><span><strong>Rs</strong></span><br>6850</td>
+								<td class="price_data"><span><strong>Rs</strong></span><br>4560</td>
+								<td  class="price_data"><span><strong>Rs</strong></span><br>7480</td>
+
+
+
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>Plan 4</td>
+								<td>High</td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/No1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								
+								<td class="price_data"><span><strong>Rs</strong></span><br>6850</td>
+								<td  class="price_data"><span><strong>Rs</strong></span><br>4560</td>
+								<td  class="price_data"><span><strong>Rs</strong></span><br>7480</td>
+
+
+
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>Plan 5</td>
+								<td> Very High</td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive" /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								<td><img
+									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
+									class="img-responsive"  /></td>
+								
+								<td class="text-center price_data"><span><strong>Rs</strong></span><br>6850</td>
+								<td class="text-center price_data"><span><strong>Rs</strong></span><br>4560</td>
+								<td class="text-center price_data"><span><strong>Rs</strong></span><br>7480</td>
+
+
+
 							</tr>
 
 						</tbody>
