@@ -10,19 +10,19 @@
   <title>Admin</title>
 
         <!-- BOOTSTRAP STYLES-->
-        <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME ICONS STYLES-->
-        <link href="<%=request.getContextPath()%>/resources/css/font-awesome.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/css/font-awesome.css" rel="stylesheet" />
         <!-- metis STYLES-->
-        <link href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css" rel="stylesheet" />
         <!-- Datepicker STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker3.min.css"
 	rel="stylesheet" />
         <!--PACE STYLES-->
-         <link href="<%=request.getContextPath()%>/resources/css/pace.css" rel="stylesheet" />
+         <link href="${pageContext.request.contextPath}/resources/css/pace.css" rel="stylesheet" />
         <!--CUSTOM STYLES-->
-         <link href="<%=request.getContextPath()%>/resources/css/os-admin.css" rel="stylesheet" />
+         <link href="${pageContext.request.contextPath}/resources/css/os-admin.css" rel="stylesheet" />
          
 </head>
 <body>
@@ -143,7 +143,7 @@
                     <ul class="nav" id="main-menu">
                         <li>
                         <div class="user-img-div">
-                            <img src="<%=request.getContextPath()%>/resources/images/user_pic.jpg" class="img-circle" />
+                            <img src="${pageContext.request.contextPath}/resources/images/user_pic.jpg" class="img-circle" />
 
                            
                         </div>
@@ -154,7 +154,7 @@
                         </li>
 
                         <li>
-                            <a class="active-menu"  href="<%=request.getContextPath()%>/admin/home"><i class="fa fa-home "></i>Home</a>
+                            <a class="active-menu"  href="${pageContext.request.contextPath}/admin/home"><i class="fa fa-home "></i>Home</a>
                         </li>
                              <li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 							Category Management<span class="fa arrow"></span></a>
@@ -192,7 +192,7 @@
                             <a href="#"><i class="fa fa-"></i>Business Management  <span class="fa arrow"></span></a>
                             <ul class=" nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/prashant/businessmanage">
+                                    <a href="${pageContext.request.contextPath}/admin/clients/view/">
                                         <i class="fa fa-user-plus"></i>
                                        Add Business
                                     </a>
@@ -345,7 +345,7 @@
                         <div class=" col-md-4 col-sm-6 col-md-offset-4">
                             <div class="">
                                 <a href="#">
-                                    <img src="<%=request.getContextPath()%>/resources/images/logo.jpg" alt="onlineshodh" width="400px;" class="img-responsive"/>
+                                    <img src="${pageContext.request.contextPath}/resources/images/logo.jpg" alt="onlineshodh" width="400px;" class="img-responsive"/>
 
                                 </a>
                             </div>
@@ -372,22 +372,22 @@
         
  <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
         <!-- JQUERY SCRIPTS -->
-         <script src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script> 
+         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
         <!-- BOOTSTRAP SCRIPTS -->
-        <script src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
         
         
         <!-- BOOTSTRAP SCRIPTS -->
-        <script src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
         
         <!-- PACE SCRIPTS -->
-        <script src="<%=request.getContextPath()%>/resources/js/pace.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/pace.js"></script>
         	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
         
         <!-- CUSTOM SCRIPTS -->
-        <script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
         
        
         

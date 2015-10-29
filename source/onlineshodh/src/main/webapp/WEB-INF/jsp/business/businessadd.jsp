@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -296,26 +298,24 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-						 <form class="form-horizontal" name="bclientupdate"
-							id="bclientupdate">
+						 <form:form class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessdetail">
 							<div class="col-lg-8">
-								<div class="col-lg-12 space">
+								<%-- <div class="col-lg-12 space">
 									<label for="businessid" class="col-sm-5 control-label">Business
 										Id</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-chain"></span></span> <input type="text"
-											class="form-control" id="businessid" name="businessid"
-											placeholder="">
+											class="fa fa-chain"></span></span> 
+											<form:input path="" class="form-control" id="businessid" name="businessid"	placeholder="" />
 									</div>
-								</div>
+								</div> --%>
 								<div class="col-lg-12 space">
 									<label for="businame" class="col-sm-5 control-label">Business
 										Name</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span> <input type="text"
-											class="form-control" id="businame" name="businame">
+											class="fa fa-calendar"></span></span> 
+											<form:input path="businessName"	class="form-control" id="businame" name="businame"/>
 									</div>
 								</div>
 
@@ -330,10 +330,9 @@
 										</div>
 										<span class="input-group-addon btn btn-default btn-file"><span
 											class="fileinput-new">Select file</span><span
-											class="fileinput-exists">Change</span><input type="file"
-											name="..."></span> <a href="#"
-											class="input-group-addon btn btn-default fileinput-exists"
-											data-dismiss="fileinput">Remove</a>
+											class="fileinput-exists">Change</span>
+											<input type="file"	name="..."></span> 
+											<a href="#"	class="input-group-addon btn btn-default fileinput-exists"	data-dismiss="fileinput">Remove</a>
 									</div>
 								</div>
                                  <div class="col-lg-12 space">
@@ -341,8 +340,8 @@
 										</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="personname" name="personname">
+											class="fa fa-user"></span></span> 
+											<form:input path="personName" class="form-control" id="personname" name="personname"/>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -350,8 +349,8 @@
 										Id</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-envelope"></span></span> <input type="text"
-											class="form-control" id="busimail" name="busimail">
+											class="fa fa-envelope"></span></span> 
+											<form:input path="email" class="form-control" id="busimail" name="busimail"/>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -359,8 +358,8 @@
 									WebSite</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-globe"></span></span> <input type="text"
-											class="form-control" name="Website">
+											class="fa fa-globe"></span></span> 
+											<form:input path="website" class="form-control" name="Website"/>
 									</div>
 								</div>
 
@@ -371,6 +370,16 @@
 										<select class="form-control">
 										<option value="FOOD">FOOD</option>
 										</select>
+										
+										<form:select path="subCategory.category.categoryId" required="" class="form-control" id="categoryname" name="categoryname">
+											<form:option value="0" label="--- Select ---" />
+											<c:forEach var="category" items="${categories}">
+												<form:option value="${category.categoryId}">${category.categoryName}</form:option>
+											</c:forEach>
+										</form:select>
+										<form:errors path="category.categoryId" cssClass="errors" />
+										
+										
 									</div>
 								</div>
 								
@@ -382,6 +391,15 @@
 										<select class="form-control">
 										<option value="Non-Veg">Non-Veg</option>
 										</select>
+										
+										<form:select path="category.categoryId" required="" class="form-control" id="categoryname" name="categoryname">
+											<form:option value="0" label="--- Select ---" />
+											<c:forEach var="category" items="${categories}">
+												<form:option value="${category.categoryId}">${category.categoryName}</form:option>
+											</c:forEach>
+										</form:select>
+										<form:errors path="category.categoryId" cssClass="errors" />
+										
 									</div>
 								</div>
 								
@@ -393,7 +411,7 @@
 								<button type="submit" class="btn btn-success" id="update">Add</button>
 
 							</div>
-						</form>
+						</form:form>
  				</div><!-- /.row -->
 					
 									</div><!-- /. PAGE INNER  -->

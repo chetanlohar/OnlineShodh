@@ -3,6 +3,8 @@ package com.onlineshodh.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -223,16 +225,25 @@ public class ClientController {
 	}
 	
 	@RequestMapping(value = "/delete/{userDetailsId}", method = RequestMethod.GET)
-	public String deleteSubCategory(ModelMap model,
+	public String deleteClientDetails(ModelMap model,
 			@PathVariable("userDetailsId") Integer userDetailsId) {
 		userService.deleteUser(userDetailsService.getUserDetails(userDetailsId).getUserId());
 		return "redirect:/admin/clients";
 	}
 	
 	@RequestMapping(value = "/edit/{userDetailsId}", method = RequestMethod.GET)
-	public String editSubCategory(ModelMap model,@PathVariable("userDetailsId") Integer userDetailsId) {
+	public String editClientDetails(ModelMap model,@PathVariable("userDetailsId") Integer userDetailsId) {
 		model.addAttribute("userDetails", userDetailsService.getUserDetails(userDetailsId));
 		return "client/clientUpdate";
+	}
+	
+	@RequestMapping(value = "/view/")
+	public String showClientDetails(ModelMap model)
+	{
+		List<UserDetailsEntity> l = new ArrayList<UserDetailsEntity>();
+		l.add(userDetailsService.getUserDetails(21));
+		model.addAttribute("userDetails", l);
+		return "business/addbusiness";
 	}
 
 }

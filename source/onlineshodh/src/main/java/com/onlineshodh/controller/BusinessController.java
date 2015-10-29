@@ -56,6 +56,7 @@ public class BusinessController {
 		return "";
 	}
 
+	
 	@RequestMapping("/load/logo/{businessId}")
 	public String downloadPicture(
 			@PathVariable("businessId") Long businessId,
@@ -98,6 +99,28 @@ public class BusinessController {
 		System.out.println(businessAddress.getAddress().getLandMark());
 		model.addAttribute("businessDetails",businessAddress);
 		return "business/businessdetailupdate";
+	}
+	
+	@RequestMapping("/view/client/{userDetailsId}")
+	public String viewClientDetails(@PathVariable("userDetailsId") Long userDetailsId, ModelMap model)
+	{
+		model.addAttribute("userdetails", userDetailsService.getUserDetails(userDetailsId.intValue()));
+		return "business/BusinessDetails";
+	}
+	
+	@RequestMapping("/new/add/{userDetailsId}")
+	public String addNewBusiness(@PathVariable("userDetailsId") Long userDetailsId)
+	{
+		System.out.println("userDetailsId: "+userDetailsId);
+		return "business/newbusiness";
+		
+	}
+	
+	@RequestMapping("/update/info/{userDetailsId}")
+	public String addBusinessInfo(@PathVariable("userDetailsId") Long userDetailsId, ModelMap model)
+	{
+		model.addAttribute("businessdetail", context.getBean("businessDetailsEntity",BusinessDetailsEntity.class));
+		return "business/businessadd";
 	}
 	
 }

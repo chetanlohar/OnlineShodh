@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,36 +10,36 @@
 <title>Business Management</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/intlTelInput.css"
+	href="${pageContext.request.contextPath}/resources/css/intlTelInput.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -155,7 +157,7 @@
 				<li>
 					<div class="user-img-div">
 						<img
-							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
 							class="img-circle" />
 
 
@@ -164,7 +166,7 @@
 				</li>
 				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
 
-				<li><a href="<%=request.getContextPath()%>/admin/home"><i
+				<li><a href="${pageContext.request.contextPath}/admin/home"><i
 						class="fa fa-home "></i>Home</a></li>
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 						Category Management<span class="fa arrow"></span></a>
@@ -197,7 +199,7 @@
 						class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a 
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -206,7 +208,7 @@
 						class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/prashant/businessmanage">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -300,8 +302,7 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-10">
-						<form class="form-horizontal" name="clientsearch"
-							id="clientsearch">
+						<form class="form-horizontal" name="clientsearch" id="clientsearch" >
 							<div class="col-lg-10">
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Search
@@ -359,23 +360,25 @@
 										</thead>
 										<tbody>
 											<tr class="odd gradeX">
-												<td>1</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
-												<td>India</td>
-												<td>Pune</td>
-												<td>Maharastra</td>
-												<td class="text-center"></td>
-
+											<c:forEach var="userdetail" items="${userDetails}">
+												<td>${userdetail.userDetailsId}</td>
+												<td>${userdetail.regDate}</td>
+												<td>${userdetail.name}</td>
+												<td>${userdetail.email}</td>
+												<td>${userdetail.phone1}</td>
+												<td>${userdetail.phone2}</td>
+												<td class="text-center">Kharadi Eon IT</td>
 												<td><img
-													src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+													src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}"
 													class="img-responsive" width="50px " height="50px;" /></td>
 												<td class="center"><a
-													href="<%=request.getContextPath()%>/prashant/businessdetail/"><button
+													href="${pageContext.request.contextPath}/admin/business/view/client/${userdetail.userDetailsId}">
+													<button
 															class="btn btn-info btn-xs">
 															<i class="fa fa-check"></i> Select
 														</button></a></td>
-
+														
+											</c:forEach>
 											</tr>
 
 										</tbody>
@@ -406,41 +409,41 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 
 
 
 	<!-- JANSY BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
 
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 
 
 
 	<!-- Input Telephone SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/intlTelInput.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 	<script>
 		$(document).ready(function() {
