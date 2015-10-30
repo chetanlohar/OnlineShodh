@@ -2,6 +2,8 @@ package com.onlineshodh.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
@@ -12,6 +14,8 @@ import com.onlineshodh.entity.BusinessDetailsEntity;
 @Repository
 public class AddressDaoImpl extends AbstractJpaDao<AddressEntity> implements AddressDao {
 
+	EntityManager em;
+	
 	@Override
 	public void saveAddress(AddressEntity address) {
 		update(address);
@@ -33,4 +37,11 @@ public class AddressDaoImpl extends AbstractJpaDao<AddressEntity> implements Add
 		setClazz(AddressEntity.class);
 		return findAll();
 	}
+
+	//get Last Entity
+		public Long getLastAddress(){
+			em=getEntityManager();
+			return em.createQuery("select max(add.addressId)from AddressEntity add",Long.class).getSingleResult();
+		}
+
 }

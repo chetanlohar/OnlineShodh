@@ -185,6 +185,14 @@ public class AddressEntity implements Serializable {
 	public void setMap(String map) {
 		this.map = map;
 	}
+
+	@Override
+	public String toString() {
+		return "AddressEntity [addressId=" + addressId + ", address=" + address
+				+ ", street=" + street + ", landMark=" + landMark + ", city="
+				+ city + ", town=" + town + ", townOther=" + townOther
+				+ ", pincode=" + pincode + ", map=" + map + "]";
+	}
 	
 	
 	

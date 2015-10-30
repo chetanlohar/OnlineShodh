@@ -13,5 +13,8 @@ public interface AddressService {
 	public AddressEntity getAddress(Long addressId);
 	
 	public List<AddressEntity> getAllAddress();
+	
+	public Long getLastAddress();
+
 
 }

@@ -36,4 +36,11 @@ public class AddressServiceImpl implements AddressService {
 	public void updateAddress(AddressEntity address) {
 		
 	}
+	
+	@Override
+	public Long getLastAddress(){
+		
+		return addressDao.getLastAddress();
+	}
+
 }

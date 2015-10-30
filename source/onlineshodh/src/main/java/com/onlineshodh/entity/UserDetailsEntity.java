@@ -2,6 +2,7 @@ package com.onlineshodh.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -225,6 +226,15 @@ public class UserDetailsEntity implements Serializable {
 	 */
 	public void setAddress(AddressEntity address) {
 		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "UserDetailsEntity [userDetailsId=" + userDetailsId + ", name="
+				+ name + ", email=" + email + ", phone1=" + phone1
+				+ ", phone2=" + phone2 + ", regDate=" + regDate
+				+ ", photograph=" + Arrays.toString(photograph) + ", userId="
+				+ userId + ", address=" + address + "]";
 	}
 
 	/*public UserDetailsEntity(UserDetailsEntity userDetails) {

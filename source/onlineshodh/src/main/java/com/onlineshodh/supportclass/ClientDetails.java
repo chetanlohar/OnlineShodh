@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.onlineshodh.entity.AddressEntity;
 import com.onlineshodh.entity.UserDetailsEntity;
 import com.onlineshodh.entity.UserEntity;
 
@@ -26,6 +27,9 @@ public class ClientDetails implements Serializable {
 	@Valid
 	private UserDetailsEntity userDetails;
 	
+	@Valid
+	private AddressEntity address;
+
 	
 	public UserEntity getUser() {
 		return user;
@@ -44,5 +48,19 @@ public class ClientDetails implements Serializable {
 	 */
 	public void setUserDetails(UserDetailsEntity userDetails) {
 		this.userDetails = userDetails;
+	}
+	
+	
+	public AddressEntity getAddress() {
+		return address;
+	}
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+	
+	@Override
+	public String toString() {
+		return "ClientDetails [user=" + user + ", userDetails=" + userDetails
+				+ ", address=" + address + "]";
 	}
 }

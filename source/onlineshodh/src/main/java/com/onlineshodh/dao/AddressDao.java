@@ -14,4 +14,7 @@ public interface AddressDao {
 	
 	public List<AddressEntity> getAllAddress();
 
+	public Long getLastAddress();
+
+
 }

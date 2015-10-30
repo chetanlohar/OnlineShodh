@@ -45,5 +45,18 @@ public class TownServiceImpl implements TownService{
 		townDao.deleteTown(townId);
 		
 	}
+	
+	@Override
+	public List<TownEntity> getAllTowns(Integer cityId) {
+		return townDao.getAllTowns(cityId);
+	}
+
+	@Override
+	public Integer getLastTown() {
+		
+		return townDao.getLastTown() ;
+	}
+
+	
 
 }

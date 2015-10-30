@@ -2,16 +2,18 @@ package com.onlineshodh.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.TownDao;
-
 import com.onlineshodh.entity.TownEntity;
 
 @Repository
 public class TownDaoImpl extends AbstractJpaDao<TownEntity> implements TownDao {
 
+	EntityManager em;
 	
 	@Override
 	public void updateTown(TownEntity town) {
@@ -36,5 +38,25 @@ public class TownDaoImpl extends AbstractJpaDao<TownEntity> implements TownDao {
 		TownEntity town=getTownById(townId);
 		delete(town);
 	}
+	
+	// get Towns By CityId
+		@Override
+		@SuppressWarnings("unchecked")
+		public List<TownEntity> getAllTowns(Integer cityId) {
+			em = getEntityManager();
+			return em
+					.createQuery(
+							"from TownEntity town where town.city.cityId =:cityId")
+					.setParameter("cityId", cityId).getResultList();
+
+		}
+
+		@Override
+		public Integer getLastTown(){
+			em=getEntityManager();
+			return em.createQuery("select max(town.townId)from TownEntity town",Integer.class).getSingleResult();
+		}
+
+	
 
 }

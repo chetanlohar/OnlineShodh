@@ -34,7 +34,8 @@
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
-
+<!--CUSTOM SCRIPT-->	
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/clientAddress.js"></script>
 </head>
 </head>
 <body>
@@ -398,25 +399,54 @@
 							</div>
 							<div class="col-lg-6">
 
-								 <div class="col-lg-12 space">
+								<div class="col-lg-12 space">
 									<label for="address" class="col-sm-5 control-label">Address</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-road"></span></span>
-										<textarea class="form-control" rows="3" id="clientadd"
-											name="address"></textarea>
+										<form:textarea path="address.address" class="form-control"
+											rows="3" id="clientadd" name="address" />
+											<form:errors path="address.address" cssClass="errors" />
 									</div>
 								</div>
-
+								
 								<div class="col-lg-12 space">
+									<label for="address" class="col-sm-5 control-label">Street</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-road"></span></span>
+										<form:textarea path="address.street" class="form-control"
+											rows="2" id="clientStreet" name="Street" />
+											<form:errors path="address.street" cssClass="errors" />
+									</div>
+								</div>
+								
+								<div class="col-lg-12 space">
+									<label for="address" class="col-sm-5 control-label">LandMark</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-road"></span></span>
+										<form:textarea path="address.landMark" class="form-control"
+											rows="2" id="clientLandM" name="LandMark" />
+											
+									</div>
+								</div>
+								
+
+								<%-- <div class="col-lg-12 space">
 									<label for="country" class="col-sm-5 control-label">Country</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-flag"></span></span> <select class="form-control"
-											name="clientcountry">
-											<option value="">Select</option>
-											<option value="india">India</option>
-										</select>
+											class="fa fa-flag"></span></span>
+
+										
+											<form:select path="address.city.state.country.countryId" class="form-control"
+												name="clientcountry">
+												<c:forEach var="country" items="${countries}">
+												<form:option value="${country.countryName}" />
+												</c:forEach>
+      											</form:select>
+										
 									</div>
 								</div>
 
@@ -424,134 +454,165 @@
 									<label for="state" class="col-sm-5 control-label">State</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
+											class="fa fa-user"></span></span>
+										<form:select path="address.city.state.stateId" class="form-control"
 											name="clientstate">
-											<option value="">Select</option>
-											<option value="mharastra">maharastra</option>
-										</select>
+											<form:option value="Select" />
+										</form:select>
+
 									</div>
-								</div>
+								</div> --%>
 
 								<div class="col-lg-12 space">
 									<label for="city" class="col-sm-5 control-label">City</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
-											name="clientcity">
-											<option value="">Select</option>
-											<option value="pune">pune</option>
-										</select>
+											class="fa fa-user"></span></span>
+											
+										<form:select path="address.city.cityId" class="form-control"
+											name="clientcity" id="cityId" onchange="getTown();">
+											<form:option value="0">--Select--</form:option>
+											<c:forEach var="city" items="${cities}">
+											<form:option value="${city.cityId}">${city.cityName}</form:option>
+											</c:forEach>
+										</form:select>
+										<form:errors path="address.city.cityId" cssClass="errors" />
+
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="town" class="col-sm-5 control-label">Town</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
+											class="fa fa-user"></span></span> 
+										<form:select path="address.town.townId" class="form-control"
 											id="town" name="clinettown">
-											<option value="">Select</option>
-											<option value="kharadi">Kharadi</option>
-											<option value="Other">Other Town</option>
-										</select>
+											<form:option value="0">--Select--</form:option>
+										</form:select>
+										<form:errors path="address.town.townId" cssClass="errors" />
+										
 									</div>
+								
 								</div>
-								<div class="col-lg-12 space hide-div ">
-									<label for="Otown" class="col-sm-5 control-label">Town</label>
+								<!-- temp other -->
+								<label for="Otown" class="col-sm-5 control-label">OtherTown</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="Otown" name="otown">
+											class="fa fa-user"></span></span> 
+											<form:input path="address.townOther" class="form-control" id="Otown" name="otown"/>
+									        <form:errors path="userDetails.phone2" cssClass="errors" />    
 									</div>
-								</div>
+								
+								
+								
+								<%-- <div class="col-lg-12 space hide-div ">
+									<label for="Otown" class="col-sm-5 control-label">OtherTown</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> 
+											<form:input path="address.townOther" class="form-control" id="Otown" name="otown"/>
+									</div>
+								</div> --%>
 								<div class="col-lg-12 space">
 									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientpin" name="clietpin">
-									</div> 
+											class="fa fa-user"></span></span> 
+											<form:input path="address.pincode" class="form-control" id="clientpin" name="clietpin"/>
+									        <form:errors path="address.pincode" cssClass="errors" /> 
+									           
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="pincode" class="col-sm-5 control-label">Map</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span> 
+											<form:input path="address.map" class="form-control" id="clientmap" name="clietmap"/>
+									</div>
+								</div>
+								
 							</div>
+							<div class="col-lg-6 col-lg-offset-6 space">
+								<button type="submit" name="saveClient" class="btn btn-success"
+									id="display">Submit</button>
+								<button type="reset" class="btn btn-danger">Cancel</button>
+							</div>
+						</form:form>
 					</div>
-					<div class="col-lg-6 col-lg-offset-6 space">
-						<button type="submit" name="saveClient" class="btn btn-success"
-							id="display">Submit</button>
-						<button type="reset" class="btn btn-danger">Cancel</button>
-					</div>
-
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.col-lg-12 -->
-			</div>
-			<!-- /.row -->
+				<!-- /.row -->
 
-			<div class="row">
-				<div class="col-lg-12 space">
-					<div class="panel panel-default">
-						<div class="panel-heading">Client Management Table</div>
-						<!-- /.panel-heading -->
-						<div class="panel-body">
-							<div class="dataTable_wrapper table-responsive">
-								<table class="table table-striped table-bordered table-hover"
-									id="dataTables-example">
-									<thead>
-										<tr>
-											<th>Client ID</th>
-											<th>Client Name</th>
-											<th>Email</th>
-											<th>Contact</th>
-											<th>Address</th>
-											<th>Reg. Date</th>
-											<th>Photograph</th>
-											<th>Edit</th>
-											<th>Delete</th>
+				<div class="row">
+					<div class="col-lg-12 space">
+						<div class="panel panel-default">
+							<div class="panel-heading">Client Management Table</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="dataTable_wrapper table-responsive">
+									<table class="table table-striped table-bordered table-hover"
+										id="dataTables-example">
+										<thead>
+											<tr>
+												<th>Client ID</th>
+												<th>Client Name</th>
+												<th>Email</th>
+												<th>Contact</th>
+												<th>Address</th>
+												<th>Reg. Date</th>
+												<th>Photograph</th>
+												<th>Edit</th>
+												<th>Delete</th>
 
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="userdetail" items="${userDetails}">
-											<tr class="odd gradeX">
-												<td style="text-align: center;">${userdetail.userDetailsId}</td>
-												<td>${userdetail.name}</td>
-												<td>${userdetail.email}</td>
-												<td>${userdetail.phone1}<br>${userdetail.phone2}</td>
-												<td></td>
-												<td>${userdetail.regDate}</td>
-												<td class="text-center"><img
-													src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}"
-													height="50" width="50" alt="*No Image" /></td>
-												<td><a
-													href="${pageContext.request.contextPath}/admin/clients/edit/${userdetail.userDetailsId}"
-													class="edit"><button class="btn btn-info btn-xs">
-															<i class="fa fa-pencil"></i> Edit
-														</button></a></td>
-												<td class="center"><a
-													href="${pageContext.request.contextPath}/admin/clients/delete/${userdetail.userDetailsId}"
-													onclick="return confirm('Do you want to Remove : ${userdetail.name}'">Delete</a>
-												</td>
 											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-								</form:form>
+										</thead>
+										<tbody>
+											<c:forEach var="userdetail" items="${userDetails}">
+												<tr class="odd gradeX">
+													<td style="text-align: center;">${userdetail.userDetailsId}</td>
+													<td>${userdetail.name}</td>
+													<td>${userdetail.email}</td>
+													<td>${userdetail.phone1}<br>${userdetail.phone2}</td>
+													<td></td>
+													<td>${userdetail.regDate}</td>
+													<td class="text-center"><img
+														src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}"
+														height="50" width="50" alt="*No Image" /></td>
+													<td><a
+														href="${pageContext.request.contextPath}/admin/clients/edit/${userdetail.userDetailsId}"
+														class="edit"><button class="btn btn-info btn-xs">
+																<i class="fa fa-pencil"></i> Edit
+															</button></a></td>
+													<td class="center"><a
+														href="${pageContext.request.contextPath}/admin/clients/delete/${userdetail.userDetailsId}"
+														onclick="return confirm('Do you want to Remove : ${userdetail.name}'">Delete</a>
+													</td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+
+								</div>
+								<!-- /.table-responsive -->
+
 							</div>
-							<!-- /.table-responsive -->
-
+							<!-- /.panel-body -->
 						</div>
-						<!-- /.panel-body -->
+						<!-- /.panel -->
 					</div>
-					<!-- /.panel -->
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.col-lg-12 -->
+				<!-- /.row -->
+
+
+
+				<!-- /. PAGE INNER  -->
+				<footer> &copy; 2015 OnlineShodh | By : <a
+					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			<!-- /.row -->
-
-
-
-			<!-- /. PAGE INNER  -->
-			<footer> &copy; 2015 OnlineShodh | By : <a
-				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+			<!-- /. PAGE WRAPPER  -->
 		</div>
-		<!-- /. PAGE WRAPPER  -->
-	</div>
 
 	</div>
 	<!-- /. WRAPPER  -->
@@ -604,7 +665,7 @@
 			$(".mobile-number").intlTelInput();
 
 			$("#town").change(function(e) {
-
+                alert('fgggggg');
 				if ($('#town').val() == 'Other') {
 					$(".hide-div").show();
 				} else {
