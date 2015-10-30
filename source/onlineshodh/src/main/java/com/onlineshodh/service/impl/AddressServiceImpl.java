@@ -19,22 +19,22 @@ public class AddressServiceImpl implements AddressService {
 	@Override
 	@Transactional
 	public void saveAddress(AddressEntity address) {
-
+		addressDao.saveAddress(address);
 	}
 
 	@Override
 	public AddressEntity getAddress(Long addressId) {
-		return null;
+		return addressDao.getAddress(addressId);
 	}
 
 	@Override
 	public List<AddressEntity> getAllAddress() {
-		return null;
+		return addressDao.getAllAddress();
 	}
 
 	@Override
 	public void updateAddress(AddressEntity address) {
-		
+		addressDao.updateAddress(address);
 	}
 	
 	@Override
@@ -42,5 +42,4 @@ public class AddressServiceImpl implements AddressService {
 		
 		return addressDao.getLastAddress();
 	}
-
 }

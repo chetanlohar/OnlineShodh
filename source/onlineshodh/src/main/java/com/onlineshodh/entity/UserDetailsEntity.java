@@ -236,6 +236,8 @@ public class UserDetailsEntity implements Serializable {
 				+ ", photograph=" + Arrays.toString(photograph) + ", userId="
 				+ userId + ", address=" + address + "]";
 	}
+	
+	
 
 	/*public UserDetailsEntity(UserDetailsEntity userDetails) {
 		

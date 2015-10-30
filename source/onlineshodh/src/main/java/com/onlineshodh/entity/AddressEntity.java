@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -33,10 +34,12 @@ public class AddressEntity implements Serializable {
 	
 	@Column(name="address")
 	@NotNull(message="Address is Mandatory!")
+	@NotEmpty(message="Address is Mandatory!")
 	private String address;
 	
 	@Column(name="street")
-	@NotNull(message="Address is Mandatory!")
+	@NotNull(message="Street is Mandatory!")
+	@NotEmpty(message="Street is Mandatory!")
 	private String street;
 	
 	@Column(name="landmark")
@@ -55,6 +58,7 @@ public class AddressEntity implements Serializable {
 	
 	@Column(name="pincode")
 	@NotNull(message="Pincode is Mandatory")
+	@NotEmpty(message="Pincode is Mandatory")
 	private String pincode;
 	
 	@Column(name="map")

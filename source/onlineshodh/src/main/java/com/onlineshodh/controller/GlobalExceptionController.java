@@ -20,7 +20,7 @@ import com.onlineshodh.entity.StateEntity;
 @ControllerAdvice
 public class GlobalExceptionController {
 
-	@ExceptionHandler(DataIntegrityViolationException.class)
+	/*@ExceptionHandler(DataIntegrityViolationException.class)
 	public String handleDatatIntegrityViolExcep(
 			DataIntegrityViolationException ex) {
 		String exceptionType = null;
@@ -78,13 +78,13 @@ public class GlobalExceptionController {
 			}
 		//return "redirect:/admin/";
 	}
-
-	@ExceptionHandler(TransactionSystemException.class)
+*/
+	/*@ExceptionHandler(TransactionSystemException.class)
 	public String HandleBeanException(TransactionSystemException ex) {
 		String exceptionType = null;
 		return "redirect:/admin/states/exception/" + exceptionType;
 
-	}
+	}*/
 	/*
 	 * @ExceptionHandler(Exception.class) public ModelAndView
 	 * handleAllException(Exception ex) {

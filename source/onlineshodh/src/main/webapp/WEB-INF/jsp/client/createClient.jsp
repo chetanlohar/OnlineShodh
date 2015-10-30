@@ -34,8 +34,9 @@
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
-<!--CUSTOM SCRIPT-->	
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/clientAddress.js"></script>
+<!--CUSTOM SCRIPT-->
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/clientAddress.js"></script>
 </head>
 </head>
 <body>
@@ -406,10 +407,10 @@
 											class="fa fa-road"></span></span>
 										<form:textarea path="address.address" class="form-control"
 											rows="3" id="clientadd" name="address" />
-											<form:errors path="address.address" cssClass="errors" />
+										<form:errors path="address.address" cssClass="errors" />
 									</div>
 								</div>
-								
+
 								<div class="col-lg-12 space">
 									<label for="address" class="col-sm-5 control-label">Street</label>
 									<div class="input-group">
@@ -417,10 +418,10 @@
 											class="fa fa-road"></span></span>
 										<form:textarea path="address.street" class="form-control"
 											rows="2" id="clientStreet" name="Street" />
-											<form:errors path="address.street" cssClass="errors" />
+										<form:errors path="address.street" cssClass="errors" />
 									</div>
 								</div>
-								
+
 								<div class="col-lg-12 space">
 									<label for="address" class="col-sm-5 control-label">LandMark</label>
 									<div class="input-group">
@@ -428,10 +429,10 @@
 											class="fa fa-road"></span></span>
 										<form:textarea path="address.landMark" class="form-control"
 											rows="2" id="clientLandM" name="LandMark" />
-											
+
 									</div>
 								</div>
-								
+
 
 								<%-- <div class="col-lg-12 space">
 									<label for="country" class="col-sm-5 control-label">Country</label>
@@ -468,12 +469,12 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span>
-											
+
 										<form:select path="address.city.cityId" class="form-control"
 											name="clientcity" id="cityId" onchange="getTown();">
 											<form:option value="0">--Select--</form:option>
 											<c:forEach var="city" items="${cities}">
-											<form:option value="${city.cityId}">${city.cityName}</form:option>
+												<form:option value="${city.cityId}">${city.cityName}</form:option>
 											</c:forEach>
 										</form:select>
 										<form:errors path="address.city.cityId" cssClass="errors" />
@@ -484,27 +485,28 @@
 									<label for="town" class="col-sm-5 control-label">Town</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> 
+											class="fa fa-user"></span></span>
 										<form:select path="address.town.townId" class="form-control"
 											id="town" name="clinettown">
 											<form:option value="0">--Select--</form:option>
 										</form:select>
 										<form:errors path="address.town.townId" cssClass="errors" />
-										
+
 									</div>
-								
+
 								</div>
 								<!-- temp other -->
 								<label for="Otown" class="col-sm-5 control-label">OtherTown</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> 
-											<form:input path="address.townOther" class="form-control" id="Otown" name="otown"/>
-									        <form:errors path="userDetails.phone2" cssClass="errors" />    
-									</div>
-								
-								
-								
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-user"></span></span>
+									<form:input path="address.townOther" class="form-control"
+										id="Otown" name="otown" />
+									<form:errors path="address.townOther"
+										cssClass="errors" />
+								</div>
+
+
+
 								<%-- <div class="col-lg-12 space hide-div ">
 									<label for="Otown" class="col-sm-5 control-label">OtherTown</label>
 									<div class="input-group">
@@ -517,21 +519,23 @@
 									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> 
-											<form:input path="address.pincode" class="form-control" id="clientpin" name="clietpin"/>
-									        <form:errors path="address.pincode" cssClass="errors" /> 
-									           
+											class="fa fa-user"></span></span>
+										<form:input path="address.pincode" class="form-control"
+											id="clientpin" name="clietpin" />
+										<form:errors path="address.pincode" cssClass="errors" />
+
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="pincode" class="col-sm-5 control-label">Map</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> 
-											<form:input path="address.map" class="form-control" id="clientmap" name="clietmap"/>
+											class="fa fa-user"></span></span>
+										<form:input path="address.map" class="form-control"
+											id="clientmap" name="clietmap" />
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col-lg-6 col-lg-offset-6 space">
 								<button type="submit" name="saveClient" class="btn btn-success"
@@ -574,7 +578,9 @@
 													<td>${userdetail.name}</td>
 													<td>${userdetail.email}</td>
 													<td>${userdetail.phone1}<br>${userdetail.phone2}</td>
-													<td></td>
+													<td>${userdetail.address.address} ${userdetail.address.street}
+														${userdetail.address.landMark} ${userdetail.address.city.cityName} ${userdetail.address.town.townName} ${userdetail.address.townOther} ${userdetail.address.pincode}
+													</td>
 													<td>${userdetail.regDate}</td>
 													<td class="text-center"><img
 														src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}"

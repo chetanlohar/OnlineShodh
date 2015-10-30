@@ -34,6 +34,10 @@
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
+	
+<!--CUSTOM SCRIPT-->
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/clientAddress.js"></script>	
 
 </head>
 </head>
@@ -295,13 +299,25 @@
 				</div>
 				<!-- /.row -->
 				<div class="row">
-					<div class="col-lg-12">
-						<form:form
+				<form:form
 							action="${pageContext.request.contextPath}/admin/clients/update"
 							modelAttribute="userDetails" enctype="multipart/form-data"
 							class="form-horizontal" name="clientform" id="clientform">
+						
+					<c:out value="${userDetails.regDate}"/>
+					<form:hidden path="userDetailsId"/>
+                    <form:hidden path="regDate"/>
+                    <form:hidden path="userId"/>
+                    <form:hidden path="email"/>
+                    <form:hidden path="photograph"/>
+                    
+                    
+                     
+                   <div class="col-lg-12">
+							
 
 							<div class="col-lg-12 space">
+							    <c:out value="${userDetails.regDate}"/>
 								<label for="Name" class="col-sm-5 control-label">Name</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
@@ -343,15 +359,15 @@
 										data-trigger="fileinput" style="width: 200px; height: 150px;">
 										<img
 											src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDetails.userDetailsId}"
-											id="userDetailsLogo" height="50" width="50" /> 
+											id="userDetailsLogo" height="50" width="50" />
 
 									</div>
 									<div>
 										<span class="btn btn-default btn-file"><span
 											class="fileinput-new">Select image</span><span
 											class="fileinput-exists">Change</span> <input type="file"
-											id="file" name="file"> <form:errors
-												path="photograph" cssClass="errors" /></span>
+											id="file" name="file" value="" onchange="changeImage(this);"> <form:errors path="photograph"
+												cssClass="errors" /></span>
 										<!-- <img
 												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
 												height="50" width="50" alt="*No Image" />  -->
@@ -367,12 +383,37 @@
 							<label for="address" class="col-sm-5 control-label">Address</label>
 							<div class="input-group">
 								<span class="input-group-addon"><span class="fa fa-road"></span></span>
-								<textarea class="form-control" rows="3" id="clientadd"
-									name="address"></textarea>
+								<form:textarea path="address.address" class="form-control"
+									rows="3" id="clientadd" name="address" />
+								<form:errors path="address.address" cssClass="errors" />
+
 							</div>
 						</div>
-
+						
 						<div class="col-lg-12 space">
+									<label for="address" class="col-sm-5 control-label">Street</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-road"></span></span>
+										<form:textarea path="address.street" class="form-control"
+											rows="2" id="clientStreet" name="Street" />
+										<form:errors path="address.street" cssClass="errors" />
+									</div>
+								</div>
+
+								<div class="col-lg-12 space">
+									<label for="address" class="col-sm-5 control-label">LandMark</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-road"></span></span>
+										<form:textarea path="address.landMark" class="form-control"
+											rows="2" id="clientLandM" name="LandMark" />
+
+									</div>
+								</div>
+						
+
+						<!-- <div class="col-lg-12 space">
 							<label for="country" class="col-sm-5 control-label">Country</label>
 							<div class="input-group">
 								<span class="input-group-addon"><span class="fa fa-flag"></span></span>
@@ -392,44 +433,75 @@
 									<option value="mharastra">maharastra</option>
 								</select>
 							</div>
-						</div>
+						</div> -->
 
 						<div class="col-lg-12 space">
-							<label for="city" class="col-sm-5 control-label">City</label>
-							<div class="input-group">
-								<span class="input-group-addon"><span class="fa fa-user"></span></span>
-								<select class="form-control" name="clientcity">
-									<option value="">Select</option>
-									<option value="pune">pune</option>
-								</select>
-							</div>
-						</div>
+									<label for="city" class="col-sm-5 control-label">City</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span>
+
+										<form:select path="address.city.cityId" class="form-control"
+											name="clientcity" id="cityId" onchange="getTown();">
+											<form:option value="0">--Select--</form:option>
+											<c:forEach var="city" items="${cities}">
+												<form:option value="${city.cityId}">${city.cityName}</form:option>
+											</c:forEach>
+										</form:select>
+										<form:errors path="address.city.cityId" cssClass="errors" />
+
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="town" class="col-sm-5 control-label">Town</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span>
+										<form:select path="address.town.townId" class="form-control"
+											id="town" name="clinettown">
+											<form:option value="0">--Select--</form:option>
+									         <c:forEach var="town" items="${towns}">
+												<form:option value="${town.townId}">${town.townName}</form:option>
+											</c:forEach> 
+										</form:select>
+										<form:errors path="address.town.townId" cssClass="errors" />
+
+									</div>
+
+								</div>
+								<!-- temp other -->
+								<%-- <label for="Otown" class="col-sm-5 control-label">OtherTown</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-user"></span></span>
+									<form:input path="address.townOther" class="form-control"
+										id="Otown" name="otown" />
+									<form:errors path="address.townOther"
+										cssClass="errors" />
+								</div> --%>
+
+						
+						
 						<div class="col-lg-12 space">
-							<label for="town" class="col-sm-5 control-label">Town</label>
-							<div class="input-group">
-								<span class="input-group-addon"><span class="fa fa-user"></span></span>
-								<select class="form-control" id="town" name="clinettown">
-									<option value="">Select</option>
-									<option value="kharadi">Kharadi</option>
-									<option value="Other">Other Town</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-lg-12 space hide-div ">
-							<label for="Otown" class="col-sm-5 control-label">Town</label>
-							<div class="input-group">
-								<span class="input-group-addon"><span class="fa fa-user"></span></span>
-								<input type="text" class="form-control" id="Otown" name="otown">
-							</div>
-						</div>
-						<div class="col-lg-12 space">
-							<label for="pincode" class="col-sm-5 control-label">Pincode</label>
-							<div class="input-group">
-								<span class="input-group-addon"><span class="fa fa-user"></span></span>
-								<input type="text" class="form-control" id="clientpin"
-									name="clietpin">
-							</div>
-						</div>
+									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span>
+										<form:input path="address.pincode" class="form-control"
+											id="clientpin" name="clietpin" />
+										<form:errors path="address.pincode" cssClass="errors" />
+
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="pincode" class="col-sm-5 control-label">Map</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-user"></span></span>
+										<form:input path="address.map" class="form-control"
+											id="clientmap" name="clietmap" />
+									</div>
+								</div>
+						
 					</div>
 					<div class="col-lg-6 col-lg-offset-6 space">
 						<button type="submit" name="saveClient" class="btn btn-success"
