@@ -188,4 +188,13 @@ public class TestController {
 		return "plan/plantable";
 	}
 	
+	//search_result controller
+	
+	
+	@RequestMapping(value="/business_list")
+	public String dobusiness_list()
+	{
+		return "Search_result/Business_listing";
+	}
+	
 }

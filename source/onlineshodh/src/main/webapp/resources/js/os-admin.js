@@ -29,35 +29,56 @@ $(document).ready(function () {
 
 
 $(document).ready(function(){
-	 /* var container = $('#page-inner');
-	  alert("hi out of ajax");
-	  $('.edit').click(function(){
-		  alert(" hi in ajax");
-	    doAjax($(this).attr('href'));
-	    return false;
-	  });
-	  function doAjax(url){
-	    if(url.match('^http')){
-	      var errormsg = 'AJAX cannot load external content';
-	      container.html(errormsg);
-	    } else {
+	 var i=0;
+	 var j=0;
+	  $('.b_contact').click(function(e){
+		  e.preventDefault();
+          var url = $(this).attr('href');
+          var contact = $('#contact').val();
+          
+		alert(url);
 	      $.ajax({
-	        url: url,
+	        url:url,
 	        timeout:5000,
-	        success: function(data){
-	          container.html(data);
+	        success: function(){
+	        	i++;
+	        	$('#contact_table tbody').append('<tr class="child"><td>'+i+'</td><td>contact '+i+' </td><td>'+contact+'</td></tr>');
+
 	        },
-	        error: function(req,error){
-	          if(error === 'error'){error = req.statusText;}
-	          var errormsg = 'There was a communication error: '+error;
-	          container.html(errormsg);
+	        error: function(){
+	     
+	          
 	        },
-	        beforeSend: function(data){
-	          container.html('<p>Loading...</p>');
-	        }
+	        
 	      });
-	    }
-	  }*/
+	      $('#contact').val('');
+	  });
+	  
+	  
+	  $('.b_features').click(function(e){
+		  e.preventDefault();
+          var url = $(this).attr('href');
+          var features = $('#Features').val();
+          
+		alert(url);
+	      $.ajax({
+	        url:url,
+	        timeout:5000,
+	        success: function(){
+	        	alert("work");
+	        	j++;
+	        	$('.feature_table tbody').append('<tr class="child"><td>'+j+'</td><td>'+features+'</td></tr>');
+
+	        },
+	        error: function(){
+	     alert("not working");
+	          
+	        },
+	        
+	      });
+	      $('#Features').val('');
+	  });
+
 
 	    
 	    $('.sandbox-container input').datepicker({

@@ -15,13 +15,14 @@
 /*   02 - Header & Navigation      */
 /*   03 - Logo Style               */
 /*   04 - Search bar style         */
+/*   05 - Search Result style         */
 
 
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 
 /*=============================== 
 
-General & Basic Style
+ 01 -General & Basic Style
 ==================================*/
 
 
@@ -67,7 +68,7 @@ body {
 
 /*=============================== 
 
- Header & Navigation Style
+  02 -Header & Navigation Style
 ==================================*/
 #home_nav{
 	width: 100%;
@@ -103,7 +104,7 @@ border: 0px;
 
 /*=============================== 
 
- Logo  Style
+   03 -Logo  Style
 ==================================*/
 
 #logo_wrapar{
@@ -116,7 +117,7 @@ border: 0px;
 
 /*=============================== 
 
- SearchBar  Style
+  04 - SearchBar  Style
 ==================================*/
 
 #search_wraper{
@@ -188,7 +189,92 @@ border: 0px;
 	font-size:15px;
 }
 
+/*=============================== 
 
+Search Result Style
+==================================*/
+#topbar_line{
+	height: 5px;
+	background: #E2C216;
+}
+
+#result_head{
+	padding: 8px 0px 0px 0px;
+	text-align: center;
+}
+.result_logo{
+	
+	width: 150px;
+	height: 80px;
+	vertical-align: middle;
+}
+.form_search{
+	margin-top:15px;
+	padding: 10px 10px;
+	background: #F7D417;
+}
+.form_search .search_input{
+	height: 40px;
+	width: 85%;
+}
+
+.banner_img{
+	padding: 8px ;
+}
+.banner_img img{
+	width: 100%;
+}
+
+.search_cnter{
+    background: #fff;
+    border: 1px solid #f7f7f7;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    float: left;
+    margin: 12px 0 0;
+    padding: 15px 15px 10px;
+    width: 100%;
+}
+.search_cnter a,a:hover{
+	text-decoration: none;
+}
+.search_cnter p {
+	
+		margin: 15px 10px;
+}
+.search_cnter p span{
+
+	font-size: 16px;
+	margin-left: 8px;
+}
+.product_img{
+	width: 220px;
+	height: 210px;
+}
+.product_brand{
+	padding:5px 8px;
+	background: #F7D417;
+	border-radius:50%;
+}
+.product_brand i{
+	color: #000;
+}
+.product_name{
+	padding-bottom: 15px;
+	border-bottom: 2px solid blue;
+}
+.product_title {
+	text-decoration: none;
+	margin-left: 4px;
+	font-size: 20px;
+}
+
+
+#keywords {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    background-color: #CCCCCC;
+}
 /*=============================== 
 
 Footer Style

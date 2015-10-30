@@ -312,105 +312,7 @@
 						</div>
 
 					</div>
-					<!-- <form class="form-horizontal" name="bclientupdate"
-							id="bclientupdate">
-							<div class="col-lg-8">
-								<div class="col-lg-12 space">
-									<label for="businessid" class="col-sm-5 control-label">Business
-										Id</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-chain"></span></span> <input type="text"
-											class="form-control" id="businessid" name="businessid"
-											placeholder="">
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="businame" class="col-sm-5 control-label">Business
-										Name</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span> <input type="text"
-											class="form-control" id="businame" name="businame">
-									</div>
-								</div>
-
-								<div class="col-lg-12 space">
-									<label for="Logo" class="col-sm-5 control-label">Business
-										Logo</label>
-									<div class="fileinput fileinput-new input-group"
-										data-provides="fileinput">
-										<div class="form-control" data-trigger="fileinput">
-											<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
-												class="fileinput-filename"></span>
-										</div>
-										<span class="input-group-addon btn btn-default btn-file"><span
-											class="fileinput-new">Select file</span><span
-											class="fileinput-exists">Change</span><input type="file"
-											name="..."></span> <a href="#"
-											class="input-group-addon btn btn-default fileinput-exists"
-											data-dismiss="fileinput">Remove</a>
-									</div>
-								</div>
-                                 <div class="col-lg-12 space">
-									<label for="pname" class="col-sm-5 control-label">Person Name
-										</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="personname" name="personname">
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="busiEmail" class="col-sm-5 control-label">Email
-										Id</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-envelope"></span></span> <input type="text"
-											class="form-control" id="busimail" name="busimail">
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="web" class="col-sm-5 control-label">
-									WebSite</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-globe"></span></span> <input type="text"
-											class="form-control" name="Website">
-									</div>
-								</div>
-
-								<div class="col-lg-12 space">
-									<label for="busicategory" class="col-sm-5 control-label">
-										Category</label>
-									<div class="input-group col-lg-7">
-										<select class="form-control">
-										<option value="FOOD">FOOD</option>
-										</select>
-									</div>
-								</div>
-								
-								
-								<div class="col-lg-12 space">
-									<label for="busisubcategory" class="col-sm-5 control-label">
-										Sub-Category</label>
-									<div class="input-group col-lg-7">
-										<select class="form-control">
-										<option value="Non-Veg">Non-Veg</option>
-										</select>
-									</div>
-								</div>
-								
-
-								</div>
-							</div>
-
-							<div class="col-lg-6 col-lg-offset-4 space">
-								<button type="submit" class="btn btn-success" id="update">Update</button>
-
-							</div>
-						</form>
- -->
+					
 				</div>
 				<!-- /.row -->
 
@@ -442,20 +344,27 @@
 								Information</span>
 						</div>
 						<div class="add_contact space">
-							<form action="" class="form-inline" id="bus_contact">
+							<form action="#" class="form-inline" id="bus_contact" method="post">
 								<div class="form-group">
 									<label for="contact">Add Contact:</label> <input
 										type="text" class="form-control" id="contact"
-										placeholder="Contact">
+										placeholder="Contact" name="business_contact">
 								</div>
-								<button type="submit" class="btn btn-success">Add</button>
+								<a href="<%=request.getContextPath()%>/prashant/bannermanage" class="b_contact"><button type="button" class="btn btn-success b_contact">Add</button></a>
 							</form>
 
 						</div>
 						<div class="detail-wraper">
-							<table class="table">
-
-
+							<table class="table space" id="contact_table">
+                              <thead>
+                              <tr>
+                              <th>Sr.No</th>
+                              <th>Contact Name</th>
+                              <th>Contact Number</th>
+                              </tr>
+                              
+                              </thead>
+                               <tbody></tbody>
 							</table>
 
 						</div>
@@ -479,14 +388,21 @@
 										type="text" class="form-control" id="Features"
 										placeholder="Features">
 								</div>
-								<button type="submit" class="btn btn-success">Add</button>
+								<a href="<%=request.getContextPath()%>/prashant/businessnewadd" class="b_features"><button type="submit" class="btn btn-success">Add</button></a>
 							</form>
 
 						</div>
 						<div class="detail-wraper">
-							<table class="table">
-
-
+							<table class="table space feature_table">
+                                 <thead>
+                              <tr>
+                              <th>Sr.No</th>
+                              <th>Features Name</th>
+                              
+                              </tr>
+                              
+                              </thead>
+                               <tbody></tbody>
 							</table>
 
 						</div>
@@ -519,13 +435,14 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		
+			<!-- validation SCRIPTS -->
+ 	<script
+		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script> 
 
-	<!-- validation SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"> </script>
+
+
 
 
 

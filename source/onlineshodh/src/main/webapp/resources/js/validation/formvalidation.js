@@ -310,14 +310,7 @@ $('#clientform').validate({
         	 required: true
             
         },
-      /*  clietphone : {
-            required: true,
-           
-        },
-        clietphone2 : {
-            required: true,
-         
-        },*/
+   
         address : {
             required: true,
             
@@ -369,6 +362,38 @@ $('#clientform').validate({
 });
 
 
+
+/*=========================
+Business Contact VALIDATION
+===========================*/
+
+$('#bus_conta').validate({
+ rules: {
+	 business_contact: {
+ 		
+              required: true,
+              digit:true,
+              maxlength:10,
+              minlength: 10
+     },
+     
+ },
+   messages:{
+ 
+	   business_contact:"Please Enter Valid Contact Number",
+   },
+   
+   highlight: function(element) {
+       $(element).closest('.space').addClass('has-error');
+   },
+   unhighlight: function(element) {
+       $(element).closest('.space').removeClass('has-error');
+   },
+   errorElement: 'span',
+   errorClass: 'error1',
+
+
+});
 
 
 
