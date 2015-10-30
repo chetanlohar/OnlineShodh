@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -172,4 +173,12 @@ public class SubCategoryController {
 		}
 		return null;
 	}
+	
+	@RequestMapping(value={"/view/categories","/view/categories/"},method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody List<SubCategoryEntity> listCategories(@RequestParam("categoryId") Long categoryId)
+	{
+		return subCategoryService.listSubCategoriesByCategoryId(categoryId.intValue());
+	}
+	
+	
 }

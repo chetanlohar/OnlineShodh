@@ -32,5 +32,13 @@ public interface SubCategoryDao {
 	 * @param subCategoryId SubCategory to delete
 	 */
 	public void deleteSubCategory(Integer subCategoryId);
+	
+	
+	/**
+	 * @param categoryId describes Category Id of the Selected Category
+	 * @return List of All SubCategories for perticuler Category Id.
+	 */
+	public List<SubCategoryEntity> listSubCategoriesByCategoryId(Integer categoryId);
+	
 
 }

@@ -50,4 +50,10 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 	public void deleteSubCategory(Integer subCategoryId) {
 		subcategorydao.deleteSubCategory(subCategoryId);
 	}
+
+	@Override
+	public List<SubCategoryEntity> listSubCategoriesByCategoryId(
+			Integer categoryId) {
+		return subcategorydao.listSubCategoriesByCategoryId(categoryId);
+	}
 }

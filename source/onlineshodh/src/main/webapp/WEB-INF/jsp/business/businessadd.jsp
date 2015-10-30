@@ -39,6 +39,7 @@
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/codejs/viewSubCategory.js"></script>
 
 </head>
 </head>
@@ -298,7 +299,10 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-						 <form:form class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessdetail">
+						 <form:form action="${pageContext.request.contextPath}/admin/business/new/save" class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessdetail" enctype="multipart/form-data">
+						 	<form:hidden path="businessId"/>
+						 	<form:hidden path="businessLogo"/>
+						 	<form:hidden path="userDetails.userDetailsId" value="${userDetailsId}"/>
 							<div class="col-lg-8">
 								<%-- <div class="col-lg-12 space">
 									<label for="businessid" class="col-sm-5 control-label">Business
@@ -331,8 +335,17 @@
 										<span class="input-group-addon btn btn-default btn-file"><span
 											class="fileinput-new">Select file</span><span
 											class="fileinput-exists">Change</span>
-											<input type="file"	name="..."></span> 
+											<input type="file"	name="file"></span> 
 											<a href="#"	class="input-group-addon btn btn-default fileinput-exists"	data-dismiss="fileinput">Remove</a>
+									</div>
+								</div>
+								<div class="col-lg-12 space">
+									<label for="pname" class="col-sm-5 control-label">Business Description
+										</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-chat"></span></span> 
+											<form:textarea path="businessDesc" class="form-control"/>
 									</div>
 								</div>
                                  <div class="col-lg-12 space">
@@ -367,17 +380,17 @@
 									<label for="busicategory" class="col-sm-5 control-label">
 										Category</label>
 									<div class="input-group col-lg-7">
-										<select class="form-control">
+										<!-- <select class="form-control">
 										<option value="FOOD">FOOD</option>
-										</select>
+										</select> -->
 										
-										<form:select path="subCategory.category.categoryId" required="" class="form-control" id="categoryname" name="categoryname">
+										<form:select path="subCategory.category.categoryId" required="" class="form-control" id="categoryname" name="categoryname" onchange="getSubCategories()">
 											<form:option value="0" label="--- Select ---" />
 											<c:forEach var="category" items="${categories}">
 												<form:option value="${category.categoryId}">${category.categoryName}</form:option>
 											</c:forEach>
 										</form:select>
-										<form:errors path="category.categoryId" cssClass="errors" />
+										<form:errors path="subCategory.category.categoryId" cssClass="errors" />
 										
 										
 									</div>
@@ -388,25 +401,21 @@
 									<label for="busisubcategory" class="col-sm-5 control-label">
 										Sub-Category</label>
 									<div class="input-group col-lg-7">
-										<select class="form-control">
+										<!-- <select class="form-control">
 										<option value="Non-Veg">Non-Veg</option>
-										</select>
+										</select> -->
 										
-										<form:select path="category.categoryId" required="" class="form-control" id="categoryname" name="categoryname">
+										<form:select path="subCategory.subCategoryId" required="" class="form-control" id="subcategoryname" name="subcategoryname">
 											<form:option value="0" label="--- Select ---" />
-											<c:forEach var="category" items="${categories}">
-												<form:option value="${category.categoryId}">${category.categoryName}</form:option>
+											<c:forEach var="subcategory" items="${subcategories}">
+												<form:option value="${subcategory.subCategoryId}">${subcategory.subCategoryName}</form:option>
 											</c:forEach>
 										</form:select>
-										<form:errors path="category.categoryId" cssClass="errors" />
+										<form:errors path="subCategory.subCategoryId" cssClass="errors" />
 										
 									</div>
 								</div>
-								
-
 								</div>
-							
-
 							<div class="col-lg-6 col-lg-offset-4 space">
 								<button type="submit" class="btn btn-success" id="update">Add</button>
 

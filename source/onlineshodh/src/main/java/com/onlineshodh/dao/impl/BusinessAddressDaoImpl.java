@@ -1,6 +1,7 @@
 package com.onlineshodh.dao.impl;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 import org.springframework.stereotype.Repository;
 
@@ -16,7 +17,16 @@ public class BusinessAddressDaoImpl extends AbstractJpaDao<BusinessAddressEntity
 	@Override
 	public BusinessAddressEntity getBusinessAddressByBusinessId(Long businessId) {
 		em = getEntityManager();
-		return em.createQuery("from BusinessAddressEntity businessaddr where businessaddr.business.businessId = :businessId", BusinessAddressEntity.class).setParameter("businessId", businessId).getSingleResult();
+		try
+		{
+			return em.createQuery("from BusinessAddressEntity businessaddr where businessaddr.business.businessId = :businessId", BusinessAddressEntity.class).setParameter("businessId", businessId).getSingleResult();
+		}
+		catch(NoResultException e)
+		{
+			System.out.println("No result Found..."+e.getMessage());
+			return null;
+		}
+		
 	}
 
 }

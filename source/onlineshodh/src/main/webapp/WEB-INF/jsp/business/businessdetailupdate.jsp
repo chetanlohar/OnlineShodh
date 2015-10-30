@@ -301,7 +301,7 @@
 					
 											<div class="detail-title">
 							<span class="detail-titile-header font17">Business
-								Information</span><a href="${pageContext.request.contextPath}/prashant/editbusiness">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span><a href="${pageContext.request.contextPath}/admin/business/update/businessinfo/${business.businessId}">&nbsp;<i class="fa fa-pencil"></i>
 								Add
 							</a>
 						</div>
@@ -309,44 +309,44 @@
 							<table class="table">
 								<tr>
 									<td>Business Id</td>
-									<td>${businessDetails.business.businessId}</td>
+									<td>${business.businessId}</td>
 								
 								</tr>
 								<tr>
 									<td>Business Name</td>
-									<td>${businessDetails.business.businessName}</td>
+									<td>${business.businessName}</td>
 									
 								</tr>
 								<tr>
 									<td>Business Logo</td>
 									<td><img
-										src="${pageContext.request.contextPath}/admin/business/load/logo/${userdetails.userDetailsId}"
+										src="${pageContext.request.contextPath}/admin/business/load/logo/${business.businessId}"
 										class="img-responsive" width="50px " height="50px;" /></td>
 									
 								</tr>
 								<tr>
 									<td>Person Name</td>
-									<td>${businessDetails.business.personName}</td>
+									<td>${business.personName}</td>
 									
 								</tr>
 								<tr>
 									<td>Email Id</td>
-									<td>${businessDetails.business.email}</td>
+									<td>${business.email}</td>
 									
 								</tr>
 								<tr>
 									<td>Website</td>
-									<td>${businessDetails.business.website}</td>
+									<td>${business.website}</td>
 									
 								</tr>
 								<tr>
 									<td>Category</td>
-									<td>${businessDetails.business.subCategory.category.categoryName}</td>
+									<td>${business.subCategory.category.categoryName}</td>
 									
 								</tr>
 								<tr>
 									<td>Sub-Category	</td>
-									<td>${businessDetails.business.subCategory.subCategoryName}</td>
+									<td>${business.subCategory.subCategoryName}</td>
 								</tr>
 							</table>
 						</div>
@@ -455,7 +455,7 @@
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Business Address
-								Information</span><a href="${pageContext.request.contextPath}/prashant/businessaddressupdate">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span><a href="${pageContext.request.contextPath}/admin/business/update/address/${business.businessId}">&nbsp;<i class="fa fa-pencil"></i>
 								Edit
 							</a>
 						</div>

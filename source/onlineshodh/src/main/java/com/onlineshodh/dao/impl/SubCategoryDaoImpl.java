@@ -2,6 +2,8 @@ package com.onlineshodh.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
@@ -11,6 +13,8 @@ import com.onlineshodh.entity.SubCategoryEntity;
 @Repository
 public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implements SubCategoryDao {
 
+	EntityManager em;
+	
 	@Override
 	public List<SubCategoryEntity> getAllSubCategories() {
 		setClazz(SubCategoryEntity.class);
@@ -31,5 +35,15 @@ public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implem
 	@Override
 	public void deleteSubCategory(Integer subCategoryId) {
 		deleteById(subCategoryId);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<SubCategoryEntity> listSubCategoriesByCategoryId(
+			Integer categoryId) {
+		em = getEntityManager();
+		String query = "from SubCategoryEntity subcategory where subcategory.category.categoryId = :categoryId";
+		List<SubCategoryEntity> result = em.createQuery(query).setParameter("categoryId",categoryId).getResultList();
+		return result;
 	}
 }

@@ -1,41 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit Address Details</title>
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/intlTelInput.css"
+	href="${pageContext.request.contextPath}/resources/css/intlTelInput.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -152,7 +155,7 @@
 				<li>
 					<div class="user-img-div">
 						<img
-							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
 							class="img-circle" />
 
 
@@ -161,16 +164,16 @@
 				</li>
 				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
 
-				<li><a href="<%=request.getContextPath()%>/admin/home"><i
+				<li><a href="${pageContext.request.contextPath}/admin/home"><i
 						class="fa fa-home "></i>Home</a></li>
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/prashant/categorymanage"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/prashant/subcategorymanage">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -193,7 +196,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -202,7 +205,7 @@
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/prashant/businessmanage">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -235,7 +238,7 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
+							href="${pageContext.request.contextPath}/prashant/bannermanage"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
@@ -295,33 +298,32 @@
 				</div>
 				<!-- /.row -->
 				<div class="row">
+				<form:form class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessAddress">
+				<form:hidden path="addressId"/>
 					<div class="col-lg-12">
-						<form class="form-horizontal" name="bclientupdate"
-							id="bclientupdate">
 							<div class="col-lg-8">
 								<div class="col-lg-12 space">
 									<label for="address" class="col-sm-5 control-label">Address</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-road"></span></span>
-										<textarea class="form-control" rows="3" id="clientadd"
-											name="address"></textarea>
+										<form:textarea path="address" class="form-control" rows="3" id="clientadd" name="address"></form:textarea>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="Street" class="col-sm-5 control-label">Street</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientpin" name="clietpin">
+											class="fa fa-user"></span></span> <form:input path="street" type="text"
+											class="form-control" id="clientpin" name="clietpin" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="LandMark" class="col-sm-5 control-label">LandMark</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientpin" name="clietpin">
+											class="fa fa-user"></span></span> <form:input path="landMark" type="text"
+											class="form-control" id="clientpin" name="clietpin"/>
 									</div>
 								</div>
 
@@ -329,11 +331,19 @@
 									<label for="country" class="col-sm-5 control-label">Country</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-flag"></span></span> <select class="form-control"
-											name="clientcountry">
-											<option value="">Select</option>
-											<option value="india">India</option>
-										</select>
+											class="fa fa-flag"></span></span> 
+											<!-- <select class="form-control"name="clientcountry">
+												<option value="">Select</option>
+												<option value="india">India</option>
+											</select> -->
+											
+											<form:select path="city.state.country.countryId" id="countryId"
+												onchange="getState()" class="form-control" name="tcountry">
+												<form:option value="0" label="---Select-------" />
+												<c:forEach var="country" items="${countries}">
+													<form:option value="${country.countryId}">${country.countryName}</form:option>
+												</c:forEach>
+											</form:select>
 									</div>
 								</div>
 
@@ -341,11 +351,21 @@
 									<label for="state" class="col-sm-5 control-label">State</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
+											class="fa fa-user"></span></span> 
+										<!-- <select class="form-control"
 											name="clientstate">
 											<option value="">Select</option>
 											<option value="mharastra">maharastra</option>
-										</select>
+										</select> -->
+										
+										<form:select path="city.state.stateId" id="townStates"
+											onchange="getCity()" class="form-control">
+											<form:option value="0" label="---Select-------" />
+											<c:forEach var="state" items="${states}">
+													<form:option value="${state.stateId}">${state.stateName}</form:option>
+											</c:forEach>
+										</form:select>
+										
 									</div>
 								</div>
 
@@ -353,23 +373,39 @@
 									<label for="city" class="col-sm-5 control-label">City</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
+											class="fa fa-user"></span></span> 
+										<!-- <select class="form-control"
 											name="clientcity">
 											<option value="">Select</option>
 											<option value="pune">pune</option>
-										</select>
+										</select> -->
+										
+										<form:select path="city.cityId" id="stateCities" class="form-control">
+											<form:option value="0" label="---Select-------" />
+											<c:forEach var="city" items="${cities}">
+												<form:option value="${city.cityId}">${city.cityName}</form:option>
+											</c:forEach>
+										</form:select>
+										
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="town" class="col-sm-5 control-label">Town</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <select class="form-control"
-											id="town" name="clinettown">
+											class="fa fa-user"></span></span> 
+										<!-- <select class="form-control" id="town" name="clinettown">
 											<option value="">Select</option>
 											<option value="kharadi">Kharadi</option>
 											<option value="Other">Other Town</option>
-										</select>
+										</select> -->
+										
+										<form:select path="town.townId" id="stateCities" class="form-control">
+											<form:option value="0" label="---Select-------" />
+											<c:forEach var="town" items="${towns}">
+												<form:option value="${town.townId}">${town.townName}</form:option>
+											</c:forEach>
+										</form:select>
 									</div>
 								</div>
 								<div class="col-lg-12 space hide-div ">
@@ -384,11 +420,10 @@
 									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientpin" name="clietpin">
+											class="fa fa-user"></span></span> <form:input path="pincode" type="text"
+											class="form-control" id="clientpin" name="clietpin" />
 									</div>
 								</div>
-
 								</div>
 							</div>
 
@@ -396,7 +431,7 @@
 								<button type="submit" class="btn btn-success" id="update">Update</button>
 
 							</div>
-						</form>
+						</form:form>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
@@ -416,41 +451,41 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 
 
 
 	<!-- JANSY BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
 
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 
 
 
 	<!-- Input Telephone SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/intlTelInput.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 </body>
 </html>

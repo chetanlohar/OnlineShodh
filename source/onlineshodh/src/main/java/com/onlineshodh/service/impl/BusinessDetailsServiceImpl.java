@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.BusinessDetailsDao;
 import com.onlineshodh.entity.BusinessDetailsEntity;
@@ -16,12 +17,13 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 	BusinessDetailsDao businessDetailsDao;
 
 	@Override
+	@Transactional
 	public void saveBusinessDetails(BusinessDetailsEntity business) {
-		// TODO Auto-generated method stub
-
+		businessDetailsDao.saveBusinessDetails(business);
 	}
 
 	@Override
+	@Transactional
 	public void updateBusinessDetails(BusinessDetailsEntity business) {
 		// TODO Auto-generated method stub
 

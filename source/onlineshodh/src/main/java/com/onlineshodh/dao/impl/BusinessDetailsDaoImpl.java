@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.BusinessDetailsDao;
@@ -18,13 +17,14 @@ public class BusinessDetailsDaoImpl extends
 	EntityManager entityManager;
 
 	@Override
-	@Transactional
 	public void saveBusinessDetails(BusinessDetailsEntity business) {
-		create(business);
+		if(business.getBusinessId()!=null)
+			update(business);
+		else
+			create(business);
 	}
 
 	@Override
-	@Transactional
 	public void updateBusinessDetails(BusinessDetailsEntity business) {
 		update(business);
 	}

@@ -34,4 +34,6 @@ public interface SubCategoryService {
 	 */
 	public void deleteSubCategory(Integer subCategoryId);
 	
+	public List<SubCategoryEntity> listSubCategoriesByCategoryId(Integer categoryId);
+	
 }

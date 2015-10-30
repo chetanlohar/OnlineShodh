@@ -1,6 +1,8 @@
 package com.onlineshodh.entity;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +33,7 @@ public class BusinessDetailsEntity implements Serializable {
 	 */
 	@Id
 	@Column(name="businessid",unique=true,nullable=false)
-	@SequenceGenerator(name="pk_businessid",sequenceName="seq_businessdetails_businessid")
+	@SequenceGenerator(name="pk_businessid",sequenceName="seq_businessdetails_businessid",allocationSize=1)
 	@GeneratedValue(generator="pk_businessid",strategy=GenerationType.SEQUENCE)
 	private Long businessId;
 	
@@ -84,6 +86,10 @@ public class BusinessDetailsEntity implements Serializable {
 	@ManyToOne(targetEntity=UserDetailsEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="userDetailsId")
 	private UserDetailsEntity userDetails;
+	
+	
+	@Column(name="regdate")
+	private Date regDate;
 
 	/**
 	 * @return the businessId
@@ -211,4 +217,17 @@ public class BusinessDetailsEntity implements Serializable {
 		this.userDetails = userDetails;
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "BusinessDetailsEntity [businessId=" + businessId
+				+ ", businessName=" + businessName + ", personName="
+				+ personName + ", businessLogo="
+				+ Arrays.toString(businessLogo) + ", email=" + email
+				+ ", website=" + website + ", businessDesc=" + businessDesc
+				+ ", subCategory=" + subCategory + ", userDetails="
+				+ userDetails + "]";
+	}
 }
