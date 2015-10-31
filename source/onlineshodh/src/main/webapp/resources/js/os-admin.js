@@ -85,4 +85,14 @@ $(document).ready(function(){
 	        orientation: "top left",
 	        autoclose: true
 	    });
+	    
+		$("#town").change(function() {
+            alert('fgggggg');
+			if ($('#town').val() == '25') {
+				$(".hide-div").show();
+			} else {
+				$(".hide-div").hide();
+			}
+
+		});
 });

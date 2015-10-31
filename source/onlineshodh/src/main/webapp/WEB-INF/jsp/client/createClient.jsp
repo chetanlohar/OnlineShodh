@@ -488,7 +488,7 @@
 											class="fa fa-user"></span></span>
 										<form:select path="address.town.townId" class="form-control"
 											id="town" name="clinettown">
-											<form:option value="0">--Select--</form:option>
+											<%-- <form:option value="0">--Select--</form:option> --%>
 										</form:select>
 										<form:errors path="address.town.townId" cssClass="errors" />
 
@@ -496,6 +496,7 @@
 
 								</div>
 								<!-- temp other -->
+								<div class="col-lg-12 space hide-div ">
 								<label for="Otown" class="col-sm-5 control-label">OtherTown</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
@@ -504,7 +505,7 @@
 									<form:errors path="address.townOther"
 										cssClass="errors" />
 								</div>
-
+</div>
 
 
 								<%-- <div class="col-lg-12 space hide-div ">
@@ -592,7 +593,7 @@
 															</button></a></td>
 													<td class="center"><a
 														href="${pageContext.request.contextPath}/admin/clients/delete/${userdetail.userDetailsId}"
-														onclick="return confirm('Do you want to Remove : ${userdetail.name}'">Delete</a>
+														onclick="return confirm('Do you want to Remove : ${userdetail.name}">Delete</a>
 													</td>
 												</tr>
 											</c:forEach>
@@ -664,21 +665,13 @@
 
 	<script>
 		$(document).ready(function() {
-			$('#dataTables-example').DataTable({
+		/* 	$('#dataTables-example').DataTable({
 				responsive : true
 			});
 
-			$(".mobile-number").intlTelInput();
+			$(".mobile-number").intlTelInput(); */
 
-			$("#town").change(function(e) {
-                alert('fgggggg');
-				if ($('#town').val() == 'Other') {
-					$(".hide-div").show();
-				} else {
-					$(".hide-div").hide();
-				}
-
-			});
+		
 		});
 	</script>
 </body>

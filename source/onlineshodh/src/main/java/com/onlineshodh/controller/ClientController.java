@@ -29,6 +29,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.AddressEntity;
+import com.onlineshodh.entity.BannerEntity;
 import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.entity.UserDetailsEntity;
 import com.onlineshodh.entity.UserEntity;
@@ -41,41 +42,40 @@ import com.onlineshodh.service.UserService;
 import com.onlineshodh.supportclass.ClientDetails;
 
 @Controller
-@RequestMapping(value="/admin/clients")
+@RequestMapping(value = "/admin/clients")
 public class ClientController {
 	private static final Logger logger = Logger
 			.getLogger(ClientController.class);
-	
+
 	@Autowired
 	WebApplicationContext context;
-	
+
 	@Autowired
 	UserService userService;
-	
+
 	@Autowired
 	UserDetailsService userDetailsService;
-	
+
 	@Autowired
 	CityService cityService;
 
 	@Autowired
 	TownService townService;
-	
+
 	@Autowired
 	AddressService addressService;
-	
+
 	@Autowired
 	BCryptPasswordEncoder encoder;
-	
+
 	@Value("${mandatory}")
 	String mandatory;
-	
+
 	@Value("${alreadyExist}")
 	String alreadyExist;
-	
+
 	@Value("${onlyDigits}")
 	String onlyDigits;
-	
 
 	@RequestMapping(value = { "/", "" })
 	public String manageClients(ModelMap model) {
@@ -122,7 +122,8 @@ public class ClientController {
 			FieldError error = new FieldError("clientdetails",
 					"userDetails.phone1", onlyDigits);
 			result.addError(error);
-			System.out.println("phone not selected "+error.getDefaultMessage());
+			System.out.println("phone not selected "
+					+ error.getDefaultMessage());
 			flag = true;
 		}
 		if (!userDetails.getPhone2().matches(regex)
@@ -130,27 +131,29 @@ public class ClientController {
 			FieldError error = new FieldError("clientdetails",
 					"userDetails.phone2", onlyDigits);
 			result.addError(error);
-			System.out.println(" not selected "+error.getDefaultMessage());
+			System.out.println(" not selected " + error.getDefaultMessage());
 			flag = true;
 		}
 
-		System.out.println(" Addres Enity "+addressEntity);
-		
+		System.out.println(" Addres Enity " + addressEntity);
+
 		if (addressEntity.getCity().getCityId() == 0) {
-			FieldError cityError = new FieldError("clientdetails", "address.city.cityId",
-					mandatory);
+			FieldError cityError = new FieldError("clientdetails",
+					"address.city.cityId", mandatory);
 			result.addError(cityError);
 			flag = true;
-			
+
 		}
-		
-		if (addressEntity.getTown().getTownId()==0) {
-			FieldError townError = new FieldError("clientdetails", "address.town.townId",
-					mandatory);
+
+		if (addressEntity.getTown() == null
+				|| addressEntity.getTown().getTownId() == 0) {
+			FieldError townError = new FieldError("clientdetails",
+					"address.town.townId", mandatory);
 			result.addError(townError);
 			flag = true;
-			
+
 		}
+
 		boolean isUserExists = userService.isUserExists(clientdetails.getUser()
 				.getUserName());
 
@@ -158,52 +161,61 @@ public class ClientController {
 			FieldError error = new FieldError("clientdetails", "user.userName",
 					alreadyExist);
 			result.addError(error);
-			System.out.println("error"+error);
+			System.out.println("error" + error);
 			flag = true;
 		}
 		if (result.hasErrors()) {
 			flag = true;
-			System.out.println("error count"+result.getErrorCount());
+			System.out.println("error count" + result.getErrorCount());
 		}
 		if (file.isEmpty()
 				&& clientdetails.getUserDetails().getPhotograph() == null) {
 			FieldError error = new FieldError("clientdetails",
 					"userDetails.photograph", mandatory);
 			result.addError(error);
-			System.out.println("error"+error);
+			System.out.println("error" + error);
 			flag = true;
 		}
-		
-		System.out.println("flag "+flag);
+
+		System.out.println("flag " + flag);
 		if (!flag) {
 			FieldError error;
 			try {
-				
-				if(addressEntity!=null){
-	
-					if(addressEntity.getTownOther()!=null){
-						System.out.println(" town Other"+addressEntity.getTownOther());
-						TownEntity town=new TownEntity();
+
+				if (addressEntity != null) {
+
+					System.out.println(" selected town Id "
+							+ addressEntity.getTown().getTownId());
+					if (addressEntity.getTownOther() != null
+							&& addressEntity.getTown().getTownId() == 25) {
+						System.out.println(" town Other"
+								+ addressEntity.getTownOther());
+						TownEntity town = new TownEntity();
 						town.setCity(addressEntity.getCity());
-						System.out.println("Address City:"+addressEntity.getCity());
-						town.setTownName(addressEntity.getTownOther().trim().toUpperCase());
-						System.out.println("  Entry Other town  In table"+town);
+						System.out.println("Address City:"
+								+ addressEntity.getCity());
+						town.setTownName(addressEntity.getTownOther().trim()
+								.toUpperCase());
+						System.out.println("  Entry Other town  In table"
+								+ town);
 						townService.updateTown(town);
-						Integer lastTown=townService.getLastTown(); 
-						System.out.println("last town Id"+lastTown);
+						Integer lastTown = townService.getLastTown();
+						System.out.println("last town Id" + lastTown);
 						town.setTownId(lastTown);
 						addressEntity.setTown(town);
-						System.out.println("Address Entity Before Save in other option :"+addressEntity);
+						System.out
+								.println("Address Entity Before Save in other option :"
+										+ addressEntity);
 
 						addressService.saveAddress(addressEntity);
+					} else {
+						System.out.println("Address Entity Before Save :"
+								+ addressEntity);
+						addressService.saveAddress(addressEntity);
 					}
-					else{
-					System.out.println("Address Entity Before Save :"+addressEntity);
-					addressService.saveAddress(addressEntity);
-					}
-					
-					}
-				
+
+				}
+
 				if (user != null) {
 					String encryptedPassword = encoder.encode(user
 							.getPassword());
@@ -215,10 +227,12 @@ public class ClientController {
 						String name = userDetails.getName().toUpperCase()
 								.trim();
 						userDetails.setName(name);
-						Long lastAddress=addressService.getLastAddress();
-						System.out.println("last address"+lastAddress);
+						Long lastAddress = addressService.getLastAddress();
+						System.out.println("last address" + lastAddress);
 						addressEntity.setAddressId(lastAddress);
-						System.out.println("address entity before store to userde"+addressEntity);
+						System.out
+								.println("address entity before store to userde"
+										+ addressEntity);
 						userDetails.setAddress(addressEntity);
 						try {
 							if (!file.isEmpty())
@@ -240,86 +254,93 @@ public class ClientController {
 				e.printStackTrace();
 				return "client/createClient";
 			}
-			
+
 			return "redirect:/admin/clients";
 		}
-		
+
 		return "client/createClient";
 	}
-	
-	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public String updateUserDetails(ModelMap model,@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("userDetails") UserDetailsEntity userDetails, BindingResult result)
-	{
-		
-		
+
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updateUserDetails(
+			ModelMap model,
+			@RequestParam("file") MultipartFile file,
+			@Valid @ModelAttribute("userDetails") UserDetailsEntity userDetails,
+			BindingResult result) {
+
 		String regex = "[0-9]+";
 		boolean flag = false;
 		AddressEntity addressEntity = userDetails.getAddress();
-		if(!userDetails.getPhone1().matches(regex))
-		{
-			FieldError error = new FieldError("clientdetails", "phone1", onlyDigits);
+		if (!userDetails.getPhone1().matches(regex)) {
+			FieldError error = new FieldError("clientdetails", "phone1",
+					onlyDigits);
 			result.addError(error);
 			flag = true;
 		}
-		if(!userDetails.getPhone2().matches(regex))
-		{
-			FieldError error = new FieldError("clientdetails", "phone2", onlyDigits);
+		if (!userDetails.getPhone2().matches(regex)) {
+			FieldError error = new FieldError("clientdetails", "phone2",
+					onlyDigits);
 			result.addError(error);
 			flag = true;
 		}
-		
-		if(result.hasErrors())
-		{
+
+		if (result.hasErrors()) {
 			flag = true;
 		}
-		/*if(file.isEmpty() && userDetails.getPhotograph()==null)
-		{
-			FieldError error = new FieldError("userDetails", "photograph", mandatory);
-			result.addError(error);
-			flag = true;
-		}*/
-		if(!flag)
-		{
-			try
-			{
-				if(addressEntity!=null){
-					
-					if(addressEntity.getTownOther()!=null){
-						System.out.println(" town Other"+addressEntity.getTownOther());
-						TownEntity town=new TownEntity();
+		/*
+		 * if(file.isEmpty() && userDetails.getPhotograph()==null) { FieldError
+		 * error = new FieldError("userDetails", "photograph", mandatory);
+		 * result.addError(error); flag = true; }
+		 */
+		if (!flag) {
+			try {
+				if (addressEntity != null) {
+
+					System.out.println(" selected town Id "
+							+ addressEntity.getTown().getTownId());
+					if (addressEntity.getTownOther() != null
+							&& addressEntity.getTown().getTownId() == 25) {
+						System.out.println(" town Other"
+								+ addressEntity.getTownOther());
+						TownEntity town = new TownEntity();
 						town.setCity(addressEntity.getCity());
-						System.out.println("Address City:"+addressEntity.getCity());
-						town.setTownName(addressEntity.getTownOther().trim().toUpperCase());
-						System.out.println("  Entry Other town  In table"+town);
+						System.out.println("Address City:"
+								+ addressEntity.getCity());
+						town.setTownName(addressEntity.getTownOther().trim()
+								.toUpperCase());
+						System.out.println("  Entry Other town  In table"
+								+ town);
 						townService.updateTown(town);
-						Integer lastTown=townService.getLastTown(); 
-						System.out.println("last town Id"+lastTown);
+						Integer lastTown = townService.getLastTown();
+						System.out.println("last town Id" + lastTown);
 						town.setTownId(lastTown);
 						addressEntity.setTown(town);
-						System.out.println("Address Entity Before Save in other option :"+addressEntity);
+						System.out
+								.println("Address Entity Before Save in other option :"
+										+ addressEntity);
 
 						addressService.saveAddress(addressEntity);
+					} else {
+						System.out.println("Address Entity Before Save :"
+								+ addressEntity);
+						addressService.saveAddress(addressEntity);
 					}
-					else{
-					System.out.println("Address Entity Before Save :"+addressEntity);
+					System.out.println(" address Entity after other Town Added"
+							+ addressEntity.toString());
 					addressService.saveAddress(addressEntity);
-					}
-					System.out.println(" address Entity after other Town Added"+addressEntity.toString());
-					addressService.saveAddress(addressEntity);
-					Long lastAddress=addressService.getLastAddress();
-					System.out.println("last address"+lastAddress);
+					Long lastAddress = addressService.getLastAddress();
+					System.out.println("last address" + lastAddress);
 					addressEntity.setAddressId(lastAddress);
 				}
-				
-				if(!file.isEmpty())
+
+				if (!file.isEmpty())
 					userDetails.setPhotograph(file.getBytes());
-				    System.out.println("Reg date"+userDetails.getRegDate());
-			 	    userDetailsService.updateUserDetails(userDetails);
+				System.out.println("Reg date" + userDetails.getRegDate());
+				userDetailsService.updateUserDetails(userDetails);
 				return "redirect:/admin/clients";
-			}
-			catch(ConstraintViolationException e)
-			{
-				FieldError error = new FieldError("userDetails", e.getField(), e.getMsg());
+			} catch (ConstraintViolationException e) {
+				FieldError error = new FieldError("userDetails", e.getField(),
+						e.getMsg());
 				result.addError(error);
 				return "client/createClient";
 			} catch (IOException e) {
@@ -328,10 +349,13 @@ public class ClientController {
 		}
 		return "client/clientUpdate";
 	}
-	
+
 	@RequestMapping("/load/logo/{userDetailsId}")
-	public String downloadPicture(@PathVariable("userDetailsId") Integer userDetailsId,HttpServletResponse response) {
-		UserDetailsEntity userDetails = userDetailsService.getUserDetails(userDetailsId);
+	public String downloadPicture(
+			@PathVariable("userDetailsId") Integer userDetailsId,
+			HttpServletResponse response) {
+		UserDetailsEntity userDetails = userDetailsService
+				.getUserDetails(userDetailsId);
 		try {
 			response.setHeader("Content-Disposition", "inline;filename=\""
 					+ userDetails.getName() + "\"");
@@ -344,35 +368,59 @@ public class ClientController {
 			out.close();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}catch (NullPointerException e) {
-			logger.info("File Not Found for subCategoryId: "+userDetailsId);
+		} catch (NullPointerException e) {
+			logger.info("File Not Found for subCategoryId: " + userDetailsId);
 		}
 		return null;
 	}
-	
+
 	@RequestMapping(value = "/delete/{userDetailsId}", method = RequestMethod.GET)
 	public String deleteClientDetails(ModelMap model,
 			@PathVariable("userDetailsId") Integer userDetailsId) {
-		userService.deleteUser(userDetailsService.getUserDetails(userDetailsId).getUserId());
+		userService.deleteUser(userDetailsService.getUserDetails(userDetailsId)
+				.getUserId());
 		return "redirect:/admin/clients";
 	}
-	
+
 	@RequestMapping(value = "/edit/{userDetailsId}", method = RequestMethod.GET)
-	public String editClientDetails(ModelMap model,@PathVariable("userDetailsId") Integer userDetailsId) {
-		System.out.println("UserDetails "+userDetailsService.getUserDetails(userDetailsId));
-		model.addAttribute("userDetails", userDetailsService.getUserDetails(userDetailsId));
+	public String editClientDetails(ModelMap model,
+			@PathVariable("userDetailsId") Integer userDetailsId) {
+		System.out.println("UserDetails "
+				+ userDetailsService.getUserDetails(userDetailsId));
+		UserDetailsEntity userDetailsEntity = userDetailsService
+				.getUserDetails(userDetailsId);
+		Integer cityId = userDetailsEntity.getAddress().getCity().getCityId();
+		List<TownEntity> towns = townService.getAllTowns(cityId);
+		model.addAttribute("userDetails",
+				userDetailsService.getUserDetails(userDetailsId));
 		model.addAttribute("cities", cityService.getAllCities());
-		model.addAttribute("towns", townService.getAllTowns());
+		model.addAttribute("towns", towns);
 		return "client/clientUpdate";
 	}
-	
+
 	@RequestMapping(value = "/view/")
-	public String showClientDetails(ModelMap model)
-	{
+	public String showClientDetails(ModelMap model) {
 		List<UserDetailsEntity> l = new ArrayList<UserDetailsEntity>();
 		l.add(userDetailsService.getUserDetails(21));
 		model.addAttribute("userDetails", l);
 		return "business/addbusiness";
+	}
+
+	@RequestMapping(value = "/exception")
+	public String HandleFileSizeExceedException(ModelMap model,
+			@ModelAttribute("clientdetails") ClientDetails clientDetails,
+			BindingResult result) {
+		FieldError FileSizeExceedException;
+		FileSizeExceedException = new FieldError("clientDetails",
+				"userDetails.photograph",
+				"Please Select Image Less than 100 KB");
+		model.addAttribute("userDetails",
+				userDetailsService.getAllUserDetails());
+		model.addAttribute("cities", cityService.getAllCities());
+
+		result.addError(FileSizeExceedException);
+		return "client/createClient";
+
 	}
 
 }

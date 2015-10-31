@@ -304,7 +304,7 @@
 							modelAttribute="userDetails" enctype="multipart/form-data"
 							class="form-horizontal" name="clientform" id="clientform">
 						
-					<c:out value="${userDetails.regDate}"/>
+					
 					<form:hidden path="userDetailsId"/>
                     <form:hidden path="regDate"/>
                     <form:hidden path="userId"/>
@@ -313,11 +313,11 @@
                     
                     
                      
-                   <div class="col-lg-12">
+                   <div class="col-lg-6">
 							
 
 							<div class="col-lg-12 space">
-							    <c:out value="${userDetails.regDate}"/>
+							    
 								<label for="Name" class="col-sm-5 control-label">Name</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
@@ -458,11 +458,12 @@
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span>
 										<form:select path="address.town.townId" class="form-control"
-											id="town" name="clinettown">
-											<form:option value="0">--Select--</form:option>
-									         <c:forEach var="town" items="${towns}">
+											id="town1" name="clinettown">
+											<%-- <form:option value="0">--Select--</form:option> --%>
+									          <c:forEach var="town" items="${towns}">
 												<form:option value="${town.townId}">${town.townName}</form:option>
-											</c:forEach> 
+											</c:forEach>  
+											<form:option value="25">--OtherTown--</form:option>
 										</form:select>
 										<form:errors path="address.town.townId" cssClass="errors" />
 
@@ -470,15 +471,16 @@
 
 								</div>
 								<!-- temp other -->
-								<%-- <label for="Otown" class="col-sm-5 control-label">OtherTown</label>
+								<div class="col-lg-12 space hide-div">
+								 <label for="Otown" class="col-sm-5 control-label">OtherTown</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
 									<form:input path="address.townOther" class="form-control"
 										id="Otown" name="otown" />
 									<form:errors path="address.townOther"
 										cssClass="errors" />
-								</div> --%>
-
+								</div> 
+</div>
 						
 						
 						<div class="col-lg-12 space">

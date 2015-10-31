@@ -43,9 +43,19 @@ public class MultipartExceptionHandler extends OncePerRequestFilter {
    
     private void handle(HttpServletRequest request,
             HttpServletResponse response, MaxUploadSizeExceededException e) throws ServletException, IOException {
-    	
+    	String sustr=null;
         String redirect = UrlUtils.buildFullRequestUrl(request);
-        String sustr = redirect.substring(0, redirect.length()-4)+"exception";
+        System.out.println(" Super class origin Exception  string"+redirect);
+        
+        if( redirect.substring(redirect.length()-4,redirect.length()).equalsIgnoreCase("save"))
+        {
+             sustr = redirect.substring(0, redirect.length()-4)+"exception";
+        }
+        else{
+        	
+        	 sustr = redirect.substring(0, redirect.length()-6)+"exception";
+        }
+       
         
         System.out.println(" Yes Caught.."+sustr);
         System.out.println(request.getMethod()); 
