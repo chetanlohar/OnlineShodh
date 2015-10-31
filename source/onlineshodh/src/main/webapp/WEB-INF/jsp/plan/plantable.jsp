@@ -314,232 +314,121 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>Plan 1</td>
-								<td>Very Low</td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								
-								<td class="price_data"><span><strong>1 Year</strong></span><br>Free</td>
-								<td class="price_data"><span><strong>2 Year</strong></span><br>Free</td>
-								<td class="price_data"><span><strong>3 Year</strong></span><br>Free</td>
+							<c:forEach var="plan" items="${plans}">
+								<tr>
 
+									<td>${plan.planId}</td>
+									<td>${plan.planName}</td>
+									<td>${plan.priority}</td>
+									<td><c:choose>
+											<c:when test="${plan.businessName=='true'}">
+												<img
+													src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+													class="img-responsive" />
+											</c:when>
+											<c:otherwise>
+												<img
+													src="${pageContext.request.contextPath}/resources/images/No1.png"
+													class="img-responsive" />
+											</c:otherwise>
+										</c:choose></td>
+									<td><c:choose>
+											<c:when test="${plan.businessAddress=='true'}">
+												<img
+													src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+													class="img-responsive" />
+											</c:when>
+											<c:otherwise>
+												<img
+													src="${pageContext.request.contextPath}/resources/images/No1.png"
+													class="img-responsive" />
+											</c:otherwise>
+										</c:choose></td>
+										<td><c:choose>
+											<c:when test="${plan.personName=='true'}">
+												<img
+													src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+													class="img-responsive" />
+											</c:when>
+											<c:otherwise>
+												<img
+													src="${pageContext.request.contextPath}/resources/images/No1.png"
+													class="img-responsive" />
+											</c:otherwise>
+										</c:choose></td>
+										<td>${plan.noOfImages}</td>
+										<td>${plan.planDescription}</td>
+										<td><c:choose>
+											<c:when test="${plan.email=='true'}">
+												<img
+													src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+													class="img-responsive" />
+											</c:when>
+											<c:otherwise>
+												<img
+													src="${pageContext.request.contextPath}/resources/images/No1.png"
+													class="img-responsive" />
+											</c:otherwise>
+										</c:choose></td>
+										<td>${plan.noOfContacts}</td>
+										<td><c:choose>
+											<c:when test="${plan.enquiryForm=='true'}">
+												<img
+													src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+													class="img-responsive" />
+											</c:when>
+											<c:otherwise>
+												<img
+													src="${pageContext.request.contextPath}/resources/images/No1.png"
+													class="img-responsive" />
+											</c:otherwise>
+										</c:choose></td>
+										<td><c:choose>
+											<c:when test="${plan.generalInfo=='true'}">
+												<img
+													src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+													class="img-responsive" />
+											</c:when>
+											<c:otherwise>
+												<img
+													src="${pageContext.request.contextPath}/resources/images/No1.png"
+													class="img-responsive" />
+											</c:otherwise>
+										</c:choose></td>
+										<td><c:choose>
+											<c:when test="${plan.map=='true'}">
+												<img
+													src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+													class="img-responsive" />
+											</c:when>
+											<c:otherwise>
+												<img
+													src="${pageContext.request.contextPath}/resources/images/No1.png"
+													class="img-responsive" />
+											</c:otherwise>
+										</c:choose></td>
+										<td><c:choose>
+											<c:when test="${plan.website=='true'}">
+												<img
+													src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+													class="img-responsive" />
+											</c:when>
+											<c:otherwise>
+												<img
+													src="${pageContext.request.contextPath}/resources/images/No1.png"
+													class="img-responsive" />
+											</c:otherwise>
+										</c:choose></td>
 
+									<td class="price_data"><span><strong>1
+												Year</strong></span><br>${plan.amount*1}</td>
+									<td class="price_data"><span><strong>2
+												Year</strong></span><br>${plan.amount*2}</td>
+									<td class="price_data"><span><strong>3
+												Year</strong></span><br>${plan.amount*3}</td>
 
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>Plan 2</td>
-								<td>Low</td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								
-								<td class="price_data"><span><strong>Rs</strong></span><br>685</td>
-								<td  class="price_data"><span><strong>Rs</strong></span><br>456</td>
-								<td  class="price_data"><span><strong>Rs</strong></span><br>748</td>
-
-
-
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>Plan 3</td>
-								<td>Medium</td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								
-								<td  class="price_data"><span><strong>Rs</strong></span><br>6850</td>
-								<td class="price_data"><span><strong>Rs</strong></span><br>4560</td>
-								<td  class="price_data"><span><strong>Rs</strong></span><br>7480</td>
-
-
-
-							</tr>
-							<tr>
-								<td>4</td>
-								<td>Plan 4</td>
-								<td>High</td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/No1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								
-								<td class="price_data"><span><strong>Rs</strong></span><br>6850</td>
-								<td  class="price_data"><span><strong>Rs</strong></span><br>4560</td>
-								<td  class="price_data"><span><strong>Rs</strong></span><br>7480</td>
-
-
-
-							</tr>
-							<tr>
-								<td>5</td>
-								<td>Plan 5</td>
-								<td> Very High</td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive" /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								<td><img
-									src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-									class="img-responsive"  /></td>
-								
-								<td class="text-center price_data"><span><strong>Rs</strong></span><br>6850</td>
-								<td class="text-center price_data"><span><strong>Rs</strong></span><br>4560</td>
-								<td class="text-center price_data"><span><strong>Rs</strong></span><br>7480</td>
-
-
-
-							</tr>
-
+								</tr>
+							</c:forEach>
 						</tbody>
 
 					</table>

@@ -1,4 +1,5 @@
 package com.onlineshodh.controller;
+
 import java.util.List;
 
 import javax.validation.Valid;
@@ -20,93 +21,104 @@ import com.onlineshodh.entity.CountryEntity;
 import com.onlineshodh.entity.PlanEntity;
 import com.onlineshodh.service.PlanService;
 
-
-
 @Controller
 @RequestMapping("admin/plans")
 public class PlanController {
-	
+
 	@Autowired
 	PlanService planservice;
-	
+
 	@Value("${onlyAlphabets}")
-	String onlyAlphabets;  
-	
+	String onlyAlphabets;
+
 	@Value("${alreadyExist}")
-	String alreadyExist;   
-	
-	@Value("${alphaNumeric}") 
+	String alreadyExist;
+
+	@Value("${alphaNumeric}")
 	String alphaNumeric;
-	
-	@RequestMapping(value="/save",method=RequestMethod.GET)
-	public String redirectTosaveCity(){
+
+	@RequestMapping(value = "/save", method = RequestMethod.GET)
+	public String redirectTosaveCity() {
 		return "redirect:/admin/plans";
 	}
-	
-	@RequestMapping(value={"","/"})
-	public String showManagePlan(ModelMap model){
+
+	@RequestMapping(value = { "", "/" })
+	public String showManagePlan(ModelMap model) {
 		model.addAttribute("plan", new PlanEntity());
 		model.addAttribute("plans", planservice.getAllPlans());
 		return "plan/Create_plan";
 	}
-	
-	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String savePlan(ModelMap model,@Valid@ModelAttribute("plan")PlanEntity Plan,BindingResult result){
-		
-		if(result.hasErrors()){
+
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	public String savePlan(ModelMap model,
+			@Valid @ModelAttribute("plan") PlanEntity Plan, BindingResult result) {
+
+		if (result.hasErrors()) {
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError error : errors)
 				System.out.println(error.getDefaultMessage());
-			
-		}else{
-			try{
-			planservice.savePlan(Plan);
-			return "redirect:/admin/plans";
-			}catch (DataIntegrityViolationException exception) {
+
+		} else {
+			try {
+				planservice.savePlan(Plan);
+				return "redirect:/admin/plans";
+			} catch (DataIntegrityViolationException exception) {
 				FieldError planNameAvailableError;
 				System.out.println(exception.getMostSpecificCause()
 						.getMessage());
 				if (exception.getMostSpecificCause().getMessage()
 						.contains("unique"))
-					planNameAvailableError = new FieldError("plan", "planName",	alreadyExist);
+					planNameAvailableError = new FieldError("plan", "planName",
+							alreadyExist);
 				else
-					planNameAvailableError = new FieldError("plan", "planName",alphaNumeric);
+					planNameAvailableError = new FieldError("plan", "planName",
+							alphaNumeric);
 				result.addError(planNameAvailableError);
 
 			}
 		}
 		return "plan/Create_plan";
-		
+
 	}
+
+	/*
+	 * @RequestMapping(value="/exception/{excetiontype}") public String
+	 * HandleException(ModelMap model,@PathVariable("excetiontype")String
+	 * exception,@ModelAttribute("plan") PlanEntity plan, BindingResult result)
+	 * { FieldError planNameAvailableError;
+	 * 
+	 * if(exception.equalsIgnoreCase("unique")){ planNameAvailableError = new
+	 * FieldError("plan", "planName", alreadyExist); } else{
+	 * planNameAvailableError = new FieldError("plan", "planName",alphaNumeric);
+	 * }
+	 * 
+	 * result.addError(planNameAvailableError); return "plan/managePlans";
+	 * 
+	 * }
+	 */
+	@RequestMapping(value = "/edit/{planId}", method = RequestMethod.GET)
+	public String editPlan(ModelMap model,
+			@PathVariable("planId") Integer planId) {
+		System.out.println(" i am in Plan Edit");
+		PlanEntity planEntity = planservice.getPlan(planId);
+		model.addAttribute("plan", planEntity);
+		return "plan/edit_plan";
+	}
+
 	
-	/*@RequestMapping(value="/exception/{excetiontype}")
-	public String HandleException(ModelMap model,@PathVariable("excetiontype")String exception,@ModelAttribute("plan") PlanEntity plan, BindingResult result)
-	{
-		FieldError planNameAvailableError;
-		
-		if(exception.equalsIgnoreCase("unique")){
-			planNameAvailableError = new FieldError("plan", "planName",	alreadyExist);
-		}
-		else{
-				planNameAvailableError = new FieldError("plan", "planName",alphaNumeric);
-			}
-		
-		result.addError(planNameAvailableError);
-		return "plan/managePlans";
-		
-	}*/
-	@RequestMapping(value="/edit/{planId}",method=RequestMethod.GET)
-	public String editPlan(ModelMap model,@PathVariable("planId")Integer planId){
-		PlanEntity planEntity=planservice.getPlan(planId);
-		model.addAttribute("plan",planEntity);
-		return "plan/updatePlan";
-	}   
 	
-	@RequestMapping(value="/delete/{planId}",method=RequestMethod.GET)
-	public String deletePlan(ModelMap model,@PathVariable("planId")Integer planId){
+	@RequestMapping(value = "/delete/{planId}", method = RequestMethod.GET)
+	public String deletePlan(ModelMap model,
+			@PathVariable("planId") Integer planId) {
 		planservice.deletePlan(planId);
 		return "redirect:/admin/plans";
 	}
-	
+
+	@RequestMapping(value = "/getPlans")
+	public String viewPlansAndPrices(ModelMap model) {
+		model.addAttribute("plans", planservice.getAllPlans());
+		return "plan/plantable";
+	}
+
 }

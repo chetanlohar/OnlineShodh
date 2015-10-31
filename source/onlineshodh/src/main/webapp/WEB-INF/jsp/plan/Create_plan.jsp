@@ -479,8 +479,8 @@
 									</div>
 								</div>
 								<div class="col-lg-6 space">
-									<label for="mailid" class="col-sm-7 control-label"> Number of
-										Contact</label>
+									<label for="mailid" class="col-sm-7 control-label">
+										Number of Contact</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-phone"></span></span>
@@ -491,8 +491,8 @@
 									</div>
 								</div>
 								<div class="col-lg-6 space">
-									<label for="mailid" class="col-sm-7 control-label"> number of
-										Images</label>
+									<label for="mailid" class="col-sm-7 control-label">
+										number of Images</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-photo"></span></span>
@@ -520,7 +520,9 @@
 				<div class="row space">
 					<div class="col-lg-12 ">
 						<div class="panel panel-default">
-							<div class="panel-heading text-center"><strong>Plan Management Table</strong></div>
+							<div class="panel-heading text-center">
+								<strong>Plan Management Table</strong>
+							</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
@@ -541,222 +543,142 @@
 												<th>Information</th>
 												<th>Map</th>
 												<th>Website</th>
-												<th >Action</th>
+												<th colspan="3" class="price_data text-center">plan
+													Price</th>
+												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
-											<tr>
-												<td>1</td>
-												<td>Plan 1</td>
-												<td>Very Low</td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-
-												<td><a href="#"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><i class="fa fa-trash"></i></a></td>
-												
 
 
+											<c:forEach var="plan" items="${plans}">
+												<tr>
 
-											</tr>
-											<tr>
-												<td>2</td>
-												<td>Plan 2</td>
-												<td>Low</td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
+													<td>${plan.planId}</td>
+													<td>${plan.planName}</td>
+													<td>${plan.priority}</td>
+													<td><c:choose>
+															<c:when test="${plan.businessName=='true'}">
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+																	class="img-responsive" />
+															</c:when>
+															<c:otherwise>
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/No1.png"
+																	class="img-responsive" />
+															</c:otherwise>
+														</c:choose></td>
+													<td><c:choose>
+															<c:when test="${plan.businessAddress=='true'}">
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+																	class="img-responsive" />
+															</c:when>
+															<c:otherwise>
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/No1.png"
+																	class="img-responsive" />
+															</c:otherwise>
+														</c:choose></td>
+													<td><c:choose>
+															<c:when test="${plan.personName=='true'}">
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+																	class="img-responsive" />
+															</c:when>
+															<c:otherwise>
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/No1.png"
+																	class="img-responsive" />
+															</c:otherwise>
+														</c:choose></td>
+													<td>${plan.noOfImages}</td>
+													<td>${plan.planDescription}</td>
+													<td><c:choose>
+															<c:when test="${plan.email=='true'}">
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+																	class="img-responsive" />
+															</c:when>
+															<c:otherwise>
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/No1.png"
+																	class="img-responsive" />
+															</c:otherwise>
+														</c:choose></td>
+													<td>${plan.noOfContacts}</td>
+													<td><c:choose>
+															<c:when test="${plan.enquiryForm=='true'}">
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+																	class="img-responsive" />
+															</c:when>
+															<c:otherwise>
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/No1.png"
+																	class="img-responsive" />
+															</c:otherwise>
+														</c:choose></td>
+													<td><c:choose>
+															<c:when test="${plan.generalInfo=='true'}">
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+																	class="img-responsive" />
+															</c:when>
+															<c:otherwise>
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/No1.png"
+																	class="img-responsive" />
+															</c:otherwise>
+														</c:choose></td>
+													<td><c:choose>
+															<c:when test="${plan.map=='true'}">
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+																	class="img-responsive" />
+															</c:when>
+															<c:otherwise>
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/No1.png"
+																	class="img-responsive" />
+															</c:otherwise>
+														</c:choose></td>
+													<td><c:choose>
+															<c:when test="${plan.website=='true'}">
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/Yes1.png"
+																	class="img-responsive" />
+															</c:when>
+															<c:otherwise>
+																<img
+																	src="${pageContext.request.contextPath}/resources/images/No1.png"
+																	class="img-responsive" />
+															</c:otherwise>
+														</c:choose></td>
 
-												<td><a href="<%=request.getContextPath()%>/prashant/plan_edit"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><i class="fa fa-trash"></i></a></td>
-												
+													<td class="price_data"><span><strong>1
+																Year</strong></span><br>${plan.amount*1}</td>
+													<td class="price_data"><span><strong>2
+																Year</strong></span><br>${plan.amount*2}</td>
+													<td class="price_data"><span><strong>3
+																Year</strong></span><br>${plan.amount*3}</td>
 
-											</tr>
-											<tr>
-												<td>3</td>
-												<td>Plan 3</td>
-												<td>Medium</td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
+													<td><a
+														href="${pageContext.request.contextPath}/admin/plans/edit/${plan.planId}"
+														class="edit"><button class="btn btn-info btn-xs">
+																<i class="fa fa-pencil"></i> Edit
+															</button></a></td>
+													<td class="center"><a
+														href="${pageContext.request.contextPath}/admin/plans/delete/${plan.planId}"
+														onclick="return confirm('Do you want to Remove Plan ${plan.planName}')"><button
+																class="btn btn-danger btn-xs">
+																<i class="fa fa-trash"></i> Delete
+															</button></a></td>
 
-												<td><a href="#"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><i class="fa fa-trash"></i></a></td>
-												
 
-											</tr>
-											<tr>
-												<td>4</td>
-												<td>Plan 4</td>
-												<td>High</td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/No1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-
-												<td><a href="#"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><i class="fa fa-trash"></i></a></td>
-												
-											</tr>
-											<tr>
-												<td>5</td>
-												<td>Plan 5</td>
-												<td>Very High</td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-												<td><img
-													src="<%=request.getContextPath()%>/resources/images/Yes1.png"
-													class="img-responsive" /></td>
-
-												<td><a href="#"><i class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#"><i class="fa fa-trash"></i></a></td>
-												
-
-											</tr>
-
+												</tr>
+											</c:forEach>
 										</tbody>
 
 									</table>

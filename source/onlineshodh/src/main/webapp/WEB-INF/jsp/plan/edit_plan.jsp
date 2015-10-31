@@ -296,6 +296,8 @@
 						<form:form
 							action="${pageContext.request.contextPath}/admin/plans/save"
 							method="POST" modelAttribute="plan">
+							
+						<form:hidden path="planId"/>	
 
 							<div class="col-lg-5">
 								<h4>Plan Detail</h4>
