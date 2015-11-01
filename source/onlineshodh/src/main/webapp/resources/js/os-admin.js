@@ -32,6 +32,30 @@ Business contact and feature update and add
 ========================================*/
 
 $(document).ready(function(){
+	$("#town").on('change',function(){
+	var temp = $("#town").val();
+	alert(temp);
+		if(temp != '25'){
+			$(".hide-div").hide();
+		}
+		else{
+			
+			$(".hide-div").show();
+		}
+	});
+	
+	$("#town1").on('change',function(){
+		var temp = $("#town1").val();
+		alert(temp);
+			if(temp != '25'){
+				$(".hide-div").hide();
+			}
+			else{
+				
+				$(".hide-div").show();
+			}
+		});
+	
 	 var i=0;
 	 var j=0;
 	 var m=0;

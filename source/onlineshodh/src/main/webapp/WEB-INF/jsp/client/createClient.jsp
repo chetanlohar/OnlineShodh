@@ -496,7 +496,7 @@
 
 								</div>
 								<!-- temp other -->
-								<div class="col-lg-12 space hide-div ">
+								<div class="col-lg-12 space hide-div">
 								<label for="Otown" class="col-sm-5 control-label">OtherTown</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
