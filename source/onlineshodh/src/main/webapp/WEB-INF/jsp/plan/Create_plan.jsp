@@ -10,29 +10,29 @@
 <title>Add Plan</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -150,7 +150,7 @@
 				<li>
 					<div class="user-img-div">
 						<img
-							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
 							class="img-circle" />
 
 
@@ -159,7 +159,7 @@
 				</li>
 				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
 
-				<li><a href="<%=request.getContextPath()%>/admin/home"><i
+				<li><a href="${pageContext.request.contextPath}/admin/home"><i
 						class="fa fa-home "></i>Home</a></li>
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 						Category Management<span class="fa arrow"></span></a>
@@ -191,7 +191,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -200,7 +200,7 @@
 						class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/prashant/businessmanage">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -211,19 +211,19 @@
 
 					</ul></li>
 
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
+				<li class="active"><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
+						<li><a href="${pageContext.request.contextPath}/admin/plans" class="active-menu"> <i class="fa fa-user-plus"></i> Create Plan
+								
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						<li><a href="#"> <i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
+						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
+							
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
+						<li><a href="${pageContext.request.contextPath}/prashant/plan_assign"> <i class="fa fa-list"></i> 
+								Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -702,41 +702,41 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 
 
 
 	<!-- JANSY BOOTSTRAP SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
 
 	<!-- METIMENU SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 
 
 
 	<!-- Input Telephone SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/intlTelInput.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 
 </body>

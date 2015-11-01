@@ -27,16 +27,21 @@ $(document).ready(function () {
     
 });
 
+/*======================================
+Business contact and feature update and add
+========================================*/
 
 $(document).ready(function(){
 	 var i=0;
 	 var j=0;
+	 var m=0;
+	 var n=0;
 	  $('.b_contact').click(function(e){
 		  e.preventDefault();
           var url = $(this).attr('href');
           var contact = $('#contact').val();
           
-		alert(url);
+	
 	      $.ajax({
 	        url:url,
 	        timeout:5000,
@@ -60,7 +65,7 @@ $(document).ready(function(){
           var url = $(this).attr('href');
           var features = $('#Features').val();
           
-		alert(url);
+		
 	      $.ajax({
 	        url:url,
 	        timeout:5000,
@@ -79,20 +84,58 @@ $(document).ready(function(){
 	      $('#Features').val('');
 	  });
 
+	  
+	  
+	  $('.bd_contact').click(function(e){
+		  e.preventDefault();
+		 
+          var url = $(this).attr('href');
+          var contact = $('#bdetail_contact').val();
+       
+		
+	      $.ajax({
+	        url:url,
+	        timeout:5000,
+	        success: function(){
+	        
+	        	m++;
+	        	$('#busi_contact tbody').append('<tr class="child"><td>'+m+'</td><td>contact '+m+' </td><td>'+contact+'</td></tr>');
 
-	    
-	    $('.sandbox-container input').datepicker({
-	        orientation: "top left",
-	        autoclose: true
-	    });
-	    
-		$("#town").change(function() {
-            alert('fgggggg');
-			if ($('#town').val() == '25') {
-				$(".hide-div").show();
-			} else {
-				$(".hide-div").hide();
-			}
+	        },
+	        error: function(){
+	     
+	          
+	        },
+	        
+	      });
+	      $('#bdetail_contact').val('');
+	  });
+	  
+	  
+	  $('.bd_features').click(function(e){
+		  e.preventDefault();
+          var url = $(this).attr('href');
+          var features = $('#bus_Features').val();
+          
+	
+	      $.ajax({
+	        url:url,
+	        timeout:5000,
+	        success: function(){
+	        	alert("work");
+	        	n++;
+	        	$('.busi_feature tbody').append('<tr class="child"><td>'+n+'</td><td>'+features+'</td></tr>');
 
-		});
+	        },
+	        error: function(){
+	     alert("not working");
+	          
+	        },
+	        
+	      });
+	      $('#bus_Features').val('');
+	  });
+
+	 
+
 });

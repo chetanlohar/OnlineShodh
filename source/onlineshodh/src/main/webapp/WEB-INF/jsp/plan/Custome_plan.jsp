@@ -1,44 +1,39 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Plan Table</title>
-
+<title>Update Plan</title>
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
-</head>
 <body>
-
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
 			style="margin-bottom: 0">
@@ -211,21 +206,19 @@
 
 					</ul></li>
 
-				<li class="active"><a href="add-client.html"><i
-						class="fa fa-rss"></i>Plan Management <span class="fa arrow"></span></a>
+				<li class="active"><a href="add-client.html"><i class="fa fa-rss"></i>Plan
+						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/admin/plans">
-								<i class="fa fa-user-plus"></i> Create Plan
-
+						<li><a href="${pageContext.request.contextPath}/admin/plans" > <i class="fa fa-user-plus"></i> Create Plan
+								
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Update Plan
+						<li><a href="#" class="active-menu"> <i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans" class="active-menu"> <i
-								class="fa fa-list"></i> List All Plan
-
+						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
+							
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/prashant/plan_assign"> <i class="fa fa-list"></i> Assign
-								Business Plan
+						<li><a href="${pageContext.request.contextPath}/prashant/plan_assign"> <i class="fa fa-list"></i> 
+								Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -289,165 +282,80 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Plans and Pricing</h1>
+						<h1 class="page-header">Create Plan</h1>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
-				<div class="row">
+			
+				<div class="row space">
 					<div class="col-lg-12 ">
-						<div class="panel-body">
-							<div class="dataTable_wrapper table-responsive">
-								<table class="table plan-table">
-									<thead>
-										<tr>
-											<th>#</th>
-											<th>Plan</th>
-											<th>Priority</th>
-											<th>Business</th>
-											<th>Address</th>
-											<th>Person Name</th>
-											<th>Images</th>
-											<th>Description</th>
-											<th>Email</th>
-											<th>Contact</th>
-											<th>Enquiry Form</th>
-											<th>Information</th>
-											<th>Map</th>
-											<th>Website</th>
-											<th colspan="3" class="price_data text-center">plan
-												Price</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="plan" items="${plans}">
+						<div class="panel panel-default">
+							<div class="panel-heading text-center">
+								<strong>Plan Management Table</strong>
+							</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="dataTable_wrapper table-responsive">
+									<table class="table plan-table">
+										<thead>
 											<tr>
-
-												<td>${plan.planId}</td>
-												<td>${plan.planName}</td>
-												<td>${plan.priority}</td>
-												<td><c:choose>
-														<c:when test="${plan.businessName=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.businessAddress=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.personName=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td>${plan.noOfImages}</td>
-												<td>${plan.planDescription}</td>
-												<td><c:choose>
-														<c:when test="${plan.email=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td>${plan.noOfContacts}</td>
-												<td><c:choose>
-														<c:when test="${plan.enquiryForm=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.generalInfo=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.map=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.website=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-
-												<td class="price_data"><span><strong>1
-															Year</strong></span><br>${plan.amount*1}</td>
-												<td class="price_data"><span><strong>2
-															Year</strong></span><br>${plan.amount*2}</td>
-												<td class="price_data"><span><strong>3
-															Year</strong></span><br>${plan.amount*3}</td>
-
+												<th>#</th>
+												<th>Plan</th>
+												<th>Priority</th>
+												<th colspan="3" class="price_data text-center">plan
+													Price</th>
+												<th>Action</th>
 											</tr>
-										</c:forEach>
-									</tbody>
+										</thead>
+										<tbody>
 
-								</table>
+
+											<c:forEach var="plan" items="${plans}">
+												<tr>
+
+													<td>${plan.planId}</td>
+													<td>${plan.planName}</td>
+													<td>${plan.priority}</td>
+
+													<td class="price_data"><span><strong>1
+																Year</strong></span><br>${plan.amount*1}</td>
+													<td class="price_data"><span><strong>2
+																Year</strong></span><br>${plan.amount*2}</td>
+													<td class="price_data"><span><strong>3
+																Year</strong></span><br>${plan.amount*3}</td>
+
+													<td><a
+														href="${pageContext.request.contextPath}/admin/plans/edit/${plan.planId}"
+														class="edit"><button class="btn btn-info btn-xs">
+																<i class="fa fa-pencil"></i> Edit
+															</button></a></td>
+													<td class="center"><a
+														href="${pageContext.request.contextPath}/admin/plans/delete/${plan.planId}"
+														onclick="return confirm('Do you want to Remove Plan ${plan.planName}')"><button
+																class="btn btn-danger btn-xs">
+																<i class="fa fa-trash"></i> Delete
+															</button></a></td>
+
+
+												</tr>
+											</c:forEach>
+										</tbody>
+
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<a href="${pageContext.request.contextPath}/admin/plans"><button class="btn btn-info btn-xs"><i class="fa fa-plus"></i> New Plan</button></a>
+
+
+				<!-- /. PAGE INNER  -->
 				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			<!-- /. PAGE INNER  -->
+			<!-- /. PAGE WRAPPER  -->
 		</div>
-		<!-- /. PAGE WRAPPER  -->
+
 	</div>
 	<!-- /. WRAPPER  -->
 
@@ -489,5 +397,7 @@
 
 	<!-- CUSTOM SCRIPTS -->
 	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+
+
 </body>
 </html>

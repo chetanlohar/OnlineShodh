@@ -302,7 +302,7 @@
 											<div class="detail-title">
 							<span class="detail-titile-header font17">Business
 								Information</span><a href="${pageContext.request.contextPath}/admin/business/update/businessinfo/${business.businessId}">&nbsp;<i class="fa fa-pencil"></i>
-								Add
+								Edit
 							</a>
 						</div>
 						<div class="detail-wraper">
@@ -515,31 +515,42 @@
 							<span class="detail-titile-header font17">Contact
 								Information</span>
 						</div>
-						<div class="detail-wraper">
-							<table class="table">
-								<tr>
-									<td>1</td>
-									<td>Contact1</td>
-									<td>8600249455</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
-								</tr>
-								<tr>
-									<td>1</td>
-									<td>Contact1</td>
-									<td>8600249455</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
-								</tr>
+							<div class="add_business_contact space">
+							<form action="#" class="form-inline" id="busd_contact" method="post">
+								<div class="form-group">
+									<label for="contact">Add Contact:</label> <input
+										type="text" class="form-control" id="bdetail_contact"
+										placeholder="Contact" name="businessd_contact">
+								</div>
+								<a href="${pageContext.request.contextPath}/admin/business/update/businessinfo" class="bd_contact"><button type="button" class="btn btn-success b_contact">Add</button></a>
+							</form>
 
+						</div>
+						<div class="detail-wraper space">
+							<table class="table busi_contact">
+							<tbody>
+								<tr>
+									<td>1</td>
+									<td>Contact1</td>
+									<td>8600249455</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+								
+								<tr>
+									<td>1</td>
+									<td>Contact1</td>
+									<td>8600249455</td>
+									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
+									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+								
+								</tr>
+</tbody>
 							</table>
 
 						</div>
-						<a href="#"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add New Phone
-							</button></a>
+					
 					</div>
 
 				</div>
@@ -551,9 +562,22 @@
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Business Features/facilities</span>
 						</div>
-						<div class="detail-wraper">
-							<table class="table">
+												<div class="add_features space">
+							<form action="" class="form-inline" id="busd_feature">
+								<div class="form-group">
+									<label for="Features">Add Features:</label> <input
+										type="text" class="form-control" id="bus_Features"
+										placeholder="Features">
+								</div>
+								<a href="<%=request.getContextPath()%>/prashant/businessnewadd" class="bd_features"><button type="submit" class="btn btn-success">Add</button></a>
+							</form>
+
+						</div>
+						<div class="detail-wraper space">
+							<table class="table busi_feature">
+										<tbody>
 								<tr>
+					
 									<td>1</td>
 									<td>Nice</td>
 									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
@@ -568,13 +592,11 @@
 								
 								</tr>
 								
-
+</tbody>
 							</table>
 
 						</div>
-						<a href="#"><button class="btn btn-info btn-xs">
-								<i class="fa fa-plus"></i> Add Features
-							</button></a>
+						
 					</div>
 
 				</div>

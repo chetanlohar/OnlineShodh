@@ -1,44 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Plan Table</title>
-
+<title>Assign Plan</title>
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
-</head>
 <body>
-
 	<div id="wrapper">
 		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
 			style="margin-bottom: 0">
@@ -214,17 +211,19 @@
 				<li class="active"><a href="add-client.html"><i
 						class="fa fa-rss"></i>Plan Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/admin/plans">
-								<i class="fa fa-user-plus"></i> Create Plan
+						<li><a href="${pageContext.request.contextPath}/admin/plans"
+							> <i class="fa fa-user-plus"></i> Create
+								Plan
 
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans" class="active-menu"> <i
-								class="fa fa-list"></i> List All Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
 
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/prashant/plan_assign"> <i class="fa fa-list"></i> Assign
+						<li><a href="${pageContext.request.contextPath}/prashant/plan_assign" class="active-menu"> <i class="fa fa-list"></i> Assign
 								Business Plan
 						</a></li>
 					</ul></li>
@@ -289,205 +288,92 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Plans and Pricing</h1>
+						<h1 class="page-header">Assign Plan Management</h1>
 					</div>
 					<!-- /.col-lg-12 -->
 				</div>
 				<div class="row">
-					<div class="col-lg-12 ">
+					<div class="col-lg-12">
+						<form class="form-horizontal">
+							<div class="col-lg-10 space">
+								<label for="planname" class="col-sm-2 control-label">
+									Search</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-search"></span></span>
+									<input type="text" class="form-control" name="business_name" placeholder="Business Name">
+
+								</div>
+							</div>
+							<div class="col-lg-5 col-lg-offset-5 space">
+								<button class="btn btn-success" type="submit">Search</button>
+
+							</div>
+
+
+						</form>
+
+					</div>
+
+				</div>
+				<div class="row space">
+					<div class="col-lg-12">
+					<div class="panel panel-default">
+							<div class="panel-heading text-center">
+								<strong>Plan Management Table</strong>
+							</div>
 						<div class="panel-body">
 							<div class="dataTable_wrapper table-responsive">
-								<table class="table plan-table">
+								<table class="table plan_search-table">
 									<thead>
 										<tr>
-											<th>#</th>
-											<th>Plan</th>
-											<th>Priority</th>
-											<th>Business</th>
-											<th>Address</th>
-											<th>Person Name</th>
-											<th>Images</th>
-											<th>Description</th>
-											<th>Email</th>
-											<th>Contact</th>
-											<th>Enquiry Form</th>
-											<th>Information</th>
-											<th>Map</th>
-											<th>Website</th>
-											<th colspan="3" class="price_data text-center">plan
-												Price</th>
+											<th>Business Id</th>
+											<th>Business Name</th>
+											<th>Business Logo</th>
+											<th>Action</th>
 										</tr>
 									</thead>
 									<tbody>
-										<c:forEach var="plan" items="${plans}">
-											<tr>
+										<tr>
+											<td>1</td>
+											<td>Softinfology Pvt Ltd</td>
+											<td>ff</td>
+											<td><a href="${pageContext.request.contextPath}/prashant/assign"><button class="btn btn-info btn-xs">Select</button></a></td>
+										</tr>
 
-												<td>${plan.planId}</td>
-												<td>${plan.planName}</td>
-												<td>${plan.priority}</td>
-												<td><c:choose>
-														<c:when test="${plan.businessName=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.businessAddress=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.personName=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td>${plan.noOfImages}</td>
-												<td>${plan.planDescription}</td>
-												<td><c:choose>
-														<c:when test="${plan.email=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td>${plan.noOfContacts}</td>
-												<td><c:choose>
-														<c:when test="${plan.enquiryForm=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.generalInfo=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.map=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-												<td><c:choose>
-														<c:when test="${plan.website=='true'}">
-															<img
-																src="${pageContext.request.contextPath}/resources/images/Yes1.png"
-																class="img-responsive" />
-														</c:when>
-														<c:otherwise>
-															<img
-																src="${pageContext.request.contextPath}/resources/images/No1.png"
-																class="img-responsive" />
-														</c:otherwise>
-													</c:choose></td>
-
-												<td class="price_data"><span><strong>1
-															Year</strong></span><br>${plan.amount*1}</td>
-												<td class="price_data"><span><strong>2
-															Year</strong></span><br>${plan.amount*2}</td>
-												<td class="price_data"><span><strong>3
-															Year</strong></span><br>${plan.amount*3}</td>
-
-											</tr>
-										</c:forEach>
 									</tbody>
-
 								</table>
 							</div>
 						</div>
+
+
 					</div>
+
 				</div>
-				<a href="${pageContext.request.contextPath}/admin/plans"><button class="btn btn-info btn-xs"><i class="fa fa-plus"></i> New Plan</button></a>
-				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
-					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			<!-- /. PAGE INNER  -->
 		</div>
-		<!-- /. PAGE WRAPPER  -->
+				                     <footer >
+            &copy; 2015 OnlineShodh | By : <a href="www.softinfology.com" target="_blank">Softinfology</a>
+        </footer>
+			
 	</div>
-	<!-- /. WRAPPER  -->
-
-	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-	<!-- JQUERY SCRIPTS -->
+</div>
+ <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+        <!-- JQUERY SCRIPTS -->
+         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+        
+        
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+        
+        <!-- PACE SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/pace.js"></script>
+        	<!-- Datepicker SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
-
-
-
-	<!-- JANSY BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
-
-	<!-- METIMENU SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
-
-
-
-	<!-- Input Telephone SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
-
-	<!-- DATATABLE SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
-
-	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+        
+        <!-- CUSTOM SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 </body>
 </html>

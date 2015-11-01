@@ -188,6 +188,24 @@ public class TestController {
 		return "plan/plantable";
 	}
 	
+	@RequestMapping(value="/plan_assign")
+	public String doplan_assign()
+	{
+		return "plan/Assignplan";
+	}
+
+	@RequestMapping(value="/assign")
+	public String doassign()
+	{
+		return "plan/assign";
+	}
+	@RequestMapping(value="/update")
+	public String doupade()
+	{
+		return "plan/planupadate";
+	}
+	
+	
 	//search_result controller
 	
 	
@@ -195,6 +213,12 @@ public class TestController {
 	public String dobusiness_list()
 	{
 		return "Search_result/Business_listing";
+	}
+	
+	@RequestMapping(value="/businessd")
+	public String dobusinessd()
+	{
+		return "Search_result/businessdetail";
 	}
 	
 }

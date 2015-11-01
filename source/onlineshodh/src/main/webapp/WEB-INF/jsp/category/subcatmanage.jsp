@@ -351,7 +351,7 @@
 				<input type="hidden" name="operationType" value="save" />
 				<div class="col-lg-12 space">
 					<label for="Name" class="col-sm-5 control-label">
-						Sub-Category Name</label>
+						Category Name</label>
 					<div class="input-group">
 						<span class="input-group-addon"><span class="fa fa-user"></span></span>
 

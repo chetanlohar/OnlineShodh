@@ -193,6 +193,11 @@ border: 0px;
 
 Search Result Style
 ==================================*/
+.space{
+	margin-bottom: 10px;
+}
+
+
 #topbar_line{
 	height: 5px;
 	background: #E2C216;
@@ -216,6 +221,9 @@ Search Result Style
 .form_search .search_input{
 	height: 40px;
 	width: 85%;
+}
+.search{
+	padding: 10px 40px;
 }
 
 .banner_img{
@@ -274,6 +282,139 @@ Search Result Style
     margin-bottom: 10px;
     margin-left: 5px;
     background-color: #CCCCCC;
+}
+
+
+.rel_category{
+	background:#c0c0c0;
+	text-align: center;
+}
+.rel_category .list_rel_cat{
+	list-style: none;
+    overflow: hidden;
+    padding: 5px;
+    cursor: pointer;
+}
+.rel_category .list_rel_cat .rel_head{
+	margin-top: 10px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #000;
+	font-size: 16px;
+	font-weight: bold;
+	
+}
+.rel_category .list_rel_cat li{
+	padding: 5px;
+	border-bottom: 1px dotted #000;
+}
+
+.rel_category .list_rel_cat li:HOVER{
+	color: yellow;
+	background: skyblue;
+	text-shadow: 1px 0px 1px #000;
+}
+
+#businessname {
+    background-color: #F7D417;
+    padding: 10px;
+    margin: 15px auto;
+    box-shadow: 0 0 5px #F7D417;
+}
+
+
+
+
+.breadcrumb
+{
+	margin-top:5px;
+	background-color:#FFFFFF;
+}
+
+#businessname
+{
+	background-color:#F7D417;
+	//height:100px;	
+	padding:10px;
+	margin-top:15px;
+	box-shadow:0 0 5px #F7D417;
+
+}
+
+#businessname h1
+{
+	color:#000099;
+	font-weight:bold;
+}
+
+
+#imageslider
+{
+	margin-top:10px;
+	margin-bottom:10px;
+	
+}
+
+#contactinfo
+{
+	margin-top:10px;
+	margin-bottom:10px;
+	border-color:#000000;
+	border-style:solid;
+	border-width:thin;
+	padding:20px;
+}
+
+#contactinfo #contacts
+{
+	border-left:solid;
+	border-left-color:#000099;
+	border-left-width:medium;
+}
+
+#contactinfo #description
+{
+	text-align:justify;
+	
+	
+}
+
+#personname
+{
+	font-size:18px;
+	color:#0000FF;
+	font-weight:bold;
+	margin:5px;
+	text-transform:uppercase;
+}
+
+#addr
+{
+	font-size:16px;
+	margin:5px;
+}
+
+#myh2
+{
+
+	border-bottom-width:medium;
+	border-bottom-style:solid;
+	border-bottom-color:#F7D417;
+	margin-top:50px;
+	margin-bottom:25px;
+	padding-bottom:10px;
+	color:#000099;
+	
+}
+
+.form-control
+{
+	border-radius:0px;
+}
+
+#generalinformation #gi
+{
+	padding:10px;	
+	
 }
 /*=============================== 
 
