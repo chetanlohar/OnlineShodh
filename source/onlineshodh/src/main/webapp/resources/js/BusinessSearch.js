@@ -1,4 +1,4 @@
-$(function() {
+/*$(function() {
 		$('#searchButton')
 				.click(
 						function() {
@@ -54,11 +54,12 @@ $(function() {
 										error : function(e) {
 											console.log(e)
 											alert("Please Enter Valid keywords")
-											/* jQuery('#error')
-											.append(e); */
+											 jQuery('#error')
+											.append(e); 
 										}
 									})
 
 						});
 	});
 
+*/

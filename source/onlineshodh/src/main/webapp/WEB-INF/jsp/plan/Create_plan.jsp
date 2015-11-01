@@ -520,11 +520,11 @@
 				<div class="row space">
 					<div class="col-lg-12 ">
 						<div class="panel panel-default">
-							<div class="panel-heading text-center">
+							<!-- <div class="panel-heading text-center">
 								<strong>Plan Management Table</strong>
-							</div>
+							</div> -->
 							<!-- /.panel-heading -->
-							<div class="panel-body">
+							<%-- <div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
 									<table class="table plan-table">
 										<thead>
@@ -545,7 +545,7 @@
 												<th>Website</th>
 												<th colspan="3" class="price_data text-center">plan
 													Price</th>
-												<th>Action</th>
+												<!-- <th>Action</th> -->
 											</tr>
 										</thead>
 										<tbody>
@@ -683,7 +683,7 @@
 
 									</table>
 								</div>
-							</div>
+							</div> --%>
 						</div>
 					</div>
 				</div>

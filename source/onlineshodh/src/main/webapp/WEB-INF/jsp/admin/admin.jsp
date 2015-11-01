@@ -219,7 +219,7 @@
 						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
 								
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/prashant/update"> <i class="fa fa-list"></i> Update Plan
+						<li><a href="${pageContext.request.contextPath}/admin/plans/updatePlans"> <i class="fa fa-list"></i> Update Plan
 						</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
 							

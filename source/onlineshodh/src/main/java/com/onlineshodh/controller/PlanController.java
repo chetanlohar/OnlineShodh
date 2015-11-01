@@ -106,6 +106,45 @@ public class PlanController {
 		return "plan/edit_plan";
 	}
 
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updatePlan(ModelMap model,
+			@Valid @ModelAttribute("plan") PlanEntity Plan, BindingResult result) {
+
+		if (result.hasErrors()) {
+			System.out.println(result.getErrorCount());
+			List<FieldError> errors = result.getFieldErrors();
+			for (FieldError error : errors)
+				System.out.println(error.getDefaultMessage());
+
+		} else {
+			try {
+				planservice.savePlan(Plan);
+				model.addAttribute("plans", planservice.getAllPlans());
+				return "plan/plantable";
+			} catch (DataIntegrityViolationException exception) {
+				FieldError planNameAvailableError;
+				System.out.println(exception.getMostSpecificCause()
+						.getMessage());
+				if (exception.getMostSpecificCause().getMessage()
+						.contains("unique"))
+					planNameAvailableError = new FieldError("plan", "planName",
+							alreadyExist);
+				else
+					planNameAvailableError = new FieldError("plan", "planName",
+							alphaNumeric);
+				result.addError(planNameAvailableError);
+
+			}
+		}
+		return "plan/plantable";
+
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	@RequestMapping(value = "/delete/{planId}", method = RequestMethod.GET)
@@ -121,4 +160,9 @@ public class PlanController {
 		return "plan/plantable";
 	}
 
+	@RequestMapping(value = "/updatePlans")
+	public String updatePlans(ModelMap model) {
+		model.addAttribute("plans", planservice.getAllPlans());
+		return "plan/planupadate";
+	}
 }

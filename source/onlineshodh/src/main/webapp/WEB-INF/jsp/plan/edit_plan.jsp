@@ -294,7 +294,7 @@
 				<div class="row">
 					<div class="col-lg-12 plan_create">
 						<form:form
-							action="${pageContext.request.contextPath}/admin/plans/save"
+							action="${pageContext.request.contextPath}/admin/plans/update"
 							method="POST" modelAttribute="plan">
 							
 						<form:hidden path="planId"/>	
@@ -508,7 +508,7 @@
 
 
 							<div class="col-lg-5 col-lg-offset-5 space">
-								<button class="btn btn-success" type="submit">Add</button>
+								<button class="btn btn-success" type="submit">Update</button>
 								<button class="btn btn-danger" type="reset">Reset</button>
 
 							</div>

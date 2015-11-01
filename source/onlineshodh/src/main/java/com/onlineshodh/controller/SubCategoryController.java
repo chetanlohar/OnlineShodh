@@ -181,4 +181,21 @@ public class SubCategoryController {
 	}
 	
 	
+	@RequestMapping(value = "/exception")
+	public String HandleFileSizeExceedException(ModelMap model,
+			@ModelAttribute("subcategory") SubCategoryEntity subCategory, BindingResult result) {
+		FieldError FileSizeExceedException;
+		List<SubCategoryEntity> subcategories=subCategoryService.getAllSubCategories();
+		List<CategoryEntity> categories = categoryService.getAllCategories();
+		model.addAttribute("subcategories", subcategories);
+		model.addAttribute("categories", categories);
+		FileSizeExceedException = new FieldError("subcategory", "subCategoryLogo",
+				"Please Select Image Less than 100000 Bytes");
+		
+		
+		result.addError(FileSizeExceedException);
+		return "category/subcatmanage";
+
+	}
+	
 }

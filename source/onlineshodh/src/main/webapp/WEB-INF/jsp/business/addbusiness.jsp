@@ -47,8 +47,9 @@
 <script
 	src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
 	<script async src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/BusinessSearch.js"></script> 
+<%-- <script
+	src="${pageContext.request.contextPath}/resources/js/BusinessSearch.js"></script>  --%>
+	
 <script type="text/javascript">
 $(document).ready(function(){
 $("#searchBy").click(function(e){
@@ -60,6 +61,72 @@ $("#searchBy").click(function(e){
 	 
 }); 
 });	
+
+$(function() {
+	$('#searchButton')
+			.click(
+					function() {
+						$
+								.ajax({
+									type : "POST",
+									url : "/onlineshodh/admin/clients/getClient",
+									dataType : 'json',
+									data : {
+										"searchBy" : $('#searchBy').val(),
+										"keyword" : $('#keyword').val()
+									},
+									success : function(response) {
+
+										console.log(response)
+
+										$('#dataTables-example')
+												.find('.ab').remove(); 
+										 jQuery
+												.each(
+														response,
+														function(index,
+																item) {
+																var newRow = jQuery('<tr class="ab"><td>'
+																		+ item.userDetailsId
+																		+ '</td><td>'
+																		+ item.regDate
+																		+ '</td><td>'
+																		+ item.name
+																		+ '</td><td>'
+																		+ item.email
+																		+ '</td><td>'
+																		+ item.phone1
+																		+ '</td><td>'
+																		+ item.phone2
+																		+ '</td><td>'
+																		+ item.userId
+																		+ '</td><td><img src=${pageContext.request.contextPath}/admin/clients/load/logo/'+item.userDetailsId+'/>'
+
+																		+ '</td><td>'
+																		+ '<a href=${pageContext.request.contextPath}/admin/business/'+item.userDetailsId+'>'
+																		+ 'Select'
+																		+ '</a></td></tr>');
+																jQuery(
+																		'#dataTables-example')
+																		.append(
+																				newRow);
+																
+                                                           
+														});
+
+									},
+									error : function(e) {
+										console.log(e)
+										alert("Please Enter Valid keywords")
+										/* jQuery('#error')
+										.append(e); */
+									}
+								})
+
+					});
+});
+
+
 	
 </script>	
 </head>
@@ -379,30 +446,7 @@ $("#searchBy").click(function(e){
 
 											</tr>
 										</thead>
-										<%-- <tbody>
-											<tr class="odd gradeX">
-											<c:forEach var="userdetail" items="${userDetails}">
-												<td>${userdetail.userDetailsId}</td>
-												<td>${userdetail.regDate}</td>
-												<td>${userdetail.name}</td>
-												<td>${userdetail.email}</td>
-												<td>${userdetail.phone1}</td>
-												<td>${userdetail.phone2}</td>
-												<td class="text-center">Kharadi Eon IT</td>
-												<td><img
-													src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}"
-													class="img-responsive" width="50px " height="50px;" /></td>
-												<td class="center"><a
-													href="${pageContext.request.contextPath}/admin/business/${userdetail.userDetailsId}">
-													<button
-															class="btn btn-info btn-xs">
-															<i class="fa fa-check"></i> Select
-														</button></a></td>
-														
-											</c:forEach>
-											</tr>
-
-										</tbody> --%>
+										
 									</table>
 								</div>
 								<!-- /.table-responsive -->

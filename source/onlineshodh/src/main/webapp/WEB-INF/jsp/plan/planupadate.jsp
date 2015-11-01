@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -187,7 +189,7 @@
 				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
-						<li><a 
+						<li><a
 							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
@@ -215,7 +217,9 @@
 								<i class="fa fa-user-plus"></i> Create Plan
 
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/prashant/plan_assign" class="active-menu"> <i class="fa fa-list"></i> Update Plan
+						<li><a
+							href="${pageContext.request.contextPath}/prashant/plan_assign"
+							class="active-menu"> <i class="fa fa-list"></i> Update Plan
 						</a></li>
 						<li><a
 							href="${pageContext.request.contextPath}/admin/plans/getPlans">
@@ -223,9 +227,8 @@
 
 						</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/plan_assign"
-							> <i class="fa fa-list"></i> Assign
-								Business Plan
+							href="${pageContext.request.contextPath}/prashant/plan_assign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -287,12 +290,8 @@
 		<!-- /. SIDEBAR MENU (navbar-side) -->
 		<div id="page-wrapper" class="page-wrapper-cls">
 			<div id="page-inner">
-			<div class="row">
-					<div class="col-lg-12">
-						
-
-
-					</div>
+				<div class="row">
+					<div class="col-lg-12"></div>
 
 				</div>
 				<!-- /. row  -->
@@ -305,7 +304,9 @@
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
-									<table class="table table-striped table-bordered table-hover planupdate-table" id="dataTables-plan">
+									<table
+										class="table table-striped table-bordered table-hover planupdate-table"
+										id="dataTables-plan">
 										<thead>
 											<tr>
 												<th>#</th>
@@ -320,69 +321,40 @@
 										<tbody>
 
 
-									
+											<c:forEach var="plan" items="${plans}">
 												<tr>
 
-													<td>1</td>
-													<td>high</td>
-													<td>low</td>
+													<td>${plan.planId}</td>
+													<td>${plan.planName}</td>
+													<td>${plan.priority}</td>
+
+
 
 
 													<td class="price_data"><span><strong>1
-																Year</strong></span><br>554</td>
+																Year</strong></span><br>${plan.amount*1}</td>
 													<td class="price_data"><span><strong>2
-																Year</strong></span><br>6465</td>
+																Year</strong></span><br>${plan.amount*2}</td>
 													<td class="price_data"><span><strong>3
-																Year</strong></span><br>65666</td>
+																Year</strong></span><br>${plan.amount*3}</td>
+
 
 													<td><a
-														href="${pageContext.request.contextPath}/admin/plans/edit"
+														href="${pageContext.request.contextPath}/admin/plans/edit/${plan.planId}"
 														class="edit"><button class="btn btn-info btn-xs">
 																<i class="fa fa-pencil"></i> Edit
-															</button></a>
-															</td>
-															<td>
-													<a
-														href="${pageContext.request.contextPath}/admin/plans/delete"
+															</button></a></td>
+													<td class="center"><a
+														href="${pageContext.request.contextPath}/admin/plans/delete/${plan.planId}"
 														onclick="return confirm('Do you want to Remove Plan ${plan.planName}')"><button
 																class="btn btn-danger btn-xs">
 																<i class="fa fa-trash"></i> Delete
 															</button></a></td>
 
-
 												</tr>
-										
-										<tr>
-
-													<td>2</td>
-													<td> very high</td>
-													<td>low</td>
+											</c:forEach>
 
 
-													<td class="price_data"><span><strong>1
-																Year</strong></span><br>004</td>
-													<td class="price_data"><span><strong>2
-																Year</strong></span><br>6465</td>
-													<td class="price_data"><span><strong>3
-																Year</strong></span><br>65666</td>
-
-													<td><a
-														href="${pageContext.request.contextPath}/admin/plans/edit"
-														class="edit"><button class="btn btn-info btn-xs">
-																<i class="fa fa-pencil"></i> Edit
-															</button></a>
-															</td>
-															<td>
-													<a
-														href="${pageContext.request.contextPath}/admin/plans/delete"
-														onclick="return confirm('Do you want to Remove Plan ${plan.planName}')"><button
-																class="btn btn-danger btn-xs">
-																<i class="fa fa-trash"></i> Delete
-															</button></a></td>
-
-
-												</tr>
-										
 										</tbody>
 
 									</table>
@@ -392,42 +364,44 @@
 					</div>
 				</div>
 
-			
-			
+
+
 			</div>
-			                     <footer >
-            &copy; 2015 OnlineShodh | By : <a href="www.softinfology.com" target="_blank">Softinfology</a>
-        </footer>
-			
+			<footer> &copy; 2015 OnlineShodh | By : <a
+				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+
 		</div>
 	</div>
-	        
- <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-        <!-- JQUERY SCRIPTS -->
-         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-        
-        
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-        
-      	<!-- DATATABLE SCRIPTS -->
+
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+
+
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+
+	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
-        	<!-- Datepicker SCRIPTS -->
+	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-        
-        <!-- CUSTOM SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-        	<script>
+
+	<!-- CUSTOM SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<script>
 		$(document).ready(function() {
 			$('#dataTables-plan').DataTable({
 				responsive : true
 			});
 
-			
 		});
 	</script>
 </body>
