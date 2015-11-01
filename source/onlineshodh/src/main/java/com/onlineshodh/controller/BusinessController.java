@@ -16,19 +16,23 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.AddressEntity;
 import com.onlineshodh.entity.BusinessAddressEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
+import com.onlineshodh.entity.BusinessPhoneEntity;
 import com.onlineshodh.entity.BusinessSearchEntity;
 import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.entity.SubCategoryEntity;
 import com.onlineshodh.service.AddressService;
 import com.onlineshodh.service.BusinessAddressService;
 import com.onlineshodh.service.BusinessDetailsService;
+import com.onlineshodh.service.BusinessPhoneService;
 import com.onlineshodh.service.CategoryService;
 import com.onlineshodh.service.CityService;
 import com.onlineshodh.service.CountryService;
@@ -74,12 +78,17 @@ public class BusinessController {
 	@Autowired
 	AddressService addressService;
 	
+	@Autowired
+	BusinessPhoneService businessPhoneService;
+	
 	@RequestMapping(value = { "/", "" })
 	public String manageBusinessDetails(ModelMap model) {
 		model.addAttribute("businessDetails", context.getBean(
 				"businessDetailsEntity", BusinessDetailsEntity.class));
+		model.addAttribute("SearchBusiness", context.getBean(
+				"businessSearchEntity", BusinessSearchEntity.class));
 		/*return "business/BusinessManagement";*/
-		return "addbusiness";
+		return "business/addbusiness";
 	}
 
 	@RequestMapping(value = "/new/save")
@@ -139,6 +148,7 @@ public class BusinessController {
 
 		model.addAttribute("business", business);
 		model.addAttribute("businessDetails",businessAddress);
+		model.addAttribute("businessPhones", businessPhoneService.getBusinessPhoneDetailByBusinessId(businessId));
 		return "business/businessdetailupdate";
 	}
 	
@@ -222,5 +232,19 @@ public class BusinessController {
 			businessAddressService.saveBusinessAddress(businessAddress);
 		}
 		return "redirect:/admin/business/"+business.getUserDetails().getUserDetailsId()+"/update/"+businessId;
+	}
+	
+	@RequestMapping(value="/{businessId}/phone/save",method=RequestMethod.POST,produces="application/json")
+	public @ResponseBody List<BusinessPhoneEntity> saveBusinessPhoneDetails(@PathVariable("businessId") Long businessId,@RequestParam("businessPhone") Long businessPhone)
+	{
+		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
+		BusinessPhoneEntity businesPhoneEntity = context.getBean("businessPhoneEntity",BusinessPhoneEntity.class);
+		businesPhoneEntity.setPhone(businessPhone.toString());
+		businesPhoneEntity.setBusiness(business);
+		businessPhoneService.saveBusinessPhoneDetails(businesPhoneEntity);
+		List<BusinessPhoneEntity> l = businessPhoneService.getBusinessPhoneDetailByBusinessId(businessId);
+		for(BusinessPhoneEntity b:l)
+			System.out.println(b.getPhone());
+		return l;
 	}
 }

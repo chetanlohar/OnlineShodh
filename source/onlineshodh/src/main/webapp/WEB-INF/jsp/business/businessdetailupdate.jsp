@@ -522,31 +522,23 @@
 										type="text" class="form-control" id="bdetail_contact"
 										placeholder="Contact" name="businessd_contact">
 								</div>
-								<a href="${pageContext.request.contextPath}/admin/business/update/businessinfo" class="bd_contact"><button type="button" class="btn btn-success b_contact">Add</button></a>
+								<input type="hidden" name="businessPhone" id="businessPhone" value="${business.businessId}"/>
+								<a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" class="bd_contact"><button type="button" class="btn btn-success b_contact">Add</button></a>
 							</form>
 
 						</div>
 						<div class="detail-wraper space">
 							<table class="table busi_contact">
-							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Contact1</td>
-									<td>8600249455</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
-								</tr>
-								
-								<tr>
-									<td>1</td>
-									<td>Contact1</td>
-									<td>8600249455</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
-								</tr>
-</tbody>
+								<tbody>
+									<c:forEach var="businessphone" items="${businessPhones}" >
+										<tr>
+											<td>${businessphone.buinessPhoneId}</td>
+											<td>${businessphone.phone}</td>
+											<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
+											<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
 							</table>
 
 						</div>

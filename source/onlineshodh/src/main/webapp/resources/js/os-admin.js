@@ -111,24 +111,26 @@ $(document).ready(function(){
 	  
 	  
 	  $('.bd_contact').click(function(e){
-		  e.preventDefault();
-		 
           var url = $(this).attr('href');
           var contact = $('#bdetail_contact').val();
-       
-		
 	      $.ajax({
+	    	type: "POST",
 	        url:url,
+	        dataType:"json",
 	        timeout:5000,
-	        success: function(){
-	        
-	        	m++;
-	        	$('#busi_contact tbody').append('<tr class="child"><td>'+m+'</td><td>contact '+m+' </td><td>'+contact+'</td></tr>');
+	        data:{
+	        	"businessPhone" :contact
+	        },
+	        success: function(response){
+	        	console.log(response);
+	        	$('.busi_contact tbody tr').remove();
+	        	jQuery.each(response, function(index, item) {
+	        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td><td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
+				});
 
 	        },
-	        error: function(){
-	     
-	          
+	        error: function(e){
+	        	console.log("In error BusinessPhone Ajax: "+e);
 	        },
 	        
 	      });
