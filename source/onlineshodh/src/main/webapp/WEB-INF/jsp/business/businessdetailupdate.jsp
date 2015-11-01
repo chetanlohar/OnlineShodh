@@ -455,7 +455,7 @@
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Business Address
-								Information</span><a href="${pageContext.request.contextPath}/admin/business/update/address/${business.businessId}">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span><a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/update/address">&nbsp;<i class="fa fa-pencil"></i>
 								Edit
 							</a>
 						</div>

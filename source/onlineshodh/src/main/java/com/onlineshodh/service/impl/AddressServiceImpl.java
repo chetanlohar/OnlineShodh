@@ -33,6 +33,7 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
+	@Transactional
 	public void updateAddress(AddressEntity address) {
 		addressDao.updateAddress(address);
 	}

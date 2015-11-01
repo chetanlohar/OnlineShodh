@@ -298,8 +298,9 @@
 				</div>
 				<!-- /.row -->
 				<div class="row">
-				<form:form class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessAddress">
+				<form:form class="form-horizontal" action="${pageContext.request.contextPath}/admin/business/${businessId}/save/address" name="bclientupdate" id="bclientupdate" modelAttribute="businessAddress">
 				<form:hidden path="addressId"/>
+				
 					<div class="col-lg-12">
 							<div class="col-lg-8">
 								<div class="col-lg-12 space">
@@ -307,7 +308,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-road"></span></span>
-										<form:textarea path="address" class="form-control" rows="3" id="clientadd" name="address"></form:textarea>
+										<form:input path="address" class="form-control" rows="3" id="clientadd" name="address"/>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -332,11 +333,6 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-flag"></span></span> 
-											<!-- <select class="form-control"name="clientcountry">
-												<option value="">Select</option>
-												<option value="india">India</option>
-											</select> -->
-											
 											<form:select path="city.state.country.countryId" id="countryId"
 												onchange="getState()" class="form-control" name="tcountry">
 												<form:option value="0" label="---Select-------" />
@@ -352,12 +348,6 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> 
-										<!-- <select class="form-control"
-											name="clientstate">
-											<option value="">Select</option>
-											<option value="mharastra">maharastra</option>
-										</select> -->
-										
 										<form:select path="city.state.stateId" id="townStates"
 											onchange="getCity()" class="form-control">
 											<form:option value="0" label="---Select-------" />
@@ -374,13 +364,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> 
-										<!-- <select class="form-control"
-											name="clientcity">
-											<option value="">Select</option>
-											<option value="pune">pune</option>
-										</select> -->
-										
-										<form:select path="city.cityId" id="stateCities" class="form-control">
+										<form:select path="city.cityId" id="stateCities" class="form-control" onchange="getTowns()">
 											<form:option value="0" label="---Select-------" />
 											<c:forEach var="city" items="${cities}">
 												<form:option value="${city.cityId}">${city.cityName}</form:option>
@@ -394,13 +378,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> 
-										<!-- <select class="form-control" id="town" name="clinettown">
-											<option value="">Select</option>
-											<option value="kharadi">Kharadi</option>
-											<option value="Other">Other Town</option>
-										</select> -->
-										
-										<form:select path="town.townId" id="stateCities" class="form-control">
+										<form:select path="town.townId" id="towns" class="form-control">
 											<form:option value="0" label="---Select-------" />
 											<c:forEach var="town" items="${towns}">
 												<form:option value="${town.townId}">${town.townName}</form:option>

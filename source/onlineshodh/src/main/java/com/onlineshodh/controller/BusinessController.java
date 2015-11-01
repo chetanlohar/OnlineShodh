@@ -26,6 +26,7 @@ import com.onlineshodh.entity.BusinessDetailsEntity;
 import com.onlineshodh.entity.BusinessSearchEntity;
 import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.entity.SubCategoryEntity;
+import com.onlineshodh.service.AddressService;
 import com.onlineshodh.service.BusinessAddressService;
 import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.CategoryService;
@@ -69,7 +70,10 @@ public class BusinessController {
 	
 	@Autowired
 	TownService townService;
-
+	
+	@Autowired
+	AddressService addressService;
+	
 	@RequestMapping(value = { "/", "" })
 	public String manageBusinessDetails(ModelMap model) {
 		model.addAttribute("businessDetails", context.getBean(
@@ -178,26 +182,46 @@ public class BusinessController {
 		return "business/businessadd";
 	}
 	
-	@RequestMapping("/update/address/{businessId}")
+	@RequestMapping("{businessId}/update/address")
 	public String showBusinessAddress(@PathVariable("businessId") Long businessId,ModelMap model)
 	{
 		model.addAttribute("countries", countryService.getAllCountries());
-		model.addAttribute("states", stateService.getAllStates());
-		model.addAttribute("cities", cityService.getAllCities());
-		model.addAttribute("towns", townService.getAllTowns());
 		BusinessAddressEntity businessAddress=businessAddressService.getBusinessAddressByBusinessId(businessId);
-		System.out.println("businessAddress1: "+businessAddress);
-		
 		if(businessAddress==null)
+		{
 			model.addAttribute("businessAddress", context.getBean("addressEntity",AddressEntity.class));
+			model.addAttribute("states", stateService.getAllStates());
+			model.addAttribute("cities", cityService.getAllCities());
+			model.addAttribute("towns", townService.getAllTowns());
+		}
 		else
+		{
+			model.addAttribute("states", stateService.getAllStates(businessAddress.getAddress().getCity().getState().getCountry().getCountryId()));
+			model.addAttribute("cities", cityService.getAllCities(businessAddress.getAddress().getCity().getState().getStateId()));
+			model.addAttribute("towns", townService.getAllTowns(businessAddress.getAddress().getCity().getCityId()));
 			model.addAttribute("businessAddress", businessAddress.getAddress());
+		}
 		
+		model.addAttribute("businessId", businessId);
 		return "business/busiaddressupdate";
 	}
 	
-	public String updateBusinessAddress()
+	@RequestMapping("{businessId}/save/address")
+	public String saveBusinessAddress(@PathVariable("businessId") Long businessId,@ModelAttribute("businessAddress") AddressEntity address,ModelMap model)
 	{
-		return "";
+		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
+		if(address.getAddressId()!=null)
+			addressService.updateAddress(address);
+		else
+		{
+			addressService.saveAddress(address);
+			AddressEntity address1 = addressService.getAddress(address.getAddressId());
+			BusinessAddressEntity businessAddress = context.getBean("businessAddressEntity",BusinessAddressEntity.class);
+			businessAddress.setBusiness(business);
+			businessAddress.setAddress(address1);
+			businessAddress.setAddressType("Head Office");
+			businessAddressService.saveBusinessAddress(businessAddress);
+		}
+		return "redirect:/admin/business/"+business.getUserDetails().getUserDetailsId()+"/update/"+businessId;
 	}
 }

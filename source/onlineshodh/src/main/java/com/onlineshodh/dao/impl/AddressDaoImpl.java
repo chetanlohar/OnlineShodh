@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.AddressDao;
 import com.onlineshodh.entity.AddressEntity;
-import com.onlineshodh.entity.BusinessDetailsEntity;
 
 @Repository
 public class AddressDaoImpl extends AbstractJpaDao<AddressEntity> implements AddressDao {
@@ -18,7 +17,7 @@ public class AddressDaoImpl extends AbstractJpaDao<AddressEntity> implements Add
 	
 	@Override
 	public void saveAddress(AddressEntity address) {
-		update(address);
+		create(address);
 	}
 
 	@Override

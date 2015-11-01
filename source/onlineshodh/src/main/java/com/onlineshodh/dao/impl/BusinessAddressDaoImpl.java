@@ -29,4 +29,9 @@ public class BusinessAddressDaoImpl extends AbstractJpaDao<BusinessAddressEntity
 		
 	}
 
+	@Override
+	public void saveBusinessAddress(BusinessAddressEntity businessAddressEntity) {
+		create(businessAddressEntity);
+	}
+
 }

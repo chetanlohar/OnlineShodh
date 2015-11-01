@@ -12,5 +12,5 @@ public interface TownDao{
 	public void deleteTown(Integer townId);
 	public List<TownEntity> getAllTowns(Integer cityId);
 	public Integer getLastTown();
-
+	void saveTown(TownEntity town);
 }

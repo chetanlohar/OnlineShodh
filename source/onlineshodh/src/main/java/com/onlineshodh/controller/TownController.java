@@ -90,6 +90,11 @@ public class TownController {
 		return cityService.getAllCities(stateId);
 	}
 	
+	@RequestMapping(value="/showTowns",method=RequestMethod.POST,produces="application/json" )
+	public @ResponseBody List<TownEntity> getTowns(ModelMap model,@RequestParam("cityId")Integer cityId){
+		return townService.getAllTowns(cityId);
+	}
+	
 	@RequestMapping(value="/save",method=RequestMethod.GET)
 	public String saveTown(ModelMap model){
 	return "redirect:/admin/towns"; 

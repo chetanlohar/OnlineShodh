@@ -372,7 +372,7 @@
 													src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}"
 													class="img-responsive" width="50px " height="50px;" /></td>
 												<td class="center"><a
-													href="${pageContext.request.contextPath}/admin/business/view/client/${userdetail.userDetailsId}">
+													href="${pageContext.request.contextPath}/admin/business/${userdetail.userDetailsId}">
 													<button
 															class="btn btn-info btn-xs">
 															<i class="fa fa-check"></i> Select

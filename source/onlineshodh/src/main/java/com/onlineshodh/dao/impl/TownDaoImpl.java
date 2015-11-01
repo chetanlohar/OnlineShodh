@@ -20,6 +20,11 @@ public class TownDaoImpl extends AbstractJpaDao<TownEntity> implements TownDao {
 		setClazz(TownEntity.class);
 		update(town);
 	}
+	
+	@Override
+	public void saveTown(TownEntity town) {
+		create(town);
+	}
 
 	@Override
 	public List<TownEntity> getAllTowns() {

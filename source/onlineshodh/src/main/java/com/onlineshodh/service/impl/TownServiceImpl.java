@@ -57,6 +57,12 @@ public class TownServiceImpl implements TownService{
 		return townDao.getLastTown() ;
 	}
 
+	@Override
+	@Transactional
+	public void saveTown(TownEntity town) {
+		townDao.saveTown(town);
+	}
+
 	
 
 }

@@ -424,7 +424,11 @@
 								</c:forEach>
 							</table>
 						</div>
-						<a href="${pageContext.request.contextPath}/admin/business/new/add/${userdetails.userDetailsId}"><button class="btn btn-info btn-xs">
+						<%-- <a href="${pageContext.request.contextPath}/admin/business/new/add/${userdetails.userDetailsId}"><button class="btn btn-info btn-xs">
+								<i class="fa fa-plus"></i> Add New Business
+							</button></a> --%>
+							
+						<a href="${pageContext.request.contextPath}/admin/business/update/info/${userdetails.userDetailsId}"><button class="btn btn-info btn-xs">
 								<i class="fa fa-plus"></i> Add New Business
 							</button></a>
 					</div>
