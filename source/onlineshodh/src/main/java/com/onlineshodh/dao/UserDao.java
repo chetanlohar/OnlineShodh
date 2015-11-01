@@ -1,5 +1,7 @@
 package com.onlineshodh.dao;
 
+import java.util.List;
+
 import com.onlineshodh.entity.UserEntity;
 import com.onlineshodh.exception.ConstraintViolationException;
 
@@ -34,6 +36,8 @@ public interface UserDao {
 	 */
 	public boolean isUserExists(String username);
 	
-	public UserEntity getUserByName(String userName);
+	public List<UserEntity> getUserByName(String userName);
+	
+	public UserEntity getUserByUserName(String userName);
 
 }

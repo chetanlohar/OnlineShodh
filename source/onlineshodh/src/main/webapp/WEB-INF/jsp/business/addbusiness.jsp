@@ -41,7 +41,27 @@
 <!--CUSTOM STYLES-->
 <link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
 
+<!-- JQUERY SCRIPTS -->BusinessSearch
+<script
+	src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+	<script async src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/BusinessSearch.js"></script> 
+<script type="text/javascript">
+$(document).ready(function(){
+$("#searchBy").click(function(e){
+	 
+	 $( "#keyword" ).autocomplete({
+
+		source: '${pageContext.request.contextPath}/admin/clients/searchClient?searchBy='+$("#searchBy").val(),
+});
+	 
+}); 
+});	
+	
+</script>	
 </head>
 </head>
 <body>
@@ -308,10 +328,11 @@
 									<label for="mailid" class="col-sm-5 control-label">Search
 										By:</label>
 									<div class="input-group">
-										<select class="form-control" name="sortclient">
-											<option value="ID">ID</option>
-											<option value="Name">Name</option>
-											<option value="UserName">UserName</option>
+										<select class="form-control" id="searchBy" name="searchBy">
+											<option value="1">ID</option>
+											<option value="2">Name</option>
+											<option value="3">UserName</option>
+											<option value="4">BusinessName</option>
 										</select>
 									</div>
 								</div>
@@ -319,12 +340,12 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="clientsearchbox"
+											class="form-control" id="keyword"
 											name="clientsearchbox">
 									</div>
 								</div>
 								<div class="col-lg-6 col-lg-offset-6 space">
-									<button type="submit" class="btn btn-info" id="display">
+									<button type="button" class="btn btn-info"  id="searchButton">
 										<i class="fa fa-search"></i> Search
 									</button>
 
@@ -358,7 +379,7 @@
 
 											</tr>
 										</thead>
-										<tbody>
+										<%-- <tbody>
 											<tr class="odd gradeX">
 											<c:forEach var="userdetail" items="${userDetails}">
 												<td>${userdetail.userDetailsId}</td>
@@ -381,7 +402,7 @@
 											</c:forEach>
 											</tr>
 
-										</tbody>
+										</tbody> --%>
 									</table>
 								</div>
 								<!-- /.table-responsive -->

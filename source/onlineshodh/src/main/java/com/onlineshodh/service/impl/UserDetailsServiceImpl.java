@@ -98,6 +98,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return userDetailsDao.getUserDetailsByUserId(userId);
 	}
 
+	@Override
+	public List<UserDetailsEntity> findUserDeatilsByName(String Name) {
+		
+		return userDetailsDao.findUserDeatilsByName(Name);
+	}
+
 	/*public List<UserDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName){
 		return userDetailsDao.getBusinessDetailsByBusinessName(bussinessName);
 	}*/

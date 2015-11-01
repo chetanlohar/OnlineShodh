@@ -40,6 +40,8 @@ public interface UserDetailsDao {
 	
 	public UserDetailsEntity getUserDetailsByUserId(Integer userId);
 	
+	public List<UserDetailsEntity> findUserDeatilsByName(String Name);
+	
 /*	public List<UserDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName);
 */
 	

@@ -56,4 +56,10 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 			Long userDetailsId) {
 		return businessDetailsDao.getBusinessDetailsByUserDetailsId(userDetailsId);
 	}
+
+	@Override
+	public List<BusinessDetailsEntity> findBusinessDetailsByBusinessName(
+			String bussinessName) {
+		return businessDetailsDao.findBusinessDetailsByBusinessName(bussinessName);
+	}
 }

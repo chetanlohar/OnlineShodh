@@ -43,6 +43,8 @@ public interface UserDetailsService {
 	
 	public List<UserDetailsEntity> getUserDeatilsByName(String Name);
 	
+	public List<UserDetailsEntity> findUserDeatilsByName(String Name);
+	
 	public UserDetailsEntity getUserDetailsByUserId(Integer userId);
 	
 /*	public List<UserDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName);

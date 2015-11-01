@@ -33,6 +33,8 @@ public interface BusinessDetailsService {
 	public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(
 			String bussinessName);
 
+	public List<BusinessDetailsEntity> findBusinessDetailsByBusinessName(
+			String bussinessName);
 	
 	public List<BusinessDetailsEntity> getBusinessDetailsByUserDetailsId(Long userDetailsId);
 	

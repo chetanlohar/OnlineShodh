@@ -19,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,11 +31,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.AddressEntity;
 import com.onlineshodh.entity.BannerEntity;
+import com.onlineshodh.entity.BusinessDetailsEntity;
+import com.onlineshodh.entity.BusinessSearchEntity;
 import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.entity.UserDetailsEntity;
 import com.onlineshodh.entity.UserEntity;
 import com.onlineshodh.exception.ConstraintViolationException;
 import com.onlineshodh.service.AddressService;
+import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.CityService;
 import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.UserDetailsService;
@@ -61,6 +65,9 @@ public class ClientController {
 
 	@Autowired
 	TownService townService;
+	
+	@Autowired
+	BusinessDetailsService businessDetailsService;
 
 	@Autowired
 	AddressService addressService;
@@ -87,6 +94,12 @@ public class ClientController {
 		return "client/createClient";
 	}
 
+	@RequestMapping(value = "/business")
+	public String serachClient(ModelMap model) {
+		return "business/addNewBusiness";
+		
+	}
+	
 	@RequestMapping(value = "/showTowns", method = RequestMethod.POST)
 	public @ResponseBody List<TownEntity> showTowns(ModelMap model,
 			@RequestParam("cityId") Integer cityId) {
@@ -94,12 +107,126 @@ public class ClientController {
 		return townService.getAllTowns(cityId);
 	}
 
+	@RequestMapping(value = "/searchClient", method = RequestMethod.GET)
+	public @ResponseBody List<String> serachClientData(@RequestParam("term") String keyword,@RequestParam("searchBy")Integer searchBy ) {
+		List<BusinessDetailsEntity> clientListByBusinessName;
+		List<UserEntity> userList;
+		List<String> list=new ArrayList<String>();
+		 if(searchBy==2)
+		{
+			System.out.println(" In search Box"+searchBy);
+			List<UserDetailsEntity> clientListByName; 
+			clientListByName=userDetailsService.getUserDeatilsByName(keyword.toUpperCase());
+			System.out.println(" List value"+clientListByName);
+			for (UserDetailsEntity userDetails:clientListByName) {
+				System.out.println(" List value"+userDetails.getName());
+				list.add(userDetails.getName());
+			}
+			return list; 
+		}
+		else if(searchBy==3)
+		{
+			userList=userService.getUserByName(keyword.toLowerCase());
+			list.clear();
+			for (UserEntity user:userList) {
+				System.out.println(" List value"+user.getUserName());
+				list.add(user.getUserName());
+			}
+			
+			return list; 
+		}
+		else{
+			System.out.println("Search By "+searchBy);
+			list.clear();
+			clientListByBusinessName=businessDetailsService.getBusinessDetailsByBusinessName(keyword);
+			System.out.println("Size OF BusinessName List"+clientListByBusinessName.size());
+			for(BusinessDetailsEntity bussiness:clientListByBusinessName){
+				System.out.println(" List value"+bussiness.getBusinessName());
+				list.add(bussiness.getBusinessName());
+			}
+			return list; 
+		}
+		
+	}
+	
+	@RequestMapping(value = "/getClient", method = RequestMethod.POST)
+	public @ResponseBody List<UserDetailsEntity> serachClient(
+			@RequestParam("keyword") String keyword,
+			@RequestParam("searchBy") Integer searchBy) {
+		//validator.validate(target, errors);
+		
+		System.out.println("searchBy: " + searchBy);
+		System.out.println("keyword: " + keyword);
+
+		
+		List<UserDetailsEntity> clientList = new ArrayList<UserDetailsEntity>();
+		List<BusinessDetailsEntity> clientListByBusinessName;
+		
+		if(searchBy==1){
+			clientList.clear();
+			clientList.add(userDetailsService.getUserDetails(Integer.parseInt(keyword)));
+			System.out.println("After Search List Size In Table"+clientList);
+			return clientList;
+		}
+		else if(searchBy==2)
+		{
+			List<UserDetailsEntity> clientListByName; 
+			clientListByName=userDetailsService.findUserDeatilsByName(keyword);
+			System.out.println("After Search List Size In Table"+clientListByName);
+			return clientListByName; 
+		}
+		else if(searchBy==3)
+		{
+			UserEntity user=userService.getUserByUserName(keyword);
+			clientList.clear();
+			clientList.add(userDetailsService.getUserDetailsByUserId(user.getUserId()));
+			System.out.println("After Search List Size In Table"+clientList);
+			return clientList; 
+		}
+		else{
+			
+			clientList.clear();
+			clientListByBusinessName=businessDetailsService.findBusinessDetailsByBusinessName(keyword);
+			for(BusinessDetailsEntity bussiness:clientListByBusinessName){
+				UserDetailsEntity user=new UserDetailsEntity();
+				user.setUserDetailsId(bussiness.getUserDetails().getUserDetailsId());
+				clientList.add(userDetailsService.getUserDetails(user.getUserDetailsId()));
+			}
+			System.out.println("After Search List Size In Table"+clientList);
+			return clientList; 
+		}
+		
+	}
+	@ExceptionHandler(java.lang.NumberFormatException.class)
+	public @ResponseBody String handleNumberFormatException(java.lang.NumberFormatException ex) {
+		System.out.println("NumberFormatException 1");
+		return "Please Enter Valid keywords";
+	}
+
+	/*@RequestMapping(value = "/exception",method=RequestMethod.GET)
+	public @ResponseBody String HandleException(ModelMap model,@ModelAttribute("SearchBusiness")BusinessSearchEntity businessSearch,BindingResult result) {
+		
+		FieldError searchKeywordError=new FieldError("businessSearch", "searchText"," Please Enter Valid Keywords.." );
+		result.addError(searchKeywordError);
+		model.addAttribute("SearchBusiness", context.getBean("businessSearchEntity",BusinessSearchEntity.class));
+		System.out.println("model");
+		 return "business/BusinessManagement";
+		
+	}*/
+	/*@RequestMapping(value = "/exception",method=RequestMethod.GET)
+	public @ResponseBody String HandleException() {
+			 return "business/BusinessManagement";
+ 	}*/
+	
+	
+	
 	@RequestMapping(value = "/save", method = RequestMethod.GET)
 	public String redirectToClients() {
 
 		return "redirect:/admin/clients";
 	}
 
+	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveClient(
 			ModelMap model,

@@ -29,6 +29,9 @@ public interface BusinessDetailsDao {
 	public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName);
 	
 	public List<BusinessDetailsEntity> getBusinessDetailsByUserDetailsId(Long userDetailsId);
+	
+	public List<BusinessDetailsEntity> findBusinessDetailsByBusinessName(
+			String bussinessName);
     
 	
 

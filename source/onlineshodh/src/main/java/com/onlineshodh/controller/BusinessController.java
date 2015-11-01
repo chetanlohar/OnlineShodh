@@ -78,9 +78,8 @@ public class BusinessController {
 	public String manageBusinessDetails(ModelMap model) {
 		model.addAttribute("businessDetails", context.getBean(
 				"businessDetailsEntity", BusinessDetailsEntity.class));
-		model.addAttribute("SearchBusiness", context.getBean(
-				"businessSearchEntity", BusinessSearchEntity.class));
-		return "business/BusinessManagement";
+		/*return "business/BusinessManagement";*/
+		return "addbusiness";
 	}
 
 	@RequestMapping(value = "/new/save")

@@ -51,8 +51,8 @@ public class UserDetailsDaoImpl extends AbstractJpaDao<UserDetailsEntity>
 		setClazz(UserDetailsEntity.class);
 		return entityManager
 				.createQuery(
-						"from UserDetailsEntity userDetails where userDetails.name = :userName order by 1")
-				.setParameter("userName", Name).getResultList();
+						"from UserDetailsEntity userDetails where userDetails.name LIKE :userName")
+				.setParameter("userName", Name+'%').getResultList();
 	}
 
 	@Override
@@ -63,6 +63,18 @@ public class UserDetailsDaoImpl extends AbstractJpaDao<UserDetailsEntity>
 						"from UserDetailsEntity userDetails where userDetails.userId=:userId",
 						UserDetailsEntity.class).setParameter("userId", userId)
 				.getSingleResult();
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<UserDetailsEntity> findUserDeatilsByName(String Name) {
+		
+		entityManager = getEntityManager();
+		setClazz(UserDetailsEntity.class);
+		return entityManager
+				.createQuery(
+						"from UserDetailsEntity userDetails where userDetails.name=:userName")
+				.setParameter("userName", Name).getResultList();
 	}
 	
 	/*public List<UserDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName){

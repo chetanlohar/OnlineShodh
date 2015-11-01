@@ -18,7 +18,7 @@ public class BusinessDetailsDaoImpl extends
 
 	@Override
 	public void saveBusinessDetails(BusinessDetailsEntity business) {
-		if(business.getBusinessId()!=null)
+		if (business.getBusinessId() != null)
 			update(business);
 		else
 			create(business);
@@ -34,8 +34,6 @@ public class BusinessDetailsDaoImpl extends
 		setClazz(BusinessDetailsEntity.class);
 		return findOne(businessId);
 	}
-	
-	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -46,10 +44,8 @@ public class BusinessDetailsDaoImpl extends
 				.createQuery(
 						"from BusinessDetailsEntity business where business.personName = :personName order by 1")
 				.setParameter("personName", name).getResultList();
-		 //return findAll(name) ;
+		// return findAll(name) ;
 	}
-
-	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -59,25 +55,46 @@ public class BusinessDetailsDaoImpl extends
 		setClazz(BusinessDetailsEntity.class);
 		return entityManager
 				.createQuery(
-						"from BusinessDetailsEntity business where business.userDetails.user.userName = :userName order by 1")
+						"from BusinessDetailsEntity business where business.userDetails.user.userName=:userName")
 				.setParameter("userName", userName).getResultList();
 		// return findAll(name) ;
 	}
 
-	public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(String bussinessName){
-		entityManager=getEntityManager();
-		return entityManager.createQuery("from BusinessDetailsEntity business where business.businessName=:businessName", BusinessDetailsEntity.class).setParameter("businessName",bussinessName).getResultList();
-	       
+	public List<BusinessDetailsEntity> getBusinessDetailsByBusinessName(
+			String bussinessName) {
+		entityManager = getEntityManager();
+		return entityManager
+				.createQuery(
+						"from BusinessDetailsEntity business where business.businessName Like :businessName",
+						BusinessDetailsEntity.class)
+				.setParameter("businessName", bussinessName + '%')
+				.getResultList();
+
 	}
 
 	@Override
-	public List<BusinessDetailsEntity> getBusinessDetailsByUserDetailsId(Long userDetailsId) {
-		
+	public List<BusinessDetailsEntity> getBusinessDetailsByUserDetailsId(
+			Long userDetailsId) {
+
 		entityManager = getEntityManager();
 		setClazz(BusinessDetailsEntity.class);
-		return entityManager.createQuery("from BusinessDetailsEntity business where business.userDetails.userDetailsId = :userDetailsId", BusinessDetailsEntity.class).setParameter("userDetailsId", userDetailsId.intValue()).getResultList();
+		return entityManager
+				.createQuery(
+						"from BusinessDetailsEntity business where business.userDetails.userDetailsId = :userDetailsId",
+						BusinessDetailsEntity.class)
+				.setParameter("userDetailsId", userDetailsId.intValue())
+				.getResultList();
 	}
-	
-	
+
+	@Override
+	public List<BusinessDetailsEntity> findBusinessDetailsByBusinessName(
+			String bussinessName) {
+		entityManager = getEntityManager();
+		return entityManager
+				.createQuery(
+						"from BusinessDetailsEntity business where business.businessName=:businessName",
+						BusinessDetailsEntity.class)
+				.setParameter("businessName", bussinessName).getResultList();
+	}
 
 }

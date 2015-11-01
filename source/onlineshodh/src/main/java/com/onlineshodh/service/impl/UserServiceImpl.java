@@ -3,6 +3,8 @@
  */
 package com.onlineshodh.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -66,8 +68,15 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public UserEntity getUserByName(String userName) {
+	public List<UserEntity> getUserByName(String userName) {
 		return userDao.getUserByName(userName);
+	}
+
+
+	@Override
+	public UserEntity getUserByUserName(String userName) {
+		
+		return userDao.getUserByUserName(userName);
 	}
 	
 	

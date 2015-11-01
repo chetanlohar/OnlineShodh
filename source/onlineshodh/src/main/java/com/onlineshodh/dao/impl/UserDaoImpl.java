@@ -1,5 +1,7 @@
 package com.onlineshodh.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -56,9 +58,19 @@ public class UserDaoImpl extends AbstractJpaDao<UserEntity> implements UserDao {
 	}
 
 	@Override
-	public UserEntity getUserByName(String userName) {
+	public List<UserEntity> getUserByName(String userName) {
 
 		
+		entityManager = getEntityManager();
+		return entityManager
+				.createQuery(
+						"from UserEntity user where user.userName LIKE :userName",
+						UserEntity.class).setParameter("userName", userName+'%')
+				.getResultList();
+	}
+
+	@Override
+	public UserEntity getUserByUserName(String userName) {
 		entityManager = getEntityManager();
 		return entityManager
 				.createQuery(
