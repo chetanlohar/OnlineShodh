@@ -426,7 +426,14 @@ width: 100px;
 height: 100px;	
 	
 }  
-
+.planupdate-table th td{
+	text-align: center;
+}
+.planupdate-table .price_data{
+	background: #026D96;
+	color: #fff;
+	
+}
 /*==============================================
     MEDIA QUERIES     
   =============================================*/

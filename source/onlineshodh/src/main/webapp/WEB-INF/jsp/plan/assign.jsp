@@ -333,16 +333,16 @@
 								<div class="col-lg-10 space">
 									<label for="mailid" class="col-sm-3 control-label">Start
 										Date:</label>
-									<div class="input-group">
+									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
 											<input type="text" class="form-control" placeholder="strat Date" >
 									</div>
 								</div>
-								<div class="col-lg-10 space">
+								<div class="col-lg-10 space ">
 									<label for="mailid" class="col-sm-3 control-label">End
 										Date:</label>
-									<div class="input-group">
+									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
 											<input type="text" class="form-control" placeholder="End Date" >

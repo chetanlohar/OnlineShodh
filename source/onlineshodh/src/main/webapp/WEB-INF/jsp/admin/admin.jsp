@@ -219,9 +219,9 @@
 						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
 								
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Update Plan
+						<li><a href="${pageContext.request.contextPath}/prashant/update"> <i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Plan
+						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
 							
 						</a></li>
 						<li><a href="${pageContext.request.contextPath}/prashant/plan_assign"> <i class="fa fa-list"></i> 
@@ -246,23 +246,7 @@
                             </ul>
                         </li>
 
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap "></i>Category Management <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#"><i class="fa fa-cogs "></i>List All Category</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-bullhorn "></i>New Sub Category</a>
-                                </li>
-                                <li>
-                                    <a href="#">List Sub Category</a>
-                                </li>
 
-
-                        </li>
-                    </ul>
-                    </li>
                     <li>
                         <a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
                     </li>

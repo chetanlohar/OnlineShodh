@@ -323,7 +323,7 @@
 							</div>
 						<div class="panel-body">
 							<div class="dataTable_wrapper table-responsive">
-								<table class="table plan_search-table">
+								<table class="table plan_search-table table-bordered" id="dataTables-assign">
 									<thead>
 										<tr>
 											<th>Business Id</th>
@@ -372,8 +372,20 @@
         	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-        
+          	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
         <!-- CUSTOM SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+        
+                	<script>
+		$(document).ready(function() {
+			$('#dataTables-assign').DataTable({
+				responsive : true
+			});
+
+			
+		});
+	</script>
 </body>
 </html>

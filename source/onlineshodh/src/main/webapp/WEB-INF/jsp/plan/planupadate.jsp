@@ -289,10 +289,7 @@
 			<div id="page-inner">
 			<div class="row">
 					<div class="col-lg-12">
-						<div class="detail-title">
-							<span class="detail-titile-header font17">Business Plan Details
-								</span> 
-						</div>
+						
 
 
 					</div>
@@ -308,7 +305,7 @@
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
-									<table class="table plan-table">
+									<table class="table table-striped table-bordered table-hover planupdate-table" id="dataTables-plan">
 										<thead>
 											<tr>
 												<th>#</th>
@@ -316,7 +313,8 @@
 												<th>Priority</th>
 												<th colspan="3" class="price_data text-center">plan
 													Price</th>
-												<th>Action</th>
+												<th>Edit</th>
+												<th>Delete</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -341,8 +339,41 @@
 														href="${pageContext.request.contextPath}/admin/plans/edit"
 														class="edit"><button class="btn btn-info btn-xs">
 																<i class="fa fa-pencil"></i> Edit
+															</button></a>
+															</td>
+															<td>
+													<a
+														href="${pageContext.request.contextPath}/admin/plans/delete"
+														onclick="return confirm('Do you want to Remove Plan ${plan.planName}')"><button
+																class="btn btn-danger btn-xs">
+																<i class="fa fa-trash"></i> Delete
 															</button></a></td>
-													<td class="center"><a
+
+
+												</tr>
+										
+										<tr>
+
+													<td>2</td>
+													<td> very high</td>
+													<td>low</td>
+
+
+													<td class="price_data"><span><strong>1
+																Year</strong></span><br>004</td>
+													<td class="price_data"><span><strong>2
+																Year</strong></span><br>6465</td>
+													<td class="price_data"><span><strong>3
+																Year</strong></span><br>65666</td>
+
+													<td><a
+														href="${pageContext.request.contextPath}/admin/plans/edit"
+														class="edit"><button class="btn btn-info btn-xs">
+																<i class="fa fa-pencil"></i> Edit
+															</button></a>
+															</td>
+															<td>
+													<a
 														href="${pageContext.request.contextPath}/admin/plans/delete"
 														onclick="return confirm('Do you want to Remove Plan ${plan.planName}')"><button
 																class="btn btn-danger btn-xs">
@@ -381,13 +412,23 @@
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
         
-        <!-- PACE SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/pace.js"></script>
+      	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
         	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
         
         <!-- CUSTOM SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+        	<script>
+		$(document).ready(function() {
+			$('#dataTables-plan').DataTable({
+				responsive : true
+			});
+
+			
+		});
+	</script>
 </body>
 </html>
