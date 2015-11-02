@@ -516,14 +516,15 @@
 								Information</span>
 						</div>
 							<div class="add_business_contact space">
-							<form action="#" class="form-inline" id="busd_contact" method="post">
+							<form class="form-inline" id="busd_contact" method="post">
 								<div class="form-group">
 									<label for="contact">Add Contact:</label> <input
 										type="text" class="form-control" id="bdetail_contact"
 										placeholder="Contact" name="businessd_contact">
 								</div>
-								<input type="hidden" name="businessPhone" id="businessPhone" value="${business.businessId}"/>
-								<a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" class="bd_contact"><button type="button" class="btn btn-success b_contact">Add</button></a>
+								<input type="hidden" id="phoneurl" value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save"/>
+								<%-- <a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" class="bd_contact"> --%>
+								<button type="button" id="phonebutton" class="btn btn-success b_contact">Add</button></a>
 							</form>
 
 						</div>
@@ -554,43 +555,35 @@
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Business Features/facilities</span>
 						</div>
-												<div class="add_features space">
-							<form action="" class="form-inline" id="busd_feature">
+							<div class="add_features space">
+							
+							<%-- <form action="#" class="form-inline" id="busd_feature" method="post"> --%>
+							<form action="#" class="form-inline" method="POST" id="busd_feature">
 								<div class="form-group">
 									<label for="Features">Add Features:</label> <input
 										type="text" class="form-control" id="bus_Features"
 										placeholder="Features">
 								</div>
-								<a href="<%=request.getContextPath()%>/prashant/businessnewadd" class="bd_features"><button type="submit" class="btn btn-success">Add</button></a>
+								<input type="hidden" id="featureurl" value="${pageContext.request.contextPath}/admin/business/${business.businessId}/feature/save"/>
+								<!-- <a href="" class="bd_features"> -->
+								<button type="button" id="featurebutton" class="btn btn-success">Add</button></a>
 							</form>
-
 						</div>
 						<div class="detail-wraper space">
 							<table class="table busi_feature">
-										<tbody>
-								<tr>
-					
-									<td>1</td>
-									<td>Nice</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
-								</tr>
-								<tr>
-									<td>2</td>
-									<td>Good</td>
-									<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
-									<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
-								
-								</tr>
-								
-</tbody>
+								<tbody>
+									<c:forEach var="info" items="${businessGeneralInfo}">
+										<tr>
+											<td>${info.businessGenInfoId}</td>
+											<td>${info.generalInfoName}</td>
+											<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
+											<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+										</tr>
+									</c:forEach>
+								</tbody>
 							</table>
-
 						</div>
-						
 					</div>
-
 				</div>
 				<!-- /. row  -->
 				</div><!-- /. PAGE INNER  -->

@@ -154,6 +154,7 @@ public class BusinessController {
 		model.addAttribute("business", business);
 		model.addAttribute("businessDetails",businessAddress);
 		model.addAttribute("businessPhones", businessPhoneService.getBusinessPhoneDetailByBusinessId(businessId));
+		model.addAttribute("businessGeneralInfo", businessGeneralInfoService.getBusinessGeneralInfoByBusinessId(businessId));
 		return "business/businessdetailupdate";
 	}
 	
@@ -253,7 +254,7 @@ public class BusinessController {
 		return l;
 	}
 	
-	@RequestMapping(value="/{businessId}/features/save",method=RequestMethod.POST,produces="application/json")
+	@RequestMapping(value="/{businessId}/feature/save",method=RequestMethod.POST,produces="application/json")
 	public @ResponseBody List<BusinessGeneralInfoEntity> saveBusinessGeneralInfo(@PathVariable("businessId") Long businessId,@RequestParam("generalInfo") String generalInfo)
 	{
 		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
