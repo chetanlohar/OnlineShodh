@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.onlineshodh.entity.AddressEntity;
 import com.onlineshodh.entity.BusinessAddressEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
+import com.onlineshodh.entity.BusinessGeneralInfoEntity;
 import com.onlineshodh.entity.BusinessPhoneEntity;
 import com.onlineshodh.entity.BusinessSearchEntity;
 import com.onlineshodh.entity.CategoryEntity;
@@ -32,6 +33,7 @@ import com.onlineshodh.entity.SubCategoryEntity;
 import com.onlineshodh.service.AddressService;
 import com.onlineshodh.service.BusinessAddressService;
 import com.onlineshodh.service.BusinessDetailsService;
+import com.onlineshodh.service.BusinessGeneralInfoService;
 import com.onlineshodh.service.BusinessPhoneService;
 import com.onlineshodh.service.CategoryService;
 import com.onlineshodh.service.CityService;
@@ -80,6 +82,9 @@ public class BusinessController {
 	
 	@Autowired
 	BusinessPhoneService businessPhoneService;
+	
+	@Autowired
+	BusinessGeneralInfoService businessGeneralInfoService;
 	
 	@RequestMapping(value = { "/", "" })
 	public String manageBusinessDetails(ModelMap model) {
@@ -245,6 +250,20 @@ public class BusinessController {
 		List<BusinessPhoneEntity> l = businessPhoneService.getBusinessPhoneDetailByBusinessId(businessId);
 		for(BusinessPhoneEntity b:l)
 			System.out.println(b.getPhone());
+		return l;
+	}
+	
+	@RequestMapping(value="/{businessId}/features/save",method=RequestMethod.POST,produces="application/json")
+	public @ResponseBody List<BusinessGeneralInfoEntity> saveBusinessGeneralInfo(@PathVariable("businessId") Long businessId,@RequestParam("generalInfo") String generalInfo)
+	{
+		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
+		BusinessGeneralInfoEntity entity = context.getBean("businessGeneralInfoEntity",BusinessGeneralInfoEntity.class);
+		entity.setGeneralInfoName(generalInfo);
+		entity.setBusiness(business);
+		businessGeneralInfoService.saveBusinessGeneralInfo(entity);
+		List<BusinessGeneralInfoEntity> l = businessGeneralInfoService.getBusinessGeneralInfoByBusinessId(businessId);
+		for(BusinessGeneralInfoEntity b:l)
+			System.out.println(b.getGeneralInfoName());
 		return l;
 	}
 }
