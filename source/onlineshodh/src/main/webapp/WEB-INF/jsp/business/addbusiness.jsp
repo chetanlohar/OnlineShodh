@@ -41,94 +41,9 @@
 <!--CUSTOM STYLES-->
 <link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
-
-<!-- JQUERY SCRIPTS -->BusinessSearch
-<script
-	src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
-	<script async src="//code.jquery.com/ui/1.10.1/jquery-ui.min.js"></script>
-<%-- <script
-	src="${pageContext.request.contextPath}/resources/js/BusinessSearch.js"></script>  --%>
-	
-<script type="text/javascript">
-$(document).ready(function(){
-$("#searchBy").click(function(e){
-	 
-	 $( "#keyword" ).autocomplete({
-
-		source: '${pageContext.request.contextPath}/admin/clients/searchClient?searchBy='+$("#searchBy").val(),
-});
-	 
-}); 
-});	
-
-$(function() {
-	$('#searchButton')
-			.click(
-					function() {
-						$
-								.ajax({
-									type : "POST",
-									url : "/onlineshodh/admin/clients/getClient",
-									dataType : 'json',
-									data : {
-										"searchBy" : $('#searchBy').val(),
-										"keyword" : $('#keyword').val()
-									},
-									success : function(response) {
-
-										console.log(response)
-
-										$('#dataTables-example')
-												.find('.ab').remove(); 
-										 jQuery
-												.each(
-														response,
-														function(index,
-																item) {
-																var newRow = jQuery('<tr class="ab"><td>'
-																		+ item.userDetailsId
-																		+ '</td><td>'
-																		+ item.regDate
-																		+ '</td><td>'
-																		+ item.name
-																		+ '</td><td>'
-																		+ item.email
-																		+ '</td><td>'
-																		+ item.phone1
-																		+ '</td><td>'
-																		+ item.phone2
-																		+ '</td><td>'
-																		+ item.userId
-																		+ '</td><td><img src=${pageContext.request.contextPath}/admin/clients/load/logo/'+item.userDetailsId+'/>'
-
-																		+ '</td><td>'
-																		+ '<a href=${pageContext.request.contextPath}/admin/business/'+item.userDetailsId+'>'
-																		+ 'Select'
-																		+ '</a></td></tr>');
-																jQuery(
-																		'#dataTables-example')
-																		.append(
-																				newRow);
-																
-                                                           
-														});
-
-									},
-									error : function(e) {
-										console.log(e)
-										alert("Please Enter Valid keywords")
-										/* jQuery('#error')
-										.append(e); */
-									}
-								})
-
-					});
-});
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"/>
 
 
-	
-</script>	
 </head>
 </head>
 <body>
@@ -475,7 +390,7 @@ $(function() {
 	<!-- JQUERY SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-
+ 
 	<!-- validation SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
@@ -509,11 +424,88 @@ $(function() {
 
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+<!-- JQUERY SCRIPTS -->
+ <script
+	src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>  
+	
+<script type="text/javascript">
+$(document).ready(function(){
+$("#searchBy").click(function(e){
+	 
+	 $( "#keyword" ).autocomplete({
 
-	<script>
-		$(document).ready(function() {
+		source: '${pageContext.request.contextPath}/admin/clients/searchClient?searchBy='+$("#searchBy").val(),
+});
+	 
+}); 
+});	
 
-		});
-	</script>
+$(function() {
+	$('#searchButton')
+			.click(
+					function() {
+						$
+								.ajax({
+									type : "POST",
+									url : "/onlineshodh/admin/clients/getClient",
+									dataType : 'json',
+									data : {
+										"searchBy" : $('#searchBy').val(),
+										"keyword" : $('#keyword').val()
+									},
+									success : function(response) {
+
+										console.log(response)
+
+										$('#dataTables-example')
+												.find('.ab').remove(); 
+										 jQuery
+												.each(
+														response,
+														function(index,
+																item) {
+																var newRow = jQuery('<tr class="ab"><td>'
+																		+ item.userDetailsId
+																		+ '</td><td>'
+																		+ item.regDate
+																		+ '</td><td>'
+																		+ item.name
+																		+ '</td><td>'
+																		+ item.email
+																		+ '</td><td>'
+																		+ item.phone1
+																		+ '</td><td>'
+																		+ item.phone2
+																		+ '</td><td>'
+																		+ item.userId
+																		+ '</td><td><img src=${pageContext.request.contextPath}/admin/clients/load/logo/'+item.userDetailsId+'/>'
+
+																		+ '</td><td>'
+																		+ '<a href=${pageContext.request.contextPath}/admin/business/'+item.userDetailsId+'>'
+																		+ 'Select'
+																		+ '</a></td></tr>');
+																jQuery(
+																		'#dataTables-example')
+																		.append(
+																				newRow);
+																
+                                                           
+														});
+
+									},
+									error : function(e) {
+										console.log(e)
+										alert("Please Enter Valid keywords")
+										/* jQuery('#error')
+										.append(e); */
+									}
+								})
+
+					});
+});
+
+
+	
+</script>	
 </body>
 </html>

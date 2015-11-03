@@ -12,7 +12,7 @@ public class BusinessPlanDaoImpl extends AbstractJpaDao<BusinessPlanEntity> impl
 	@Override
 	public boolean assignBusinessPlan(BusinessPlanEntity businessPlan) {
 		setClazz(BusinessPlanEntity.class);
-		create(businessPlan);
+		update(businessPlan);
 		return true;
 	}
 

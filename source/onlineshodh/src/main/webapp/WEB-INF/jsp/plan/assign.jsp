@@ -326,12 +326,15 @@
 									<div class="input-group">
 									
 										<form:select  path="plan.planId" class="form-control" name="plan_name">
+										<form:option value="0">--Select--</form:option>
 											<c:forEach var="plan" items="${plans}">
 											<form:option value="${plan.planId}">${plan.planName}</form:option>
 										</c:forEach>	
 										</form:select>
+										<form:errors path="plan.planId" cssClass="error"/>
 								
 									</div>
+									
 								</div>
 								
 								<div class="col-lg-10 space">
@@ -340,9 +343,10 @@
 									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
-											<form:input path="startdate" class="form-control" placeholder="strat Date"/>
-				                            <form:errors path="startdate"/>
+											<form:input path="startdate" class="form-control"/>
+				                            <form:errors path="startdate" cssClass="error"/>
 									</div>
+									
 								</div>
 								<div class="col-lg-10 space ">
 									<label for="mailid" class="col-sm-3 control-label">End
@@ -350,13 +354,29 @@
 									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
-											<form:input path="enddate" class="form-control" placeholder="End Date"/>
-				                            <form:errors path="enddate"/>
+											<form:input path="enddate" class="form-control"/>
+				                            <form:errors path="enddate" cssClass="error"/>
 				                  </div>
+				                  
 								</div>
-								<label>Status</label>
-								<form:input path="status"/>
-				                  <form:errors path="status"/> 
+								<div class="col-lg-10 space ">
+									<label for="mailid" class="col-sm-3 control-label">Status
+										:</label>
+									<div class="input-group">
+									<form:select path="status" class="form-control">
+									<form:option value="0">---Select--</form:option>
+                                    <form:option value="NotActive">Not Active</form:option>
+                                    <form:option value="NotActive">Active</form:option>
+                                    <form:option value="InProgress">In Progress</form:option>
+                                     
+									</form:select>
+									<form:errors path="status" cssClass="error"/>
+				                   </div>
+				                  
+								</div>
+								
+							
+								
 								
 				          <div class="col-lg-4 col-lg-offset-5 space">
 				          <button class="btn btn-info">Assign</button>

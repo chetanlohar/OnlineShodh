@@ -35,15 +35,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
-
-<!-- JQUERY SCRIPTS -->
-<%-- <script
-	src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>  --%>
-
-
-	
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"/>
 </head>
 <body>
 	<div id="wrapper">
@@ -342,15 +334,7 @@
 											<th>Action</th>
 										</tr>
 									</thead>
-									<tbody id=" ">
-										<tr>
-											<td>1</td>
-											<td>Softinfology Pvt Ltd</td>
-											<td>ff</td>
-											<td><a href="${pageContext.request.contextPath}/prashant/assign"><button class="btn btn-info btn-xs">Select</button></a></td>
-										</tr>
-
-									</tbody>
+									
 								</table>
 							</div>
 						</div>
@@ -391,9 +375,9 @@
         
                 	<script>
 		$(document).ready(function() {
-			$('#dataTables-assign').DataTable({
+			/* $('#dataTables-assign').DataTable({
 				responsive : true
-			});
+			}); */
 
 			
 		});
@@ -434,7 +418,7 @@
 
 																			+ '</td><td>'
 																			+ "<a href=${pageContext.request.contextPath}/admin/plans/select/assign/"+cc+">"
-																			+ 'Select'
+																			+ '<button class="btn btn-info btn-xs">Select</button>'
 																			+ '</a></td></tr>');
 																	jQuery(
 																			'#dataTables-assign')

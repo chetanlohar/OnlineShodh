@@ -2,6 +2,7 @@ package com.onlineshodh.controller;
 
 import java.util.List;
 
+import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.BusinessPlanService;
 import com.onlineshodh.service.PlanService;
 import com.onlineshodh.service.impl.BusinessDetailsServiceImpl;
+import com.onlineshodh.support.validator.BusinessPlanValidator;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 @Controller
@@ -53,6 +55,15 @@ public class PlanController {
 	
 	@Autowired
 	BusinessPlanService businessPlanService;  
+	
+	
+	BusinessPlanValidator businessPlanValidator;
+	
+	@Autowired
+	public PlanController(BusinessPlanValidator businessPlanValidator) {
+		super();
+		this.businessPlanValidator = businessPlanValidator;
+	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.GET)
 	public String redirectTosaveCity() {
@@ -117,7 +128,7 @@ public class PlanController {
 	@RequestMapping(value = "/edit/{planId}", method = RequestMethod.GET)
 	public String editPlan(ModelMap model,
 			@PathVariable("planId") Integer planId) {
-		System.out.println(" i am in Plan Edit");
+		System.out.println(" I am in Plan Edit");
 		PlanEntity planEntity = planservice.getPlan(planId);
 		model.addAttribute("plan", planEntity);
 		return "plan/edit_plan";
@@ -193,10 +204,85 @@ public class PlanController {
 	@RequestMapping(value="/assignPlan",method=RequestMethod.POST)
 	public String assignBusinessPlan(ModelMap model,@ModelAttribute("businessPlan")BusinessPlanEntity businessPlan,BindingResult result){
 		
-		System.out.println(" Plan B "+businessPlan.getBusiness().getBusinessId());
+		boolean flag1=false;
+	 businessPlanValidator.validate(businessPlan, result);
+	 
+		if(result.hasErrors()){
+		
+			System.out.println("Error Count :"+result.getErrorCount());
+			List<FieldError> errors=result.getFieldErrors();
+			for (FieldError error:errors) {
+				System.out.println(" Error message "+error.getDefaultMessage());
+			}
+			flag1=true;
+		}
+		
+		
+		if(businessPlan.getPlan().getPlanId()==0)
+		{
+			FieldError error=new FieldError("businessPlan", "plan.planId", "Please Select Plan"); 
+		     result.addError(error);
+		     flag1=true;
+		}
+		System.out.println("ststus"+businessPlan.getStatus());
+		if(businessPlan.getStatus().equalsIgnoreCase("0"))
+		{
+			FieldError error1=new FieldError("businessPlan", "status", "Please Select Status"); 
+		     result.addError(error1);
+		     flag1=true;
+		}/*if(businessPlan.getStartdate()==null){
+			FieldError error=new FieldError("businessPlan", "startdate", "Please Select Start Date"); 
+		     result.addError(error);
+		     flag1=true;
+		}if(businessPlan.getEnddate()==null){
+			FieldError error=new FieldError("businessPlan", "enddate", "Please Select end Date"); 
+		     result.addError(error);
+		     flag1=true;
+		}*/
+		
+		if(flag1){
+			return "plan/assign"; 	
+		}
+		
+		try{
+			System.out.println(businessPlan);
         boolean flag=businessPlanService.assignBusinessPlan(businessPlan);
         System.out.println("assign Plan"+flag);
+		}catch(DataIntegrityViolationException exception){
+			FieldError planNameAlreadyAssignError;
+			FieldError	planNameAlreadyError;
+		     
+			if (exception.getMostSpecificCause().getMessage()
+					.contains("unique")){
+				planNameAlreadyAssignError = new FieldError("businessPlan", "plan.planId",
+						alreadyExist);
+			result.addError(planNameAlreadyAssignError);
+			planNameAlreadyError = new FieldError("businessPlan", "plan.planId",
+					"Please Upgrade Plan"); 	
+			result.addError(planNameAlreadyError);
+			}
+			return "plan/assign"; 	
+		}
+		catch(Exception exception){
+			System.out.println(" Error Ocurs "+exception.getMessage());
+			FieldError error=new FieldError("businessPlan", "enddate", "Please Enter Valid Input"); 
+		     result.addError(error);
+		     return "plan/assign";
+		     
+		}
+		
 		return "plan/assign";
 	}
+	
+	@RequestMapping(value="/assignPlan",method=RequestMethod.GET)
+	public String redirectToAssignPlan(){
+		return "plan/Assignplan";
+	}
+	
+	@RequestMapping(value="/planAssign",method=RequestMethod.GET)
+	public String assignPlan(){
+		return "plan/Assignplan";
+	}
+	
 	
 }
