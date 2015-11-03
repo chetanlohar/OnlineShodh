@@ -358,7 +358,7 @@
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
 									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
+										id="dataTables-city">
 										<thead>
 											<tr>
 												<th>City ID</th>
@@ -419,46 +419,44 @@
 	<!-- /. WRAPPER  -->
 
 				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-				<!-- JQUERY SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-				<!-- validation SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
-				<!-- BOOTSTRAP SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+    <!-- JQUERY SCRIPTS -->
+         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+          	<!-- validation LIB SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		 
+		 	<!-- validation  SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
+        
+        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+        
+                <!-- BOOTSTRAP JANSY SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+        
+      	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+        	<!-- Datepicker SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+        
+        <!-- CUSTOM SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
-				<!-- validation SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-
-
-
-				<!-- METIMENU SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-
-				<!-- DATATABLE SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-
-
-
-				<!-- CUSTOM SCRIPTS -->
-				<script
-					src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 				<!-- CUSTOM SCRIPTS -->
 				<script type="text/javascript"
 					src="${pageContext.request.contextPath}/resources/js/ManageCity.js"></script>
-				<script type="text/javascript"
-					src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+				
 
 
 				<script>
 					$(document).ready(function() {
-						$('#dataTables-example').DataTable({
+						$('#dataTables-city').DataTable({
 							responsive : true
 						});
 					});

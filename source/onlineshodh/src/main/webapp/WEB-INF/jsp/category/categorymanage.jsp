@@ -10,29 +10,29 @@
 <title>Category</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -149,7 +149,7 @@
                     <ul class="nav" id="main-menu">
                         <li>
                         <div class="user-img-div">
-                            <img src="<%=request.getContextPath()%>/resources/images/user_pic.jpg" class="img-circle" />
+                            <img src="${pageContext.request.contextPath}/resources/images/user_pic.jpg" class="img-circle" />
 
                            
                         </div>
@@ -160,7 +160,7 @@
                         </li>
 
                         <li>
-                            <a   href="<%=request.getContextPath()%>/admin/home"><i class="fa fa-home "></i>Home</a>
+                            <a   href="${pageContext.request.contextPath}/admin/home"><i class="fa fa-home "></i>Home</a>
                         </li>
                              <li class="active"><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 							Category Management<span class="fa arrow"></span></a>
@@ -190,7 +190,7 @@
                            <li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
 							Client Management<span class="fa arrow"></a>
 						<ul class="nav nav-second-level">
-							<li><a href="<%=request.getContextPath()%>/prashant/clientcreate">Manage Client</a></li>
+							<li><a href="${pageContext.request.contextPath}/prashant/clientcreate">Manage Client</a></li>
 						</ul></li>
 						
 						
@@ -198,7 +198,7 @@
                             <a href="#"><i class="fa fa-"></i>Business Management  <span class="fa arrow"></span></a>
                             <ul class=" nav nav-second-level">
                                 <li>
-                                    <a href="<%=request.getContextPath()%>/prashant/businessmanage">
+                                    <a href="${pageContext.request.contextPath}/prashant/businessmanage">
                                         <i class="fa fa-user-plus"></i>
                                        Add Business
                                     </a>
@@ -344,22 +344,23 @@
 				<!-- /.row -->
 					<div class="row">
 		<div class="col-lg-9">
-			<form:form
-				action="${pageContext.request.contextPath}/admin/categories/save"
-				method="post" modelAttribute="category"
+			<form:form	action="${pageContext.request.contextPath}/admin/categories/save"	method="post" modelAttribute="category"
 				enctype="multipart/form-data" class="form-horizontal"
 				id="categorymanage">
 
 				<div class="col-lg-12 space">
 					<label for="categoryName" class="col-sm-5 control-label">
 						Category Name</label>
-					<div class="input-group">
+						<div class="input-group">
 						<span class="input-group-addon"><span class="fa fa-user"></span></span>
-						<form:input path="categoryName" title="Category Name"
-							maxlength="25" size="51" class="form-control" id="categoryname"
-							name="categoryname" />
-						<form:errors path="categoryName" cssClass="errors" />
-					</div>
+						<form:input path="categoryName" title="Category Name" maxlength="25" size="51" class="form-control" id="categoryname"
+							/>
+						<form:errors path="categoryName" cssClass="error" />
+						
+ 					                    
+                       
+ 
+ </div>
 				</div>
 
 				<div class="col-lg-12 space">
@@ -369,7 +370,7 @@
 						<form:textarea path="categoryDesc" title="Category Description"
 							class="form-control" rows="3" id="categorydesc"
 							name="categorydesc" />
-						<form:errors path="categoryDesc" cssClass="errors" />
+						<form:errors path="categoryDesc" cssClass="error" />
 
 					</div>
 				</div>
@@ -379,7 +380,7 @@
 						<div class="fileinput-preview thumbnail" data-trigger="fileinput"
 							style="width: 200px; height: 150px;">
 							<img id="categorylogo"
-								src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+								src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
 								alt="...">
 
 						</div>
@@ -389,7 +390,7 @@
 								class="fileinput-exists">Change</span><input type="file"
 								id="file" name="file" onchange="changeImage(this);">
 								<form:errors path="categoryLogo" cssClass="errors" />
-			                     <img id="categorylogo" height="50" width="50"/>
+			                     
 								</span>
 							<!-- <img id="categorylogo" height="50" width="50"/> -->
 							<a href="#" class="btn btn-default fileinput-exists"
@@ -401,8 +402,12 @@
 
 
 				<div class="col-lg-6 col-lg-offset-6 space">
-					<button type="submit" class="btn btn-success" id="display"
-						id="saveCategory" name="saveCategory">Submit</button>
+					<!-- <button type="submit" class="btn btn-success" id="display"
+						id="saveCategory" name="saveCategory">Submit</button> -->
+						
+						<button type="submit" class="btn btn-success" id="display"
+						 name="saveCategory">Submit</button>
+						
 					<button type="reset" class="btn btn-danger">Cancel</button>
 				</div>
 			</form:form>
@@ -420,7 +425,7 @@
 				<div class="panel-body">
 					<div class="dataTable_wrapper table-responsive">
 						<table class="table table-striped table-bordered table-hover"
-							id="dataTables-example">
+							id="dataTables-category">
 							<thead>
 								<tr>
 									<th>Category Id</th>
@@ -485,41 +490,42 @@
 	</div>
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-	<!-- JQUERY SCRIPTS -->
+ <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+        <!-- JQUERY SCRIPTS -->
+         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+         <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		 
+	  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
+         
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+        
+        
+        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+        
+                <!-- BOOTSTRAP JANSY SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+        
+        
+      	<!-- DATATABLE SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
-
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
-
-
-	<!-- JANSY BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
-
-	<!-- METIMENU SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
-
-	<!-- DATATABLE SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
-
-	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
-
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+        
+	
+        <!-- CUSTOM SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('#dataTables-example').DataTable({
+			$('#dataTables-category').DataTable({
 				responsive : true
 			});
+
+			
+			
+			
 		});
 	</script>
 </body>

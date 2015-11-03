@@ -1,10 +1,45 @@
 $(document).ready(function(){
+	/*=========================
+	  category Manage Validation
+	 ===========================*/
+	$('#categorymanage').validate({
 
+	    rules: {
+	    	categoryName: {
+	            required: true
+	        }
+	     
+	    },
+	      messages:{
+	    	  
+	    	  categoryName:"Please Enter Valid Cat Name",
+	    	  state:"Please Select Valid State Name",
+	    	  country:"Please Select Valid country Name"
+	     
+	      },
+	  
+	      highlight: function(element) {
+	          $(element).closest('.form-group').addClass('has-error');
+	      },
+	      unhighlight: function(element) {
+	          $(element).closest('.form-group').removeClass('has-error');
+	      },
+	      
+	      errorElement: 'span',
+	      errorClass: 'error',
+
+	});
+
+
+	
+	
+	
 /*=========================
   City Manage Validation
  ===========================*/
 
 $('#citymanage').validate({
+
     rules: {
         city: {
             required: true

@@ -337,7 +337,7 @@
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
 									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
+										id="dataTables-state">
 										<thead>
 											<tr>
 												<th>State Id</th>
@@ -361,12 +361,17 @@
 											class="edit"><button class="btn btn-info btn-xs ">
 													<i class="fa fa-pencil"></i> Edit
 												</button></a> --%> <a
-														href="${pageContext.request.contextPath}/admin/states/edit/${state.stateId}/${state.country.countryId}">Edit</a>
+														href="${pageContext.request.contextPath}/admin/states/edit/${state.stateId}/${state.country.countryId}"><button class="btn btn-info btn-xs">
+																<i class="fa fa-pencil"></i> Edit
+															</button></a>
 													</td>
 													<td class="center"><a
 														href="${pageContext.request.contextPath}/admin/states/delete/${state.stateId}"
 														onclick="return confirm('Do you want to Remove State: ${state.stateName}')">
-															Delete </a></td>
+															<button
+																class="btn btn-danger btn-xs">
+																<i class="fa fa-trash"></i> Delete
+															</button> </a></td>
 												</tr>
 
 											</c:forEach>
@@ -396,38 +401,30 @@
 	<!-- /. WRAPPER  -->
 
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-	<!-- JQUERY SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-
-
-
-	<!-- METIMENU SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-
-	<!-- DATATABLE SCRIPTS -->
+<!-- JQUERY SCRIPTS -->
+         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+        
+        
+        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+        
+                <!-- BOOTSTRAP JANSY SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+        
+      	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-
-	<!-- CUSTOM SCRIPTS -->
+        	<!-- Datepicker SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+        
+          <!-- CUSTOM SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('#dataTables-example').DataTable({
+			$('#dataTables-state').DataTable({
 				responsive : true
 			});
 		});

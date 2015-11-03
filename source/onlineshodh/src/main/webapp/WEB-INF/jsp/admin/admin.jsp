@@ -189,7 +189,7 @@
 						
 						
                         <li>
-                            <a href="#"><i class="fa fa-"></i>Business Management  <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-briefcase"></i>Business Management  <span class="fa arrow"></span></a>
                             <ul class=" nav nav-second-level">
                                 <li>
                                     <a href="${pageContext.request.contextPath}/admin/clients/view/">
@@ -224,7 +224,7 @@
 						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
 							
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/prashant/plan_assign"> <i class="fa fa-list"></i> 
+						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <i class="fa fa-list"></i> 
 								Assign Business Plan
 						</a></li>
 					</ul>

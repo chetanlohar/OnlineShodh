@@ -10,29 +10,31 @@
 <title>Country</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!--Jancy STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
 	rel="stylesheet" />
 
 <!-- DATA TABLE STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
 	rel="stylesheet" />
 
 <!-- metis STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -150,7 +152,7 @@
 				<li>
 					<div class="user-img-div">
 						<img
-							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
 							class="img-circle" />
 
 
@@ -159,7 +161,7 @@
 				</li>
 				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
 
-				<li><a href="<%=request.getContextPath()%>/admin/home"><i
+				<li><a href="${pageContext.request.contextPath}/admin/home"><i
 						class="fa fa-home "></i>Home</a></li>
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 						Category Management<span class="fa arrow"></span></a>
@@ -182,8 +184,7 @@
 								Management</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/states">State
 								Management</a></li>
-						<li><a 
-							href="${pageContext.request.contextPath}/admin/cities">City
+						<li><a href="${pageContext.request.contextPath}/admin/cities">City
 								Management</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/towns">Town
 								Management</a></li>
@@ -193,7 +194,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -202,7 +203,7 @@
 						class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/prashant/businessmanage">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -326,7 +327,7 @@
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
 									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
+										id="dataTables-country">
 										<thead>
 											<tr>
 												<th>Country Id</th>
@@ -342,7 +343,9 @@
 													<td>${country.countryId}</td>
 													<td>${country.countryName}</td>
 													<td><a
-														href="${pageContext.request.contextPath}/admin/countries/edit/${country.countryId}">Edit</a></td>
+														href="${pageContext.request.contextPath}/admin/countries/edit/${country.countryId}"><button class="btn btn-info  btn-xs">
+																<i class="fa fa-pencil"></i> Edit
+															</button></a></td>
 													<td class="center"><a
 														href="${pageContext.request.contextPath}/admin/countries/delete/${country.countryId}"
 														onclick="return confirm('Do you want to Remove Country: ${country.countryName}')">
@@ -366,50 +369,46 @@
 					<!-- /.col-lg-12 -->
 				</div>
 				<!-- /.row -->
-				
-			<!-- /. PAGE INNER  -->
-			<footer> &copy; 2015 OnlineShodh | By : <a
-				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+
+				<!-- /. PAGE INNER  -->
+				<footer> &copy; 2015 OnlineShodh | By : <a
+					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+			</div>
+			<!-- /. PAGE WRAPPER  -->
 		</div>
-		<!-- /. PAGE WRAPPER  -->
-	</div>
 
 	</div>
 	<!-- /. WRAPPER  -->
-				<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-				<!-- JQUERY SCRIPTS -->
-				<script
-					src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 
-				<script
-					src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
-				<!-- BOOTSTRAP SCRIPTS -->
-				<script
-					src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+        <!-- JQUERY SCRIPTS -->
+         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+        
+        
+        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+        
+                <!-- BOOTSTRAP JANSY SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+        
+      	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+        	<!-- Datepicker SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+        
+        <!-- CUSTOM SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
-				<!-- validation SCRIPTS -->
-				<script
-					src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
-
-
-
-				<!-- METIMENU SCRIPTS -->
-				<script
-					src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
-
-				<!-- DATATABLE SCRIPTS -->
-				<script
-					src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
-
-				<!-- CUSTOM SCRIPTS -->
-				<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
-
-				<script>
-					$(document).ready(function() {
-						$('#dataTables-example').DataTable({
-							responsive : true
-						});
-					});
-				</script>
+	<script>
+		$(document).ready(function() {
+			$('#dataTables-country').DataTable({
+				responsive : true
+			});
+		});
+	</script>
 </body>
 </html>

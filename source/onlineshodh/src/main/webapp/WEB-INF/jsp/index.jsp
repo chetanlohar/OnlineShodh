@@ -98,16 +98,16 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<form action="" method="get" class="form-inline">
-						<div class="input-group col-md-3 col-xs-12 col-xs-offset-1">
+						<div class="input-group col-md-3 col-xs-12 ">
 							<input type="text" class="form-control" placeholder="City" />
 						</div>
-						<div class="input-group col-md-6 col-xs-12">
+						<div class="input-group col-md-7 col-xs-12">
 							<input type="text" class="form-control"
 								placeholder="Search Hotels, Taxis, Movies & Much More" />
 
 						</div>
-						<div class="input-group col-md-1">
-							<button class="btn btn-info col-md-2 search_btn">
+						<div class="input-group col-md-1 col-xs-12 ">
+							<button class="btn btn-info col-md-2 col-xs-12  search_btn">
 								<i class="fa fa-search"></i>
 							</button>
 						</div>

@@ -44,15 +44,14 @@
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
-<script type="text/javascript"
+
+<%-- <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/commonjs.js"></script>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
-<script>
+	href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"> --%>
+<!-- <script>
 	$(function() {
 		$("#datepicker").datepicker();
 	});
@@ -62,7 +61,7 @@
 	$(function() {
 		$("#datepicker3").datepicker();
 	});
-</script>
+</script> -->
 
 
 
@@ -486,7 +485,7 @@
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
 									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-example">
+										id="dataTables-banner">
 										<thead>
 											<tr>
 
@@ -501,12 +500,15 @@
 												<th>URL Link</th>
 												<th>Total Hits</th>
 												<th>Status</th>
+												<th>Edit</th>
+												<th>Delete</th>
 
 											</tr>
 										</thead>
 										<tbody>
+											<c:forEach var="banner" items="${banners}">
 											<tr class="odd gradeX">
-												<c:forEach var="banner" items="${banners}">
+											
 													<td>${banner.bannerId}</td>
 													<td>${banner.category.categoryId}</td>
 													<td>${banner.city.cityId}</td>
@@ -557,41 +559,42 @@
 			<!-- /. PAGE WRAPPER  -->
 		</div>
 
-	</div>
+	
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-
-	<!-- Datepicker SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-
-	<!-- JANSY BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
-
-
-	<!-- METIMENU SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-
-	<!-- DATATABLE SCRIPTS -->
+         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+        
+        
+        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+        
+                <!-- BOOTSTRAP JANSY SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+        
+      	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+        	<!-- Datepicker SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+        
+          <!-- CUSTOM SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+        <script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
+        	<script>
+		$(document).ready(function() {
+		 	$('#dataTables-banner').DataTable({
+				responsive : true
+			});
+
+		
+
+		
+		});
+	</script>
 </body>
 </html>
