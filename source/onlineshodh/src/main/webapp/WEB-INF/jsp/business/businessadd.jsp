@@ -320,6 +320,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span> 
 											<form:input path="businessName"	class="form-control" id="businame" name="businame"/>
+                                            <form:errors path="businessName" cssClass="error"/>    									
 									</div>
 								</div>
 
@@ -337,6 +338,7 @@
 											class="fileinput-exists">Change</span>
 											<input type="file"	name="file"></span> 
 											<a href="#"	class="input-group-addon btn btn-default fileinput-exists"	data-dismiss="fileinput">Remove</a>
+									        <form:errors path="businessLogo" cssClass="error"/>   
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -355,6 +357,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> 
 											<form:input path="personName" class="form-control" id="personname" name="personname"/>
+									         <form:errors path="personName" cssClass="error"/>    
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -364,6 +367,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-envelope"></span></span> 
 											<form:input path="email" class="form-control" id="busimail" name="busimail"/>
+									        <form:errors path="email" cssClass="error"/>   
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -373,6 +377,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-globe"></span></span> 
 											<form:input path="website" class="form-control" name="Website"/>
+											<form:errors path="website" cssClass="error"/>  
 									</div>
 								</div>
 

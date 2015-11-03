@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +44,7 @@ import com.onlineshodh.service.StateService;
 import com.onlineshodh.service.SubCategoryService;
 import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.UserDetailsService;
+import com.onlineshodh.support.validator.BusinessDetailsValidator;
 
 @Controller
 @RequestMapping("admin/business")
@@ -87,6 +89,16 @@ public class BusinessController {
 	@Autowired
 	BusinessGeneralInfoService businessGeneralInfoService;
 	
+	
+      BusinessDetailsValidator businessDetailsValidator; 
+	
+	@Autowired
+	public BusinessController(BusinessDetailsValidator businessDetailsValidator) {
+		super();
+		this.businessDetailsValidator = businessDetailsValidator;
+	}
+	
+	
 	@RequestMapping(value = { "/", "" })
 	public String manageBusinessDetails(ModelMap model) {
 		model.addAttribute("businessDetails", context.getBean(
@@ -103,6 +115,35 @@ public class BusinessController {
 		System.out.println();
 		if(!file.isEmpty())
 			businessDetails.setBusinessLogo(file.getBytes());
+		boolean flag=false;
+		
+		/*if(file.isEmpty())
+		{
+			FieldError error=new FieldError("businessDetails", "businessLogo", "please select Image");
+			result.addError(error);
+			flag=true;
+		}*/
+		
+		
+		
+		
+		businessDetailsValidator.validate(businessDetails, result);
+		
+		if(result.hasErrors()){
+			System.out.println("Errror Count"+result.getErrorCount());
+			List<FieldError> errors=result.getFieldErrors();
+			for (FieldError error:errors) {
+				System.out.println(" Error :"+error.getDefaultMessage());
+				flag=true;
+			}
+			
+			if(flag){
+				/*model.addAttribute("businessdetail", )*/
+				return "business/businessadd";
+			}
+			
+		}
+		
 		
 		businessService.saveBusinessDetails(businessDetails);
 		
@@ -110,6 +151,15 @@ public class BusinessController {
 		return "redirect:/admin/business/"+businessDetails.getUserDetails().getUserDetailsId()+"/update/"+businessDetails.getBusinessId();
 	}
 
+	/*	
+	@RequestMapping(value="/new/save",method=RequestMethod.GET)
+	public String redirectToAddBusiness(){
+	
+		return "redirect:/admin/business/"+businessDetails.getUserDetails().getUserDetailsId()+"/update/"+businessDetails.getBusinessId();
+
+	}*/ 
+	
+	
 	
 	@RequestMapping("/load/logo/{businessId}")
 	public String downloadPicture(
