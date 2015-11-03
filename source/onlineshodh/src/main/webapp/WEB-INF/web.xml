@@ -8,6 +8,10 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
+	
+	<!-- <listener>
+		<listener-class>com.onlineshodh.utility.ApplicationStartUp</listener-class>
+	</listener> -->
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -15,6 +19,11 @@
 			classpath:spring/application.xml
 			classpath:spring/spring-security.xml
 		</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>LuceneIndexFilePath</param-name>
+		<param-value>C:\LuceneIndex\</param-value>
 	</context-param>
 
 	<servlet>

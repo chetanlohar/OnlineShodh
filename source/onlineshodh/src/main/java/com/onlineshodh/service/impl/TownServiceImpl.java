@@ -63,6 +63,11 @@ public class TownServiceImpl implements TownService{
 		townDao.saveTown(town);
 	}
 
+	@Override
+	public List<TownEntity> getTownsByCityName(String cityName) {
+		return townDao.getTownsByCityName(cityName);
+	}
+
 	
 
 }

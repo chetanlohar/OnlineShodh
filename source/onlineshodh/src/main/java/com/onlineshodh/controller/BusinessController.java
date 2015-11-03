@@ -140,7 +140,8 @@ public class BusinessController {
 	public String businessDetails(@PathVariable("userDetailsId") Long userDetailsId, ModelMap model)
 	{
 		model.addAttribute("userdetails",userDetailsService.getUserDetails(userDetailsId.intValue()));
-		model.addAttribute("businessDetails",businessService.getBusinessDetailsByUserDetailsId(userDetailsId));
+		List<BusinessDetailsEntity> l = businessService.getBusinessDetailsByUserDetailsId(userDetailsId);
+		model.addAttribute("businessDetails",l);
 		return "business/BusinessDetails";
 	}
 	

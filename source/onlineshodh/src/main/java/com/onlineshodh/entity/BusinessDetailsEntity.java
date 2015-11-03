@@ -2,7 +2,6 @@ package com.onlineshodh.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -88,7 +87,6 @@ public class BusinessDetailsEntity implements Serializable {
 	@ManyToOne(targetEntity=UserDetailsEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="userDetailsId")
 	private UserDetailsEntity userDetails;
-	
 	
 	@Column(name="regdate")
 	private Date regDate;
@@ -217,6 +215,20 @@ public class BusinessDetailsEntity implements Serializable {
 	 */
 	public void setUserDetails(UserDetailsEntity userDetails) {
 		this.userDetails = userDetails;
+	}
+
+	/**
+	 * @return the regDate
+	 */
+	public Date getRegDate() {
+		return regDate;
+	}
+
+	/**
+	 * @param regDate the regDate to set
+	 */
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
 
 	/* (non-Javadoc)

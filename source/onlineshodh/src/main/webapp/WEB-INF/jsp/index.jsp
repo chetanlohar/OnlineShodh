@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +20,6 @@
 <!-- CUSTOME STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/style.css"
 	rel="stylesheet" />
-
 
 </head>
 <body>
@@ -98,11 +99,12 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<form action="" method="get" class="form-inline">
+						
 						<div class="input-group col-md-3 col-xs-12 ">
-							<input type="text" class="form-control" placeholder="City" />
+						<input id="citysearch" type="text" class="form-control" placeholder="City" />
 						</div>
 						<div class="input-group col-md-7 col-xs-12">
-							<input type="text" class="form-control"
+							<input id="searchid" type="text" class="form-control"
 								placeholder="Search Hotels, Taxis, Movies & Much More" />
 
 						</div>
@@ -904,5 +906,23 @@
 		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+	<script>
+			$(document).ready(function() {
+				console.log("in auto_complete..path: ${pageContext.request.contextPath}");
+				$("#searchid").on("keyup",function(){
+					 $( "#searchid" ).autocomplete({
+							source: '${pageContext.request.contextPath}/search/dosearch'
+					});
+				});
+				
+				$("#citysearch").on("keyup",function(){
+					 $( "#citysearch" ).autocomplete({
+							source: '${pageContext.request.contextPath}/search/doCitySearch'
+					});
+				});
+			});
+</script>
+		
 </body>
 </html>

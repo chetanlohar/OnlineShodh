@@ -97,4 +97,10 @@ public class BusinessDetailsDaoImpl extends
 				.setParameter("businessName", bussinessName).getResultList();
 	}
 
+	@Override
+	public List<BusinessDetailsEntity> getAllBusinessDetais() {
+		setClazz(BusinessDetailsEntity.class);
+		return findAll();
+	}
+
 }

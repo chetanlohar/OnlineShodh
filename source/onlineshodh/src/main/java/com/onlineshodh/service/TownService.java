@@ -18,4 +18,6 @@ public interface TownService {
 	public Integer getLastTown();
 
 	public void saveTown(TownEntity town);
+	
+	public List<TownEntity> getTownsByCityName(String cityName);
 }

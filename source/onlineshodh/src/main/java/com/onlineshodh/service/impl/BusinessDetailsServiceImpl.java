@@ -62,4 +62,9 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 			String bussinessName) {
 		return businessDetailsDao.findBusinessDetailsByBusinessName(bussinessName);
 	}
+
+	@Override
+	public List<BusinessDetailsEntity> getAllBusinessDetais() {
+		return businessDetailsDao.getAllBusinessDetais();
+	}
 }

@@ -13,4 +13,5 @@ public interface TownDao{
 	public List<TownEntity> getAllTowns(Integer cityId);
 	public Integer getLastTown();
 	void saveTown(TownEntity town);
+	public List<TownEntity> getTownsByCityName(String cityName);
 }

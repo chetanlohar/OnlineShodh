@@ -62,6 +62,12 @@ public class TownDaoImpl extends AbstractJpaDao<TownEntity> implements TownDao {
 			return em.createQuery("select max(town.townId)from TownEntity town",Integer.class).getSingleResult();
 		}
 
+		@Override
+		public List<TownEntity> getTownsByCityName(String cityName) {
+			em=getEntityManager();
+			return em.createQuery("from TownEntity town where town.city.cityName like ?",TownEntity.class).setParameter(1, cityName).getResultList();
+		}
+
 	
 
 }

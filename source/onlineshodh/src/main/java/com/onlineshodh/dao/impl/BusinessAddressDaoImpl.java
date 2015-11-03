@@ -1,5 +1,7 @@
 package com.onlineshodh.dao.impl;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
@@ -32,6 +34,12 @@ public class BusinessAddressDaoImpl extends AbstractJpaDao<BusinessAddressEntity
 	@Override
 	public void saveBusinessAddress(BusinessAddressEntity businessAddressEntity) {
 		create(businessAddressEntity);
+	}
+
+	@Override
+	public List<BusinessAddressEntity> getAllBusinessAddressDetails() {
+		setClazz(BusinessAddressEntity.class);
+		return findAll();
 	}
 
 }

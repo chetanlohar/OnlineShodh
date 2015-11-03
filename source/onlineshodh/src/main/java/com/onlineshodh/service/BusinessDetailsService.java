@@ -24,6 +24,8 @@ public interface BusinessDetailsService {
 	 * @return BusinessDetails of specified BusinessId
 	 */
 	public BusinessDetailsEntity getBusinessDetails(Long businessId);
+	
+	public List<BusinessDetailsEntity> getAllBusinessDetais();
 
 	public List<BusinessDetailsEntity> getBusinessDetais(String name);
 
