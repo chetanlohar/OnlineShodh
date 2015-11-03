@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.PlanDao;
+import com.onlineshodh.entity.BusinessPlanEntity;
 import com.onlineshodh.entity.PlanEntity;
 import com.onlineshodh.service.PlanService;
 
@@ -41,6 +42,4 @@ public class PlanServiceImpl implements PlanService  {
 	public void deletePlan(Integer planId) {
 		planDao.deletePlan(planId);
 	}
-
-	
 }

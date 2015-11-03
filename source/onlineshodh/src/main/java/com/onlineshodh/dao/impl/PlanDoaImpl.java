@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.PlanDao;
+import com.onlineshodh.entity.BusinessPlanEntity;
 import com.onlineshodh.entity.PlanEntity;
 
 @Repository
@@ -35,5 +36,6 @@ public class PlanDoaImpl extends AbstractJpaDao<PlanEntity> implements PlanDao{
  	delete(planEntity);
 	}
 
+	
 	
 }

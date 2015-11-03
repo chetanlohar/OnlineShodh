@@ -2,6 +2,7 @@ package com.onlineshodh.service;
 
 import java.util.List;
 
+import com.onlineshodh.entity.BusinessPlanEntity;
 import com.onlineshodh.entity.PlanEntity;
 
 public interface PlanService {

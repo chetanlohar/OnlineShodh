@@ -3,6 +3,7 @@ package com.onlineshodh.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -267,4 +268,46 @@ public class BusinessController {
 			System.out.println(b.getGeneralInfoName());
 		return l;
 	}
+	/*
+	@RequestMapping(value="/{businessId}/features/save",method=RequestMethod.POST,produces="application/json")
+	public @ResponseBody List<BusinessGeneralInfoEntity> saveBusinessGeneralInfo(@PathVariable("businessId") Long businessId,@RequestParam("generalInfo") String generalInfo)
+	{
+		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
+		BusinessGeneralInfoEntity entity = context.getBean("businessGeneralInfoEntity",BusinessGeneralInfoEntity.class);
+		entity.setGeneralInfoName(generalInfo);
+		entity.setBusiness(business);
+		businessGeneralInfoService.saveBusinessGeneralInfo(entity);
+		List<BusinessGeneralInfoEntity> l = businessGeneralInfoService.getBusinessGeneralInfoByBusinessId(businessId);
+		for(BusinessGeneralInfoEntity b:l)
+			System.out.println(b.getGeneralInfoName());
+		return l;
+	}*/
+	
+	@RequestMapping(value = "/searchBusiness", method = RequestMethod.GET)
+	public @ResponseBody List<String> serachBusinesData(@RequestParam("term") String keyword) {
+		List<String> list=new ArrayList<String>();
+		List<BusinessDetailsEntity> clientListByBusinessName;
+		list.clear();
+		clientListByBusinessName=businessService.getBusinessDetailsByBusinessName(keyword);
+		System.out.println("Size OF BusinessName List"+clientListByBusinessName.size());
+		for(BusinessDetailsEntity bussiness:clientListByBusinessName){
+			System.out.println(" List value"+bussiness.getBusinessName());
+			list.add(bussiness.getBusinessName());
+		}
+		return list; 
+		
+	}
+	
+	@RequestMapping(value="/getBusiness",method=RequestMethod.POST)
+	public @ResponseBody List<BusinessDetailsEntity> getBusinessData(@RequestParam("keyword")String keyword){
+		List<BusinessDetailsEntity> clientListByBusinessName;
+		clientListByBusinessName=businessService.findBusinessDetailsByBusinessName(keyword);
+		System.out.println("After Search List Size In Table"+clientListByBusinessName);
+		return clientListByBusinessName; 
+	}
+	
+	
+	
+	
+	
 }

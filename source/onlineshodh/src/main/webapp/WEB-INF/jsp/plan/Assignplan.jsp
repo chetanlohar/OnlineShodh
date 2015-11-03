@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,6 +35,14 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
+
+<!-- JQUERY SCRIPTS -->
+<%-- <script
+	src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>  --%>
+
+
+	
 
 </head>
 <body>
@@ -300,12 +310,12 @@
 									Search</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-search"></span></span>
-									<input type="text" class="form-control" name="business_name" placeholder="Business Name">
+									<input type="text" class="form-control"  id="keyword"  name="business_name" placeholder="Business Name">
 
 								</div>
 							</div>
 							<div class="col-lg-5 col-lg-offset-5 space">
-								<button class="btn btn-success" type="submit">Search</button>
+								<button class="btn btn-success" id="searchButton" type="button">Search</button>
 
 							</div>
 
@@ -326,13 +336,13 @@
 								<table class="table plan_search-table table-bordered" id="dataTables-assign">
 									<thead>
 										<tr>
-											<th>Business Id</th>
+											<th>Business ID</th>
 											<th>Business Name</th>
 											<th>Business Logo</th>
 											<th>Action</th>
 										</tr>
 									</thead>
-									<tbody>
+									<tbody id=" ">
 										<tr>
 											<td>1</td>
 											<td>Softinfology Pvt Ltd</td>
@@ -359,7 +369,8 @@
 </div>
  <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
         <!-- JQUERY SCRIPTS -->
-         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+       <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>  
+  <script  src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
         
@@ -387,5 +398,78 @@
 			
 		});
 	</script>
+<script type="text/javascript">
+	$(function() {
+		$('#searchButton')
+				.click(
+						function() {
+							
+							
+							$
+									.ajax({
+										type : "POST",
+										url : "/onlineshodh/admin/business/getBusiness",
+										dataType : 'json',
+										data : {
+											"keyword" : $('#keyword').val()
+										},
+										success : function(response) {
+
+											console.log(response)
+
+											$('#dataTables-assign')
+													.find('.ab').remove(); 
+											  jQuery
+													.each(
+															response,
+															function(index,
+																	item) {
+																var cc = item.businessId;
+																	var newRow = jQuery('<tr class="ab"><td>'
+																			+ item.businessId
+																			+ '</td><td>'
+																			+ item.businessName
+																			+ '</td><td>'
+																			+"<img src=${pageContext.request.contextPath}/admin/business/load/logo/"+cc+"/>"
+
+																			+ '</td><td>'
+																			+ "<a href=${pageContext.request.contextPath}/admin/plans/select/assign/"+cc+">"
+																			+ 'Select'
+																			+ '</a></td></tr>');
+																	jQuery(
+																			'#dataTables-assign')
+																			.append(
+																					newRow);
+																	
+                                                               
+															}); 
+ 
+										},
+										error : function(e) {
+											console.log(e)
+											alert("Please Enter Valid keywords")
+											/* jQuery('#error')
+											.append(e); */
+										}
+									})
+
+						});
+	});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+$("#keyword").on("keyup",function(){
+	
+
+	 $( "#keyword" ).autocomplete({
+
+			source: '${pageContext.request.contextPath}/admin/business/searchBusiness'
+	});
+});
+	 
+}); 
+</script>		
 </body>
 </html>

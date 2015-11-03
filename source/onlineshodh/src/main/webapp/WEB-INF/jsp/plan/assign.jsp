@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>s
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -33,7 +35,6 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
-
 </head>
 <body>
 	<div id="wrapper">
@@ -297,15 +298,15 @@
 							<table class="table">
 								<tr>
 									<td class="lable">Business Id</td>
-									<td>1</td>
+									<td>${business.businessId}</td>
 								</tr>
 								<tr>
 									<td class="lable">Business Name</td>
-									<td>Softinfology pvt Ltd</td>
+									<td>${business.businessName}</td>
 								</tr>
 								<tr>
 									<td class="lable">Business Logo</td>
-									<td><img src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"/ class="plan_b_img"></td>
+									<td><img src="${pageContext.request.contextPath}/admin/business/load/logo/${business.businessId}" class="plan_b_img"></td>
 								</tr>
 								
 							</table>
@@ -317,16 +318,19 @@
 				</div>
 				<!-- /. row  -->
 				<div class="row space">
-				<form action="" class="form-horizontal">
+				 <form:form action="${pageContext.request.contextPath}/admin/plans/assignPlan" class="form-horizontal" method="POST" modelAttribute="businessPlan">
+				<form:hidden path="business.businessId"/>
 				<div class="col-lg-10 space">
 									<label for="mailid" class="col-sm-3 control-label">Plan
 										Name:</label>
 									<div class="input-group">
-										<select class="form-control" name="plan_name">
-											<option value="A">A</option>
-											<option value="B">B</option>
-											<option value="C">C</option>
-										</select>
+									
+										<form:select  path="plan.planId" class="form-control" name="plan_name">
+											<c:forEach var="plan" items="${plans}">
+											<form:option value="${plan.planId}">${plan.planName}</form:option>
+										</c:forEach>	
+										</form:select>
+								
 									</div>
 								</div>
 								
@@ -336,7 +340,8 @@
 									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
-											<input type="text" class="form-control" placeholder="strat Date" >
+											<form:input path="startdate" class="form-control" placeholder="strat Date"/>
+				                            <form:errors path="startdate"/>
 									</div>
 								</div>
 								<div class="col-lg-10 space ">
@@ -345,15 +350,20 @@
 									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
-											<input type="text" class="form-control" placeholder="End Date" >
-									</div>
+											<form:input path="enddate" class="form-control" placeholder="End Date"/>
+				                            <form:errors path="enddate"/>
+				                  </div>
 								</div>
-				
+								<label>Status</label>
+								<form:input path="status"/>
+				                  <form:errors path="status"/> 
+								
 				          <div class="col-lg-4 col-lg-offset-5 space">
-				          
 				          <button class="btn btn-info">Assign</button>
 				          </div>
-				</form>
+				</form:form> 
+				
+				
 				
 				</div>
 			
