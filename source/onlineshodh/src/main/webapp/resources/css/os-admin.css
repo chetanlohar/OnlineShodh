@@ -39,8 +39,9 @@ body {
     min-height: 800px;
 }
 .error{
-	display: inline;
+	display: block;
 	color: red;
+	margin-left: 350px;
 }
 .error1{
 	display: inline;

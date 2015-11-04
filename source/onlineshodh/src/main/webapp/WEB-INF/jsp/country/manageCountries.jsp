@@ -307,7 +307,7 @@
 
 								<form:input path="countryName" title="Country Name"
 									name="countryc" maxlength="25" size="50" class="form-control " />
-								<form:errors path="countryName" cssClass="errors" />
+								<form:errors path="countryName" cssClass="error" />
 							</div>
 							<div class="col-md-5 col-md-offset-6">
 								<button type="submit" class="btn btn-success" id="saveCountry"
@@ -386,7 +386,11 @@
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
         
-        
+                 <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		 
+	  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
         <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
         

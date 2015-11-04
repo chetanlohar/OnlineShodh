@@ -310,7 +310,7 @@
 
 								<form:select path="state.country.countryId" id="countryId"
 									class="form-control" name="country" onchange="getState()">
-									<form:option value="0" label="--- Select ---" />
+									<form:option value="" label="--- Select ---" />
 									<c:forEach var="country" items="${countries}">
 										<form:option value="${country.countryId}">${country.countryName}</form:option>
 									</c:forEach>
@@ -324,7 +324,7 @@
 
 								<form:select path="state.stateId" class="form-control"
 									name="state" id="countryStates">
-									<form:option value="0">Select</form:option>states
+									<form:option value="">---Select---</form:option>states
 				 <c:forEach var="state" items="${states}">
 										<form:option value="${state.stateId}">${state.stateName}</form:option>
 									</c:forEach>

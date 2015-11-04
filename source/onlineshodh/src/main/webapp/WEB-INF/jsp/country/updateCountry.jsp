@@ -305,13 +305,13 @@
 							<div class="form-group input-group col-md-9">
 								<form:input path="countryName" title="Country Name"
 									maxlength="25" size="50" class="form-control " name="cupdate" />
-								<form:errors path="countryName" cssClass="errors" />
+								<form:errors path="countryName" cssClass="error" />
 							</div>
 							<div class="col-lg-6 col-lg-offset-6 ">
 								<button class="btn btn-success add" type="submit"
 									id="saveCountry" name="saveCountry">UPDATE</button>
 								<a href="${pageContext.request.contextPath}/admin/countries/"
-									id="goBack" class="back">GoBack1</a>
+									id="goBack" class="back">GoBack</a>
 
 							</div>
 						</form:form>
@@ -322,7 +322,7 @@
 
 
 				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
+				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
 			<!-- /. PAGE WRAPPER  -->

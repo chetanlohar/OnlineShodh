@@ -2,35 +2,187 @@ $(document).ready(function(){
 	/*=========================
 	  category Manage Validation
 	 ===========================*/
+	/*$.validator.addMethod('filesize', function (value, element, param) {
+	    return this.optional(element) || (element.files[0].size <= param)
+	}, 'File size must be less than {0}');
+	*/
+	
 	$('#categorymanage').validate({
 
 	    rules: {
 	    	categoryName: {
 	            required: true
+	        },
+	        categoryDesc:{
+	        	 required: true
+	        }
+
+	    },
+	      messages:{
+	    	  
+	    	  categoryName:"Please Enter Valid Category Name",
+	    	  categoryDesc:"Please Select Valid category Description",
+	    	  file:"Please Select Valid File"
+	     
+	      },
+	  
+	      highlight: function(element) {
+	          $(element).closest('.space').addClass('has-error');
+	      },
+	      unhighlight: function(element) {
+	          $(element).closest('.space').removeClass('has-error');
+	      },
+	      errorElement: 'span',
+	      errorClass: 'error',
+	      errorPlacement: function(error, element) {
+	          if(element.parent('.input-group').length) {
+	              error.insertAfter(element.parent());
+	          } else {
+	              error.insertAfter(element);
+	          }},
+
+
+	});
+
+
+	
+	
+	/*=========================
+	  category Update Validation
+	 ===========================*/
+	$('#categoryupdate').validate({
+
+	    rules: {
+	    	categoryName: {
+	            required: true
+	        },
+	        categoryDesc:{
+	        	 required: true
 	        }
 	     
 	    },
 	      messages:{
 	    	  
-	    	  categoryName:"Please Enter Valid Cat Name",
-	    	  state:"Please Select Valid State Name",
+	    	  categoryName:"Please Enter Valid Category Name",
+	    	  categoryDesc:"Please Select Valid category Description",
 	    	  country:"Please Select Valid country Name"
 	     
 	      },
 	  
 	      highlight: function(element) {
-	          $(element).closest('.form-group').addClass('has-error');
+	          $(element).closest('.space').addClass('has-error');
 	      },
 	      unhighlight: function(element) {
-	          $(element).closest('.form-group').removeClass('has-error');
+	          $(element).closest('.space').removeClass('has-error');
 	      },
-	      
 	      errorElement: 'span',
 	      errorClass: 'error',
+	      errorPlacement: function(error, element) {
+	          if(element.parent('.input-group').length) {
+	              error.insertAfter(element.parent());
+	          } else {
+	              error.insertAfter(element);
+	          }},
+
+
+	});
+	
+	
+	
+	/*=========================
+	 sub-category Manage Validation
+	 ===========================*/
+	/*$.validator.addMethod('filesize', function (value, element, param) {
+	    return this.optional(element) || (element.files[0].size <= param)
+	}, 'File size must be less than {0}');
+	*/
+	
+	$('#subcategorymanage').validate({
+
+	    rules: {
+	    	"category.categoryId": {
+	            required: true
+	        },
+	        subCategoryName:{
+	        	 required: true
+	        },
+	        subCategoryDesc:{
+	        	required: true	
+	        }
+
+	    },
+	      messages:{
+	    	  
+	    	  "category.categoryId":"Please Enter Valid sub-Category Name",
+	    	  categoryDesc:"Please Select Valid category Description",
+	    	  file:"Please Select Valid File"
+	     
+	      },
+	  
+	      highlight: function(element) {
+	          $(element).closest('.space').addClass('has-error');
+	      },
+	      unhighlight: function(element) {
+	          $(element).closest('.space').removeClass('has-error');
+	      },
+	      errorElement: 'span',
+	      errorClass: 'error',
+	      errorPlacement: function(error, element) {
+	          if(element.parent('.input-group').length) {
+	              error.insertAfter(element.parent());
+	          } else {
+	              error.insertAfter(element);
+	          }},
+
 
 	});
 
 
+	
+	
+	/*=========================
+	  category Update Validation
+	 ===========================*/
+	$('#subcategoryupdate').validate({
+
+	    rules: {
+	    	"category.categoryId": {
+	            required: true
+	        },
+	        subCategoryName:{
+	        	   required: true
+	        },
+	        subCategoryDesc:{
+	        	 required: true
+	        }
+	     
+	    },
+	      messages:{
+	    	  
+	    	  "category.categoryId":"Please Enter Valid Category Name",
+	    	  subCategoryDesc:"Please Select Valid category Description",
+	    	  subCategoryName:"Please Select Valid Sub-Category Name"
+	     
+	      },
+	  
+	      highlight: function(element) {
+	          $(element).closest('.space').addClass('has-error');
+	      },
+	      unhighlight: function(element) {
+	          $(element).closest('.space').removeClass('has-error');
+	      },
+	      errorElement: 'span',
+	      errorClass: 'error',
+	      errorPlacement: function(error, element) {
+	          if(element.parent('.input-group').length) {
+	              error.insertAfter(element.parent());
+	          } else {
+	              error.insertAfter(element);
+	          }},
+
+
+	});
+	
 	
 	
 	
@@ -41,22 +193,22 @@ $(document).ready(function(){
 $('#citymanage').validate({
 
     rules: {
-        city: {
+    	cityName: {
             required: true
         },
-        country: {
+        "state.country.countryId": {
             
             required: true
         },
-        state:{
+        "state.stateId":{
         	  required: true
         }
     },
       messages:{
     	  
-    	  city:"Please Enter Valid City Name",
-    	  state:"Please Select Valid State Name",
-    	  country:"Please Select Valid country Name"
+    	  cityName:"Please Enter Valid City Name",
+    	  "state.stateId":"Please Select Valid State Name",
+    	  "state.country.countryId":"Please Select Valid country Name"
      
       },
   
@@ -80,10 +232,10 @@ $('#citymanage').validate({
 
 $('#cityupdate').validate({
     rules: {
-        Ccity: {
+    	cityName: {
             required: true
         },
-        Ccountry: {
+        "state.country.countryId": {
             
             required: true
         },
@@ -93,9 +245,9 @@ $('#cityupdate').validate({
     },
       messages:{
     	  
-    	  Ccity:"Please Enter Valid City Name",
-    	  Cstate:"Please Select Valid State Name",
-    	  Ccountry:"Please Select Valid country Name"
+    	  cityName:"Please Enter Valid City Name",
+    	  "state.stateId":"Please Select Valid State Name",
+    	  "state.country.countryId":"Please Select Valid country Name"
      
       },
   
@@ -268,7 +420,7 @@ country Manage  Validation
 
 $('#countrymanage').validate({
     rules: {
-    	countryc: {
+    	countryName: {
             required: true
         }
        
@@ -276,7 +428,7 @@ $('#countrymanage').validate({
     },
       messages:{
     
-    	  countryc:"Please Enter Valid Country Name",
+    	  countryName:"Please Enter Valid Country Name",
       },
   
       highlight: function(element) {
@@ -297,7 +449,7 @@ country Update  Validation
 
 $('#countryupdate').validate({
     rules: {
-    	cupdate: {
+    	countryName: {
             required: true
         }
        
@@ -305,7 +457,7 @@ $('#countryupdate').validate({
     },
       messages:{
     
-    	  cupdate:"Please Enter Valid Country Name",
+    	  countryName:"Please Enter Valid Country Name",
       },
   
       highlight: function(element) {
@@ -317,6 +469,12 @@ $('#countryupdate').validate({
       
       errorElement: 'span',
       errorClass: 'error',
+      errorPlacement: function(error, element) {
+          if(element.parent('.input-group').length) {
+              error.insertAfter(element.parent());
+          } else {
+              error.insertAfter(element);
+          }},
 
 });
 

@@ -388,7 +388,7 @@
 							<span class="btn btn-default btn-file"><span
 								class="fileinput-new">Select image</span><span
 								class="fileinput-exists">Change</span><input type="file"
-								id="file" name="file" onchange="changeImage(this);">
+								id="file" name="file">
 								<form:errors path="categoryLogo" cssClass="errors" />
 			                     
 								</span>

@@ -378,7 +378,9 @@
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-preview thumbnail" data-trigger="fileinput"
 							style="width: 200px; height: 150px;">
-							<%-- <img src="<%=request.getContextPath()%>/resources/images/user_pic.jpg" alt="..."> --%>
+						<img
+								src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}"
+								id="categorylogo" height="50" width="50" />
 
 						</div>
 						<div>
@@ -386,9 +388,9 @@
 								class="fileinput-new">Select image</span><span
 								class="fileinput-exists">Change</span><input type="file"
 								id="file" name="file" value="Browse"
-								onchange="changeImage(this);"></span> <img
+								onchange="changeImage(this);"></span> <%-- <img
 								src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}"
-								id="categorylogo" height="50" width="50" /> <a href="#"
+								id="categorylogo" height="50" width="50" /> --%> <a href="#"
 								class="btn btn-default fileinput-exists"
 								data-dismiss="fileinput">Remove</a>
 						</div>
@@ -411,7 +413,7 @@
 
 
 				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
+				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
 			<!-- /. PAGE WRAPPER  -->

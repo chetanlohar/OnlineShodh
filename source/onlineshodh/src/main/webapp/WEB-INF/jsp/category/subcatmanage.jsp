@@ -357,7 +357,7 @@
 
 						<form:select path="category.categoryId" required=""
 							class="form-control" id="categoryname" name="categoryname">
-							<form:option value="0" label="--- Select ---" />
+							<form:option value="" label="--- Select ---" />
 							<c:forEach var="category" items="${categories}">
 								<form:option value="${category.categoryId}">${category.categoryName}</form:option>
 							</c:forEach>
@@ -513,6 +513,11 @@
         	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+		     <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		 
+	  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
         
         <!-- CUSTOM SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>

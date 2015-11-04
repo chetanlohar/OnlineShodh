@@ -360,7 +360,7 @@
 						<span class="input-group-addon"><span class="fa fa-user"></span></span>
 						<form:select path="category.categoryId" class="form-control"
 							id="categorynameup" name="categorynameup" required="">
-							<form:option value="0" label="--- Select ---" />
+							<form:option value="" label="--- Select ---" />
 							<c:forEach var="category1" items="${categories}">
 								<form:option value="${category1.categoryId}">${category1.categoryName}</form:option>
 							</c:forEach>
@@ -434,7 +434,7 @@
 
 
 				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
+				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
 			<!-- /. PAGE WRAPPER  -->

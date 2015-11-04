@@ -90,7 +90,22 @@ public class CityController {
 				System.out.println(error.getDefaultMessage());
 			flag = true;
 		}
-
+		try {
+			if(city.getState().getCountry().getCountryId()==0){
+				FieldError error=new FieldError("city","state.country.countryId", mandatory);
+				result.addError(error);
+				flag=true;
+				/*errors.rejectValue("state.country.countryId", "11", mandatory);*/
+			}if(city.getState().getStateId()==0){
+				/*errors.rejectValue("state.stateId", "11", mandatory);*/
+				FieldError error=new FieldError("city","state.stateId", mandatory);
+				result.addError(error);
+				flag=true;
+			}
+		} catch (NullPointerException e) {
+			flag=true;
+		}
+		
 		if (flag) {
 			model.addAttribute("countries", countryService.getAllCountries());
 			model.addAttribute(

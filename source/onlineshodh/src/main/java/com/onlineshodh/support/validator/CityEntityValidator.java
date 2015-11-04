@@ -27,12 +27,12 @@ public class CityEntityValidator implements Validator {
 		
 		
 		
-		if(city.getState().getCountry().getCountryId()==0){
+		/*if(city.getState().getCountry().getCountryId()==0){
 			errors.rejectValue("state.country.countryId", "11", mandatory);
 		}if(city.getState().getStateId()==0){
 			errors.rejectValue("state.stateId", "11", mandatory);
 			
-		}
+		}*/
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "cityName", "11",
 				mandatory);
 		

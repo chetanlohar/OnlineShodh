@@ -310,7 +310,7 @@
 
 							<form:select path="state.country.countryId" class="form-control"
 								id="countryId" onchange="getState()">
-								<form:option value="0">Select</form:option>
+								<form:option value="">Select</form:option>
 								<c:forEach var="country" items="${countries}">
 									<form:option value="${country.countryId}">${country.countryName}</form:option>
 								</c:forEach>
@@ -363,7 +363,7 @@
 
 
 			<!-- /. PAGE INNER  -->
-			<footer> &copy; 2015 OnlineShodh | By : <a
+			<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 		</div>
 		<!-- /. PAGE WRAPPER  -->

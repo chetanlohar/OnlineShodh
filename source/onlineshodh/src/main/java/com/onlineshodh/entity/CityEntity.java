@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -33,6 +34,7 @@ public class CityEntity implements Serializable {
     private Integer cityId;
 	@Column(name="cityname")
 	@NotEmpty(message="City Name is Mandatory!")
+	@NotNull(message="City Name is Mandatory!")
 	/*@Pattern(regexp="^[a-zA-Z]+$",message="onlyAlphabets")*/
 	private String cityName;
 	@ManyToOne(targetEntity=StateEntity.class,fetch=FetchType.EAGER)

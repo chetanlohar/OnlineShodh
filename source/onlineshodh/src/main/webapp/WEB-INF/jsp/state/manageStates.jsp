@@ -310,14 +310,14 @@
 										<form:option value="${country.countryId}">${country.countryName}</form:option>
 									</c:forEach>
 								</form:select>
-								<form:errors path="country.countryId" cssClass="errors" />
+								<form:errors path="country.countryId" cssClass="error" />
 							</div>
 							<label for="stateName" class="col-md-3">State Name:</label>
 							<div class="form-group input-group col-md-9">
 
 								<form:input path="stateName" title="State Name" maxlength="25"
 									size="50" class="form-control" name="sstate" />
-								<form:errors path="stateName" cssClass="errors" />
+								<form:errors path="stateName" cssClass="error" />
 							</div>
 							<div class="col-md-5 col-md-offset-6">
 								<button type="submit" class="btn btn-success" id="saveSate"
