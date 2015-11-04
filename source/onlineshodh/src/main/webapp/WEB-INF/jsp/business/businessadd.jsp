@@ -396,8 +396,6 @@
 											</c:forEach>
 										</form:select>
 										<form:errors path="subCategory.category.categoryId" cssClass="errors" />
-										
-										
 									</div>
 								</div>
 								

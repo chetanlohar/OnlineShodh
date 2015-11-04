@@ -24,9 +24,7 @@ import org.springframework.stereotype.Component;
 @Table(name="business_details")
 public class BusinessDetailsEntity implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	/**

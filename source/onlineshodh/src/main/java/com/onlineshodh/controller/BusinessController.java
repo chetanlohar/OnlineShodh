@@ -124,8 +124,7 @@ public class BusinessController {
 			flag=true;
 		}*/
 		
-		
-		
+				
 		
 		businessDetailsValidator.validate(businessDetails, result);
 		

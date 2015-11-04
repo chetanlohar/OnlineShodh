@@ -29,8 +29,7 @@ public class BusinessPlanValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "status", "11", "Please Enter Status ");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "startdate", "11", "Please Select Start Date");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "enddate", "11", "Please Select End Date");
-		
-		
+				
 	}
 
 }
