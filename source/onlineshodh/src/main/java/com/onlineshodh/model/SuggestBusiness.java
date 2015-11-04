@@ -16,12 +16,14 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.BytesRef;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.onlineshodh.entity.BusinessDetailsEntity;
 import com.onlineshodh.service.BusinessDetailsService;
 
 @Component
+@Scope("prototype")
 public class SuggestBusiness{
 
 	@Autowired
@@ -45,12 +47,12 @@ public class SuggestBusiness{
 		}
 	}
 
-	private List<String> initLookup(AnalyzingInfixSuggester suggester, String name) {
+	private List<String> initLookup(AnalyzingInfixSuggester suggester, String name,String cityName) {
     	List<String>  lstResults = new ArrayList<String>();
         try {
             List<Lookup.LookupResult> results;
             HashSet<BytesRef> contexts = new HashSet<BytesRef>();
-            contexts.add(new BytesRef("FLIGHT".getBytes("UTF8")));
+            contexts.add(new BytesRef(cityName.getBytes("UTF8")));
             //contexts.add(new BytesRef(addlParam.getBytes("UTF8")));
             // Do the actual lookup.  We ask for the top 10 results.
             results = suggester.lookup(name, contexts, 10, true, false);
@@ -84,8 +86,8 @@ public class SuggestBusiness{
         }
     }
 	
-	public List<String> doAutoSuggest(String tagName)
+	public List<String> doAutoSuggest(String tagName,String cityName)
 	{
-		return initLookup(suggester, tagName);
+		return initLookup(suggester, tagName,cityName);
 	}
 }

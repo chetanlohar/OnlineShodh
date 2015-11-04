@@ -3,6 +3,8 @@ package com.onlineshodh.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.model.SuggestBusiness;
+import com.onlineshodh.service.BusinessAddressService;
 import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.UserDetailsService;
@@ -41,12 +44,30 @@ public class SearchController {
 	@Autowired
 	TownService townService;
 	
+	@Autowired
+	BusinessAddressService businessAddressService;
+	
+	List<TownEntity> towns;
+	private List<String> strTownsWithCity;
+	
+	@PostConstruct
+	public void init()
+	{
+		towns = townService.getAllTowns();
+		strTownsWithCity = new ArrayList<String>();
+		for(TownEntity town:towns)
+		{
+			strTownsWithCity.add(town.getCity().getCityName()+" ("+town.getTownName()+")");
+		}
+	}
+	 
 	@RequestMapping(value="/dosearch",method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> doSearch(@RequestParam("term") String tagName)
+	public List<String> doSearch(@RequestParam("term") String tagName,@RequestParam("cityName") String cityName)
 	{
+		System.out.println("cityName: "+cityName);
 		SuggestBusiness suggestBusiness=context.getBean("suggestBusiness",SuggestBusiness.class);
-		List<String> l = suggestBusiness.doAutoSuggest(tagName);
+		List<String> l = suggestBusiness.doAutoSuggest(tagName.trim(),cityName.trim());
 		for(String str:l)
 			System.out.println(str);
 		return l;
@@ -54,14 +75,12 @@ public class SearchController {
 	
 	@RequestMapping(value="/doCitySearch",method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> doCitySearch(@RequestParam("term") String cityName)
+	public List<String> doCitySearch(@RequestParam("term") String str)
 	{
-		List<String> l = new ArrayList<String>();
-		List<TownEntity> towns = townService.getTownsByCityName(cityName);
-		
-		for(TownEntity town:towns)
-			l.add(town.getCity().getCityName()+" ("+town.getTownName()+")");
-		return l;
+		List<String> matches = new ArrayList<String>();
+		for(String citytown:strTownsWithCity)
+			if(citytown.toUpperCase().contains(str.toUpperCase()))
+				matches.add(citytown);
+		return matches;
 	}
-	
 }

@@ -20,6 +20,8 @@
 <!-- CUSTOME STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/style.css"
 	rel="stylesheet" />
+	
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"/>
 
 </head>
 <body>
@@ -912,7 +914,7 @@
 				console.log("in auto_complete..path: ${pageContext.request.contextPath}");
 				$("#searchid").on("keyup",function(){
 					 $( "#searchid" ).autocomplete({
-							source: '${pageContext.request.contextPath}/search/dosearch'
+							source: '${pageContext.request.contextPath}/search/dosearch?cityName='+$( "#citysearch" ).val()
 					});
 				});
 				

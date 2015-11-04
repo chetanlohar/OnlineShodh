@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/admin")
 public class AdminController {
 	
-	@RequestMapping(value={"/","/home"})
+	@RequestMapping(value={"","/","/home"})
 	public String home()
 	{
 		return "admin/admin";

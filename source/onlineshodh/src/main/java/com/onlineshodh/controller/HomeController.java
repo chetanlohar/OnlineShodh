@@ -16,7 +16,6 @@ public class HomeController {
 	@RequestMapping(value={"/",""})
 	public String showHome(ModelMap model)
 	{
-		model.addAttribute("towns", townService.getAllTowns());
 		return "index";
 	}
 

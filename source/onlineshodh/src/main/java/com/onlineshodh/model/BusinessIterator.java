@@ -4,22 +4,15 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.Set;
-
-import javax.annotation.PostConstruct;
 
 import org.apache.lucene.search.suggest.InputIterator;
 import org.apache.lucene.util.BytesRef;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.onlineshodh.entity.AddressEntity;
-import com.onlineshodh.entity.BusinessAddressEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
 import com.onlineshodh.service.BusinessAddressService;
 
@@ -32,22 +25,11 @@ public class BusinessIterator implements InputIterator {
 	@Autowired
 	BusinessAddressService businessAddressService;
 	
-	Map<Long,AddressEntity> m;
-	
 	public BusinessIterator() {
 	}
 
 	public BusinessIterator(Iterator<BusinessDetailsEntity> businessIterator) {
 		this.businessIterator = businessIterator;
-	}
-	
-	@PostConstruct
-	public void init()
-	{
-		m = new HashMap<Long,AddressEntity>();
-		List<BusinessAddressEntity> l= businessAddressService.getAllBusinessAddressDetails();
-		for(BusinessAddressEntity bs:l)
-			m.put(bs.getBusiness().getBusinessId(), bs.getAddress());
 	}
 
 	@Override
@@ -68,7 +50,10 @@ public class BusinessIterator implements InputIterator {
 	public Set<BytesRef> contexts() {
 		try {
             Set<BytesRef> addlParams = new HashSet<BytesRef>();
-            addlParams.add(new BytesRef(currBusiness.getSubCategory().getSubCategoryName().getBytes("UTF8")));
+            String city = currBusiness.getAddress().getTown().getCity().getCityName();
+            String town = currBusiness.getAddress().getTown().getTownName();
+            String cityTown = city.toUpperCase()+" ("+town.toUpperCase()+")";
+            addlParams.add(new BytesRef(cityTown.getBytes("UTF8")));
             return addlParams;
         } catch (UnsupportedEncodingException e) {
             throw new Error("Couldn't convert to UTF-8");
@@ -103,7 +88,7 @@ public class BusinessIterator implements InputIterator {
 
 	@Override
 	public long weight() {
-		return 0;
+		return currBusiness.getRank();
 	}
 
 }

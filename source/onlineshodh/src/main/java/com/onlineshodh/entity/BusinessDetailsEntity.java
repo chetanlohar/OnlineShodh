@@ -89,6 +89,13 @@ public class BusinessDetailsEntity implements Serializable {
 	@Column(name="regdate")
 	private Date regDate;
 
+	@ManyToOne(targetEntity=AddressEntity.class,fetch=FetchType.EAGER)
+	@JoinColumn(name="addressId")
+	private AddressEntity address;
+	
+	@Column(name="rank")
+	private Integer rank;
+	
 	/**
 	 * @return the businessId
 	 */
@@ -227,6 +234,34 @@ public class BusinessDetailsEntity implements Serializable {
 	 */
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
+	}
+	
+	/**
+	 * @return the address
+	 */
+	public AddressEntity getAddress() {
+		return address;
+	}
+
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(AddressEntity address) {
+		this.address = address;
+	}
+	
+	/**
+	 * @return the rank
+	 */
+	public Integer getRank() {
+		return rank;
+	}
+
+	/**
+	 * @param rank the rank to set
+	 */
+	public void setRank(Integer rank) {
+		this.rank = rank;
 	}
 
 	/* (non-Javadoc)

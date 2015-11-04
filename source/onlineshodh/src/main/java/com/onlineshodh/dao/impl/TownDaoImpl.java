@@ -65,7 +65,7 @@ public class TownDaoImpl extends AbstractJpaDao<TownEntity> implements TownDao {
 		@Override
 		public List<TownEntity> getTownsByCityName(String cityName) {
 			em=getEntityManager();
-			return em.createQuery("from TownEntity town where town.city.cityName like ?",TownEntity.class).setParameter(1, cityName).getResultList();
+			return em.createQuery("from TownEntity town where town.city.cityName like :cityName",TownEntity.class).setParameter("cityName", cityName+"%").getResultList();
 		}
 
 	
