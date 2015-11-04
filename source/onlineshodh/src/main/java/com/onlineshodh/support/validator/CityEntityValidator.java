@@ -19,7 +19,6 @@ public class CityEntityValidator implements Validator {
 	@Override
 	public boolean supports(Class clazz) {
 		return CityEntity.class.isAssignableFrom(clazz);
-
 	}
 
 	@Override
