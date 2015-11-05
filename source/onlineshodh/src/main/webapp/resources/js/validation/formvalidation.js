@@ -198,10 +198,12 @@ $('#citymanage').validate({
         },
         "state.country.countryId": {
             
-            required: true
+            required: true,
+            min:1
         },
         "state.stateId":{
-        	  required: true
+        	  required: true,
+        	  min:1
         }
     },
       messages:{
@@ -237,10 +239,12 @@ $('#cityupdate').validate({
         },
         "state.country.countryId": {
             
-            required: true
+            required: true,
+            min:1
         },
-        Cstate:{
-        	  required: true
+        "state.stateId":{
+        	  required: true,
+        	  min:1
         }
     },
       messages:{
@@ -269,26 +273,33 @@ Town Manage Validation
 
 $('#townmanage').validate({
     rules: {
-        tcity: {
-            required: true
-        },
-        tcountry: {
+    	"city.state.country.countryId": {
+            required: true,
+            min:1
             
-            required: true
         },
-        tstate:{
-        	  required: true
+        "city.cityId": {
+            
+            required: true,
+            min:1
+            
         },
-        ttowm:{
+        "city.state.stateId":{
+        	  required: true,
+        	  min:1
+        	  
+        },
+        townName:{
       	  required: true
+      	  
       }
     },
       messages:{
     	  
-    	  tcity:"Please Enter Valid City Name",
-    	  tstate:"Please Select Valid State Name",
-    	  tcountry:"Please Select Valid country Name",
-    	  ttowm:"Please Enter Valid Town Name",
+    	  "city.cityId":"Please Enter Valid City Name",
+    	  "city.state.stateId":"Please Select Valid State Name",
+    	  "city.state.country.countryId":"Please Select Valid country Name",
+    	  townName:"Please Enter Valid Town Name",
       },
   
       highlight: function(element) {
@@ -309,26 +320,30 @@ Town Update Validation
 
 $('#townupdate').validate({
     rules: {
-        tucity: {
-            required: true
+    	"city.state.country.countryId": {
+            required: true,
+            min:1
         },
-        tucountry: {
+        "city.state.stateId": {
             
-            required: true
+            required: true,
+            min:1
         },
-        tustate:{
-        	  required: true
+        "city.cityId":{
+        	  required: true,
+        	  min:1
         },
-        tutown:{
+        townName:{
       	  required: true
+      	
       }
     },
       messages:{
     	  
-    	  tucity:"Please Enter Valid City Name",
-    	  tustate:"Please Select Valid State Name",
-    	  tucountry:"Please Select Valid country Name",
-    	  tutown:"Please Enter Valid Town Name",
+    	  "city.cityId":"Please Enter Valid City Name",
+    	  "city.state.stateId":"Please Select Valid State Name",
+    	  "city.state.country.countryId":"Please Select Valid country Name",
+    	  townName:"Please Enter Valid Town Name",
       },
   
       highlight: function(element) {
@@ -352,10 +367,11 @@ State Manage  Validation
 
 $('#statemanage').validate({
     rules: {
-    	scountry: {
-            required: true
+    	"country.countryId": {
+            required: true,
+            min:1
         },
-        sstate: {
+        stateName: {
             
             required: true
         }
@@ -363,8 +379,8 @@ $('#statemanage').validate({
     },
       messages:{
     	  
-    	  scountry:"Please Select Valid country Name",
-    	  sstate:"Please Enter Valid State Name",
+    	  "country.countryId":"Please Select Valid country Name",
+    	  stateName:"Please Enter Valid State Name",
       },
   
       highlight: function(element) {
@@ -387,10 +403,11 @@ State Update Validation
 
 $('#stateupdate').validate({
     rules: {
-    	sucountry: {
-            required: true
+    	"country.countryId": {
+            required: true,
+            min:1
         },
-        sustate: {
+        stateName: {
             
             required: true
         }
@@ -398,8 +415,8 @@ $('#stateupdate').validate({
     },
       messages:{
     	  
-    	  sucountry:"Please Select Valid country Name",
-    	  sustate:"Please Enter Valid State Name",
+    	  "country.countryId":"Please Select Valid country Name",
+    	  stateName:"Please Enter Valid State Name",
       },
   
       highlight: function(element) {
@@ -484,32 +501,51 @@ $('#countryupdate').validate({
 
 $('#clientform').validate({
     rules: {
-    	clietmail: {
+    	"user.userName": {
     		email:true,
             required: true
         },
         
-        clietpass: {
+        "user.password": {
             required: true,
         	minlength: 6
         },
         
-          clietCpass : {
+        "user.password" : {
             required: true,
-            equalTo: "#clientpass"
+            equalTo: "user.password"
         },
         
-        clietname: {
+        "userDetails.name": {
         	 required: true
             
         },
+        
+        "userDetails.phone1":{
+        	required: true,
+        	minlength: 10,
+        	maxlength: 10
+
+
+        },
+        "userDetails.phone2":{
+        	required: true,
+        	minlength: 10,
+        	maxlength: 10
+
+
+        },
    
-        address : {
+        "address.address" : {
             required: true,
             
         },
         
-        clientcountry : {
+        "address.street" : {
+            required: true,
+         
+        },
+        "address.landMark": {
             required: true,
          
         },
@@ -517,16 +553,22 @@ $('#clientform').validate({
             required: true,
             
         },
-        clientcity : {
+        "address.city.cityId" : {
             required: true,
+            
           
         },
-        clinettown : {
+        "address.town.townId" : {
             required: true,
             
         },
         
-        clietpin: {
+        "address.townOther" : {
+            required: true,
+            
+        },
+        
+        "address.pincode": {
             required: true,
            minlength:6,
            digit:true
@@ -534,7 +576,7 @@ $('#clientform').validate({
     },
       messages:{
     
-    	  cupdate:"Please Enter Valid Country Name",
+    	  "user.userName":"Please Enter Valid User Name",
       },
       
       highlight: function(element) {
@@ -555,6 +597,105 @@ $('#clientform').validate({
 });
 
 
+
+
+/*=========================
+Update CLIENT VALIDATION
+===========================*/
+
+$('#clientformupdate').validate({
+ rules: {
+ 	"name": {
+ 		
+         required: true
+     },
+     
+     
+     "user.password" : {
+         required: true,
+         equalTo: "user.password"
+     },
+     
+     "userDetails.name": {
+     	 required: true
+         
+     },
+     
+     "phone1":{
+     	required: true,
+     	minlength: 10,
+     	maxlength: 10
+
+
+     },
+     "phone2":{
+     	required: true,
+     	minlength: 10,
+     	maxlength: 10
+
+
+     },
+
+     "address.address" : {
+         required: true
+         
+     },
+     
+     "address.street" : {
+         required: true
+      
+     },
+     "address.landMark": {
+         required: true
+      
+     },
+     clientstate : {
+         required: true
+         
+     },
+     "address.city.cityId" : {
+         required: true,
+         min:1
+         
+       
+     },
+     "address.town.townId" : {
+         required: true
+         
+     },
+     
+     "address.townOther" : {
+         required: true,
+         
+     },
+     
+     "address.pincode": {
+         required: true,
+        minlength:6,
+        digit:true
+     },
+ },
+   messages:{
+ 
+ 	  "user.userName":"Please Enter Valid User Name",
+   },
+   
+   highlight: function(element) {
+       $(element).closest('.space').addClass('has-error');
+   },
+   unhighlight: function(element) {
+       $(element).closest('.space').removeClass('has-error');
+   },
+   errorElement: 'span',
+   errorClass: 'error1',
+   errorPlacement: function(error, element) {
+       if(element.parent('.input-group').length) {
+           error.insertAfter(element.parent());
+       } else {
+           error.insertAfter(element);
+       }},
+
+});
 
 /*=========================
 Business Contact VALIDATION

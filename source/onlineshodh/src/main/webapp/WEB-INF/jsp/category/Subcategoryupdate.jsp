@@ -422,8 +422,8 @@
 
 				<div class="col-lg-6 col-lg-offset-6 space">
 					<button type="submit" class="btn btn-success" id="display" id="saveSubCategory" name="saveSubCategory">Update</button>
-					<button type="reset" class="btn btn-danger">Cancel</button>
-			        <a href="${pageContext.request.contextPath}/admin/subcategories" class="btn btn-success" class="back">Go Back</a>
+					
+			        <a href="${pageContext.request.contextPath}/admin/subcategories" class="btn btn-danger" class="back">Go Back</a>
 				</div>
 			</form:form>
 		</div>

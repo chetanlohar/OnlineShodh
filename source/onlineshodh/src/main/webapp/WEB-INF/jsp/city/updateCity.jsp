@@ -310,7 +310,7 @@
 
 							<form:select path="state.country.countryId" class="form-control"
 								id="countryId" onchange="getState()">
-								<form:option value="">Select</form:option>
+								<form:option value="0">Select</form:option>
 								<c:forEach var="country" items="${countries}">
 									<form:option value="${country.countryId}">${country.countryName}</form:option>
 								</c:forEach>
@@ -400,7 +400,6 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/ManageCity.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+
 </body>
 </html>

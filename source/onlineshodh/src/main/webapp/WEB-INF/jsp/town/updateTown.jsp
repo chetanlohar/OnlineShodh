@@ -324,7 +324,7 @@
 
 								<form:select path="city.state.stateId" id="townStates"
 									onchange="getCity()" class="form-control">
-
+                                     <form:option value="0" label="---Select-------" />
 									<c:forEach var="state" items="${states}">
 										<form:option value="${state.stateId}">${state.stateName}</form:option>
 									</c:forEach>
@@ -338,6 +338,7 @@
 
 								<form:select class="form-control" path="city.cityId"
 									id="stateCities">
+									
 									<c:forEach var="city" items="${cities}">
 										<form:option value="${city.cityId}">${city.cityName}</form:option>
 									</c:forEach>
@@ -373,7 +374,7 @@
 
 
 				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
+				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
 			<!-- /. PAGE WRAPPER  -->
@@ -415,8 +416,7 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
-	<script type="text/javascript"
-		src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+	
 
 </body>
 </html>

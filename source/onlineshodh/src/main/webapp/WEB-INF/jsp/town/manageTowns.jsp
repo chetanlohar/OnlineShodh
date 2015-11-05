@@ -433,7 +433,13 @@
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
         
-        
+              	<!-- validation LIB SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		 
+		 	<!-- validation  SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
         <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
         

@@ -472,7 +472,7 @@
 
 										<form:select path="address.city.cityId" class="form-control"
 											name="clientcity" id="cityId" onchange="getTown();">
-											<form:option value="0">--Select--</form:option>
+											<form:option value="">--Select--</form:option>
 											<c:forEach var="city" items="${cities}">
 												<form:option value="${city.cityId}">${city.cityName}</form:option>
 											</c:forEach>
@@ -630,6 +630,12 @@
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
         
+          
+                 <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		 
+	  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
         
         <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>

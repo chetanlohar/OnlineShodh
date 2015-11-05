@@ -302,7 +302,7 @@
 				<form:form
 							action="${pageContext.request.contextPath}/admin/clients/update"
 							modelAttribute="userDetails" enctype="multipart/form-data"
-							class="form-horizontal" name="clientform" id="clientform">
+							class="form-horizontal" name="clientform" id="clientformupdate">
 						
 					
 					<form:hidden path="userDetailsId"/>
@@ -333,7 +333,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><span
 										class="fa fa-phone"></span></span>
-									<form:input path="phone1" class="form-control mobile-number"
+									<form:input path="phone1" class="form-control"
 										name="clietphone" />
 									<form:errors path="phone1" cssClass="errors" />
 
@@ -347,7 +347,7 @@
 									<span class="input-group-addon"><span
 										class="fa fa-phone"></span></span>
 
-									<form:input path="phone2" class="form-control mobile-number"
+									<form:input path="phone2" class="form-control"
 										name="clietphone2" />
 									<form:errors path="phone2" cssClass="errors" />
 

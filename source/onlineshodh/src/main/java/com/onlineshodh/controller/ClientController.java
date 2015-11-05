@@ -454,7 +454,7 @@ public class ClientController {
 					}
 					System.out.println(" address Entity after other Town Added"
 							+ addressEntity.toString());
-					addressService.saveAddress(addressEntity);
+					addressService.updateAddress(addressEntity);
 					Long lastAddress = addressService.getLastAddress();
 					System.out.println("last address" + lastAddress);
 					addressEntity.setAddressId(lastAddress);
