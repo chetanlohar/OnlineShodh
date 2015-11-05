@@ -191,6 +191,8 @@ public class BusinessController {
 		model.addAttribute("userdetails",userDetailsService.getUserDetails(userDetailsId.intValue()));
 		List<BusinessDetailsEntity> l = businessService.getBusinessDetailsByUserDetailsId(userDetailsId);
 		model.addAttribute("businessDetails",l);
+		for(BusinessDetailsEntity b:l)
+			System.out.println(b.getKeywords());
 		return "business/BusinessDetails";
 	}
 	

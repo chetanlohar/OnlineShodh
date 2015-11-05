@@ -20,14 +20,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.onlineshodh.entity.BusinessDetailsEntity;
-import com.onlineshodh.service.BusinessDetailsService;
+import com.onlineshodh.entity.SubCategoryEntity;
+import com.onlineshodh.service.SubCategoryService;
 
 @Component
 @Scope("prototype")
-public class SuggestBusiness{
+public class SuggestSubCategory {
 
 	@Autowired
-	BusinessDetailsService businessService;
+	SubCategoryService subCatService;
 	
 	StandardAnalyzer analyzer;
 	Directory index;
@@ -38,33 +39,28 @@ public class SuggestBusiness{
 	{
 		analyzer = new StandardAnalyzer();
 		index = new RAMDirectory();
-		List<BusinessDetailsEntity> businesses = businessService.getAllBusinessDetais();
+		List<SubCategoryEntity> subCategories = subCatService.getAllSubCategories();
 		try {
 			suggester = new AnalyzingInfixSuggester(index, analyzer);
-			suggester.build(new BusinessIterator(businesses.iterator()));
+			suggester.build(new SubCategoryIterator(subCategories.iterator()));
 		} catch (IOException e) {			
 			e.printStackTrace();
 		}
 	}
-
-	private List<String> initLookup(AnalyzingInfixSuggester suggester, String name,String cityName) {
+	
+	private List<String> initLookup(AnalyzingInfixSuggester suggester, String name) {
     	List<String>  lstResults = new ArrayList<String>();
         try {
             List<Lookup.LookupResult> results;
             HashSet<BytesRef> contexts = new HashSet<BytesRef>();
-            contexts.add(new BytesRef(cityName.getBytes("UTF8")));
-            contexts.add(new BytesRef(name.toUpperCase().getBytes("UTF8")));
             //contexts.add(new BytesRef(addlParam.getBytes("UTF8")));
             // Do the actual lookup.  We ask for the top 10 results.
             results = suggester.lookup(name, contexts, 10, true, false);
-            
-            System.out.println("results: size="+results.size());
-            
             for (Lookup.LookupResult result : results) {
-            	BusinessDetailsEntity business = getBusiness(result);
-                if (business != null) {
+            	SubCategoryEntity subCategory = getSubCategory(result);
+                if (subCategory != null) {
                     /*lstResults.add(trainEnt.getTitle() + ":" + trainEnt.getDescription() );*/
-                	lstResults.add(business.getBusinessName());
+                	lstResults.add(subCategory.getSubCategoryName());
                 }
             }
         } catch (IOException e) {
@@ -73,15 +69,15 @@ public class SuggestBusiness{
         return lstResults;
     }
 	
-	private BusinessDetailsEntity getBusiness(Lookup.LookupResult result)
+	private SubCategoryEntity getSubCategory(Lookup.LookupResult result)
     {
         try {
             BytesRef payload = result.payload;
             if (payload != null) {
                 ByteArrayInputStream bis = new ByteArrayInputStream(payload.bytes);
                 ObjectInputStream in = new ObjectInputStream(bis);
-                BusinessDetailsEntity p = (BusinessDetailsEntity) in.readObject();
-                return p;
+                SubCategoryEntity subCat = (SubCategoryEntity) in.readObject();
+                return subCat;
             } else {
                 return null;
             }
@@ -90,8 +86,8 @@ public class SuggestBusiness{
         }
     }
 	
-	public List<String> doAutoSuggest(String tagName,String cityName)
+	public List<String> doAutoSuggest(String tagName)
 	{
-		return initLookup(suggester, tagName,cityName);
+		return initLookup(suggester, tagName);
 	}
 }

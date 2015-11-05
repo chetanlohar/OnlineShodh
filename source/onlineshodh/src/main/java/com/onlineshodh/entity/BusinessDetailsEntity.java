@@ -96,6 +96,9 @@ public class BusinessDetailsEntity implements Serializable {
 	@Column(name="rank")
 	private Integer rank;
 	
+	@Column(name="keywords")
+	private String keywords;
+	
 	/**
 	 * @return the businessId
 	 */
@@ -262,6 +265,20 @@ public class BusinessDetailsEntity implements Serializable {
 	 */
 	public void setRank(Integer rank) {
 		this.rank = rank;
+	}
+	
+	/**
+	 * @return the keywords
+	 */
+	public String getKeywords() {
+		return keywords;
+	}
+
+	/**
+	 * @param keywords the keywords to set
+	 */
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
 	}
 
 	/* (non-Javadoc)

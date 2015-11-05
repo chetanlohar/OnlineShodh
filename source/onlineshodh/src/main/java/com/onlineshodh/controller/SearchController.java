@@ -16,6 +16,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.model.SuggestBusiness;
+import com.onlineshodh.model.SuggestSubCategory;
 import com.onlineshodh.service.BusinessAddressService;
 import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.TownService;
@@ -67,7 +68,10 @@ public class SearchController {
 	{
 		System.out.println("cityName: "+cityName);
 		SuggestBusiness suggestBusiness=context.getBean("suggestBusiness",SuggestBusiness.class);
-		List<String> l = suggestBusiness.doAutoSuggest(tagName.trim(),cityName.trim());
+		SuggestSubCategory suggestSubCategory = context.getBean("suggestSubCategory",SuggestSubCategory.class);
+		List<String> l = new ArrayList<String>();
+		l.addAll(suggestSubCategory.doAutoSuggest(tagName.trim()));
+		l.addAll(suggestBusiness.doAutoSuggest(tagName.trim(),cityName.trim()));
 		for(String str:l)
 			System.out.println(str);
 		return l;
