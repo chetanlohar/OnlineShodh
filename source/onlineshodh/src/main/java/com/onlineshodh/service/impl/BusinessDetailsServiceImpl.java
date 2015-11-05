@@ -67,4 +67,14 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 	public List<BusinessDetailsEntity> getAllBusinessDetais() {
 		return businessDetailsDao.getAllBusinessDetais();
 	}
+
+	@Override
+	public List<BusinessDetailsEntity> getBusinessBySubCategoryId(Long subCatId) {
+		return businessDetailsDao.getBusinessBySubCategoryId(subCatId);
+	}
+
+	@Override
+	public List<BusinessDetailsEntity> getBusinessByCategoryId(Long catId) {
+		return businessDetailsDao.getBusinessByCategoryId(catId);
+	}
 }

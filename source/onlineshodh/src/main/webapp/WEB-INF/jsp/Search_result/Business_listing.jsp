@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -73,242 +75,45 @@
 				<div class="col-lg-9 col-md-9">
 					<div class="row">
 						<ol class="breadcrumb">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Hotels</a></li>
-							<li class="active">3 Star Hotels</li>
+							<li><a href="${pageContext.request.contextPath}/">Home</a></li>
+							<li><a href="#">${category}</a></li>
+							<li class="active">${subCategory}</li>
 						</ol>
 					</div>
+					
+					
 					<div id="pageStuff" class="nav nav-tabs nav-stacked">
-						<div class="row">
-							<div class="col-lg-12 col-md-12">
-								<div class="search_cnter">
-									<div class="row">
-										<div class="col-lg-4 col-md-4">
-											<img class="product_img"
-												src="${pageContext.request.contextPath}/resources/images/hotel.jpg" />
-										</div>
-										<div class="col-lg-8 col-md-8">
-											<h4 class="product_name">
-												<span class="product_brand"><i
-													class="fa fa-thumbs-up "></i></span> <a
-													href="${pageContext.request.contextPath}/prashant/businessd"
-													class="product_title"> <strong>Softinfology
-														solutions and Counsultancy</strong>
-												</a>
-
-											</h4>
-											<p class="product_location">
-												<i class="fa fa-map-marker fa-2x"></i><span>Pride
-													Icon Hadpsar-Bypass Road Pune 401222</span>
-											</p>
-											<p class="product_contact">
-												<i class="fa fa-phone-square fa-2x"></i><span>+91
-													8600249455</span><span>+91 8600249455</span>
-											</p>
-
+						<c:forEach var="business" items="${businesses}">
+							<div class="row">
+								<div class="col-lg-12 col-md-12">
+									<div class="search_cnter">
+										<div class="row">
+											<div class="col-lg-4 col-md-4">
+												<img class="product_img"
+													src="${pageContext.request.contextPath}/search/load/logo/${business.businessId}" />
+											</div>
+											<div class="col-lg-8 col-md-8">
+												<h4 class="product_name">
+													<span class="product_brand"><i
+														class="fa fa-thumbs-up "></i></span> <a
+														href="${pageContext.request.contextPath}/prashant/businessd"
+														class="product_title"> <strong>${business.businessName}</strong>
+													</a>
+												</h4>
+												<p class="product_location">
+													<i class="fa fa-map-marker fa-2x"></i><span>${business.address.address} , ${business.address.street}, ${business.address.town.city.cityName}, ${business.address.town.townName}</span>
+												</p>
+												<p class="product_contact">
+													<i class="fa fa-phone-square fa-2x"></i>
+													<span>+918600249455</span>
+													<span>+91 8600249455</span>
+												</p>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-md-12">
-								<div class="search_cnter">
-									<div class="row">
-										<div class="col-lg-4 col-md-4">
-											<img class="product_img"
-												src="${pageContext.request.contextPath}/resources/images/bike.jpg" />
-										</div>
-										<div class="col-lg-8 col-md-8">
-											<h4 class="product_name">
-												<span class="product_brand"><i
-													class="fa fa-thumbs-up "></i></span> <a href="#"
-													class="product_title"> <strong>Softinfology
-														solutions and Counsultancy</strong>
-												</a>
-
-											</h4>
-											<p class="product_location">
-												<i class="fa fa-map-marker fa-2x"></i><span>Pride
-													Icon Hadpsar-Bypass Road Pune 401222</span>
-											</p>
-											<p class="product_contact">
-												<i class="fa fa-phone-square fa-2x"></i><span>+91
-													8600249455</span><span>+91 8600249455</span>
-											</p>
-
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-md-12">
-								<div class="search_cnter">
-									<div class="row">
-										<div class="col-lg-4 col-md-4">
-											<img class="product_img"
-												src="${pageContext.request.contextPath}/resources/images/bike.jpg" />
-										</div>
-										<div class="col-lg-8 col-md-8">
-											<h4 class="product_name">
-												<span class="product_brand"><i
-													class="fa fa-thumbs-up "></i></span> <a href="#"
-													class="product_title"> <strong>Softinfology
-														solutions and Counsultancy</strong>
-												</a>
-
-											</h4>
-											<p class="product_location">
-												<i class="fa fa-map-marker fa-2x"></i><span>Pride
-													Icon Hadpsar-Bypass Road Pune 401222</span>
-											</p>
-											<p class="product_contact">
-												<i class="fa fa-phone-square fa-2x"></i><span>+91
-													8600249455</span><span>+91 8600249455</span>
-											</p>
-
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-md-12">
-								<div class="search_cnter">
-									<div class="row">
-										<div class="col-lg-4 col-md-4">
-											<img class="product_img"
-												src="${pageContext.request.contextPath}/resources/images/bike.jpg" />
-										</div>
-										<div class="col-lg-8 col-md-8">
-											<h4 class="product_name">
-												<span class="product_brand"><i
-													class="fa fa-thumbs-up "></i></span> <a href="#"
-													class="product_title"> <strong>Softinfology
-														solutions and Counsultancy</strong>
-												</a>
-
-											</h4>
-											<p class="product_location">
-												<i class="fa fa-map-marker fa-2x"></i><span>Pride
-													Icon Hadpsar-Bypass Road Pune 401222</span>
-											</p>
-											<p class="product_contact">
-												<i class="fa fa-phone-square fa-2x"></i><span>+91
-													8600249455</span><span>+91 8600249455</span>
-											</p>
-
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-md-12">
-								<div class="search_cnter">
-									<div class="row">
-										<div class="col-lg-4 col-md-4">
-											<img class="product_img"
-												src="${pageContext.request.contextPath}/resources/images/bike.jpg" />
-										</div>
-										<div class="col-lg-8 col-md-8">
-											<h4 class="product_name">
-												<span class="product_brand"><i
-													class="fa fa-thumbs-up "></i></span> <a href="#"
-													class="product_title"> <strong>Softinfology
-														solutions and Counsultancy</strong>
-												</a>
-
-											</h4>
-											<p class="product_location">
-												<i class="fa fa-map-marker fa-2x"></i><span>Pride
-													Icon Hadpsar-Bypass Road Pune 401222</span>
-											</p>
-											<p class="product_contact">
-												<i class="fa fa-phone-square fa-2x"></i><span>+91
-													8600249455</span><span>+91 8600249455</span>
-											</p>
-
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-md-12">
-								<div class="search_cnter">
-									<div class="row">
-										<div class="col-lg-4 col-md-4">
-											<img class="product_img"
-												src="${pageContext.request.contextPath}/resources/images/bike.jpg" />
-										</div>
-										<div class="col-lg-8 col-md-8">
-											<h4 class="product_name">
-												<span class="product_brand"><i
-													class="fa fa-thumbs-up "></i></span> <a href="#"
-													class="product_title"> <strong>Softinfology
-														solutions and Counsultancy</strong>
-												</a>
-
-											</h4>
-											<p class="product_location">
-												<i class="fa fa-map-marker fa-2x"></i><span>Pride
-													Icon Hadpsar-Bypass Road Pune 401222</span>
-											</p>
-											<p class="product_contact">
-												<i class="fa fa-phone-square fa-2x"></i><span>+91
-													8600249455</span><span>+91 8600249455</span>
-											</p>
-
-										</div>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-						<div class="row">
-							<div class="col-lg-12 col-md-12">
-								<div class="search_cnter">
-									<div class="row">
-										<div class="col-lg-4 col-md-4">
-											<img class="product_img"
-												src="${pageContext.request.contextPath}/resources/images/bike.jpg" />
-										</div>
-										<div class="col-lg-8 col-md-8">
-											<h4 class="product_name">
-												<span class="product_brand"><i
-													class="fa fa-thumbs-up "></i></span> <a href="#"
-													class="product_title"> <strong>Softinfology
-														solutions and Counsultancy</strong>
-												</a>
-
-											</h4>
-											<p class="product_location">
-												<i class="fa fa-map-marker fa-2x"></i><span>Pride
-													Icon Hadpsar-Bypass Road Pune 401222</span>
-											</p>
-											<p class="product_contact">
-												<i class="fa fa-phone-square fa-2x"></i><span>+91
-													8600249455</span><span>+91 8600249455</span>
-											</p>
-
-										</div>
-									</div>
-								</div>
-
-							</div>
-						</div>
+						</c:forEach>
 					</div>
 					<div class="span6">
 						<div class="pagination">
@@ -320,25 +125,10 @@
 					<div class="rel_category">
 						<ul class="list_rel_cat">
 							<li class="rel_head">Related Category</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
-							<li>5 Star Hotel</li>
+							<c:forEach var="subCategory" items="${subCategories}">
+								<li>${subCategory.subCategoryName}</li>
+							</c:forEach>
 						</ul>
-
-
 					</div>
 				</div>
 			</div>

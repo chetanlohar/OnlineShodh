@@ -103,4 +103,18 @@ public class BusinessDetailsDaoImpl extends
 		return findAll();
 	}
 
+	@Override
+	public List<BusinessDetailsEntity> getBusinessBySubCategoryId(Long subCatId) {
+		entityManager = getEntityManager();
+		String query = "from BusinessDetailsEntity business where business.subCategory.subCategoryId = :subCatId";
+		return entityManager.createQuery(query, BusinessDetailsEntity.class).setParameter("subCatId", subCatId.intValue()).getResultList();
+	}
+
+	@Override
+	public List<BusinessDetailsEntity> getBusinessByCategoryId(Long catId) {
+		entityManager = getEntityManager();
+		String query = "from BusinessDetailsEntity business where business.subCategory.category.categoryId = :catId";
+		return entityManager.createQuery(query, BusinessDetailsEntity.class).setParameter("catId", catId.intValue()).getResultList();
+	}
+
 }

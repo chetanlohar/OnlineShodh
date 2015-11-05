@@ -56,4 +56,9 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 			Integer categoryId) {
 		return subcategorydao.listSubCategoriesByCategoryId(categoryId);
 	}
+
+	@Override
+	public SubCategoryEntity getSubCategory(String subCatName) {
+		return subcategorydao.getSubCategory(subCatName);
+	}
 }

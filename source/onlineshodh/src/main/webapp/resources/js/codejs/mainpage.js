@@ -6,6 +6,4 @@ function getBusinesses()
 	console.log(cityName+":"+tagName);
 	
 	window.location.href = '/onlineshodh/search/businesses?tagName='+tagName+'&cityName='+cityName;
-	
-
 }

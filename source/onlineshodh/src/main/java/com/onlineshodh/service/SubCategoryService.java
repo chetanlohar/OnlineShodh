@@ -36,4 +36,6 @@ public interface SubCategoryService {
 	
 	public List<SubCategoryEntity> listSubCategoriesByCategoryId(Integer categoryId);
 	
+	public SubCategoryEntity getSubCategory(String subCatName);
+	
 }

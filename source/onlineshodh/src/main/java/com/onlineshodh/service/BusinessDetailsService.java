@@ -40,4 +40,8 @@ public interface BusinessDetailsService {
 	
 	public List<BusinessDetailsEntity> getBusinessDetailsByUserDetailsId(Long userDetailsId);
 	
+	public List<BusinessDetailsEntity> getBusinessBySubCategoryId(Long subCatId);
+	
+	public List<BusinessDetailsEntity> getBusinessByCategoryId(Long catId);
+	
 }

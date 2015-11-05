@@ -34,6 +34,10 @@ public interface BusinessDetailsDao {
 	
 	public List<BusinessDetailsEntity> findBusinessDetailsByBusinessName(
 			String bussinessName);
+	
+	public List<BusinessDetailsEntity> getBusinessBySubCategoryId(Long subCatId);
+	
+	public List<BusinessDetailsEntity> getBusinessByCategoryId(Long catId);
     
 	
 
