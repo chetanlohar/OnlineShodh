@@ -537,6 +537,10 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		 <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
+        
+		
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
@@ -544,7 +548,7 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
-
+		 
 
 
 	<!-- JANSY BOOTSTRAP SCRIPTS -->

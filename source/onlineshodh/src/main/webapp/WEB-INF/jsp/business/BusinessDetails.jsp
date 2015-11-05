@@ -295,9 +295,9 @@
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Client Personal
-								Information</span> <a href="${pageContext.request.contextPath}/prashant/businessdetailedit/">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span> <%-- <a href="${pageContext.request.contextPath}/prashant/businessdetailedit/">&nbsp;<i class="fa fa-pencil"></i>
 								Edit
-							</a>
+							</a> --%>
 						</div>
 						<div class="detail-wraper">
 							<table class="table">
@@ -348,9 +348,9 @@
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Client Address
-								Information</span><a href="${pageContext.request.contextPath}/prashant/clientaddupdate">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span><%-- <a href="${pageContext.request.contextPath}/prashant/clientaddupdate">&nbsp;<i class="fa fa-pencil"></i>
 								Edit
-							</a>
+							</a> --%>
 						</div>
 						<div class="detail-wraper">
 							<table class="table">

@@ -304,7 +304,7 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-10">
-						<form class="form-horizontal" name="clientsearch" id="clientsearch" >
+						<form class="form-horizontal" action="#" name="clientsearch" id="clientsearch" >
 							<div class="col-lg-10">
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Search
@@ -327,7 +327,7 @@
 									</div>
 								</div>
 								<div class="col-lg-6 col-lg-offset-6 space">
-									<button type="button" class="btn btn-info"  id="searchButton">
+									<button type="submit" class="btn btn-info"  id="searchButton">
 										<i class="fa fa-search"></i> Search
 									</button>
 
@@ -401,6 +401,8 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
+			<script
+		src="${pageContext.request.contextPath}/resources/js/validation/businessvalidation.js"></script>
 
 
 

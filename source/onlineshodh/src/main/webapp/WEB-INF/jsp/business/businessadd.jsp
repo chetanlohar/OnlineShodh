@@ -346,7 +346,7 @@
 										</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-chat"></span></span> 
+											class="fa fa-chats"></span></span> 
 											<form:textarea path="businessDesc" class="form-control"/>
 											<form:errors path="businessDesc" cssClass="errors"/>
 									</div>
@@ -470,6 +470,10 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+			  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
+        
+		
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
@@ -477,6 +481,8 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+			<script
+		src="<%=request.getContextPath()%>/resources/js/validation/businessvalidation.js"></script>
 
 
 

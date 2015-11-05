@@ -636,6 +636,8 @@
 		 
 	  <script
 		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
+			  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
         
         <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
