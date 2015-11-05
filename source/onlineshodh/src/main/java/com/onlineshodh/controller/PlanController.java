@@ -57,6 +57,8 @@ public class PlanController {
 	BusinessPlanService businessPlanService;  
 	
 	
+	
+	
 	BusinessPlanValidator businessPlanValidator;
 	
 	@Autowired
@@ -201,8 +203,8 @@ public class PlanController {
 		return "plan/assign";
     }
 	
-	@RequestMapping(value="/assignPlan",method=RequestMethod.POST)
-	public String assignBusinessPlan(ModelMap model,@ModelAttribute("businessPlan")BusinessPlanEntity businessPlan,BindingResult result){
+	@RequestMapping(value="/assignPlan/{BusineesId}",method=RequestMethod.POST)
+	public String assignBusinessPlan(ModelMap model,@PathVariable("BusineesId")Long busineesId,@ModelAttribute("businessPlan")BusinessPlanEntity businessPlan,BindingResult result){
 		
 		boolean flag1=false;
 	 businessPlanValidator.validate(businessPlan, result);
@@ -241,6 +243,9 @@ public class PlanController {
 		}*/
 		
 		if(flag1){
+			model.addAttribute("business", businessDetailsService.getBusinessDetails(busineesId));
+			model.addAttribute("plans", planservice.getAllPlans());
+			model.addAttribute("businessPlan", businessPlan);
 			return "plan/assign"; 	
 		}
 		

@@ -34,7 +34,7 @@ public class PaymentEntity implements Serializable {
 	private Integer paymentId;
     @Column(name="paymentfor")
 	private String paymentfor;
-	@Column(name="ammount")
+	@Column(name="amount")
 	private Integer ammount;
 	@Column(name="status")
 	private String status;
@@ -47,10 +47,16 @@ public class PaymentEntity implements Serializable {
 	private BannerEntity banner;
 	@ManyToOne(targetEntity=BusinessDetailsEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="businessid")
-	private BusinessDetailsEntity business;
+	private BusinessDetailsEntity businessEntity;
     @Column(name="isbusiness") 
     private boolean isBusiness;
-    @ManyToOne(targetEntity=PaymentModeEntity.class,fetch=FetchType.EAGER)
+    public boolean isBusiness() {
+		return isBusiness;
+	}
+	public void setBusiness(boolean isBusiness) {
+		this.isBusiness = isBusiness;
+	}
+	@ManyToOne(targetEntity=PaymentModeEntity.class,fetch=FetchType.EAGER)
     @JoinColumn(name="paymentmodeid")
     private PaymentModeEntity paymentMode; 
     @Column(name="transactionid")
@@ -97,18 +103,13 @@ public class PaymentEntity implements Serializable {
 	public void setBanner(BannerEntity banner) {
 		this.banner = banner;
 	}
-	public BusinessDetailsEntity getBusiness() {
-		return business;
+	public BusinessDetailsEntity getBusinessEntity() {
+		return  businessEntity;
 	}
-	public void setBusiness(BusinessDetailsEntity business) {
-		this.business = business;
+	public void setBusinessEntity(BusinessDetailsEntity businessEntity) {
+		this. businessEntity = businessEntity;
 	}
-	public boolean isBusiness() {
-		return isBusiness;
-	}
-	public void setBusiness(boolean isBusiness) {
-		this.isBusiness = isBusiness;
-	}
+	
 	public PaymentModeEntity getPaymentMode() {
 		return paymentMode;
 	}
@@ -126,7 +127,7 @@ public class PaymentEntity implements Serializable {
 		return "PaymentEntity [paymentId=" + paymentId + ", paymentfor="
 				+ paymentfor + ", ammount=" + ammount + ", status=" + status
 				+ ", remark=" + remark + ", payeeName=" + payeeName
-				+ ", banner=" + banner + ", business=" + business
+				+ ", banner=" + banner + ", business=" + businessEntity
 				+ ", isBusiness=" + isBusiness + ", paymentMode=" + paymentMode
 				+ ", transactionid=" + transactionid + "]";
 	}

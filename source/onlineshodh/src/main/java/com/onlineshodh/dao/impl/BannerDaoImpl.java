@@ -46,7 +46,7 @@ public class BannerDaoImpl extends AbstractJpaDao<BannerEntity> implements Banne
 					.createQuery(
 							"from BannerEntity banner where lower(banner.bannerName) Like :bannerName",
 							BannerEntity.class)
-					.setParameter("businessName", bannerName + '%')
+					.setParameter("bannerName", bannerName + '%')
 					.getResultList();
 	}
 	

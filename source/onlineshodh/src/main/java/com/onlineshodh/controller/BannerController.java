@@ -107,7 +107,8 @@ public class BannerController {
 	}
 	
 	@RequestMapping(value = "/searchBanner", method = RequestMethod.GET)
-	public @ResponseBody List<String> serachBusinesData(@RequestParam("term") String keyword) {
+	public @ResponseBody List<String> serachBannerData(@RequestParam("term") String keyword) {
+		
 		List<String> list=new ArrayList<String>();
 		List<BannerEntity> ListByBannerName;
 		list.clear();

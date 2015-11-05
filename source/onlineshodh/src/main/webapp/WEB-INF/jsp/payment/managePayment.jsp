@@ -13,24 +13,21 @@
  <script  src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-
-$("#keyword").on("keyup",function(){
-	
-
+ 
+$("#keyword").on("keyup",function(e){
 	 $( "#keyword" ).autocomplete({
-
 			source: '${pageContext.request.contextPath}/admin/business/searchBusiness'
+	});
+}); 
+});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+ 	$("#keyword1").on("keyup",function(e){
+	 $("#keyword1").autocomplete({
+		source: '${pageContext.request.contextPath}/admin/banners/searchBanner'
 	});
 });
-
-/* $("#keyword").on("keyup",function(){
-	
-
-	 $( "#keyword" ).autocomplete({
-
-			source: '${pageContext.request.contextPath}/admin/business/searchBusiness'
-	});
-}); */
 	 
 }); 
 </script>
@@ -40,26 +37,41 @@ $("#keyword").on("keyup",function(){
 
 </head>
 <body>
-<form:form action="" modelAttribute="payment" method="POST">
+<form:form action="${pageContext.request.contextPath}/admin/payments/save" modelAttribute="payment" method="POST">
 <p><label>Payment For :</label>
 <form:select path="paymentfor">
 <form:option value="BusinessAdvertisement" label="BusinessAdvertisement"/>
 <form:option value="BannerAdvertisement" label="BannerAdvertisement"/>
 </form:select> 
 </p>
-<p> <label>Business Name</label><form:input path="" id="keyword"/></p>
-<p> <label>Banner Name</label><form:input path=""/></p>
+<p> <label>Business Name</label><form:input path="businessEntity.businessName" id="keyword"/></p>
+<p> <label>Banner Name</label><form:input path="banner.bannerName" id="keyword1" /></p>
 <p><label>Payment Mode :</label>
-<form:select path="paymentMode">
+<form:select path="paymentMode.paymentModeid">
 <c:forEach var="paymentmode" items="${paymentmodes}">
 <form:option value="${paymentmode.paymentModeid}">${paymentmode.paymentMode}</form:option>
 </c:forEach>
 </form:select></p>
-<p><label>Account Name :</label><form:input path=""/></p>
-<p><label>Bank Name :</label><form:input path=""/><p>
-<p><label>Branch Name :</label><form:input path=""/></P>
-<p><label>Check No :</label><form:input path=""/></p>
-<p><label>Status :</label><form:input path=""/></p>
+<p><label>Amount :</label><form:input path="ammount"/></p>
+<p><label>Status :</label><form:input path="status"/><p>
+<p><label>Remark :</label><form:input path="remark"/></P>
+<p><label>payeeName:</label><form:input path="payeeName"/></p>
+
+
+
+<%-- <p><label>isBusiness :</label><form:select path="">
+<c:choose>
+														<c:when test="${=='true'}">
+															<form:option value="Y" label="YES"/>
+														</c:when>
+														<c:otherwise>
+															<form:option value="N" label="NO"/>
+														</c:otherwise>
+</c:choose>	 
+
+</form:select></p>
+--%>	 												
+ 
 <input type="submit" value="save"/>
 <input type="reset" value="reset"/>
 </form:form>

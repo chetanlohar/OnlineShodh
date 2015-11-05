@@ -1,5 +1,7 @@
 package com.onlineshodh.dao;
 
-public interface PaymentDao {
+import com.onlineshodh.entity.PaymentEntity;
 
+public interface PaymentDao {
+	public void savePayment(PaymentEntity payment);
 }

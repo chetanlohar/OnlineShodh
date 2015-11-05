@@ -1,5 +1,7 @@
 package com.onlineshodh.service;
 
-public interface PaymentService {
+import com.onlineshodh.entity.PaymentEntity;
 
+public interface PaymentService {
+	public void savePayment(PaymentEntity payment);
 }
