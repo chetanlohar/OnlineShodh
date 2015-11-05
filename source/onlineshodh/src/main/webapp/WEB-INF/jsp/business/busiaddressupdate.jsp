@@ -309,22 +309,25 @@
 										<span class="input-group-addon"><span
 											class="fa fa-road"></span></span>
 										<form:input path="address" class="form-control" rows="3" id="clientadd" name="address"/>
+										<form:errors path="address" cssClass="errors"/>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="Street" class="col-sm-5 control-label">Street</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <form:input path="street" type="text"
+											class="fa fa-user"></span></span> <form:input path="street" 
 											class="form-control" id="clientpin" name="clietpin" />
+											<form:errors path="street" cssClass="errors"/>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="LandMark" class="col-sm-5 control-label">LandMark</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <form:input path="landMark" type="text"
+											class="fa fa-user"></span></span> <form:input path="landMark" 
 											class="form-control" id="clientpin" name="clietpin"/>
+											<form:errors path="landMark" cssClass="errors"/>
 									</div>
 								</div>
 
@@ -340,6 +343,7 @@
 													<form:option value="${country.countryId}">${country.countryName}</form:option>
 												</c:forEach>
 											</form:select>
+											<form:errors path="city.state.country.countryId" cssClass="errors"/>
 									</div>
 								</div>
 
@@ -355,6 +359,7 @@
 													<form:option value="${state.stateId}">${state.stateName}</form:option>
 											</c:forEach>
 										</form:select>
+										<form:errors path="city.state.stateId" cssClass="errors"/>
 										
 									</div>
 								</div>
@@ -370,7 +375,7 @@
 												<form:option value="${city.cityId}">${city.cityName}</form:option>
 											</c:forEach>
 										</form:select>
-										
+										<form:errors path="city.cityId" cssClass="errors"/>
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -384,6 +389,7 @@
 												<form:option value="${town.townId}">${town.townName}</form:option>
 											</c:forEach>
 										</form:select>
+										<form:errors path="town.townId" cssClass="errors"/>
 									</div>
 								</div>
 								<div class="col-lg-12 space hide-div ">
@@ -398,8 +404,9 @@
 									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <form:input path="pincode" type="text"
+											class="fa fa-user"></span></span> <form:input path="pincode" 
 											class="form-control" id="clientpin" name="clietpin" />
+											<form:errors path="pincode" cssClass="errors"/>
 									</div>
 								</div>
 								</div>

@@ -299,7 +299,7 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-						 <form:form action="${pageContext.request.contextPath}/admin/business/new/save" class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessdetail" enctype="multipart/form-data">
+						 <form:form action="${pageContext.request.contextPath}/admin/business/new/save" method="POST" class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessdetail" enctype="multipart/form-data">
 						 	<form:hidden path="businessId"/>
 						 	<form:hidden path="businessLogo"/>
 						 	<form:hidden path="userDetails.userDetailsId" value="${userDetailsId}"/>
@@ -320,7 +320,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span> 
 											<form:input path="businessName"	class="form-control" id="businame" name="businame"/>
-                                            <form:errors path="businessName" cssClass="error"/>    									
+                                            <form:errors path="businessName" cssClass="errors"/>    									
 									</div>
 								</div>
 
@@ -338,7 +338,7 @@
 											class="fileinput-exists">Change</span>
 											<input type="file"	name="file"></span> 
 											<a href="#"	class="input-group-addon btn btn-default fileinput-exists"	data-dismiss="fileinput">Remove</a>
-									        <form:errors path="businessLogo" cssClass="error"/>   
+									        <form:errors path="businessLogo" cssClass="errors"/>   
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -348,6 +348,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-chat"></span></span> 
 											<form:textarea path="businessDesc" class="form-control"/>
+											<form:errors path="businessDesc" cssClass="errors"/>
 									</div>
 								</div>
                                  <div class="col-lg-12 space">
@@ -357,7 +358,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> 
 											<form:input path="personName" class="form-control" id="personname" name="personname"/>
-									         <form:errors path="personName" cssClass="error"/>    
+									         <form:errors path="personName" cssClass="errors"/>    
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -367,7 +368,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-envelope"></span></span> 
 											<form:input path="email" class="form-control" id="busimail" name="busimail"/>
-									        <form:errors path="email" cssClass="error"/>   
+									        <form:errors path="email" cssClass="errors"/>   
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -377,7 +378,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-globe"></span></span> 
 											<form:input path="website" class="form-control" name="Website"/>
-											<form:errors path="website" cssClass="error"/>  
+											<form:errors path="website" cssClass="errors"/>  
 									</div>
 								</div>
 
@@ -409,7 +410,7 @@
 										</select> -->
 										
 										<form:select path="subCategory.subCategoryId" required="" class="form-control" id="subcategoryname" name="subcategoryname">
-											<form:option value="0" label="--- Select ---" />
+											 <form:option value="0" label="--- Select ---" />
 											<c:forEach var="subcategory" items="${subcategories}">
 												<form:option value="${subcategory.subCategoryId}">${subcategory.subCategoryName}</form:option>
 											</c:forEach>
@@ -418,7 +419,27 @@
 										
 									</div>
 								</div>
+								<div class="col-lg-12 space">
+									<label for="web" class="col-sm-5 control-label">Rank</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-globe"></span></span> 
+											<form:input path="rank" class="form-control"/>
+											<form:errors path="rank" cssClass="errors"/>  
+									</div>
 								</div>
+								<div class="col-lg-12 space">
+									<label for="web" class="col-sm-5 control-label">
+									Keywords</label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-globe"></span></span> 
+											<form:input path="keywords" class="form-control"/>
+											<form:errors path="keywords" cssClass="errors"/>  
+									</div>
+								</div>
+								
+							</div>
 							<div class="col-lg-6 col-lg-offset-4 space">
 								<button type="submit" class="btn btn-success" id="update">Add</button>
 

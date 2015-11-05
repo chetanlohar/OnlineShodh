@@ -65,7 +65,7 @@ public class BusinessDetailsDaoImpl extends
 		entityManager = getEntityManager();
 		return entityManager
 				.createQuery(
-						"from BusinessDetailsEntity business where business.businessName Like :businessName",
+						"from BusinessDetailsEntity business where lower(business.businessName) Like :businessName",
 						BusinessDetailsEntity.class)
 				.setParameter("businessName", bussinessName + '%')
 				.getResultList();

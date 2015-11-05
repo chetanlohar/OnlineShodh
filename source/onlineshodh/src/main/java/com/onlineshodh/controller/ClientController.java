@@ -138,7 +138,7 @@ public class ClientController {
 		else{
 			System.out.println("Search By "+searchBy);
 			list.clear();
-			clientListByBusinessName=businessDetailsService.getBusinessDetailsByBusinessName(keyword);
+			clientListByBusinessName=businessDetailsService.getBusinessDetailsByBusinessName(keyword.toLowerCase());
 			System.out.println("Size OF BusinessName List"+clientListByBusinessName.size());
 			for(BusinessDetailsEntity bussiness:clientListByBusinessName){
 				System.out.println(" List value"+bussiness.getBusinessName());

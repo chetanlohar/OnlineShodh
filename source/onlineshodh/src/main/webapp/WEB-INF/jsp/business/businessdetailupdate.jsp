@@ -348,6 +348,14 @@
 									<td>Sub-Category	</td>
 									<td>${business.subCategory.subCategoryName}</td>
 								</tr>
+								<tr>
+									<td>Rank	</td>
+									<td>${business.rank}</td>
+								</tr>
+								<tr>
+									<td>Keywords	</td>
+									<td>${business.keywords}</td>
+								</tr>
 							</table>
 						</div>
 					</div>
@@ -463,42 +471,42 @@
 							<table class="table">
 								<tr>
 									<td>Address</td>
-									<td>${businessDetails.address.address}</td>
+									<td>${business.address.address}</td>
 								
 								</tr>
 								<tr>
 									<td>Street</td>
-									<td>${businessDetails.address.street}</td>
+									<td>${business.address.street}</td>
 									
 								</tr>
 								<tr>
 									<td>Landmark</td>
-									<td>${businessDetails.address.landMark}</td>
+									<td>${business.address.landMark}</td>
 									
 								</tr>
 								<tr>
 									<td>Country</td>
-									<td>${businessDetails.address.city.state.country.countryName}</td>
+									<td>${business.address.city.state.country.countryName}</td>
 									
 								</tr>
 								<tr>
 									<td>State</td>
-									<td>${businessDetails.address.city.state.stateName}</td>
+									<td>${business.address.city.state.stateName}</td>
 									
 								</tr>
 								<tr>
 									<td>City</td>
-									<td>${businessDetails.address.city.cityName}</td>
+									<td>${business.address.city.cityName}</td>
 									
 								</tr>
 								<tr>
 									<td>Town</td>
-									<td>${businessDetails.address.town.townName}</td>
+									<td>${business.address.town.townName}</td>
 									
 								</tr>
 								<tr>
 									<td>Pincode</td>
-									<td>${businessDetails.address.pincode}</td>
+									<td>${business.address.pincode}</td>
 								</tr>
 
 							</table>

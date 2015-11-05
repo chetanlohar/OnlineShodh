@@ -25,7 +25,14 @@ public class BusinessDetailsValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		
 		BusinessDetailsEntity businessDetailsEntity=(BusinessDetailsEntity)target;
-		/*if(businessDetailsEntity.getSubCategory().getCategory().getCategoryId()==)*/
+		
+		/*if(businessDetailsEntity.getSubCategory().getCategory().getCategoryId()==0){
+			System.out.println(""); 
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "subCategory.category.categoryId", "11",mandatory);
+		}
+		if(businessDetailsEntity.getSubCategory().getSubCategoryId()==0){
+			ValidationUtils.rejectIfEmptyOrWhitespace(errors, "subCategory.subCategoryId", "11",mandatory);
+		}*/
 		
 		/*ValidationUtils.rejectIfEmptyOrWhitespace(errors, "businessName", "11",mandatory);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "personName", "11",mandatory);
