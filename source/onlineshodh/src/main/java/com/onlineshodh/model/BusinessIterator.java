@@ -10,20 +10,15 @@ import java.util.Set;
 
 import org.apache.lucene.search.suggest.InputIterator;
 import org.apache.lucene.util.BytesRef;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.onlineshodh.entity.BusinessDetailsEntity;
-import com.onlineshodh.service.BusinessAddressService;
 
 @Component
 public class BusinessIterator implements InputIterator {
 
 	private Iterator<BusinessDetailsEntity> businessIterator;
 	private BusinessDetailsEntity currBusiness;
-	
-	@Autowired
-	BusinessAddressService businessAddressService;
 	
 	public BusinessIterator() {
 	}

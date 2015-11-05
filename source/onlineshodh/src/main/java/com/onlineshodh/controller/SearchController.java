@@ -18,7 +18,6 @@ import org.springframework.web.context.WebApplicationContext;
 import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.model.SuggestBusiness;
 import com.onlineshodh.model.SuggestSubCategory;
-import com.onlineshodh.service.BusinessAddressService;
 import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.UserDetailsService;
@@ -45,9 +44,6 @@ public class SearchController {
 	
 	@Autowired
 	TownService townService;
-	
-	@Autowired
-	BusinessAddressService businessAddressService;
 	
 	List<TownEntity> towns;
 	private List<String> strTownsWithCity;
