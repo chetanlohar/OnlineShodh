@@ -7,22 +7,21 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
-import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.TransactionSystemException;
+
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +33,7 @@ import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.BannerEntity;
-import com.onlineshodh.entity.BusinessDetailsEntity;
+
 import com.onlineshodh.entity.CityEntity;
 import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.service.BannerService;
@@ -112,11 +111,11 @@ public class BannerController {
 		List<String> list=new ArrayList<String>();
 		List<BannerEntity> ListByBannerName;
 		list.clear();
-		ListByBannerName=bannerService.getBusinessDetailsByBusinessName(keyword);
+		ListByBannerName=bannerService.getBannerByBannerName(keyword);
 		System.out.println("Size OF BusinessName List"+ListByBannerName.size());
-		for(BusinessDetailsEntity bussiness:ListByBannerName){
-			System.out.println(" List value"+bussiness.getBusinessName());
-			list.add(bussiness.getBusinessName());
+		for(BannerEntity banner:ListByBannerName){
+			System.out.println(" List value"+banner.getBannerName());
+			list.add(banner.getBannerName());
 		}
 		return list; 
 		

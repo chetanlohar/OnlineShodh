@@ -39,4 +39,10 @@ public class BannerServiceImpl implements BannerService {
 	public void deleteBanner(Integer bannerId) {
        bannerDao.deleteBanner(bannerId);		
 	}
+
+	@Override
+	public List<BannerEntity> getBannerByBannerName(String bannerName) {
+		
+		return bannerDao.getBannerByBannerName(bannerName);
+	}
 }

@@ -10,4 +10,6 @@ public interface BannerDao  {
 	public List<BannerEntity> getAllBanners();
 	public BannerEntity getBannerById(Integer bannerId); 
 	public void deleteBanner(Integer bannerId);
+	public List<BannerEntity> getBannerByBannerName(
+			String bannerName);
 }
