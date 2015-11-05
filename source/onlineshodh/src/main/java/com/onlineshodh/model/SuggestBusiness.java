@@ -53,13 +53,9 @@ public class SuggestBusiness{
             List<Lookup.LookupResult> results;
             HashSet<BytesRef> contexts = new HashSet<BytesRef>();
             contexts.add(new BytesRef(cityName.getBytes("UTF8")));
-            contexts.add(new BytesRef(name.toUpperCase().getBytes("UTF8")));
             //contexts.add(new BytesRef(addlParam.getBytes("UTF8")));
             // Do the actual lookup.  We ask for the top 10 results.
             results = suggester.lookup(name, contexts, 10, true, false);
-            
-            System.out.println("results: size="+results.size());
-            
             for (Lookup.LookupResult result : results) {
             	BusinessDetailsEntity business = getBusiness(result);
                 if (business != null) {

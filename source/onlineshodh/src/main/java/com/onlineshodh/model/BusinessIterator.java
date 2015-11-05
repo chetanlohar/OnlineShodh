@@ -54,10 +54,6 @@ public class BusinessIterator implements InputIterator {
             String town = currBusiness.getAddress().getTown().getTownName();
             String cityTown = city.toUpperCase()+" ("+town.toUpperCase()+")";
             addlParams.add(new BytesRef(cityTown.getBytes("UTF8")));
-            
-            String []  keywords=currBusiness.getKeywords().split(",");
-            for(String keyword:keywords)
-            	addlParams.add(new BytesRef(keyword.toUpperCase().getBytes("UTF8")));
             return addlParams;
         } catch (UnsupportedEncodingException e) {
             throw new Error("Couldn't convert to UTF-8");

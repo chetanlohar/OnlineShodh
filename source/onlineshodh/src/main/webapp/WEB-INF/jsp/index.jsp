@@ -108,10 +108,9 @@
 						<div class="input-group col-md-7 col-xs-12">
 							<input id="searchid" type="text" class="form-control"
 								placeholder="Search Hotels, Taxis, Movies & Much More" />
-
 						</div>
 						<div class="input-group col-md-1 col-xs-12 ">
-							<button class="btn btn-info col-md-2 col-xs-12  search_btn">
+							<button class="btn btn-info col-md-2 col-xs-12  search_btn" onclick="getBusinesses();">
 								<i class="fa fa-search"></i>
 							</button>
 						</div>
@@ -909,6 +908,7 @@
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
 		<script src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+		<script src="<%=request.getContextPath()%>/resources/js/codejs/mainpage.js"></script>
 	<script>
 			$(document).ready(function() {
 				console.log("in auto_complete..path: ${pageContext.request.contextPath}");

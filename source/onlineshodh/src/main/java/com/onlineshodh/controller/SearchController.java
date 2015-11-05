@@ -8,6 +8,7 @@ import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,5 +87,12 @@ public class SearchController {
 			if(citytown.toUpperCase().contains(str.toUpperCase()))
 				matches.add(citytown);
 		return matches;
+	}
+	
+	@RequestMapping(value={"/businesses"})
+	public String getBusinessDetails(@RequestParam("tagName") String tagName,@RequestParam("cityName") String cityName, ModelMap model)
+	{
+		System.out.println("tagName: "+tagName+"\n"+"cityName: "+cityName);
+		return "redirect:/";
 	}
 }
