@@ -11,18 +11,35 @@ $(document).ready(function(){
 
 	    rules: {
 	    	categoryName: {
-	            required: true
+	            required: true,
+	            lettersonly:true
 	        },
 	        categoryDesc:{
-	        	 required: true
+	        	 required: true,
+	        	 minlength:20
+	        },
+	        file:{
+	        	required: true,
+	        	extension:"jpg|jpeg|png|bmp",
+	        	maxfilesize:true
 	        }
 
 	    },
 	      messages:{
 	    	  
-	    	  categoryName:"Please Enter Valid Category Name",
-	    	  categoryDesc:"Please Select Valid category Description",
-	    	  file:"Please Select Valid File"
+	    	  categoryName:{
+	    		  required: "Please enter category name",
+	    		  lettersonly:"Please enter valid category name"
+	    	  },
+	    	  categoryDesc:{
+	    		  required: "Please enter category Description",
+	    		  minlength:"Please enter few more description"
+	    	  },
+	    	  file:{
+		        	required: "Please select image",
+		        	extension:"Please select valid image",
+		        		maxfilesize:"File size should be less than 300 KB"
+	    	  }
 	     
 	      },
 	  
@@ -35,17 +52,33 @@ $(document).ready(function(){
 	      errorElement: 'span',
 	      errorClass: 'error',
 	      errorPlacement: function(error, element) {
-	          if(element.parent('.input-group').length) {
-	              error.insertAfter(element.parent());
-	          } else {
-	              error.insertAfter(element);
-	          }},
+		   	   
+	     	  // if element is file type, we put the error message in its grand parent
+	           if (element.prop("type") === "file") {
+	               error.insertAfter(element.parent().parent());
+	               error.removeClass('error,errorimg').addClass('errorimg');
+	              
+	           } else {
+	         	   error.insertAfter(element.parent());
+	         	  error.addClass('error');
+	         	
+	           }},
 
 
 	});
 
+	jQuery.validator.addMethod("lettersonly", function(value, element) {
+		  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+		}, "Letters only please"); 
 
-	
+	$.validator.addMethod(
+		    "maxfilesize",
+		    function (value, element) {
+		        return this.optional(element) || (element.files && element.files[0]
+		                               && element.files[0].size < 1024  * 300);
+		    },
+		    'The file size can not exceed 300KB.'
+		);
 	
 	/*=========================
 	  category Update Validation
@@ -54,22 +87,40 @@ $(document).ready(function(){
 
 	    rules: {
 	    	categoryName: {
-	            required: true
+	            required: true,
+	            lettersonly:true
 	        },
 	        categoryDesc:{
-	        	 required: true
+	        	 required: true,
+	        	 minlength:20
+	        },
+	        file:{
+	        	required: true,
+	        	maxfilesize:true,
+	        	extension: "jpg|jpeg|png|bmp"
 	        }
 	     
 	    },
-	      messages:{
+	    messages:{
 	    	  
-	    	  categoryName:"Please Enter Valid Category Name",
-	    	  categoryDesc:"Please Select Valid category Description",
-	    	  country:"Please Select Valid country Name"
+	    	  categoryName:{
+	    		  required: "Please enter category name",
+	    		  lettersonly:"Please enter valid category name"
+	    	  },
+	    	  categoryDesc:{
+	    		  required: "Please enter category Description",
+	    		  minlength:"Please enter few more description"
+	    	  },
+	    	  file:{
+		        	required: "Please select image",
+		        	extension:"Please select valid image",
+		        		maxfilesize:"File size should be less than 300 KB"
+	    	  }
 	     
 	      },
 	  
 	      highlight: function(element) {
+	    	  
 	          $(element).closest('.space').addClass('has-error');
 	      },
 	      unhighlight: function(element) {
@@ -78,11 +129,17 @@ $(document).ready(function(){
 	      errorElement: 'span',
 	      errorClass: 'error',
 	      errorPlacement: function(error, element) {
-	          if(element.parent('.input-group').length) {
-	              error.insertAfter(element.parent());
-	          } else {
-	              error.insertAfter(element);
-	          }},
+		   	   
+	     	  // if element is file type, we put the error message in its grand parent
+	           if (element.prop("type") === "file") {
+	               error.insertAfter(element.parent().parent());
+	               error.removeClass('error,errorimg').addClass('errorimg');
+	              
+	           } else {
+	         	   error.insertAfter(element.parent());
+	         	  error.addClass('error');
+	         	
+	           }},
 
 
 	});
@@ -104,18 +161,39 @@ $(document).ready(function(){
 	            required: true
 	        },
 	        subCategoryName:{
-	        	 required: true
+	        	 required: true,
+	        	 minlength:5
 	        },
+	       
 	        subCategoryDesc:{
-	        	required: true	
+	        	 required: true,
+	        	 minlength:20
+	        },
+	        file:{
+	        	required: true,
+	        	maxfilesize:true,
+	        	extension: "jpg|jpeg|png|bmp"
 	        }
 
 	    },
 	      messages:{
 	    	  
-	    	  "category.categoryId":"Please Enter Valid sub-Category Name",
-	    	  categoryDesc:"Please Select Valid category Description",
-	    	  file:"Please Select Valid File"
+	    	  "category.categoryId":{
+	    		  required: "Please select Category Name"
+	    	  },
+	    	  subCategoryName:{
+	    		  required:"Please enter sub category name",
+	    		  minlength:"Please enter minimum 5 charcters"
+	    	  },
+	    	  subCategoryDesc:{
+	    		  required:"Please enter category description",
+	    		  minlength:"Please enter few more description"
+	    	  },
+	    	  file:{
+	    		  required: "Please select image",
+		        		maxfilesize:"File size should be less than 300 KB",
+		        		extension:"Please select valid image"
+	    	  }
 	     
 	      },
 	  
@@ -128,11 +206,17 @@ $(document).ready(function(){
 	      errorElement: 'span',
 	      errorClass: 'error',
 	      errorPlacement: function(error, element) {
-	          if(element.parent('.input-group').length) {
-	              error.insertAfter(element.parent());
-	          } else {
-	              error.insertAfter(element);
-	          }},
+		   	   
+	     	  // if element is file type, we put the error message in its grand parent
+	           if (element.prop("type") === "file") {
+	               error.insertAfter(element.parent().parent());
+	               error.removeClass('error,errorimg').addClass('errorimg');
+	              
+	           } else {
+	         	   error.insertAfter(element.parent());
+	         	  error.addClass('error');
+	         	
+	           }},
 
 
 	});
@@ -145,40 +229,68 @@ $(document).ready(function(){
 	 ===========================*/
 	$('#subcategoryupdate').validate({
 
-	    rules: {
-	    	"category.categoryId": {
-	            required: true
-	        },
-	        subCategoryName:{
-	        	   required: true
-	        },
-	        subCategoryDesc:{
-	        	 required: true
-	        }
-	     
-	    },
-	      messages:{
-	    	  
-	    	  "category.categoryId":"Please Enter Valid Category Name",
-	    	  subCategoryDesc:"Please Select Valid category Description",
-	    	  subCategoryName:"Please Select Valid Sub-Category Name"
-	     
-	      },
-	  
-	      highlight: function(element) {
-	          $(element).closest('.space').addClass('has-error');
-	      },
-	      unhighlight: function(element) {
-	          $(element).closest('.space').removeClass('has-error');
-	      },
-	      errorElement: 'span',
-	      errorClass: 'error',
-	      errorPlacement: function(error, element) {
-	          if(element.parent('.input-group').length) {
-	              error.insertAfter(element.parent());
-	          } else {
-	              error.insertAfter(element);
-	          }},
+	          
+	          rules: {
+	  	    	"category.categoryId": {
+	  	            required: true
+	  	        },
+	  	        subCategoryName:{
+	  	        	 required: true,
+	  	        	 minlength:5
+	  	        },
+	  	       
+	  	        subCategoryDesc:{
+	  	        	 required: true,
+	  	        	 minlength:20
+	  	        },
+	  	        file:{
+	  	        	required: true,
+	  	        	maxfilesize:true,
+	  	        	extension: "jpg|jpeg|png|bmp"
+	  	        }
+
+	  	    },
+	  	      messages:{
+	  	    	  
+	  	    	  "category.categoryId":{
+	  	    		  required: "Please select Category Name"
+	  	    	  },
+	  	    	  subCategoryName:{
+	  	    		  required:"Please enter sub category name",
+	  	    		  minlength:"Please enter minimum 5 charcters"
+	  	    	  },
+	  	    	  subCategoryDesc:{
+	  	    		  required:"Please enter category description",
+	  	    		  minlength:"Please enter few more description"
+	  	    	  },
+	  	    	  file:{
+	  	    		  required: "Please select image",
+	  		        		maxfilesize:"File size should be less than 300 KB",
+	  		        		extension:"Please select valid image"
+	  	    	  }
+	  	     
+	  	      },
+	  	  
+	  	      highlight: function(element) {
+	  	          $(element).closest('.space').addClass('has-error');
+	  	      },
+	  	      unhighlight: function(element) {
+	  	          $(element).closest('.space').removeClass('has-error');
+	  	      },
+	  	      errorElement: 'span',
+	  	      errorClass: 'error',
+	  	      errorPlacement: function(error, element) {
+	  		   	   
+	  	     	  // if element is file type, we put the error message in its grand parent
+	  	           if (element.prop("type") === "file") {
+	  	               error.insertAfter(element.parent().parent());
+	  	               error.removeClass('error,errorimg').addClass('errorimg');
+	  	              
+	  	           } else {
+	  	         	   error.insertAfter(element.parent());
+	  	         	  error.addClass('error');
+	  	         	
+	  	           }},
 
 
 	});

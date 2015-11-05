@@ -398,11 +398,9 @@
 						<div>
 							<span class="btn btn-default btn-file"><span
 								class="fileinput-new">Select image</span><span
-								class="fileinput-exists">Change</span> <input type="file"
+								class="fileinput-exists">Change Image</span> <input type="file"
 								id="file" name="file" onchange="changeImage(this);"> <form:errors
-									path="subCategoryLogo" cssClass="errors" /></span> <a href="#"
-								class="btn btn-default fileinput-exists"
-								data-dismiss="fileinput">Remove</a>
+									path="subCategoryLogo" cssClass="errors" /></span> 
 						</div>
 					</div>
 				</div>
@@ -499,7 +497,7 @@
          <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-        
+       
         
         <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
@@ -515,7 +513,8 @@
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
 		     <script
 		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
-		 
+		  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
 	  <script
 		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
         

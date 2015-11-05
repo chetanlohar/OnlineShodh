@@ -369,7 +369,7 @@
 						<span class="input-group-addon"><span class="fa fa-road"></span></span>
 						<form:textarea path="categoryDesc" title="Category Description"
 							class="form-control" rows="3" id="categorydesc"
-							name="categorydesc" />
+							name="categorydesc" style="resize:none;" />
 						<form:errors path="categoryDesc" cssClass="error" />
 
 					</div>
@@ -387,14 +387,13 @@
 						<div>
 							<span class="btn btn-default btn-file"><span
 								class="fileinput-new">Select image</span><span
-								class="fileinput-exists">Change</span><input type="file"
+								class="fileinput-exists">Change Image</span><input type="file"
 								id="file" name="file">
 								<form:errors path="categoryLogo" cssClass="errors" />
 			                     
 								</span>
 							<!-- <img id="categorylogo" height="50" width="50"/> -->
-							<a href="#" class="btn btn-default fileinput-exists"
-								data-dismiss="fileinput">Remove</a>
+							
 						</div>
 					</div>
 				</div>
@@ -495,6 +494,8 @@
          <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
          <script
 		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		 <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
 		 
 	  <script
 		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 

@@ -390,9 +390,7 @@
 								id="file" name="file" value="Browse"
 								onchange="changeImage(this);"></span> <%-- <img
 								src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}"
-								id="categorylogo" height="50" width="50" /> --%> <a href="#"
-								class="btn btn-default fileinput-exists"
-								data-dismiss="fileinput">Remove</a>
+								id="categorylogo" height="50" width="50" /> --%> 
 						</div>
 					</div>
 				</div>
@@ -428,6 +426,8 @@
 
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>

@@ -35,6 +35,7 @@
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
 
+
 </head>
 </head>
 <body>
@@ -397,23 +398,18 @@
 					<div class="fileinput fileinput-new" data-provides="fileinput">
 						<div class="fileinput-preview thumbnail" data-trigger="fileinput"
 							style="width: 200px; height: 150px;">
-							<%-- <img
+							 <img
 								src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
 								alt="...">
- --%>
+ 
 						</div>
 						<div>
 							<span class="btn btn-default btn-file"><span
 								class="fileinput-new">Select image</span><span
-								class="fileinput-exists">Change</span><input type="file"
+								class="fileinput-exists">Change &emsp;</span><input type="file"
 								id="file" name="file" value="Browse"
 								onchange="changeImage(this);"> <form:errors
-									path="subCategoryLogo" cssClass="errors" /> <img
-								id="categorylogo"
-								src="${pageContext.request.contextPath}/admin/subcategories/load/logo/${subcategory.subCategoryId}"
-								height="50" width="50" alt="*No Image" /> </span> <a href="#"
-								class="btn btn-default fileinput-exists"
-								data-dismiss="fileinput">Remove</a>
+									path="subCategoryLogo" cssClass="errors" />  </span> 
 						</div>
 					</div>
 				</div>
@@ -449,6 +445,9 @@
 
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
+		
+		<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
@@ -480,5 +479,6 @@
 			});
 		});
 	</script>
+		
 </body>
 </html>
