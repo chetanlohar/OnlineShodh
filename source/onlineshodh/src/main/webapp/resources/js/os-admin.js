@@ -171,9 +171,9 @@ $(document).ready(function(){
 	      $('#bus_Features').val('');
 	  });
 
-	 /* $('.sandbox-container input').datepicker({
+	  $('.sandbox-container input').datepicker({
 		  autoclose: true,
 		    todayHighlight: true
-	  });*/
+	  });
 
 });

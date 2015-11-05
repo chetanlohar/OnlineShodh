@@ -168,7 +168,7 @@ public class CategoryController {
 		FieldError FileSizeExceedException;
 		model.addAttribute("categories", categoryService.getAllCategories());
 		FileSizeExceedException = new FieldError("category", "categoryLogo",
-				"Please Select Image Less than 100000 Bytes");
+				"Please Select Image Less than 300 KB");
 		
 		
 		result.addError(FileSizeExceedException);

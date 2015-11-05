@@ -419,6 +419,14 @@
 						</div>
 					</div>
 					<div class="col-lg-10 space">
+						<label for="url" class="col-sm-2 control-label">BannerName</label>
+						<div class="input-group">
+							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
+							<form:input path="bannerName" class="form-control" id="bannerurl" />
+							<form:errors path="bannerName" cssClass="errors" />
+						</div>
+					</div>
+					<div class="col-lg-10 space">
 						<label for="url" class="col-sm-2 control-label">UrlLink</label>
 						<div class="input-group">
 							<span class="input-group-addon"><span class="fa fa-globe"></span></span>

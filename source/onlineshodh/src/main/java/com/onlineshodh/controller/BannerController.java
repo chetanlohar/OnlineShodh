@@ -3,6 +3,7 @@ package com.onlineshodh.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -27,11 +28,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.BannerEntity;
+import com.onlineshodh.entity.BusinessDetailsEntity;
 import com.onlineshodh.entity.CityEntity;
 import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.service.BannerService;
@@ -103,6 +106,21 @@ public class BannerController {
 	public String saveBanner() {
 		return "redirect:/admin/banners";
 	}
+	
+	@RequestMapping(value = "/searchBanner", method = RequestMethod.GET)
+	public @ResponseBody List<String> serachBusinesData(@RequestParam("term") String keyword) {
+		List<String> list=new ArrayList<String>();
+		List<BannerEntity> ListByBannerName;
+		list.clear();
+		ListByBannerName=bannerService.getBusinessDetailsByBusinessName(keyword);
+		System.out.println("Size OF BusinessName List"+ListByBannerName.size());
+		for(BusinessDetailsEntity bussiness:ListByBannerName){
+			System.out.println(" List value"+bussiness.getBusinessName());
+			list.add(bussiness.getBusinessName());
+		}
+		return list; 
+		
+	}
 
 	
 	@RequestMapping(value = "/exception")
@@ -113,7 +131,7 @@ public class BannerController {
 		model.addAttribute("categories", categoryService.getAllCategories());
 		model.addAttribute("banners", bannerService.getAllBanners());
 		FileSizeExceedException = new FieldError("banner", "bannerLogo",
-				"Please Select Image Less than 100000 Bytes");
+				"Please Select Image Less 3 MB");
 		
 		
 		result.addError(FileSizeExceedException);

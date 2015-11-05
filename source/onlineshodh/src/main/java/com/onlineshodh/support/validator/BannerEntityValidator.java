@@ -44,7 +44,11 @@ public class BannerEntityValidator implements Validator {
 			System.out.println("Banner Image Size Greater");
 			errors.rejectValue("bannerLogo", "11", "Please Select Image Less than 100000 Bytes");
 		}
-*/		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "urlLink", "11",
+		
+*/		
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "bannerName", "11",
+				mandatory);
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "urlLink", "11",
 				mandatory);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "startDate", "11",
 				mandatory);

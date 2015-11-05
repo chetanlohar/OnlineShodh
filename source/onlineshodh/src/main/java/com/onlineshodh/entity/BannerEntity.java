@@ -38,6 +38,8 @@ public class BannerEntity implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_bannerid")
 	@Column(name="bannerid")
 	private Integer bannerId;
+	@Column(name="bannername")
+	private String bannerName;
 	@ManyToOne(targetEntity=CategoryEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="categoryid")
 	private CategoryEntity category;
@@ -132,14 +134,22 @@ public class BannerEntity implements Serializable{
 	}
 	
 	
+	public String getBannerName() {
+		return bannerName;
+	}
+	public void setBannerName(String bannerName) {
+		this.bannerName = bannerName;
+	}
 	@Override
 	public String toString() {
-		return "BannerEntity [bannerId=" + bannerId + ", category=" + category
-				+ ", city=" + city + ", banner=" + Arrays.toString(bannerLogo)
-				+ ", urlLink=" + urlLink + ", totalHit=" + totalHit
-				+ ", regDate=" + regDate + ", startDate=" + startDate
-				+ ", expiryDate=" + expiryDate + "]";
+		return "BannerEntity [bannerId=" + bannerId + ", bannerName="
+				+ bannerName + ", category=" + category + ", city=" + city
+				+ ", bannerLogo=" + Arrays.toString(bannerLogo) + ", urlLink="
+				+ urlLink + ", totalHit=" + totalHit + ", regDate=" + regDate
+				+ ", startDate=" + startDate + ", expiryDate=" + expiryDate
+				+ ", status=" + status + "]";
 	}
+	
 	
 	
 	

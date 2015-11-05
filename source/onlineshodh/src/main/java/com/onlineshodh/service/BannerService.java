@@ -10,4 +10,5 @@ public interface BannerService {
 	public List<BannerEntity> getAllBanners();
 	public BannerEntity getBannerById(Integer bannerId);
 	public void deleteBanner(Integer bannerId);
+/*	public List<BannerEntity> */ 
 }

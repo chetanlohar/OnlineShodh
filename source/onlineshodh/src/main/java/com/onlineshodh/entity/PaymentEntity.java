@@ -32,29 +32,46 @@ public class PaymentEntity implements Serializable {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="pk_sequence_paymentid")
 	@Column(name="paymentid",nullable=false,unique=true)
 	private Integer paymentId;
-	@Column(name="paymentmode")
-	private String paymentMode;
-	@Column(name="status")
-	private String status;
+    @Column(name="paymentfor")
+	private String paymentfor;
 	@Column(name="ammount")
 	private Integer ammount;
+	@Column(name="status")
+	private String status;
+	@Column(name="remark")
+	private String remark;
+	@Column(name="payeename")
+	private String payeeName;
 	@ManyToOne(targetEntity=BannerEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="bannerid")
 	private BannerEntity banner;
 	@ManyToOne(targetEntity=BusinessDetailsEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="businessid")
 	private BusinessDetailsEntity business;
+    @Column(name="isbusiness") 
+    private boolean isBusiness;
+    @ManyToOne(targetEntity=PaymentModeEntity.class,fetch=FetchType.EAGER)
+    @JoinColumn(name="paymentmodeid")
+    private PaymentModeEntity paymentMode; 
+    @Column(name="transactionid")
+    private Integer transactionid;
 	public Integer getPaymentId() {
 		return paymentId;
 	}
 	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
-	public String getPaymentMode() {
-		return paymentMode;
+	public String getPaymentfor() {
+		return paymentfor;
 	}
-	public void setPaymentMode(String paymentMode) {
-		this.paymentMode = paymentMode;
+	public void setPaymentfor(String paymentfor) {
+		this.paymentfor = paymentfor;
+	}
+	public Integer getAmmount() {
+		return ammount;
+	}
+	public void setAmmount(Integer ammount) {
+		this.ammount = ammount;
 	}
 	public String getStatus() {
 		return status;
@@ -62,11 +79,17 @@ public class PaymentEntity implements Serializable {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Integer getAmmount() {
-		return ammount;
+	public String getRemark() {
+		return remark;
 	}
-	public void setAmmount(Integer ammount) {
-		this.ammount = ammount;
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	public String getPayeeName() {
+		return payeeName;
+	}
+	public void setPayeeName(String payeeName) {
+		this.payeeName = payeeName;
 	}
 	public BannerEntity getBanner() {
 		return banner;
@@ -80,14 +103,32 @@ public class PaymentEntity implements Serializable {
 	public void setBusiness(BusinessDetailsEntity business) {
 		this.business = business;
 	}
+	public boolean isBusiness() {
+		return isBusiness;
+	}
+	public void setBusiness(boolean isBusiness) {
+		this.isBusiness = isBusiness;
+	}
+	public PaymentModeEntity getPaymentMode() {
+		return paymentMode;
+	}
+	public void setPaymentMode(PaymentModeEntity paymentMode) {
+		this.paymentMode = paymentMode;
+	}
+	public Integer getTransactionid() {
+		return transactionid;
+	}
+	public void setTransactionid(Integer transactionid) {
+		this.transactionid = transactionid;
+	}
 	@Override
 	public String toString() {
-		return "PaymentEntity [paymentId=" + paymentId + ", paymentMode="
-				+ paymentMode + ", status=" + status + ", ammount=" + ammount
-				+ ", banner=" + banner + ", business=" + business + "]";
+		return "PaymentEntity [paymentId=" + paymentId + ", paymentfor="
+				+ paymentfor + ", ammount=" + ammount + ", status=" + status
+				+ ", remark=" + remark + ", payeeName=" + payeeName
+				+ ", banner=" + banner + ", business=" + business
+				+ ", isBusiness=" + isBusiness + ", paymentMode=" + paymentMode
+				+ ", transactionid=" + transactionid + "]";
 	}
-	
-
-	
-
+  
 }
