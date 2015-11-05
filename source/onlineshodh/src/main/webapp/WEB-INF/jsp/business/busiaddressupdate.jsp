@@ -298,7 +298,7 @@
 				</div>
 				<!-- /.row -->
 				<div class="row">
-				<form:form class="form-horizontal" action="${pageContext.request.contextPath}/admin/business/${businessId}/save/address" name="bclientupdate" id="bclientupdate" modelAttribute="businessAddress">
+				<form:form class="form-horizontal" action="${pageContext.request.contextPath}/admin/business/${businessId}/save/address" name="bclientaddupdate" id="bclientaddupdate" modelAttribute="businessAddress">
 				<form:hidden path="addressId"/>
 				
 					<div class="col-lg-12">
@@ -448,6 +448,8 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
+					<script
+		src="<%=request.getContextPath()%>/resources/js/validation/businessvalidation.js"></script>
 
 
 

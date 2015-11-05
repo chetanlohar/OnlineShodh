@@ -34,6 +34,12 @@
 <!--CUSTOM STYLES-->
 <link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
+	<style type="text/css">
+	.btn-default.active{
+	background: skyblue;
+	}
+	
+	</style>
 
 </head>
 </head>
@@ -295,7 +301,7 @@
 					<div class="col-lg-12 plan_create">
 						<form:form
 							action="${pageContext.request.contextPath}/admin/plans/save"
-							method="POST" modelAttribute="plan">
+							method="POST" modelAttribute="plan" id="Create_plan">
 
 							<div class="col-lg-5">
 								<h4>Plan Detail</h4>
@@ -363,10 +369,10 @@
 										Name </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessName" class="active" checked="checked"
+												path="businessName" class="active"
 												label="Yes" value="true" />
-										</label> <label class="btn btn-default"> <form:radiobutton
-												path="businessName" class="active" label="No" value="false" />
+										</label> <label class="btn btn-default active"> <form:radiobutton
+												path="businessName" class="active" label="No" value="false"  checked="checked" />
 										</label>
 										<form:errors path="businessName" />
 									</div>
@@ -376,12 +382,12 @@
 										Address </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessAddress" class="active" checked="checked"
+												path="businessAddress" class="active" 
 												label="Yes" value="true" />
 
-										</label> <label class="btn btn-default"> <form:radiobutton
+										</label> <label class="btn btn-default active"> <form:radiobutton
 												path="businessAddress" label="No" class="active"
-												value="false" />
+												value="false" checked="checked" />
 										</label>
 										<form:errors path="businessAddress" />
 									</div>
@@ -391,10 +397,10 @@
 										Name </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="personName" class="active" checked="checked"
+												path="personName" class="active" 
 												label="Yes" value="true" />
-										</label> <label class="btn btn-default"> <form:radiobutton
-												path="personName" class="active" label="No" value="false" />
+										</label> <label class="btn btn-default active"> <form:radiobutton
+												path="personName" class="active" checked="checked" label="No" value="false" />
 										</label>
 										<form:errors path="personName" />
 									</div>
@@ -404,11 +410,11 @@
 										Description </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessDescription" class="active" checked="checked"
+												path="businessDescription" class="active" 
 												label="Yes" value="true" />
-										</label> <label class="btn btn-default"> <form:radiobutton
+										</label> <label class="btn btn-default active"> <form:radiobutton
 												path="businessDescription" class="active" label="No"
-												value="false" />
+												value="false" checked="checked" />
 										</label>
 										<form:errors path="businessDescription" />
 									</div>
@@ -418,10 +424,10 @@
 									</label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="email" class="active" checked="checked" label="Yes"
+												path="email" class="active"  label="Yes"
 												value="true" />
-										</label> <label class="btn btn-default"> <form:radiobutton
-												path="email" class="active" label="No" value="false" />
+										</label> <label class="btn btn-default active"> <form:radiobutton
+												path="email" class="active" label="No" value="false" checked="checked" />
 										</label>
 										<form:errors path="email" />
 									</div>
@@ -431,10 +437,10 @@
 										Form </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="enquiryForm" class="active" checked="checked"
+												path="enquiryForm" class="active" 
 												label="Yes" value="true" />
-										</label> <label class="btn btn-default"> <form:radiobutton
-												path="enquiryForm" class="active" label="No" value="false" />
+										</label> <label class="btn btn-default active"> <form:radiobutton
+												path="enquiryForm" class="active" label="No" checked="checked" value="false" />
 										</label>
 										<form:errors path="enquiryForm" />
 									</div>
@@ -444,10 +450,10 @@
 										Info </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="generalInfo" class="active" checked="checked"
+												path="generalInfo" class="active" 
 												label="Yes" value="true" />
-										</label> <label class="btn btn-default"> <form:radiobutton
-												path="generalInfo" class="active" label="No" value="false" />
+										</label> <label class="btn btn-default active"> <form:radiobutton
+												path="generalInfo" class="active" label="No" checked="checked" value="false" />
 										</label>
 										<form:errors path="generalInfo" />
 									</div>
@@ -457,10 +463,10 @@
 									</label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="website" class="active" checked="checked" label="Yes"
+												path="website" class="active"  label="Yes"
 												value="true" />
-										</label> <label class="btn btn-default"> <form:radiobutton
-												path="website" class="active" label="No" value="false" />
+										</label> <label class="btn btn-default active"> <form:radiobutton
+												path="website" class="active" label="No" checked="checked" value="false" />
 										</label>
 										<form:errors path="website" />
 									</div>
@@ -470,10 +476,10 @@
 										Map </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="map" class="active" checked="checked" label="Yes"
+												path="map" class="active"  label="Yes"
 												value="true" />
-										</label> <label class="btn btn-default"> <form:radiobutton
-												path="map" class="active" label="No" value="false" />
+										</label> <label class="btn btn-default active"> <form:radiobutton
+												path="map" class="active" label="No" value="false" checked="checked" />
 										</label>
 										<form:errors path="map" />
 									</div>
@@ -714,6 +720,8 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
+			<script
+		src="${pageContext.request.contextPath}/resources/js/validation/planvalidation.js"></script>
 
 
 

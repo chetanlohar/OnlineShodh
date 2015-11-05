@@ -302,6 +302,7 @@
 						 <form:form action="${pageContext.request.contextPath}/admin/business/new/save" method="POST" class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessdetail" enctype="multipart/form-data">
 						 	<form:hidden path="businessId"/>
 						 	<form:hidden path="businessLogo"/>
+						 	<form:hidden path="address.addressId"/>
 						 	<form:hidden path="userDetails.userDetailsId" value="${userDetailsId}"/>
 							<div class="col-lg-8">
 								<%-- <div class="col-lg-12 space">
@@ -337,7 +338,7 @@
 											class="fileinput-new">Select file</span><span
 											class="fileinput-exists">Change</span>
 											<input type="file"	name="file"></span> 
-											<a href="#"	class="input-group-addon btn btn-default fileinput-exists"	data-dismiss="fileinput">Remove</a>
+											
 									        <form:errors path="businessLogo" cssClass="errors"/>   
 									</div>
 								</div>
@@ -479,8 +480,7 @@
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+	
 			<script
 		src="<%=request.getContextPath()%>/resources/js/validation/businessvalidation.js"></script>
 

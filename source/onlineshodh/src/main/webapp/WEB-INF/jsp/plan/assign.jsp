@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>s
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -318,7 +318,7 @@
 				</div>
 				<!-- /. row  -->
 				<div class="row space">
-				 <form:form action="${pageContext.request.contextPath}/admin/plans/assignPlan" class="form-horizontal" method="POST" modelAttribute="businessPlan">
+				 <form:form action="${pageContext.request.contextPath}/admin/plans/assignPlan/${business.businessId}" class="form-horizontal" id="assgin_plan_form" method="POST" modelAttribute="businessPlan">
 				<form:hidden path="business.businessId"/>
 				<div class="col-lg-10 space">
 									<label for="mailid" class="col-sm-3 control-label">Plan
@@ -343,7 +343,7 @@
 									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
-											<form:input path="startdate" class="form-control"/>
+											<form:input path="startdate" class="form-control" id="startDate"/>
 				                            <form:errors path="startdate" cssClass="error"/>
 									</div>
 									
@@ -354,7 +354,7 @@
 									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
-											<form:input path="enddate" class="form-control"/>
+											<form:input path="enddate" class="form-control" id="expiryDate"/>
 				                            <form:errors path="enddate" cssClass="error"/>
 				                  </div>
 				                  
@@ -379,7 +379,7 @@
 								
 								
 				          <div class="col-lg-4 col-lg-offset-5 space">
-				          <button class="btn btn-info">Assign</button>
+				          <button class="btn btn-info assign_plan"><i class=" fa fa-check-circle-o"></i> Assign</button>
 				          </div>
 				</form:form> 
 				
@@ -402,12 +402,24 @@
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
         
+        	<!-- validation SCRIPTS -->
+        			  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+      
+      	<!-- validation SCRIPTS -->
+        			  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
+        
+     
+			<script
+		src="<%=request.getContextPath()%>/resources/js/validation/planvalidation.js"></script>
+
+        
         
         <!-- BOOTSTRAP SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
         
-        <!-- PACE SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/pace.js"></script>
+      
         	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>

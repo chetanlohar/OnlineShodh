@@ -296,7 +296,7 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<form class="form-horizontal">
+						<form class="form-horizontal" id="search_Bplan">
 							<div class="col-lg-10 space">
 								<label for="planname" class="col-sm-2 control-label">
 									Search</label>

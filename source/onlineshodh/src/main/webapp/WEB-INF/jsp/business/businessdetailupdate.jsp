@@ -528,7 +528,7 @@
 								<div class="form-group">
 									<label for="contact">Add Contact:</label> <input
 										type="text" class="form-control" id="bdetail_contact"
-										placeholder="Contact" name="businessd_contact">
+										placeholder="Contact" name="businessd_contact" maxlength="10">
 								</div>
 								<input type="hidden" id="phoneurl" value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save"/>
 								<%-- <a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" class="bd_contact"> --%>
@@ -647,6 +647,23 @@
 
 	<!-- CUSTOM SCRIPTS -->
 	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	   var i = 0;
+		$("#phonebutton").on('click',function(){
+			alert("work");
+			if(i>5){
+				$("#bdetail_contact").prop('disabled',true);
+			}
+			i++;
+			
+		});
+		
+		
+	});
+	
+	
+	</script>
 
 </body>
 </html>

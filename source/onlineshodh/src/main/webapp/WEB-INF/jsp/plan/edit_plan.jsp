@@ -295,7 +295,7 @@
 					<div class="col-lg-12 plan_create">
 						<form:form
 							action="${pageContext.request.contextPath}/admin/plans/update"
-							method="POST" modelAttribute="plan">
+							method="POST" modelAttribute="plan" id="plan">
 							
 						<form:hidden path="planId"/>	
 
@@ -542,12 +542,14 @@
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
-
 	<!-- validation SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
+        			  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
+        
+			<script
+		src="<%=request.getContextPath()%>/resources/js/validation/planvalidation.js"></script>
 
-
+        
 
 	<!-- JANSY BOOTSTRAP SCRIPTS -->
 	<script
@@ -559,9 +561,7 @@
 
 
 
-	<!-- Input Telephone SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
+
 
 	<!-- DATATABLE SCRIPTS -->
 	<script

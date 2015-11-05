@@ -71,7 +71,7 @@ $(document).ready(function() {
 			file : {
 				required : true,
 			 	maxfilesize:true,
-	        	 extension: "png|jpe?g|gif"
+	        	extension: "png|jpe?g|gif"
 			},
 			
 			"businessDesc":{
@@ -113,8 +113,11 @@ $(document).ready(function() {
 		},
 		messages : {
 
-			"businessName" : "Please Select Valid Business Name",
-			file : "Please Enter Valid Logo Image",
+			"businessName" : "Please Enter Valid Business Name",
+			file :{ required :"Please Enter Valid Logo Image",
+				  maxfilesize:"The file size can not exceed 300KB."
+			
+			},
 			"businessDesc":"Please Enter Valid Business Description", 
 			"personName":"Please Enter Valid Person Name",
 			"email":"Please Enter Valid Email Id",
@@ -144,6 +147,91 @@ $(document).ready(function() {
 	    	  },
 
 	});
+	
+	
+	
+	/*
+	  =========================
+	   BUSINESS CLIENT ADDRESS VALIDATION
+	  ===========================
+	 */
+	
+
+	
+	$('#bclientaddupdate').validate({
+
+		rules : {
+			"address" : {
+
+				required : true
+				
+			},
+			"street": {
+				required : true
+			 	
+			},
+			
+			"landMark":{
+				required : true
+				
+			},
+
+			"city.state.country.countryId":{
+				required : true,
+				min:1
+			},
+			"city.state.stateId":{
+				required : true,
+				min:1
+			},
+			"city.cityId":{
+				required : true,
+				min:1
+			},
+			
+			"town.townId":{
+				required : true,
+				min:1
+			},
+			otown:{
+				required : true
+
+				
+			},
+			"clietpin":{
+				required : true
+			}
+
+		},
+		messages : {
+ 
+			clietpin:"Please Enter Valid Pin Code",
+			otown:"Please Enter Valid Town Name",
+			"website":"Please Enter Valid Website Address",
+			"city.state.country.countryId":"Please Enter Valid Country",
+			"city.state.stateId":"Please Enter Valid State Name",
+			"city.cityId":"Please Enter Valid City",
+			"town.townId":"Please Enter Valid Town Name"
+		},
+		
+	      highlight: function(element) {
+	          $(element).closest('.space').addClass('has-error');
+	      },
+	      unhighlight: function(element) {
+	          $(element).closest('.space').removeClass('has-error');
+	      },
+	      errorElement: 'span',
+	      errorClass: 'error',
+	      errorPlacement: function(error, element) {
+	          if(element.parent('.input-group').length) {
+	              error.insertAfter(element.parent());
+	          } else {
+	              error.insertAfter(element);
+	          }},
+
+	});
+	
+
 	
 
 });
