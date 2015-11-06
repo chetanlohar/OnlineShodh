@@ -173,7 +173,8 @@ $(document).ready(function(){
 
 	  $('.sandbox-container input').datepicker({
 		  autoclose: true,
-		    todayHighlight: true
+		    todayHighlight: true,
+		    startDate: '-0d'
 	  });
 
 });

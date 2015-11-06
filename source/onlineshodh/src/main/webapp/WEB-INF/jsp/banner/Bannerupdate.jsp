@@ -10,6 +10,8 @@
 <title>Banner</title>
 
 <!-- BOOTSTRAP STYLES-->
+
+
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
@@ -44,25 +46,7 @@
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/commonjs.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/jquery-ui.css">
-<script>
-	$(function() {
-		$("#datepicker").datepicker();
-	});
-	$(function() {
-		$("#datepicker2").datepicker();
-	});
-	$(function() {
-		$("#datepicker3").datepicker();
-	});
-</script>
+
 
 
 
@@ -265,8 +249,8 @@
 						<li><a class="active-menu"
 							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
-								Advt. Banner</a></li>
+						<!-- <li><a href="#"><i class="fa fa-bullhorn "></i>List All
+								Advt. Banner</a></li> -->
 					</ul></li>
 
 				<li><a href="#"><i class="fa fa-sitemap "></i>Category
@@ -327,7 +311,7 @@
 				<form:form
 							action="${pageContext.request.contextPath}/admin/banners/save"
 							modelAttribute="banner" method="POST"
-							enctype="multipart/form-data">
+							enctype="multipart/form-data" id="bannerUpdate">
 			<form:hidden path="bannerId" />
              <form:hidden path="bannerLogo" />  			
 					<div class="col-lg-10 space">
@@ -419,7 +403,7 @@
 						</div>
 					</div>
 					<div class="col-lg-10 space">
-						<label for="url" class="col-sm-2 control-label">BannerName</label>
+						<label for="url" class="col-sm-2 control-label">Banner Name</label>
 						<div class="input-group">
 							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
 							<form:input path="bannerName" class="form-control" id="bannerurl" />
@@ -427,10 +411,10 @@
 						</div>
 					</div>
 					<div class="col-lg-10 space">
-						<label for="url" class="col-sm-2 control-label">UrlLink</label>
+						<label for="url" class="col-sm-2 control-label">Url Link</label>
 						<div class="input-group">
 							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
-							<form:input path="urlLink" class="form-control" id="bannerurl" />
+							<form:input path="urlLink" class="form-control" id="bannerur" />
 							<form:errors path="urlLink" cssClass="errors" />
 						</div>
 					</div>
@@ -442,7 +426,7 @@
 								class="fa fa-calendar"></span></span>
 
 							<form:input path="startDate" class="form-control"
-								name="startdate" id="datepicker" />
+								name="startdate" id="StartDate" />
 							<form:errors path="startDate" cssClass="errors" />
 
 						</div>
@@ -455,7 +439,7 @@
 								class="fa fa-calendar"></span></span>
 
 							<form:input path="expiryDate" class="form-control"
-								name="Expirydate" id="datepicker2" />
+								name="Expirydate" id="expiryDate" />
 							<form:errors path="expiryDate" cssClass="errors" />
 						</div>
 					</div>
@@ -509,37 +493,34 @@
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-
-	<!-- Datepicker SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-
-	<!-- JANSY BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
-
-
-	<!-- METIMENU SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-
-	<!-- DATATABLE SCRIPTS -->
+	  <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+          <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+        
+                <!-- BOOTSTRAP JANSY SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+        
+        	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+        	<!-- Datepicker SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+        
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+        <script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
+        
+        <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
+	  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/bannervalidation.js"></script> 
+        
+        
+	
+	
 </body>
 </html>

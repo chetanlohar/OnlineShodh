@@ -19,7 +19,7 @@ $(document).ready(function(){
 	        	 minlength:20
 	        },
 	        file:{
-	        	required: true,
+	        	
 	        	extension:"jpg|jpeg|png|bmp",
 	        	maxfilesize:true
 	        }
@@ -36,7 +36,7 @@ $(document).ready(function(){
 	    		  minlength:"Please enter few more description"
 	    	  },
 	    	  file:{
-		        	required: "Please select image",
+		        	
 		        	extension:"Please select valid image",
 		        		maxfilesize:"File size should be less than 300 KB"
 	    	  }
@@ -95,7 +95,7 @@ $(document).ready(function(){
 	        	 minlength:20
 	        },
 	        file:{
-	        	required: true,
+	        	
 	        	maxfilesize:true,
 	        	extension: "jpg|jpeg|png|bmp"
 	        }
@@ -112,7 +112,7 @@ $(document).ready(function(){
 	    		  minlength:"Please enter few more description"
 	    	  },
 	    	  file:{
-		        	required: "Please select image",
+		        	
 		        	extension:"Please select valid image",
 		        		maxfilesize:"File size should be less than 300 KB"
 	    	  }
@@ -170,7 +170,7 @@ $(document).ready(function(){
 	        	 minlength:20
 	        },
 	        file:{
-	        	required: true,
+	        	
 	        	maxfilesize:true,
 	        	extension: "jpg|jpeg|png|bmp"
 	        }
@@ -190,7 +190,7 @@ $(document).ready(function(){
 	    		  minlength:"Please enter few more description"
 	    	  },
 	    	  file:{
-	    		  required: "Please select image",
+	    		  
 		        		maxfilesize:"File size should be less than 300 KB",
 		        		extension:"Please select valid image"
 	    	  }
@@ -244,7 +244,7 @@ $(document).ready(function(){
 	  	        	 minlength:20
 	  	        },
 	  	        file:{
-	  	        	required: true,
+	  	        	
 	  	        	maxfilesize:true,
 	  	        	extension: "jpg|jpeg|png|bmp"
 	  	        }
@@ -264,7 +264,7 @@ $(document).ready(function(){
 	  	    		  minlength:"Please enter few more description"
 	  	    	  },
 	  	    	  file:{
-	  	    		  required: "Please select image",
+	  	    		  
 	  		        		maxfilesize:"File size should be less than 300 KB",
 	  		        		extension:"Please select valid image"
 	  	    	  }

@@ -359,8 +359,8 @@
 						<span class="input-group-addon"><span class="fa fa-user"></span></span>
 						<form:input path="categoryName" title="Category Name"
 							class="form-control" id="categorynameup" name="categorynameup" />
-						<form:errors path="categoryName" cssClass="errors" />
 					</div>
+					<form:errors path="categoryName" cssClass="errors" />
 				</div>
 
 				<div class="col-lg-12 space">
@@ -370,8 +370,8 @@
 						<form:textarea path="categoryDesc" title="Category Description"
 							class="form-control" rows="3" id="categorydescup"
 							name="categorydescup" />
-						<form:errors path="categoryDesc" cssClass="errors" />
 					</div>
+					<form:errors path="categoryDesc" cssClass="error" />
 				</div>
 
 				<div class="col-lg-6 col-lg-offset-5 space">

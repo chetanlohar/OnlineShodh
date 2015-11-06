@@ -264,8 +264,8 @@
 						<li><a class="active-menu"
 							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
-								Advt. Banner</a></li>
+						<!-- <li><a href="#"><i class="fa fa-bullhorn "></i>List All
+								Advt. Banner</a></li> -->
 					</ul></li>
 
 				<li><a href="#"><i class="fa fa-sitemap "></i>Category
@@ -325,7 +325,7 @@
 				<form:form
 							action="${pageContext.request.contextPath}/admin/banners/save"
 							modelAttribute="banner" method="POST"
-							enctype="multipart/form-data">
+							enctype="multipart/form-data" id="managebanner">
 							<form:hidden path="bannerId" />
 							<form:hidden path="bannerLogo" />
 					<div class="col-lg-10 space">
@@ -351,7 +351,7 @@
 							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
 
 							<form:select path="city.state.country.countryId" id="countryId"
-								onchange="getState()" class="form-control" name="bannerCountry">
+								onchange="getState()" class="form-control" >
 								<form:option value="0" label="---Select-------" />
 								<c:forEach var="country" items="${countries}">
 									<form:option value="${country.countryId}">${country.countryName}</form:option>
@@ -365,7 +365,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
 							<form:select path="city.state.stateId" id="townStates"
-								onchange="getCity()" class="form-control" name="bannerstate">
+								onchange="getCity()" class="form-control" >
 								<form:option value="0" label="---Select-------" />
 								 <c:forEach var="state" items="${states}">
 									<form:option value="${state.stateId}">${state.stateName}</form:option>
@@ -380,7 +380,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
 							<form:select path="city.cityId" id="stateCities"
-								class="form-control" name="bannercity">
+								class="form-control" >
 								<form:option value="0" label="---Select-------" />
 								 <c:forEach var="city" items="${cities}">
 									<form:option value="${city.cityId}">${city.cityName}</form:option>
@@ -404,32 +404,30 @@
 							<div>
 								<span class="btn btn-default btn-file"><span
 									class="fileinput-new">Select image</span><span
-									class="fileinput-exists">Change</span> <input type="file"
+									class="fileinput-exists">Change Image</span> <input type="file"
 									id="file" name="file" onchange="changeImage(this);">
 									<form:errors path="bannerLogo" cssClass="errors" />
-									<img id="bannerLogo" height="50" width="50" /> </span> <a href="#"
-									class="btn btn-default fileinput-exists"
-									data-dismiss="fileinput">Remove</a>
+									<!-- <img id="bannerLogo" height="50" width="50" /> </span> --> 
 								
 							</div>
 						</div>
 					</div>
 					<div class="col-lg-10 space">
-						<label for="url" class="col-sm-2 control-label">BannerName</label>
+						<label for="url" class="col-sm-2 control-label">Banner Name</label>
 						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
+							<span class="input-group-addon"><span class="fa fa-photo"></span></span>
 							<form:input path="bannerName" class="form-control" id="bannerurl" />
-							<form:errors path="bannerName" cssClass="errors" />
 						</div>
+						<form:errors path="bannerName" cssClass="errors" />
 					</div>
 					
 					<div class="col-lg-10 space">
-						<label for="url" class="col-sm-2 control-label">UrlLink</label>
+						<label for="url" class="col-sm-2 control-label">Url Link</label>
 						<div class="input-group">
 							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
-							<form:input path="urlLink" class="form-control" id="bannerurl" />
-							<form:errors path="urlLink" cssClass="errors" />
+							<form:input path="urlLink" class="form-control" id="bannerur" />
 						</div>
+						<form:errors path="urlLink" cssClass="errors" />
 					</div>
 					<div class="col-lg-10 space">
 						<label for="date" class="col-sm-2 control-label">Start
@@ -438,8 +436,8 @@
 							<span class="input-group-addon"><span
 								class="fa fa-calendar"></span></span>
 
-							<form:input path="startDate" class="form-control"
-								name="startdate"/>
+							<form:input path="startDate" class="form-control" id="startDate"
+								/>
 							<form:errors path="startDate" cssClass="errors" />
 
 						</div>
@@ -451,9 +449,9 @@
 							<span class="input-group-addon"><span
 								class="fa fa-calendar"></span></span>
 
-							<form:input path="expiryDate" class="form-control"
-								name="Expirydate"/>
-							<form:errors path="expiryDate" cssClass="errors" />
+							<form:input path="expiryDate" class="form-control" id="expiryDate"
+								/>
+							<form:errors path="expiryDate" cssClass="error" />
 						</div>
 					</div>
 					<div class="col-lg-10 space">
@@ -463,17 +461,19 @@
 							<span class="input-group-addon"><span
 								class="fa fa-calendar"></span></span>
 
-							<form:input path="regDate" class="form-control" name="rgdate"/>
-							<form:errors path="regDate" cssClass="errors" />
+							<form:input path="regDate" class="form-control" />
+							
 						</div>
+						<form:errors path="regDate" cssClass="error" />
 					</div>
 						<div class="col-lg-10 space">
 						<label for="status" class="col-sm-2 control-label">Status</label>
 						<div class="input-group">
 							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
 							<form:input path="status" class="form-control" id="status" />
-							<form:errors path="status" cssClass="errors" />
+							
 						</div>
+						<form:errors path="status" cssClass="errors" />
 					</div>
 					
 					
@@ -594,6 +594,14 @@
         <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
         <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
+	
+	 <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
+	  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/bannervalidation.js"></script> 
+	
         	<script>
 		$(document).ready(function() {
 		 	$('#dataTables-banner').DataTable({
