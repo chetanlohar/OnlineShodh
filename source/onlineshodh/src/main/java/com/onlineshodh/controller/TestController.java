@@ -221,4 +221,12 @@ public class TestController {
 		return "Search_result/businessdetail";
 	}
 	
+	
+
+	@RequestMapping(value="/pay")
+	public String dopay()
+	{
+		return "payment/paymanet_mode";
+	}
+	
 }

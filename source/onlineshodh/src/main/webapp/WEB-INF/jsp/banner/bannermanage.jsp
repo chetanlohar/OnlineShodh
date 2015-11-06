@@ -173,145 +173,161 @@
 		</div>
 		</nav>
 		<!-- /. NAV TOP  -->
-		<nav class="navbar-default navbar-side" role="navigation">
-		<div class="sidebar-collapse">
-			<ul class="nav" id="main-menu">
-				<li>
-					<div class="user-img-div">
-						<img
-							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-							class="img-circle" />
+                            <img src="${pageContext.request.contextPath}/resources/images/user_pic.jpg" class="img-circle" />
 
+                           
+                        </div>
 
-					</div>
+                    </li>
+                        <li>
+                            <a  href="#"> <strong>OnlineShodh@mail.com </strong></a>
+                        </li>
 
-				</li>
-				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
-
-				<li><a href="<%=request.getContextPath()%>/admin/home"><i
-						class="fa fa-home "></i>Home</a></li>
-				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
-						Category Management<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a
-							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
-								class="fa fa-list"></i> Category Management</a></li>
-						<li><a
-							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
-								<i class="fa fa-list"></i> Sub-Category Management
-						</a></li>
-					</ul> <!-- /.nav-second-level --></li>
-
-				<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
-						Location Management<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a
-							href="${pageContext.request.contextPath}/admin/countries">Country
-								Management</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/states">State
-								Management</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/cities">City
-								Management</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/towns">Town
-								Management</a></li>
-					</ul> <!-- /.nav-second-level of location management --></li>
-
-				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
-						Client Management<span class="fa arrow"></a>
-					<ul class="nav nav-second-level">
-						<li><a
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
-								Client</a></li>
-					</ul></li>
-
-
-				<li><a href="#"><i class="fa fa-"></i>Business Management <span
-						class="fa arrow"></span></a>
-					<ul class=" nav nav-second-level">
-						<li><a
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
-								<i class="fa fa-user-plus"></i> Add Business
-						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List Business
-						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Upgrade
-								Businesss
-						</a></li>
-
-					</ul></li>
-
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
-						Management <span class="fa arrow"></span></a>
-					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
-						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
-						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
-						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
-						</a></li>
-					</ul></li>
-
-
-				<li class="active"><a href="#"><i class="fa fa-photo "></i>Advt.
-						Banner<span class="fa arrow"></span></a>
-
-					<ul class="nav nav-second-level">
-						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
-								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
-						<!-- <li><a href="#"><i class="fa fa-bullhorn "></i>List All
-								Advt. Banner</a></li> -->
-					</ul></li>
-
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
-			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
-			</li>
-			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
-				</ul></li>
-			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
-					</li>
-
-				</ul></li>
-			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
-					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
-					</li>
-					<li><a href="#">Second Level<span class="fa arrow"></span></a>
-						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>s
-							<li><a href="#">Third Link</a></li>
-
+                        <li>
+                            <a   href="${pageContext.request.contextPath}/admin/home"><i class="fa fa-home "></i>Home</a>
+                        </li>
+                             <li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
+							Category Management<span class="fa arrow"></span></a>
+						     <ul class="nav nav-second-level">
+							<li><a href="${pageContext.request.contextPath}/admin/categories"><i class="fa fa-list"></i> Category Management</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/subcategories"> <i class="fa fa-list"></i> Sub-Category Management</a></li>
+						</ul> <!-- /.nav-second-level --></li>
+						
+						<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
+							Location Management<span class="fa arrow"></span></a>
+						<ul class="nav nav-second-level">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/admin/countries">Country Management</a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/admin/states">State Management</a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/admin/cities">City Management</a>
+                                </li>
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/admin/towns">Town Management</a>
+                                </li>
+                            </ul>
+						 <!-- /.nav-second-level of location management --></li>
+                           
+                           <li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
+							Client Management<span class="fa arrow"></a>
+						<ul class="nav nav-second-level">
+							<li><a href="${pageContext.request.contextPath}/admin/clients">Manage Client</a></li>
 						</ul></li>
-				</ul></li>
+						
+						
+                        <li>
+                            <a href="#"><i class="fa fa-briefcase"></i>Business Management  <span class="fa arrow"></span></a>
+                            <ul class=" nav nav-second-level">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/admin/clients/view/">
+                                        <i class="fa fa-user-plus"></i>
+                                       Add Business
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        List Business
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-list"></i>
+                                        Upgrade Businesss
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
+                           	<ul class=" nav nav-second-level">
+						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
+								
+						</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/plans/updatePlans"> <i class="fa fa-list"></i> Update Plan
+						</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
+							
+						</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <i class="fa fa-list"></i> 
+								Assign Business Plan
+						</a></li>
+					</ul>
+                        </li>
 
 
-			</ul>
-		</div>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-photo "></i>Advt. Banner<span class="fa arrow"></span></a>
 
-		</nav>
-		<!-- /. SIDEBAR MENU (navbar-side) -->
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="${pageContext.request.contextPath}/admin/banners" class="active-menu"><i class="fa fa-cogs "></i>Add New Advt. Banner</a>
+                              
+                              
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-bullhorn "></i>List All Advt. Banner</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                    <li>
+                        <a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-signal "></i>Logs <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#"><i class="fa fa-cogs "></i>List All Logs</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-envelope "></i>Mails <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-cogs "></i>Settings <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#"><i class="fa fa-cogs "></i>Second  Link</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third  Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Link</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    </ul>
+                </div>
+
+            </nav>
+            <!-- /. SIDEBAR MENU (navbar-side) -->
 		<div id="page-wrapper" class="page-wrapper-cls">
 			<div id="page-inner">
 				<div class="row">

@@ -173,8 +173,55 @@ $(document).ready(function(){
 
 	  $('.sandbox-container input').datepicker({
 		  autoclose: true,
-		    todayHighlight: true,
-		    startDate: '-0d'
+		    todayHighlight: true
+		    
 	  });
+	  
+	  /*======================================
+	  Payment Moade Hide Div script
+	  ========================================*/
+		$("#payfor").on('change',function(e){
+			e.preventDefault();
+			var temp = $("#payfor").val();
+			alert(temp);
+				if(temp == '1'){
+					$(".hide_banner").hide();
+					$(".hide_business").show();
+					
+				}
+				else if(temp == '2'){
+					
+					$(".hide_banner").show();
+					$(".hide_business").hide();
+				}
+				else{
+					$(".hide_banner").hide();
+					$(".hide_business").hide();
+				}
+			});
+		
+		
+		
+		$("#pay_mode").on('change',function(e){
+			e.preventDefault();
+			var temp1 = $("#pay_mode").val();
+			alert(temp1);
+				if(temp1 == '1'){
+					$(".hide_cheque").hide();
+					$(".hide_cashamount").show();
+					
+				}
+				else if(temp1 == '2'){
+					
+					$(".hide_cashamount").hide();
+					$(".hide_cheque").show();
+				}
+				else{
+					$(".hide_cashamount").show();
+				
+				}
+			});
+	  
+	  
 
 });
