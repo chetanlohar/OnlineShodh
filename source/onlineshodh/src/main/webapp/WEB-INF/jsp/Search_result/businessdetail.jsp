@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -65,7 +67,7 @@
 	<!-- code for advertisement -->
 	<div class="container" id="businessname">
 		<div class="row">
-			<h1 class="col-lg-12 col-sm-12 col-xs-12">CLOUDCOM TECHNOLOGIES</h1>
+			<h1 class="col-lg-12 col-sm-12 col-xs-12">${business.businessName}</h1>
 		</div>
 	</div>
 
@@ -83,7 +85,7 @@
 					<ol class="breadcrumb">
 						<li><a href="#">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/prashant/business_list">Hotels</a></li>
-						<li class="active">Cloudcom Technologies</li>
+						<li class="active">${business.businessName}</li>
 					</ol>
 				</div>
 
@@ -149,42 +151,40 @@
 					CONTACT INFO
 					</h1>
 					<div class="row" id="contactinfo">
-						<div class="col-lg-7 col-md-7 col-sm-7 " id="description">Since
-							2013 Cloudcom Technologies has been helping clients realise their
-							business vision through delivering innovative, high quality,
-							customised IT solutions. Whether your main objective is to create
-							a powerful web presence, streamline your business processes or
-							reduce your long-term IT costs, Cloud</div>
+						<div class="col-lg-7 col-md-7 col-sm-7 " id="description">${business.businessDesc}</div>
 
 						<div class="col-lg-5 col-md-5 col-sm-5 " id="contacts">
 							<div class="row">
 								<div class="col-lg-12" id="personname">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-									&nbsp;Mr. Vishal Shetty
+									&nbsp;${business.personName}
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-12" id="addr">
 									<span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
-									&nbsp;Plot No.1, Shivaji Nagar, Sangamnagar, Satara 415003
+									&nbsp;${business.address.address} , ${business.address.street}, ${business.address.town.city.cityName}, ${business.address.town.townName}
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-12" id="addr">
 									<span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-									&nbsp;Vishalshetty1990@gmail.com
+									&nbsp;${business.email}
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-12" id="addr">
 									<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-									&nbsp;www.cloudtechnoindia.com
+									&nbsp;${business.website}
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-12" id="addr">
 									<span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-									&nbsp;02162-244474, 9028060604
+									&nbsp;
+									<c:forEach var="phone" items="${phones}">
+										${phone.phone} ,
+									</c:forEach>
 								</div>
 							</div>
 						</div>
@@ -198,54 +198,26 @@
 					<div class="row" id="generalinformation">
 						<div class="col-lg-12">
 							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;3
-									Star Hotel
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;5
-									Star Hotel
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;7
-									Star Hotel
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Air
-									Conditioned
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;3
-									Star Hotel
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;5
-									Star Hotel
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;7
-									Star Hotel
-								</div>
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
-									<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;Air
-									Conditioned
-								</div>
+								<c:forEach var="info" items="${generalinfo}">
+									<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6" id="gi">
+										<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;3
+											${info.generalInfoName}
+									</div>
+								</c:forEach>
+								
 							</div>
 						</div>
-
 					</div>
-
-
 					<!-- code for map -->
 
 					<h2 id="myh2">MAP</h2>
 					<div class="row">
 
-						<iframe
+						<!-- <iframe
 							src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15204.872945889128!2d74.0304022402588!3d17.687147754495733!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0xcf6deb4348cd2bc2!2sCloudcom+Technologies+%26+Software+Solutions+Pvt+Ltd!5e0!3m2!1sen!2sin!4v1431337276619"
-							height="300" frameborder="0" style="border: 0" class="col-lg-12"></iframe>
+							height="300" frameborder="0" style="border: 0" class="col-lg-12"></iframe> -->
+
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.5932998417798!2d73.93377931489313!3d18.547271987393472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3db00000001%3A0x570779d477cae3c8!2sSoftinfology+Solutions+And+Cunsultancy+Pvt.+Ltd.!5e0!3m2!1sen!2sin!4v1446812088810" height="300" frameborder="0" style="border:0" allowfullscreen class="col-lg-12"></iframe>
 
 					</div>
 
@@ -255,22 +227,22 @@
 
 					<h2 id="myh2">ENQUIRY</h2>
 
-					<form>
-						<div class="form-group">
+					
+					<div class="form-group">
+						<form:form action="${pageContext.request.contextPath}/search/business/enquiry/save/${business.businessId}" method="post" modelAttribute="businessEnquiry">
 							<div class="row">
 								<div class="col-lg-6">
 									<div class="row">
+										
 										<div class="col-lg-12 space">
-											<input type="text" class="form-control" name="fullname"
-												placeholder="FULL NAME *" required />
+											<form:input path="enquiryname" class="form-control" placeholder="FULL NAME *" required />
+										</div>
+										
+										<div class="col-lg-12 space">
+											<form:input path="phone" class="form-control" placeholder="MOBILE NUMBER *" required />
 										</div>
 										<div class="col-lg-12 space">
-											<input type="text" class="form-control" name="mobile"
-												placeholder="MOBILE NUMBER *" required />
-										</div>
-										<div class="col-lg-12 space">
-											<input type="text" class="form-control" name="email"
-												placeholder="EMAIL ID*" required />
+											<form:input path="email" class="form-control" placeholder="EMAIL ID*" required />
 										</div>
 									</div>
 								</div>
@@ -278,8 +250,8 @@
 								<div class="col-lg-6">
 									<div class="row">
 										<div class="col-lg-12 space">
-											<textarea class="form-control" rows="6" name="message"
-												placeholder="MESSAGE *" required></textarea>
+											<form:textarea path="message" class="form-control" rows="6" name="message"
+												placeholder="MESSAGE *" required />
 										</div>
 
 									</div>
@@ -291,11 +263,10 @@
 								<div class="col-lg-12" style="text-align: right">
 									<input type="submit" name="sendenquiry" class="btn btn-primary" />
 								</div>
-
 							</div>
-
-						</div>
-					</form>
+						</form:form>
+					</div>
+					
 			</div>
 
 

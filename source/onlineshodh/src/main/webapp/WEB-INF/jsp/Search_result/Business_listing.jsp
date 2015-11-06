@@ -96,15 +96,15 @@
 												<h4 class="product_name">
 													<span class="product_brand"><i
 														class="fa fa-thumbs-up "></i></span> <a
-														href="${pageContext.request.contextPath}/prashant/businessd"
+														href="${pageContext.request.contextPath}/search/business/${business.businessId}"
 														class="product_title"> <strong>${business.businessName}</strong>
 													</a>
 												</h4>
 												<p class="product_location">
 													<i class="fa fa-map-marker fa-2x"></i><span>${business.address.address} , ${business.address.street}, ${business.address.town.city.cityName}, ${business.address.town.townName}</span>
 												</p>
-												<p class="product_contact">
-													<i class="fa fa-phone-square fa-2x"></i>
+												<p class="product_contact">	<i class="fa fa-phone-square fa-2x"></i>
+												
 													<span>+918600249455</span>
 													<span>+91 8600249455</span>
 												</p>

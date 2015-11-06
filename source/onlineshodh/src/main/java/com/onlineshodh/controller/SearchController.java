@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,12 +26,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.onlineshodh.entity.BusinessDetailsEntity;
+import com.onlineshodh.entity.BusinessEnquiryEntity;
 import com.onlineshodh.entity.SubCategoryEntity;
 import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.model.BusinessComparator;
 import com.onlineshodh.model.SuggestBusiness;
 import com.onlineshodh.model.SuggestSubCategory;
 import com.onlineshodh.service.BusinessDetailsService;
+import com.onlineshodh.service.BusinessEnquiryService;
+import com.onlineshodh.service.BusinessGeneralInfoService;
+import com.onlineshodh.service.BusinessPhoneService;
 import com.onlineshodh.service.SubCategoryService;
 import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.UserDetailsService;
@@ -64,6 +70,16 @@ public class SearchController {
 	
 	@Autowired
 	SubCategoryService subCatService;
+	
+	@Autowired
+	BusinessPhoneService businessPhoneService;
+	
+	@Autowired
+	BusinessGeneralInfoService businessGeneralInfoService;
+	
+	@Autowired
+	BusinessEnquiryService businessEnquiryService;
+	
 	
 	List<TownEntity> towns;
 	
@@ -141,16 +157,13 @@ public class SearchController {
 				else if(cityName.contains(city))
 				{
 					matchedCityOnly.add(b);
-					Collections.sort(matchedCityOnly , new BusinessComparator());
 				}
 			}
 			Collections.sort(matchedBusinesses , new BusinessComparator());
+			Collections.sort(matchedCityOnly , new BusinessComparator());
 			matchedBusinesses.addAll(matchedCityOnly);
 			if(matchedBusinesses.size()!=0)
 			{
-				allCategoryLevelBusinesses = businessDetailsService.getBusinessByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId().longValue());
-				Collections.sort(allCategoryLevelBusinesses , new BusinessComparator());
-				matchedBusinesses.addAll(allCategoryLevelBusinesses);
 				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory().getSubCategoryName());
 				model.addAttribute("category",matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryName());
 				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
@@ -159,8 +172,6 @@ public class SearchController {
 			{
 				SubCategoryEntity subCat1 = subCatService.getSubCategory(tagName);
 				System.out.println("in else: "+subCat1.getSubCategoryName()+": ("+subCat1.getCategory().getCategoryName());
-				allCategoryLevelBusinesses = businessDetailsService.getBusinessByCategoryId(subCat1.getCategory().getCategoryId().longValue());
-				Collections.sort(allCategoryLevelBusinesses , new BusinessComparator());
 				model.addAttribute("subCategory",allCategoryLevelBusinesses.get(0).getSubCategory().getSubCategoryName());
 				model.addAttribute("category",allCategoryLevelBusinesses.get(0).getSubCategory().getCategory().getCategoryName());
 				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(allCategoryLevelBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
@@ -168,20 +179,26 @@ public class SearchController {
 		}
 		else
 		{
-			matchedBusinesses = businessDetailsService.getBusinessDetailsByBusinessName(tagName.trim());
-			if(matchedBusinesses.size()!=0)
-			{
-				Collections.sort(matchedBusinesses , new BusinessComparator());
-				allCategoryLevelBusinesses = businessDetailsService.getBusinessByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId().longValue());
-				Collections.sort(allCategoryLevelBusinesses , new BusinessComparator());
-				matchedBusinesses.addAll(allCategoryLevelBusinesses);
-				model.addAttribute("businesses", matchedBusinesses);
-				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory().getSubCategoryName());
-				model.addAttribute("category",matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryName());
-				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
-			}
+			
 		}
+		model.addAttribute("businesses", matchedBusinesses);
 		return "Search_result/Business_listing";
+	}
+	
+	
+	@RequestMapping(value={"/business/{businessId}"})
+	public String businessDetails(@PathVariable Long businessId,ModelMap model)
+	{
+		model.addAttribute("businessEnquiry", context.getBean("businessEnquiryEntity", BusinessEnquiryEntity.class));
+		
+		model.addAttribute("business", businessService.getBusinessDetails(businessId));
+		
+		model.addAttribute("phones",businessPhoneService.getBusinessPhoneDetailByBusinessId(businessId));
+		
+		model.addAttribute("generalinfo", businessGeneralInfoService.getBusinessGeneralInfoByBusinessId(businessId));
+		
+		return "Search_result/businessdetail";
+		
 	}
 	
 	@RequestMapping("/load/logo/{businessId}")
@@ -205,5 +222,15 @@ public class SearchController {
 			// logger.info("File Not Found");
 		}
 		return null;
+	}
+	
+	@RequestMapping(value={"/business/enquiry/save/{businessId}"},method = RequestMethod.POST)
+	public String saveEnquiry(@PathVariable Long businessId,ModelMap model,@ModelAttribute("businessEnquiry") BusinessEnquiryEntity enquiry, BindingResult result)
+	{
+		System.out.println("Enquiry: "+enquiry);
+		enquiry.getBusiness().setBusinessId(businessId);
+		businessEnquiryService.saveEnquiry(enquiry);
+		model.addAttribute("successMsgEnquiry", "Thank you for Enquiry, we will contact you soon.!");
+		return "redirect:/search/business/"+businessId;
 	}
 }
