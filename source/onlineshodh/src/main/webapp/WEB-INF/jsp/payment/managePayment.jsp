@@ -44,8 +44,8 @@ $("#keyword").on("keyup",function(e){
 <form:option value="BannerAdvertisement" label="BannerAdvertisement"/>
 </form:select> 
 </p>
-<p> <label>Business Name</label><form:input path="businessEntity.businessName" id="keyword"/></p>
-<p> <label>Banner Name</label><form:input path="banner.bannerName" id="keyword1" /></p>
+<p> <label>Business Name</label><input type="text" id="keyword" name="businessName"/></p>
+<p> <label>Banner Name</label><input type="text" id="keyword1" name="bannerName"/></p>
 <p><label>Payment Mode :</label>
 <form:select path="paymentMode.paymentModeid">
 <c:forEach var="paymentmode" items="${paymentmodes}">

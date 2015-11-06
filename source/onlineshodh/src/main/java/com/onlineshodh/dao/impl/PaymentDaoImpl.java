@@ -10,7 +10,6 @@ import com.onlineshodh.entity.PaymentEntity;
 public class PaymentDaoImpl extends AbstractJpaDao<PaymentEntity> implements PaymentDao {
 
 	 public void savePayment(PaymentEntity payment){
-		 setClazz(PaymentEntity.class);
-		 create(payment);
+		create(payment);
 	 }
 }

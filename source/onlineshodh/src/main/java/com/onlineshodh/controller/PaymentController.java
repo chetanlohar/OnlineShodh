@@ -12,9 +12,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.onlineshodh.entity.BannerEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
 import com.onlineshodh.entity.PaymentEntity;
 import com.onlineshodh.service.BannerService;
@@ -51,9 +51,8 @@ public class PaymentController {
 	}
 	
 	@RequestMapping(value="/save",method=RequestMethod.POST)
-	public String savePayment(ModelMap model,@Valid @ModelAttribute("payment")PaymentEntity payment,BindingResult result){
+	public String savePayment(@RequestParam("businessName") String businessName,@RequestParam("bannerName") String bannerName, ModelMap model,@Valid @ModelAttribute("payment") PaymentEntity payment,BindingResult result){
 
-		
 		if(result.hasErrors()){
 			System.out.println(" Error Count :"+result.getErrorCount());
 			List<FieldError> errors= result.getFieldErrors();
@@ -63,29 +62,34 @@ public class PaymentController {
 		}
 		else{
 			if(payment.getPaymentfor().equalsIgnoreCase("BusinessAdvertisement")){
-				List<BusinessDetailsEntity> list=businessDetailsService.getBusinessDetailsByBusinessName(payment.getBusinessEntity().getBusinessName());
+				List<BusinessDetailsEntity> list=businessDetailsService.getBusinessDetailsByBusinessName(businessName.toLowerCase().trim());
+				
+				System.out.println("list Size:"+list.size());
 				for(BusinessDetailsEntity business:list){
 					System.out.println(" Business Id :"+business.getBusinessId());
-					BusinessDetailsEntity businessEntity=payment.getBusinessEntity();
-					businessEntity.setBusinessId(business.getBusinessId());
-					System.out.println("Busines Entity"+businessEntity.toString());
-				     payment.setBusinessEntity(businessEntity);
+					payment.setBusinessId(business.getBusinessId());
+					payment.setBannerId(null);
 				}
 				payment.setBusiness(true);
+				System.out.println(" Payment :"+payment);
+				paymentService.savePayment(payment);
 			}
-			else{
-				List<BannerEntity> list=bannerService.getBannerByBannerName(payment.getBanner().getBannerName());
+			/*else{
+				List<BannerEntity> list=bannerService.getBannerByBannerName(payment.getBanner().getBannerName().toLowerCase().trim());
 				for(BannerEntity banner:list){
 					System.out.println(" Banner Id :"+banner.getBannerId());
 					BannerEntity bannerEntity=payment.getBanner();
+					BannerEntity bannerEntity=new BannerEntity();
 					bannerEntity.setBannerId(banner.getBannerId());
 					System.out.println("Busines Entity"+bannerEntity.toString());
 				     payment.setBanner(bannerEntity);
 				}
 				payment.setBusiness(false);
-			   }
+				System.out.println(" df");
+				paymentService.savePayment(payment);
+			   }*/
 			System.out.println(payment.toString());
-		     /*paymentService.savePayment(payment);*/
+		     
 		}
 		return "payment/managePayment";
 	}
