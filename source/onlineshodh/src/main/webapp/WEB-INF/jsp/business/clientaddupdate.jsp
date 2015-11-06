@@ -169,10 +169,10 @@
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/admin/categories"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/admin/subcategories">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -195,7 +195,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/admin/clients">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -204,7 +204,7 @@
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -215,19 +215,25 @@
 
 					</ul></li>
 
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -237,22 +243,15 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
+							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
 
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
+		                      <li>
+                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>
 			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>
 			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
@@ -391,26 +390,26 @@
 									</div>
 								</div>
 
-								</div>
 							</div>
-
-							<div class="col-lg-6 col-lg-offset-4 space">
-								<button type="submit" class="btn btn-success" id="update">Update</button>
-
-							</div>
-						</form>
 					</div>
-					<!-- /.col-lg-12 -->
+
+					<div class="col-lg-6 col-lg-offset-4 space">
+						<button type="submit" class="btn btn-success" id="update">Update</button>
+
+					</div>
+					</form>
 				</div>
-				<!-- /.row -->
-
-
-				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
-					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+				<!-- /.col-lg-12 -->
 			</div>
-			<!-- /. PAGE INNER  -->
-			<!-- /. PAGE WRAPPER  -->
+			<!-- /.row -->
+
+
+			<footer class="space"> &copy; 2015 OnlineShodh | By : <a
+				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 		</div>
+		<!-- /. PAGE INNER  -->
+		<!-- /. PAGE WRAPPER  -->
+	</div>
 
 	</div>
 	<!-- /. WRAPPER  -->

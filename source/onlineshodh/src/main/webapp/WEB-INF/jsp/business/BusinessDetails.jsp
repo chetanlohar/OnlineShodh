@@ -10,7 +10,8 @@
 <title>Business Details</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
@@ -39,7 +40,8 @@
 
 
 <!--CUSTOM STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -171,10 +173,10 @@
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/admin/categories"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/admin/subcategories">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -197,7 +199,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/admin/clients">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -206,7 +208,7 @@
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
-							href="${pageContext.request.contextPath}/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -217,19 +219,25 @@
 
 					</ul></li>
 
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -239,22 +247,15 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/bannermanage"><i
+							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
 
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
+		                      <li>
+                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>
 			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>
 			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
@@ -295,7 +296,8 @@
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Client Personal
-								Information</span> <%-- <a href="${pageContext.request.contextPath}/prashant/businessdetailedit/">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span>
+							<%-- <a href="${pageContext.request.contextPath}/prashant/businessdetailedit/">&nbsp;<i class="fa fa-pencil"></i>
 								Edit
 							</a> --%>
 						</div>
@@ -343,12 +345,13 @@
 
 				</div>
 				<!-- /. row  -->
-				
-					<div class="row ">
+
+				<div class="row ">
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Client Address
-								Information</span><%-- <a href="${pageContext.request.contextPath}/prashant/clientaddupdate">&nbsp;<i class="fa fa-pencil"></i>
+								Information</span>
+							<%-- <a href="${pageContext.request.contextPath}/prashant/clientaddupdate">&nbsp;<i class="fa fa-pencil"></i>
 								Edit
 							</a> --%>
 						</div>
@@ -357,48 +360,48 @@
 								<tr>
 									<td>Address</td>
 									<td>${userdetails.address.address}</td>
-								
+
 								</tr>
 								<tr>
 									<td>Street</td>
 									<td>${userdetails.address.street}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Landmark</td>
 									<td>${userdetails.address.landMark}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Country</td>
 									<td>${userdetails.address.city.state.country.countryName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>State</td>
 									<td>${userdetails.address.city.state.stateName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>City</td>
 									<td>${userdetails.address.city.cityName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Town</td>
 									<td>${userdetails.address.town.townName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Pincode</td>
 									<td>${userdetails.address.pincode}</td>
-									
+
 								</tr>
 
 							</table>
 
 						</div>
-						
+
 					</div>
 
 				</div>
@@ -417,7 +420,9 @@
 										<td>${business.businessId}</td>
 										<td>${business.businessName}</td>
 										<td>${business.website}</td>
-										<td><a href="${pageContext.request.contextPath}/admin/business/${userdetails.userDetailsId}/update/${business.businessId}"><button class="btn btn-info btn-xs">
+										<td><a
+											href="${pageContext.request.contextPath}/admin/business/${userdetails.userDetailsId}/update/${business.businessId}"><button
+													class="btn btn-info btn-xs">
 													<i class="fa fa-pencil"></i> Edit
 												</button></a></td>
 									</tr>
@@ -427,21 +432,23 @@
 						<%-- <a href="${pageContext.request.contextPath}/admin/business/new/add/${userdetails.userDetailsId}"><button class="btn btn-info btn-xs">
 								<i class="fa fa-plus"></i> Add New Business
 							</button></a> --%>
-							
-						<a href="${pageContext.request.contextPath}/admin/business/update/info/${userdetails.userDetailsId}"><button class="btn btn-info btn-xs">
+
+						<a
+							href="${pageContext.request.contextPath}/admin/business/update/info/${userdetails.userDetailsId}"><button
+								class="btn btn-info btn-xs">
 								<i class="fa fa-plus"></i> Add New Business
 							</button></a>
 					</div>
 
 				</div>
 				<!-- /. row  -->
-				
-				
-				
-				
-					
-				
-				
+
+
+
+
+
+
+
 
 				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
@@ -490,7 +497,8 @@
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 
 

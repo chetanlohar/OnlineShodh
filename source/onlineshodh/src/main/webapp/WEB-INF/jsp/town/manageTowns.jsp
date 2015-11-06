@@ -9,7 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manage Town</title>
 <!-- BOOTSTRAP STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
@@ -31,7 +32,8 @@
 	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -192,7 +194,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/admin/clients">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -201,7 +203,7 @@
 						class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -211,20 +213,25 @@
 						</a></li>
 
 					</ul></li>
-
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -240,16 +247,10 @@
 								Advt. Banner</a></li>
 					</ul></li>
 
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
+				
+                      <li>
+                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>
 			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>
 			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
@@ -429,32 +430,37 @@
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
-         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-        
-              	<!-- validation LIB SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
-		 
-		 	<!-- validation  SCRIPTS -->
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+
+	<!-- validation LIB SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
+
+	<!-- validation  SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-        
-                <!-- BOOTSTRAP JANSY SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
-        
-      	<!-- DATATABLE SCRIPTS -->
+	<!-- BOOTSTRAP SIDEMENU SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+
+	<!-- BOOTSTRAP JANSY SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+
+	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-        	<!-- Datepicker SCRIPTS -->
+	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-        
-          <!-- CUSTOM SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+
+	<!-- CUSTOM SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 
 	<script type="text/javascript"
 		src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>

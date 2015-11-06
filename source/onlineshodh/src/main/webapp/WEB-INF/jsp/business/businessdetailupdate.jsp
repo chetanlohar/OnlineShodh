@@ -8,7 +8,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Edit Business Details</title>
 <!-- BOOTSTRAP STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
@@ -37,7 +38,8 @@
 
 
 <!--CUSTOM STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -169,10 +171,10 @@
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/admin/categories"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/admin/subcategories">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -195,7 +197,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/admin/clients">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -204,7 +206,7 @@
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
-							href="${pageContext.request.contextPath}/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -215,19 +217,25 @@
 
 					</ul></li>
 
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -237,23 +245,16 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/bannermanage"><i
+							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
 
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
-			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+	                      <li>
+                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>
+	<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>
 			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
 					class="fa arrow"></span></a>
@@ -298,11 +299,12 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-					
-											<div class="detail-title">
+
+						<div class="detail-title">
 							<span class="detail-titile-header font17">Business
-								Information</span><a href="${pageContext.request.contextPath}/admin/business/update/businessinfo/${business.businessId}">&nbsp;<i class="fa fa-pencil"></i>
-								Edit
+								Information</span><a
+								href="${pageContext.request.contextPath}/admin/business/update/businessinfo/${business.businessId}">&nbsp;<i
+								class="fa fa-pencil"></i> Edit
 							</a>
 						</div>
 						<div class="detail-wraper">
@@ -310,56 +312,56 @@
 								<tr>
 									<td>Business Id</td>
 									<td>${business.businessId}</td>
-								
+
 								</tr>
 								<tr>
 									<td>Business Name</td>
 									<td>${business.businessName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Business Logo</td>
 									<td><img
 										src="${pageContext.request.contextPath}/admin/business/load/logo/${business.businessId}"
 										class="img-responsive" width="50px " height="50px;" /></td>
-									
+
 								</tr>
 								<tr>
 									<td>Person Name</td>
 									<td>${business.personName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Email Id</td>
 									<td>${business.email}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Website</td>
 									<td>${business.website}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Category</td>
 									<td>${business.subCategory.category.categoryName}</td>
-									
+
 								</tr>
 								<tr>
-									<td>Sub-Category	</td>
+									<td>Sub-Category</td>
 									<td>${business.subCategory.subCategoryName}</td>
 								</tr>
 								<tr>
-									<td>Rank	</td>
+									<td>Rank</td>
 									<td>${business.rank}</td>
 								</tr>
 								<tr>
-									<td>Keywords	</td>
+									<td>Keywords</td>
 									<td>${business.keywords}</td>
 								</tr>
 							</table>
 						</div>
 					</div>
-						<!-- <form class="form-horizontal" name="bclientupdate"
+					<!-- <form class="form-horizontal" name="bclientupdate"
 							id="bclientupdate">
 							<div class="col-lg-8">
 								<div class="col-lg-12 space">
@@ -457,14 +459,17 @@
 
 							</div>
 						</form>
- -->					</div><!-- /.row -->
-					
-					<div class="row space ">
+ -->
+				</div>
+				<!-- /.row -->
+
+				<div class="row space ">
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Business Address
-								Information</span><a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/update/address">&nbsp;<i class="fa fa-pencil"></i>
-								Edit
+								Information</span><a
+								href="${pageContext.request.contextPath}/admin/business/${business.businessId}/update/address">&nbsp;<i
+								class="fa fa-pencil"></i> Edit
 							</a>
 						</div>
 						<div class="detail-wraper">
@@ -472,37 +477,37 @@
 								<tr>
 									<td>Address</td>
 									<td>${business.address.address}</td>
-								
+
 								</tr>
 								<tr>
 									<td>Street</td>
 									<td>${business.address.street}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Landmark</td>
 									<td>${business.address.landMark}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Country</td>
 									<td>${business.address.city.state.country.countryName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>State</td>
 									<td>${business.address.city.state.stateName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>City</td>
 									<td>${business.address.city.cityName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Town</td>
 									<td>${business.address.town.townName}</td>
-									
+
 								</tr>
 								<tr>
 									<td>Pincode</td>
@@ -512,7 +517,7 @@
 							</table>
 
 						</div>
-						
+
 					</div>
 
 				</div>
@@ -523,58 +528,69 @@
 							<span class="detail-titile-header font17">Contact
 								Information</span>
 						</div>
-							<div class="add_business_contact space">
+						<div class="add_business_contact space">
 							<form class="form-inline" id="busd_contact" method="post">
 								<div class="form-group">
-									<label for="contact">Add Contact:</label> <input
-										type="text" class="form-control" id="bdetail_contact"
+									<label for="contact">Add Contact:</label> <input type="text"
+										class="form-control" id="bdetail_contact"
 										placeholder="Contact" name="businessd_contact" maxlength="10">
 								</div>
-								<input type="hidden" id="phoneurl" value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save"/>
+								<input type="hidden" id="phoneurl"
+									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" />
 								<%-- <a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" class="bd_contact"> --%>
-								<button type="button" id="phonebutton" class="btn btn-success b_contact">Add</button></a>
+								<button type="button" id="phonebutton"
+									class="btn btn-success b_contact">Add</button>
+								</a>
 							</form>
 
 						</div>
 						<div class="detail-wraper space">
 							<table class="table busi_contact">
 								<tbody>
-									<c:forEach var="businessphone" items="${businessPhones}" >
+									<c:forEach var="businessphone" items="${businessPhones}">
 										<tr>
 											<td>${businessphone.buinessPhoneId}</td>
 											<td>${businessphone.phone}</td>
-											<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td>
-											<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+											<td><a href="#"><button class="btn btn-info btn-xs">
+														<i class="fa fa-pencil"></i> Edit
+													</button></a></td>
+											<td><a href="#"><button
+														class="btn btn-danger btn-xs">
+														<i class="fa fa-trash"></i> Delete
+													</button></a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
 
 						</div>
-					
+
 					</div>
 
 				</div>
 				<!-- /. row  -->
-				
-				
-					<div class="row space">
+
+
+				<div class="row space">
 					<div class="col-lg-12">
 						<div class="detail-title">
-							<span class="detail-titile-header font17">Business Features/facilities</span>
+							<span class="detail-titile-header font17">Business
+								Features/facilities</span>
 						</div>
-							<div class="add_features space">
-							
+						<div class="add_features space">
+
 							<%-- <form action="#" class="form-inline" id="busd_feature" method="post"> --%>
-							<form action="#" class="form-inline" method="POST" id="busd_feature">
+							<form action="#" class="form-inline" method="POST"
+								id="busd_feature">
 								<div class="form-group">
-									<label for="Features">Add Features:</label> <input
-										type="text" class="form-control" id="bus_Features"
-										placeholder="Features">
+									<label for="Features">Add Features:</label> <input type="text"
+										class="form-control" id="bus_Features" placeholder="Features">
 								</div>
-								<input type="hidden" id="featureurl" value="${pageContext.request.contextPath}/admin/business/${business.businessId}/feature/save"/>
+								<input type="hidden" id="featureurl"
+									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/feature/save" />
 								<!-- <a href="" class="bd_features"> -->
-								<button type="button" id="featurebutton" class="btn btn-success">Add</button></a>
+								<button type="button" id="featurebutton" class="btn btn-success">Add</button>
+								</a>
 							</form>
 						</div>
 						<div class="detail-wraper space">
@@ -584,8 +600,13 @@
 										<tr>
 											<td>${info.businessGenInfoId}</td>
 											<td>${info.generalInfoName}</td>
-											<td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td>
-											<td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td>
+											<td><a href="#"><button class="btn btn-info btn-xs">
+														<i class="fa fa-pencil"></i> Modify
+													</button></a></td>
+											<td><a href="#"><button
+														class="btn btn-danger btn-xs">
+														<i class="fa fa-trash"></i> Delete
+													</button></a></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -594,17 +615,18 @@
 					</div>
 				</div>
 				<!-- /. row  -->
-				</div><!-- /. PAGE INNER  -->
-				
-				
-
-
-				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
-					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			
-			<!-- /. PAGE WRAPPER  -->
+			<!-- /. PAGE INNER  -->
+
+
+
+
+			<footer class="space"> &copy; 2015 OnlineShodh | By : <a
+				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 		</div>
+
+		<!-- /. PAGE WRAPPER  -->
+	</div>
 
 	</div>
 	<!-- /. WRAPPER  -->
@@ -646,23 +668,21 @@
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 	<script type="text/javascript">
-	$(document).ready(function(){
-	   var i = 0;
-		$("#phonebutton").on('click',function(){
-			alert("work");
-			if(i>5){
-				$("#bdetail_contact").prop('disabled',true);
-			}
-			i++;
-			
+		$(document).ready(function() {
+			var i = 0;
+			$("#phonebutton").on('click', function() {
+				alert("work");
+				if (i > 5) {
+					$("#bdetail_contact").prop('disabled', true);
+				}
+				i++;
+
+			});
+
 		});
-		
-		
-	});
-	
-	
 	</script>
 
 </body>

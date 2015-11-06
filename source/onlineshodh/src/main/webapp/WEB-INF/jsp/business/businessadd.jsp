@@ -39,7 +39,8 @@
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/codejs/viewSubCategory.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/codejs/viewSubCategory.js"></script>
 
 </head>
 </head>
@@ -170,10 +171,10 @@
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/admin/categories"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/admin/subcategories">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -196,7 +197,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/admin/clients">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -205,7 +206,7 @@
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -216,19 +217,25 @@
 
 					</ul></li>
 
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -238,22 +245,15 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
+							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
 
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
+	                      <li>
+                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>
 			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>
 			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
@@ -276,7 +276,7 @@
 					</li>
 					<li><a href="#">Second Level<span class="fa arrow"></span></a>
 						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>s
+							<li><a href="#">Third Link</a></li>
 							<li><a href="#">Third Link</a></li>
 
 						</ul></li>
@@ -299,11 +299,16 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-12">
-						 <form:form action="${pageContext.request.contextPath}/admin/business/new/save" method="POST" class="form-horizontal" name="bclientupdate" id="bclientupdate" modelAttribute="businessdetail" enctype="multipart/form-data">
-						 	<form:hidden path="businessId"/>
-						 	<form:hidden path="businessLogo"/>
-						 	<form:hidden path="address.addressId"/>
-						 	<form:hidden path="userDetails.userDetailsId" value="${userDetailsId}"/>
+						<form:form
+							action="${pageContext.request.contextPath}/admin/business/new/save"
+							method="POST" class="form-horizontal" name="bclientupdate"
+							id="bclientupdate" modelAttribute="businessdetail"
+							enctype="multipart/form-data">
+							<form:hidden path="businessId" />
+							<form:hidden path="businessLogo" />
+							<form:hidden path="address.addressId" />
+							<form:hidden path="userDetails.userDetailsId"
+								value="${userDetailsId}" />
 							<div class="col-lg-8">
 								<%-- <div class="col-lg-12 space">
 									<label for="businessid" class="col-sm-5 control-label">Business
@@ -319,9 +324,10 @@
 										Name</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span> 
-											<form:input path="businessName"	class="form-control" id="businame" name="businame"/>
-                                            <form:errors path="businessName" cssClass="errors"/>    									
+											class="fa fa-calendar"></span></span>
+										<form:input path="businessName" class="form-control"
+											id="businame" name="businame" />
+										<form:errors path="businessName" cssClass="errors" />
 									</div>
 								</div>
 
@@ -336,30 +342,31 @@
 										</div>
 										<span class="input-group-addon btn btn-default btn-file"><span
 											class="fileinput-new">Select file</span><span
-											class="fileinput-exists">Change</span>
-											<input type="file"	name="file"></span> 
-											
-									        <form:errors path="businessLogo" cssClass="errors"/>   
+											class="fileinput-exists">Change</span> <input type="file"
+											name="file"></span>
+
+										<form:errors path="businessLogo" cssClass="errors" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
-									<label for="pname" class="col-sm-5 control-label">Business Description
-										</label>
+									<label for="pname" class="col-sm-5 control-label">Business
+										Description </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-chats"></span></span> 
-											<form:textarea path="businessDesc" class="form-control"/>
-											<form:errors path="businessDesc" cssClass="errors"/>
+											class="fa fa-chats"></span></span>
+										<form:textarea path="businessDesc" class="form-control" />
+										<form:errors path="businessDesc" cssClass="errors" />
 									</div>
 								</div>
-                                 <div class="col-lg-12 space">
-									<label for="pname" class="col-sm-5 control-label">Person Name
-										</label>
+								<div class="col-lg-12 space">
+									<label for="pname" class="col-sm-5 control-label">Person
+										Name </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> 
-											<form:input path="personName" class="form-control" id="personname" name="personname"/>
-									         <form:errors path="personName" cssClass="errors"/>    
+											class="fa fa-user"></span></span>
+										<form:input path="personName" class="form-control"
+											id="personname" name="personname" />
+										<form:errors path="personName" cssClass="errors" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
@@ -367,19 +374,20 @@
 										Id</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-envelope"></span></span> 
-											<form:input path="email" class="form-control" id="busimail" name="busimail"/>
-									        <form:errors path="email" cssClass="errors"/>   
+											class="fa fa-envelope"></span></span>
+										<form:input path="email" class="form-control" id="busimail"
+											name="busimail" />
+										<form:errors path="email" cssClass="errors" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="web" class="col-sm-5 control-label">
-									WebSite</label>
+										WebSite</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-globe"></span></span> 
-											<form:input path="website" class="form-control" name="Website"/>
-											<form:errors path="website" cssClass="errors"/>  
+											class="fa fa-globe"></span></span>
+										<form:input path="website" class="form-control" name="Website" />
+										<form:errors path="website" cssClass="errors" />
 									</div>
 								</div>
 
@@ -390,18 +398,21 @@
 										<!-- <select class="form-control">
 										<option value="FOOD">FOOD</option>
 										</select> -->
-										
-										<form:select path="subCategory.category.categoryId" required="" class="form-control" id="categoryname" name="categoryname" onchange="getSubCategories()">
+
+										<form:select path="subCategory.category.categoryId"
+											required="" class="form-control" id="categoryname"
+											name="categoryname" onchange="getSubCategories()">
 											<form:option value="0" label="--- Select ---" />
 											<c:forEach var="category" items="${categories}">
 												<form:option value="${category.categoryId}">${category.categoryName}</form:option>
 											</c:forEach>
 										</form:select>
-										<form:errors path="subCategory.category.categoryId" cssClass="errors" />
+										<form:errors path="subCategory.category.categoryId"
+											cssClass="errors" />
 									</div>
 								</div>
-								
-								
+
+
 								<div class="col-lg-12 space">
 									<label for="busisubcategory" class="col-sm-5 control-label">
 										Sub-Category</label>
@@ -409,54 +420,59 @@
 										<!-- <select class="form-control">
 										<option value="Non-Veg">Non-Veg</option>
 										</select> -->
-										
-										<form:select path="subCategory.subCategoryId" required="" class="form-control" id="subcategoryname" name="subcategoryname">
-											 <form:option value="0" label="--- Select ---" />
+
+										<form:select path="subCategory.subCategoryId" required=""
+											class="form-control" id="subcategoryname"
+											name="subcategoryname">
+											<form:option value="0" label="--- Select ---" />
 											<c:forEach var="subcategory" items="${subcategories}">
 												<form:option value="${subcategory.subCategoryId}">${subcategory.subCategoryName}</form:option>
 											</c:forEach>
 										</form:select>
-										<form:errors path="subCategory.subCategoryId" cssClass="errors" />
-										
+										<form:errors path="subCategory.subCategoryId"
+											cssClass="errors" />
+
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="web" class="col-sm-5 control-label">Rank</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-globe"></span></span> 
-											<form:input path="rank" class="form-control"/>
-											<form:errors path="rank" cssClass="errors"/>  
+											class="fa fa-globe"></span></span>
+										<form:input path="rank" class="form-control" />
+										<form:errors path="rank" cssClass="errors" />
 									</div>
 								</div>
 								<div class="col-lg-12 space">
 									<label for="web" class="col-sm-5 control-label">
-									Keywords</label>
+										Keywords</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-globe"></span></span> 
-											<form:input path="keywords" class="form-control"/>
-											<form:errors path="keywords" cssClass="errors"/>  
+											class="fa fa-globe"></span></span>
+										<form:input path="keywords" class="form-control" />
+										<form:errors path="keywords" cssClass="errors" />
 									</div>
 								</div>
-								
+
 							</div>
 							<div class="col-lg-6 col-lg-offset-4 space">
 								<button type="submit" class="btn btn-success" id="update">Add</button>
 
 							</div>
 						</form:form>
- 				</div><!-- /.row -->
-					
-									</div><!-- /. PAGE INNER  -->
-				
-				
+					</div>
+					<!-- /.row -->
+
+				</div>
+				<!-- /. PAGE INNER  -->
+
+
 
 
 				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			
+
 			<!-- /. PAGE WRAPPER  -->
 		</div>
 
@@ -471,17 +487,17 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
-			  <script
-		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
-        
-		
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
+
+
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
 
 	<!-- validation SCRIPTS -->
-	
-			<script
+
+	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/businessvalidation.js"></script>
 
 

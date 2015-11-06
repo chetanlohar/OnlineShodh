@@ -10,7 +10,8 @@
 <title>Category</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
@@ -32,7 +33,8 @@
 	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
 <!--CUSTOM STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
 </head>
@@ -144,195 +146,151 @@
 		</div>
 		</nav>
 		<!-- /. NAV TOP  -->
-            <nav  class="navbar-default navbar-side" role="navigation">
-                <div class="sidebar-collapse">
-                    <ul class="nav" id="main-menu">
-                        <li>
-                        <div class="user-img-div">
-                            <img src="${pageContext.request.contextPath}/resources/images/user_pic.jpg" class="img-circle" />
+		<nav class="navbar-default navbar-side" role="navigation">
+		<div class="sidebar-collapse">
+			<ul class="nav" id="main-menu">
+				<li>
+					<div class="user-img-div">
+						<img
+							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
+							class="img-circle" />
 
-                           
-                        </div>
 
-                    </li>
-                        <li>
-                            <a  href="#"> <strong>OnlineShodh@mail.com </strong></a>
-                        </li>
+					</div>
 
-                        <li>
-                            <a   href="${pageContext.request.contextPath}/admin/home"><i class="fa fa-home "></i>Home</a>
-                        </li>
-                             <li class="active"><a href="#"><i class="fa fa-sitemap fa-fw"></i>
-							Category Management<span class="fa arrow"></span></a>
-						     <ul class="nav nav-second-level">
-							<li><a class="active-menu" href="${pageContext.request.contextPath}/admin/categories"><i class="fa fa-list"></i> Category Management</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/subcategories"> <i class="fa fa-list"></i> Sub-Category Management</a></li>
-						</ul> <!-- /.nav-second-level --></li>
-						
-						<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
-							Location Management<span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/admin/countries">Country Management</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/admin/states">State Management</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/admin/cities">City Management</a>
-                                </li>
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/admin/towns">Town Management</a>
-                                </li>
-                            </ul>
-						 <!-- /.nav-second-level of location management --></li>
-                           
-                           <li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
-							Client Management<span class="fa arrow"></a>
-						<ul class="nav nav-second-level">
-							<li><a href="${pageContext.request.contextPath}/prashant/clientcreate">Manage Client</a></li>
+				</li>
+				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
+
+				<li><a href="${pageContext.request.contextPath}/admin/home"><i
+						class="fa fa-home "></i>Home</a></li>
+				<li class="active"><a href="#"><i
+						class="fa fa-sitemap fa-fw"></i> Category Management<span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a class="active-menu"
+							href="${pageContext.request.contextPath}/admin/categories"><i
+								class="fa fa-list"></i> Category Management</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/subcategories">
+								<i class="fa fa-list"></i> Sub-Category Management
+						</a></li>
+					</ul> <!-- /.nav-second-level --></li>
+
+				<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
+						Location Management<span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/countries">Country
+								Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/states">State
+								Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/cities">City
+								Management</a></li>
+						<li><a href="${pageContext.request.contextPath}/admin/towns">Town
+								Management</a></li>
+					</ul> <!-- /.nav-second-level of location management --></li>
+
+				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
+						Client Management<span class="fa arrow"></a>
+					<ul class="nav nav-second-level">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/clients">Manage
+								Client</a></li>
+					</ul></li>
+
+
+				<li><a href="#"><i class="fa fa-"></i>Business Management <span
+						class="fa arrow"></span></a>
+					<ul class=" nav nav-second-level">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/clients/view/">
+								<i class="fa fa-user-plus"></i> Add Business
+						</a></li>
+						<li><a href="#"> <i class="fa fa-list"></i> List Business
+						</a></li>
+						<li><a href="#"> <i class="fa fa-list"></i> Upgrade
+								Businesss
+						</a></li>
+
+					</ul></li>
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
+						Management <span class="fa arrow"></span></a>
+					<ul class=" nav nav-second-level">
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
+						</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
+						</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
+						</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
+						</a></li>
+					</ul></li>
+
+
+				<li><a href="#"><i class="fa fa-photo "></i>Advt. Banner<span
+						class="fa arrow"></span></a>
+
+					<ul class="nav nav-second-level">
+						<li><a
+							href="${pageContext.request.contextPath}/admin/banners"><i
+								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
+								Advt. Banner</a></li>
+					</ul></li>
+
+				<li><a href="#"><i class="fa fa-sitemap "></i>Category
+						Management <span class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All
+								Category</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
+								Category</a></li>
+						<li><a href="#">List Sub Category</a></li></li>
+			</ul>
+			</li>
+			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+			</li>
+			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
+				</ul></li>
+			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+					</li>
+
+				</ul></li>
+			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
+					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
+					</li>
+					<li><a href="#">Second Level<span class="fa arrow"></span></a>
+						<ul class="nav nav-third-level">
+							<li><a href="#">Third Link</a></li>
+							<li><a href="#">Third Link</a></li>
+
 						</ul></li>
-						
-						
-                        <li>
-                            <a href="#"><i class="fa fa-"></i>Business Management  <span class="fa arrow"></span></a>
-                            <ul class=" nav nav-second-level">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/prashant/businessmanage">
-                                        <i class="fa fa-user-plus"></i>
-                                       Add Business
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        List Business
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        Upgrade Businesss
-                                    </a>
-                                </li>
-                                
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="add-client.html"><i class="fa fa-rss"></i>Advt. Management  <span class="fa arrow"></span></a>
-                            <ul class=" nav nav-second-level">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-user-plus"></i>
-                                        Add New Add
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        List All Add
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        Add New Advt. payment
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        List All Advt. Payment
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+				</ul></li>
 
 
-                        <li>
-                            <a href="#"><i class="fa fa-photo "></i>Advt. Banner<span class="fa arrow"></span></a>
+			</ul>
+		</div>
 
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="${pageContext.request.contextPath}/admin/banners"><i class="fa fa-cogs "></i>Add New Advt. Banner</a>
-                              
-                              
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-bullhorn "></i>List All Advt. Banner</a>
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap "></i>Category Management <span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#"><i class="fa fa-cogs "></i>List All Category</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-bullhorn "></i>New Sub Category</a>
-                                </li>
-                                <li>
-                                    <a href="#">List Sub Category</a>
-                                </li>
-
-
-                        </li>
-                    </ul>
-                    </li>
-                    <li>
-                        <a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-signal "></i>Logs <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-cogs "></i>List All Logs</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-envelope "></i>Mails <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-cogs "></i>Settings <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#"><i class="fa fa-cogs "></i>Second  Link</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
-                            </li>
-                            <li>
-                                <a href="#">Second Level<span class="fa arrow"></span></a>
-                                <ul class="nav nav-third-level">
-                                    <li>
-                                        <a href="#">Third  Link</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Third Link</a>
-                                    </li>
-
-                                </ul>
-
-                            </li>
-                        </ul>
-                    </li>
-
-
-                    </ul>
-                </div>
-
-            </nav>
-            <!-- /. SIDEBAR MENU (navbar-side) -->
+		</nav>
+		<!-- /. SIDEBAR MENU (navbar-side) -->
 		<div id="page-wrapper" class="page-wrapper-cls">
 			<div id="page-inner">
 				<div class="row">
@@ -342,141 +300,142 @@
 					<!-- /.col-lg-12 -->
 				</div>
 				<!-- /.row -->
-					<div class="row">
-		<div class="col-lg-9">
-			<form:form	action="${pageContext.request.contextPath}/admin/categories/save"	method="post" modelAttribute="category"
-				enctype="multipart/form-data" class="form-horizontal"
-				id="categorymanage">
+				<div class="row">
+					<div class="col-lg-9">
+						<form:form
+							action="${pageContext.request.contextPath}/admin/categories/save"
+							method="post" modelAttribute="category"
+							enctype="multipart/form-data" class="form-horizontal"
+							id="categorymanage">
 
-				<div class="col-lg-12 space">
-					<label for="categoryName" class="col-sm-5 control-label">
-						Category Name</label>
-						<div class="input-group">
-						<span class="input-group-addon"><span class="fa fa-user"></span></span>
-						<form:input path="categoryName" title="Category Name" maxlength="25" size="51" class="form-control" id="categoryname"
-							/>
-						<form:errors path="categoryName" cssClass="error" />
-						
- 					                    
-                       
- 
- </div>
-				</div>
-
-				<div class="col-lg-12 space">
-					<label for="categoryDesc" class="col-sm-5 control-label">Description</label>
-					<div class="input-group">
-						<span class="input-group-addon"><span class="fa fa-road"></span></span>
-						<form:textarea path="categoryDesc" title="Category Description"
-							class="form-control" rows="3" id="categorydesc"
-							name="categorydesc" style="resize:none;" />
-						<form:errors path="categoryDesc" cssClass="error" />
-
-					</div>
-				</div>
-
-				<div class="col-lg-6 col-lg-offset-5 space">
-					<div class="fileinput fileinput-new" data-provides="fileinput">
-						<div class="fileinput-preview thumbnail" data-trigger="fileinput"
-							style="width: 200px; height: 150px;">
-							<img id="categorylogo"
-								src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
-								alt="...">
-
-						</div>
-						<div>
-							<span class="btn btn-default btn-file"><span
-								class="fileinput-new">Select image</span><span
-								class="fileinput-exists">Change Image</span><input type="file"
-								id="file" name="file">
-								<form:errors path="categoryLogo" cssClass="errors" />
-			                     
-								</span>
-							<!-- <img id="categorylogo" height="50" width="50"/> -->
-							
-						</div>
-					</div>
-				</div>
+							<div class="col-lg-12 space">
+								<label for="categoryName" class="col-sm-5 control-label">
+									Category Name</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-user"></span></span>
+									<form:input path="categoryName" title="Category Name"
+										maxlength="25" size="51" class="form-control"
+										id="categoryname" />
+									<form:errors path="categoryName" cssClass="error" />
 
 
 
-				<div class="col-lg-6 col-lg-offset-6 space">
-					<!-- <button type="submit" class="btn btn-success" id="display"
+
+								</div>
+							</div>
+
+							<div class="col-lg-12 space">
+								<label for="categoryDesc" class="col-sm-5 control-label">Description</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-road"></span></span>
+									<form:textarea path="categoryDesc" title="Category Description"
+										class="form-control" rows="3" id="categorydesc"
+										name="categorydesc" style="resize:none;" />
+									<form:errors path="categoryDesc" cssClass="error" />
+
+								</div>
+							</div>
+
+							<div class="col-lg-6 col-lg-offset-5 space">
+								<div class="fileinput fileinput-new" data-provides="fileinput">
+									<div class="fileinput-preview thumbnail"
+										data-trigger="fileinput" style="width: 200px; height: 150px;">
+										<img id="categorylogo"
+											src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
+											alt="...">
+
+									</div>
+									<div>
+										<span class="btn btn-default btn-file"><span
+											class="fileinput-new">Select image</span><span
+											class="fileinput-exists">Change Image</span><input
+											type="file" id="file" name="file"> <form:errors
+												path="categoryLogo" cssClass="errors" /> </span>
+										<!-- <img id="categorylogo" height="50" width="50"/> -->
+
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="col-lg-6 col-lg-offset-6 space">
+								<!-- <button type="submit" class="btn btn-success" id="display"
 						id="saveCategory" name="saveCategory">Submit</button> -->
-						
-						<button type="submit" class="btn btn-success" id="display"
-						 name="saveCategory">Submit</button>
-						
-					<button type="reset" class="btn btn-danger">Cancel</button>
-				</div>
-			</form:form>
 
-		</div>
-		<!-- /.col-lg-12 -->
-	</div>
-	<!-- /.row -->
+								<button type="submit" class="btn btn-success" id="display"
+									name="saveCategory">Submit</button>
 
-	<div class="row">
-		<div class="col-lg-12 space">
-			<div class="panel panel-default">
-				<div class="panel-heading">Country Management Table</div>
-				<!-- /.panel-heading -->
-				<div class="panel-body">
-					<div class="dataTable_wrapper table-responsive">
-						<table class="table table-striped table-bordered table-hover"
-							id="dataTables-category">
-							<thead>
-								<tr>
-									<th>Category Id</th>
-									<th>Picture</th>
-									<th>Category Name</th>
-									<th>Description</th>
-									<th>Popularity</th>
-									<th>Edit</th>
-									<th>Delete</th>
+								<button type="reset" class="btn btn-danger">Cancel</button>
+							</div>
+						</form:form>
 
-								</tr>
-
-							</thead>
-							<tbody>
-								<c:forEach var="category" items="${categories}">
-									<tr class="odd gradeX">
-										<td>${category.categoryId}</td>
-										<td><img
-											src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}"
-											class="img-responsive" width="50px " height="50px;" /></td>
-										<td>${category.categoryName}</td>
-										<td>${category.categoryDesc}</td>
-										<td>${category.popularity}</td>
-										<td><a
-											href="${pageContext.request.contextPath}/admin/categories/edit/${category.categoryId}"
-											class="edit"><button class="btn btn-info btn-xs">
-													<i class="fa fa-pencil"></i> Edit
-												</button></a></td>
-										
-										<td class="center"><a
-											href="${pageContext.request.contextPath}/admin/categories/delete/${category.categoryId}"
-											onclick="confirm('Do you want to Remove Country: ${category.categoryName}')"><button
-													class="btn btn-danger btn-xs">
-													<i class="fa fa-trash"></i> Delete
-												</button></a></td>
-									</tr>
-								</c:forEach>
-
-
-							</tbody>
-						</table>
 					</div>
-					<!-- /.table-responsive -->
-
+					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.panel-body -->
-			</div>
-			<!-- /.panel -->
-		</div>
-		<!-- /.col-lg-12 -->
-	</div>
-	<!-- /.row -->
+				<!-- /.row -->
+
+				<div class="row">
+					<div class="col-lg-12 space">
+						<div class="panel panel-default">
+							<div class="panel-heading">Country Management Table</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="dataTable_wrapper table-responsive">
+									<table class="table table-striped table-bordered table-hover"
+										id="dataTables-category">
+										<thead>
+											<tr>
+												<th>Category Id</th>
+												<th>Picture</th>
+												<th>Category Name</th>
+												<th>Description</th>
+												<th>Popularity</th>
+												<th>Edit</th>
+												<th>Delete</th>
+
+											</tr>
+
+										</thead>
+										<tbody>
+											<c:forEach var="category" items="${categories}">
+												<tr class="odd gradeX">
+													<td>${category.categoryId}</td>
+													<td><img
+														src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}"
+														class="img-responsive" width="50px " height="50px;" /></td>
+													<td>${category.categoryName}</td>
+													<td>${category.categoryDesc}</td>
+													<td>${category.popularity}</td>
+													<td><a
+														href="${pageContext.request.contextPath}/admin/categories/edit/${category.categoryId}"
+														class="edit"><button class="btn btn-info btn-xs">
+																<i class="fa fa-pencil"></i> Edit
+															</button></a></td>
+
+													<td class="center"><a
+														href="${pageContext.request.contextPath}/admin/categories/delete/${category.categoryId}"
+														onclick="confirm('Do you want to Remove Country: ${category.categoryName}')"><button
+																class="btn btn-danger btn-xs">
+																<i class="fa fa-trash"></i> Delete
+															</button></a></td>
+												</tr>
+											</c:forEach>
+
+
+										</tbody>
+									</table>
+								</div>
+								<!-- /.table-responsive -->
+
+							</div>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
+					</div>
+					<!-- /.col-lg-12 -->
+				</div>
+				<!-- /.row -->
 
 
 				<!-- /. PAGE INNER  -->
@@ -489,44 +448,46 @@
 	</div>
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
- <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-        <!-- JQUERY SCRIPTS -->
-         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-         <script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
-		 <script
-		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
-		 
-	  <script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
-         
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-        
-        
-        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-        
-                <!-- BOOTSTRAP JANSY SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
-        
-        
-      	<!-- DATATABLE SCRIPTS -->
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
+
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+
+
+	<!-- BOOTSTRAP SIDEMENU SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+
+	<!-- BOOTSTRAP JANSY SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+
+
+	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-        
-	
-        <!-- CUSTOM SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+
+
+	<!-- CUSTOM SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 	<script>
 		$(document).ready(function() {
 			$('#dataTables-category').DataTable({
 				responsive : true
 			});
 
-			
-			
-			
 		});
 	</script>
 </body>

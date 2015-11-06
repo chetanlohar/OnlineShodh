@@ -197,19 +197,7 @@
                                        Add Business
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        List Business
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        Upgrade Businesss
-                                    </a>
-                                </li>
-                                
+                                                                
                             </ul>
                         </li>
 
@@ -247,7 +235,7 @@
                         </li>
 
                       <li>
-                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode</a>
+                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
                     </li>
                     <li>
                         <a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>

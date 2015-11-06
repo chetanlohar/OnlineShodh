@@ -10,7 +10,8 @@
 <title>Business Management</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
@@ -39,9 +40,11 @@
 
 
 <!--CUSTOM STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"/>
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath}/resources/css/jquery-ui.css" />
 
 
 </head>
@@ -196,21 +199,20 @@
 								Management</a></li>
 					</ul> <!-- /.nav-second-level of location management --></li>
 
-				<li ><a href="forms.html"><i
-						class="fa fa-user fa-fw"></i> Client Management<span
-						class="fa arrow"></a>
+				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
+						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
-						<li><a 
+						<li><a
 							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
 
-				<li class="active"><a href="#"><i class="fa fa-"></i>Business Management <span
-						class="fa arrow"></span></a>
+				<li class="active"><a href="#"><i class="fa fa-"></i>Business
+						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a class="active-menu"
-							href="${pageContext.request.contextPath}/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -221,19 +223,25 @@
 
 					</ul></li>
 
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -248,17 +256,12 @@
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
+					
+					           <li>
+                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>
 
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
+			
 			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>
 			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
@@ -304,7 +307,8 @@
 				<!-- /.row -->
 				<div class="row">
 					<div class="col-lg-10">
-						<form class="form-horizontal"  name="clientsearch" id="clientsearch" >
+						<form class="form-horizontal" name="clientsearch"
+							id="clientsearch">
 							<div class="col-lg-10">
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Search
@@ -322,12 +326,11 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="keyword"
-											name="clientsearchbox">
+											class="form-control" id="keyword" name="clientsearchbox">
 									</div>
 								</div>
 								<div class="col-lg-6 col-lg-offset-6 space">
-									<button type="button" class="btn btn-info"  id="searchButton">
+									<button type="button" class="btn btn-info" id="searchButton">
 										<i class="fa fa-search"></i> Search
 									</button>
 
@@ -361,7 +364,7 @@
 
 											</tr>
 										</thead>
-										
+
 									</table>
 								</div>
 								<!-- /.table-responsive -->
@@ -390,7 +393,7 @@
 	<!-- JQUERY SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
- 
+
 	<!-- validation SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
@@ -401,7 +404,7 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-			<script
+	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/businessvalidation.js"></script>
 
 
@@ -425,89 +428,96 @@
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
-	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-<!-- JQUERY SCRIPTS -->
- <script
-	src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>  
-	
-<script type="text/javascript">
-$(document).ready(function(){
-$("#searchBy").click(function(e){
-	 
-	 $( "#keyword" ).autocomplete({
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<!-- JQUERY SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
 
-		source: '${pageContext.request.contextPath}/admin/clients/searchClient?searchBy='+$("#searchBy").val(),
-});
-	 
-}); 
-});	
+	<script type="text/javascript">
+		$(document)
+				.ready(
+						function() {
+							$("#searchBy")
+									.click(
+											function(e) {
 
-$(function() {
-	$('#searchButton')
-			.click(
-					function() {
-						$
-								.ajax({
-									type : "POST",
-									url : "/onlineshodh/admin/clients/getClient",
-									dataType : 'json',
-									data : {
-										"searchBy" : $('#searchBy').val(),
-										"keyword" : $('#keyword').val()
-									},
-									success : function(response) {
+												$("#keyword")
+														.autocomplete(
+																{
 
-										console.log(response)
+																	source : '${pageContext.request.contextPath}/admin/clients/searchClient?searchBy='
+																			+ $(
+																					"#searchBy")
+																					.val(),
+																});
 
-										$('#dataTables-example')
-												.find('.ab').remove(); 
-										 jQuery
-												.each(
-														response,
-														function(index,
-																item) {
-																var newRow = jQuery('<tr class="ab"><td>'
-																		+ item.userDetailsId
-																		+ '</td><td>'
-																		+ item.regDate
-																		+ '</td><td>'
-																		+ item.name
-																		+ '</td><td>'
-																		+ item.email
-																		+ '</td><td>'
-																		+ item.phone1
-																		+ '</td><td>'
-																		+ item.phone2
-																		+ '</td><td>'
-																		+ item.userId
-																		+ '</td><td><img src=${pageContext.request.contextPath}/admin/clients/load/logo/'+item.userDetailsId+'/>'
+											});
+						});
 
-																		+ '</td><td>'
-																		+ '<a href=${pageContext.request.contextPath}/admin/business/'+item.userDetailsId+'>'
-																		+ 'Select'
-																		+ '</a></td></tr>');
-																jQuery(
-																		'#dataTables-example')
-																		.append(
-																				newRow);
-																
-                                                           
-														});
+		$(function() {
+			$('#searchButton')
+					.click(
+							function() {
+								$
+										.ajax({
+											type : "POST",
+											url : "/onlineshodh/admin/clients/getClient",
+											dataType : 'json',
+											data : {
+												"searchBy" : $('#searchBy')
+														.val(),
+												"keyword" : $('#keyword').val()
+											},
+											success : function(response) {
 
-									},
-									error : function(e) {
-										console.log(e)
-										alert("Please Enter Valid keywords")
-										/* jQuery('#error')
-										.append(e); */
-									}
-								})
+												console.log(response)
 
-					});
-});
+												$('#dataTables-example').find(
+														'.ab').remove();
+												jQuery
+														.each(
+																response,
+																function(index,
+																		item) {
+																	var newRow = jQuery('<tr class="ab"><td>'
+																			+ item.userDetailsId
+																			+ '</td><td>'
+																			+ item.regDate
+																			+ '</td><td>'
+																			+ item.name
+																			+ '</td><td>'
+																			+ item.email
+																			+ '</td><td>'
+																			+ item.phone1
+																			+ '</td><td>'
+																			+ item.phone2
+																			+ '</td><td>'
+																			+ item.userId
+																			+ '</td><td><img src=${pageContext.request.contextPath}/admin/clients/load/logo/'+item.userDetailsId+'/>'
 
+																			+ '</td><td>'
+																			+ '<a href=${pageContext.request.contextPath}/admin/business/'+item.userDetailsId+'>'
+																			+ 'Select'
+																			+ '</a></td></tr>');
+																	jQuery(
+																			'#dataTables-example')
+																			.append(
+																					newRow);
 
-	
-</script>	
+																});
+
+											},
+											error : function(e) {
+												console.log(e)
+												alert("Please Enter Valid keywords")
+												/* jQuery('#error')
+												.append(e); */
+											}
+										})
+
+							});
+		});
+	</script>
 </body>
 </html>

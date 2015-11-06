@@ -179,10 +179,10 @@
 						Category Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/categorymanage"><i
+							href="${pageContext.request.contextPath}/admin/categories"><i
 								class="fa fa-list"></i> Category Management</a></li>
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/subcategorymanage">
+							href="${pageContext.request.contextPath}/admin/subcategories">
 								<i class="fa fa-list"></i> Sub-Category Management
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
@@ -205,7 +205,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/admin/clients">Manage
 								Client</a></li>
 					</ul></li>
 
@@ -214,7 +214,7 @@
 						class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a
-							href="<%=request.getContextPath()%>/prashant/businessmanage">
+							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
 						<li><a href="#"> <i class="fa fa-list"></i> List Business
@@ -225,19 +225,25 @@
 
 					</ul></li>
 
-				<li><a href="add-client.html"><i class="fa fa-rss"></i>Advt.
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a href="#"> <i class="fa fa-user-plus"></i> Add New
-								Add
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All Add
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Add New Advt.
-								payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List All
-								Advt. Payment
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
 					</ul></li>
 
@@ -247,49 +253,40 @@
 
 					<ul class="nav nav-second-level">
 						<li><a class="active-menu"
-							href="<%=request.getContextPath()%>/prashant/bannermanage"><i
+							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<!-- <li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li> -->
 					</ul></li>
 
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
+
+				<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+				</li>
+				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
+						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
-			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
-			</li>
-			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
-				</ul></li>
-			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
-					</li>
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+						</li>
 
-				</ul></li>
-			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
-					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
-					</li>
-					<li><a href="#">Second Level<span class="fa arrow"></span></a>
-						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>s
-							<li><a href="#">Third Link</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>Second
+								Link</a></li>
+						<li><a href="#">Second Level<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="#">Third Link</a></li>
+								<li><a href="#">Third Link</a></li>
 
-						</ul></li>
-				</ul></li>
+							</ul></li>
+					</ul></li>
 
 
 			</ul>
@@ -306,17 +303,17 @@
 					<!-- /.col-lg-12 -->
 				</div>
 				<!-- /.row -->
-				
+
 				<div class="row">
-				<form:form
-							action="${pageContext.request.contextPath}/admin/banners/save"
-							modelAttribute="banner" method="POST"
-							enctype="multipart/form-data" id="bannerUpdate">
-			<form:hidden path="bannerId" />
-             <form:hidden path="bannerLogo" />  			
-					<div class="col-lg-10 space">
-					
-						
+					<form:form
+						action="${pageContext.request.contextPath}/admin/banners/save"
+						modelAttribute="banner" method="POST"
+						enctype="multipart/form-data" id="bannerUpdate">
+						<form:hidden path="bannerId" />
+						<form:hidden path="bannerLogo" />
+						<div class="col-lg-10 space">
+
+
 
 							<label for="category" class="col-sm-2 control-label">Category</label>
 							<div class="input-group">
@@ -331,196 +328,203 @@
 								<form:errors path="category.categoryId" />
 
 							</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="Country" class="col-sm-2 control-label">Country</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-
-							<form:select path="city.state.country.countryId" id="countryId"
-								onchange="getState()" class="form-control" name="bannerCountry">
-								<form:option value="0" label="---Select-------" />
-								<c:forEach var="country" items="${countries}">
-									<form:option value="${country.countryId}">${country.countryName}</form:option>
-								</c:forEach>
-							</form:select>
-							<form:errors path="city.state.country.countryId" />
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="state" class="col-sm-2 control-label">state</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-							<form:select path="city.state.stateId" id="townStates"
-								onchange="getCity()" class="form-control" name="bannerstate">
-								<form:option value="0" label="---Select-------" />
-								<c:forEach var="state" items="${states}">
-									<form:option value="${state.stateId}">${state.stateName}</form:option>
-								</c:forEach>
-							</form:select>
-							<form:errors path="city.state.stateId" />
+						<div class="col-lg-10 space">
+							<label for="Country" class="col-sm-2 control-label">Country</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-flag"></span></span>
 
+								<form:select path="city.state.country.countryId" id="countryId"
+									onchange="getState()" class="form-control" name="bannerCountry">
+									<form:option value="0" label="---Select-------" />
+									<c:forEach var="country" items="${countries}">
+										<form:option value="${country.countryId}">${country.countryName}</form:option>
+									</c:forEach>
+								</form:select>
+								<form:errors path="city.state.country.countryId" />
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="city" class="col-sm-2 control-label">city</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-							<form:select path="city.cityId" id="stateCities"
-								class="form-control" name="bannercity">
-								<form:option value="0" label="---Select-------" />
-								<c:forEach var="city" items="${cities}">
-									<form:option value="${city.cityId}">${city.cityName}</form:option>
-								</c:forEach>
-							</form:select>
-							<form:errors path="city.cityId" />
-
-						</div>
-					</div>
-					<div class="col-lg-7  space">
-						<label for="banner" class="col-sm-2 control-label">Banner</label>
-						<div class="fileinput fileinput-new col-lg-offset-1"
-							data-provides="fileinput">
-							<div class="fileinput-preview thumbnail" data-trigger="fileinput"
-								style="width: 200px; height: 150px;">
-								<img id="bannerLogo"
-									src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
-									height="50" width="50" />
+						<div class="col-lg-10 space">
+							<label for="state" class="col-sm-2 control-label">state</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-flag"></span></span>
+								<form:select path="city.state.stateId" id="townStates"
+									onchange="getCity()" class="form-control" name="bannerstate">
+									<form:option value="0" label="---Select-------" />
+									<c:forEach var="state" items="${states}">
+										<form:option value="${state.stateId}">${state.stateName}</form:option>
+									</c:forEach>
+								</form:select>
+								<form:errors path="city.state.stateId" />
 
 							</div>
-							<div>
-								<span class="btn btn-default btn-file"><span
-									class="fileinput-new">Select image</span><span
-									class="fileinput-exists">Change</span> <input type="file"
-									name="file" value="Browse" onchange="changeImage(this);">
-									<%-- <img id="bannerLogo"
+						</div>
+						<div class="col-lg-10 space">
+							<label for="city" class="col-sm-2 control-label">city</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-flag"></span></span>
+								<form:select path="city.cityId" id="stateCities"
+									class="form-control" name="bannercity">
+									<form:option value="0" label="---Select-------" />
+									<c:forEach var="city" items="${cities}">
+										<form:option value="${city.cityId}">${city.cityName}</form:option>
+									</c:forEach>
+								</form:select>
+								<form:errors path="city.cityId" />
+
+							</div>
+						</div>
+						<div class="col-lg-7  space">
+							<label for="banner" class="col-sm-2 control-label">Banner</label>
+							<div class="fileinput fileinput-new col-lg-offset-1"
+								data-provides="fileinput">
+								<div class="fileinput-preview thumbnail"
+									data-trigger="fileinput" style="width: 200px; height: 150px;">
+									<img id="bannerLogo"
+										src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
+										height="50" width="50" />
+
+								</div>
+								<div>
+									<span class="btn btn-default btn-file"><span
+										class="fileinput-new">Select image</span><span
+										class="fileinput-exists">Change</span> <input type="file"
+										name="file" value="Browse" onchange="changeImage(this);">
+										<%-- <img id="bannerLogo"
 									src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
 									height="50" width="50" /> --%> </span> <a href="#"
-									class="btn btn-default fileinput-exists"
-									data-dismiss="fileinput">Remove</a>
-								<form:errors path="bannerLogo" cssClass="errors" />
+										class="btn btn-default fileinput-exists"
+										data-dismiss="fileinput">Remove</a>
+									<form:errors path="bannerLogo" cssClass="errors" />
+								</div>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="url" class="col-sm-2 control-label">Banner Name</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
-							<form:input path="bannerName" class="form-control" id="bannerurl" />
-							<form:errors path="bannerName" cssClass="errors" />
+						<div class="col-lg-10 space">
+							<label for="url" class="col-sm-2 control-label">Banner
+								Name</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-globe"></span></span>
+								<form:input path="bannerName" class="form-control"
+									id="bannerurl" />
+								<form:errors path="bannerName" cssClass="errors" />
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="url" class="col-sm-2 control-label">Url Link</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
-							<form:input path="urlLink" class="form-control" id="bannerur" />
-							<form:errors path="urlLink" cssClass="errors" />
+						<div class="col-lg-10 space">
+							<label for="url" class="col-sm-2 control-label">Url Link</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-globe"></span></span>
+								<form:input path="urlLink" class="form-control" id="bannerur" />
+								<form:errors path="urlLink" cssClass="errors" />
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="date" class="col-sm-2 control-label">Start
-							Date</label>
-						<div class="input-group sandbox-container">
-							<span class="input-group-addon"><span
-								class="fa fa-calendar"></span></span>
+						<div class="col-lg-10 space">
+							<label for="date" class="col-sm-2 control-label">Start
+								Date</label>
+							<div class="input-group sandbox-container">
+								<span class="input-group-addon"><span
+									class="fa fa-calendar"></span></span>
 
-							<form:input path="startDate" class="form-control"
-								name="startdate" id="StartDate" />
-							<form:errors path="startDate" cssClass="errors" />
+								<form:input path="startDate" class="form-control"
+									name="startdate" id="StartDate" />
+								<form:errors path="startDate" cssClass="errors" />
 
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="date" class="col-sm-2 control-label">Expiry
-							Date</label>
-						<div class="input-group sandbox-container">
-							<span class="input-group-addon"><span
-								class="fa fa-calendar"></span></span>
+						<div class="col-lg-10 space">
+							<label for="date" class="col-sm-2 control-label">Expiry
+								Date</label>
+							<div class="input-group sandbox-container">
+								<span class="input-group-addon"><span
+									class="fa fa-calendar"></span></span>
 
-							<form:input path="expiryDate" class="form-control"
-								name="Expirydate" id="expiryDate" />
-							<form:errors path="expiryDate" cssClass="errors" />
+								<form:input path="expiryDate" class="form-control"
+									name="Expirydate" id="expiryDate" />
+								<form:errors path="expiryDate" cssClass="errors" />
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="date" class="col-sm-2 control-label">Registration
-							Date</label>
-						<div class="input-group sandbox-container">
-							<span class="input-group-addon"><span
-								class="fa fa-calendar"></span></span>
+						<div class="col-lg-10 space">
+							<label for="date" class="col-sm-2 control-label">Registration
+								Date</label>
+							<div class="input-group sandbox-container">
+								<span class="input-group-addon"><span
+									class="fa fa-calendar"></span></span>
 
-							<form:input path="regDate" class="form-control" name="rgdate"
-								id="datepicker3" />
-							<form:errors path="regDate" cssClass="errors" />
+								<form:input path="regDate" class="form-control" name="rgdate"
+									id="datepicker3" />
+								<form:errors path="regDate" cssClass="errors" />
+							</div>
 						</div>
-					</div>
-					<div class="col-lg-10 space">
-						<label for="status" class="col-sm-2 control-label">Status</label>
-						<div class="input-group">
-							<span class="input-group-addon"><span class="fa fa-globe"></span></span>
-							<form:input path="status" class="form-control" id="status" />
-							<form:errors path="status" cssClass="errors" />
+						<div class="col-lg-10 space">
+							<label for="status" class="col-sm-2 control-label">Status</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="fa fa-globe"></span></span>
+								<form:input path="status" class="form-control" id="status" />
+								<form:errors path="status" cssClass="errors" />
+							</div>
 						</div>
-					</div>
-					
-					<div class="col-lg-6 col-lg-offset-5 space">
-						<button type="submit" class="btn btn-success" id="display"
-							name="update">Update</button>
-						<button type="reset" class="btn btn-danger">Cancel</button>
-						</form:form>
-					</div>
+
+						<div class="col-lg-6 col-lg-offset-5 space">
+							<button type="submit" class="btn btn-success" id="display"
+								name="update">Update</button>
+							<button type="reset" class="btn btn-danger">Cancel</button>
+					</form:form>
 				</div>
-				<!-- /.row -->
-
-				<div class="row">
-					<div class="col-lg-12 space">
-						<div class="panel panel-default"></div>
-						<!-- /.panel -->
-					</div>
-					<!-- /.col-lg-12 -->
-				</div>
-				<!-- /.row -->
-
-				<!-- /. PAGE INNER  -->
-				<footer> &copy; 2015 OnlineShodh | By : <a
-					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 			</div>
-			<!-- /. PAGE WRAPPER  -->
+			<!-- /.row -->
+
+			<div class="row">
+				<div class="col-lg-12 space">
+					<div class="panel panel-default"></div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
+			<!-- /.row -->
+
+			<!-- /. PAGE INNER  -->
+			<footer> &copy; 2015 OnlineShodh | By : <a
+				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
 		</div>
+		<!-- /. PAGE WRAPPER  -->
+	</div>
 
 	</div>
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
-	  <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-          <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-        
-                <!-- BOOTSTRAP JANSY SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
-        
-        	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+
+	<!-- BOOTSTRAP JANSY SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+
+	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-        	<!-- Datepicker SCRIPTS -->
+	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-        
-        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-        <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
-        
-        <script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
-		  <script
-		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
-	  <script
-		src="${pageContext.request.contextPath}/resources/js/validation/bannervalidation.js"></script> 
-        
-        
-	
-	
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/bannervalidation.js"></script>
+
+
+
+
 </body>
 </html>
