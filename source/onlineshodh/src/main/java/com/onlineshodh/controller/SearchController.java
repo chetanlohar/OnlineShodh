@@ -114,31 +114,29 @@ public class SearchController {
 	{
 		boolean flag = false;
 		Long subCatId = 0l;
-		List<BusinessDetailsEntity> businesses;
+		List<BusinessDetailsEntity> businesses = new ArrayList<BusinessDetailsEntity>();
+		List<BusinessDetailsEntity> allCategoryLevelBusinesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> matchedBusinesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> matchedCityOnly;
 		for(SubCategoryEntity subCat:subCats)
 		{
-			flag = subCat.getSubCategoryName().equals(tagName.trim());
+			flag = subCat.getSubCategoryName().contains(tagName.trim());
 			if(flag==true)
 			{
 				subCatId = subCat.getSubCategoryId().longValue();
 				break;
 			}
 		}
-		
 		if(flag)
 		{
-			
 			businesses = businessDetailsService.getBusinessBySubCategoryId(subCatId);
-			matchedBusinesses = new ArrayList<BusinessDetailsEntity>();
 			matchedCityOnly = new ArrayList<BusinessDetailsEntity>();
 			for(BusinessDetailsEntity b:businesses)
 			{
 				String city =b.getAddress().getTown().getCity().getCityName();
 				String town = b.getAddress().getTown().getTownName();
 				String cityTown = city+" ("+town+")";
-				if(cityName.equals(cityTown))
+				if(cityTown.equals(cityName))
 					matchedBusinesses.add(b);
 				else if(cityName.contains(city))
 				{
@@ -150,6 +148,9 @@ public class SearchController {
 			matchedBusinesses.addAll(matchedCityOnly);
 			if(matchedBusinesses.size()!=0)
 			{
+				allCategoryLevelBusinesses = businessDetailsService.getBusinessByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId().longValue());
+				Collections.sort(allCategoryLevelBusinesses , new BusinessComparator());
+				matchedBusinesses.addAll(allCategoryLevelBusinesses);
 				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory().getSubCategoryName());
 				model.addAttribute("category",matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryName());
 				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
@@ -158,14 +159,27 @@ public class SearchController {
 			{
 				SubCategoryEntity subCat1 = subCatService.getSubCategory(tagName);
 				System.out.println("in else: "+subCat1.getSubCategoryName()+": ("+subCat1.getCategory().getCategoryName());
-				matchedBusinesses = businessDetailsService.getBusinessByCategoryId(subCat1.getCategory().getCategoryId().longValue());
+				allCategoryLevelBusinesses = businessDetailsService.getBusinessByCategoryId(subCat1.getCategory().getCategoryId().longValue());
+				Collections.sort(allCategoryLevelBusinesses , new BusinessComparator());
+				model.addAttribute("subCategory",allCategoryLevelBusinesses.get(0).getSubCategory().getSubCategoryName());
+				model.addAttribute("category",allCategoryLevelBusinesses.get(0).getSubCategory().getCategory().getCategoryName());
+				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(allCategoryLevelBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
+			}
+		}
+		else
+		{
+			matchedBusinesses = businessDetailsService.getBusinessDetailsByBusinessName(tagName.trim());
+			if(matchedBusinesses.size()!=0)
+			{
 				Collections.sort(matchedBusinesses , new BusinessComparator());
+				allCategoryLevelBusinesses = businessDetailsService.getBusinessByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId().longValue());
+				Collections.sort(allCategoryLevelBusinesses , new BusinessComparator());
+				matchedBusinesses.addAll(allCategoryLevelBusinesses);
+				model.addAttribute("businesses", matchedBusinesses);
 				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory().getSubCategoryName());
 				model.addAttribute("category",matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryName());
 				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
 			}
-			
-			model.addAttribute("businesses", matchedBusinesses);
 		}
 		return "Search_result/Business_listing";
 	}

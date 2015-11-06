@@ -67,7 +67,7 @@ public class BusinessDetailsDaoImpl extends
 				.createQuery(
 						"from BusinessDetailsEntity business where lower(business.businessName) Like :businessName",
 						BusinessDetailsEntity.class)
-				.setParameter("businessName", bussinessName + '%')
+				.setParameter("businessName", '%' + bussinessName + '%')
 				.getResultList();
 
 	}
@@ -92,9 +92,9 @@ public class BusinessDetailsDaoImpl extends
 		entityManager = getEntityManager();
 		return entityManager
 				.createQuery(
-						"from BusinessDetailsEntity business where business.businessName=:businessName",
+						"from BusinessDetailsEntity business where lower(business.businessName)=:businessName",
 						BusinessDetailsEntity.class)
-				.setParameter("businessName", bussinessName).getResultList();
+				.setParameter("businessName", bussinessName.toLowerCase()).getResultList();
 	}
 
 	@Override
