@@ -109,7 +109,7 @@ $(document).ready(function(){
 	    		  minlength:"Please enter few more description"
 	    	  },
 	    	  file:{
-		        	
+	    		  
 		        	extension:"Please select valid image",
 		        		maxfilesize:"File size should be less than 300 KB"
 	    	  }
@@ -167,7 +167,7 @@ $(document).ready(function(){
 	        	 minlength:20
 	        },
 	        file:{
-	        	
+	        	 required: true,
 	        	maxfilesize:true,
 	        	extension: "jpg|jpeg|png|bmp"
 	        }
@@ -187,7 +187,7 @@ $(document).ready(function(){
 	    		  minlength:"Please enter few more description"
 	    	  },
 	    	  file:{
-	    		  
+	    		  required: "This Is Deafault Image Please Select Image",
 		        		maxfilesize:"File size should be less than 300 KB",
 		        		extension:"Please select valid image"
 	    	  }
@@ -608,6 +608,16 @@ $('#countryupdate').validate({
    NEW CLIENT VALIDATION
 ===========================*/
 
+
+$.validator.addMethod(
+	    "maxfilesize",
+	    function (value, element) {
+	        return this.optional(element) || (element.files && element.files[0]
+	                               && element.files[0].size < 1024  * 300);
+	    },
+	    'The file size can not exceed 300KB.'
+	);
+
 $('#clientform').validate({
     rules: {
     	"user.userName": {
@@ -682,12 +692,25 @@ $('#clientform').validate({
            minlength:6,
            digit:true
         },
+        
+        filec:{
+        	required: true,
+        	extension:"jpg|jpeg|png|bmp",
+        	maxfilesize:true
+        },
     },
       messages:{
     
     	  "user.userName":"Please Enter Valid User Name",
+    	  
+    	  filec:{
+    		  required: "This Is Deafault Image Please Select Image",
+	        	extension:"Please select valid image",
+	        		maxfilesize:"File size should be less than 300 KB"
+    	  }
+     
       },
-      
+  
       highlight: function(element) {
           $(element).closest('.space').addClass('has-error');
       },
@@ -695,13 +718,19 @@ $('#clientform').validate({
           $(element).closest('.space').removeClass('has-error');
       },
       errorElement: 'span',
-      errorClass: 'error1',
+      errorClass: 'error',
       errorPlacement: function(error, element) {
-          if(element.parent('.input-group').length) {
-              error.insertAfter(element.parent());
-          } else {
-              error.insertAfter(element);
-          }},
+	   	   
+     	  // if element is file type, we put the error message in its grand parent
+           if (element.prop("type") === "file") {
+               error.insertAfter(element.parent().parent());
+               error.removeClass('error,errorimg').addClass('errorimg');
+              
+           } else {
+         	   error.insertAfter(element.parent());
+         	  error.addClass('error');
+         	
+           }},
 
 });
 

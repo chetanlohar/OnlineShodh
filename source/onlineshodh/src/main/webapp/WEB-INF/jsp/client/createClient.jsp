@@ -325,7 +325,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-key"></span></span>
 										<form:password path="user.password" class="form-control"
-											id="clientpass" name="clietpass" />
+											id="confpass" name="clietpass" />
 										<form:errors path="user.password" cssClass="errors" />
 									</div>
 								</div>
@@ -380,13 +380,12 @@
 											<span class="btn btn-default btn-file"><span
 												class="fileinput-new">Select image</span><span
 												class="fileinput-exists">Change</span> <input type="file"
-												id="file" name="file"> <form:errors
+												id="file" name="filec"> <form:errors
 													path="userDetails.photograph" cssClass="errors" /></span>
 											<!-- <img
 												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
 												height="50" width="50" alt="*No Image" />  -->
-											<a href="#" class="btn btn-default fileinput-exists"
-												data-dismiss="fileinput">Remove</a>
+											
 										</div>
 									</div>
 								</div>
@@ -545,7 +544,7 @@
 				<div class="row">
 					<div class="col-lg-12 space">
 						<div class="panel panel-default">
-							<div class="panel-heading">Client Management Table</div>
+							<div class="panel-heading text-center">Client Management Table</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
@@ -627,10 +626,11 @@
                  <script
 		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
 		 
-	  <script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
 			  <script
 		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
+		
+	  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
         
         <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>

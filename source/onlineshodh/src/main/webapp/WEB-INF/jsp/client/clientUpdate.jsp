@@ -365,8 +365,7 @@
 										<!-- <img
 												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
 												height="50" width="50" alt="*No Image" />  -->
-										<a href="#" class="btn btn-default fileinput-exists"
-											data-dismiss="fileinput">Remove</a>
+										
 									</div>
 								</div>
 							</div>
@@ -532,12 +531,6 @@
 	<!-- METIMENU SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
-
-
-
-	<!-- Input Telephone SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
 
 	<!-- DATATABLE SCRIPTS -->
 	<script

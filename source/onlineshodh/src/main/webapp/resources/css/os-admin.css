@@ -462,8 +462,35 @@ height: 100px;
 	
 	}
 
+/*==============================================
+   Error page Style 
+  ==============================================*/
+  
+.page-head_error {
+font-size: 25px;
+border-bottom: 2px solid #c0c0c0;
+padding-bottom: 20px;
 
+}
+.error-no .p404{
+font-size: 100px;
+color: orange;	
+}
+.error-no .text-yellow
+{
+	
+	color: orange;
+}
 
+.error-no .p500{
+font-size: 100px;
+color: red;	
+}
+.error-no .text-red
+{
+	
+	color: red;
+}
 
 
 /*==============================================

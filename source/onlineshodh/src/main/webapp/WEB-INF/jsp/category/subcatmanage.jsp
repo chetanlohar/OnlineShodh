@@ -383,7 +383,7 @@
 				<div class="row">
 					<div class="col-lg-12 space">
 						<div class="panel panel-default">
-							<div class="panel-heading">Country Management Table</div>
+							<div class="panel-heading text-center">Sub-category Management Table</div>
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">

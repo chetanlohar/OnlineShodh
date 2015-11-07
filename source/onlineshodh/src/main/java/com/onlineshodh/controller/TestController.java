@@ -229,4 +229,17 @@ public class TestController {
 		return "payment/paymanet_mode";
 	}
 	
+	@RequestMapping(value="/error_404")
+	public String doerror_404()
+	{
+		return "error/404error";
+	}
+	
+	
+	@RequestMapping(value="/error_500")
+	public String doerror_500()
+	{
+		return "error/500error";
+	}
+	
 }

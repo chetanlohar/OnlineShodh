@@ -7,7 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Country</title>
+<title>500 ERROR</title>
 
 <!-- BOOTSTRAP STYLES-->
 <link
@@ -17,27 +17,16 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
-
-<!--Jancy STYLES-->
-<link
-	href="${pageContext.request.contextPath}/resources/css/jasny-bootstrap.min.css"
-	rel="stylesheet" />
-
-<!-- DATA TABLE STYLES-->
-<link
-	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
-	rel="stylesheet" />
-
 <!-- metis STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
+
 <!--CUSTOM STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
 
-</head>
 </head>
 <body>
 
@@ -175,11 +164,10 @@
 						</a></li>
 					</ul> <!-- /.nav-second-level --></li>
 
-				<li class="active"><a href="tables.html"><i
-						class="fa fa-globe fa-fw"></i> Location Management<span
-						class="fa arrow"></span></a>
+				<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>
+						Location Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a class="active-menu"
+						<li><a
 							href="${pageContext.request.contextPath}/admin/countries">Country
 								Management</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/states">State
@@ -199,36 +187,37 @@
 					</ul></li>
 
 
-				<li><a href="#"><i class="fa fa-"></i>Business Management <span
-						class="fa arrow"></span></a>
+				<li><a href="#"><i class="fa fa-briefcase"></i>Business
+						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a
 							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List Business
-						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Upgrade
-								Businesss
-						</a></li>
 
 					</ul></li>
-<li>
-                            <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
-                           	<ul class=" nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
-								
+
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
+						Management <span class="fa arrow"></span></a>
+					<ul class=" nav nav-second-level">
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/updatePlans"> <i class="fa fa-list"></i> Update Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
-							
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <i class="fa fa-list"></i> 
-								Assign Business Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
-					</ul>
-                        </li>
+					</ul></li>
 
 
 				<li><a href="#"><i class="fa fa-photo "></i>Advt. Banner<span
@@ -242,37 +231,37 @@
 								Advt. Banner</a></li>
 					</ul></li>
 
-				
-                      <li>
-                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
-                    </li>
-			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
-			</li>
-			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
-				</ul></li>
-			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
-					</li>
+				<li><a href="${pageContext.request.contextPath}/prashant/pay"
+					class="active-"><i class="fa fa-money "></i>Payment Mode <span
+						class="fa arrow"></span></a></li>
+				<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+				</li>
+				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a>
+						</li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+						</li>
 
-				</ul></li>
-			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
-					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
-					</li>
-					<li><a href="#">Second Level<span class="fa arrow"></span></a>
-						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>
-							<li><a href="#">Third Link</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>Second
+								Link</a></li>
+						<li><a href="#">Second Level<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="#">Third Link</a></li>
+								<li><a href="#">Third Link</a></li>
 
-						</ul></li>
-				</ul></li>
+							</ul></li>
+					</ul></li>
 
 
 			</ul>
@@ -282,87 +271,29 @@
 		<!-- /. SIDEBAR MENU (navbar-side) -->
 		<div id="page-wrapper" class="page-wrapper-cls">
 			<div id="page-inner">
-
 				<div class="row">
-					<div class="col-lg-12">
-						<h1 class="page-header">Country Management</h1>
+					<div class="col-md-12">
+						<h2 class="page-head_error">500 Error Page</h2>
 					</div>
-					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.row -->
 				<div class="row">
-					<div class="col-lg-9">
-						<form:form
-							action="${pageContext.request.contextPath}/admin/countries/save"
-							method="post" modelAttribute="country" class="form-horizontal"
-							id="countrymanage">
-							<label for="countryName" class="col-md-3">Country Name:</label>
-							<div class="form-group input-group col-md-9">
+					<div class="col-md-12">
+						<div class="error-no text-center">
+							<h1 class="p500">500</h1>
 
-								<form:input path="countryName" title="Country Name"
-									name="countryc" maxlength="25" size="50" class="form-control " />
-								<form:errors path="countryName" cssClass="error" />
-							</div>
-							<div class="col-md-5 col-md-offset-6">
-								<button type="submit" class="btn btn-success" id="saveCountry"
-									name="saveCountry">ADD</button>
-							</div>
-						</form:form>
-					</div>
-					<!-- /.col-lg-12 -->
-				</div>
-				<!-- /.row -->
 
-				<div class="row">
-					<div class="col-lg-12 space">
-						<div class="panel panel-default">
-							<div class="panel-heading text-center">Country Management Table</div>
-							<!-- /.panel-heading -->
-							<div class="panel-body">
-								<div class="dataTable_wrapper table-responsive">
-									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-country">
-										<thead>
-											<tr>
-												<th>Country Id</th>
-												<th>Country Name</th>
-												<th>Edit</th>
-												<th>Delete</th>
+							<h3>
+								<i class="fa fa-warning text-red"></i>Oops!&nbsp;Somting
+								went wrong
+							</h3>
 
-											</tr>
-										</thead>
-										<tbody>
-											<c:forEach var="country" items="${countries}">
-												<tr class="odd gradeX">
-													<td>${country.countryId}</td>
-													<td>${country.countryName}</td>
-													<td><a
-														href="${pageContext.request.contextPath}/admin/countries/edit/${country.countryId}"><button class="btn btn-info  btn-xs">
-																<i class="fa fa-pencil"></i> Edit
-															</button></a></td>
-													<td class="center"><a
-														href="${pageContext.request.contextPath}/admin/countries/delete/${country.countryId}"
-														onclick="return confirm('Do you want to Remove Country: ${country.countryName}')">
-															<button class="btn btn-danger btn-xs">
-																<i class="fa fa-trash"></i> Delete
-															</button>
-													</a></td>
-											</c:forEach>
-											</tr>
-										</tbody>
-
-									</table>
-								</div>
-								<!-- /.table-responsive -->
-
-							</div>
-							<!-- /.panel-body -->
+						<p>
+                We will work on fixing that right away.
+                Meanwhile, you may <a href="${pageContext.request.contextPath}/admin/home">return to Home</a> or try using the search form.
+              </p>
 						</div>
-						<!-- /.panel -->
 					</div>
-					<!-- /.col-lg-12 -->
 				</div>
-				<!-- /.row -->
 
 				<!-- /. PAGE INNER  -->
 				<footer> &copy; 2015 OnlineShodh | By : <a
@@ -373,40 +304,27 @@
 
 	</div>
 	<!-- /. WRAPPER  -->
+
+
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-
-        <!-- JQUERY SCRIPTS -->
-         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-        
-                 <script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
-		 
-	  <script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script> 
-        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-        
-                <!-- BOOTSTRAP JANSY SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
-        
-      	<!-- DATATABLE SCRIPTS -->
+	<!-- JQUERY SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-        	<!-- Datepicker SCRIPTS -->
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-        
-        <!-- CUSTOM SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 
-	<script>
-		$(document).ready(function() {
-			$('#dataTables-country').DataTable({
-				responsive : true
-			});
-		});
-	</script>
+
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+
+
+	<!-- CUSTOM SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+
+
+
 </body>
 </html>
