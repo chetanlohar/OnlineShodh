@@ -632,7 +632,7 @@ $('#clientform').validate({
         
         "user.password" : {
             required: true,
-            equalTo: "user.password"
+            minlength:6
         },
         
         "userDetails.name": {
@@ -718,7 +718,7 @@ $('#clientform').validate({
           $(element).closest('.space').removeClass('has-error');
       },
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'clienterror',
       errorPlacement: function(error, element) {
 	   	   
      	  // if element is file type, we put the error message in its grand parent
@@ -751,7 +751,7 @@ $('#clientformupdate').validate({
      
      "user.password" : {
          required: true,
-         equalTo: "user.password"
+         minlength:6
      },
      
      "userDetails.name": {
@@ -816,6 +816,7 @@ $('#clientformupdate').validate({
    messages:{
  
  	  "user.userName":"Please Enter Valid User Name",
+ 	 "user.password":"Please Enter at least 6 Character"
    },
    
    highlight: function(element) {
@@ -825,7 +826,7 @@ $('#clientformupdate').validate({
        $(element).closest('.space').removeClass('has-error');
    },
    errorElement: 'span',
-   errorClass: 'error1',
+   errorClass: 'clienterror',
    errorPlacement: function(error, element) {
        if(element.parent('.input-group').length) {
            error.insertAfter(element.parent());
@@ -853,6 +854,7 @@ $('#bus_conta').validate({
    messages:{
  
 	   business_contact:"Please Enter Valid Contact Number",
+	   
    },
    
    highlight: function(element) {

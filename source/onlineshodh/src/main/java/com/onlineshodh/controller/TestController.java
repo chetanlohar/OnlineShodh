@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="/prashant")
 public class TestController {
 
-	@RequestMapping(value="/createClient")
+	@RequestMapping(value="/adminlogin")
 	public String doThis()
 	{
-		return "client/createClient";
+		return "admin/adminlogin";
 	}
 	
 
@@ -240,6 +240,11 @@ public class TestController {
 	public String doerror_500()
 	{
 		return "error/500error";
+	}
+	@RequestMapping(value="/getAllBusiness")
+	public String listbusiness()
+	{
+		return "business/ListAllBusiness";
 	}
 	
 }

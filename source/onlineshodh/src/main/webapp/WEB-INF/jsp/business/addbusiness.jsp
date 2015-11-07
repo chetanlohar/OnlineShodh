@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Business Management</title>
-
+<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
 <!-- BOOTSTRAP STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
@@ -498,7 +498,7 @@
 
 																			+ '</td><td>'
 																			+ '<a href=${pageContext.request.contextPath}/admin/business/'+item.userDetailsId+'>'
-																			+ 'Select'
+																			+ '<button class="btn btn-info btn-xs">Select</button>'
 																			+ '</a></td></tr>');
 																	jQuery(
 																			'#dataTables-example')

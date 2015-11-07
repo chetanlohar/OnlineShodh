@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Client</title>
 
+<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
+
 <!-- BOOTSTRAP STYLES-->
 <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
@@ -380,7 +382,7 @@
 											<span class="btn btn-default btn-file"><span
 												class="fileinput-new">Select image</span><span
 												class="fileinput-exists">Change</span> <input type="file"
-												id="file" name="filec"> <form:errors
+												id="file" name="file"> <form:errors
 													path="userDetails.photograph" cssClass="errors" /></span>
 											<!-- <img
 												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
@@ -585,7 +587,7 @@
 															</button></a></td>
 													<td class="center"><a
 														href="${pageContext.request.contextPath}/admin/clients/delete/${userdetail.userDetailsId}"
-														onclick="return confirm('Do you want to Remove : ${userdetail.name}">Delete</a>
+														onclick="return confirm('Do you want to Remove : ${userdetail.name}"><button class="btn btn-danger btn-xs">Delete</button></a>
 													</td>
 												</tr>
 											</c:forEach>

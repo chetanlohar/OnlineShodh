@@ -33,11 +33,7 @@ $(document).ready(function(){
 		        	maxfilesize:true
 		        },
 		        
-		        
-		        "urlLink":{
-		        	required: true,
-		        	url: true
-		        },
+		     
 		        
 		        "startDate":{
 		        	required: true
@@ -91,10 +87,7 @@ $(document).ready(function(){
 		    		  required: "Please enter banner name",
 		    		  lettersonly:"Please enter valid banner name"
 		    	  },
-		    	  urlLink:{
-		    		  required: "Please enter url ",
-		    		  url:"Please enter valid url (example: http:\\www.onlineshodh.com)"
-		    	  },
+		    	
 		    	  startDate:{
 			        	required: "Please select start date"
 			        		
@@ -162,7 +155,7 @@ $(document).ready(function(){
 			        || (Number(value) > Number($(params).val())); 
 			},'Must be greater than {0}.');
 	
-	/*$("#expiryDate").rules('add', { greaterThan: "#startDate" });*/
+	$("#expiryDate").rules('add', { greaterThan: "#startDate" });
 	
 	/*=========================
 	  Banner Update Validation
@@ -199,10 +192,7 @@ $(document).ready(function(){
 		        },
 		        
 		        
-		        "urlLink":{
-		        	required: true,
-		        	url: true
-		        },
+		      
 		        
 		        "startDate":{
 		        	required: true
@@ -256,10 +246,7 @@ $(document).ready(function(){
 		    		  required: "Please enter banner name",
 		    		  lettersonly:"Please enter valid banner name"
 		    	  },
-		    	  urlLink:{
-		    		  required: "Please enter url ",
-		    		  url:"Please enter valid url (example: http:\\www.onlineshodh.com)"
-		    	  },
+		    	
 		    	  startDate:{
 			        	required: "Please select start date"
 			        },

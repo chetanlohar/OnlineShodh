@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manage City</title>
 
+<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
+
 <!-- BOOTSTRAP STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
 	rel="stylesheet" />
@@ -297,8 +299,7 @@
 							method="POST" modelAttribute="City" class="form-horizontal"
 							id="citymanage">
 
-							<label class="col-md-3">Country Name:<span
-								style="color: red; font-size: 18px;">*</span></label>
+							<label class="col-md-3">Country Name:</label>
 							<div class="form-group input-group col-md-9">
 
 
@@ -312,8 +313,7 @@
 								</form:select>
 								<form:errors path="state.country.countryId" />
 							</div>
-							<label class="col-md-3">State Name:<span
-								style="color: red; font-size: 18px;">*</span></label>
+							<label class="col-md-3">State Name:</label>
 							<div class="form-group input-group col-md-9">
 
 
@@ -327,8 +327,7 @@
 								<form:errors path="state.stateId" />
 
 							</div>
-							<label for="cityName" class="col-md-3">City Name:<span
-								style="color: red; font-size: 18px;">*</span></label>
+							<label for="cityName" class="col-md-3">City Name:</label>
 							<div class="form-group input-group col-md-9">
 
 								<form:input path="cityName" title="City Name"

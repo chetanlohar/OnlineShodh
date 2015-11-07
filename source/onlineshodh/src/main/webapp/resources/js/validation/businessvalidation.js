@@ -69,7 +69,7 @@ $(document).ready(function() {
 				minlength:2
 			},
 			file : {
-				required : true,
+				
 			 	maxfilesize:true,
 	        	extension: "png|jpe?g|gif"
 			},
@@ -85,10 +85,6 @@ $(document).ready(function() {
 				required : true,
 				email:true
 				
-			},
-			"website":{
-				required : true,
-				url:true
 			},
 			
 			"subCategory.category.categoryId":{
@@ -114,14 +110,14 @@ $(document).ready(function() {
 		messages : {
 
 			"businessName" : "Please Enter Valid Business Name",
-			file :{ required :"Please Enter Valid Logo Image",
+			file :{ 
 				  maxfilesize:"The file size can not exceed 300KB."
 			
 			},
 			"businessDesc":"Please Enter Valid Business Description", 
 			"personName":"Please Enter Valid Person Name",
 			"email":"Please Enter Valid Email Id",
-			"website":"Please Enter Valid Website Address",
+			
 			"subCategory.category.categoryId":"Please Enter Valid Category",
 			"subCategory.subCategoryId":"Please Enter Valid Sub-Category",
 			"rank":"Please Enter Valid Rank",

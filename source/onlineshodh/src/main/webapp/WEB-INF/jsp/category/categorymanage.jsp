@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Category</title>
 
+<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
+<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
 <!-- BOOTSTRAP STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
@@ -380,10 +382,10 @@
 						<div class="panel panel-default">
 							<div class="panel-heading text-center">Category Management Table</div>
 							<!-- /.panel-heading -->
-							<div class="panel-body">
+														<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
 									<table class="table table-striped table-bordered table-hover"
-										id="dataTables-category">
+										id="dataTables-cat">
 										<thead>
 											<tr>
 												<th>Category Id</th>
@@ -395,10 +397,9 @@
 												<th>Delete</th>
 
 											</tr>
-
 										</thead>
 										<tbody>
-											<c:forEach var="category" items="${categories}">
+												<c:forEach var="category" items="${categories}">
 												<tr class="odd gradeX">
 													<td>${category.categoryId}</td>
 													<td><img
@@ -429,6 +430,7 @@
 								<!-- /.table-responsive -->
 
 							</div>
+							
 							<!-- /.panel-body -->
 						</div>
 						<!-- /.panel -->
@@ -448,18 +450,9 @@
 	</div>
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
-
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
@@ -473,18 +466,27 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
 
-
 	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-
+	<!-- Datepicker SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-	<script>
+	
+	
+	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#dataTables-category').DataTable({
+			$('#dataTables-cat').DataTable({
 				responsive : true
 			});
 

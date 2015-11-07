@@ -7,6 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Business</title>
+
+
+<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
 <!-- BOOTSTRAP STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
 	rel="stylesheet" />
@@ -332,28 +335,11 @@
 								</div>
 
 								<div class="col-lg-12 space">
-									<label for="Logo" class="col-sm-5 control-label">Business
-										Logo</label>
-									<div class="fileinput fileinput-new input-group"
-										data-provides="fileinput">
-										<div class="form-control" data-trigger="fileinput">
-											<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
-												class="fileinput-filename"></span>
-										</div>
-										<span class="input-group-addon btn btn-default btn-file"><span
-											class="fileinput-new">Select file</span><span
-											class="fileinput-exists">Change</span> <input type="file"
-											name="file"></span>
-
-										<form:errors path="businessLogo" cssClass="errors" />
-									</div>
-								</div>
-								<div class="col-lg-12 space">
 									<label for="pname" class="col-sm-5 control-label">Business
 										Description </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-chats"></span></span>
+											class="fa fa-align-justify"></span></span>
 										<form:textarea path="businessDesc" class="form-control" />
 										<form:errors path="businessDesc" cssClass="errors" />
 									</div>
@@ -451,6 +437,30 @@
 											class="fa fa-globe"></span></span>
 										<form:input path="keywords" class="form-control" />
 										<form:errors path="keywords" cssClass="errors" />
+									</div>
+								</div>
+								<label for="web" class="col-sm-5 control-label">
+										Business Logo</label>
+								<div class="col-lg-6 col-lg-offset-5 space">								
+									<div class="fileinput fileinput-new" data-provides="fileinput">
+										<div class="fileinput-preview thumbnail"
+											data-trigger="fileinput" style="width: 200px; height: 150px;">
+											<img
+												src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
+												alt="...">
+
+										</div>
+										<div>
+											<span class="btn btn-default btn-file"><span
+												class="fileinput-new">Select image</span><span
+												class="fileinput-exists">Change</span> <input type="file"
+												id="file" name="file"> <form:errors
+													path="userDetails.photograph" cssClass="errors" /></span>
+											<!-- <img
+												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
+												height="50" width="50" alt="*No Image" />  -->
+											
+										</div>
 									</div>
 								</div>
 
