@@ -203,7 +203,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/prashant/clientcreate">Manage
+							href="${pageContext.request.contextPath}/admin/clients/view/">Manage
 								Client</a></li>
 					</ul></li>
 

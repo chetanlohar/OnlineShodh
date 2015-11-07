@@ -417,9 +417,9 @@
 							data-provides="fileinput">
 							<div class="fileinput-preview thumbnail" data-trigger="fileinput"
 								style="width: 200px; height: 150px;">
-								<%-- <img
-									src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-									alt="..." required> --%>
+									<img
+							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							class="img-responsive" />
 									
 					</div>
 							<div>

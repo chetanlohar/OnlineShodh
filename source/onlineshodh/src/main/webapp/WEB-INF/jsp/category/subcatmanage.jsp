@@ -352,9 +352,10 @@
 								<div class="fileinput fileinput-new" data-provides="fileinput">
 									<div class="fileinput-preview thumbnail"
 										data-trigger="fileinput" style="width: 200px; height: 150px;">
-										<%-- img
+								<img
 							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
-							alt="..."> --%>
+							class="img-responsive" />
+
 									</div>
 									<div>
 										<span class="btn btn-default btn-file"><span

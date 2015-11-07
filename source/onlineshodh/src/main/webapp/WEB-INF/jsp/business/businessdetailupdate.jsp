@@ -541,6 +541,7 @@
 								<button type="button" id="phonebutton"
 									class="btn btn-success b_contact">Add</button>
 								</a>
+								<button type="reset" class="btn btn-danger">Cancel</button>
 							</form>
 
 						</div>
@@ -588,9 +589,10 @@
 								</div>
 								<input type="hidden" id="featureurl"
 									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/feature/save" />
-								<!-- <a href="" class="bd_features"> -->
+								<!-- <a href="" class="bd_features"></a> -->
 								<button type="button" id="featurebutton" class="btn btn-success">Add</button>
-								</a>
+								<button type="reset" class="btn btn-danger">Cancel</button>
+								
 							</form>
 						</div>
 						<div class="detail-wraper space">

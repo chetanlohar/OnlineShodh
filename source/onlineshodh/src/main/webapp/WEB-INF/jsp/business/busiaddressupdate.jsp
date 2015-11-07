@@ -430,7 +430,7 @@
 
 						<div class="col-lg-6 col-lg-offset-4 space">
 							<button type="submit" class="btn btn-success" id="update">Update</button>
-
+							
 						</div>
 					</form:form>
 				</div>

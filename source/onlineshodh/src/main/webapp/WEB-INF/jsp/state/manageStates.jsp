@@ -318,6 +318,8 @@
 							<div class="col-md-5 col-md-offset-6">
 								<button type="submit" class="btn btn-success" id="saveSate"
 									name="saveState">ADD</button>
+									
+									<button type="reset" class="btn btn-danger">Cancel</button>
 							</div>
 						</form:form>
 					</div>

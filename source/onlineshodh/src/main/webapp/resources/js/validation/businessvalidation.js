@@ -137,8 +137,11 @@ $(document).ready(function() {
 	    	  // if element is file type, we put the error message in its grand parent
 	          if (element.prop("type") === "file") {
 	              error.insertAfter(element.parent().parent());
+	              
+	              error.removeClass('error,errorimg').addClass('errorimg');
 	          } else {
 	        	   error.insertAfter(element.parent());
+	        	   error.addClass('error');
 	          }
 	    	  },
 
