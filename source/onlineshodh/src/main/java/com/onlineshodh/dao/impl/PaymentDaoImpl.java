@@ -9,7 +9,8 @@ import com.onlineshodh.entity.PaymentEntity;
 @Repository
 public class PaymentDaoImpl extends AbstractJpaDao<PaymentEntity> implements PaymentDao {
 
-	 public void savePayment(PaymentEntity payment){
+	 public Integer savePayment(PaymentEntity payment){
 		create(payment);
+	  return payment.getPaymentId();
 	 }
 }

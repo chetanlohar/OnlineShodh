@@ -33,13 +33,73 @@ $("#keyword").on("keyup",function(e){
 </script>
 
 
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
+	rel="stylesheet" />
+<!-- FONTAWESOME ICONS STYLES-->
+<link
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
+	rel="stylesheet" />
+
+<!-- DATA TABLE STYLES-->
+<link
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
+	rel="stylesheet" />
+
+
+<!-- Datepicker STYLES-->
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker3.min.css"
+	rel="stylesheet" />
+
+<!--Jancy STYLES-->
+<link
+	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	rel="stylesheet" />
+
+
+<!-- metis STYLES-->
+<link
+	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
+	rel="stylesheet" />
+
+
+         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+        
+        
+        <!-- BOOTSTRAP SIDEMENU SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+        
+                <!-- BOOTSTRAP JANSY SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+        
+      	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+        	<!-- Datepicker SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+        
+          <!-- CUSTOM SCRIPTS -->
+        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+        <script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
+	
+	 <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
+		
+
 
 
 </head>
 <body>
-<form:form action="${pageContext.request.contextPath}/admin/payments/save" modelAttribute="payment" method="POST">
+<form:form action="${pageContext.request.contextPath}/admin/payments/save" modelAttribute="paymentStatus" method="POST">
 <p><label>Payment For :</label>
-<form:select path="paymentfor">
+<form:select path="payment.paymentfor">
 <form:option value="BusinessAdvertisement" label="BusinessAdvertisement"/>
 <form:option value="BannerAdvertisement" label="BannerAdvertisement"/>
 </form:select> 
@@ -47,31 +107,29 @@ $("#keyword").on("keyup",function(e){
 <p> <label>Business Name</label><input type="text" id="keyword" name="businessName"/></p>
 <p> <label>Banner Name</label><input type="text" id="keyword1" name="bannerName"/></p>
 <p><label>Payment Mode :</label>
-<form:select path="paymentMode.paymentModeid">
+<form:select path="payment.paymentMode.paymentModeid">
 <c:forEach var="paymentmode" items="${paymentmodes}">
 <form:option value="${paymentmode.paymentModeid}">${paymentmode.paymentMode}</form:option>
 </c:forEach>
 </form:select></p>
-<p><label>Amount :</label><form:input path="ammount"/></p>
-<p><label>Status :</label><form:input path="status"/><p>
-<p><label>Remark :</label><form:input path="remark"/></P>
-<p><label>payeeName:</label><form:input path="payeeName"/></p>
-
-
-
-<%-- <p><label>isBusiness :</label><form:select path="">
-<c:choose>
-														<c:when test="${=='true'}">
-															<form:option value="Y" label="YES"/>
-														</c:when>
-														<c:otherwise>
-															<form:option value="N" label="NO"/>
-														</c:otherwise>
-</c:choose>	 
-
-</form:select></p>
---%>	 												
- 
+<p><label>Amount :</label><form:input path="payment.ammount"/></p>
+ <p><form:errors path="payment.ammount" cssClass="errors"/></p>     
+<p><label>Status :</label><form:input path="payment.status"/><p>
+ <p><form:errors path="payment.status" cssClass="errors"/></p> 
+<p><label>Remark :</label><form:input path="payment.remark"/></P>
+ <p><form:errors path="payment.remark" cssClass="errors"/></p> 
+<p><label>payeeName:</label><form:input path="payment.payeeName"/></p>
+ <p><form:errors path="payment.payeeName" cssClass="errors"/></p> 
+ <p><label>Bank Name:</label><form:input path="check.bankName"/></p>
+  <p><form:errors path="check.bankName" cssClass="errors"/></p> 
+<p class="sandbox-container"><label>checkDate:</label><form:input path="check.checkDate" /></p>
+ <p><form:errors path="check.checkDate" cssClass="errors"/></p> 
+<p><label>Check No:</label><form:input path="check.checkNo"/></p>
+ <p><form:errors path="check.checkNo" cssClass="errors"/></p> 
+<p><label>Check Amount:</label><form:input path="check.amount"/></p>
+ <p><form:errors path="check.amount" cssClass="errors"/></p> 
+<p><label>Transaction No:</label><form:input path="payment.transactionid"/></p>
+ <p><form:errors path="payment.transactionid" cssClass="errors"/></p> 
 <input type="submit" value="save"/>
 <input type="reset" value="reset"/>
 </form:form>

@@ -16,8 +16,8 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	@Transactional
-	public void savePayment(PaymentEntity payment) {
-		paymentDao.savePayment(payment);
+	public Integer savePayment(PaymentEntity payment) {
+		return paymentDao.savePayment(payment);
 	}
 	
 }

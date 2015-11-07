@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+@Scope(value="prototype")
 @Entity
 @Table(name = "payment_details")
 public class PaymentEntity implements Serializable {
@@ -44,7 +44,7 @@ public class PaymentEntity implements Serializable {
 	private String payeeName;
 
 	@Column(name = "bannerid")
-	private Long bannerId;
+	private Integer bannerId;
 
 	@Column(name = "businessid")
 	private Long businessId;
@@ -131,11 +131,11 @@ public class PaymentEntity implements Serializable {
 		this.transactionid = transactionid;
 	}
 	
-	public Long getBannerId() {
+	public Integer getBannerId() {
 		return bannerId;
 	}
 
-	public void setBannerId(Long bannerId) {
+	public void setBannerId(Integer bannerId) {
 		this.bannerId = bannerId;
 	}
 
