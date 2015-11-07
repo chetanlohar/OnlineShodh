@@ -41,7 +41,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 	<!-- Spring File Filter- -->
-	 <!-- <filter>
+	  <filter>
 		<filter-name>meh</filter-name>
 		<filter-class>com.onlineshodh.supportclass.MultipartExceptionHandler</filter-class>
 	</filter>
@@ -62,7 +62,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping> 
 
- -->
+
 	<!-- Spring Security -->
 
 	<filter>
