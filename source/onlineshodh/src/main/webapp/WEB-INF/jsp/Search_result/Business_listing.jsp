@@ -7,8 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Business Listing</title>
-
-<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
 <!-- BOOTSTRAP STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
@@ -78,8 +76,8 @@
 					<div class="row">
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/">Home</a></li>
-							<li><a href="#">${category}</a></li>
-							<li class="active">${subCategory}</li>
+							<li><a href="${pageContext.request.contextPath}/search/business/category/${subCategory.category.categoryId}/city/${cityName}">${subCategory.category.categoryName}</a></li>
+							<li class="active">${subCategory.subCategoryName}</li>
 						</ol>
 					</div>
 					

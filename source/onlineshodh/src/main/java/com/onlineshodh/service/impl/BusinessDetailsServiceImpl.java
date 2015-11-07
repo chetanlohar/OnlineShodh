@@ -25,7 +25,7 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 	@Override
 	@Transactional
 	public void updateBusinessDetails(BusinessDetailsEntity business) {
-		// TODO Auto-generated method stub
+		businessDetailsDao.updateBusinessDetails(business);
 
 	}
 

@@ -46,7 +46,7 @@ import com.onlineshodh.service.UserService;
 public class SearchController {
 
 	private static final Logger logger = Logger.getLogger(BannerController.class);
-
+	
 	@Autowired
 	BusinessDetailsService businessDetailsService;
 	
@@ -133,7 +133,7 @@ public class SearchController {
 		List<BusinessDetailsEntity> businesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> allCategoryLevelBusinesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> matchedBusinesses = new ArrayList<BusinessDetailsEntity>();
-		List<BusinessDetailsEntity> matchedCityOnly;
+		List<BusinessDetailsEntity> matchedCityOnly = new ArrayList<BusinessDetailsEntity>();
 		for(SubCategoryEntity subCat:subCats)
 		{
 			flag = subCat.getSubCategoryName().contains(tagName.trim());
@@ -164,23 +164,42 @@ public class SearchController {
 			matchedBusinesses.addAll(matchedCityOnly);
 			if(matchedBusinesses.size()!=0)
 			{
-				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory().getSubCategoryName());
-				model.addAttribute("category",matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryName());
+				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory());
 				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
 			}
 			else
 			{
 				SubCategoryEntity subCat1 = subCatService.getSubCategory(tagName);
 				System.out.println("in else: "+subCat1.getSubCategoryName()+": ("+subCat1.getCategory().getCategoryName());
-				model.addAttribute("subCategory",allCategoryLevelBusinesses.get(0).getSubCategory().getSubCategoryName());
-				model.addAttribute("category",allCategoryLevelBusinesses.get(0).getSubCategory().getCategory().getCategoryName());
+				model.addAttribute("subCategory",allCategoryLevelBusinesses.get(0).getSubCategory());
 				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(allCategoryLevelBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
 			}
 		}
 		else
 		{
-			
+			businesses = businessService.getBusinessDetailsByBusinessName(tagName.trim().toLowerCase());
+			if(businesses.size()!=0)
+			{
+				for(BusinessDetailsEntity b:businesses)
+				{
+					String city =b.getAddress().getTown().getCity().getCityName();
+					String town = b.getAddress().getTown().getTownName();
+					String cityTown = city+" ("+town+")";
+					if(cityTown.equals(cityName))
+						matchedBusinesses.add(b);
+					else if(cityName.contains(city))
+					{
+						matchedCityOnly.add(b);
+					}
+				}
+				Collections.sort(matchedBusinesses , new BusinessComparator());
+				Collections.sort(matchedCityOnly , new BusinessComparator());
+				matchedBusinesses.addAll(matchedCityOnly);
+				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory());
+				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
+			}
 		}
+		model.addAttribute("cityName", cityName);
 		model.addAttribute("businesses", matchedBusinesses);
 		return "Search_result/Business_listing";
 	}
@@ -219,7 +238,7 @@ public class SearchController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
-		 logger.info("File Not Found");
+			// logger.info("File Not Found");
 		}
 		return null;
 	}
@@ -228,9 +247,51 @@ public class SearchController {
 	public String saveEnquiry(@PathVariable Long businessId,ModelMap model,@ModelAttribute("businessEnquiry") BusinessEnquiryEntity enquiry, BindingResult result)
 	{
 		System.out.println("Enquiry: "+enquiry);
-		enquiry.getBusiness().setBusinessId(businessId);
+		BusinessDetailsEntity businessentity = businessService.getBusinessDetails(businessId);
+		enquiry.setBusiness(businessentity);
 		businessEnquiryService.saveEnquiry(enquiry);
 		model.addAttribute("successMsgEnquiry", "Thank you for Enquiry, we will contact you soon.!");
 		return "redirect:/search/business/"+businessId;
+	}
+	
+	
+	@RequestMapping(value={"/business/category/{categoryId}/city/{cityName}"})
+	public String searchBusinessByCategory(@PathVariable Long categoryId,@PathVariable("cityName") String cityName,ModelMap model)
+	{		
+		List<BusinessDetailsEntity> matchedBusinesses = new ArrayList<BusinessDetailsEntity>();
+		List<BusinessDetailsEntity> matchedCityOnly = new ArrayList<BusinessDetailsEntity>();
+		System.out.println("cityTown");
+		List<BusinessDetailsEntity> businesses = businessService.getBusinessByCategoryId(categoryId);
+		
+		for(BusinessDetailsEntity b:businesses)
+		{
+			String city =b.getAddress().getTown().getCity().getCityName();
+			String town = b.getAddress().getTown().getTownName();
+			String cityTown = city+" ("+town+")";
+			if(cityTown.equals(cityName))
+				matchedBusinesses.add(b);
+			else if(cityName.contains(city))
+			{
+				matchedCityOnly.add(b);
+			}
+		}
+		Collections.sort(matchedBusinesses , new BusinessComparator());
+		Collections.sort(matchedCityOnly , new BusinessComparator());
+		matchedBusinesses.addAll(matchedCityOnly);
+		model.addAttribute("subCategory",businesses.get(0).getSubCategory());
+		model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(businesses.get(0).getSubCategory().getCategory().getCategoryId()));
+		model.addAttribute("businesses", matchedBusinesses);
+		return "Search_result/Business_listing";
+	}
+	
+	@RequestMapping(value={"/business/category/{categoryId}"})
+	public String searchBusinessByCategory1(@PathVariable Long categoryId,ModelMap model)
+	{		
+		List<BusinessDetailsEntity> businesses = businessService.getBusinessByCategoryId(categoryId);
+		Collections.sort(businesses , new BusinessComparator());
+		model.addAttribute("subCategory",businesses.get(0).getSubCategory());
+		model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(businesses.get(0).getSubCategory().getCategory().getCategoryId()));
+		model.addAttribute("businesses", businesses);
+		return "Search_result/Business_listing";
 	}
 }

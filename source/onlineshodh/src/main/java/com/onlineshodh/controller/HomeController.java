@@ -13,6 +13,9 @@ public class HomeController {
 	@Autowired
 	TownService townService;
 	
+	/*@Autowired
+	C*/
+	
 	@RequestMapping(value={"/",""})
 	public String showHome(ModelMap model)
 	{

@@ -10,15 +10,15 @@
 <title>Online Shodh</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
+	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
 <!-- CUSTOME STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/style.css"
+<link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet" />
 	
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"/>
@@ -86,7 +86,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<img class="logo_img"
-						src="<%=request.getContextPath()%>/resources/images/logo.jpg"
+						src="${pageContext.request.contextPath}/resources/images/logo.jpg"
 						alt="online shodh" />
 				</div>
 
@@ -132,19 +132,19 @@
 
 						<div class="col-xs-4">
 							<a href="business_listing.html"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/advertising.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/advertising.png">
 							</a>
 							<div id="catname">Advertising Agencies</div>
 						</div>
 						<div class="col-xs-4">
-							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/agriculture.png">
+							<a href="${pageContext.request.contextPath}/search/business/category/91"><img
+								src="${pageContext.request.contextPath}/resources/images/icons/agriculture.png">
 							</a>
 							<div id="catname">Agriculture</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/apparels.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/apparels.png">
 							</a>
 							<div id="catname">Apparels</div>
 						</div>
@@ -156,19 +156,19 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/architect.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/architect.png">
 							</a>
 							<div id="catname">Architect & Interior Designer</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/automobile.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/automobile.png">
 							</a>
 							<div id="catname">Automobile</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/banks.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/banks.png">
 							</a>
 							<div id="catname">Banks</div>
 						</div>
@@ -179,19 +179,19 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/bakery.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/bakery.png">
 							</a>
 							<div id="catname">Bakery</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/spa.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/spa.png">
 							</a>
 							<div id="catname">Beauty & Spa</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/books.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/books.png">
 							</a>
 							<div id="catname">Books Store</div>
 						</div>
@@ -216,19 +216,19 @@
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/builders.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/builders.png">
 							</a>
 							<div id="catname">Builders & Developers</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/material.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/material.png">
 							</a>
 							<div id="catname">Building Material Supplier</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/cardealers.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/cardealers.png">
 							</a>
 							<div id="catname">Car Dealers</div>
 						</div>
@@ -240,19 +240,19 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/caterers.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/caterers.png">
 							</a>
 							<div id="catname">Caterers</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/classes.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/classes.png">
 							</a>
 							<div id="catname">Classes</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/clubs.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/clubs.png">
 							</a>
 							<div id="catname">Clubs & Society</div>
 						</div>
@@ -263,19 +263,19 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/chemist.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/chemist.png">
 							</a>
 							<div id="catname">Chemist</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/colleges.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/colleges.png">
 							</a>
 							<div id="catname">Colleges</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/computers.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/computers.png">
 							</a>
 							<div id="catname">Computer Services</div>
 						</div>
@@ -299,19 +299,19 @@
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/cosmetics.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/cosmetics.png">
 							</a>
 							<div id="catname">Cosmetics</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/courier.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/courier.png">
 							</a>
 							<div id="catname">Courier Services</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/consultant.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/consultant.png">
 							</a>
 							<div id="catname">Consultants</div>
 						</div>
@@ -323,19 +323,19 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/cycle.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/cycle.png">
 							</a>
 							<div id="catname">Cycle Sales & Spare Parts</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/fashion.jpg">
+								src="${pageContext.request.contextPath}/resources/images/icons/fashion.jpg">
 							</a>
 							<div id="catname">Dealers & Distributors</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/doctors.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/doctors.png">
 							</a>
 							<div id="catname">Doctors</div>
 						</div>
@@ -346,20 +346,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/dth.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/dth.png">
 							</a>
 							<div id="catname">DTH Services</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/electrical.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/electrical.png">
 							</a>
 							<div id="catname">Electrical Services</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/emergency.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/emergency.png">
 							</a>
 							<div id="catname">Emergency</div>
 						</div>
@@ -382,20 +382,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/entertainment.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/entertainment.png">
 							</a>
 							<div id="catname">Entertainment</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/party.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/party.png">
 							</a>
 							<div id="catname">Event & Party</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/finance.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/finance.png">
 							</a>
 							<div id="catname">Finance & Share Brokers</div>
 						</div>
@@ -407,20 +407,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/florist.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/florist.png">
 							</a>
 							<div id="catname">Florist</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/food.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/food.png">
 							</a>
 							<div id="catname">Fruit & Food</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/flight.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/flight.png">
 							</a>
 							<div id="catname">Flight</div>
 						</div>
@@ -431,20 +431,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/furniture.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/furniture.png">
 							</a>
 							<div id="catname">Furniture & Hardware</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/footware.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/footware.png">
 							</a>
 							<div id="catname">Footware</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/gym.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/gym.png">
 							</a>
 							<div id="catname">Gym</div>
 						</div>
@@ -467,20 +467,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/gift.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/gift.png">
 							</a>
 							<div id="catname">Gift Shop</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/q.jpg">
+								src="${pageContext.request.contextPath}/resources/images/icons/q.jpg">
 							</a>
 							<div id="catname">Grocery</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/government.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/government.png">
 							</a>
 							<div id="catname">Government Services</div>
 						</div>
@@ -492,20 +492,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/appliances.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/appliances.png">
 							</a>
 							<div id="catname">Home Appliances</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/hospitals.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/hospitals.png">
 							</a>
 							<div id="catname">Hospitals & Clinics</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/hotels.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/hotels.png">
 							</a>
 							<div id="catname">Hotels & Lodge</div>
 						</div>
@@ -516,20 +516,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/housekeeping.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/housekeeping.png">
 							</a>
 							<div id="catname">House Keeping & Cleaning</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/industrial.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/industrial.png">
 							</a>
 							<div id="catname">Industrial Supplies</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/internet.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/internet.png">
 							</a>
 							<div id="catname">Internet & Services</div>
 						</div>
@@ -552,20 +552,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/jewellers.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/jewellers.png">
 							</a>
 							<div id="catname">Jewellers</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/jobs.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/jobs.png">
 							</a>
 							<div id="catname">Jobs</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/libraries.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/libraries.png">
 							</a>
 							<div id="catname">Libraries</div>
 						</div>
@@ -577,20 +577,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/mobiles.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/mobiles.png">
 							</a>
 							<div id="catname">Mobile Shops</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/driving.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/driving.png">
 							</a>
 							<div id="catname">Motor Driving Schools</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/opticals.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/opticals.png">
 							</a>
 							<div id="catname">Opticals</div>
 						</div>
@@ -601,20 +601,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/papers.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/papers.png">
 							</a>
 							<div id="catname">Paper Dealers</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/petrolpumps.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/petrolpumps.png">
 							</a>
 							<div id="catname">Petrol Pumps</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/pets.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/pets.png">
 							</a>
 							<div id="catname">Pets</div>
 						</div>
@@ -636,20 +636,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/photo.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/photo.png">
 							</a>
 							<div id="catname">Photo Studios</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/pizza.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/pizza.png">
 							</a>
 							<div id="catname">Pizza</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/realestate.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/realestate.png">
 							</a>
 							<div id="catname">Real Estate</div>
 						</div>
@@ -661,20 +661,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/security.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/security.png">
 							</a>
 							<div id="catname">Security Services</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/schools.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/schools.png">
 							</a>
 							<div id="catname">Schools</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/sports.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/sports.png">
 							</a>
 							<div id="catname">Sport Shops</div>
 						</div>
@@ -685,20 +685,20 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/tailors.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/tailors.png">
 							</a>
 							<div id="catname">Tailors</div>
 						</div>
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/tele.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/tele.png">
 							</a>
 							<div id="catname">Tele Communication</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/tiffins.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/tiffins.png">
 							</a>
 							<div id="catname">Tiffin Services</div>
 						</div>
@@ -721,19 +721,19 @@
 
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/transport.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/transport.png">
 							</a>
 							<div id="catname">Transport</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/travels.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/travels.png">
 							</a>
 							<div id="catname">Tours & Travels</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/tourist.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/tourist.png">
 							</a>
 							<div id="catname">Tourist Places</div>
 						</div>
@@ -746,19 +746,19 @@
 					<div class="row">
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/watches.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/watches.png">
 							</a>
 							<div id="catname">Watches</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/wedding.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/wedding.png">
 							</a>
 							<div id="catname">Wedding Halls</div>
 						</div>
 						<div class="col-xs-4">
 							<a href="#"><img
-								src="<%=request.getContextPath()%>/resources/images/icons/xerox.png">
+								src="${pageContext.request.contextPath}/resources/images/icons/xerox.png">
 							</a>
 							<div id="catname">Xerox Centers</div>
 						</div>
@@ -904,11 +904,11 @@
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
 	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/codejs/mainpage.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/codejs/mainpage.js"></script>
 	<script>
 			$(document).ready(function() {
 				console.log("in auto_complete..path: ${pageContext.request.contextPath}");

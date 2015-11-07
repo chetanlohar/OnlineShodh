@@ -58,44 +58,42 @@ public class BusinessController {
 
 	@Autowired
 	UserDetailsService userDetailsService;
-	
+
 	@Autowired
 	SubCategoryService subCategoryService;
-	
+
 	@Autowired
 	CategoryService categoryService;
-	
+
 	@Autowired
 	CountryService countryService;
-	
+
 	@Autowired
 	StateService stateService;
 
 	@Autowired
 	CityService cityService;
-	
+
 	@Autowired
 	TownService townService;
-	
+
 	@Autowired
 	AddressService addressService;
-	
+
 	@Autowired
 	BusinessPhoneService businessPhoneService;
-	
+
 	@Autowired
 	BusinessGeneralInfoService businessGeneralInfoService;
-	
 
 	@Value("${mandatory}")
 	String mandatory;
-	
-	
-      BusinessDetailsValidator businessDetailsValidator; 
-     
-      BusinessAddressValidator businessAddressValidator;
-   
-    @Autowired
+
+	BusinessDetailsValidator businessDetailsValidator;
+
+	BusinessAddressValidator businessAddressValidator;
+
+	@Autowired
 	public BusinessController(
 			BusinessDetailsValidator businessDetailsValidator,
 			BusinessAddressValidator businessAddressValidator) {
@@ -110,90 +108,98 @@ public class BusinessController {
 				"businessDetailsEntity", BusinessDetailsEntity.class));
 		model.addAttribute("SearchBusiness", context.getBean(
 				"businessSearchEntity", BusinessSearchEntity.class));
-		/*return "business/BusinessManagement";*/
+		/* return "business/BusinessManagement"; */
 		return "business/addbusiness";
 	}
-	
-	@RequestMapping(value = "/new/save",method=RequestMethod.GET)
-	public String redirectToSaveBusiness(ModelMap model){
+
+	@RequestMapping(value = "/new/save", method = RequestMethod.GET)
+	public String redirectToSaveBusiness(ModelMap model) {
 		model.addAttribute("businessdetail", new BusinessDetailsEntity());
 		return "business/businessadd";
 	}
-	
 
-	@RequestMapping(value = "/new/save",method=RequestMethod.POST)
-	public String saveBusinessDetails(@RequestParam("file") MultipartFile file,@Valid @ModelAttribute("businessdetail") BusinessDetailsEntity businessDetails,	BindingResult result) throws IOException {
-		
-		
-		if(!file.isEmpty())
+	@RequestMapping(value = "/new/save", method = RequestMethod.POST)
+	public String saveBusinessDetails(
+			@RequestParam("file") MultipartFile file,
+			@Valid @ModelAttribute("businessdetail") BusinessDetailsEntity businessDetails,
+			BindingResult result) throws IOException {
+
+		if (!file.isEmpty())
 			businessDetails.setBusinessLogo(file.getBytes());
-		boolean flag=false;
-		
-		/*if(file.isEmpty())
-		{
-			FieldError error=new FieldError("businessDetails", "businessLogo", "please select Image");
-			result.addError(error);
-			flag=true;
-		}*/
-		
-				
-		
+		boolean flag = false;
+
+		/*
+		 * if(file.isEmpty()) { FieldError error=new
+		 * FieldError("businessDetails", "businessLogo", "please select Image");
+		 * result.addError(error); flag=true; }
+		 */
+
 		businessDetailsValidator.validate(businessDetails, result);
-		
-		if(result.hasErrors()){
-			System.out.println("Errror Count"+result.getErrorCount());
-			List<FieldError> errors=result.getFieldErrors();
-			for (FieldError error:errors) {
-				System.out.println(" Error :"+error.getDefaultMessage());
-				flag=true;
+
+		if (result.hasErrors()) {
+			System.out.println("Errror Count" + result.getErrorCount());
+			List<FieldError> errors = result.getFieldErrors();
+			for (FieldError error : errors) {
+				System.out.println(" Error :" + error.getDefaultMessage());
+				flag = true;
 			}
 		}
-		
-		if(businessDetails.getSubCategory().getCategory().getCategoryId()==0){
-			
-			//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "subCategory.category.categoryId", "11",mandatory);
-			FieldError error1=new FieldError("businessDetails", "subCategory.category.categoryId", mandatory);
-			flag=true;
+
+		if (businessDetails.getSubCategory().getCategory().getCategoryId() == 0) {
+
+			// ValidationUtils.rejectIfEmptyOrWhitespace(errors,
+			// "subCategory.category.categoryId", "11",mandatory);
+			FieldError error1 = new FieldError("businessDetails",
+					"subCategory.category.categoryId", mandatory);
+			flag = true;
 			result.addError(error1);
 		}
-		if(businessDetails.getSubCategory().getSubCategoryId()==0){
-			//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "subCategory.subCategoryId", "11",mandatory);
-			FieldError error2=new FieldError("businessDetails", "subCategory.subCategoryId", mandatory);
-	        result.addError(error2);
-			flag=true;     
+		if (businessDetails.getSubCategory().getSubCategoryId() == 0) {
+			// ValidationUtils.rejectIfEmptyOrWhitespace(errors,
+			// "subCategory.subCategoryId", "11",mandatory);
+			FieldError error2 = new FieldError("businessDetails",
+					"subCategory.subCategoryId", mandatory);
+			result.addError(error2);
+			flag = true;
 		}
-		
-			if(flag){
-				/*model.addAttribute("businessdetail", )*/
-				return "business/businessadd";
-			}
-			
-		
-	else{
-	 	 businessService.saveBusinessDetails(businessDetails);
-		return "redirect:/admin/business/"+businessDetails.getUserDetails().getUserDetailsId()+"/update/"+businessDetails.getBusinessId();
+
+		if (flag) {
+			/* model.addAttribute("businessdetail", ) */
+			return "business/businessadd";
 		}
-	/*	return "business/businessadd";*/
-		/*return "redirect:/admin/business/"+businessDetails.getUserDetails().getUserDetailsId()+"/update/"+businessDetails.getBusinessId();*/
+
+		else {
+			businessDetails.setAddress(null);
+			businessService.saveBusinessDetails(businessDetails);
+			return "redirect:/admin/business/"
+					+ businessDetails.getUserDetails().getUserDetailsId()
+					+ "/update/" + businessDetails.getBusinessId();
+		}
+		/* return "business/businessadd"; */
+		/*
+		 * return "redirect:/admin/business/"+businessDetails.getUserDetails().
+		 * getUserDetailsId()+"/update/"+businessDetails.getBusinessId();
+		 */
 	}
 
-	/*	
-	@RequestMapping(value="/new/save",method=RequestMethod.GET)
-	public String redirectToAddBusiness(){
-	
-		return "redirect:/admin/business/"+businessDetails.getUserDetails().getUserDetailsId()+"/update/"+businessDetails.getBusinessId();
+	/*
+	 * @RequestMapping(value="/new/save",method=RequestMethod.GET) public String
+	 * redirectToAddBusiness(){
+	 * 
+	 * return
+	 * "redirect:/admin/business/"+businessDetails.getUserDetails().getUserDetailsId
+	 * ()+"/update/"+businessDetails.getBusinessId();
+	 * 
+	 * }
+	 */
 
-	}*/ 
-	
-	
-	
 	@RequestMapping("/load/logo/{businessId}")
-	public String downloadPicture(
-			@PathVariable("businessId") Long businessId,
+	public String downloadPicture(@PathVariable("businessId") Long businessId,
 			HttpServletResponse response) {
-		
-		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
-		
+
+		BusinessDetailsEntity business = businessService
+				.getBusinessDetails(businessId);
+
 		try {
 			response.setHeader("Content-Disposition", "inline;filename=\""
 					+ business.getBusinessName() + "\"");
@@ -211,217 +217,258 @@ public class BusinessController {
 		}
 		return null;
 	}
-	
+
 	@RequestMapping("/{userDetailsId}")
-	public String businessDetails(@PathVariable("userDetailsId") Long userDetailsId, ModelMap model)
-	{
-		model.addAttribute("userdetails",userDetailsService.getUserDetails(userDetailsId.intValue()));
-		List<BusinessDetailsEntity> l = businessService.getBusinessDetailsByUserDetailsId(userDetailsId);
-		model.addAttribute("businessDetails",l);
-		for(BusinessDetailsEntity b:l)
+	public String businessDetails(
+			@PathVariable("userDetailsId") Long userDetailsId, ModelMap model) {
+		model.addAttribute("userdetails",
+				userDetailsService.getUserDetails(userDetailsId.intValue()));
+		List<BusinessDetailsEntity> l = businessService
+				.getBusinessDetailsByUserDetailsId(userDetailsId);
+		model.addAttribute("businessDetails", l);
+		for (BusinessDetailsEntity b : l)
 			System.out.println(b.getKeywords());
 		return "business/BusinessDetails";
 	}
-	
+
 	@RequestMapping("/{userDetailsId}/update/{businessId}")
-	public String updateBusinessDetails(@PathVariable("userDetailsId") Long userDetailsId,@PathVariable("businessId") Long businessId,ModelMap model)
-	{
-		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
+	public String updateBusinessDetails(
+			@PathVariable("userDetailsId") Long userDetailsId,
+			@PathVariable("businessId") Long businessId, ModelMap model) {
+		BusinessDetailsEntity business = businessService
+				.getBusinessDetails(businessId);
 		model.addAttribute("business", business);
-		model.addAttribute("businessPhones", businessPhoneService.getBusinessPhoneDetailByBusinessId(businessId));
-		model.addAttribute("businessGeneralInfo", businessGeneralInfoService.getBusinessGeneralInfoByBusinessId(businessId));
+		model.addAttribute("businessPhones", businessPhoneService
+				.getBusinessPhoneDetailByBusinessId(businessId));
+		model.addAttribute("businessGeneralInfo", businessGeneralInfoService
+				.getBusinessGeneralInfoByBusinessId(businessId));
 		return "business/businessdetailupdate";
 	}
-	
+
 	@RequestMapping("/view/client/{userDetailsId}")
-	public String viewClientDetails(@PathVariable("userDetailsId") Long userDetailsId, ModelMap model)
-	{
-		model.addAttribute("userdetails", userDetailsService.getUserDetails(userDetailsId.intValue()));
+	public String viewClientDetails(
+			@PathVariable("userDetailsId") Long userDetailsId, ModelMap model) {
+		model.addAttribute("userdetails",
+				userDetailsService.getUserDetails(userDetailsId.intValue()));
 		return "business/BusinessDetails";
 	}
-	
+
 	@RequestMapping("/new/add/{userDetailsId}")
-	public String addNewBusiness(@PathVariable("userDetailsId") Long userDetailsId,ModelMap model)
-	{
-		System.out.println("userDetailsId: "+userDetailsId);
+	public String addNewBusiness(
+			@PathVariable("userDetailsId") Long userDetailsId, ModelMap model) {
+		System.out.println("userDetailsId: " + userDetailsId);
 		model.addAttribute("userDetailsId", userDetailsId);
 		return "business/newbusiness";
-		
+
 	}
-	
+
 	@RequestMapping("/update/info/{userDetailsId}")
-	public String addBusinessInfo(@PathVariable("userDetailsId") Long userDetailsId, ModelMap model)
-	{
-		model.addAttribute("businessdetail", context.getBean("businessDetailsEntity",BusinessDetailsEntity.class));
-		List<SubCategoryEntity> subcategories=subCategoryService.getAllSubCategories();
+	public String addBusinessInfo(
+			@PathVariable("userDetailsId") Long userDetailsId, ModelMap model) {
+		model.addAttribute("businessdetail", context.getBean(
+				"businessDetailsEntity", BusinessDetailsEntity.class));
+		List<SubCategoryEntity> subcategories = subCategoryService
+				.getAllSubCategories();
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("subcategories", subcategories);
 		model.addAttribute("categories", categories);
 		model.addAttribute("userDetailsId", userDetailsId);
 		return "business/businessadd";
 	}
-	
+
 	@RequestMapping("/update/businessinfo/{businessId}")
-	public String updateBusinessInfo(@PathVariable("businessId") Long businessId, ModelMap model)
-	{
-		model.addAttribute("businessdetail", businessService.getBusinessDetails(businessId));
-		List<SubCategoryEntity> subcategories=subCategoryService.getAllSubCategories();
+	public String updateBusinessInfo(
+			@PathVariable("businessId") Long businessId, ModelMap model) {
+		BusinessDetailsEntity businessdetails = businessService.getBusinessDetails(businessId); 
+		model.addAttribute("businessdetail",businessdetails);
+		List<SubCategoryEntity> subcategories = subCategoryService
+				.listSubCategoriesByCategoryId(businessdetails.getSubCategory().getCategory().getCategoryId());
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("subcategories", subcategories);
 		model.addAttribute("categories", categories);
 		return "business/businessadd";
 	}
-	
+
 	@RequestMapping("{businessId}/update/address")
-	public String showBusinessAddress(@PathVariable("businessId") Long businessId,ModelMap model)
-	{
+	public String showBusinessAddress(
+			@PathVariable("businessId") Long businessId, ModelMap model) {
 		model.addAttribute("countries", countryService.getAllCountries());
-		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
-		if(business.getAddress()==null)
-		{
-			model.addAttribute("businessAddress", context.getBean("addressEntity",AddressEntity.class));
+		BusinessDetailsEntity business = businessService
+				.getBusinessDetails(businessId);
+		if (business.getAddress() == null) {
+			model.addAttribute("businessAddress",
+					context.getBean("addressEntity", AddressEntity.class));
 			model.addAttribute("states", stateService.getAllStates());
 			model.addAttribute("cities", cityService.getAllCities());
 			model.addAttribute("towns", townService.getAllTowns());
-		}
-		else
-		{
-			model.addAttribute("states", stateService.getAllStates(business.getAddress().getCity().getState().getCountry().getCountryId()));
-			model.addAttribute("cities", cityService.getAllCities(business.getAddress().getCity().getState().getStateId()));
-			model.addAttribute("towns", townService.getAllTowns(business.getAddress().getCity().getCityId()));
+		} else {
+			model.addAttribute(
+					"states",
+					stateService.getAllStates(business.getAddress().getCity()
+							.getState().getCountry().getCountryId()));
+			model.addAttribute(
+					"cities",
+					cityService.getAllCities(business.getAddress().getCity()
+							.getState().getStateId()));
+			model.addAttribute(
+					"towns",
+					townService.getAllTowns(business.getAddress().getCity()
+							.getCityId()));
 			model.addAttribute("businessAddress", business.getAddress());
 		}
-		
+
 		model.addAttribute("businessId", businessId);
 		return "business/busiaddressupdate";
 	}
-	
+
 	@RequestMapping("{businessId}/save/address")
-	public String saveBusinessAddress(@PathVariable("businessId") Long businessId,@ModelAttribute("businessAddress") AddressEntity address,ModelMap model,BindingResult result)
-	{
-		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
-		boolean flag=false;
-		
+	public String saveBusinessAddress(
+			@PathVariable("businessId") Long businessId,
+			@ModelAttribute("businessAddress") AddressEntity address,
+			ModelMap model, BindingResult result) {
+		BusinessDetailsEntity business = businessService
+				.getBusinessDetails(businessId);
+		boolean flag = false;
+
 		businessAddressValidator.validate(address, result);
-		
-		if(result.hasErrors()){
-			System.out.println("Errror Count"+result.getErrorCount());
-			List<FieldError> errors=result.getFieldErrors();
-			for (FieldError error:errors) {
-				System.out.println(" Error :"+error.getDefaultMessage());
-				flag=true;
+
+		if (result.hasErrors()) {
+			System.out.println("Errror Count" + result.getErrorCount());
+			List<FieldError> errors = result.getFieldErrors();
+			for (FieldError error : errors) {
+				System.out.println(" Error :" + error.getDefaultMessage());
+				flag = true;
 			}
 		}
-		
-		/*if(businessAddress.getSubCategory().getCategory().getCategoryId()==0){
-			
-			//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "subCategory.category.categoryId", "11",mandatory);
-			FieldError error1=new FieldError("businessDetails", "subCategory.category.categoryId", mandatory);
-			flag=true;
-			result.addError(error1);
+
+		/*
+		 * if(businessAddress.getSubCategory().getCategory().getCategoryId()==0){
+		 * 
+		 * //ValidationUtils.rejectIfEmptyOrWhitespace(errors,
+		 * "subCategory.category.categoryId", "11",mandatory); FieldError
+		 * error1=new FieldError("businessDetails",
+		 * "subCategory.category.categoryId", mandatory); flag=true;
+		 * result.addError(error1); }
+		 * if(businessDetails.getSubCategory().getSubCategoryId()==0){
+		 * //ValidationUtils.rejectIfEmptyOrWhitespace(errors,
+		 * "subCategory.subCategoryId", "11",mandatory); FieldError error2=new
+		 * FieldError("businessDetails", "subCategory.subCategoryId",
+		 * mandatory); result.addError(error2); flag=true; }
+		 */
+
+		if (flag) {
+			/* model.addAttribute("businessdetail", ) */
+			return "business/busiaddressupdate";
 		}
-		if(businessDetails.getSubCategory().getSubCategoryId()==0){
-			//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "subCategory.subCategoryId", "11",mandatory);
-			FieldError error2=new FieldError("businessDetails", "subCategory.subCategoryId", mandatory);
-	        result.addError(error2);
-			flag=true;     
-		}*/
-		
-			if(flag){
-				/*model.addAttribute("businessdetail", )*/
-				return "business/busiaddressupdate";
+		else {
+
+			if (address.getAddressId() != null)
+				addressService.updateAddress(address);
+			else {
+				addressService.saveAddress(address);
+				AddressEntity address1 = addressService.getAddress(address.getAddressId());
+				business.setAddress(address1);
+				businessService.updateBusinessDetails(business);
+				
+
+				/*
+				 * BusinessAddressEntity businessAddress =
+				 * context.getBean("businessAddressEntity"
+				 * ,BusinessAddressEntity.class);
+				 * businessAddress.setBusiness(business);
+				 * businessAddress.setAddress(address1);
+				 * businessAddress.setAddressType("Head Office");
+				 * businessAddressService.saveBusinessAddress(businessAddress);
+				 */
 			}
-			
-		
-	else{
-		
-		if(address.getAddressId()!=null)
-			addressService.updateAddress(address);
-		else
-		{
-			addressService.saveAddress(address);
-			
-			AddressEntity address1 = addressService.getAddress(address.getAddressId());
-			business.setAddress(address1);
-			businessService.updateBusinessDetails(business);
-			
-			/*BusinessAddressEntity businessAddress = context.getBean("businessAddressEntity",BusinessAddressEntity.class);
-			businessAddress.setBusiness(business);
-			businessAddress.setAddress(address1);
-			businessAddress.setAddressType("Head Office");
-			businessAddressService.saveBusinessAddress(businessAddress);*/
 		}
+		return "redirect:/admin/business/"
+				+ business.getUserDetails().getUserDetailsId() + "/update/"
+				+ businessId;
 	}
-		return "redirect:/admin/business/"+business.getUserDetails().getUserDetailsId()+"/update/"+businessId;
-	}
-	
-	@RequestMapping(value="/{businessId}/phone/save",method=RequestMethod.POST,produces="application/json")
-	public @ResponseBody List<BusinessPhoneEntity> saveBusinessPhoneDetails(@PathVariable("businessId") Long businessId,@RequestParam("businessPhone") Long businessPhone)
-	{
-		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
-		BusinessPhoneEntity businesPhoneEntity = context.getBean("businessPhoneEntity",BusinessPhoneEntity.class);
+
+	@RequestMapping(value = "/{businessId}/phone/save", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody List<BusinessPhoneEntity> saveBusinessPhoneDetails(
+			@PathVariable("businessId") Long businessId,
+			@RequestParam("businessPhone") Long businessPhone) {
+		BusinessDetailsEntity business = businessService
+				.getBusinessDetails(businessId);
+		BusinessPhoneEntity businesPhoneEntity = context.getBean(
+				"businessPhoneEntity", BusinessPhoneEntity.class);
 		businesPhoneEntity.setPhone(businessPhone.toString());
 		businesPhoneEntity.setBusiness(business);
 		businessPhoneService.saveBusinessPhoneDetails(businesPhoneEntity);
-		List<BusinessPhoneEntity> l = businessPhoneService.getBusinessPhoneDetailByBusinessId(businessId);
-		for(BusinessPhoneEntity b:l)
+		List<BusinessPhoneEntity> l = businessPhoneService
+				.getBusinessPhoneDetailByBusinessId(businessId);
+		for (BusinessPhoneEntity b : l)
 			System.out.println(b.getPhone());
 		return l;
 	}
-	
-	@RequestMapping(value="/{businessId}/feature/save",method=RequestMethod.POST,produces="application/json")
-	public @ResponseBody List<BusinessGeneralInfoEntity> saveBusinessGeneralInfo(@PathVariable("businessId") Long businessId,@RequestParam("generalInfo") String generalInfo)
-	{
-		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
-		BusinessGeneralInfoEntity entity = context.getBean("businessGeneralInfoEntity",BusinessGeneralInfoEntity.class);
+
+	@RequestMapping(value = "/{businessId}/feature/save", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody List<BusinessGeneralInfoEntity> saveBusinessGeneralInfo(
+			@PathVariable("businessId") Long businessId,
+			@RequestParam("generalInfo") String generalInfo) {
+		BusinessDetailsEntity business = businessService
+				.getBusinessDetails(businessId);
+		BusinessGeneralInfoEntity entity = context.getBean(
+				"businessGeneralInfoEntity", BusinessGeneralInfoEntity.class);
 		entity.setGeneralInfoName(generalInfo);
 		entity.setBusiness(business);
 		businessGeneralInfoService.saveBusinessGeneralInfo(entity);
-		List<BusinessGeneralInfoEntity> l = businessGeneralInfoService.getBusinessGeneralInfoByBusinessId(businessId);
-		for(BusinessGeneralInfoEntity b:l)
+		List<BusinessGeneralInfoEntity> l = businessGeneralInfoService
+				.getBusinessGeneralInfoByBusinessId(businessId);
+		for (BusinessGeneralInfoEntity b : l)
 			System.out.println(b.getGeneralInfoName());
 		return l;
 	}
+
 	/*
-	@RequestMapping(value="/{businessId}/features/save",method=RequestMethod.POST,produces="application/json")
-	public @ResponseBody List<BusinessGeneralInfoEntity> saveBusinessGeneralInfo(@PathVariable("businessId") Long businessId,@RequestParam("generalInfo") String generalInfo)
-	{
-		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
-		BusinessGeneralInfoEntity entity = context.getBean("businessGeneralInfoEntity",BusinessGeneralInfoEntity.class);
-		entity.setGeneralInfoName(generalInfo);
-		entity.setBusiness(business);
-		businessGeneralInfoService.saveBusinessGeneralInfo(entity);
-		List<BusinessGeneralInfoEntity> l = businessGeneralInfoService.getBusinessGeneralInfoByBusinessId(businessId);
-		for(BusinessGeneralInfoEntity b:l)
-			System.out.println(b.getGeneralInfoName());
-		return l;
-	}*/
-	
+	 * @RequestMapping(value="/{businessId}/features/save",method=RequestMethod.POST
+	 * ,produces="application/json") public @ResponseBody
+	 * List<BusinessGeneralInfoEntity>
+	 * saveBusinessGeneralInfo(@PathVariable("businessId") Long
+	 * businessId,@RequestParam("generalInfo") String generalInfo) {
+	 * BusinessDetailsEntity business =
+	 * businessService.getBusinessDetails(businessId); BusinessGeneralInfoEntity
+	 * entity =
+	 * context.getBean("businessGeneralInfoEntity",BusinessGeneralInfoEntity
+	 * .class); entity.setGeneralInfoName(generalInfo);
+	 * entity.setBusiness(business);
+	 * businessGeneralInfoService.saveBusinessGeneralInfo(entity);
+	 * List<BusinessGeneralInfoEntity> l =
+	 * businessGeneralInfoService.getBusinessGeneralInfoByBusinessId
+	 * (businessId); for(BusinessGeneralInfoEntity b:l)
+	 * System.out.println(b.getGeneralInfoName()); return l; }
+	 */
+
 	@RequestMapping(value = "/searchBusiness", method = RequestMethod.GET)
-	public @ResponseBody List<String> serachBusinesData(@RequestParam("term") String keyword) {
-		List<String> list=new ArrayList<String>();
+	public @ResponseBody List<String> serachBusinesData(
+			@RequestParam("term") String keyword) {
+		List<String> list = new ArrayList<String>();
 		List<BusinessDetailsEntity> clientListByBusinessName;
 		list.clear();
-		clientListByBusinessName=businessService.getBusinessDetailsByBusinessName(keyword);
-		System.out.println("Size OF BusinessName List"+clientListByBusinessName.size());
-		for(BusinessDetailsEntity bussiness:clientListByBusinessName){
-			System.out.println(" List value"+bussiness.getBusinessName());
+		clientListByBusinessName = businessService
+				.getBusinessDetailsByBusinessName(keyword);
+		System.out.println("Size OF BusinessName List"
+				+ clientListByBusinessName.size());
+		for (BusinessDetailsEntity bussiness : clientListByBusinessName) {
+			System.out.println(" List value" + bussiness.getBusinessName());
 			list.add(bussiness.getBusinessName());
 		}
-		return list; 
-		
+		return list;
+
 	}
-	
-	@RequestMapping(value="/getBusiness",method=RequestMethod.POST)
-	public @ResponseBody List<BusinessDetailsEntity> getBusinessData(@RequestParam("keyword")String keyword){
+
+	@RequestMapping(value = "/getBusiness", method = RequestMethod.POST)
+	public @ResponseBody List<BusinessDetailsEntity> getBusinessData(
+			@RequestParam("keyword") String keyword) {
 		List<BusinessDetailsEntity> clientListByBusinessName;
-		clientListByBusinessName=businessService.findBusinessDetailsByBusinessName(keyword);
-		System.out.println("After Search List Size In Table"+clientListByBusinessName);
-		return clientListByBusinessName; 
+		clientListByBusinessName = businessService
+				.findBusinessDetailsByBusinessName(keyword);
+		System.out.println("After Search List Size In Table"
+				+ clientListByBusinessName);
+		return clientListByBusinessName;
 	}
-	
-	
-	
-	
-	
+
 }

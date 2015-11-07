@@ -6,8 +6,6 @@
 <html>
 <head>
 <title>Business Details</title>
-
-<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
 <!-- BOOTSTRAP STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
@@ -237,14 +235,14 @@
 									<div class="row">
 										
 										<div class="col-lg-12 space">
-											<form:input path="enquiryname" class="form-control" placeholder="FULL NAME *" required />
+											<form:input path="enquiryname" class="form-control" placeholder="Name"/>
 										</div>
 										
 										<div class="col-lg-12 space">
-											<form:input path="phone" class="form-control" placeholder="MOBILE NUMBER *" required />
+											<form:input path="phone" class="form-control" placeholder="Phone"/>
 										</div>
 										<div class="col-lg-12 space">
-											<form:input path="email" class="form-control" placeholder="EMAIL ID*" required />
+											<form:input path="email" class="form-control" placeholder="Email"/>
 										</div>
 									</div>
 								</div>
@@ -253,7 +251,7 @@
 									<div class="row">
 										<div class="col-lg-12 space">
 											<form:textarea path="message" class="form-control" rows="6" name="message"
-												placeholder="MESSAGE *" required />
+												placeholder="MESSAGE *"/>
 										</div>
 
 									</div>
