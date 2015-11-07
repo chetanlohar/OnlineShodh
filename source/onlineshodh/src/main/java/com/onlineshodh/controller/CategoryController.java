@@ -134,7 +134,11 @@ public class CategoryController {
 	@RequestMapping(value = "/delete/{categoryId}", method = RequestMethod.GET)
 	public String deleteCategory(ModelMap model,
 			@PathVariable("categoryId") Integer categoryId) {
+		try{
 		categoryService.deleteCategory(categoryId);
+		}catch (Exception e) {
+			System.out.println("Exception Caught");
+		}
 		return "redirect:/admin/categories";
 	}
 

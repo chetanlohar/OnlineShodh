@@ -10,7 +10,8 @@
 <title>Add Plan</title>
 
 <!-- BOOTSTRAP STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
@@ -31,15 +32,16 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
+
 <!--CUSTOM STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/os-admin.css"
+<link
+	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
-	<style type="text/css">
-	.btn-default.active{
+<style type="text/css">
+.btn-default.active {
 	background: skyblue;
-	}
-	
-	</style>
+}
+</style>
 
 </head>
 </head>
@@ -196,7 +198,7 @@
 				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
-						<li><a class="active-menu"
+						<li><a
 							href="${pageContext.request.contextPath}/admin/clients">Manage
 								Client</a></li>
 					</ul></li>
@@ -217,22 +219,28 @@
 
 					</ul></li>
 
-				<li>
-                            <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
-                           	<ul class=" nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
-								
+				<li class="active"><a href="add-client.html"><i
+						class="fa fa-rss"></i>Plan Management <span class="fa arrow"></span></a>
+					<ul class=" nav nav-second-level">
+						<li><a href="${pageContext.request.contextPath}/admin/plans" class="active-menu">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/updatePlans"> <i class="fa fa-list"></i> Update Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
-							
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <i class="fa fa-list"></i> 
-								Assign Business Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign"
+							> <i class="fa fa-list"></i> Assign
+								Business Plan
 						</a></li>
-					</ul>
-                        </li>
+					</ul></li>
 
 
 				<li><a href="#"><i class="fa fa-photo "></i>Advt. Banner<span
@@ -246,37 +254,37 @@
 								Advt. Banner</a></li>
 					</ul></li>
 
-				
-                      <li>
-                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
-                    </li>
-			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
-			</li>
-			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
-				</ul></li>
-			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
-					</li>
 
-				</ul></li>
-			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
-					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
-					</li>
-					<li><a href="#">Second Level<span class="fa arrow"></span></a>
-						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>
-							<li><a href="#">Third Link</a></li>
+				<li><a href="${pageContext.request.contextPath}/prashant/pay"
+					class="active-"><i class="fa fa-money "></i>Payment Mode <span
+						class="fa arrow"></span></a></li>
+				<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+				</li>
+				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+						</li>
 
-						</ul></li>
-				</ul></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>Second
+								Link</a></li>
+						<li><a href="#">Second Level<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="#">Third Link</a></li>
+								<li><a href="#">Third Link</a></li>
+
+							</ul></li>
+					</ul></li>
 
 
 			</ul>
@@ -364,10 +372,10 @@
 										Name </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessName" class="active"
-												label="Yes" value="true" />
+												path="businessName" class="active" label="Yes" value="true" />
 										</label> <label class="btn btn-default active"> <form:radiobutton
-												path="businessName" class="active" label="No" value="false"  checked="checked" />
+												path="businessName" class="active" label="No" value="false"
+												checked="checked" />
 										</label>
 										<form:errors path="businessName" />
 									</div>
@@ -377,8 +385,8 @@
 										Address </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessAddress" class="active" 
-												label="Yes" value="true" />
+												path="businessAddress" class="active" label="Yes"
+												value="true" />
 
 										</label> <label class="btn btn-default active"> <form:radiobutton
 												path="businessAddress" label="No" class="active"
@@ -392,10 +400,10 @@
 										Name </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="personName" class="active" 
-												label="Yes" value="true" />
+												path="personName" class="active" label="Yes" value="true" />
 										</label> <label class="btn btn-default active"> <form:radiobutton
-												path="personName" class="active" checked="checked" label="No" value="false" />
+												path="personName" class="active" checked="checked"
+												label="No" value="false" />
 										</label>
 										<form:errors path="personName" />
 									</div>
@@ -405,8 +413,8 @@
 										Description </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessDescription" class="active" 
-												label="Yes" value="true" />
+												path="businessDescription" class="active" label="Yes"
+												value="true" />
 										</label> <label class="btn btn-default active"> <form:radiobutton
 												path="businessDescription" class="active" label="No"
 												value="false" checked="checked" />
@@ -419,10 +427,10 @@
 									</label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="email" class="active"  label="Yes"
-												value="true" />
+												path="email" class="active" label="Yes" value="true" />
 										</label> <label class="btn btn-default active"> <form:radiobutton
-												path="email" class="active" label="No" value="false" checked="checked" />
+												path="email" class="active" label="No" value="false"
+												checked="checked" />
 										</label>
 										<form:errors path="email" />
 									</div>
@@ -432,10 +440,10 @@
 										Form </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="enquiryForm" class="active" 
-												label="Yes" value="true" />
+												path="enquiryForm" class="active" label="Yes" value="true" />
 										</label> <label class="btn btn-default active"> <form:radiobutton
-												path="enquiryForm" class="active" label="No" checked="checked" value="false" />
+												path="enquiryForm" class="active" label="No"
+												checked="checked" value="false" />
 										</label>
 										<form:errors path="enquiryForm" />
 									</div>
@@ -445,10 +453,10 @@
 										Info </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="generalInfo" class="active" 
-												label="Yes" value="true" />
+												path="generalInfo" class="active" label="Yes" value="true" />
 										</label> <label class="btn btn-default active"> <form:radiobutton
-												path="generalInfo" class="active" label="No" checked="checked" value="false" />
+												path="generalInfo" class="active" label="No"
+												checked="checked" value="false" />
 										</label>
 										<form:errors path="generalInfo" />
 									</div>
@@ -458,10 +466,10 @@
 									</label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="website" class="active"  label="Yes"
-												value="true" />
+												path="website" class="active" label="Yes" value="true" />
 										</label> <label class="btn btn-default active"> <form:radiobutton
-												path="website" class="active" label="No" checked="checked" value="false" />
+												path="website" class="active" label="No" checked="checked"
+												value="false" />
 										</label>
 										<form:errors path="website" />
 									</div>
@@ -471,10 +479,10 @@
 										Map </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="map" class="active"  label="Yes"
-												value="true" />
+												path="map" class="active" label="Yes" value="true" />
 										</label> <label class="btn btn-default active"> <form:radiobutton
-												path="map" class="active" label="No" value="false" checked="checked" />
+												path="map" class="active" label="No" value="false"
+												checked="checked" />
 										</label>
 										<form:errors path="map" />
 									</div>
@@ -700,47 +708,41 @@
 	</div>
 	<!-- /. WRAPPER  -->
 
+
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+			<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+		
+
+	<!-- CUSTOM SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<!-- validation SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
 
 	<!-- validation SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/formvalidation.js"></script>
-			<script
-		src="${pageContext.request.contextPath}/resources/js/validation/planvalidation.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
 
 
-
-	<!-- JANSY BOOTSTRAP SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
+		src="<%=request.getContextPath()%>/resources/js/validation/planvalidation.js"></script>
 
-	<!-- METIMENU SCRIPTS -->
+
+
+
+
+	<!-- Datepicker SCRIPTS -->
 	<script
-		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-
-
-
-	<!-- Input Telephone SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/intlTelInput.js"></script>
-
-	<!-- DATATABLE SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
-
-	<!-- CUSTOM SCRIPTS -->
-	<script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
 
 </body>
 </html>

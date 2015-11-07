@@ -371,7 +371,7 @@
 								</div>
 							</div>
 					</div>
-					<div class="col-lg-6">
+					<div class="col-lg-5">
 
 						<div class="col-lg-12 space">
 							<label for="address" class="col-sm-5 control-label">Address</label>
@@ -407,27 +407,6 @@
 								</div>
 						
 
-						<!-- <div class="col-lg-12 space">
-							<label for="country" class="col-sm-5 control-label">Country</label>
-							<div class="input-group">
-								<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-								<select class="form-control" name="clientcountry">
-									<option value="">Select</option>
-									<option value="india">India</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="col-lg-12 space">
-							<label for="state" class="col-sm-5 control-label">State</label>
-							<div class="input-group">
-								<span class="input-group-addon"><span class="fa fa-user"></span></span>
-								<select class="form-control" name="clientstate">
-									<option value="">Select</option>
-									<option value="mharastra">maharastra</option>
-								</select>
-							</div>
-						</div> -->
 
 						<div class="col-lg-12 space">
 									<label for="city" class="col-sm-5 control-label">City</label>
@@ -499,10 +478,11 @@
 								</div>
 						
 					</div>
-					<div class="col-lg-6 col-lg-offset-6 space">
+					<div class="col-lg-6 col-lg-offset-5 space">
 						<button type="submit" name="saveClient" class="btn btn-success"
-							id="display">Submit</button>
-						<button type="reset" class="btn btn-danger">Cancel</button>
+							id="display">Update</button>
+							<a href="${pageContext.request.contextPath}/admin/clients">
+						<button type="button" class="btn btn-info">GO Back</button></a>
 					</div>
 					</form:form>
 				</div>

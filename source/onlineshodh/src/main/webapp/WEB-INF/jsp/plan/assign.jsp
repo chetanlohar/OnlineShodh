@@ -209,7 +209,7 @@
 
 					</ul></li>
 
-<li>
+<li class="active">
                             <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
                            	<ul class=" nav nav-second-level">
 						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
@@ -220,7 +220,7 @@
 						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
 							
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <i class="fa fa-list"></i> 
+						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign" class="active-menu"> <i class="fa fa-list"></i> 
 								Assign Business Plan
 						</a></li>
 					</ul>
@@ -369,7 +369,9 @@
 								
 								
 				          <div class="col-lg-4 col-lg-offset-5 space">
-				          <button class="btn btn-info assign_plan"><i class=" fa fa-check-circle-o"></i> Assign</button>
+				          <button class="btn btn-success assign_plan"><i class=" fa fa-check-circle-o"></i> Assign</button>
+				          
+				          <a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <button class="btn btn-info" type="button"> Go Back</button></a>
 				          </div>
 				</form:form> 
 				

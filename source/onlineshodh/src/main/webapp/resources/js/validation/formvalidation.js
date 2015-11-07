@@ -2,10 +2,15 @@ $(document).ready(function(){
 	/*=========================
 	  category Manage Validation
 	 ===========================*/
-	/*$.validator.addMethod('filesize', function (value, element, param) {
-	    return this.optional(element) || (element.files[0].size <= param)
-	}, 'File size must be less than {0}');
-	*/
+
+	$.validator.addMethod(
+		    "maxfilesize",
+		    function (value, element) {
+		        return this.optional(element) || (element.files && element.files[0]
+		                               && element.files[0].size < 1024  * 300);
+		    },
+		    'The file size can not exceed 300KB.'
+		);
 	
 	$('#categorymanage').validate({
 
@@ -19,7 +24,7 @@ $(document).ready(function(){
 	        	 minlength:20
 	        },
 	        file:{
-	        	
+	        	required: true,
 	        	extension:"jpg|jpeg|png|bmp",
 	        	maxfilesize:true
 	        }
@@ -36,7 +41,7 @@ $(document).ready(function(){
 	    		  minlength:"Please enter few more description"
 	    	  },
 	    	  file:{
-		        	
+	    		  required: "This Is Deafault Image Please Select Image",
 		        	extension:"Please select valid image",
 		        		maxfilesize:"File size should be less than 300 KB"
 	    	  }
@@ -71,14 +76,6 @@ $(document).ready(function(){
 		  return this.optional(element) || /^[a-z," "]+$/i.test(value);
 		}, "Letters only please"); 
 
-	$.validator.addMethod(
-		    "maxfilesize",
-		    function (value, element) {
-		        return this.optional(element) || (element.files && element.files[0]
-		                               && element.files[0].size < 1024  * 300);
-		    },
-		    'The file size can not exceed 300KB.'
-		);
 	
 	/*=========================
 	  category Update Validation

@@ -211,7 +211,7 @@
 
 					</ul></li>
 
-<li>
+<li class="active">
                             <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
                            	<ul class=" nav nav-second-level">
 						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
@@ -219,7 +219,7 @@
 						</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/plans/updatePlans"> <i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
+						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans" class="active-menu"> <i class="fa fa-list"></i> List All Plan
 							
 						</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <i class="fa fa-list"></i> 
