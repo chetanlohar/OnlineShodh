@@ -133,7 +133,5 @@ $("#keyword").on("keyup",function(e){
 <input type="submit" value="save"/>
 <input type="reset" value="reset"/>
 </form:form>
-   
-
 </body>
 </html>

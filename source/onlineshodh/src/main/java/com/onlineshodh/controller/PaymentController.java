@@ -66,14 +66,14 @@ public class PaymentController {
 				context.getBean("paymentStatus", PaymentStatus.class));
 		model.addAttribute("paymentmodes",
 				paymentModeService.getAllPaymentMode());
-		return "payment/managePayment";
+		return "payment/paymanet_mode";
 	}
 	
 	@RequestMapping(value="/save",method=RequestMethod.GET)
 	public String RedirectSavePayment(ModelMap model,@ModelAttribute("paymentStatus") PaymentStatus paymentStatus){
 		model.addAttribute("paymentmodes",
 				paymentModeService.getAllPaymentMode());
-		return "payment/managePayment";
+		return "payment/paymanet_mode";
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -102,7 +102,7 @@ public class PaymentController {
 			
 			model.addAttribute("paymentmodes",
 					paymentModeService.getAllPaymentMode());
-			return "payment/managePayment";
+			return "payment/paymanet_mode";
 		}
 		
 		
@@ -159,7 +159,7 @@ public class PaymentController {
 			}
 			
 		}
-		return "payment/managePayment";
+		return "payment/paymanet_mode";
 	}
 
 }

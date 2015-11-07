@@ -289,17 +289,24 @@
 
 				<div class="row">
 					<div class=" col-md-10 col-md-offset-2 ">
-						<form action="#" class="form-horizontal" id="payment_mode">
+						<form:form
+							action="${pageContext.request.contextPath}/admin/payments/save"
+							class="form-horizontal" id="payment_mode"
+							modelAttribute="paymentStatus" method="POST">
 							<div class="col-lg-8 space">
 								<label for="payment" class="col-sm-3 control-label">Payment
 									For</label>
 								<div class="input-group col-lg-9">
-									<select class="form-control" id="payfor">
-										<option value="0">---Select---</option>
-										<option value="1">Business</option>
-										<option value="2">Banner</option>
+									<form:select path="payment.paymentfor" class="form-control"
+										id="payfor">
+										<form:option value="BusinessAdvertisement"
+											label="BusinessAdvertisement" />
+										<form:option value="BannerAdvertisement"
+											label="BannerAdvertisement" />
+									</form:select>
 
-									</select>
+
+
 								</div>
 							</div>
 							<div class="col-lg-8 space hide_business">
@@ -308,7 +315,9 @@
 								<div class="input-group">
 									<span class="input-group-addon"><span
 										class="fa fa-briefcase"></span></span> <input type="text"
-										class=" form-control" name="pay_business" />
+										class=" form-control" id="keyword" name="businessName" />
+
+
 								</div>
 							</div>
 							<div class="col-lg-8 space hide_banner">
@@ -317,7 +326,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><span
 										class="fa fa-photo"></span></span> <input type="text"
-										class=" form-control" name="pay_banner" />
+										class=" form-control" id="keyword1" name="bannerName" />
 								</div>
 							</div>
 
@@ -325,14 +334,13 @@
 								<label for="payment" class="col-sm-3 control-label">Payment
 									Mode</label>
 								<div class="input-group col-lg-9">
-									<select class="form-control" id="pay_mode">
-										<option value="1">By Cash</option>
-										<option value="2">By Cheque</option>
-										<option value="3">By NEFT</option>
-										<option value="4">By Online</option>
+									<form:select path="payment.paymentMode.paymentModeid"
+										class="form-control" id="pay_mode">
+										<c:forEach var="paymentmode" items="${paymentmodes}">
+											<form:option value="${paymentmode.paymentModeid}">${paymentmode.paymentMode}</form:option>
+										</c:forEach>
+									</form:select>
 
-
-									</select>
 								</div>
 							</div>
 							<div class="col-lg-8 space hide_cashamount">
@@ -340,7 +348,8 @@
 								</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-inr"></span></span>
-									<input type="text" class=" form-control" name="cash_amount" />
+									<form:input path="payment.ammount" class=" form-control" name="cash_amount"/>
+									<form:errors path="payment.ammount" cssClass="errors"/>
 								</div>
 							</div>
 
@@ -350,8 +359,10 @@
 										No </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-ticket"></span></span> <input type="text"
-											class=" form-control" name="cheque_name" />
+											class="fa fa-ticket"></span></span> 
+									
+											<form:input path="check.checkNo" class=" form-control" name="cheque_name"/>
+                                           <form:errors path="check.checkNo" cssClass="errors"/> 
 									</div>
 								</div>
 								<div class="col-lg-8 space">
@@ -359,8 +370,9 @@
 										Name </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-university"></span></span> <input type="text"
-											class=" form-control" name="bank_name" />
+											class="fa fa-university"></span></span>
+											<form:input path="check.bankName" class=" form-control" name="bank_name" />
+											<form:errors path="check.bankName" cssClass="errors"/>
 									</div>
 								</div>
 								<div class="col-lg-8 space">
@@ -368,8 +380,9 @@
 										Date </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span> <input type="text"
-											class=" form-control" name="Cheque_date" />
+											class="fa fa-calendar"></span></span>
+											<form:input path="check.checkDate" class=" form-control" name="Cheque_date" />
+											<form:errors path="check.checkDate" cssClass="errors"/>
 									</div>
 								</div>
 
@@ -379,6 +392,8 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-inr"></span></span>
 										<input type="text" class=" form-control" name="Cheque_amount" />
+										<form:input path="check.amount"  class=" form-control" name="Cheque_amount"/>
+                                       <form:errors path="check.amount" cssClass="errors"/>
 									</div>
 								</div>
 
@@ -390,8 +405,10 @@
 								</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span
-										class="fa fa-check"></span></span> <input type="text"
-										class=" form-control" name="status" />
+										class="fa fa-check"></span></span> 
+										<form:input path="payment.status" class=" form-control" name="status"/>
+                                         <form:errors path="payment.status" cssClass="errors"/>
+										
 								</div>
 							</div>
 							<div class="col-lg-8 space">
@@ -399,7 +416,9 @@
 								</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-									<input type="text" class=" form-control" name="remark" />
+									<form:input path="payment.remark" class=" form-control" name="remark" />
+                                    <form:errors path="payment.remark" cssClass="errors"/>
+									
 								</div>
 							</div>
 							<div class="col-lg-8 space">
@@ -407,7 +426,8 @@
 									Name </label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
-									<input type="text" class=" form-control" name="payuser" />
+									<form:input path="payment.payeeName" class=" form-control" name="payuser"/>
+                                    <form:errors path="payment.payeeName" cssClass="errors"/>
 								</div>
 							</div>
 							<div class="col-lg-8 space hide_cheque">
@@ -415,20 +435,17 @@
 									Id </label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-link"></span></span>
-									<input type="text" class=" form-control" name="transId" />
+									<form:input path="payment.transactionid" class=" form-control" name="transId" />
+									<form:errors path="payment.transactionid" cssClass="errors"/> 
 								</div>
 							</div>
-							
+
 							<div class="col-lg-5 col-lg-offset-4 space">
-							<button class="btn btn-success" type="submit">Submit</button>
-							<button class="btn btn-danger" type="button">GO Back</button>
-							
+								<button class="btn btn-success" type="submit">Submit</button>
+								<button class="btn btn-danger" type="button">GO Back</button>
+
 							</div>
-
-
-
-
-						</form>
+						</form:form>
 					</div>
 				</div>
 
