@@ -139,7 +139,7 @@ public class ClientController {
 			System.out.println("Search By "+searchBy);
 			list.clear();
 			clientListByBusinessName=businessDetailsService.getBusinessDetailsByBusinessName(keyword.toLowerCase());
-			System.out.println("Size OF BusinessName List"+clientListByBusinessName.size());
+			
 			for(BusinessDetailsEntity bussiness:clientListByBusinessName){
 				System.out.println(" List value"+bussiness.getBusinessName());
 				list.add(bussiness.getBusinessName());
@@ -200,6 +200,7 @@ public class ClientController {
 	@ExceptionHandler(java.lang.NumberFormatException.class)
 	public @ResponseBody String handleNumberFormatException(java.lang.NumberFormatException ex) {
 		System.out.println("NumberFormatException 1");
+		logger.info(ex.getMessage());
 		return "Please Enter Valid keywords";
 	}
 
@@ -252,6 +253,7 @@ public class ClientController {
 			System.out.println("phone not selected "
 					+ error.getDefaultMessage());
 			flag = true;
+			logger.info(error.getDefaultMessage());
 		}
 		if (!userDetails.getPhone2().matches(regex)
 				&& userDetails.getPhone2() != "") {
@@ -260,6 +262,7 @@ public class ClientController {
 			result.addError(error);
 			System.out.println(" not selected " + error.getDefaultMessage());
 			flag = true;
+			logger.info(error.getDefaultMessage());
 		}
 
 		System.out.println(" Addres Enity " + addressEntity);
@@ -269,6 +272,7 @@ public class ClientController {
 					"address.city.cityId", mandatory);
 			result.addError(cityError);
 			flag = true;
+			logger.info(cityError.getDefaultMessage());
 
 		}
 
@@ -278,6 +282,7 @@ public class ClientController {
 					"address.town.townId", mandatory);
 			result.addError(townError);
 			flag = true;
+			logger.info(townError.getDefaultMessage());
 
 		}
 
@@ -290,10 +295,12 @@ public class ClientController {
 			result.addError(error);
 			System.out.println("error" + error);
 			flag = true;
+			logger.info(error.getDefaultMessage());
 		}
 		if (result.hasErrors()) {
 			flag = true;
 			System.out.println("error count" + result.getErrorCount());
+			
 		}
 		if (file.isEmpty()
 				&& clientdetails.getUserDetails().getPhotograph() == null) {
@@ -302,6 +309,7 @@ public class ClientController {
 			result.addError(error);
 			System.out.println("error" + error);
 			flag = true;
+			logger.info(error.getDefaultMessage());
 		}
 
 		System.out.println("flag " + flag);
@@ -374,11 +382,13 @@ public class ClientController {
 				error = new FieldError("clientdetails", "user." + e.getField(),
 						e.getMsg());
 				result.addError(error);
+				logger.info(error.getDefaultMessage());
 				return "client/createClient";
 			} catch (Exception e) {
 				error = new FieldError("clientdetails", "user.userName",
 						"*Invalid Data");
 				e.printStackTrace();
+				logger.info(error.getDefaultMessage());
 				return "client/createClient";
 			}
 

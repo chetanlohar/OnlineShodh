@@ -10,6 +10,7 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -35,6 +36,8 @@ import com.onlineshodh.service.StateService;
 @RequestMapping(value = "/admin/states")
 public class StateController {
 
+	private static final Logger logger=Logger.getLogger(StateController.class);
+	
 	@Autowired
 	WebApplicationContext context;
 	@Autowired
@@ -73,8 +76,10 @@ public class StateController {
 
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
-			for (FieldError error : errors)
+			for (FieldError error : errors){
 				System.out.println(error.getDefaultMessage());
+				logger.info(error.getDefaultMessage());
+			}
 		}
 		
 		//try{
@@ -104,7 +109,7 @@ public class StateController {
 		else {
 
 			try {
-				System.out.println("CountryID : "+state.getCountry().getCountryId());
+				
 				stateService.updateState(state);
 				model.addAttribute("states",stateService.getAllStates());
 				return "redirect:/admin/states";
@@ -114,15 +119,18 @@ public class StateController {
 				System.out.println(exception.getMostSpecificCause()
 						.getMessage());
 				if (exception.getMostSpecificCause().getMessage()
-						.contains("unique"))
+						.contains("unique")){
 					stateNameAvailableError = new FieldError("state",
 							"stateName", alreadyExist);
-				else
+					logger.debug(stateNameAvailableError);
+				}
+				else{
 					stateNameAvailableError = new FieldError("state",
 							"stateName",
 							onlyAlphabets);
 				result.addError(stateNameAvailableError);
-
+				logger.debug(stateNameAvailableError);
+				}
 			}
 		}
 

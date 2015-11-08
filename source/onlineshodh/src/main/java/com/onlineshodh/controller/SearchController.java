@@ -46,7 +46,7 @@ import com.onlineshodh.service.UserService;
 public class SearchController {
 
 	private static final Logger logger = Logger.getLogger(BannerController.class);
-	
+
 	@Autowired
 	BusinessDetailsService businessDetailsService;
 	
@@ -219,7 +219,7 @@ public class SearchController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
-			// logger.info("File Not Found");
+		 logger.info("File Not Found");
 		}
 		return null;
 	}

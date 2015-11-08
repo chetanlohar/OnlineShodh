@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 
+
 import com.onlineshodh.entity.CountryEntity;
 import com.onlineshodh.service.CountryService;
 
@@ -25,6 +27,7 @@ import com.onlineshodh.service.CountryService;
 @RequestMapping(value="/admin/countries")
 public class CountryController {
 
+	private static final Logger logger=Logger.getLogger(CountryController.class);
 	@Autowired
 	public CountryService countryService;
 	
@@ -73,8 +76,10 @@ public class CountryController {
 		{
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
-			for(FieldError error:errors)
+			for(FieldError error:errors){
 				System.out.println(error.getDefaultMessage());
+				logger.info(error.getDefaultMessage());
+			}
 		}
 		else
 		{
@@ -86,11 +91,15 @@ public class CountryController {
 			catch(DataIntegrityViolationException e)
 			{
 				FieldError countryNameAvailableError;
-				if(e.getMostSpecificCause().getMessage().contains("unique"))
+				if(e.getMostSpecificCause().getMessage().contains("unique")){
 					countryNameAvailableError = new FieldError("country","countryName",alreadyExist);
-				else
+					logger.debug(countryNameAvailableError.getDefaultMessage());
+				}
+				else{
 					countryNameAvailableError = new FieldError("country","countryName",onlyAlphabets);
 				result.addError(countryNameAvailableError);
+				logger.debug(countryNameAvailableError.getDefaultMessage());
+				}
 			}
 		}
 		model.addAttribute("countries", countryService.getAllCountries());

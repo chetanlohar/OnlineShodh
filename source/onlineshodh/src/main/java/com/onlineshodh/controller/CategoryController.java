@@ -73,6 +73,8 @@ public class CategoryController {
 			@Valid @ModelAttribute("category") CategoryEntity category,
 			BindingResult result) throws IOException {
 		boolean flag = false;
+		
+		
 		logger.info(file.isEmpty());
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("categories", categories);

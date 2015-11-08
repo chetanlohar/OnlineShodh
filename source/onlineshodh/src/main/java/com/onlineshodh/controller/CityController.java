@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -30,6 +31,8 @@ import com.onlineshodh.support.validator.CityEntityValidator;
 @RequestMapping(value = "/admin/cities")
 public class CityController {
 
+	private static final Logger logger=Logger.getLogger(CityController.class);
+	
 	@Autowired
 	WebApplicationContext context;
 
@@ -79,15 +82,18 @@ public class CityController {
 			BindingResult result) {
 		boolean flag = false;
 
-		System.out.println(city);
+		
 
 		cityEntityValidator.validate(city, result);
 		if (result.hasErrors()) {
 
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
-			for (FieldError error : errors)
+			for (FieldError error : errors){
 				System.out.println(error.getDefaultMessage());
+			logger.info(error.getDefaultMessage());
+			logger.error(error.getDefaultMessage());
+			}
 			flag = true;
 		}
 		try {
@@ -125,13 +131,17 @@ public class CityController {
 				System.out.println(exception.getMostSpecificCause()
 						.getMessage());
 				if (exception.getMostSpecificCause().getMessage()
-						.contains("unique"))
+						.contains("unique")){
 					cityNameAvailableError = new FieldError("city", "cityName",
 							alreadyExist);
+				logger.info( cityNameAvailableError);
+				}
 				else
 					cityNameAvailableError = new FieldError("city", "cityName",
 							onlyAlphabets);
-				result.addError(cityNameAvailableError);
+				result.addError(cityNameAvailableError);{
+					logger.info( cityNameAvailableError);
+				}
 
 			}
 			return "city/manageCities";

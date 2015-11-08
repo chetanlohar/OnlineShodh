@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -34,6 +35,8 @@ import com.sun.org.apache.bcel.internal.generic.NEW;
 @Controller
 @RequestMapping("admin/plans")
 public class PlanController {
+
+	private static final Logger logger=Logger.getLogger(PlanController.class);
 
 	@Autowired
 	PlanService planservice;
@@ -86,9 +89,10 @@ public class PlanController {
 		if (result.hasErrors()) {
 			System.out.println(result.getErrorCount());
 			List<FieldError> errors = result.getFieldErrors();
-			for (FieldError error : errors)
+			for (FieldError error : errors){
 				System.out.println(error.getDefaultMessage());
-
+				logger.info(error.getDefaultMessage());
+			}
 		} else {
 			try {
 				planservice.savePlan(Plan);
@@ -98,14 +102,18 @@ public class PlanController {
 				System.out.println(exception.getMostSpecificCause()
 						.getMessage());
 				if (exception.getMostSpecificCause().getMessage()
-						.contains("unique"))
+						.contains("unique")){
 					planNameAvailableError = new FieldError("plan", "planName",
 							alreadyExist);
+					logger.debug(planNameAvailableError.getDefaultMessage());
+				}
 				else
 					planNameAvailableError = new FieldError("plan", "planName",
-							alphaNumeric);
+							alphaNumeric);{
 				result.addError(planNameAvailableError);
-
+				logger.debug(planNameAvailableError.getDefaultMessage());
+				
+							}
 			}
 		}
 		return "plan/Create_plan";
@@ -130,7 +138,7 @@ public class PlanController {
 	@RequestMapping(value = "/edit/{planId}", method = RequestMethod.GET)
 	public String editPlan(ModelMap model,
 			@PathVariable("planId") Integer planId) {
-		System.out.println(" I am in Plan Edit");
+		
 		PlanEntity planEntity = planservice.getPlan(planId);
 		model.addAttribute("plan", planEntity);
 		return "plan/edit_plan";
@@ -156,13 +164,17 @@ public class PlanController {
 				System.out.println(exception.getMostSpecificCause()
 						.getMessage());
 				if (exception.getMostSpecificCause().getMessage()
-						.contains("unique"))
+						.contains("unique")){
 					planNameAvailableError = new FieldError("plan", "planName",
 							alreadyExist);
+					logger.debug(planNameAvailableError);
+				}
 				else
 					planNameAvailableError = new FieldError("plan", "planName",
-							alphaNumeric);
+							alphaNumeric);{
 				result.addError(planNameAvailableError);
+				logger.debug(planNameAvailableError);
+			}
 
 			}
 		}
@@ -214,7 +226,7 @@ public class PlanController {
 			System.out.println("Error Count :"+result.getErrorCount());
 			List<FieldError> errors=result.getFieldErrors();
 			for (FieldError error:errors) {
-				System.out.println(" Error message "+error.getDefaultMessage());
+				logger.info(error.getDefaultMessage());
 			}
 			flag1=true;
 		}
@@ -261,10 +273,13 @@ public class PlanController {
 					.contains("unique")){
 				planNameAlreadyAssignError = new FieldError("businessPlan", "plan.planId",
 						alreadyExist);
+				logger.debug(planNameAlreadyAssignError);
 			result.addError(planNameAlreadyAssignError);
 			planNameAlreadyError = new FieldError("businessPlan", "plan.planId",
 					"Please Upgrade Plan"); 	
 			result.addError(planNameAlreadyError);
+			logger.debug(planNameAlreadyAssignError);
+
 			}
 			return "plan/assign"; 	
 		}
@@ -272,6 +287,8 @@ public class PlanController {
 			System.out.println(" Error Ocurs "+exception.getMessage());
 			FieldError error=new FieldError("businessPlan", "enddate", "Please Enter Valid Input"); 
 		     result.addError(error);
+				logger.debug(error.getDefaultMessage());
+
 		     return "plan/assign";
 		     
 		}

@@ -115,7 +115,7 @@ public class BannerController {
 		ListByBannerName=bannerService.getBannerByBannerName(keyword);
 		System.out.println("Size OF BusinessName List"+ListByBannerName.size());
 		for(BannerEntity banner:ListByBannerName){
-			System.out.println(" List value"+banner.getBannerName());
+			
 			list.add(banner.getBannerName());
 		}
 		return list; 
@@ -132,8 +132,8 @@ public class BannerController {
 		model.addAttribute("banners", bannerService.getAllBanners());
 		FileSizeExceedException = new FieldError("banner", "bannerLogo",
 				"Please Select Image Less 3 MB");
-		
-		
+		logger.info(FileSizeExceedException);
+		logger.error(FileSizeExceedException);
 		result.addError(FileSizeExceedException);
 		return "banner/bannermanage";
 
@@ -157,6 +157,7 @@ public class BannerController {
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError error : errors) {
 				logger.info(error.getDefaultMessage());
+				logger.error(error.getDefaultMessage());
 				flag = true;
 			}
 		}
@@ -228,6 +229,7 @@ public class BannerController {
 			e.printStackTrace();
 		} catch (NullPointerException e) {
 			logger.info("File Not Found");
+			logger.error("File Not Found");
 		}
 		return null;
 	}

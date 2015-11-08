@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,6 +32,8 @@ import com.onlineshodh.supportclass.PaymentStatus;
 @RequestMapping(value = "/admin/payments")
 public class PaymentController {
 
+	private static final Logger logger=Logger.getLogger(PaymentController.class);
+	
 	@Autowired
 	WebApplicationContext context;
 
@@ -94,6 +97,7 @@ public class PaymentController {
 			List<FieldError> errors = result.getFieldErrors();
 			for (FieldError error : errors) {
 				System.out.println("Error: " + error.getDefaultMessage());
+				logger.error(error.getDefaultMessage());
 			}
 			flag=true;
 		} 

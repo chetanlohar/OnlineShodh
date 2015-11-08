@@ -384,6 +384,7 @@
 										<!-- <select class="form-control">
 										<option value="FOOD">FOOD</option>
 										</select> -->
+										
 
 										<form:select path="subCategory.category.categoryId"
 											required="" class="form-control" id="categoryname"
@@ -446,7 +447,7 @@
 										<div class="fileinput-preview thumbnail"
 											data-trigger="fileinput" style="width: 200px; height: 150px;">
 											<img
-												src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
+												src="${pageContext.request.contextPath}/admin/business/load/logo/${businessdetail.businessId}"
 												alt="...">
 
 										</div>
