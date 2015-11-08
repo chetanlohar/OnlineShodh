@@ -45,6 +45,7 @@ import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.UserDetailsService;
 import com.onlineshodh.support.validator.BusinessAddressValidator;
 import com.onlineshodh.support.validator.BusinessDetailsValidator;
+import com.onlineshodh.supportclass.ClientDetails;
 
 @Controller
 @RequestMapping("admin/business")
@@ -288,7 +289,21 @@ public class BusinessController {
 		model.addAttribute("categories", categories);
 		return "business/businessadd";
 	}
+	
 
+	@RequestMapping(value = "/new/exception")
+	public String HandleFileSizeExceedException(ModelMap model,
+			@ModelAttribute("businessdetail") BusinessDetailsEntity businessDetails,
+			BindingResult result) {
+		FieldError FileSizeExceedException;
+		FileSizeExceedException = new FieldError("businessdetail",
+				"businessLogo",
+				"Less than 300 KB");
+		model.addAttribute("categories",categoryService.getAllCategories());
+		result.addError(FileSizeExceedException);
+		return "business/businessadd";
+
+	}
 	@RequestMapping("{businessId}/update/address")
 	public String showBusinessAddress(
 			@PathVariable("businessId") Long businessId, ModelMap model) {

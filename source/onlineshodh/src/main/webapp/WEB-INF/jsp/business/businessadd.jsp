@@ -456,7 +456,7 @@
 												class="fileinput-new">Select image</span><span
 												class="fileinput-exists">Change</span> <input type="file"
 												id="file" name="file"> <form:errors
-													path="userDetails.photograph" cssClass="errors" /></span>
+													path="businessLogo" cssClass="errors" /></span>
 											<!-- <img
 												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
 												height="50" width="50" alt="*No Image" />  -->
