@@ -1,9 +1,9 @@
-$(document).ready(function(){
+
 	/*=========================
 	  Banner Manage Validation
 	 ===========================*/
 
-	
+$(document).ready(function(){	
 
 	$('#managebanner').validate({
 		
@@ -157,9 +157,15 @@ $(document).ready(function(){
 	
 	$("#expiryDate").rules('add', { greaterThan: "#startDate" });
 	
+
+	
+	
+	
+	
 	/*=========================
 	  Banner Update Validation
 	 ===========================*/
+
 	
 	$('#bannerUpdate').validate({
 		
@@ -192,19 +198,20 @@ $(document).ready(function(){
 		        },
 		        
 		        
-		      
-		        
 		        "startDate":{
-		        	required: true
+		        	required: true,
+		        	date:true
 		        },
 		        
 		        "expiryDate":{
 		        	required: true,
-		        	greaterThan: "#StartDate" 
+		        	date:true
+		        	
 		        },
 		        
 		        "regDate":{
-		        	required: true
+		        	required: true,
+		        	date:true
 		        },
 		        
 		        "status":{
@@ -237,27 +244,28 @@ $(document).ready(function(){
 		    				min:"Please select city"	
 		    				
 		    	  },
+		    	  
 		    	  file:{
 			        	
 			        	extension:"Please select valid image",
 			        		maxfilesize:"File size should be less than 300 KB"
 		    	  },
-		    	  bannerName:{
+		    	 " bannerName":{
 		    		  required: "Please enter banner name",
 		    		  lettersonly:"Please enter valid banner name"
 		    	  },
 		    	
-		    	  startDate:{
+		    	  "startDate":{
 			        	required: "Please select start date"
 			        },
-			        expiryDate:{
+			        "expiryDate":{
 			        	required: "Please select end date",
-			        	greaterThan:"Expiry date must be greater than start date"
+			        
 			        },
-			        regDate:{
+			       "regDate":{
 			        	required:"Please select registration date"
 			        },
-			        status:{
+			        "status":{
 			        	required: "please enter status"
 			        }
 		     
@@ -286,5 +294,33 @@ $(document).ready(function(){
 		
 		
 	});
+	
+	
+	
+	jQuery.validator.addMethod("lettersonly", function(value, element) {
+		  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+		}, "Letters only please"); 
+	jQuery.validator.addMethod("validurl", function(value, element) {
+		  return this.optional(element) || /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
+		}, "Valid Url only please"); 
+
+	$.validator.addMethod(
+		    "maxfilesize",
+		    function (value, element) {
+		        return this.optional(element) || (element.files && element.files[0]
+		                               && element.files[0].size < 1024  * 300);
+		    },
+		    'The file size can not exceed 300KB.'
+		);
+
+	
+
+	
+	
+
+
+	
 
 });
+		  
+	

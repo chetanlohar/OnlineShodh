@@ -693,7 +693,7 @@ $('#clientform').validate({
            digit:true
         },
         
-        filec:{
+        file:{
         	required: true,
         	extension:"jpg|jpeg|png|bmp",
         	maxfilesize:true
@@ -701,7 +701,7 @@ $('#clientform').validate({
     },
       messages:{
     
-    	  "user.userName":"Please Enter Valid User Name",
+    	  "user.userName":"Please Enter Valid Email Id",
     	  
     	  filec:{
     		  required: "This Is Deafault Image Please Select Image",
@@ -724,11 +724,11 @@ $('#clientform').validate({
      	  // if element is file type, we put the error message in its grand parent
            if (element.prop("type") === "file") {
                error.insertAfter(element.parent().parent());
-               error.removeClass('error,errorimg').addClass('errorimg');
+               error.removeClass('clienterror,errorimg').addClass('errorimg');
               
            } else {
          	   error.insertAfter(element.parent());
-         	  error.addClass('error');
+         	  error.addClass('clienterror');
          	
            }},
 
@@ -740,6 +740,17 @@ $('#clientform').validate({
 /*=========================
 Update CLIENT VALIDATION
 ===========================*/
+
+$.validator.addMethod(
+	    "maxfilesize",
+	    function (value, element) {
+	        return this.optional(element) || (element.files && element.files[0]
+	                               && element.files[0].size < 1024  * 300);
+	    },
+	    'The file size can not exceed 300KB.'
+	);
+
+
 
 $('#clientformupdate').validate({
  rules: {
@@ -787,7 +798,7 @@ $('#clientformupdate').validate({
          required: true
       
      },
-     clientstate : {
+    " clientstate" : {
          required: true
          
      },
@@ -812,11 +823,20 @@ $('#clientformupdate').validate({
         minlength:6,
         digit:true
      },
+     
+     file:{
+     	required: true,
+     	extension:"jpg|jpeg|png|bmp",
+     	maxfilesize:true
+     },
  },
    messages:{
  
- 	  "user.userName":"Please Enter Valid User Name",
- 	 "user.password":"Please Enter at least 6 Character"
+ 	  "user.userName":"Please Enter Valid Named",
+ 	 "user.password":"Please Enter at least 6 Character",
+ 	 "address.city.cityId":{
+ 		 min:"Please Enter Valid City"
+ 	 }
    },
    
    highlight: function(element) {
@@ -828,11 +848,17 @@ $('#clientformupdate').validate({
    errorElement: 'span',
    errorClass: 'clienterror',
    errorPlacement: function(error, element) {
-       if(element.parent('.input-group').length) {
-           error.insertAfter(element.parent());
-       } else {
-           error.insertAfter(element);
-       }},
+	   	   
+  	  // if element is file type, we put the error message in its grand parent
+        if (element.prop("type") === "file") {
+            error.insertAfter(element.parent().parent());
+            error.removeClass('clienterror,errorimg').addClass('errorimg');
+           
+        } else {
+      	   error.insertAfter(element.parent());
+      	  error.addClass('clienterror');
+      	
+        }},
 
 });
 
@@ -868,6 +894,9 @@ $('#bus_conta').validate({
 
 
 });
+
+
+
 
 
 

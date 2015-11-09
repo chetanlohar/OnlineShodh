@@ -136,9 +136,17 @@ border: 0px;
 	width: 100%;
 	padding: 12px 50px;
 	margin: 5px;
+    background: #305AAC;
 }
 
+.modal-title{
+	font-size: 15px;
+	font-weight: bold;
+}
 
+.navbar-right a{
+	color: #fff;
+}
 /*=============================== 
 
  Category Style

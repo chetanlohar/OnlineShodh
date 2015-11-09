@@ -241,16 +241,9 @@
 								Advt. Banner</a></li>
 					</ul></li>
 
-				<li><a href="#"><i class="fa fa-sitemap "></i>Category
-						Management <span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All
-								Category</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>New Sub
-								Category</a></li>
-						<li><a href="#">List Sub Category</a></li></li>
-			</ul>
-			</li>
+		   <li>
+                        <a href="${pageContext.request.contextPath}/admin/payments" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>
 			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>
 			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
@@ -273,7 +266,7 @@
 					</li>
 					<li><a href="#">Second Level<span class="fa arrow"></span></a>
 						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>s
+							<li><a href="#">Third Link</a></li>
 							<li><a href="#">Third Link</a></li>
 
 						</ul></li>

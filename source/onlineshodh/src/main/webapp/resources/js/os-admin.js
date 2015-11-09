@@ -34,7 +34,7 @@ Business contact and feature update and add
 $(document).ready(function(){
 	$("#town").on('change',function(){
 	var temp = $("#town").val();
-	alert(temp);
+	
 		if(temp != '25'){
 			$(".hide-div").hide();
 		}
@@ -46,7 +46,7 @@ $(document).ready(function(){
 	
 	$("#town1").on('change',function(){
 		var temp = $("#town1").val();
-		alert(temp);
+	
 			if(temp != '25'){
 				$(".hide-div").hide();
 			}
@@ -60,56 +60,6 @@ $(document).ready(function(){
 	 var j=0;
 	 var m=0;
 	 var n=0;
-	  /*$('.b_contact').click(function(e){
-		  e.preventDefault();
-          var url = $(this).attr('href');
-          var contact = $('#contact').val();
-          
-	
-	      $.ajax({
-	        url:url,
-	        timeout:5000,
-	        success: function(){
-	        	i++;
-	        	$('#contact_table tbody').append('<tr class="child"><td>'+i+'</td><td>contact '+i+' </td><td>'+contact+'</td></tr>');
-
-	        },
-	        error: function(){
-	     
-	          
-	        },
-	        
-	      });
-	      $('#contact').val('');
-	  });
-	  
-	  
-	  $('.b_features').click(function(e){
-		  e.preventDefault();
-          var url = $(this).attr('href');
-          var features = $('#Features').val();
-          
-		
-	      $.ajax({
-	    	type:"post",
-	        url:url,
-	        timeout:5000,
-	        success: function(){
-	        	alert("work");
-	        	j++;
-	        	$('.feature_table tbody').append('<tr class="child"><td>'+j+'</td><td>'+features+'</td></tr>');
-
-	        },
-	        error: function(){
-	     alert("not working");
-	          
-	        },
-	        
-	      });
-	      $('#Features').val('');
-	  });*/
-
-	  
 	  
 	  $('#phonebutton').click(function(e){
           var url = $('#phoneurl').val();
@@ -183,20 +133,20 @@ $(document).ready(function(){
 		$("#payfor").on('change',function(e){
 			e.preventDefault();
 			var temp = $("#payfor").val();
-			alert(temp);
-				if(temp == '1'){
+	
+				if(temp === 'BusinessAdvertisement'){
 					$(".hide_banner").hide();
 					$(".hide_business").show();
 					
 				}
-				else if(temp == '2'){
+				else if(temp == 'BannerAdvertisement'){
 					
 					$(".hide_banner").show();
 					$(".hide_business").hide();
 				}
 				else{
 					$(".hide_banner").hide();
-					$(".hide_business").hide();
+					$(".hide_business").show();
 				}
 			});
 		
@@ -205,7 +155,7 @@ $(document).ready(function(){
 		$("#pay_mode").on('change',function(e){
 			e.preventDefault();
 			var temp1 = $("#pay_mode").val();
-			alert(temp1);
+	
 				if(temp1 == '1'){
 					$(".hide_cheque").hide();
 					$(".hide_cashamount").show();

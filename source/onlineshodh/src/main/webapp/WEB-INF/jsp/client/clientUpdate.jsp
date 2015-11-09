@@ -9,7 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Client</title>
 
-<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
+<link rel="shortcut icon" type="image/jpg"
+	href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
 
 <!-- BOOTSTRAP STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
@@ -36,10 +37,10 @@
 <!--CUSTOM STYLES-->
 <link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
 	rel="stylesheet" />
-	
+
 <!--CUSTOM SCRIPT-->
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/js/clientAddress.js"></script>	
+	src="${pageContext.request.contextPath}/resources/js/clientAddress.js"></script>
 
 </head>
 </head>
@@ -195,7 +196,7 @@
 
 				<li class="active"><a href="forms.html"><i
 						class="fa fa-user fa-fw"></i> Client Management<span
-						class="fa arrow"></a>
+						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a class="active-menu"
 							href="${pageContext.request.contextPath}/admin/clients">Manage
@@ -218,22 +219,27 @@
 
 					</ul></li>
 
-<li>
-                            <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
-                           	<ul class=" nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
-								
+				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
+						Management <span class="fa arrow"></span></a>
+					<ul class=" nav nav-second-level">
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/updatePlans"> <i class="fa fa-list"></i> Update Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
-							
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <i class="fa fa-list"></i> 
-								Assign Business Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<i class="fa fa-list"></i> Assign Business Plan
 						</a></li>
-					</ul>
-                        </li>
+					</ul></li>
 
 
 				<li><a href="#"><i class="fa fa-photo "></i>Advt. Banner<span
@@ -246,37 +252,37 @@
 						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
+				<li><a href="${pageContext.request.contextPath}/admin/payments"
+					class="active-"><i class="fa fa-money "></i>Payment Mode <span
+						class="fa arrow"></span></a></li>
 
-		                      <li>
-                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
-                    </li>
-			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
-			</li>
-			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
-				</ul></li>
-			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
-					</li>
+				<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+				</li>
+				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+						</li>
 
-				</ul></li>
-			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
-					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
-					</li>
-					<li><a href="#">Second Level<span class="fa arrow"></span></a>
-						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>
-							<li><a href="#">Third Link</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>Second
+								Link</a></li>
+						<li><a href="#">Second Level<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="#">Third Link</a></li>
+								<li><a href="#">Third Link</a></li>
 
-						</ul></li>
-				</ul></li>
+							</ul></li>
+					</ul></li>
 
 
 			</ul>
@@ -295,25 +301,25 @@
 				</div>
 				<!-- /.row -->
 				<div class="row">
-				<form:form
-							action="${pageContext.request.contextPath}/admin/clients/update"
-							modelAttribute="userDetails" enctype="multipart/form-data"
-							class="form-horizontal" name="clientform" id="clientformupdate">
-						
-					
-					<form:hidden path="userDetailsId"/>
-                    <form:hidden path="regDate"/>
-                    <form:hidden path="userId"/>
-                    <form:hidden path="email"/>
-                    <form:hidden path="photograph"/>
-                    
-                    
-                     
-                   <div class="col-lg-6">
-							
+					<form:form
+						action="${pageContext.request.contextPath}/admin/clients/update"
+						modelAttribute="userDetails" enctype="multipart/form-data"
+						class="form-horizontal" name="clientform" id="clientformupdate">
+
+
+						<form:hidden path="userDetailsId" />
+						<form:hidden path="regDate" />
+						<form:hidden path="userId" />
+						<form:hidden path="email" />
+						<form:hidden path="photograph" />
+
+
+
+						<div class="col-lg-6">
+
 
 							<div class="col-lg-12 space">
-							    
+
 								<label for="Name" class="col-sm-5 control-label">Name</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
@@ -362,129 +368,123 @@
 										<span class="btn btn-default btn-file"><span
 											class="fileinput-new">Select image</span><span
 											class="fileinput-exists">Change</span> <input type="file"
-											id="file" name="file" value="" onchange="changeImage(this);"> <form:errors path="photograph"
-												cssClass="errors" /></span>
+											id="file" name="file" value="" onchange="changeImage(this);">
+											<form:errors path="photograph" cssClass="errors" /></span>
 										<!-- <img
 												src="https://s3-ap-southeast-1.amazonaws.com/tv-prod/member/photo/1186355-medium130ap.jpg"
 												height="50" width="50" alt="*No Image" />  -->
-										
+
 									</div>
 								</div>
-							</div>
-					</div>
-					<div class="col-lg-5">
-
-						<div class="col-lg-12 space">
-							<label for="address" class="col-sm-5 control-label">Address</label>
-							<div class="input-group">
-								<span class="input-group-addon"><span class="fa fa-road"></span></span>
-								<form:textarea path="address.address" class="form-control"
-									rows="3" id="clientadd" name="address" />
-								<form:errors path="address.address" cssClass="errors" />
-
 							</div>
 						</div>
-						
-						<div class="col-lg-12 space">
-									<label for="address" class="col-sm-5 control-label">Street</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-road"></span></span>
-										<form:textarea path="address.street" class="form-control"
-											rows="2" id="clientStreet" name="Street" />
-										<form:errors path="address.street" cssClass="errors" />
-									</div>
-								</div>
+						<div class="col-lg-5">
 
-								<div class="col-lg-12 space">
-									<label for="address" class="col-sm-5 control-label">LandMark</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-road"></span></span>
-										<form:textarea path="address.landMark" class="form-control"
-											rows="2" id="clientLandM" name="LandMark" />
-
-									</div>
-								</div>
-						
-
-
-						<div class="col-lg-12 space">
-									<label for="city" class="col-sm-5 control-label">City</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span>
-
-										<form:select path="address.city.cityId" class="form-control"
-											name="clientcity" id="cityId" onchange="getTown();">
-											<form:option value="0">--Select--</form:option>
-											<c:forEach var="city" items="${cities}">
-												<form:option value="${city.cityId}">${city.cityName}</form:option>
-											</c:forEach>
-										</form:select>
-										<form:errors path="address.city.cityId" cssClass="errors" />
-
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="town" class="col-sm-5 control-label">Town</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span>
-										<form:select path="address.town.townId" class="form-control"
-											id="town1" name="clinettown">
-											<%-- <form:option value="0">--Select--</form:option> --%>
-									          <c:forEach var="town" items="${towns}">
-												<form:option value="${town.townId}">${town.townName}</form:option>
-											</c:forEach>  
-											<form:option value="25">--OtherTown--</form:option>
-										</form:select>
-										<form:errors path="address.town.townId" cssClass="errors" />
-
-									</div>
+							<div class="col-lg-12 space">
+								<label for="address" class="col-sm-5 control-label">Address</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-road"></span></span>
+									<form:textarea path="address.address" class="form-control"
+										rows="3" id="clientadd" name="address" />
+									<form:errors path="address.address" cssClass="errors" />
 
 								</div>
-								<!-- temp other -->
-								<div class="col-lg-12 space hide-div">
-								 <label for="Otown" class="col-sm-5 control-label">OtherTown</label>
+							</div>
+
+							<div class="col-lg-12 space">
+								<label for="address" class="col-sm-5 control-label">Street</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-road"></span></span>
+									<form:textarea path="address.street" class="form-control"
+										rows="2" id="clientStreet" name="Street" />
+									<form:errors path="address.street" cssClass="errors" />
+								</div>
+							</div>
+
+							<div class="col-lg-12 space">
+								<label for="address" class="col-sm-5 control-label">LandMark</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-road"></span></span>
+									<form:textarea path="address.landMark" class="form-control"
+										rows="2" id="clientLandM" name="LandMark" />
+
+								</div>
+							</div>
+
+
+
+							<div class="col-lg-12 space">
+								<label for="city" class="col-sm-5 control-label">City</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-user"></span></span>
+
+									<form:select path="address.city.cityId" class="form-control"
+										name="clientcity" id="cityId" onchange="getTown();">
+										<form:option value="0">--Select--</form:option>
+										<c:forEach var="city" items="${cities}">
+											<form:option value="${city.cityId}">${city.cityName}</form:option>
+										</c:forEach>
+									</form:select>
+									<form:errors path="address.city.cityId" cssClass="errors" />
+
+								</div>
+							</div>
+							<div class="col-lg-12 space">
+								<label for="town" class="col-sm-5 control-label">Town</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-user"></span></span>
+									<form:select path="address.town.townId" class="form-control"
+										id="town1" name="clinettown">
+										<%-- <form:option value="0">--Select--</form:option> --%>
+										<c:forEach var="town" items="${towns}">
+											<form:option value="${town.townId}">${town.townName}</form:option>
+										</c:forEach>
+										<form:option value="25">--OtherTown--</form:option>
+									</form:select>
+									<form:errors path="address.town.townId" cssClass="errors" />
+
+								</div>
+
+							</div>
+							<!-- temp other -->
+							<div class="col-lg-12 space hide-div">
+								<label for="Otown" class="col-sm-5 control-label">OtherTown</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
 									<form:input path="address.townOther" class="form-control"
 										id="Otown" name="otown" />
-									<form:errors path="address.townOther"
-										cssClass="errors" />
-								</div> 
-</div>
-						
-						
-						<div class="col-lg-12 space">
-									<label for="pincode" class="col-sm-5 control-label">Pincode</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span>
-										<form:input path="address.pincode" class="form-control"
-											id="clientpin" name="clietpin" />
-										<form:errors path="address.pincode" cssClass="errors" />
+									<form:errors path="address.townOther" cssClass="errors" />
+								</div>
+							</div>
 
-									</div>
+
+							<div class="col-lg-12 space">
+								<label for="pincode" class="col-sm-5 control-label">Pincode</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-user"></span></span>
+									<form:input path="address.pincode" class="form-control"
+										id="clientpin" name="clietpin" />
+									<form:errors path="address.pincode" cssClass="errors" />
+
 								</div>
-								<div class="col-lg-12 space">
-									<label for="pincode" class="col-sm-5 control-label">Map</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span>
-										<form:input path="address.map" class="form-control"
-											id="clientmap" name="clietmap" />
-									</div>
+							</div>
+							<div class="col-lg-12 space">
+								<label for="pincode" class="col-sm-5 control-label">Map</label>
+								<div class="input-group">
+									<span class="input-group-addon"><span class="fa fa-user"></span></span>
+									<form:input path="address.map" class="form-control"
+										id="clientmap" name="clietmap" />
 								</div>
-						
-					</div>
-					<div class="col-lg-6 col-lg-offset-5 space">
-						<button type="submit" name="saveClient" class="btn btn-success"
-							id="display">Update</button>
+							</div>
+
+						</div>
+						<div class="col-lg-6 col-lg-offset-5 space">
+							<button type="submit" name="saveClient" class="btn btn-success"
+								id="display">Update</button>
 							<a href="${pageContext.request.contextPath}/admin/clients">
-						<button type="button" class="btn btn-info">GO Back</button></a>
-					</div>
+								<button type="button" class="btn btn-info">GO Back</button>
+							</a>
+						</div>
 					</form:form>
 				</div>
 				<!-- /.col-lg-12 -->
@@ -512,10 +512,10 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
-		 <script
-		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
-        
-		
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
+
+
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
@@ -523,7 +523,7 @@
 	<!-- validation SCRIPTS -->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
-		 
+
 
 
 	<!-- JANSY BOOTSTRAP SCRIPTS -->

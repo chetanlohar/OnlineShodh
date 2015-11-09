@@ -189,7 +189,7 @@
 					</ul> <!-- /.nav-second-level of location management --></li>
 
 				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
-						Client Management<span class="fa arrow"></a>
+						Client Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a class="active-menu"
 							href="${pageContext.request.contextPath}/admin/clients">Manage
@@ -240,11 +240,9 @@
 								Advt. Banner</a></li>
 					</ul></li>
 
-
-                      <li>
-                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
-                    </li>
-			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+   <li>
+                        <a href="${pageContext.request.contextPath}/admin/payments" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>
 			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
 					class="fa arrow"></span></a>

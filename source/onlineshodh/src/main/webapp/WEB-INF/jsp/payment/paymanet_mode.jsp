@@ -19,6 +19,8 @@
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 <!-- metis STYLES-->
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"/>
+
 <link
 	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
 	rel="stylesheet" />
@@ -33,6 +35,17 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
+	
+	<style type="text/css">
+	.ui-autocomplete{
+	
+	z-index:999;
+	}
+	
+	
+	
+	
+	</style>
 
 </head>
 <body>
@@ -379,10 +392,10 @@
 								<div class="col-lg-8 space">
 									<label for="cheque_date" class="col-sm-3 control-label">Cheque
 										Date </label>
-									<div class="input-group">
+									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
-											<form:input path="check.checkDate" class=" form-control" name="Cheque_date" />
+											<form:input path="check.checkDate" class=" form-control" />
 											<form:errors path="check.checkDate" cssClass="errors"/>
 									</div>
 								</div>
@@ -392,7 +405,7 @@
 										Amount </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-inr"></span></span>
-										<input type="text" class=" form-control" name="Cheque_amount" />
+										
 										<form:input path="check.amount"  class=" form-control" name="Cheque_amount"/>
                                        <form:errors path="check.amount" cssClass="errors"/>
 									</div>
@@ -479,10 +492,51 @@
 	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+		
+		
+		
+		<!-- CUSTOM SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+	<!-- validation SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
+
+	<!-- validation SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
+
+
+	<script
+		src="<%=request.getContextPath()%>/resources/js/validation/paymentvalidation.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+		<script  src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+ 
+$("#keyword").on("keyup",function(e){
+	 $( "#keyword" ).autocomplete({
+			source: '${pageContext.request.contextPath}/admin/business/searchBusiness'
+	});
+}); 
+});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+ 	$("#keyword1").on("keyup",function(e){
+	 $("#keyword1").autocomplete({
+		source: '${pageContext.request.contextPath}/admin/banners/searchBanner'
+	});
+});
+	 
+}); 
+</script>
+
 
 
 

@@ -1,3 +1,5 @@
+
+
 $(document).ready(function(){
 	
 	/*
@@ -30,23 +32,25 @@ $(document).ready(function(){
 				required : true,
 				number:true,
 				minlength:1,
-				maxlength:2
+				maxlength:2,
+				min:1
 			},
 			"amount":{
 				required : true,
-				number:true
+				number:true,
+				min:1
 			},
 			"noOfContacts":{
 				required : true,
 				number:true,
-				minlength:1
+				min:1
 				
 			},
 			
 			"noOfImages":{
 				required : true,
 				number:true,
-				minlength:1
+				min:1
 			}
 
 
@@ -79,14 +83,17 @@ $(document).ready(function(){
 
 	});
 	
-	/*
-	  =========================
-	   UPDATE PLAN  VALIDATION
-	  ===========================
-	 */
-	
 
 	
+	
+	/*
+	=========================
+	 UPDATE PLAN  VALIDATION
+	===========================
+	*/
+
+
+
 	$('#plan').validate({
 
 		rules : {
@@ -109,23 +116,25 @@ $(document).ready(function(){
 				required : true,
 				number:true,
 				minlength:1,
-				maxlength:2
+				maxlength:2,
+				min:1
 			},
 			"amount":{
 				required : true,
-				number:true
+				number:true,
+				min:1
 			},
 			"noOfContacts":{
 				required : true,
 				number:true,
-				minlength:1
+				min:1
 				
 			},
 			
 			"noOfImages":{
 				required : true,
 				number:true,
-				minlength:1
+				min:1
 			}
 
 
@@ -141,22 +150,25 @@ $(document).ready(function(){
 			"noOfImages":"Please Enter Valid Range Of Images"
 		},
 		
-	      highlight: function(element) {
-	          $(element).closest('.space').addClass('has-error');
-	      },
-	      unhighlight: function(element) {
-	          $(element).closest('.space').removeClass('has-error');
-	      },
-	      errorElement: 'span',
-	      errorClass: 'error1',
-	      errorPlacement: function(error, element) {
-	          if(element.parent('.input-group').length) {
-	              error.insertAfter(element.parent());
-	          } else {
-	              error.insertAfter(element);
-	          }},
+	    highlight: function(element) {
+	        $(element).closest('.space').addClass('has-error');
+	    },
+	    unhighlight: function(element) {
+	        $(element).closest('.space').removeClass('has-error');
+	    },
+	    errorElement: 'span',
+	    errorClass: 'error1',
+	    errorPlacement: function(error, element) {
+	        if(element.parent('.input-group').length) {
+	            error.insertAfter(element.parent());
+	        } else {
+	            error.insertAfter(element);
+	        }},
 
 	});
+
+	
+	
 	
 	
 	
@@ -189,7 +201,7 @@ $(document).ready(function(){
 
 			"status":{
 				required : true,
-				min:1
+			
 			}
 			
 
@@ -250,3 +262,4 @@ $(document).ready(function(){
 	
 	
 });
+
