@@ -12,7 +12,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,11 +21,7 @@ import com.onlineshodh.entity.UserEntity;
 public class MyUserService implements UserDetailsService {
 
 	@Autowired
-	com.onlineshodh.service.UserService userService;
-	
-	@Autowired
-	BCryptPasswordEncoder encoder;
-	
+	private com.onlineshodh.service.UserService userService;
 	
 	public MyUserService() {
 		super();
@@ -39,12 +34,6 @@ public class MyUserService implements UserDetailsService {
 		
 		UserEntity user = userService.getUserByUserName(username);
 		List<GrantedAuthority> authorities = buildUserAuthority(user.getRole());
-		
-		for(GrantedAuthority auth:authorities)
-			System.out.println("Authority: "+auth.getAuthority());
-		
-		System.out.println(encoder.encode("123456"));
-		
 		
 		UserDetails userDetails = buildUserEntityForAuthentication(user,authorities);
 		return userDetails;
@@ -64,4 +53,11 @@ public class MyUserService implements UserDetailsService {
 		return result;
 	}
 
+	public com.onlineshodh.service.UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(com.onlineshodh.service.UserService userService) {
+		this.userService = userService;
+	}
 }

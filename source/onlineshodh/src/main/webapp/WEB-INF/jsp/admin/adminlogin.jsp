@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page session="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,13 +47,19 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Admin Login</p>
-        <form action="../../index2.html" method="post">
+        <form action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
+        	<c:if test="${not empty error}">
+				<div class="errorimg">${error}</div>
+			</c:if>
+			<c:if test="${not empty msg}">
+				<div class="msg" style="color:green;">${msg}</div>
+			</c:if>
           <div class="form-group has-feedback">
-            <input type="email" class="form-control" placeholder="Email">
+            <input type="email" name="username" class="form-control" placeholder="Email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password">
+            <input type="password" name="password" class="form-control" placeholder="Password">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -66,6 +74,8 @@
               <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
             </div><!-- /.col -->
           </div>
+          <input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" />
         </form>
 
         <div class="social-auth-links text-center">

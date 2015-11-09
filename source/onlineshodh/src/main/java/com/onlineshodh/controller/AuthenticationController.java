@@ -24,7 +24,7 @@ public class AuthenticationController {
 
 	}*/
 	
-	@RequestMapping(value="/login")
+	@RequestMapping(value={"/","","/login","/login/"})
 	public String login(@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout,ModelMap model)
 	{
@@ -35,16 +35,7 @@ public class AuthenticationController {
 		if (logout != null) {
 			model.addAttribute("msg", "You've been logged out successfully.");
 		}
-		return "login";
-	}
-	
-	@RequestMapping(value="/role1")
-	public String role1(ModelMap model)
-	{
-		System.out.println("came in role1");
-		model.addAttribute("title", "Java Developer");
-		model.addAttribute("message", "Developes the Java Applications");
-		return "home";
+		return "admin/adminlogin";
 	}
 	
 	@RequestMapping(value="/403")
@@ -54,12 +45,9 @@ public class AuthenticationController {
 				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 				if (!(auth instanceof AnonymousAuthenticationToken)) {
 					UserDetails userDetail = (UserDetails) auth.getPrincipal();
-					System.out.println(userDetail);
-
-					model.addAttribute("username", userDetail.getUsername());
-
+					model.addAttribute("error", userDetail.getUsername()+", You do not have permission to access this page!");
 				}
-		return "403";
+		return "admin/adminlogin";
 	}
 	
 	

@@ -3,13 +3,7 @@ package com.onlineshodh.controller;
 
 import java.util.List;
 
-
-
-
-
-
-
-
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -26,19 +20,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.onlineshodh.entity.CityEntity;
+import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.service.CityService;
 import com.onlineshodh.service.CountryService;
 import com.onlineshodh.service.StateService;
 import com.onlineshodh.service.TownService;
-import com.onlineshodh.entity.StateEntity;
 
 
 @Controller
 @RequestMapping(value="/admin/towns")
+@SessionAttributes("userDetailsId")
 public class TownController {
 
 	private static final Logger logger=Logger.getLogger(TownController.class);
@@ -69,11 +65,9 @@ public class TownController {
 	
 	
 	
-	
-	
-	
 	@RequestMapping(value={"/",""},method=RequestMethod.GET)  
-	public String showManageTowns(ModelMap model){
+	public String showManageTowns(ModelMap model,HttpSession session){
+		
 		model.addAttribute("towns", townService.getAllTowns());
 		model.addAttribute("Town", new TownEntity());
 		model.addAttribute("countries", countryService.getAllCountries());

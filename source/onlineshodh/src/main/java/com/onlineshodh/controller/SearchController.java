@@ -45,17 +45,18 @@ import com.onlineshodh.service.UserService;
 @RequestMapping(value = "/search")
 public class SearchController {
 
-	private static final Logger logger = Logger.getLogger(BannerController.class);
-	
+	private static final Logger logger = Logger
+			.getLogger(BannerController.class);
+
 	@Autowired
 	BusinessDetailsService businessDetailsService;
-	
+
 	@Autowired
 	UserDetailsService userDetailsService;
-	
+
 	@Autowired
 	BusinessDetailsService businessService;
-	
+
 	@Autowired
 	UserService userService;
 
@@ -63,168 +64,180 @@ public class SearchController {
 	String onlyAlphabets;
 
 	@Autowired
-	WebApplicationContext context; 
-	
+	WebApplicationContext context;
+
 	@Autowired
 	TownService townService;
-	
+
 	@Autowired
 	SubCategoryService subCatService;
-	
+
 	@Autowired
 	BusinessPhoneService businessPhoneService;
-	
+
 	@Autowired
 	BusinessGeneralInfoService businessGeneralInfoService;
-	
+
 	@Autowired
 	BusinessEnquiryService businessEnquiryService;
-	
-	
+
 	List<TownEntity> towns;
-	
+
 	List<SubCategoryEntity> subCats;
-	
+
 	private List<String> strTownsWithCity;
-	
+
 	@PostConstruct
-	public void init()
-	{
+	public void init() {
 		towns = townService.getAllTowns();
 		strTownsWithCity = new ArrayList<String>();
-		for(TownEntity town:towns)
-		{
-			strTownsWithCity.add(town.getCity().getCityName()+" ("+town.getTownName()+")");
+		for (TownEntity town : towns) {
+			strTownsWithCity.add(town.getCity().getCityName() + " ("
+					+ town.getTownName() + ")");
 		}
 		subCats = subCatService.getAllSubCategories();
 	}
-	 
-	@RequestMapping(value="/dosearch",method = RequestMethod.GET)
+
+	@RequestMapping(value = "/dosearch", method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> doSearch(@RequestParam("term") String tagName,@RequestParam("cityName") String cityName)
-	{
-		System.out.println("cityName: "+cityName);
-		SuggestBusiness suggestBusiness=context.getBean("suggestBusiness",SuggestBusiness.class);
-		SuggestSubCategory suggestSubCategory = context.getBean("suggestSubCategory",SuggestSubCategory.class);
+	public List<String> doSearch(@RequestParam("term") String tagName,
+			@RequestParam("cityName") String cityName) {
+		System.out.println("cityName: " + cityName);
+		SuggestBusiness suggestBusiness = context.getBean("suggestBusiness",
+				SuggestBusiness.class);
+		SuggestSubCategory suggestSubCategory = context.getBean(
+				"suggestSubCategory", SuggestSubCategory.class);
 		List<String> l = new ArrayList<String>();
 		l.addAll(suggestSubCategory.doAutoSuggest(tagName.trim()));
-		l.addAll(suggestBusiness.doAutoSuggest(tagName.trim(),cityName.trim()));
-		for(String str:l)
+		l.addAll(suggestBusiness.doAutoSuggest(tagName.trim(), cityName.trim()));
+		for (String str : l)
 			System.out.println(str);
 		return l;
 	}
-	
-	@RequestMapping(value="/doCitySearch",method = RequestMethod.GET)
+
+	@RequestMapping(value = "/doCitySearch", method = RequestMethod.GET)
 	@ResponseBody
-	public List<String> doCitySearch(@RequestParam("term") String str)
-	{
+	public List<String> doCitySearch(@RequestParam("term") String str) {
 		List<String> matches = new ArrayList<String>();
-		for(String citytown:strTownsWithCity)
-			if(citytown.toUpperCase().contains(str.toUpperCase()))
+		for (String citytown : strTownsWithCity)
+			if (citytown.toUpperCase().contains(str.toUpperCase()))
 				matches.add(citytown);
 		return matches;
 	}
-	
-	@RequestMapping(value={"/businesses"},method = RequestMethod.GET)
-	public String getBusinessDetails(@RequestParam("tagName") String tagName,@RequestParam("cityName") String cityName, ModelMap model)
-	{
+
+	@RequestMapping(value = { "/businesses" }, method = RequestMethod.GET)
+	public String getBusinessDetails(@RequestParam("tagName") String tagName,
+			@RequestParam("cityName") String cityName, ModelMap model) {
 		boolean flag = false;
 		Long subCatId = 0l;
 		List<BusinessDetailsEntity> businesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> allCategoryLevelBusinesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> matchedBusinesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> matchedCityOnly = new ArrayList<BusinessDetailsEntity>();
-		for(SubCategoryEntity subCat:subCats)
-		{
+		for (SubCategoryEntity subCat : subCats) {
 			flag = subCat.getSubCategoryName().contains(tagName.trim());
-			if(flag==true)
-			{
+			if (flag == true) {
 				subCatId = subCat.getSubCategoryId().longValue();
 				break;
 			}
 		}
-		if(flag)
-		{
-			businesses = businessDetailsService.getBusinessBySubCategoryId(subCatId);
+		if (flag) {
+			businesses = businessDetailsService
+					.getBusinessBySubCategoryId(subCatId);
 			matchedCityOnly = new ArrayList<BusinessDetailsEntity>();
-			for(BusinessDetailsEntity b:businesses)
-			{
-				String city =b.getAddress().getTown().getCity().getCityName();
+			for (BusinessDetailsEntity b : businesses) {
+				String city = b.getAddress().getTown().getCity().getCityName();
 				String town = b.getAddress().getTown().getTownName();
-				String cityTown = city+" ("+town+")";
-				if(cityTown.equals(cityName))
+				String cityTown = city + " (" + town + ")";
+				if (cityTown.equals(cityName))
 					matchedBusinesses.add(b);
-				else if(cityName.contains(city))
-				{
+				else if (cityName.contains(city)) {
 					matchedCityOnly.add(b);
 				}
 			}
-			Collections.sort(matchedBusinesses , new BusinessComparator());
-			Collections.sort(matchedCityOnly , new BusinessComparator());
+			Collections.sort(matchedBusinesses, new BusinessComparator());
+			Collections.sort(matchedCityOnly, new BusinessComparator());
 			matchedBusinesses.addAll(matchedCityOnly);
-			if(matchedBusinesses.size()!=0)
-			{
-				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory());
-				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
+			if (matchedBusinesses.size() != 0) {
+				model.addAttribute("subCategory", matchedBusinesses.get(0)
+						.getSubCategory());
+				model.addAttribute(
+						"subCategories",
+						subCatService
+								.listSubCategoriesByCategoryId(matchedBusinesses
+										.get(0).getSubCategory().getCategory()
+										.getCategoryId()));
+			} else {
+				SubCategoryEntity subCat1 = subCatService
+						.getSubCategory(tagName);
+				System.out.println("in else: " + subCat1.getSubCategoryName()
+						+ ": (" + subCat1.getCategory().getCategoryName());
+				model.addAttribute("subCategory", allCategoryLevelBusinesses
+						.get(0).getSubCategory());
+				model.addAttribute(
+						"subCategories",
+						subCatService
+								.listSubCategoriesByCategoryId(allCategoryLevelBusinesses
+										.get(0).getSubCategory().getCategory()
+										.getCategoryId()));
 			}
-			else
-			{
-				SubCategoryEntity subCat1 = subCatService.getSubCategory(tagName);
-				System.out.println("in else: "+subCat1.getSubCategoryName()+": ("+subCat1.getCategory().getCategoryName());
-				model.addAttribute("subCategory",allCategoryLevelBusinesses.get(0).getSubCategory());
-				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(allCategoryLevelBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
-			}
-		}
-		else
-		{
-			businesses = businessService.getBusinessDetailsByBusinessName(tagName.trim().toLowerCase());
-			if(businesses.size()!=0)
-			{
-				for(BusinessDetailsEntity b:businesses)
-				{
-					String city =b.getAddress().getTown().getCity().getCityName();
+		} else {
+			businesses = businessService
+					.getBusinessDetailsByBusinessName(tagName.trim()
+							.toLowerCase());
+			if (businesses.size() != 0) {
+				for (BusinessDetailsEntity b : businesses) {
+					String city = b.getAddress().getTown().getCity()
+							.getCityName();
 					String town = b.getAddress().getTown().getTownName();
-					String cityTown = city+" ("+town+")";
-					if(cityTown.equals(cityName))
+					String cityTown = city + " (" + town + ")";
+					if (cityTown.equals(cityName))
 						matchedBusinesses.add(b);
-					else if(cityName.contains(city))
-					{
+					else if (cityName.contains(city)) {
 						matchedCityOnly.add(b);
 					}
 				}
-				Collections.sort(matchedBusinesses , new BusinessComparator());
-				Collections.sort(matchedCityOnly , new BusinessComparator());
+				Collections.sort(matchedBusinesses, new BusinessComparator());
+				Collections.sort(matchedCityOnly, new BusinessComparator());
 				matchedBusinesses.addAll(matchedCityOnly);
-				model.addAttribute("subCategory",matchedBusinesses.get(0).getSubCategory());
-				model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(matchedBusinesses.get(0).getSubCategory().getCategory().getCategoryId()));
+				model.addAttribute("subCategory", matchedBusinesses.get(0)
+						.getSubCategory());
+				model.addAttribute(
+						"subCategories",
+						subCatService
+								.listSubCategoriesByCategoryId(matchedBusinesses
+										.get(0).getSubCategory().getCategory()
+										.getCategoryId()));
 			}
 		}
 		model.addAttribute("cityName", cityName);
 		model.addAttribute("businesses", matchedBusinesses);
 		return "Search_result/Business_listing";
 	}
-	
-	
-	@RequestMapping(value={"/business/{businessId}"})
-	public String businessDetails(@PathVariable Long businessId,ModelMap model)
-	{
-		model.addAttribute("businessEnquiry", context.getBean("businessEnquiryEntity", BusinessEnquiryEntity.class));
-		
-		model.addAttribute("business", businessService.getBusinessDetails(businessId));
-		
-		model.addAttribute("phones",businessPhoneService.getBusinessPhoneDetailByBusinessId(businessId));
-		
-		model.addAttribute("generalinfo", businessGeneralInfoService.getBusinessGeneralInfoByBusinessId(businessId));
-		
+
+	@RequestMapping(value = { "/business/{businessId}" })
+	public String businessDetails(@PathVariable Long businessId, ModelMap model) {
+		model.addAttribute("businessEnquiry", context.getBean(
+				"businessEnquiryEntity", BusinessEnquiryEntity.class));
+
+		model.addAttribute("business",
+				businessService.getBusinessDetails(businessId));
+
+		model.addAttribute("phones", businessPhoneService
+				.getBusinessPhoneDetailByBusinessId(businessId));
+
+		model.addAttribute("generalinfo", businessGeneralInfoService
+				.getBusinessGeneralInfoByBusinessId(businessId));
+
 		return "Search_result/businessdetail";
-		
+
 	}
-	
+
 	@RequestMapping("/load/logo/{businessId}")
-	public String downloadPicture(
-			@PathVariable("businessId") Long businessId,
+	public String downloadPicture(@PathVariable("businessId") Long businessId,
 			HttpServletResponse response) {
-		BusinessDetailsEntity business = businessService.getBusinessDetails(businessId);
+		BusinessDetailsEntity business = businessService
+				.getBusinessDetails(businessId);
 		try {
 			response.setHeader("Content-Disposition", "inline;filename=\""
 					+ business.getBusinessName() + "\"");
@@ -242,56 +255,81 @@ public class SearchController {
 		}
 		return null;
 	}
-	
-	@RequestMapping(value={"/business/enquiry/save/{businessId}"},method = RequestMethod.POST)
-	public String saveEnquiry(@PathVariable Long businessId,ModelMap model,@ModelAttribute("businessEnquiry") BusinessEnquiryEntity enquiry, BindingResult result)
-	{
-		System.out.println("Enquiry: "+enquiry);
-		BusinessDetailsEntity businessentity = businessService.getBusinessDetails(businessId);
+
+	@RequestMapping(value = { "/business/enquiry/save" }, method = RequestMethod.POST)
+	public String saveEnquiry(@PathVariable Long businessId, ModelMap model,
+			@ModelAttribute("businessEnquiry") BusinessEnquiryEntity enquiry,
+			BindingResult result) {
+		System.out.println("Enquiry: " + enquiry);
+		BusinessDetailsEntity businessentity = businessService
+				.getBusinessDetails(businessId);
 		enquiry.setBusiness(businessentity);
 		businessEnquiryService.saveEnquiry(enquiry);
-		model.addAttribute("successMsgEnquiry", "Thank you for Enquiry, we will contact you soon.!");
-		return "redirect:/search/business/"+businessId;
+
+		model.addAttribute("businessEnquiry", context.getBean(
+				"businessEnquiryEntity", BusinessEnquiryEntity.class));
+
+		model.addAttribute("business",
+				businessService.getBusinessDetails(businessId));
+
+		model.addAttribute("phones", businessPhoneService
+				.getBusinessPhoneDetailByBusinessId(businessId));
+
+		model.addAttribute("generalinfo", businessGeneralInfoService
+				.getBusinessGeneralInfoByBusinessId(businessId));
+
+		model.addAttribute("successMsgEnquiry",
+				"Thank you for Enquiry, we will contact you soon.!");
+		return "Search_result/businessdetail";
 	}
-	
-	
-	@RequestMapping(value={"/business/category/{categoryId}/city/{cityName}"})
-	public String searchBusinessByCategory(@PathVariable Long categoryId,@PathVariable("cityName") String cityName,ModelMap model)
-	{		
+
+	@RequestMapping(value = { "/business/category/{categoryId}/city/{cityName}" })
+	public String searchBusinessByCategory(@PathVariable Long categoryId,
+			@PathVariable("cityName") String cityName, ModelMap model) {
 		List<BusinessDetailsEntity> matchedBusinesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> matchedCityOnly = new ArrayList<BusinessDetailsEntity>();
 		System.out.println("cityTown");
-		List<BusinessDetailsEntity> businesses = businessService.getBusinessByCategoryId(categoryId);
-		
-		for(BusinessDetailsEntity b:businesses)
-		{
-			String city =b.getAddress().getTown().getCity().getCityName();
+		List<BusinessDetailsEntity> businesses = businessService
+				.getBusinessByCategoryId(categoryId);
+
+		for (BusinessDetailsEntity b : businesses) {
+			String city = b.getAddress().getTown().getCity().getCityName();
 			String town = b.getAddress().getTown().getTownName();
-			String cityTown = city+" ("+town+")";
-			if(cityTown.equals(cityName))
+			String cityTown = city + " (" + town + ")";
+			if (cityTown.equals(cityName))
 				matchedBusinesses.add(b);
-			else if(cityName.contains(city))
-			{
+			else if (cityName.contains(city)) {
 				matchedCityOnly.add(b);
 			}
 		}
-		Collections.sort(matchedBusinesses , new BusinessComparator());
-		Collections.sort(matchedCityOnly , new BusinessComparator());
+		Collections.sort(matchedBusinesses, new BusinessComparator());
+		Collections.sort(matchedCityOnly, new BusinessComparator());
 		matchedBusinesses.addAll(matchedCityOnly);
-		model.addAttribute("subCategory",businesses.get(0).getSubCategory());
-		model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(businesses.get(0).getSubCategory().getCategory().getCategoryId()));
+		model.addAttribute("subCategory", businesses.get(0).getSubCategory());
+		model.addAttribute(
+				"subCategories",
+				subCatService.listSubCategoriesByCategoryId(businesses.get(0)
+						.getSubCategory().getCategory().getCategoryId()));
 		model.addAttribute("businesses", matchedBusinesses);
 		return "Search_result/Business_listing";
 	}
-	
-	@RequestMapping(value={"/business/category/{categoryId}"})
-	public String searchBusinessByCategory1(@PathVariable Long categoryId,ModelMap model)
-	{		
-		List<BusinessDetailsEntity> businesses = businessService.getBusinessByCategoryId(categoryId);
-		Collections.sort(businesses , new BusinessComparator());
-		model.addAttribute("subCategory",businesses.get(0).getSubCategory());
-		model.addAttribute("subCategories", subCatService.listSubCategoriesByCategoryId(businesses.get(0).getSubCategory().getCategory().getCategoryId()));
-		model.addAttribute("businesses", businesses);
+
+	@RequestMapping(value = { "/business/category/{categoryId}" })
+	public String searchBusinessByCategory1(@PathVariable Long categoryId,
+			ModelMap model) {
+		List<BusinessDetailsEntity> businesses = businessService
+				.getBusinessByCategoryId(categoryId);
+		Collections.sort(businesses, new BusinessComparator());
+		if (businesses.size() != 0) {
+			model.addAttribute("subCategory", businesses.get(0)
+					.getSubCategory());
+			model.addAttribute(
+					"subCategories",
+					subCatService.listSubCategoriesByCategoryId(businesses
+							.get(0).getSubCategory().getCategory()
+							.getCategoryId()));
+			model.addAttribute("businesses", businesses);
+		}
 		return "Search_result/Business_listing";
 	}
 }
