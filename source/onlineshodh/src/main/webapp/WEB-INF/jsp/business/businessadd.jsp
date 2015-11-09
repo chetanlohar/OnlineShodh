@@ -255,7 +255,7 @@
 					</ul></li>
 
 	                      <li>
-                        <a href="${pageContext.request.contextPath}/prashant/pay" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                        <a href="${pageContext.request.contextPath}/admin/payments" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
                     </li>
 			<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 			</li>

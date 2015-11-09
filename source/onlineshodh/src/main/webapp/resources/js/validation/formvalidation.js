@@ -832,11 +832,67 @@ $('#clientformupdate').validate({
  },
    messages:{
  
- 	  "user.userName":"Please Enter Valid Named",
- 	 "user.password":"Please Enter at least 6 Character",
- 	 "address.city.cityId":{
- 		 min:"Please Enter Valid City"
- 	 }
+ 	  "name":{required:"Please Enter Valid Named"
+ 		  },
+ 	 "user.password":{
+ 		required: "Please Enter at least 6 Character"
+ 		 },
+ 		  
+ 		"userDetails.name":{
+ 			required: "Please Enter valid user Detail"
+ 			
+ 		},
+ 		
+ 		 "phone1":{
+ 			 
+ 			required: "Please Enter valid Phone Number"
+ 		 },
+ 		 "phone2":{
+ 			 
+  			required: "Please Enter valid Phone Number"
+  		 },
+  		 
+  		"address.address":{
+  			
+  			required: "Please Enter valid Address"
+  		},
+  		
+"address.street":{
+  			
+  			required: "Please Enter valid Street Name"
+  		},
+"address.landMark":{
+  			
+  			required: "Please Enter valid Landmark"
+  		},
+"clientstate":{
+  			
+  			required: "Please Enter valid State"
+  		},
+"address.city.cityId":{
+  			
+  			required: "Please Enter valid City"
+  		},
+"address.town.townId":{
+  			
+  			required: "Please Enter valid Town",
+  			 min:"Please Enter Valid Town"
+  		},
+ 		 
+ 	 "address.townOther":{
+ 	
+ 			required: "Please Enter valid Town"
+ 	 },
+ 	 
+ 	"address.pincode":{
+ 		
+ 		required: "Please Enter valid Pincode"
+ 	},
+ 	
+ 	file:{
+ 		
+ 		required: "Please Enter valid Image"
+ 	}
    },
    
    highlight: function(element) {

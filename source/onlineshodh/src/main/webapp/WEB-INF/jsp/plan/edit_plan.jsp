@@ -376,7 +376,7 @@
 										Name </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessName" class="active" checked="checked"
+												path="businessName" class="active" 
 												label="Yes" value="true" />
 										</label> <label class="btn btn-default"> <form:radiobutton
 												path="businessName" class="active" label="No" value="false" />
@@ -389,7 +389,7 @@
 										Address </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessAddress" class="active" checked="checked"
+												path="businessAddress" class="active" 
 												label="Yes" value="true" />
 
 										</label> <label class="btn btn-default"> <form:radiobutton
@@ -404,7 +404,7 @@
 										Name </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="personName" class="active" checked="checked"
+												path="personName" class="active"
 												label="Yes" value="true" />
 										</label> <label class="btn btn-default"> <form:radiobutton
 												path="personName" class="active" label="No" value="false" />
@@ -417,7 +417,7 @@
 										Description </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="businessDescription" class="active" checked="checked"
+												path="businessDescription" class="active" 
 												label="Yes" value="true" />
 										</label> <label class="btn btn-default"> <form:radiobutton
 												path="businessDescription" class="active" label="No"
@@ -431,7 +431,7 @@
 									</label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="email" class="active" checked="checked" label="Yes"
+												path="email" class="active" label="Yes"
 												value="true" />
 										</label> <label class="btn btn-default"> <form:radiobutton
 												path="email" class="active" label="No" value="false" />
@@ -444,7 +444,7 @@
 										Form </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="enquiryForm" class="active" checked="checked"
+												path="enquiryForm" class="active" 
 												label="Yes" value="true" />
 										</label> <label class="btn btn-default"> <form:radiobutton
 												path="enquiryForm" class="active" label="No" value="false" />
@@ -457,7 +457,7 @@
 										Info </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="generalInfo" class="active" checked="checked"
+												path="generalInfo" class="active"
 												label="Yes" value="true" />
 										</label> <label class="btn btn-default"> <form:radiobutton
 												path="generalInfo" class="active" label="No" value="false" />
@@ -470,7 +470,7 @@
 									</label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="website" class="active" checked="checked" label="Yes"
+												path="website" class="active"  label="Yes"
 												value="true" />
 										</label> <label class="btn btn-default"> <form:radiobutton
 												path="website" class="active" label="No" value="false" />
@@ -483,7 +483,7 @@
 										Map </label>
 									<div class="btn-group" data-toggle="buttons">
 										<label class="btn btn-default"> <form:radiobutton
-												path="map" class="active" checked="checked" label="Yes"
+												path="map" class="active"  label="Yes"
 												value="true" />
 										</label> <label class="btn btn-default"> <form:radiobutton
 												path="map" class="active" label="No" value="false" />
@@ -566,6 +566,7 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+		
 	<!-- validation SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
@@ -585,6 +586,10 @@
 	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+		
+
+		
+		
 
 </body>
 </html>

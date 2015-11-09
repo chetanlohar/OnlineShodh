@@ -38,11 +38,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
 	rel="stylesheet" />
-<style type="text/css">
-.btn-default.active {
-	background: skyblue;
-}
-</style>
+
 
 </head>
 </head>

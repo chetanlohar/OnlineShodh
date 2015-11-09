@@ -451,6 +451,10 @@ footer a:hover, footer a:focus {
 	color: #fff;
 }
 
+input[type=radio]:checked + label {
+ 	color:orange;
+} 
+
 /*==============================================
     Payment mode   
   =============================================*/
