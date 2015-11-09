@@ -355,6 +355,8 @@ public class ClientController {
 					String encryptedPassword = encoder.encode(user
 							.getPassword());
 					user.setPassword(encryptedPassword);
+					
+					System.out.println(user.toString());
 					userService.saveUser(user);
 					if (userDetails != null) {
 						userDetails.setUserId(user.getUserId());
@@ -404,7 +406,7 @@ public class ClientController {
 			@RequestParam("file") MultipartFile file,
 			@Valid @ModelAttribute("userDetails") UserDetailsEntity userDetails,
 			BindingResult result) {
-
+		System.out.println(" File Size After Update :"+userDetails.getPhotograph().length);
 		String regex = "[0-9]+";
 		boolean flag = false;
 		AddressEntity addressEntity = userDetails.getAddress();
@@ -532,6 +534,7 @@ public class ClientController {
 				userDetailsService.getUserDetails(userDetailsId));
 		model.addAttribute("cities", cityService.getAllCities());
 		model.addAttribute("towns", towns);
+		System.out.println(" File Size before Update :"+userDetailsService.getUserDetails(userDetailsId).getPhotograph().length);
 		return "client/clientUpdate";
 	}
 
@@ -550,7 +553,7 @@ public class ClientController {
 		FieldError FileSizeExceedException;
 		FileSizeExceedException = new FieldError("clientDetails",
 				"userDetails.photograph",
-				"Please Select Image Less than 100 KB");
+				"Less than 300 KB");
 		model.addAttribute("userDetails",
 				userDetailsService.getAllUserDetails());
 		model.addAttribute("cities", cityService.getAllCities());

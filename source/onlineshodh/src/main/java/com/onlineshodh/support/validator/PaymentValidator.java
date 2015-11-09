@@ -27,10 +27,10 @@ public class PaymentValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"payment.status", "11", mandatory);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"payment.remark", "11", mandatory);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"payment.payeeName", "11", mandatory);
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"check.bankName", "11", mandatory);
+		/*ValidationUtils.rejectIfEmptyOrWhitespace(errors,"check.bankName", "11", mandatory);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"check.checkNo", "11", mandatory);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"payment.transactionid", "11", mandatory);
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"check.checkDate", "11", mandatory);
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors,"check.checkDate", "11", mandatory);*/
 		
 		
 	}

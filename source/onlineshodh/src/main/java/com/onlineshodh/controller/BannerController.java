@@ -131,7 +131,7 @@ public class BannerController {
 		model.addAttribute("categories", categoryService.getAllCategories());
 		model.addAttribute("banners", bannerService.getAllBanners());
 		FileSizeExceedException = new FieldError("banner", "bannerLogo",
-				"Please Select Image Less 3 MB");
+				"Less 3 MB");
 		logger.info(FileSizeExceedException);
 		logger.error(FileSizeExceedException);
 		result.addError(FileSizeExceedException);

@@ -190,7 +190,7 @@ public class SubCategoryController {
 		model.addAttribute("subcategories", subcategories);
 		model.addAttribute("categories", categories);
 		FileSizeExceedException = new FieldError("subcategory", "subCategoryLogo",
-				"Please Select Image Less than 100000 Bytes");
+				"Less than 300KB");
 		
 		
 		result.addError(FileSizeExceedException);

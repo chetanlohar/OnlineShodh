@@ -142,7 +142,15 @@ public class PlanController {
 		PlanEntity planEntity = planservice.getPlan(planId);
 		model.addAttribute("plan", planEntity);
 		return "plan/edit_plan";
+		/*return "plan/updatePlan";*/
 	}
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String redirectPlanAfterUpdate(ModelMap model)		
+	{
+		model.addAttribute("plans", planservice.getAllPlans());
+		return "plan/planupadate";
+	}
+	
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updatePlan(ModelMap model,

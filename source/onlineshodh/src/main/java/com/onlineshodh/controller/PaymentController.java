@@ -163,7 +163,7 @@ public class PaymentController {
 			}
 			
 		}
-		return "payment/paymanet_mode";
+		return "redirect:/admin/payments";
 	}
 
 }

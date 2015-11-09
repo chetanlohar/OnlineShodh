@@ -485,5 +485,13 @@ public class BusinessController {
 				+ clientListByBusinessName);
 		return clientListByBusinessName;
 	}
+	
+	@RequestMapping(value="/getAllBusiness",method=RequestMethod.GET) 
+	public String getAllBusiness(ModelMap model) {
+	      	
+	 	model.addAttribute("businessList", businessService.getAllBusinessDetais());
+		return "business/ListAllBusiness";
+	} 
+	
 
 }

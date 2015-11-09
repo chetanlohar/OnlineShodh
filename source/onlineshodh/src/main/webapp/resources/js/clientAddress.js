@@ -39,5 +39,5 @@ function getTown() {
 
 function getOtherTown() {
 	
-	alert("dfff")
+	
 }

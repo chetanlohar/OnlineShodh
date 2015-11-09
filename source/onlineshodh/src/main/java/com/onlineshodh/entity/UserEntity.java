@@ -323,7 +323,7 @@ public class UserEntity implements Serializable {
 		this.credentialsNonExpired = true;
 		this.emailVerified = false;
 		this.uuidForEmail = null;
-		this.role = "client";
+		this.role = "ROLE_USER";
 	}
 
 	/* (non-Javadoc)

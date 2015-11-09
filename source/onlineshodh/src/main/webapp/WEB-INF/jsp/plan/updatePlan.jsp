@@ -31,6 +31,7 @@
 				<form:errors path="businessName" />
 			</p>
 			<p>
+			    <c:out value="${businessAddress}"/> 
 				<label for="businessAddress">Business Address :</label>
 				<form:radiobutton path="businessAddress" label="Yes" value="true" />
 				<form:radiobutton path="businessAddress" label="No" value="false" />

@@ -48,7 +48,7 @@ public class PlanEntity implements Serializable {
 	private boolean personName;
 	@Column(name="view_images",nullable=false)
 	@NotNull(message="No Of Images should Not Empty!")
-	@Digits(integer=1,fraction=0,message="PlzEnter Valid No Of Imagess")
+	@Digits(integer=2,fraction=0,message="PlzEnter Valid No Of Imagess")
 	@Min(value=0,message="Plz Enter valid No Of images(No of img>=0) )")
 	private Integer noOfImages;
 	@Column(name="view_businessdesc")
@@ -57,7 +57,7 @@ public class PlanEntity implements Serializable {
 	private boolean email;
 	@Column(name="view_contacts",nullable=false)
 	@NotNull(message="No Of Contact should Not Empty!")
-	@Digits(integer=1,fraction=0,message="PlzEnter Valid No Of Contacts")
+	@Digits(integer=2,fraction=0,message="PlzEnter Valid No Of Contacts")
 	@Min(value=0,message="Plz Enter valid No Of Contacts(contacts>=0) )")
 	private Integer noOfContacts;
 	@Column(name="view_enquiryform")

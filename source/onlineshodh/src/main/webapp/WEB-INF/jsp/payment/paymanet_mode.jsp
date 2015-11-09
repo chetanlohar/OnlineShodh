@@ -302,6 +302,7 @@
 				</div>
 
 				<div class="row">
+				<div class="col-lg-12 message"></div>
 					<div class=" col-md-10 col-md-offset-2 ">
 						<form:form
 							action="${pageContext.request.contextPath}/admin/payments/save"
@@ -455,7 +456,7 @@
 							</div>
 
 							<div class="col-lg-5 col-lg-offset-4 space">
-								<button class="btn btn-success" type="submit">Submit</button>
+								<button class="btn btn-success sendinfo" type="submit">Submit</button>
 								<button class="btn btn-danger" type="button">GO Back</button>
 
 							</div>
@@ -518,6 +519,7 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+
  
 $("#keyword").on("keyup",function(e){
 	 $( "#keyword" ).autocomplete({

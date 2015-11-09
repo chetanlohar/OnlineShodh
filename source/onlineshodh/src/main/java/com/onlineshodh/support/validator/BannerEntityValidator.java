@@ -48,8 +48,8 @@ public class BannerEntityValidator implements Validator {
 */		
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "bannerName", "11",
 				mandatory);
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "urlLink", "11",
-				mandatory);
+		/*ValidationUtils.rejectIfEmptyOrWhitespace(errors, "urlLink", "11",
+				mandatory);*/
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "startDate", "11",
 				mandatory);
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "expiryDate", "11",
