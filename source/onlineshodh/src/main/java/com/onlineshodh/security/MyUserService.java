@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.onlineshodh.entity.UserEntity;
 
 @Service
-public class UserService implements UserDetailsService {
+public class MyUserService implements UserDetailsService {
 
 	@Autowired
 	com.onlineshodh.service.UserService userService;
@@ -27,6 +27,11 @@ public class UserService implements UserDetailsService {
 	@Autowired
 	BCryptPasswordEncoder encoder;
 	
+	
+	public MyUserService() {
+		super();
+	}
+
 	@Transactional(readOnly=true)
 	@Override
 	public UserDetails loadUserByUsername(String username)
@@ -34,6 +39,12 @@ public class UserService implements UserDetailsService {
 		
 		UserEntity user = userService.getUserByUserName(username);
 		List<GrantedAuthority> authorities = buildUserAuthority(user.getRole());
+		
+		for(GrantedAuthority auth:authorities)
+			System.out.println("Authority: "+auth.getAuthority());
+		
+		System.out.println(encoder.encode("123456"));
+		
 		
 		UserDetails userDetails = buildUserEntityForAuthentication(user,authorities);
 		return userDetails;

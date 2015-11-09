@@ -8,10 +8,12 @@
 	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<http auto-config="true">
-		<intercept-url pattern="/admin**" access="ROLE_USER" />
+		<intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+		<!-- access denied page -->
+		<access-denied-handler error-page="/security/403" />
 		<form-login 
 			login-page="/security/login" 
-			default-target-url="/"
+			default-target-url="/admin/"
 			authentication-failure-url="/security/login?error" 
 			username-parameter="username"
 			password-parameter="password" />
@@ -23,10 +25,13 @@
 		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
 
 	<authentication-manager>
-		<authentication-provider>
+		<!-- <authentication-provider>
 			<user-service>
 				<user name="chetan" password="123456" authorities="ROLE_USER" />
 			</user-service>
+		</authentication-provider> -->
+		<authentication-provider user-service-ref="myUserServiceId" >
+			<password-encoder hash="bcrypt" />    
 		</authentication-provider>
 	</authentication-manager>
 

@@ -127,10 +127,10 @@
                                 <i class="fa fa-user-plus"></i>  <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-user">
-                                <li><a href="#"><i class="fa fa-user-plus"></i> My Profile</a>
+                                <li><a href="#"><i class="fa fa-user-plus"></i> My Profile, ${pageContext.request.userPrincipal.name}</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="#"><i class="fa fa-sign-out"></i> Logout</a>
+                                <li><a href="javascript:formSubmit()"><i class="fa fa-sign-out"></i> Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -351,7 +351,15 @@
         <!-- CUSTOM SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
         
-       
-        
+       <c:url value="/j_spring_security_logout" var="logoutUrl" />
+       <form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		</form>
+        <script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
 </body>
 </html>

@@ -49,6 +49,17 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="emf" />
 	</bean>
+	
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	    <tx:attributes>
+		<tx:method name="get*" read-only="true" />
+		<tx:method name="find*" read-only="true" />
+		<tx:method name="*" />
+	    </tx:attributes>
+	</tx:advice>
+	
+	<bean id="myUserServiceId" class = "com.onlineshodh.security.MyUserService" />
+	
 
 	<!-- bind messages.properties -->
 	<bean class="org.springframework.context.support.ResourceBundleMessageSource"

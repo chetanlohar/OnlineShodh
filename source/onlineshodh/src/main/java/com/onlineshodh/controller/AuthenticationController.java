@@ -1,17 +1,19 @@
 package com.onlineshodh.controller;
 
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/security")
 public class AuthenticationController {
 
-	@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
+	/*@RequestMapping(value = { "/", "/welcome**" }, method = RequestMethod.GET)
 	public ModelAndView welcomePage() {
 
 		ModelAndView model = new ModelAndView();
@@ -20,7 +22,7 @@ public class AuthenticationController {
 		model.setViewName("welcome");
 		return model;
 
-	}
+	}*/
 	
 	@RequestMapping(value="/login")
 	public String login(@RequestParam(value = "error", required = false) String error,
@@ -44,5 +46,21 @@ public class AuthenticationController {
 		model.addAttribute("message", "Developes the Java Applications");
 		return "home";
 	}
+	
+	@RequestMapping(value="/403")
+	public String accessDenied(ModelMap model)
+	{
+		// check if user is login
+				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+				if (!(auth instanceof AnonymousAuthenticationToken)) {
+					UserDetails userDetail = (UserDetails) auth.getPrincipal();
+					System.out.println(userDetail);
+
+					model.addAttribute("username", userDetail.getUsername());
+
+				}
+		return "403";
+	}
+	
 	
 }
