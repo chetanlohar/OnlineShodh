@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page session="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -139,10 +140,9 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user-plus"></i> My
-								Profile</a></li>
+						<li><a href="#"><i class="fa fa-user-plus"></i> My Profile, ${pageContext.request.userPrincipal.name}</a></li>
 						<li class="divider"></li>
-						<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+						<li><a href="javascript:formSubmit()"><i class="fa fa-sign-out"></i> Logout</a></li>
 					</ul></li>
 			</ul>
 
@@ -154,9 +154,9 @@
 			<ul class="nav" id="main-menu">
 				<li>
 					<div class="user-img-div">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
-							class="img-circle" />
+						<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
+
+
 
 
 					</div>
@@ -208,10 +208,7 @@
 							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List Business
-						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Upgrade
-								Businesss
+					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness" > <i class="fa fa-list"></i> List Business
 						</a></li>
 
 					</ul></li>
@@ -247,7 +244,7 @@
 						<li><a
 							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
+						<li><a href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
 
@@ -577,6 +574,18 @@
 	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
+		
+		
+			<c:url value="/j_spring_security_logout" var="logoutUrl" />
+       <form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		</form>
+        <script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
 
 </body>
 </html>

@@ -138,10 +138,10 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user-plus"></i> My
-								Profile</a></li>
+						<li><a href="#"><i class="fa fa-user-plus"></i> My Profile, ${pageContext.request.userPrincipal.name}</a></li>
 						<li class="divider"></li>
-						<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+						<li><a href="javascript:formSubmit()"><i class="fa fa-sign-out"></i> Logout</a>
+</li>
 					</ul></li>
 			</ul>
 
@@ -153,10 +153,7 @@
 			<ul class="nav" id="main-menu">
 				<li>
 					<div class="user-img-div">
-						<img
-							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-							class="img-circle" />
-
+						<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
 
 					</div>
 
@@ -207,10 +204,7 @@
 							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List Business
-						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Upgrade
-								Businesss
+						<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"  class="active-menu"> <i class="fa fa-list"></i> List Business
 						</a></li>
 
 					</ul></li>
@@ -238,7 +232,7 @@
 					</ul></li>
 
 
-				<li><a href="#"><i class="fa fa-photo "></i>Advt. Banner<span
+				<li><a href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i class="fa fa-photo "></i>Advt. Banner<span
 						class="fa arrow"></span></a>
 
 					<ul class="nav nav-second-level">
@@ -275,7 +269,7 @@
 					</li>
 					<li><a href="#">Second Level<span class="fa arrow"></span></a>
 						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>s
+							<li><a href="#">Third Link</a></li>
 							<li><a href="#">Third Link</a></li>
 
 						</ul></li>
@@ -447,6 +441,20 @@
 
 	<!-- CUSTOM SCRIPTS -->
 	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
+	
+	
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+       <form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		</form>
+        <script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
+
+	
 
 </body>
 </html>

@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page session="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -138,10 +139,9 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user-plus"></i> My
-								Profile</a></li>
+							<li><a href="#"><i class="fa fa-user-plus"></i> My Profile, ${pageContext.request.userPrincipal.name}</a></li>
 						<li class="divider"></li>
-						<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+						<li><a href="javascript:formSubmit()"><i class="fa fa-sign-out"></i> Logout</a></li>
 					</ul></li>
 			</ul>
 
@@ -153,9 +153,7 @@
 			<ul class="nav" id="main-menu">
 				<li>
 					<div class="user-img-div">
-						<img
-							src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
-							class="img-circle" />
+						<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
 
 
 					</div>
@@ -193,7 +191,7 @@
 
 				<li class="active"><a href="forms.html"><i
 						class="fa fa-user fa-fw"></i> Client Management<span
-						class="fa arrow"></a>
+						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a class="active-menu"
 							href="${pageContext.request.contextPath}/admin/clients">Manage
@@ -208,12 +206,8 @@
 							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> List Business
+						<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"  > <i class="fa fa-list"></i> List Business
 						</a></li>
-						<li><a href="#"> <i class="fa fa-list"></i> Upgrade
-								Businesss
-						</a></li>
-
 					</ul></li>
 
 		<li>
@@ -240,7 +234,7 @@
 						<li><a
 							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>List All
+						<li><a href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
 
@@ -326,7 +320,7 @@
 										Password</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-key"></span></span>
-										<form:password path="user.password" class="form-control"
+										<input type="text" class="form-control"
 											id="confpass" name="clietpass" />
 										<form:errors path="user.password" cssClass="errors" />
 									</div>
@@ -458,7 +452,7 @@
 									</div>
 								</div> --%>
 
-								<div class="col-lg-12 space">
+										<div class="col-lg-12 space">
 									<label for="city" class="col-sm-5 control-label">City</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
@@ -482,7 +476,11 @@
 											class="fa fa-user"></span></span>
 										<form:select path="address.town.townId" class="form-control"
 											id="town" name="clinettown">
-											<%-- <form:option value="0">--Select--</form:option> --%>
+											<form:option value="0">--Select--</form:option> 
+											<c:forEach var="town" items="${towns}">
+												<form:option value="${town.townId}">${town.townName}</form:option>
+											</c:forEach>
+											<form:option value="25">--OtherTown--</form:option>
 										</form:select>
 										<form:errors path="address.town.townId" cssClass="errors" />
 
@@ -664,5 +662,17 @@
 		
 		});
 	</script>
+	
+		<c:url value="/j_spring_security_logout" var="logoutUrl" />
+       <form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		</form>
+        <script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
+	
 </body>
 </html>

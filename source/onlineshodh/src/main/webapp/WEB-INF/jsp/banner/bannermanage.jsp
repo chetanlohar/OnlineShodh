@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page session="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -163,10 +164,10 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user-plus"></i> My
-								Profile</a></li>
+						<li><a href="#"><i class="fa fa-user-plus"></i> My Profile, ${pageContext.request.userPrincipal.name}</a></li>
 						<li class="divider"></li>
-						<li><a href="#"><i class="fa fa-sign-out"></i> Logout</a></li>
+						<li><a href="javascript:formSubmit()"><i class="fa fa-sign-out"></i> Logout</a>
+</li>
 					</ul></li>
 			</ul>
 
@@ -178,7 +179,7 @@
                     <ul class="nav" id="main-menu">
                         <li>
                         <div class="user-img-div">
-                            <img src="${pageContext.request.contextPath}/resources/images/user_pic.jpg" class="img-circle" />
+                            <img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
 
                            
                         </div>
@@ -232,18 +233,8 @@
                                        Add Business
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        List Business
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-list"></i>
-                                        Upgrade Businesss
-                                    </a>
-                                </li>
+                             <li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness" > <i class="fa fa-list"></i> List Business
+						</a></li>
                                 
                             </ul>
                         </li>
@@ -276,7 +267,7 @@
                               
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-bullhorn "></i>List All Advt. Banner</a>
+                                    <a href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i class="fa fa-bullhorn "></i>List All Advt. Banner</a>
                                 </li>
                             </ul>
                         </li>
@@ -441,7 +432,7 @@
 							<span class="input-group-addon"><span class="fa fa-photo"></span></span>
 							<form:input path="bannerName" class="form-control" id="bannerurl" />
 						</div>
-						<form:errors path="bannerName" cssClass="errors" />
+						<form:errors path="bannerName" cssClass="error" />
 					</div>
 					
 					<div class="col-lg-10 space">
@@ -636,5 +627,17 @@
 		
 		});
 	</script>
+	
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+       <form action="${logoutUrl}" method="post" id="logoutForm">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+		</form>
+        <script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
+	
 </body>
 </html>

@@ -230,7 +230,7 @@
                               
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-bullhorn "></i>List All Advt. Banner</a>
+                                    <a href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i class="fa fa-bullhorn "></i>List All Advt. Banner</a>
                                 </li>
                             </ul>
                         </li>

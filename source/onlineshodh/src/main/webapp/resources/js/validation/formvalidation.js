@@ -740,7 +740,6 @@ $('#clientform').validate({
 /*=========================
 Update CLIENT VALIDATION
 ===========================*/
-
 $.validator.addMethod(
 	    "maxfilesize",
 	    function (value, element) {
@@ -750,173 +749,112 @@ $.validator.addMethod(
 	    'The file size can not exceed 300KB.'
 	);
 
-
-
 $('#clientformupdate').validate({
- rules: {
- 	"name": {
- 		
-         required: true
-     },
-     
-     
-     "user.password" : {
-         required: true,
-         minlength:6
-     },
-     
-     "userDetails.name": {
-     	 required: true
-         
-     },
-     
-     "phone1":{
-     	required: true,
-     	minlength: 10,
-     	maxlength: 10
+    rules: {
+    
+        
+        "name": {
+        	 required: true
+            
+        },
+        
+        "phone1":{
+        	required: true,
+        	minlength: 10,
+        	maxlength: 10
 
 
-     },
-     "phone2":{
-     	required: true,
-     	minlength: 10,
-     	maxlength: 10
+        },
+        "phone2":{
+        	required: true,
+        	minlength: 10,
+        	maxlength: 10
 
 
-     },
-
-     "address.address" : {
-         required: true
-         
-     },
-     
-     "address.street" : {
-         required: true
-      
-     },
-     "address.landMark": {
-         required: true
-      
-     },
-    " clientstate" : {
-         required: true
-         
-     },
-     "address.city.cityId" : {
-         required: true,
-         min:1
-         
-       
-     },
-     "address.town.townId" : {
-         required: true
-         
-     },
-     
-     "address.townOther" : {
-         required: true,
-         
-     },
-     
-     "address.pincode": {
-         required: true,
-        minlength:6,
-        digit:true
-     },
-     
-     file:{
-     	required: true,
-     	extension:"jpg|jpeg|png|bmp",
-     	maxfilesize:true
-     },
- },
-   messages:{
- 
- 	  "name":{required:"Please Enter Valid Named"
- 		  },
- 	 "user.password":{
- 		required: "Please Enter at least 6 Character"
- 		 },
- 		  
- 		"userDetails.name":{
- 			required: "Please Enter valid user Detail"
- 			
- 		},
- 		
- 		 "phone1":{
- 			 
- 			required: "Please Enter valid Phone Number"
- 		 },
- 		 "phone2":{
- 			 
-  			required: "Please Enter valid Phone Number"
-  		 },
-  		 
-  		"address.address":{
-  			
-  			required: "Please Enter valid Address"
-  		},
-  		
-"address.street":{
-  			
-  			required: "Please Enter valid Street Name"
-  		},
-"address.landMark":{
-  			
-  			required: "Please Enter valid Landmark"
-  		},
-"clientstate":{
-  			
-  			required: "Please Enter valid State"
-  		},
-"address.city.cityId":{
-  			
-  			required: "Please Enter valid City"
-  		},
-"address.town.townId":{
-  			
-  			required: "Please Enter valid Town",
-  			 min:"Please Enter Valid Town"
-  		},
- 		 
- 	 "address.townOther":{
- 	
- 			required: "Please Enter valid Town"
- 	 },
- 	 
- 	"address.pincode":{
- 		
- 		required: "Please Enter valid Pincode"
- 	},
- 	
- 	file:{
- 		
- 		required: "Please Enter valid Image"
- 	}
-   },
+        },
    
-   highlight: function(element) {
-       $(element).closest('.space').addClass('has-error');
-   },
-   unhighlight: function(element) {
-       $(element).closest('.space').removeClass('has-error');
-   },
-   errorElement: 'span',
-   errorClass: 'clienterror',
-   errorPlacement: function(error, element) {
+        "address.address" : {
+            required: true,
+            
+        },
+        
+        "address.street" : {
+            required: true,
+         
+        },
+        "address.landMark": {
+            required: true,
+         
+        },
+    
+        "address.city.cityId" : {
+            required: true,
+            min:1
+            
+          
+        },
+        "address.town.townId" : {
+            required: true,
+            
+        },
+        
+        "address.townOther" : {
+            required: true,
+            
+        },
+        
+        "address.pincode": {
+            required: true,
+           minlength:6,
+           digit:true
+        },
+        
+        file:{
+        	required: true,
+        	extension:"jpg|jpeg|png|bmp",
+        	maxfilesize:true
+        },
+    },
+      messages:{
+    
+    	  "user.userName":"Please Enter Valid Email Id",
+    	  
+    	  filec:{
+    		  required: "This Is Deafault Image Please Select Image",
+	        	extension:"Please select valid image",
+	        		maxfilesize:"File size should be less than 300 KB"
+    	  },
+    	  "address.city.cityId":{
+    		  min:"please Select Valid City Name"
+    	  }
+     
+      },
+  
+      highlight: function(element) {
+          $(element).closest('.space').addClass('has-error');
+      },
+      unhighlight: function(element) {
+          $(element).closest('.space').removeClass('has-error');
+      },
+      errorElement: 'span',
+      errorClass: 'clienterror',
+      errorPlacement: function(error, element) {
 	   	   
-  	  // if element is file type, we put the error message in its grand parent
-        if (element.prop("type") === "file") {
-            error.insertAfter(element.parent().parent());
-            error.removeClass('clienterror,errorimg').addClass('errorimg');
-           
-        } else {
-      	   error.insertAfter(element.parent());
-      	  error.addClass('clienterror');
-      	
-        }},
+     	  // if element is file type, we put the error message in its grand parent
+           if (element.prop("type") === "file") {
+               error.insertAfter(element.parent().parent());
+               error.removeClass('clienterror,errorimg').addClass('errorimg');
+              
+           } else {
+         	   error.insertAfter(element.parent());
+         	  error.addClass('clienterror');
+         	
+           }},
 
 });
+
+
+
 
 /*=========================
 Business Contact VALIDATION
