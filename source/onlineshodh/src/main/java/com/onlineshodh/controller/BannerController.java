@@ -140,6 +140,13 @@ public class BannerController {
 	}
 	
 	
+	@RequestMapping(value="/getAllBanners",method=RequestMethod.GET)
+	public String ListAllBanners(ModelMap model){
+		
+	   model.addAttribute("banners", bannerService.getAllBanners());
+		return "banner/ListAllBanners";
+	}
+	
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveBanner(ModelMap model,
@@ -170,14 +177,14 @@ public class BannerController {
 			model.addAttribute("categories", categoryService.getAllCategories());
 			model.addAttribute("banners", bannerService.getAllBanners());
 			model.addAttribute("countries", countryService.getAllCountries());
-			/*model.addAttribute(
+			model.addAttribute(
 					"states",
 					stateService.getAllStates(banner.getCity().getState()
 							.getCountry().getCountryId()));
 			model.addAttribute(
 					"cities",
 					cityService.getAllCities(banner.getCity().getState()
-							.getStateId()));*/
+							.getStateId()));
 
 			return "banner/bannermanage";
 		} else {

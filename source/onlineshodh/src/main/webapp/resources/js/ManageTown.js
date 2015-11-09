@@ -18,9 +18,9 @@ function getState() {
 			$('#towns').find('option').remove().end();
 		     $('#townStates').append(
 			 $("<option value='0'></option>").text("--Select--"));
-			 
-
-			jQuery.each(response, function(index, item) {
+		     $('#stateCities').append(
+					 $("<option value='0'></option>").text("--Select--"));
+			 jQuery.each(response, function(index, item) {
 				$('#townStates').append(
 						$("<option></option>").text(this.stateName).val(
 								this.stateId));

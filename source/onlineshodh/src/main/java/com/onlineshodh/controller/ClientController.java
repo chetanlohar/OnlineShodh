@@ -236,6 +236,8 @@ public class ClientController {
 			BindingResult result) {
 		System.out.println(clientdetails);
 
+		logger.info(clientdetails.getUser().getPassword());
+		
 		model.addAttribute("userDetails",
 				userDetailsService.getAllUserDetails());
 		UserEntity user = clientdetails.getUser();
@@ -313,6 +315,11 @@ public class ClientController {
 		}
 
 		System.out.println("flag " + flag);
+		if(flag){
+			
+			model.addAttribute("cities", cityService.getAllCities(1));
+			model.addAttribute("towns",townService.getAllTowns(clientdetails.getAddress().getCity().getCityId()));
+		}
 		if (!flag) {
 			FieldError error;
 			try {
@@ -400,6 +407,13 @@ public class ClientController {
 		return "client/createClient";
 	}
 
+	
+	@RequestMapping(value="/update",method=RequestMethod.GET)
+	public String redirectToUpdate(){
+		return "redirect:/admin/clients";
+	}
+	
+	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateUserDetails(
 			ModelMap model,
@@ -425,6 +439,12 @@ public class ClientController {
 
 		if (result.hasErrors()) {
 			flag = true;
+		}
+        		
+     if(flag){
+			
+			model.addAttribute("cities", cityService.getAllCities(1));
+			model.addAttribute("towns",townService.getAllTowns(userDetails.getAddress().getCity().getCityId()));
 		}
 		/*
 		 * if(file.isEmpty() && userDetails.getPhotograph()==null) { FieldError

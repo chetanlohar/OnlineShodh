@@ -1,7 +1,7 @@
 //getAllTowns
 function getTown() {
 	var cityId = $('#cityId').val();
-	
+
 	$.ajax({
 		type : "POST",
 		url : "/onlineshodh/admin/clients/showTowns",
