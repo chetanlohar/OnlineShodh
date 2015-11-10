@@ -402,7 +402,7 @@
 									<span class="btn btn-default btn-file"><span
 										class="fileinput-new">Select image</span><span
 										class="fileinput-exists">Change</span> <input type="file"
-										name="file" value="Browse" onchange="changeImage(this);">
+										name="file" value="Browse" id="file" onchange="changeImage(this);">
 										 </span>
 									<form:errors path="bannerLogo" cssClass="errors" />
 								</div>

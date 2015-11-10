@@ -331,7 +331,7 @@
 									<span class="input-group-addon"><span
 										class="fa fa-phone"></span></span>
 									<form:input path="phone1" class="form-control"
-										name="clietphone" />
+										 />
 									<form:errors path="phone1" cssClass="errors" />
 
 								</div>
@@ -457,7 +457,7 @@
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
 									<form:input path="address.pincode" class="form-control"
-										id="clientpin" name="clietpin" />
+										id="clientpin" />
 									<form:errors path="address.pincode" cssClass="errors" />
 
 								</div>

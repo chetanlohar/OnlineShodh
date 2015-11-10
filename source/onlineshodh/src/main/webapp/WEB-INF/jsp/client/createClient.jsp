@@ -333,7 +333,7 @@
 											class="fa fa-user"></span></span>
 
 										<form:input path="userDetails.name" class="form-control"
-											id="clientname" name="clietname" />
+											id="uclientname" name="clietname" />
 										<form:errors path="userDetails.name" cssClass="errors" />
 									</div>
 								</div>

@@ -342,9 +342,9 @@
 								<div class="fileinput fileinput-new" data-provides="fileinput">
 									<div class="fileinput-preview thumbnail"
 										data-trigger="fileinput" style="width: 200px; height: 150px;">
-										<img
-											src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
-											alt="...">
+									<img
+											src="${pageContext.request.contextPath}/admin/subcategories/load/logo/${subcategory.subCategoryId}"
+											id="categorylogo" height="50" width="50" />
 
 									</div>
 									<div>

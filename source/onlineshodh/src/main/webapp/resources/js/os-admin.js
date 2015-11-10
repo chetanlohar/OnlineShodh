@@ -88,6 +88,13 @@ $(document).ready(function(){
 	      $('#bdetail_contact').val('');
 	  });
 	  
+	  $("#phoneurl").keypress(function(e) {
+		    if(e.which == 13) {
+		        $("#phonebutton").click();
+		    }
+		});
+	  
+	  
 	  $("#bus_Features").keypress(function(e) {
 		    if(e.which == 13) {
 		        $("#featurebutton").click();

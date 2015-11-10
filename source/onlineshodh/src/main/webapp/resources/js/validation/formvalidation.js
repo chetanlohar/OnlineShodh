@@ -629,12 +629,7 @@ $('#clientform').validate({
             required: true,
         	minlength: 6
         },
-        
-        "user.password" : {
-            required: true,
-            minlength:6
-        },
-        
+
         "userDetails.name": {
         	 required: true
             
@@ -647,13 +642,7 @@ $('#clientform').validate({
 
 
         },
-        "userDetails.phone2":{
-        	required: true,
-        	minlength: 10,
-        	maxlength: 10
-
-
-        },
+      
    
         "address.address" : {
             required: true,
@@ -690,11 +679,11 @@ $('#clientform').validate({
         "address.pincode": {
             required: true,
            minlength:6,
-           digit:true
+           maxlength: 6
         },
         
         file:{
-        	required: true,
+        	
         	extension:"jpg|jpeg|png|bmp",
         	maxfilesize:true
         },
@@ -702,6 +691,7 @@ $('#clientform').validate({
       messages:{
     
     	  "user.userName":"Please Enter Valid Email Id",
+    	  "userDetails.name":"Please Enter Valid Name",
     	  
     	  filec:{
     		  required: "This Is Deafault Image Please Select Image",
@@ -765,13 +755,7 @@ $('#clientformupdate').validate({
 
 
         },
-        "phone2":{
-        	required: true,
-        	minlength: 10,
-        	maxlength: 10
-
-
-        },
+     
    
         "address.address" : {
             required: true,
@@ -805,8 +789,8 @@ $('#clientformupdate').validate({
         
         "address.pincode": {
             required: true,
-           minlength:6,
-           digit:true
+            minlength: 6,
+        	maxlength: 6
         },
         
         file:{
