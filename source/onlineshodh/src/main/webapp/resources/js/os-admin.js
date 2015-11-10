@@ -32,6 +32,29 @@ Business contact and feature update and add
 ========================================*/
 
 $(document).ready(function(){
+	
+	
+	$(".upcontact").on('click',function(e){
+	var valc =$(this).parent().siblings(":nth-child(2)").text()
+     $("#bdetail_contact").val(valc);
+	
+    $("#phonebutton").html('Update');
+	
+	});
+	
+	
+	$(".modyfeature").on('click',function(e){
+		var valf =$(this).parent().siblings(":nth-child(2)").text()
+	     $("#bus_Features").val(valf);
+		
+	    $("#featurebutton").html('Update');
+		
+		});
+		
+	
+	
+	
+	
 	$("#town").on('change',function(){
 	var temp = $("#town").val();
 	
@@ -64,6 +87,7 @@ $(document).ready(function(){
 	  $('#phonebutton').click(function(e){
           var url = $('#phoneurl').val();
           var contact = $('#bdetail_contact').val();
+          $("#phonebutton").html('Add');
 	      $.ajax({
 	    	type: "POST",
 	        url:url,
@@ -101,6 +125,7 @@ $(document).ready(function(){
           /*var url = $(this).attr('href');*/
           var url = $('#featureurl').val();
           var feature = $('#bus_Features').val();
+          $("#featurebutton").html('Add');
 	      $.ajax({
 	    	  	type: "POST",
 		        url:url,

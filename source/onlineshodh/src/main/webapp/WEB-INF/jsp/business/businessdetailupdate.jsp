@@ -206,7 +206,7 @@
 							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"  class="active-menu"> <i class="fa fa-list"></i> List Business
+						<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness" > <i class="fa fa-list"></i> List Business
 						</a></li>
 
 					</ul></li>
@@ -546,9 +546,9 @@
 										<tr>
 											<td>${businessphone.buinessPhoneId}</td>
 											<td>${businessphone.phone}</td>
-											<td><a href="#"><button class="btn btn-info btn-xs">
+											<td><button class="btn btn-info btn-xs upcontact">
 														<i class="fa fa-pencil"></i> Edit
-													</button></a></td>
+													</button></td>
 											<td><a href="#"><button
 														class="btn btn-danger btn-xs">
 														<i class="fa fa-trash"></i> Delete
@@ -596,9 +596,9 @@
 										<tr>
 											<td>${info.businessGenInfoId}</td>
 											<td>${info.generalInfoName}</td>
-											<td><a href="#"><button class="btn btn-info btn-xs">
+											<td><button class="btn btn-info btn-xs modyfeature">
 														<i class="fa fa-pencil"></i> Modify
-													</button></a></td>
+													</button></td>
 											<td><a href="#"><button
 														class="btn btn-danger btn-xs">
 														<i class="fa fa-trash"></i> Delete
@@ -666,20 +666,10 @@
 	<!-- CUSTOM SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+		
+
 	<script type="text/javascript">
-		$(document).ready(function() {
-			var i = 0;
-			$("#phonebutton").on('click', function() {
-				alert("work");
-				if (i > 5) {
-					$("#bdetail_contact").prop('disabled', true);
-				}
-				i++;
 
-			});
-
-		});
-	</script>
 <c:url value="/j_spring_security_logout" var="logoutUrl" />
        <form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"
