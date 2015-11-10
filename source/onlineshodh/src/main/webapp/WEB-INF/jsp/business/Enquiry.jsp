@@ -311,9 +311,9 @@
 											<tr>
 
 
-												<th>Id</th>
-												<th>Business ID</th>
+												<!-- <th>Id</th> -->
 												<th>Enquiry Name</th>
+												<th>Business Name</th>
 												<th>Phone</th>
 												<th>Email Id</th>
 												<th>Select</th>
@@ -323,15 +323,13 @@
 											</tr>
 										</thead>
 										<tbody>
-											
-											<tr>
-											
-													<td>1</td>
-													<td>456</td>
-													<td>basic info</td>
-													<td>8600249455</td>
-
-													<td>Prashantmaskar@gmail.com</td>
+											<c:forEach var="enquiry" items="${enquiries}">
+												<tr>
+													<%-- <td>${enquiry.businessEnquiryDetailsId}</td> --%>
+													<td>${enquiry.enquiryname}</td>
+													<td>${enquiry.business.businessName}</td>
+													<td>${enquiry.phone}</td>
+													<td>${enquiry.email}</td>
 													<td><a
 														href="#"
 														class="edit"><button class="btn btn-info btn-xs">
@@ -344,8 +342,7 @@
 																<i class="fa fa-trash"></i> Delete
 															</button> </a></td>
 											</tr>
-
-										
+											</c:forEach>
 										</tbody>
 									</table>
 								</div>

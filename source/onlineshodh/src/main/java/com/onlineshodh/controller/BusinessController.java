@@ -27,6 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.AddressEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
+import com.onlineshodh.entity.BusinessEnquiryEntity;
 import com.onlineshodh.entity.BusinessGeneralInfoEntity;
 import com.onlineshodh.entity.BusinessPhoneEntity;
 import com.onlineshodh.entity.BusinessSearchEntity;
@@ -34,6 +35,7 @@ import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.entity.SubCategoryEntity;
 import com.onlineshodh.service.AddressService;
 import com.onlineshodh.service.BusinessDetailsService;
+import com.onlineshodh.service.BusinessEnquiryService;
 import com.onlineshodh.service.BusinessGeneralInfoService;
 import com.onlineshodh.service.BusinessPhoneService;
 import com.onlineshodh.service.CategoryService;
@@ -45,7 +47,6 @@ import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.UserDetailsService;
 import com.onlineshodh.support.validator.BusinessAddressValidator;
 import com.onlineshodh.support.validator.BusinessDetailsValidator;
-import com.onlineshodh.supportclass.ClientDetails;
 
 @Controller
 @RequestMapping("admin/business")
@@ -86,6 +87,9 @@ public class BusinessController {
 
 	@Autowired
 	BusinessGeneralInfoService businessGeneralInfoService;
+	
+	@Autowired
+	BusinessEnquiryService businessEnquiryService;
 
 	@Value("${mandatory}")
 	String mandatory;
@@ -494,8 +498,8 @@ public class BusinessController {
 	
 	@RequestMapping(value="/Businessenqury",method=RequestMethod.GET) 
 	public String Businessenqury(ModelMap model) {
-	      	
-	 	model.addAttribute("businessList", businessService.getAllBusinessDetais());
+		List<BusinessEnquiryEntity> enquiries = businessEnquiryService.getAllEnquiries();
+		model.addAttribute("enquiries", enquiries);
 		return "business/Enquiry";
 	} 
 	
