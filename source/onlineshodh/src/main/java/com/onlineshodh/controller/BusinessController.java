@@ -170,7 +170,6 @@ public class BusinessController {
 		}
 
 		else {
-			businessDetails.setAddress(null);
 			businessService.saveBusinessDetails(businessDetails);
 			return "redirect:/admin/business/"
 					+ businessDetails.getUserDetails().getUserDetailsId()
@@ -492,6 +491,14 @@ public class BusinessController {
 	 	model.addAttribute("businessList", businessService.getAllBusinessDetais());
 		return "business/ListAllBusiness";
 	} 
+	
+	@RequestMapping(value="/Businessenqury",method=RequestMethod.GET) 
+	public String Businessenqury(ModelMap model) {
+	      	
+	 	model.addAttribute("businessList", businessService.getAllBusinessDetais());
+		return "business/Enquiry";
+	} 
+	
 	
 
 }

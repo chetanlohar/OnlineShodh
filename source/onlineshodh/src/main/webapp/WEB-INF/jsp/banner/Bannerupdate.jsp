@@ -493,6 +493,7 @@
 	
 	<!-- /. WRAPPER  -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
          <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
         <!-- BOOTSTRAP SCRIPTS -->
@@ -505,7 +506,10 @@
                 <!-- BOOTSTRAP JANSY SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/assets/jasny-bootstrap.js"></script>
         
-         	<!-- Datepicker SCRIPTS -->
+      	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+        	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
         
@@ -513,7 +517,6 @@
         <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
         <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/js/ManageTown.js"></script>
-	
 	 <script
 		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
 		  <script
@@ -521,7 +524,9 @@
 	  <script
 		src="${pageContext.request.contextPath}/resources/js/validation/bannervalidation.js"></script> 
 	
-   <c:url value="/j_spring_security_logout" var="logoutUrl" />
+	
+	
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
        <form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />

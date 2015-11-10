@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Payment Mode</title>
+<title>Enquiry Table</title>
 <link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
 
 <!-- BOOTSTRAP STYLES-->
@@ -20,7 +20,10 @@
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 <!-- metis STYLES-->
-
+<!-- DATA TABLE STYLES-->
+<link
+	href="${pageContext.request.contextPath}/resources/css/jquery.dataTables.min.css"
+	rel="stylesheet" />
 
 <link
 	href="${pageContext.request.contextPath}/resources/css/metisMenu.min.css"
@@ -29,10 +32,7 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap-datepicker3.min.css"
 	rel="stylesheet" />
-<!--PACE STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/pace.css"
-	rel="stylesheet" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"/>
+
 <!--CUSTOM STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/os-admin.css"
@@ -253,8 +253,8 @@
 					</ul></li>
 
 				<li><a href="${pageContext.request.contextPath}/prashant/pay"
-					class="active-menu"><i class="fa fa-money "></i>Payment Mode</a></li>
-				<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+					><i class="fa fa-money "></i>Payment Mode</a></li>
+				<li><a href="${pageContext.request.contextPath}/admin/business/Businessenqury" class="active-menu"><i class="fa fa-search "></i>Enquiry</a>
 				</li>
 				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
 						class="fa arrow"></span></a>
@@ -293,174 +293,74 @@
 			<div id="page-inner">
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="page-head-line">Payment Mode</h1>
+						<h1 class="page-head-line">Enquiry Management</h1>
 					</div>
 				</div>
-
+				
+				
 				<div class="row">
-				<div class="col-lg-12 message"></div>
-					<div class=" col-md-10 col-md-offset-2 ">
-						<form:form
-							action="${pageContext.request.contextPath}/admin/payments/save"
-							class="form-horizontal" id="payment_mode"
-							modelAttribute="paymentStatus" method="POST">
-							<div class="col-lg-8 space">
-								<label for="payment" class="col-sm-3 control-label">Payment
-									For</label>
-								<div class="input-group col-lg-9">
-									<form:select path="payment.paymentfor" class="form-control"
-										id="payfor">
-										<form:option value="BusinessAdvertisement"
-											label="BusinessAdvertisement" />
-										<form:option value="BannerAdvertisement"
-											label="BannerAdvertisement" />
-									</form:select>
+					<div class="col-lg-12 space">
+						<div class="panel panel-default">
+							<div class="panel-heading">Enquiry Management Table</div>
+							<!-- /.panel-heading -->
+							<div class="panel-body">
+								<div class="dataTable_wrapper table-responsive">
+									<table class="table table-striped table-bordered table-hover"
+										id="dataTables-enquiry">
+										<thead>
+											<tr>
 
 
+												<th>Id</th>
+												<th>Business ID</th>
+												<th>Enquiry Name</th>
+												<th>Phone</th>
+												<th>Email Id</th>
+												<th>Select</th>
+												<th>Delete</th>
+												
 
-								</div>
-							</div>
-							<div class="col-lg-8 space hide_business">
-								<label for="Business_name" class="col-sm-3 control-label">Business
-									Name </label>
-								<div class="input-group">
-									<span class="input-group-addon"><span
-										class="fa fa-briefcase"></span></span> <input type="text"
-										class=" form-control" id="keyword" name="businessName" />
+											</tr>
+										</thead>
+										<tbody>
+											
+											<tr>
+											
+													<td>1</td>
+													<td>456</td>
+													<td>basic info</td>
+													<td>8600249455</td>
 
+													<td>Prashantmaskar@gmail.com</td>
+													<td><a
+														href="#"
+														class="edit"><button class="btn btn-info btn-xs">
+																<i class="fa fa-pencil"></i> Select
+															</button></a></td>
+													<td class="center"><a
+														href="#"
+														onclick="return confirm('Do you want to Remove Banner: ${banner.bannerId}')"><button
+																class="btn btn-danger btn-xs">
+																<i class="fa fa-trash"></i> Delete
+															</button> </a></td>
+											</tr>
 
-								</div>
-							</div>
-							<div class="col-lg-8 space hide_banner">
-								<label for="Banner_name" class="col-sm-3 control-label">Banner
-									Name </label>
-								<div class="input-group">
-									<span class="input-group-addon"><span
-										class="fa fa-photo"></span></span> <input type="text"
-										class=" form-control" id="keyword1" name="bannerName" />
-								</div>
-							</div>
-
-							<div class="col-lg-8 space">
-								<label for="payment" class="col-sm-3 control-label">Payment
-									Mode</label>
-								<div class="input-group col-lg-9">
-									<form:select path="payment.paymentMode.paymentModeid"
-										class="form-control" id="pay_mode">
-										<c:forEach var="paymentmode" items="${paymentmodes}">
-											<form:option value="${paymentmode.paymentModeid}">${paymentmode.paymentMode}</form:option>
-										</c:forEach>
-									</form:select>
-
-								</div>
-							</div>
-							<div class="col-lg-8 space hide_cashamount">
-								<label for="Amount" class="col-sm-3 control-label">Amount
-								</label>
-								<div class="input-group">
-									<span class="input-group-addon"><span class="fa fa-inr"></span></span>
-									<form:input path="payment.ammount" class=" form-control" name="cash_amount"/>
-									<form:errors path="payment.ammount" cssClass="errors"/>
-								</div>
-							</div>
-
-							<div class="hide_cheque">
-								<div class="col-lg-8 space">
-									<label for="cheque_no" class="col-sm-3 control-label">Cheque
-										No </label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-ticket"></span></span> 
-									
-											<form:input path="check.checkNo" class=" form-control" name="cheque_name"/>
-                                           <form:errors path="check.checkNo" cssClass="errors"/> 
-									</div>
-								</div>
-								<div class="col-lg-8 space">
-									<label for="Bank" class="col-sm-3 control-label">Bank
-										Name </label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-university"></span></span>
-											<form:input path="check.bankName" class=" form-control" name="bank_name" />
-											<form:errors path="check.bankName" cssClass="errors"/>
-									</div>
-								</div>
-								<div class="col-lg-8 space">
-									<label for="cheque_date" class="col-sm-3 control-label">Cheque
-										Date </label>
-									<div class="input-group sandbox-container">
-										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span>
-											<form:input path="check.checkDate" class=" form-control" />
-											<form:errors path="check.checkDate" cssClass="errors"/>
-									</div>
-								</div>
-
-								<div class="col-lg-8 space">
-									<label for="cheque_amount" class="col-sm-3 control-label">Cheque
-										Amount </label>
-									<div class="input-group">
-										<span class="input-group-addon"><span class="fa fa-inr"></span></span>
 										
-										<form:input path="check.amount"  class=" form-control" name="Cheque_amount"/>
-                                       <form:errors path="check.amount" cssClass="errors"/>
-									</div>
+										</tbody>
+									</table>
 								</div>
+								<!-- /.table-responsive -->
 
-
 							</div>
-
-							<div class="col-lg-8 space">
-								<label for="status" class="col-sm-3 control-label">Status
-								</label>
-								<div class="input-group">
-									<span class="input-group-addon"><span
-										class="fa fa-check"></span></span> 
-										<form:input path="payment.status" class=" form-control" name="status"/>
-                                         <form:errors path="payment.status" cssClass="errors"/>
-										
-								</div>
-							</div>
-							<div class="col-lg-8 space">
-								<label for="remark" class="col-sm-3 control-label">Remark
-								</label>
-								<div class="input-group">
-									<span class="input-group-addon"><span class="fa fa-flag"></span></span>
-									<form:input path="payment.remark" class=" form-control" name="remark" />
-                                    <form:errors path="payment.remark" cssClass="errors"/>
-									
-								</div>
-							</div>
-							<div class="col-lg-8 space">
-								<label for="payuaser" class="col-sm-3 control-label">Payee
-									Name </label>
-								<div class="input-group">
-									<span class="input-group-addon"><span class="fa fa-user"></span></span>
-									<form:input path="payment.payeeName" class=" form-control" name="payuser"/>
-                                    <form:errors path="payment.payeeName" cssClass="errors"/>
-								</div>
-							</div>
-							<div class="col-lg-8 space hide_cheque">
-								<label for="transId" class="col-sm-3 control-label">Transaction
-									Id </label>
-								<div class="input-group">
-									<span class="input-group-addon"><span class="fa fa-link"></span></span>
-									<form:input path="payment.transactionid" class=" form-control" name="transId" />
-									<form:errors path="payment.transactionid" cssClass="errors"/> 
-								</div>
-							</div>
-
-							<div class="col-lg-5 col-lg-offset-4 space">
-								<button class="btn btn-success sendinfo" type="submit">Submit</button>
-							
-								<button class="btn btn-danger" type="reset">Reset</button>
-                                  
-							</div>
-						</form:form>
+							<!-- /.panel-body -->
+						</div>
+						<!-- /.panel -->
 					</div>
+					<!-- /.col-lg-12 -->
 				</div>
+				<!-- /.row -->
 
+			
 				<!-- /. PAGE INNER  -->
 				<footer class="space"> &copy; 2015 OnlineShodh | By : <a
 					href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
@@ -487,54 +387,33 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
 
-	<!-- PACE SCRIPTS -->
-	<script src="${pageContext.request.contextPath}/resources/js/pace.js"></script>
 
-		
-		
+		      	<!-- DATATABLE SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
 		
 		<!-- CUSTOM SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-	<!-- validation SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
-
-
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/paymentvalidation.js"></script>
 
 	<!-- CUSTOM SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
 		<script  src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+ 	$('#dataTables-enquiry').DataTable({
+		responsive : true
+	});
 
+
+
+
+});
+
+</script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-
- 
-$("#keyword").on("keyup",function(e){
-	 $( "#keyword" ).autocomplete({
-			source: '${pageContext.request.contextPath}/admin/business/searchBusiness'
-	});
-}); 
-});
-</script>
-<script type="text/javascript">
-	$(document).ready(function(){
- 	$("#keyword1").on("keyup",function(e){
-	 $("#keyword1").autocomplete({
-		source: '${pageContext.request.contextPath}/admin/banners/searchBanner'
-	});
-});
-	 
-}); 
-</script>
 
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />
        <form action="${logoutUrl}" method="post" id="logoutForm">
