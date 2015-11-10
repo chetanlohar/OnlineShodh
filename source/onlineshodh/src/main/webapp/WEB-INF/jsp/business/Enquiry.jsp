@@ -409,10 +409,9 @@ $(document).ready(function() {
 });
 
 </script>
-
-<script type="text/javascript">
-
-	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+   
+        
+        	<c:url value="/j_spring_security_logout" var="logoutUrl" />
        <form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
@@ -422,7 +421,6 @@ $(document).ready(function() {
 			document.getElementById("logoutForm").submit();
 		}
 	</script>
-
 
 
 </body>

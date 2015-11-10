@@ -254,7 +254,7 @@
 
 				<li><a href="${pageContext.request.contextPath}/admin/payments"
 					class="active-menu"><i class="fa fa-money "></i>Payment Mode</a></li>
-				<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+				<li><a href="${pageContext.request.contextPath}/admin/business/Businessenqury"><i class="fa fa-search "></i>Enquiry</a>
 				</li>
 				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
 						class="fa arrow"></span></a>
@@ -535,7 +535,8 @@ $("#keyword").on("keyup",function(e){
 	 
 }); 
 </script>
-
+<script >
+<script>
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />
        <form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"

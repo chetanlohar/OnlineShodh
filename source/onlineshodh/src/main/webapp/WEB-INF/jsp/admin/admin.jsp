@@ -239,7 +239,7 @@
                         <a href="${pageContext.request.contextPath}/admin/payments" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
                     </li>
                     <li>
-                        <a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
+                        <a href="${pageContext.request.contextPath}/admin/business/Businessenqury"><i class="fa fa-search "></i>Enquiry</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-signal "></i>Logs <span class="fa arrow"></span></a>
@@ -350,7 +350,7 @@
         
         <!-- CUSTOM SCRIPTS -->
         <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-        
+        <script type="text/javascript">
        <c:url value="/j_spring_security_logout" var="logoutUrl" />
        <form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"
