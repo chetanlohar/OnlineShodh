@@ -252,7 +252,7 @@
 								Advt. Banner</a></li>
 					</ul></li>
 
-				<li><a href="${pageContext.request.contextPath}/prashant/pay"
+				<li><a href="${pageContext.request.contextPath}/admin/payments"
 					class="active-menu"><i class="fa fa-money "></i>Payment Mode</a></li>
 				<li><a href="blank.html"><i class="fa fa-search "></i>Enquiry</a>
 				</li>

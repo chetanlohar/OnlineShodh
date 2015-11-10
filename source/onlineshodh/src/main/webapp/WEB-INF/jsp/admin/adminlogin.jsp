@@ -19,9 +19,10 @@
 	rel="stylesheet" />
 	
 	<!--CUSTOM STYLES-->
+<link href="${pageContext.request.contextPath}/resources/css/Login.css" rel="stylesheet" />
+
+	<!--CUSTOM STYLES-->
 <link href="${pageContext.request.contextPath}/resources/css/os-admin.css" rel="stylesheet" />
-
-
 
 
 
@@ -43,7 +44,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
       <div class="login-logo">
-          <img src="${pageContext.request.contextPath}/resources/images/logo.jpg" alt="onlineshodh" width="400px;" heigth="100px;" />
+          <img src="${pageContext.request.contextPath}/resources/images/login-logo.gif" alt="onlineshodh" width="400px;" heigth="100px;" />
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Admin Login</p>

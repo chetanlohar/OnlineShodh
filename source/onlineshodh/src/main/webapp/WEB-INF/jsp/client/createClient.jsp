@@ -320,7 +320,7 @@
 										Password</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-key"></span></span>
-										<input type="text" class="form-control"
+										<input type="password" class="form-control"
 											id="confpass" name="clietpass" />
 										<form:errors path="user.password" cssClass="errors" />
 									</div>

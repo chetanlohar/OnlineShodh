@@ -514,7 +514,15 @@ Login Page
 }
 
 .login-page, .register-page {
-	background: rgba(243, 156, 18, 0.82);
+  font-family: 'Raleway', sans-serif;
+    line-height:25px;
+    font-size:14px;
+    background: #f0f0f0;
+    background: url('../../resources/images/login-back.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .login-box, .register-box {
@@ -530,7 +538,7 @@ Login Page
 }
 
 .login-box-body, .register-box-body {
-	background: #fff;
+	background:rgba(255,255,255, 0.5);
 	padding: 20px;
 	border-top: 0;
 	color: #666

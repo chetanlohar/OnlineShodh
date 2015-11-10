@@ -65,7 +65,7 @@ public class ClientController {
 
 	@Autowired
 	TownService townService;
-	
+
 	@Autowired
 	BusinessDetailsService businessDetailsService;
 
@@ -97,9 +97,9 @@ public class ClientController {
 	@RequestMapping(value = "/business")
 	public String serachClient(ModelMap model) {
 		return "business/addNewBusiness";
-		
+
 	}
-	
+
 	@RequestMapping(value = "/showTowns", method = RequestMethod.POST)
 	public @ResponseBody List<TownEntity> showTowns(ModelMap model,
 			@RequestParam("cityId") Integer cityId) {
@@ -108,126 +108,131 @@ public class ClientController {
 	}
 
 	@RequestMapping(value = "/searchClient", method = RequestMethod.GET)
-	public @ResponseBody List<String> serachClientData(@RequestParam("term") String keyword,@RequestParam("searchBy")Integer searchBy ) {
+	public @ResponseBody List<String> serachClientData(
+			@RequestParam("term") String keyword,
+			@RequestParam("searchBy") Integer searchBy) {
 		List<BusinessDetailsEntity> clientListByBusinessName;
 		List<UserEntity> userList;
-		List<String> list=new ArrayList<String>();
-		 if(searchBy==2)
-		{
-			System.out.println(" In search Box"+searchBy);
-			List<UserDetailsEntity> clientListByName; 
-			clientListByName=userDetailsService.getUserDeatilsByName(keyword.toUpperCase());
-			System.out.println(" List value"+clientListByName);
-			for (UserDetailsEntity userDetails:clientListByName) {
-				System.out.println(" List value"+userDetails.getName());
+		List<String> list = new ArrayList<String>();
+		if (searchBy == 2) {
+			System.out.println(" In search Box" + searchBy);
+			List<UserDetailsEntity> clientListByName;
+			clientListByName = userDetailsService.getUserDeatilsByName(keyword
+					.toUpperCase());
+			System.out.println(" List value" + clientListByName);
+			for (UserDetailsEntity userDetails : clientListByName) {
+				System.out.println(" List value" + userDetails.getName());
 				list.add(userDetails.getName());
 			}
-			return list; 
-		}
-		else if(searchBy==3)
-		{
-			userList=userService.getUserByName(keyword.toLowerCase());
+			return list;
+		} else if (searchBy == 3) {
+			userList = userService.getUserByName(keyword.toLowerCase());
 			list.clear();
-			for (UserEntity user:userList) {
-				System.out.println(" List value"+user.getUserName());
+			for (UserEntity user : userList) {
+				System.out.println(" List value" + user.getUserName());
 				list.add(user.getUserName());
 			}
-			
-			return list; 
-		}
-		else{
-			System.out.println("Search By "+searchBy);
+
+			return list;
+		} else {
+			System.out.println("Search By " + searchBy);
 			list.clear();
-			clientListByBusinessName=businessDetailsService.getBusinessDetailsByBusinessName(keyword.toLowerCase());
-			
-			for(BusinessDetailsEntity bussiness:clientListByBusinessName){
-				System.out.println(" List value"+bussiness.getBusinessName());
+			clientListByBusinessName = businessDetailsService
+					.getBusinessDetailsByBusinessName(keyword.toLowerCase());
+
+			for (BusinessDetailsEntity bussiness : clientListByBusinessName) {
+				System.out.println(" List value" + bussiness.getBusinessName());
 				list.add(bussiness.getBusinessName());
 			}
-			return list; 
+			return list;
 		}
-		
+
 	}
-	
+
 	@RequestMapping(value = "/getClient", method = RequestMethod.POST)
 	public @ResponseBody List<UserDetailsEntity> serachClient(
 			@RequestParam("keyword") String keyword,
 			@RequestParam("searchBy") Integer searchBy) {
-		//validator.validate(target, errors);
-		
+		// validator.validate(target, errors);
+
 		System.out.println("searchBy: " + searchBy);
 		System.out.println("keyword: " + keyword);
 
-		
 		List<UserDetailsEntity> clientList = new ArrayList<UserDetailsEntity>();
 		List<BusinessDetailsEntity> clientListByBusinessName;
-		
-		if(searchBy==1){
+
+		if (searchBy == 1) {
 			clientList.clear();
-			clientList.add(userDetailsService.getUserDetails(Integer.parseInt(keyword)));
-			System.out.println("After Search List Size In Table"+clientList);
+			clientList.add(userDetailsService.getUserDetails(Integer
+					.parseInt(keyword)));
+			System.out.println("After Search List Size In Table" + clientList);
+			return clientList;
+		} else if (searchBy == 2) {
+			List<UserDetailsEntity> clientListByName;
+			clientListByName = userDetailsService
+					.findUserDeatilsByName(keyword);
+			System.out.println("After Search List Size In Table"
+					+ clientListByName);
+			return clientListByName;
+		} else if (searchBy == 3) {
+			UserEntity user = userService.getUserByUserName(keyword);
+			clientList.clear();
+			clientList.add(userDetailsService.getUserDetailsByUserId(user
+					.getUserId()));
+			System.out.println("After Search List Size In Table" + clientList);
+			return clientList;
+		} else {
+
+			clientList.clear();
+			clientListByBusinessName = businessDetailsService
+					.findBusinessDetailsByBusinessName(keyword);
+			for (BusinessDetailsEntity bussiness : clientListByBusinessName) {
+				UserDetailsEntity user = new UserDetailsEntity();
+				user.setUserDetailsId(bussiness.getUserDetails()
+						.getUserDetailsId());
+				clientList.add(userDetailsService.getUserDetails(user
+						.getUserDetailsId()));
+			}
+			System.out.println("After Search List Size In Table" + clientList);
 			return clientList;
 		}
-		else if(searchBy==2)
-		{
-			List<UserDetailsEntity> clientListByName; 
-			clientListByName=userDetailsService.findUserDeatilsByName(keyword);
-			System.out.println("After Search List Size In Table"+clientListByName);
-			return clientListByName; 
-		}
-		else if(searchBy==3)
-		{
-			UserEntity user=userService.getUserByUserName(keyword);
-			clientList.clear();
-			clientList.add(userDetailsService.getUserDetailsByUserId(user.getUserId()));
-			System.out.println("After Search List Size In Table"+clientList);
-			return clientList; 
-		}
-		else{
-			
-			clientList.clear();
-			clientListByBusinessName=businessDetailsService.findBusinessDetailsByBusinessName(keyword);
-			for(BusinessDetailsEntity bussiness:clientListByBusinessName){
-				UserDetailsEntity user=new UserDetailsEntity();
-				user.setUserDetailsId(bussiness.getUserDetails().getUserDetailsId());
-				clientList.add(userDetailsService.getUserDetails(user.getUserDetailsId()));
-			}
-			System.out.println("After Search List Size In Table"+clientList);
-			return clientList; 
-		}
-		
+
 	}
+
 	@ExceptionHandler(java.lang.NumberFormatException.class)
-	public @ResponseBody String handleNumberFormatException(java.lang.NumberFormatException ex) {
+	public @ResponseBody String handleNumberFormatException(
+			java.lang.NumberFormatException ex) {
 		System.out.println("NumberFormatException 1");
 		logger.info(ex.getMessage());
 		return "Please Enter Valid keywords";
 	}
 
-	/*@RequestMapping(value = "/exception",method=RequestMethod.GET)
-	public @ResponseBody String HandleException(ModelMap model,@ModelAttribute("SearchBusiness")BusinessSearchEntity businessSearch,BindingResult result) {
-		
-		FieldError searchKeywordError=new FieldError("businessSearch", "searchText"," Please Enter Valid Keywords.." );
-		result.addError(searchKeywordError);
-		model.addAttribute("SearchBusiness", context.getBean("businessSearchEntity",BusinessSearchEntity.class));
-		System.out.println("model");
-		 return "business/BusinessManagement";
-		
-	}*/
-	/*@RequestMapping(value = "/exception",method=RequestMethod.GET)
-	public @ResponseBody String HandleException() {
-			 return "business/BusinessManagement";
- 	}*/
-	
-	
-	
+	/*
+	 * @RequestMapping(value = "/exception",method=RequestMethod.GET) public
+	 * @ResponseBody String HandleException(ModelMap
+	 * model,@ModelAttribute("SearchBusiness")BusinessSearchEntity
+	 * businessSearch,BindingResult result) {
+	 * 
+	 * FieldError searchKeywordError=new FieldError("businessSearch",
+	 * "searchText"," Please Enter Valid Keywords.." );
+	 * result.addError(searchKeywordError); model.addAttribute("SearchBusiness",
+	 * context.getBean("businessSearchEntity",BusinessSearchEntity.class));
+	 * System.out.println("model"); return "business/BusinessManagement";
+	 * 
+	 * }
+	 */
+	/*
+	 * @RequestMapping(value = "/exception",method=RequestMethod.GET) public
+	 * @ResponseBody String HandleException() { return
+	 * "business/BusinessManagement"; }
+	 */
+
 	@RequestMapping(value = "/save", method = RequestMethod.GET)
 	public String redirectToClients() {
 
 		return "redirect:/admin/clients";
 	}
 
-	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveClient(
 			ModelMap model,
@@ -237,7 +242,7 @@ public class ClientController {
 		System.out.println(clientdetails);
 
 		logger.info(clientdetails.getUser().getPassword());
-		
+
 		model.addAttribute("userDetails",
 				userDetailsService.getAllUserDetails());
 		UserEntity user = clientdetails.getUser();
@@ -302,7 +307,7 @@ public class ClientController {
 		if (result.hasErrors()) {
 			flag = true;
 			System.out.println("error count" + result.getErrorCount());
-			
+
 		}
 		if (file.isEmpty()
 				&& clientdetails.getUserDetails().getPhotograph() == null) {
@@ -315,10 +320,13 @@ public class ClientController {
 		}
 
 		System.out.println("flag " + flag);
-		if(flag){
-			
+		if (flag) {
+
 			model.addAttribute("cities", cityService.getAllCities(1));
-			model.addAttribute("towns",townService.getAllTowns(clientdetails.getAddress().getCity().getCityId()));
+			model.addAttribute(
+					"towns",
+					townService.getAllTowns(clientdetails.getAddress()
+							.getCity().getCityId()));
 		}
 		if (!flag) {
 			FieldError error;
@@ -362,7 +370,7 @@ public class ClientController {
 					String encryptedPassword = encoder.encode(user
 							.getPassword());
 					user.setPassword(encryptedPassword);
-					
+
 					System.out.println(user.toString());
 					userService.saveUser(user);
 					if (userDetails != null) {
@@ -407,20 +415,19 @@ public class ClientController {
 		return "client/createClient";
 	}
 
-	
-	@RequestMapping(value="/update",method=RequestMethod.GET)
-	public String redirectToUpdate(){
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String redirectToUpdate() {
 		return "redirect:/admin/clients";
 	}
-	
-	
+
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateUserDetails(
 			ModelMap model,
 			@RequestParam("file") MultipartFile file,
 			@Valid @ModelAttribute("userDetails") UserDetailsEntity userDetails,
 			BindingResult result) {
-		System.out.println(" File Size After Update :"+userDetails.getPhotograph().length);
+		System.out.println(" File Size After Update :"
+				+ userDetails.getPhotograph().length);
 		String regex = "[0-9]+";
 		boolean flag = false;
 		AddressEntity addressEntity = userDetails.getAddress();
@@ -440,11 +447,14 @@ public class ClientController {
 		if (result.hasErrors()) {
 			flag = true;
 		}
-        		
-     if(flag){
-			
+
+		if (flag) {
+
 			model.addAttribute("cities", cityService.getAllCities(1));
-			model.addAttribute("towns",townService.getAllTowns(userDetails.getAddress().getCity().getCityId()));
+			model.addAttribute(
+					"towns",
+					townService.getAllTowns(userDetails.getAddress().getCity()
+							.getCityId()));
 		}
 		/*
 		 * if(file.isEmpty() && userDetails.getPhotograph()==null) { FieldError
@@ -554,7 +564,9 @@ public class ClientController {
 				userDetailsService.getUserDetails(userDetailsId));
 		model.addAttribute("cities", cityService.getAllCities());
 		model.addAttribute("towns", towns);
-		System.out.println(" File Size before Update :"+userDetailsService.getUserDetails(userDetailsId).getPhotograph().length);
+		System.out.println(" File Size before Update :"
+				+ userDetailsService.getUserDetails(userDetailsId)
+						.getPhotograph().length);
 		return "client/clientUpdate";
 	}
 
@@ -572,8 +584,7 @@ public class ClientController {
 			BindingResult result) {
 		FieldError FileSizeExceedException;
 		FileSizeExceedException = new FieldError("clientDetails",
-				"userDetails.photograph",
-				"Less than 300 KB");
+				"userDetails.photograph", "Less than 300 KB");
 		model.addAttribute("userDetails",
 				userDetailsService.getAllUserDetails());
 		model.addAttribute("cities", cityService.getAllCities());

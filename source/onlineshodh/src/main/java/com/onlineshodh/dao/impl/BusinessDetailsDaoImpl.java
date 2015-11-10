@@ -18,10 +18,7 @@ public class BusinessDetailsDaoImpl extends
 
 	@Override
 	public void saveBusinessDetails(BusinessDetailsEntity business) {
-		if (business.getBusinessId() != null)
-			update(business);
-		else
-			create(business);
+		create(business);
 	}
 
 	@Override

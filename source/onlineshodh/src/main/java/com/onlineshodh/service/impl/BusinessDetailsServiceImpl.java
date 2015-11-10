@@ -19,7 +19,16 @@ public class BusinessDetailsServiceImpl implements BusinessDetailsService {
 	@Override
 	@Transactional
 	public void saveBusinessDetails(BusinessDetailsEntity business) {
-		businessDetailsDao.saveBusinessDetails(business);
+		if (business.getBusinessId() != null)
+		{
+			businessDetailsDao.updateBusinessDetails(business);
+		}
+		else
+		{
+			business.setAddress(null);
+			businessDetailsDao.saveBusinessDetails(business);
+		}
+		
 	}
 
 	@Override
