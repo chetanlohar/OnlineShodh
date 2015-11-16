@@ -1,0 +1,26 @@
+<html>
+	<body>
+		<h3>OnlineShodh New Enquiry for ${enquiry.business.businessName}</h3>
+		<p>
+			<img src="D:\\login-logo.gif" />
+		</p>
+		<h3>
+			Enquiry Details
+		</h3>
+		<p>
+			Enquirer Name - ${enquiry.enquiryname}
+		</p>
+		<p>
+			Email - ${enquiry.email}
+		</p>
+		<p>
+			Phone - ${enquiry.phone}
+		</p>
+		<h3>
+			You got this new request
+		</h3>
+		<p>
+			${enquiry.message}
+		</p>
+	</body>
+</html>

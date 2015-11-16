@@ -535,8 +535,8 @@ $("#keyword").on("keyup",function(e){
 	 
 }); 
 </script>
-<script >
-<script>
+
+
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />
        <form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"

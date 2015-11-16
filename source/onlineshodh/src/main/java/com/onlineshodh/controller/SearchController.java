@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -36,6 +37,7 @@ import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.BusinessEnquiryService;
 import com.onlineshodh.service.BusinessGeneralInfoService;
 import com.onlineshodh.service.BusinessPhoneService;
+import com.onlineshodh.service.EmailNotificationService;
 import com.onlineshodh.service.SubCategoryService;
 import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.UserDetailsService;
@@ -80,12 +82,16 @@ public class SearchController {
 
 	@Autowired
 	BusinessEnquiryService businessEnquiryService;
+	
+	@Autowired
+	@Qualifier(value="emailNotificationService")
+	EmailNotificationService emailService;
 
-	List<TownEntity> towns;
+	static List<TownEntity> towns;
 
-	List<SubCategoryEntity> subCats;
+	static List<SubCategoryEntity> subCats;
 
-	private List<String> strTownsWithCity;
+	static List<String> strTownsWithCity;
 
 	@PostConstruct
 	public void init() {
@@ -102,7 +108,6 @@ public class SearchController {
 	@ResponseBody
 	public List<String> doSearch(@RequestParam("term") String tagName,
 			@RequestParam("cityName") String cityName) {
-		System.out.println("cityName: " + cityName);
 		SuggestBusiness suggestBusiness = context.getBean("suggestBusiness",
 				SuggestBusiness.class);
 		SuggestSubCategory suggestSubCategory = context.getBean(
@@ -110,8 +115,6 @@ public class SearchController {
 		List<String> l = new ArrayList<String>();
 		l.addAll(suggestSubCategory.doAutoSuggest(tagName.trim()));
 		l.addAll(suggestBusiness.doAutoSuggest(tagName.trim(), cityName.trim()));
-		for (String str : l)
-			System.out.println(str);
 		return l;
 	}
 
@@ -256,7 +259,7 @@ public class SearchController {
 		return null;
 	}
 
-	@RequestMapping(value = { "/business/enquiry/save" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/business/enquiry/save/{businessId}" }, method = RequestMethod.POST)
 	public String saveEnquiry(@PathVariable Long businessId, ModelMap model,
 			@ModelAttribute("businessEnquiry") BusinessEnquiryEntity enquiry,
 			BindingResult result) {
@@ -265,6 +268,10 @@ public class SearchController {
 				.getBusinessDetails(businessId);
 		enquiry.setBusiness(businessentity);
 		businessEnquiryService.saveEnquiry(enquiry);
+		
+		/*Email Sending*/
+		
+		emailService.sendEnquiryNotification(enquiry);
 
 		model.addAttribute("businessEnquiry", context.getBean(
 				"businessEnquiryEntity", BusinessEnquiryEntity.class));

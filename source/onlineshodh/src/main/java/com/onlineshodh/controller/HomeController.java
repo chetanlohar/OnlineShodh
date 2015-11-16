@@ -3,6 +3,7 @@ package com.onlineshodh.controller;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.onlineshodh.entity.CategoryEntity;
+import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.service.CategoryService;
+import com.onlineshodh.service.SubCategoryService;
 import com.onlineshodh.service.TownService;
 
 @Controller
@@ -32,6 +35,9 @@ public class HomeController {
 	
 	@Autowired
 	CategoryService categoryService;
+	
+	@Autowired
+	SubCategoryService subCatService;
 	
 	List<CategoryEntity> categories;
 	Map<Integer,CategoryEntity> categories_map;
@@ -49,6 +55,13 @@ public class HomeController {
 	public String showHome(ModelMap model)
 	{
 		model.addAttribute("categories", categories);
+		SearchController.towns = townService.getAllTowns();
+		SearchController.strTownsWithCity = new ArrayList<String>();
+		for (TownEntity town : SearchController.towns) {
+			SearchController.strTownsWithCity.add(town.getCity().getCityName() + " ("
+					+ town.getTownName() + ")");
+		}
+		SearchController.subCats = subCatService.getAllSubCategories();
 		return "index";
 	}
 	

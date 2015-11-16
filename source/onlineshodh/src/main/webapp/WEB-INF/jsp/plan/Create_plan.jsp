@@ -574,7 +574,7 @@
 	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-		<script type="text/javascript">
+	
 		
 			<c:url value="/j_spring_security_logout" var="logoutUrl" />
        <form action="${logoutUrl}" method="post" id="logoutForm">

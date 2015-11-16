@@ -68,11 +68,10 @@
 	</bean>
 
 	<!-- MultipartResolver Support -->
-	<bean id="multipartResolver"
+	<!-- <bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="500000" />
-	</bean>
+	</bean> -->
 
 	<!-- Jackson Message Mapper -->
 	
@@ -88,6 +87,34 @@
 				<ref bean="jacksonMessageChanger" />
 			</list>
 		</property>
+	</bean>
+	
+	<!-- ******** Email Service Configuration ******** -->
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl" 
+		p:host="smtp.gmail.com" 
+		p:username="onlineshodh@gmail.com" 
+		p:password="softinfo123">
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean">
+		<property name="velocityProperties">
+			<value>
+				resource.loader=class
+				class.resource.loader.class=org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader
+			</value>
+		</property>
+	</bean>
+	
+	<bean id="emailNotificationService" class="com.onlineshodh.service.impl.EmailNotificationServiceImpl">
+		<property name="mailSender" ref="mailSender" />
+		<property name="velocityEngine" ref="velocityEngine" />
 	</bean>
 
 </beans>

@@ -10,7 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Assign Plan</title>
 
-<link rel="shortcut icon"  type="image/jpg" href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
+<link rel="shortcut icon" type="image/jpg"
+	href="${pageContext.request.contextPath}/resources/images/logo.jpg" />
 <!-- BOOTSTRAP STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
@@ -135,9 +136,11 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-						<li><a href="#"><i class="fa fa-user-plus"></i> My Profile, ${pageContext.request.userPrincipal.name}</a></li>
+						<li><a href="#"><i class="fa fa-user-plus"></i> My
+								Profile, ${pageContext.request.userPrincipal.name}</a></li>
 						<li class="divider"></li>
-						<li><a href="javascript:formSubmit()"><i class="fa fa-sign-out"></i> Logout</a></li>
+						<li><a href="javascript:formSubmit()"><i
+								class="fa fa-sign-out"></i> Logout</a></li>
 					</ul></li>
 			</ul>
 
@@ -149,7 +152,9 @@
 			<ul class="nav" id="main-menu">
 				<li>
 					<div class="user-img-div">
-								<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
+						<img
+							src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}"
+							class="img-circle" />
 
 					</div>
 
@@ -187,7 +192,7 @@
 				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
 						Client Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						<li><a 
+						<li><a
 							href="${pageContext.request.contextPath}/admin/clients">Manage
 								Client</a></li>
 					</ul></li>
@@ -200,26 +205,34 @@
 							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"  > <i class="fa fa-list"></i> List Business
+						<li><a
+							href="${pageContext.request.contextPath}/admin/business/getAllBusiness">
+								<i class="fa fa-list"></i> List Business
 						</a></li>
 					</ul></li>
 
-<li class="active">
-                            <a href="add-client.html"><i class="fa fa-rss"></i>Plan Management  <span class="fa arrow"></span></a>
-                           	<ul class=" nav nav-second-level">
-						<li><a href="${pageContext.request.contextPath}/admin/plans"> <i class="fa fa-user-plus"></i> Create Plan
-								
+				<li class="active"><a href="add-client.html"><i
+						class="fa fa-rss"></i>Plan Management <span class="fa arrow"></span></a>
+					<ul class=" nav nav-second-level">
+						<li><a href="${pageContext.request.contextPath}/admin/plans">
+								<i class="fa fa-user-plus"></i> Create Plan
+
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/updatePlans"> <i class="fa fa-list"></i> Update Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/updatePlans">
+								<i class="fa fa-list"></i> Update Plan
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/getPlans"> <i class="fa fa-list"></i> List All Plan
-							
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/getPlans">
+								<i class="fa fa-list"></i> List All Plan
+
 						</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/plans/planAssign" class="active-menu"> <i class="fa fa-list"></i> 
-								Assign Business Plan
+						<li><a
+							href="${pageContext.request.contextPath}/admin/plans/planAssign"
+							class="active-menu"> <i class="fa fa-list"></i> Assign
+								Business Plan
 						</a></li>
-					</ul>
-                        </li>
+					</ul></li>
 
 
 				<li><a href="#"><i class="fa fa-photo "></i>Advt. Banner<span
@@ -229,40 +242,42 @@
 						<li><a
 							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
-						<li><a href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i class="fa fa-bullhorn "></i>List All
-								Advt. Banner</a></li>
+						<li><a
+							href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i
+								class="fa fa-bullhorn "></i>List All Advt. Banner</a></li>
 					</ul></li>
 
-				   <li>
-                        <a href="${pageContext.request.contextPath}/admin/payments" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
-                    </li>
-			<li><a href="${pageContext.request.contextPath}/admin/business/Businessenqury"><i class="fa fa-search "></i>Enquiry</a>
-			</li>
-			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
-				</ul></li>
-			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
-					</li>
+				<li><a href="${pageContext.request.contextPath}/admin/payments"
+					class="active-"><i class="fa fa-money "></i>Payment Mode <span
+						class="fa arrow"></span></a></li>
+				<li><a
+					href="${pageContext.request.contextPath}/admin/business/Businessenqury"><i
+						class="fa fa-search "></i>Enquiry</a></li>
+				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+						</li>
 
-				</ul></li>
-			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
-					class="fa arrow"></span></a>
-				<ul class="nav nav-second-level">
-					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
-					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
-					</li>
-					<li><a href="#">Second Level<span class="fa arrow"></span></a>
-						<ul class="nav nav-third-level">
-							<li><a href="#">Third Link</a></li>
-							<li><a href="#">Third Link</a></li>
+					</ul></li>
+				<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
+						class="fa arrow"></span></a>
+					<ul class="nav nav-second-level">
+						<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
+						<li><a href="#"><i class="fa fa-bullhorn "></i>Second
+								Link</a></li>
+						<li><a href="#">Second Level<span class="fa arrow"></span></a>
+							<ul class="nav nav-third-level">
+								<li><a href="#">Third Link</a></li>
+								<li><a href="#">Third Link</a></li>
 
-						</ul></li>
-				</ul></li>
+							</ul></li>
+					</ul></li>
 
 
 			</ul>
@@ -272,11 +287,11 @@
 		<!-- /. SIDEBAR MENU (navbar-side) -->
 		<div id="page-wrapper" class="page-wrapper-cls">
 			<div id="page-inner">
-			<div class="row">
+				<div class="row">
 					<div class="col-lg-12">
 						<div class="detail-title">
-							<span class="detail-titile-header font17">Business Plan Details
-								</span> 
+							<span class="detail-titile-header font17">Business Plan
+								Details </span>
 						</div>
 						<div class="detail-wraper">
 							<table class="table">
@@ -290,9 +305,11 @@
 								</tr>
 								<tr>
 									<td class="lable">Business Logo</td>
-									<td><img src="${pageContext.request.contextPath}/admin/business/load/logo/${business.businessId}" class="plan_b_img"></td>
+									<td><img
+										src="${pageContext.request.contextPath}/admin/business/load/logo/${business.businessId}"
+										class="plan_b_img"></td>
 								</tr>
-								
+
 							</table>
 
 						</div>
@@ -302,129 +319,143 @@
 				</div>
 				<!-- /. row  -->
 				<div class="row space">
-				 <form:form action="${pageContext.request.contextPath}/admin/plans/assignPlan/${business.businessId}" class="form-horizontal" id="assgin_plan_form" method="POST" modelAttribute="businessPlan">
-				<form:hidden path="business.businessId"/>
-				<div class="col-lg-10 space">
-									<label for="mailid" class="col-sm-3 control-label">Plan
-										Name:</label>
-									<div class="input-group">
-									
-										<form:select  path="plan.planId" class="form-control" name="plan_name">
-										<form:option value="0">--Select--</form:option>
-											<c:forEach var="plan" items="${plans}">
-											<form:option value="${plan.planId}">${plan.planName}</form:option>
-										</c:forEach>	
-										</form:select>
-										<form:errors path="plan.planId" cssClass="error"/>
-								
-									</div>
-									
-								</div>
-								
-								<div class="col-lg-10 space">
-									<label for="mailid" class="col-sm-3 control-label">Start
-										Date:</label>
-									<div class="input-group sandbox-container">
-										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span>
-											<form:input path="startdate" class="form-control" id="startDate"/>
-				                            <form:errors path="startdate" cssClass="error"/>
-									</div>
-									
-								</div>
-								<div class="col-lg-10 space ">
-									<label for="mailid" class="col-sm-3 control-label">End
-										Date:</label>
-									<div class="input-group sandbox-container">
-										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span>
-											<form:input path="enddate" class="form-control" id="expiryDate"/>
-				                            <form:errors path="enddate" cssClass="error"/>
-				                  </div>
-				                  
-								</div>
-								<div class="col-lg-10 space ">
-									<label for="mailid" class="col-sm-3 control-label">Status
-										:</label>
-									<div class="input-group">
-									<form:select path="status" class="form-control">
+					<form:form
+						action="${pageContext.request.contextPath}/admin/plans/assignPlan/${business.businessId}"
+						class="form-horizontal" id="assgin_plan_form" method="POST"
+						modelAttribute="businessPlan">
+						<form:hidden path="business.businessId" />
+						<div class="col-lg-10 space">
+							<label for="mailid" class="col-sm-3 control-label">Plan
+								Name:</label>
+							<div class="input-group">
+								<c:if test="${msg}">
+									<c:out value="Plan SucessfullyAssigned..." />
+								</c:if>
+								<form:select path="plan.planId" class="form-control"
+									name="plan_name">
+									<form:option value="0">--Select--</form:option>
+									<c:forEach var="plan" items="${plans}">
+										<form:option value="${plan.planId}">${plan.planName}</form:option>
+									</c:forEach>
+								</form:select>
+								<form:errors path="plan.planId" cssClass="error" />
+
+							</div>
+
+						</div>
+
+						<div class="col-lg-10 space">
+							<label for="mailid" class="col-sm-3 control-label">Start
+								Date:</label>
+							<div class="input-group sandbox-container">
+								<span class="input-group-addon"><span
+									class="fa fa-calendar"></span></span>
+								<form:input path="startdate" class="form-control" id="startDate" />
+								<form:errors path="startdate" cssClass="error" />
+							</div>
+
+						</div>
+						<div class="col-lg-10 space ">
+							<label for="mailid" class="col-sm-3 control-label">End
+								Date:</label>
+							<div class="input-group sandbox-container">
+								<span class="input-group-addon"><span
+									class="fa fa-calendar"></span></span>
+								<form:input path="enddate" class="form-control" id="expiryDate" />
+								<form:errors path="enddate" cssClass="error" />
+							</div>
+
+						</div>
+						<div class="col-lg-10 space ">
+							<label for="mailid" class="col-sm-3 control-label">Status
+								:</label>
+							<div class="input-group">
+								<form:select path="status" class="form-control">
 									<form:option value="0">---Select--</form:option>
-                                    <form:option value="NotActive">Not Active</form:option>
-                                    <form:option value="NotActive">Active</form:option>
-                                    <form:option value="InProgress">In Progress</form:option>
-                                     
-									</form:select>
-									<form:errors path="status" cssClass="error"/>
-				                   </div>
-				                  
-								</div>
-								
-							
-								
-								
-				          <div class="col-lg-4 col-lg-offset-5 space">
-				          <button class="btn btn-success assign_plan"><i class=" fa fa-check-circle-o"></i> Assign</button>
-				          
-				          <a href="${pageContext.request.contextPath}/admin/plans/planAssign"> <button class="btn btn-info" type="button"> Go Back</button></a>
-				          </div>
-				</form:form> 
-				
-				
-				
+									<form:option value="NotActive">Not Active</form:option>
+									<form:option value="Active">Active</form:option>
+									<form:option value="InProgress">In Progress</form:option>
+
+								</form:select>
+								<form:errors path="status" cssClass="error" />
+							</div>
+
+						</div>
+
+
+
+
+						<div class="col-lg-4 col-lg-offset-5 space">
+							<button class="btn btn-success assign_plan">
+								<i class=" fa fa-check-circle-o"></i> Assign
+							</button>
+
+							<a
+								href="${pageContext.request.contextPath}/admin/plans/planAssign">
+								<button class="btn btn-info" type="button">Go Back</button>
+							</a>
+						</div>
+					</form:form>
+
+
+
 				</div>
-			
-			
+
+
 			</div>
-			                     <footer >
-            &copy; 2015 OnlineShodh | By : <a href="www.softinfology.com" target="_blank">Softinfology</a>
-        </footer>
-			
+			<footer> &copy; 2015 OnlineShodh | By : <a
+				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
+
 		</div>
 	</div>
-	        
- <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-        <!-- JQUERY SCRIPTS -->
-         <script src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script> 
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-        
-        	<!-- validation SCRIPTS -->
-        			  <script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
-      
-      	<!-- validation SCRIPTS -->
-        			  <script
-		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script> 
-        
-     
-			<script
+
+	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+
+	<!-- validation SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
+
+	<!-- validation SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
+
+
+	<script
 		src="<%=request.getContextPath()%>/resources/js/validation/planvalidation.js"></script>
 
-        
-        
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
-        
-      
-        	<!-- Datepicker SCRIPTS -->
+
+
+	<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/metisMenu.min.js"></script>
+
+
+	<!-- Datepicker SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/bootstrap-datepicker.min.js"></script>
-        
-        <!-- CUSTOM SCRIPTS -->
-        <script src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
-        
-        <script type="text/javascript">
-        
-        	<c:url value="/j_spring_security_logout" var="logoutUrl" />
-       <form action="${logoutUrl}" method="post" id="logoutForm">
+
+	<!-- CUSTOM SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/os-admin.js"></script>
+
+
+
+	<c:url value="/j_spring_security_logout" var="logoutUrl" />
+	<form action="${logoutUrl}" method="post" id="logoutForm">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
-		</form>
-        <script>
+	</form>
+	<script>
 		function formSubmit() {
 			document.getElementById("logoutForm").submit();
 		}
 	</script>
-        
+
 </body>
 </html>
