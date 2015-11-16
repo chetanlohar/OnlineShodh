@@ -223,10 +223,21 @@ public class PlanController {
 		return "plan/assign";
     }
 	
+	@RequestMapping(value="/assignPlan/{BusineesId}",method=RequestMethod.GET)
+	public String redirectToAssignedPlan(ModelMap model,@PathVariable("BusineesId")Long busineesId){
+	
+		model.addAttribute("plans", planservice.getAllPlans());
+		model.addAttribute("business", businessDetailsService.getBusinessDetails(busineesId));
+		model.addAttribute("businessPlan", context.getBean("businessPlanEntity",BusinessPlanEntity.class));
+		return "plan/assign";
+	}
+	
+	
 	@RequestMapping(value="/assignPlan/{BusineesId}",method=RequestMethod.POST)
 	public String assignBusinessPlan(ModelMap model,@PathVariable("BusineesId")Long busineesId,@ModelAttribute("businessPlan")BusinessPlanEntity businessPlan,BindingResult result){
 		
 		boolean flag1=false;
+		boolean flag=false;
 	 businessPlanValidator.validate(businessPlan, result);
 	 
 		if(result.hasErrors()){
@@ -271,8 +282,10 @@ public class PlanController {
 		
 		try{
 			System.out.println(businessPlan);
-        boolean flag=businessPlanService.assignBusinessPlan(businessPlan);
+          flag=businessPlanService.assignBusinessPlan(businessPlan);
         System.out.println("assign Plan"+flag);
+        model.addAttribute("business", businessDetailsService.getBusinessDetails(busineesId));
+		model.addAttribute("plans", planservice.getAllPlans());
 		}catch(DataIntegrityViolationException exception){
 			FieldError planNameAlreadyAssignError;
 			FieldError	planNameAlreadyError;
@@ -287,6 +300,9 @@ public class PlanController {
 					"Please Upgrade Plan"); 	
 			result.addError(planNameAlreadyError);
 			logger.debug(planNameAlreadyAssignError);
+			model.addAttribute("business", businessDetailsService.getBusinessDetails(busineesId));
+			model.addAttribute("plans", planservice.getAllPlans());
+			model.addAttribute("businessPlan", businessPlan);
 
 			}
 			return "plan/assign"; 	
@@ -300,7 +316,11 @@ public class PlanController {
 		     return "plan/assign";
 		     
 		}
-		
+		if(flag){
+		model.addAttribute("msg",flag);
+		}else{
+			//model.addAttribute("msg","Plan Not Assigned...");
+		}
 		return "plan/assign";
 	}
 	
