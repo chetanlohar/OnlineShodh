@@ -49,11 +49,11 @@ public class BusinessEnquiryEntity implements Serializable {
 	@JoinColumn(name="businessId")
 	private BusinessDetailsEntity business;
 
-	public Long getBusinessEnquiryDetails() {
+	public Long getBusinessEnquiryDetailsId() {
 		return businessEnquiryDetailsId;
 	}
 
-	public void setBusinessEnquiryDetails(Long businessEnquiryDetails) {
+	public void setBusinessEnquiryDetailsId(Long businessEnquiryDetails) {
 		this.businessEnquiryDetailsId = businessEnquiryDetails;
 	}
 

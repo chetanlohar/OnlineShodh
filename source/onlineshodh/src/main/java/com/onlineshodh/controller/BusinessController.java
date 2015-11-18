@@ -408,12 +408,13 @@ public class BusinessController {
 	@RequestMapping(value = "/{businessId}/phone/save", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody List<BusinessPhoneEntity> saveBusinessPhoneDetails(
 			@PathVariable("businessId") Long businessId,
-			@RequestParam("businessPhone") Long businessPhone) {
+			@RequestParam("businessPhone") Long businessPhone, @RequestParam("phonetype") String phonetype) {
 		BusinessDetailsEntity business = businessService
 				.getBusinessDetails(businessId);
 		BusinessPhoneEntity businesPhoneEntity = context.getBean(
 				"businessPhoneEntity", BusinessPhoneEntity.class);
 		businesPhoneEntity.setPhone(businessPhone.toString());
+		businesPhoneEntity.setPhonetype(phonetype);
 		businesPhoneEntity.setBusiness(business);
 		businessPhoneService.saveBusinessPhoneDetails(businesPhoneEntity);
 		List<BusinessPhoneEntity> l = businessPhoneService

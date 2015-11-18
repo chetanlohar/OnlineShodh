@@ -87,6 +87,7 @@ $(document).ready(function(){
 	  $('#phonebutton').click(function(e){
           var url = $('#phoneurl').val();
           var contact = $('#bdetail_contact').val();
+          var phonetype = $('#bdetail_phonetype').val();
           $("#phonebutton").html('Add');
 	      $.ajax({
 	    	type: "POST",
@@ -94,13 +95,14 @@ $(document).ready(function(){
 	        dataType:"json",
 	        timeout:5000,
 	        data:{
-	        	"businessPhone" :contact
+	        	"businessPhone" :contact,
+	        	"phonetype" : phonetype
 	        },
 	        success: function(response){
 	        	console.log(response);
 	        	$('.busi_contact tbody tr').remove();
 	        	jQuery.each(response, function(index, item) {
-	        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td><td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
+	        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td><td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
 				});
 
 	        },

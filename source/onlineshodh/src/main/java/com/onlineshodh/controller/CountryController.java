@@ -94,6 +94,7 @@ public class CountryController {
 				if(e.getMostSpecificCause().getMessage().contains("unique")){
 					countryNameAvailableError = new FieldError("country","countryName",alreadyExist);
 					logger.debug(countryNameAvailableError.getDefaultMessage());
+					result.addError(countryNameAvailableError);
 				}
 				else{
 					countryNameAvailableError = new FieldError("country","countryName",onlyAlphabets);

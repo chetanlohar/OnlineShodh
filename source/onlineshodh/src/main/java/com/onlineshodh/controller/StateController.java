@@ -122,6 +122,7 @@ public class StateController {
 						.contains("unique")){
 					stateNameAvailableError = new FieldError("state",
 							"stateName", alreadyExist);
+					result.addError(stateNameAvailableError);
 					logger.debug(stateNameAvailableError);
 				}
 				else{
