@@ -26,6 +26,10 @@ public class BusinessPlanValidator implements Validator {
 		}if(businessPlanEntity.getEnddate()==null){
 			errors.rejectValue("enddate", "11", "Please Select End Date");
 		}*/
+		
+		/*if(businessPlanEntity.getStatus().equalsIgnoreCase("select")){
+		errors.rejectValue("status", "11", "Please Enter Status ");
+		}*/
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "status", "11", "Please Enter Status ");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "startdate", "11", "Please Select Start Date");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "enddate", "11", "Please Select End Date");

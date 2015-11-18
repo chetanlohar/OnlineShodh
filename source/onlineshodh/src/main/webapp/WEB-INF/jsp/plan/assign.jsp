@@ -371,7 +371,7 @@
 								:</label>
 							<div class="input-group">
 								<form:select path="status" class="form-control">
-									<form:option value="0">---Select--</form:option>
+									<form:option value="">---Select--</form:option>
 									<form:option value="NotActive">Not Active</form:option>
 									<form:option value="Active">Active</form:option>
 									<form:option value="InProgress">In Progress</form:option>
