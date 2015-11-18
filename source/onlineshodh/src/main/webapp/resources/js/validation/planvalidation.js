@@ -215,7 +215,7 @@ $(document).ready(function(){
 				greaterThan:"End Date Must Be Greater Than Start Date"
 				
 			},
-			"status":"Please Enter Validity In Status"
+			"status":"Please Select Status" 
 		},
 		
 	      highlight: function(element) {
