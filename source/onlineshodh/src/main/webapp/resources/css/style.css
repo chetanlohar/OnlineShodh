@@ -440,6 +440,28 @@ Search Result Style
 }
 /*=============================== 
 
+Free Listing  Style
+==================================*/
+
+.listing_header {
+	width: 100%;
+	padding: 20px;
+	background:#FFDF00;
+	margin: 15px auto 0px;
+}
+
+.listing_header .free_list_title{
+	margin: 0px;
+	color: #fff;
+	font-size: 35px;
+	text-shadow:  -1px 4px 4px rgba(150, 150, 150, 1);
+}
+
+.list_form_container{
+	box-shadow:1px 1px 1px 0px rgba(150, 150, 150, 1);
+}
+/*=============================== 
+
 Footer Style
 ==================================*/
 #footer_wrapar{

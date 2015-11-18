@@ -247,4 +247,21 @@ public class TestController {
 		return "business/ListAllBusiness";
 	}
 	
+	@RequestMapping(value="/fl_detail")
+	public String fl_detail()
+	{
+		return "free listing/fl_details_new";
+	}
+	@RequestMapping(value="/fl_adddetail")
+	public String fl_adddetail()
+	{
+		return "free listing/fl_address_details_new";
+	}
+	
+	@RequestMapping(value="/fl_condetail")
+	public String fl_condetail()
+	{
+		return "free listing/fl_phone_feature_detail";
+	}
+	
 }

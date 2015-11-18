@@ -432,6 +432,12 @@ footer a:hover, footer a:focus {
 	margin: 0px auto;
 }
 
+.plan_search-table img {
+	width: 100px;
+	height: 100px;
+	margin: 0px auto;
+}
+
 .plan-table .price_data {
 	background: #026D96;
 	color: #fff;
@@ -451,9 +457,9 @@ footer a:hover, footer a:focus {
 	color: #fff;
 }
 
-input[type=radio]:checked + label {
- 	color:orange;
-} 
+input[type=radio]:checked+label {
+	color: orange;
+}
 
 /*==============================================
     Payment mode   
@@ -461,7 +467,6 @@ input[type=radio]:checked + label {
 .hide_banner {
 	display: none;
 }
-
 
 .hide_cheque {
 	display: none;
@@ -514,15 +519,16 @@ Login Page
 }
 
 .login-page, .register-page {
-  font-family: 'Raleway', sans-serif;
-    line-height:25px;
-    font-size:14px;
-    background: #f0f0f0;
-    background: url('../../resources/images/login-back.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+	font-family: 'Raleway', sans-serif;
+	line-height: 25px;
+	font-size: 14px;
+	background: #f0f0f0;
+	background: url('../../resources/images/login-back.jpg') no-repeat
+		center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
 }
 
 .login-box, .register-box {
@@ -538,7 +544,7 @@ Login Page
 }
 
 .login-box-body, .register-box-body {
-	background:rgba(255,255,255, 0.5);
+	background: rgba(255, 255, 255, 0.5);
 	padding: 20px;
 	border-top: 0;
 	color: #666
@@ -564,11 +570,10 @@ Login Page
 	margin: 20px auto 0 auto
 }
 
-
-.btn-facebook{
+.btn-facebook {
 	background-color: #2d4373;
 	border-color: rgba(0, 0, 0, 0.2);
-		color: #fff;
+	color: #fff;
 }
 
 .btn-facebook:hover, .btn-facebook:focus, .btn-facebook.focus,
@@ -588,7 +593,6 @@ Login Page
 	color: #3b5998;
 	background-color: #fff
 }
-
 
 .btn-google {
 	color: #fff;
