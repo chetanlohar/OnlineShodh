@@ -311,7 +311,7 @@
 											<tr>
 
 
-												<!-- <th>Id</th> -->
+												<th>Id</th>
 												<th>Enquiry Name</th>
 												<th>Business Name</th>
 												<th>Phone</th>
@@ -325,7 +325,7 @@
 										<tbody>
 											<c:forEach var="enquiry" items="${enquiries}">
 												<tr>
-													<%-- <td>${enquiry.businessEnquiryDetailsId}</td> --%>
+													<td>${enquiry.businessEnquiryDetailsId}</td>
 													<td>${enquiry.enquiryname}</td>
 													<td>${enquiry.business.businessName}</td>
 													<td>${enquiry.phone}</td>

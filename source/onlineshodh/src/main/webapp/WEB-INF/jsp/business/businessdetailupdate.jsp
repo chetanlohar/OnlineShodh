@@ -525,6 +525,13 @@
 						<div class="add_business_contact space">
 							<form class="form-inline" id="busd_contact" method="post">
 								<div class="form-group">
+									<label for="contact">Contact Type:</label>
+								<select class="form-control" id="bdetail_phonetype">
+									<option value="Landline">Land-Line</option>
+									<option value="Mobile">Mobile</option>
+								</select>
+								</div>
+								<div class="form-group">
 									<label for="contact">Add Contact:</label> <input type="text"
 										class="form-control" id="bdetail_contact"
 										placeholder="Contact" name="businessd_contact" maxlength="10">
@@ -534,7 +541,6 @@
 								<%-- <a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" class="bd_contact"> --%>
 								<button type="button" id="phonebutton"
 									class="btn btn-success b_contact">Add</button>
-								</a>
 								<button type="reset" class="btn btn-danger">Cancel</button>
 							</form>
 
@@ -546,6 +552,7 @@
 										<tr>
 											<td>${businessphone.buinessPhoneId}</td>
 											<td>${businessphone.phone}</td>
+											<td>${businessphone.phonetype}</td>
 											<td><button class="btn btn-info btn-xs upcontact">
 														<i class="fa fa-pencil"></i> Edit
 													</button></td>

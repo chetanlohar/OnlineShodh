@@ -38,6 +38,10 @@ public class BusinessPhoneEntity implements Serializable {
 	@NotNull(message="Phone Number is Mandatory!")
 	private String phone;
 	
+	@Column(name="phonetype")
+	@NotNull(message="Phone Type is Mandatory!")
+	private String phonetype;
+	
 	@ManyToOne(targetEntity=BusinessDetailsEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="businessId")
 	private BusinessDetailsEntity business;
@@ -68,6 +72,20 @@ public class BusinessPhoneEntity implements Serializable {
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+	
+	/**
+	 * @return the phonetype
+	 */
+	public String getPhonetype() {
+		return phonetype;
+	}
+
+	/**
+	 * @param phonetype the phonetype to set
+	 */
+	public void setPhonetype(String phonetype) {
+		this.phonetype = phonetype;
 	}
 
 	/**
