@@ -274,6 +274,7 @@ public class ClientController {
 
 		System.out.println(" Addres Enity " + addressEntity);
 
+		try{
 		if (addressEntity.getCity().getCityId() == 0) {
 			FieldError cityError = new FieldError("clientdetails",
 					"address.city.cityId", mandatory);
@@ -283,6 +284,11 @@ public class ClientController {
 
 		}
 
+		}catch(NullPointerException e){
+			FieldError cityError = new FieldError("clientdetails",
+					"address.city.cityId", mandatory);
+			result.addError(cityError);
+		}
 		if (addressEntity.getTown() == null
 				|| addressEntity.getTown().getTownId() == 0) {
 			FieldError townError = new FieldError("clientdetails",

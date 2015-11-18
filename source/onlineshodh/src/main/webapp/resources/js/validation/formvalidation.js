@@ -630,6 +630,12 @@ $('#clientform').validate({
         	minlength: 6
         },
 
+        "clietpass": {
+            required: true,
+            equalTo:"user.password"
+        	
+        },
+
         "userDetails.name": {
         	 required: true
             
