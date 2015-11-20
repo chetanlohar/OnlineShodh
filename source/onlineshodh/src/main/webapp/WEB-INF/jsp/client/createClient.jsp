@@ -310,7 +310,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-key"></span></span>
 										<form:password path="user.password" class="form-control"
-											id="clientpass" name="clietpass" />
+											id="clientpass"  />
 										<form:errors path="user.password" cssClass="errors" />
 
 									</div>

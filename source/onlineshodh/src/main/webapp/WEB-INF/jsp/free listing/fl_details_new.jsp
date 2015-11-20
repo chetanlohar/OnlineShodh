@@ -19,31 +19,17 @@
 	rel="stylesheet" />
 
 <!-- tags STYLES-->
-<link
-	href="${pageContext.request.contextPath}/resources/css/fastselect.min.css"
-	rel="stylesheet" />
-<style>
-.fstElement {
-	font-size: 1.2em;
+<link href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"  rel="stylesheet" type="text/css"/>
+<link href="${pageContext.request.contextPath}/resources/css/tokenfield-typeahead.min.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath}/resources/css/bootstrap-tokenfield.min.css" rel="stylesheet" />
+
+
+<style type="text/css">
+body{
+background: #FFB203;
 }
 
-.fstToggleBtn {
-	min-width: 16.5em;
-}
-
-.submitBtn {
-	display: none;
-}
-
-.fstMultipleMode {
-	display: block;
-}
-
-.fstMultipleMode .fstControls {
-	width: 100%;
-}
 </style>
-
 
 </head>
 <body>
@@ -51,13 +37,13 @@
 		<div class="container">
 			<div class="listing_header">
 				<div class="row">
-					<div class="col-md-3">
+					<div class="col-md-2">
 						<img
 							src="${pageContext.request.contextPath}/resources/images/login-logo.gif"
-							alt="onlineshodh" width="70px;" heigth="40px;" />
+							alt="onlineshodh" width="70px;" height="40px;" />
 					</div>
 					<div class="col-md-9">
-						<h2 class="free_list_title">Free Listing</h2>
+						<h2 class="free_list_title">List your Business with India's popular Local Search Engine</h2>
 
 					</div>
 				</div>
@@ -113,8 +99,8 @@
 									<label for="category" class="col-sm-3 control-label">Category
 									</label>
 									<div class="input-group col-md-9">
-										<select class="form-control">
-											<option value="category">category</option>
+										<select class="form-control" name="category">
+											<option value="">category</option>
 											<option value="category">category</option>
 											<option value="category">category</option>
 											<option value="category">category</option>
@@ -129,8 +115,8 @@
 									<label for="sub-category" class="col-sm-3 control-label">Sub-Category
 									</label>
 									<div class="input-group col-md-9">
-										<select class="form-control">
-											<option value="category">sub-category</option>
+										<select class="form-control" name="subcategory">
+											<option value="">sub-category</option>
 											<option value="category">sub-category</option>
 											<option value="category">sub-category</option>
 											<option value="category">sub-category</option>
@@ -144,17 +130,13 @@
 									<label for="person" class="col-sm-3 control-label">Keywords
 									</label>
 									<div class="input-group col-md-9">
-										<input type="text" multiple
-											class="keyword form-control"
-											value="Algeria,Angola"
-											data-initial-value='[{"text": "computer", "value" : "computer"}, {"text": "software", "value" : "software"}]'
-											data-url="demo/data.json" data-load-once="true"
-											name="language" />
+										<input type="text" 
+											class="keyword form-control" id="keyword" name="keyword" />
 
 									</div>
 								</div>
 								<div class="col-md-5 col-md-offset-5 space">
-									<button type="button" class="btn btn-info">
+									<button type="submit" class="btn btn-info">
 										<i class="fa fa-arrow-circle-o-right"></i> Save & Countinue
 									</button>
 								</div>
@@ -169,7 +151,46 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- Footer Wrapar Start -->
+		<section id="footer_wrapar" style="margin-top:20%;">
+		<div class="container">
+		<div class="row">
+		<div class="col-lg-6 ">
+		<p class="term">
+		<ul>
+		<li><a href="#">About Us</a></li>
+		<li><a href="#">Terms & Conditions</a></li>
+		<li><a href="#">Privacy Policy</a></li>
+		</ul>
+		</p>
+		</div>
+		<div class="col-lg-6">
+		<p class="right_social">
+		<ul>
+		<li><a href="#" class="facebook"><i class=" fa fa-facebook"></i></a></li>
+		<li><a href="#" class="google"><i class=" fa fa-google-plus"></i></a></li>
+		<li><a href="#" class="twitter"><i class=" fa fa-twitter"></i></a></li>
+		<li><a href="#" class="youtube"><i class=" fa fa-youtube"></i></a></li>
+	
+		</ul>
+		
+		</p>
+		
+		</div>
+		</div>
+		<div class="row bottom-footer">
+		<div class="col-lg-4">
+		<p class="copyright footer-bottom">Copyright &copy; OnlineShodh.Com All Rights Reserved</p>
+		</div>
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+		<p class="designer footer-bottom">Designed By:<a href="#" class="softinfo">  SoftInfoLogy Pvt Ltd.</a></p>
+		</div>
+		
+		</div>
+		
+		</div>
+		</section><!-- Footer Wrapar End -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
@@ -177,15 +198,25 @@
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
-
+	<!-- FORM VALIDATION SCRIPTS -->
+		 <script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
+		  <script
+		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
+		 <script src="${pageContext.request.contextPath}/resources/js/validation/free_listing.js"></script> 
+	
 	<!-- keyword SCRIPTS -->
-	<%-- <script
-		src="${pageContext.request.contextPath}/resources/js/fastselect.min.js"></script> --%>
-		<script
-		src="${pageContext.request.contextPath}/resources/js/fastselect.standalone.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
+		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-tokenfield.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('.keyword').fastselect();
+			$('#keyword').tokenfield({
+				  autocomplete: {
+				    source: ['computer','travelling','hotel','bus','flight','cargo','hospital','bank','dj'],
+				    delay: 100
+				  },
+				  showAutocompleteOnFocus: true
+				})
 		});
 	</script>
 </body>
