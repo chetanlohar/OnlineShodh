@@ -28,10 +28,10 @@ public class FreeListingBusinessEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@SequenceGenerator(name="pk_freeListingId",sequenceName="seq_fl_business_id",allocationSize=1)
-	@GeneratedValue(generator="pk_freeListingId",strategy=GenerationType.SEQUENCE)
-	@Column(name="fl_business_id")
-	private Long freeListingId;
+	@SequenceGenerator(name="pk_sequence_freelistingid",sequenceName="seq_fl_business_id",allocationSize=1)
+	@GeneratedValue(generator="pk_sequence_freelistingid",strategy=GenerationType.SEQUENCE)
+	@Column(name="freelistingbusinessdetailsid",unique=true,nullable=false)
+	private Long freelistingbusinessdetailsId;
 	
 	@Column(name="fl_business_name")
 	private String businessName;
@@ -52,114 +52,74 @@ public class FreeListingBusinessEntity implements Serializable {
 	@JoinColumn(name="subCategoryId")
 	private SubCategoryEntity subCategory;
 
-	/**
-	 * @return the freeListingId
-	 */
-	public Long getFreeListingId() {
-		return freeListingId;
+	
+
+	public Long getFreelistingbusinessdetailsId() {
+		return freelistingbusinessdetailsId;
 	}
 
-	/**
-	 * @param freeListingId the freeListingId to set
-	 */
-	public void setFreeListingId(Long freeListingId) {
-		this.freeListingId = freeListingId;
+	public void setFreelistingbusinessdetailsId(Long freelistingbusinessdetailsId) {
+		this.freelistingbusinessdetailsId = freelistingbusinessdetailsId;
 	}
 
-	/**
-	 * @return the businessName
-	 */
 	public String getBusinessName() {
 		return businessName;
 	}
 
-	/**
-	 * @param businessName the businessName to set
-	 */
 	public void setBusinessName(String businessName) {
 		this.businessName = businessName;
 	}
 
-	/**
-	 * @return the personName
-	 */
 	public String getPersonName() {
 		return personName;
 	}
 
-	/**
-	 * @param personName the personName to set
-	 */
 	public void setPersonName(String personName) {
 		this.personName = personName;
 	}
 
-	/**
-	 * @return the email
-	 */
 	public String getEmail() {
 		return email;
 	}
 
-	/**
-	 * @param email the email to set
-	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-	/**
-	 * @return the website
-	 */
 	public String getWebsite() {
 		return website;
 	}
 
-	/**
-	 * @param website the website to set
-	 */
 	public void setWebsite(String website) {
 		this.website = website;
 	}
 
-	/**
-	 * @return the keywords
-	 */
 	public String getKeywords() {
 		return keywords;
 	}
 
-	/**
-	 * @param keywords the keywords to set
-	 */
 	public void setKeywords(String keywords) {
 		this.keywords = keywords;
 	}
 
-	/**
-	 * @return the subCategory
-	 */
 	public SubCategoryEntity getSubCategory() {
 		return subCategory;
 	}
 
-	/**
-	 * @param subCategory the subCategory to set
-	 */
 	public void setSubCategory(SubCategoryEntity subCategory) {
 		this.subCategory = subCategory;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
-		return "FreeListingBusinessEntity [freeListingId=" + freeListingId
-				+ ", businessName=" + businessName + ", personName="
-				+ personName + ", email=" + email + ", website=" + website
-				+ ", keywords=" + keywords + ", subCategory=" + subCategory
-				+ "]";
+		return "FreeListingBusinessEntity [freelistingbusinessdetailsId="
+				+ freelistingbusinessdetailsId + ", businessName="
+				+ businessName + ", personName=" + personName + ", email="
+				+ email + ", website=" + website + ", keywords=" + keywords
+				+ ", subCategory=" + subCategory + "]";
 	}
+
+	
+	
 	
 }

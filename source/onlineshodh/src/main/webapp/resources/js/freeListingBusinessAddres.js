@@ -1,16 +1,17 @@
-//getAllTowns
 function getTown() {
 	
 	var cityId = $('#cityId').val();
-  $.ajax({
+    
+	
+	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/admin/clients/showTowns",
+		url : "/onlineshodh/freelisting/showTowns",
 		dataType : 'json',
 		data : {
 			"cityId" : cityId
 		},
 		success : function(response) {
-			alert(response)
+			
 			console.log(response)
 
 			
@@ -24,20 +25,14 @@ function getTown() {
 						$("<option></option>").text(this.townName).val(
 								this.townId));
 			});
-			$('#town').append(
-					 $("<option value=25></option>").text("--OtherTown--"));
+			/*$('#town').append(
+					 $("<option value=25></option>").text("--OtherTown--"));*/
 
 		},
 		error : function(e) {
-			alert(" error "+e)
+			
 			console.log(e)
 		}
 	});
 
-}
-
-
-function getOtherTown() {
-	
-	
 }

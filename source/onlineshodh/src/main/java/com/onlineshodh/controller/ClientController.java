@@ -103,7 +103,11 @@ public class ClientController {
 	@RequestMapping(value = "/showTowns", method = RequestMethod.POST)
 	public @ResponseBody List<TownEntity> showTowns(ModelMap model,
 			@RequestParam("cityId") Integer cityId) {
-
+		System.out.println("Town ");
+		for(TownEntity town:townService.getAllTowns(cityId)){
+			 System.out.println("Town "+town.getTownName());	
+		}
+        
 		return townService.getAllTowns(cityId);
 	}
 

@@ -4,6 +4,7 @@ import com.onlineshodh.entity.FreeListingBusinessEntity;
 
 public interface FreeListingService {
 	
-	public void saveFreeListingBusinessDetails(FreeListingBusinessEntity entity);
+	public Long saveFreeListingBusinessDetails(FreeListingBusinessEntity entity);
+	public FreeListingBusinessEntity getFeelistingEntityById(Long freeListingId);
 
 }

@@ -4,6 +4,8 @@ import com.onlineshodh.entity.FreeListingBusinessEntity;
 
 public interface FreeListingDao {
 	
-	public void saveFreeListingBusinessDetails(FreeListingBusinessEntity entity);
+	public Long saveFreeListingBusinessDetails(FreeListingBusinessEntity entity);
+	public FreeListingBusinessEntity getFeelistingEntityById(Long freeListingId);
+
 
 }

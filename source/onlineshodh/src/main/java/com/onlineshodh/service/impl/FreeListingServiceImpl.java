@@ -14,8 +14,14 @@ public class FreeListingServiceImpl implements FreeListingService {
 	FreeListingDao freeListingDao;
 	
 	@Override
-	public void saveFreeListingBusinessDetails(FreeListingBusinessEntity entity) {
-		freeListingDao.saveFreeListingBusinessDetails(entity);
+	public Long saveFreeListingBusinessDetails(FreeListingBusinessEntity entity) {
+		return freeListingDao.saveFreeListingBusinessDetails(entity);
+	}
+
+	@Override
+	public FreeListingBusinessEntity getFeelistingEntityById(Long freeListingId) {
+		
+		return freeListingDao.getFeelistingEntityById(freeListingId);
 	}
 
 }
