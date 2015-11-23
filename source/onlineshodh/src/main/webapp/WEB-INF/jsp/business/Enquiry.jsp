@@ -54,7 +54,10 @@
 <body>
 
 	<div id="wrapper">
-		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
+<%-- 
+	 <%@ include file="../header.jsp" %> --%> 
+	 	
+		 <nav class="navbar navbar-default navbar-cls-top " role="navigation"
 			style="margin-bottom: 0">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -148,7 +151,7 @@
 						<i class="fa fa-caret-down"></i>
 				</a>
 					<ul class="dropdown-menu dropdown-user">
-								<li><a href="#"><i class="fa fa-user-plus"></i> My Profile, ${pageContext.request.userPrincipal.name}</a></li>
+							<li><a href="#"><i class="fa fa-user-plus"></i> My Profile, ${pageContext.request.userPrincipal.name}</a></li>
 						<li class="divider"></li>
 						<li><a href="javascript:formSubmit()"><i class="fa fa-sign-out"></i> Logout</a></li>
 					</ul></li>
@@ -162,14 +165,14 @@
 			<ul class="nav" id="main-menu">
 				<li>
 					<div class="user-img-div">
-						<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
+					<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
 
 					</div>
 
 				</li>
 				<li><a href="#"> <strong>OnlineShodh@mail.com </strong></a></li>
 
-				<li><a href="${pageContext.request.contextPath}/admin/home"><i
+				<li><a href="<%=request.getContextPath()%>/admin/home"><i
 						class="fa fa-home "></i>Home</a></li>
 				<li><a href="#"><i class="fa fa-sitemap fa-fw"></i>
 						Category Management<span class="fa arrow"></span></a>
@@ -201,21 +204,20 @@
 						Client Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/clients">Manage
+							href="<%=request.getContextPath()%>/prashant/clientcreate">Manage
 								Client</a></li>
 					</ul></li>
 
 
-				<li><a href="#"><i class="fa fa-briefcase"></i>Business
+				<li><a href="#"><i class="fa fa-"></i>Business
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a
-							href="${pageContext.request.contextPath}/admin/clients/view/">
-								<i class="fa fa-user-plus"></i> Add Business
+						<li><a 
+							href="${pageContext.request.contextPath}/admin/clients"> <i
+								class="fa fa-user-plus"></i> Add Business
 						</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"  > <i class="fa fa-list"></i> List Business
+					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness" > <i class="fa fa-list"></i> List Business
 						</a></li>
-
 					</ul></li>
 
 				<li><a href="add-client.html"><i class="fa fa-rss"></i>Plan
@@ -246,42 +248,42 @@
 
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/banners"><i
+							href="${pageContext.request.contextPath}/admin/clients/view/"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i class="fa fa-bullhorn "></i>List All
 								Advt. Banner</a></li>
 					</ul></li>
 
-				<li><a href="${pageContext.request.contextPath}/prashant/pay"
-					><i class="fa fa-money "></i>Payment Mode</a></li>
-				<li><a href="${pageContext.request.contextPath}/admin/business/Businessenqury" class="active-menu"><i class="fa fa-search "></i>Enquiry</a>
-				</li>
-				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
-						class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a>
-						</li>
-					</ul></li>
-				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
-						class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
-						</li>
+	   <li>
+                        <a href="${pageContext.request.contextPath}/admin/payments" class="active-"><i class="fa fa-money "></i>Payment Mode <span class="fa arrow"></span></a>
+                    </li>
+			<li><a href="${pageContext.request.contextPath}/admin/business/Businessenqury"  class="active-menu"><i class="fa fa-search "></i>Enquiry</a>
+			</li>
+			<li><a href="#"><i class="fa fa-signal "></i>Logs <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
+				</ul></li>
+			<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
+					</li>
 
-					</ul></li>
-				<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
-						class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
-						<li><a href="#"><i class="fa fa-bullhorn "></i>Second
-								Link</a></li>
-						<li><a href="#">Second Level<span class="fa arrow"></span></a>
-							<ul class="nav nav-third-level">
-								<li><a href="#">Third Link</a></li>
-								<li><a href="#">Third Link</a></li>
+				</ul></li>
+			<li><a href="#"><i class="fa fa-cogs "></i>Settings <span
+					class="fa arrow"></span></a>
+				<ul class="nav nav-second-level">
+					<li><a href="#"><i class="fa fa-cogs "></i>Second Link</a></li>
+					<li><a href="#"><i class="fa fa-bullhorn "></i>Second Link</a>
+					</li>
+					<li><a href="#">Second Level<span class="fa arrow"></span></a>
+						<ul class="nav nav-third-level">
+							<li><a href="#">Third Link</a></li>
+							<li><a href="#">Third Link</a></li>
 
-							</ul></li>
-					</ul></li>
+						</ul></li>
+				</ul></li>
 
 
 			</ul>

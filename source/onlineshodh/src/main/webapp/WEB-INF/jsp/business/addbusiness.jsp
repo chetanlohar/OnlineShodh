@@ -200,7 +200,7 @@
 						Client Management<span class="fa arrow"></a>
 					<ul class="nav nav-second-level">
 						<li><a
-							href="${pageContext.request.contextPath}/admin/clients/view/">Manage
+							href="${pageContext.request.contextPath}/admin/clients/">Manage
 								Client</a></li>
 					</ul></li>
 

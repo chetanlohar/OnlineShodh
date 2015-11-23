@@ -443,6 +443,9 @@ Search Result Style
 	padding:10px;	
 	
 }
+
+
+
 /*=============================== 
 
 Free Listing  Style
@@ -469,6 +472,50 @@ Free Listing  Style
 .sub_header{
 	text-align: center;
 	padding: 5px;
+}
+
+.header_bar{
+	background:#FFDF00 ;
+}
+.header_bar .search{
+	border-radius:0px;
+}
+.header_bar .free_list_link{
+	margin-left: 50px ;
+	line-height: 85px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.image_search_wrap{
+	border: 2px solid #ccc;
+	
+}
+.img-search{
+	width: 50%;
+	height: 150px;
+	margin: 0px 25%;
+	
+}
+.error_msg{
+	width: 100%;
+    float: left;
+    padding: 16px 15px 8px 15px;
+    margin: 0%;
+    border-bottom: 1px solid #d7d7d7;
+    font-size: 18px;
+    color: #222222;
+    font-weight: bold;
+}
+.search_tip_title:before{
+	    position: absolute; 
+    content: " ";
+    width: 50px;
+    bottom: 15px;
+    margin-left: 0;
+    margin-right: 0;
+    border-bottom: 3px solid #e74c3c;
+
 }
 /*=============================== 
 

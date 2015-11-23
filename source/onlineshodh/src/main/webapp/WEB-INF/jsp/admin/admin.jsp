@@ -161,7 +161,7 @@
 							Category Management<span class="fa arrow"></span></a>
 						     <ul class="nav nav-second-level">
 							<li><a href="${pageContext.request.contextPath}/admin/categories"><i class="fa fa-list"></i> Category Management</a></li>
-							<li><a href="${pageContext.request.contextPath}/admin/subcategories"> <i class="fa fa-list"></i> Sub-Category Management</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin/subcategories"> <i class="fa fa-list"></i> Sub-Category &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Management</a></li>
 						</ul> <!-- /.nav-second-level --></li>
 						
 						<li><a href="tables.html"><i class="fa fa-globe fa-fw"></i>

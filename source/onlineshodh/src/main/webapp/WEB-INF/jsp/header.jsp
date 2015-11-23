@@ -1,54 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>	
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Edit Business Details</title>
-<!-- BOOTSTRAP STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/bootstrap.css"
-	rel="stylesheet" />
-<!-- FONTAWESOME ICONS STYLES-->
-<link
-	href="<%=request.getContextPath()%>/resources/css/font-awesome.css"
-	rel="stylesheet" />
-
-<!-- FONTAWESOME ICONS STYLES-->
-<link
-	href="<%=request.getContextPath()%>/resources/css/intlTelInput.css"
-	rel="stylesheet" />
-
-<!-- DATA TABLE STYLES-->
-<link
-	href="<%=request.getContextPath()%>/resources/css/jquery.dataTables.min.css"
-	rel="stylesheet" />
-
-<!-- metis STYLES-->
-<link
-	href="<%=request.getContextPath()%>/resources/css/metisMenu.min.css"
-	rel="stylesheet" />
-
-<!--Jancy STYLES-->
-<link
-	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
-	rel="stylesheet" />
-
-
-<!--CUSTOM STYLES-->
-<link href="<%=request.getContextPath()%>/resources/css/os-admin.css"
-	rel="stylesheet" />
-
-</head>
+<title></title>
 </head>
 <body>
-	<div id="wrapper">
-	<%-- <div id="header-load"></div>
-	
-	 <%@ include file="../header.jsp" %>  --%>
-	
-		 <nav class="navbar navbar-default navbar-cls-top " role="navigation"
+		<nav class="navbar navbar-default navbar-cls-top " role="navigation"
 			style="margin-bottom: 0">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -200,11 +161,11 @@
 					</ul></li>
 
 
-				<li class="active"><a href="#"><i class="fa fa-"></i>Business
+				<li><a href="#"><i class="fa fa-"></i>Business
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
-						<li><a class="active-menu"
-							href="${pageContext.request.contextPath}/admin/clients"> <i
+						<li><a 
+							href="${pageContext.request.contextPath}/admin/clients/view/"> <i
 								class="fa fa-user-plus"></i> Add Business
 						</a></li>
 					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"  class="active-menu"> <i class="fa fa-list"></i> List Business
@@ -281,186 +242,6 @@
 		</div>
 
 		</nav>
- 	<!-- /. SIDEBAR MENU (navbar-side) -->
-		<div id="page-wrapper" class="page-wrapper-cls">
-			<div id="page-inner">
-				<div class="row">
-					<div class="col-lg-12">
-						<h3 class="page-header">Edit Business Details</h3>
-					</div>
-					<!-- /.col-lg-12 -->
-				</div>
-				<!-- /.row -->
-				<div class="row">
-					<div class="col-lg-12">
-
-						<form class="form-horizontal" name="bclientupdate"
-							id="bclientupdate">
-							<div class="col-lg-8">
-								<div class="col-lg-12 space">
-									<label for="businessid" class="col-sm-5 control-label">Business
-										Id</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-chain"></span></span> <input type="text"
-											class="form-control" id="businessid" name="businessid"
-											placeholder="">
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="businame" class="col-sm-5 control-label">Business
-										Name</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-calendar"></span></span> <input type="text"
-											class="form-control" id="businame" name="businame">
-									</div>
-								</div>
-
-								<div class="col-lg-12 space">
-									<label for="Logo" class="col-sm-5 control-label">Business
-										Logo</label>
-									<div class="fileinput fileinput-new input-group"
-										data-provides="fileinput">
-										<div class="form-control" data-trigger="fileinput">
-											<i class="glyphicon glyphicon-file fileinput-exists"></i> <span
-												class="fileinput-filename"></span>
-										</div>
-										<span class="input-group-addon btn btn-default btn-file"><span
-											class="fileinput-new">Select file</span><span
-											class="fileinput-exists">Change</span><input type="file"
-											name="..."></span> <a href="#"
-											class="input-group-addon btn btn-default fileinput-exists"
-											data-dismiss="fileinput">Remove</a>
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="pname" class="col-sm-5 control-label">Person
-										Name </label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											class="form-control" id="personname" name="personname">
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="busiEmail" class="col-sm-5 control-label">Email
-										Id</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-envelope"></span></span> <input type="text"
-											class="form-control" id="busimail" name="busimail">
-									</div>
-								</div>
-								<div class="col-lg-12 space">
-									<label for="web" class="col-sm-5 control-label">
-										WebSite</label>
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="fa fa-globe"></span></span> <input type="text"
-											class="form-control" name="Website">
-									</div>
-								</div>
-
-								<div class="col-lg-12 space">
-									<label for="busicategory" class="col-sm-5 control-label">
-										Category</label>
-									<div class="input-group col-lg-7">
-										<select class="form-control">
-											<option value="FOOD">FOOD</option>
-										</select>
-									</div>
-								</div>
-
-
-								<div class="col-lg-12 space">
-									<label for="busisubcategory" class="col-sm-5 control-label">
-										Sub-Category</label>
-									<div class="input-group col-lg-7">
-										<select class="form-control">
-											<option value="Non-Veg">Non-Veg</option>
-										</select>
-									</div>
-								</div>
-
-
-							</div>
-
-
-							<div class="col-lg-6 col-lg-offset-4 space">
-								<button type="submit" class="btn btn-success" id="update">Update</button>
-
-							</div>
-						</form>
-					</div>
-				</div>
-				<!-- /.row -->
-
-			</div>
-			<!-- /. PAGE INNER  -->
-
-
-
-
-			<footer class="space"> &copy; 2015 OnlineShodh | By : <a
-				href="www.softinfology.com" target="_blank">Softinfology</a> </footer>
-		</div>
-
-		<!-- /. PAGE WRAPPER  -->
-	</div>
-
-	</div>
-	<!-- /. WRAPPER  -->
-
-	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-	<!-- JQUERY SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jquery-1.11.1.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/jquery.validate.min.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/bootstrap.js"></script>
-
-	<!-- validation SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/validation/formvalidation.js"></script>
-
-
-
-	<!-- JANSY BOOTSTRAP SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
-
-	<!-- METIMENU SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/assets/metisMenu.min.js"></script>
-
-
-
-	<!-- Input Telephone SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/intlTelInput.js"></script>
-
-	<!-- DATATABLE SCRIPTS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script>
-
-	<!-- CUSTOM SCRIPTS -->
-	<script src="<%=request.getContextPath()%>/resources/js/os-admin.js"></script>
-	
-
-	<c:url value="/j_spring_security_logout" var="logoutUrl" />
-       <form action="${logoutUrl}" method="post" id="logoutForm">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
-		</form>
-        <script>
-		function formSubmit() {
-			document.getElementById("logoutForm").submit();
-		}
-	</script>
+		<!-- /. SIDEBAR MENU (navbar-side) -->
 </body>
 </html>

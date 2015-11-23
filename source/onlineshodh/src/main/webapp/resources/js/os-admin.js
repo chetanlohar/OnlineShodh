@@ -32,8 +32,14 @@ Business contact and feature update and add
 ========================================*/
 
 $(document).ready(function(){
-	
-	
+
+	/*$("#main-menu ul li a").on("click",function(e){
+	e.preventDefault()
+	$(this).parent().addClass('active-menu');
+	$(this).parent().siblings().removeClass('active-menu');
+	$(this).parent().parent().siblings().removeClass('active-menu');
+	});
+*/	
 	$(".upcontact").on('click',function(e){
 	var valc =$(this).parent().siblings(":nth-child(2)").text()
      $("#bdetail_contact").val(valc);
@@ -124,7 +130,7 @@ $(document).ready(function(){
 		});
 	  
 	  $('#featurebutton').click(function(e){
-          /*var url = $(this).attr('href');*/
+       
           var url = $('#featureurl').val();
           var feature = $('#bus_Features').val();
           $("#featurebutton").html('Add');
