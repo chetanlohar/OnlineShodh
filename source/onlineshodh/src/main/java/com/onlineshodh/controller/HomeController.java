@@ -61,6 +61,7 @@ public class HomeController {
 			SearchController.strTownsWithCity.add(town.getCity().getCityName() + " ("
 					+ town.getTownName() + ")");
 		}
+		model.addAttribute("cities", SearchController.strTownsWithCity);
 		SearchController.subCats = subCatService.getAllSubCategories();
 		return "index";
 	}

@@ -27,23 +27,21 @@
 		<div class="container">
 			<div class="row" id="result_head">
 				<div class="col-lg-3 col-md-3">
-					<a href="home.jsp"> <img
+					<a href="${pageContext.request.contextPath}/"> <img
 						src="${pageContext.request.contextPath}/resources/images/logo.jpg"
 						class="result_logo" />
 					</a>
 				</div>
 				<div class="col-lg-9 col-md-9">
 					<div class="form_search row">
-						<form action="" class="form-inline">
+						<form action="${pageContext.request.contextPath}/search/businesses" method="GET" class="form-inline">
+							<input type="hidden" name="cityName" value="${cityName}" />
+							<input id="searchid" name="tagName" type="text" class="search_input col-lg-8 col-xs-10 "
+								placeholder="Serach For Hotels,Taxis,Movies and Much More"/>
 
-							<input type="text" class="search_input col-lg-8 col-xs-10 "
-								placeholder="Serach For Hotels,Taxis,Movies and Much More">
-
-							<button class="btn-lg btn btn-info search" type="submit">
+							<button class="btn-lg btn btn-info " type="submit">
 								<i class="fa fa-search "></i>
 							</button>
-
-
 						</form>
 
 					</div>
@@ -77,7 +75,9 @@
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/">Home</a></li>
 							<li><a href="${pageContext.request.contextPath}/search/business/category/${subCategory.category.categoryId}/city/${cityName}">${subCategory.category.categoryName}</a></li>
-							<li class="active">${subCategory.subCategoryName}</li>
+							<c:if test="${byCategory eq false}">
+								<li class="active">${subCategory.subCategoryName}</li>
+							</c:if>
 						</ol>
 					</div>
 					
@@ -126,7 +126,8 @@
 						<ul class="list_rel_cat">
 							<li class="rel_head">Related Category</li>
 							<c:forEach var="subCategory" items="${subCategories}">
-								<li>${subCategory.subCategoryName}</li>
+								<li><a href="${pageContext.request.contextPath}/search/businesses?cityName=${cityName}&tagName=${subCategory.subCategoryName}">${subCategory.subCategoryName}</a></li>
+								
 							</c:forEach>
 						</ul>
 					</div>
@@ -188,6 +189,8 @@
 	<!-- JQUERY SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+		<script
+		src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
@@ -248,6 +251,15 @@
 							}
 						});
 	</script>
-
+	<script>
+			$(document).ready(function() {
+				console.log("in auto_complete..path: ${pageContext.request.contextPath}");
+				$("#searchid").on("keyup",function(){
+					 $( "#searchid" ).autocomplete({
+							source: '${pageContext.request.contextPath}/search/dosearch?cityName=${cityName}'
+					});
+				});
+			});
+	</script>
 </body>
 </html>

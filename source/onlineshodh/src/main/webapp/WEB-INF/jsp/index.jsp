@@ -101,9 +101,13 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<form action="${pageContext.request.contextPath}/search/businesses" method="GET" class="form-inline">
-						
+						<datalist id="cities">
+							<c:forEach var="city" items="${cities}">
+								<option value="${city}"/>
+							</c:forEach>
+						</datalist>
 						<div class="input-group col-md-3 col-xs-12 ">
-						<input id="citysearch" name="cityName" type="text" class="form-control" placeholder="City" />
+						<input id="citysearch1" list="cities" name="cityName" type="text" class="form-control" placeholder="City" />
 						</div>
 						<div class="input-group col-md-7 col-xs-12">
 							<input id="searchid" name="tagName" type="text" class="form-control"

@@ -138,7 +138,7 @@ public class SearchController {
 		List<BusinessDetailsEntity> matchedBusinesses = new ArrayList<BusinessDetailsEntity>();
 		List<BusinessDetailsEntity> matchedCityOnly = new ArrayList<BusinessDetailsEntity>();
 		for (SubCategoryEntity subCat : subCats) {
-			flag = subCat.getSubCategoryName().contains(tagName.trim());
+			flag = tagName.toLowerCase().trim().contains(subCat.getSubCategoryName().toLowerCase().trim());
 			if (flag == true) {
 				subCatId = subCat.getSubCategoryId().longValue();
 				break;
@@ -152,9 +152,9 @@ public class SearchController {
 				String city = b.getAddress().getTown().getCity().getCityName();
 				String town = b.getAddress().getTown().getTownName();
 				String cityTown = city + " (" + town + ")";
-				if (cityTown.equals(cityName))
+				if (cityTown.equalsIgnoreCase(cityName))
 					matchedBusinesses.add(b);
-				else if (cityName.contains(city)) {
+				else if (cityTown.trim().toLowerCase().contains(cityName.trim().toLowerCase())) {
 					matchedCityOnly.add(b);
 				}
 			}
@@ -171,18 +171,14 @@ public class SearchController {
 										.get(0).getSubCategory().getCategory()
 										.getCategoryId()));
 			} else {
-				SubCategoryEntity subCat1 = subCatService
-						.getSubCategory(tagName);
-				System.out.println("in else: " + subCat1.getSubCategoryName()
-						+ ": (" + subCat1.getCategory().getCategoryName());
-				model.addAttribute("subCategory", allCategoryLevelBusinesses
-						.get(0).getSubCategory());
+				/*SubCategoryEntity subCat1 = subCatService
+						.getSubCategory(tagName.trim().toLowerCase());*/
+				allCategoryLevelBusinesses = businessService.getBusinessBySubCategoryId(subCatId);
+				SubCategoryEntity subCatentity = subCatService.getSubCategoryById(subCatId.intValue());
+				model.addAttribute("subCategory", subCatentity);
 				model.addAttribute(
 						"subCategories",
-						subCatService
-								.listSubCategoriesByCategoryId(allCategoryLevelBusinesses
-										.get(0).getSubCategory().getCategory()
-										.getCategoryId()));
+						subCatService.listSubCategoriesByCategoryId(subCatentity.getCategory().getCategoryId()));
 			}
 		} else {
 			businesses = businessService
@@ -203,18 +199,19 @@ public class SearchController {
 				Collections.sort(matchedBusinesses, new BusinessComparator());
 				Collections.sort(matchedCityOnly, new BusinessComparator());
 				matchedBusinesses.addAll(matchedCityOnly);
-				model.addAttribute("subCategory", matchedBusinesses.get(0)
+				model.addAttribute("subCategory", businesses.get(0)
 						.getSubCategory());
 				model.addAttribute(
 						"subCategories",
 						subCatService
-								.listSubCategoriesByCategoryId(matchedBusinesses
+								.listSubCategoriesByCategoryId(businesses
 										.get(0).getSubCategory().getCategory()
 										.getCategoryId()));
 			}
 		}
 		model.addAttribute("cityName", cityName);
 		model.addAttribute("businesses", matchedBusinesses);
+		model.addAttribute("byCategory",false);
 		return "Search_result/Business_listing";
 	}
 
@@ -336,6 +333,7 @@ public class SearchController {
 							.get(0).getSubCategory().getCategory()
 							.getCategoryId()));
 			model.addAttribute("businesses", businesses);
+			model.addAttribute("byCategory",true);
 		}
 		return "Search_result/Business_listing";
 	}

@@ -50,8 +50,8 @@ public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implem
 	@Override
 	public SubCategoryEntity getSubCategory(String subCatName) {
 		em = getEntityManager();
-		String query = "from SubCategoryEntity subcategory where subcategory.subCategoryName = :subCatName";
-		SubCategoryEntity result = em.createQuery(query,SubCategoryEntity.class).setParameter("subCatName",subCatName).getSingleResult();
+		String query = "from SubCategoryEntity subcategory where lower(subcategory.subCategoryName) = :subCatName";
+		SubCategoryEntity result = em.createQuery(query,SubCategoryEntity.class).setParameter("subCatName",subCatName.trim().toLowerCase()).getSingleResult();
 		return result;
 	}
 }
