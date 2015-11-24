@@ -29,4 +29,24 @@ public class FreeListingPhoneServiceImpl implements FreeListingPhoneService {
 		return freeListingPhoneDao.getAllFLBusinessPhonesByBusinessId(businessId);
 	}
 
+	@Override
+	@Transactional
+	public void updateFreeListingPhoneDetails(FreeListingPhoneEntity phoneEntity) {
+	
+		freeListingPhoneDao.updateFreeListingPhoneDetails(phoneEntity);
+		
+	}
+
+	@Override
+	@Transactional
+	public void deletePhone(Long phoneId) {
+		
+		freeListingPhoneDao.deletePhone(phoneId);
+	}
+
+	@Override
+	public FreeListingPhoneEntity getPhoneById(Long phoneId)  {
+		return freeListingPhoneDao.getPhoneById(phoneId);
+	}
+
 }

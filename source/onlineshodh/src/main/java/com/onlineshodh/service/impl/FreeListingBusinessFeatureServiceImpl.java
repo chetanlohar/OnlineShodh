@@ -24,9 +24,32 @@ public class FreeListingBusinessFeatureServiceImpl implements FreeListingBusines
 		freeListingBusinessFeatureDao.saveFreeListingBusinessFeature(businessFeatureEntity);
 	}
 
+	
+	
 	@Override
 	public List<FreeListingBusinessFeatureEntity> getAllFeturesByBusinessID(Long businessId) {
 		return freeListingBusinessFeatureDao.getAllFeturesByBusinessID(businessId);
+	}
+
+	@Override
+	public FreeListingBusinessFeatureEntity getFeature(Long featureId) {
+		
+		return freeListingBusinessFeatureDao.getFeature(featureId);
+	}
+
+
+
+	@Override
+	@Transactional
+	public void updateFLBFeature(FreeListingBusinessFeatureEntity featureEntity) {
+		freeListingBusinessFeatureDao.updateFLBFeature(featureEntity);
+	}
+
+
+
+	@Override
+	public void deleteFLBFeature(Long featureId) {
+		freeListingBusinessFeatureDao.deleteFLBFeature(featureId);
 	}
 
 	

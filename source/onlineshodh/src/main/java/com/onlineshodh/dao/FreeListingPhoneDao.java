@@ -8,7 +8,13 @@ public interface FreeListingPhoneDao {
 	
 	public void saveFreeListingPhoneDetails(FreeListingPhoneEntity phoneEntity);
 
-	List<FreeListingPhoneEntity> getAllFLBusinessPhonesByBusinessId(
+	public List<FreeListingPhoneEntity> getAllFLBusinessPhonesByBusinessId(
 			Long businessId);
+
+	public void updateFreeListingPhoneDetails(FreeListingPhoneEntity phoneEntity);
+	
+	public FreeListingPhoneEntity getPhoneById(Long phoneId);
+	
+	public void deletePhone(Long PhoneId);
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.FreeListingBusinessFeatureDao;
@@ -29,4 +30,24 @@ public class FreeListingBusinessFeatureDaoImpl extends
 		return em.createQuery("from FreeListingBusinessFeatureEntity where business.freelistingbusinessdetailsId=:businessId", FreeListingBusinessFeatureEntity.class)
 				.setParameter("businessId", businessId).getResultList();
 	}
+
+	@Override
+	public FreeListingBusinessFeatureEntity getFeature(Long featureId) {
+		setClazz(FreeListingBusinessFeatureEntity.class);
+		return findOne(featureId);
+	}
+
+	@Override
+	public void updateFLBFeature(FreeListingBusinessFeatureEntity featureEntity) {
+		update(featureEntity);
+	}
+
+	@Override
+	@Transactional
+	public void deleteFLBFeature(Long featureId) {
+		FreeListingBusinessFeatureEntity featureEntity=getFeature(featureId);
+		delete(featureEntity);
+		
+	}
+
 }

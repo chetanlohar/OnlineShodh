@@ -1,7 +1,9 @@
 package com.onlineshodh.controller;
 
 import java.util.List;
+import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -54,20 +56,23 @@ public class FreeListingController {
 
 	@Autowired
 	FreeListingAddressService freeListingAddressService;
-	
+
 	@Autowired
-	FreeListingPhoneService freeListingPhoneService; 
-	
+	FreeListingPhoneService freeListingPhoneService;
+
 	@Autowired
 	FreeListingBusinessFeatureService freeListingBusinessFeatureService;
 
- 	@RequestMapping(value = { "/", "" })
+	private static final Logger logger = Logger
+			.getLogger(FreeListingController.class);
+
+	@RequestMapping(value = { "/", "" })
 	public String freeListing(ModelMap model) {
 		FreeListingBusinessEntity flEntity = context.getBean(
 				"freeListingBusinessEntity", FreeListingBusinessEntity.class);
 		model.addAttribute("flDetails", flEntity);
 		model.addAttribute("categories", categoryService.getAllCategories());
-		return "fl_details_new";
+		return "free listing/fl_details_new";
 	}
 
 	@RequestMapping(value = { "/view/categories", "/view/categories/" }, method = RequestMethod.POST, produces = "application/json")
@@ -110,9 +115,10 @@ public class FreeListingController {
 				.getFeelistingEntityById(freelistingId);
 		System.out.println(" fl business bean " + businessEntity.toString());
 		freeListingAddressEntity.setBusinessEntity(businessEntity);
-		System.out.println(" freelisting address bean before save " + freeListingAddressEntity);
+		System.out.println(" freelisting address bean before save "
+				+ freeListingAddressEntity);
 		model.addAttribute("FreeListing_Address", freeListingAddressEntity);
-		return "fl_address";
+		return "free listing/fl_address_details_new";
 	}
 
 	@RequestMapping(value = "/address/save", method = RequestMethod.POST)
@@ -120,52 +126,184 @@ public class FreeListingController {
 			ModelMap model,
 			@ModelAttribute("FreeListing_Address") FreeListingAddressEntity address,
 			BindingResult result) {
-          Long businessId=address.getBusinessEntity().getFreelistingbusinessdetailsId();
+		Long businessId = address.getBusinessEntity()
+				.getFreelistingbusinessdetailsId();
 		System.out.println(" freelisting address bean " + address);
-		
-		freeListingAddressService.saveFreeListingAddress(address);
-		return "redirect:/freelisting/"+businessId+"/phone";
-	}
-	@RequestMapping(value="/{businessId}/phone",method=RequestMethod.GET)
-	public String phoneDetails(ModelMap model,@PathVariable("businessId")Long businessId){
-		model.addAttribute("freeListingBusiness", freeListingService.getFeelistingEntityById(businessId));
-		model.addAttribute("flphones",freeListingPhoneService.getAllFLBusinessPhonesByBusinessId(businessId));
-		model.addAttribute("flfeatures",freeListingBusinessFeatureService.getAllFeturesByBusinessID(businessId));   
 
-  
-		return "fl_phoneDetails";
+		freeListingAddressService.saveFreeListingAddress(address);
+		return "redirect:/freelisting/" + businessId + "/phone";
 	}
-	@RequestMapping(value="{freelistingbusinessdetailsId}/savephone",method=RequestMethod.POST)
-	public @ResponseBody List<FreeListingPhoneEntity> savePhone(ModelMap model,@RequestParam("phonetype")String phonetype,@RequestParam("contact")String contact,@PathVariable("freelistingbusinessdetailsId")Long freelistingbusinessdetailsId){
-		//model.addAttribute("freeListingBusiness", freeListingService.getFeelistingEntityById(businessId));
-		//return "fl_phoneDetails";
-		System.out.println(" hi am here "+phonetype+" dfsdf"+contact+"freelistingbusinessdetailsId "+freelistingbusinessdetailsId);
-		FreeListingPhoneEntity phoneEntity=context.getBean("freeListingPhoneEntity", FreeListingPhoneEntity.class);
-		phoneEntity.setPhone(contact);
-		phoneEntity.setPhonetype(phonetype);
-		phoneEntity.setFreeListingBusinessEntity(freeListingService.getFeelistingEntityById(freelistingbusinessdetailsId));
-		System.out.println(" Phone Bean "+phoneEntity.toString());
-		freeListingPhoneService.saveFreeListingPhoneDetails(phoneEntity);
-		List<FreeListingPhoneEntity> phoneList =freeListingPhoneService.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
-	   for (FreeListingPhoneEntity entity:phoneList) {
-		System.out.println(" Business Phones: "+entity.getPhone());
-	} 
+
+	@RequestMapping(value = "/{businessId}/phone", method = RequestMethod.GET)
+	public String phoneDetails(ModelMap model,
+			@PathVariable("businessId") Long businessId) {
+		model.addAttribute("freeListingBusiness",
+				freeListingService.getFeelistingEntityById(businessId));
+		model.addAttribute("flphones", freeListingPhoneService
+				.getAllFLBusinessPhonesByBusinessId(businessId));
+		model.addAttribute("flfeatures", freeListingBusinessFeatureService
+				.getAllFeturesByBusinessID(businessId));
+
+		return "free listing/fl_phone_feature_detail";
+	}
+
+	@RequestMapping(value = "{freelistingbusinessdetailsId}/savephone", method = RequestMethod.POST)
+	public @ResponseBody List<FreeListingPhoneEntity> savePhone(
+			ModelMap model,
+			@RequestParam("phonetype") String phonetype,
+			@RequestParam("contact") Long contact,
+			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId) {
+		try {
+			System.out.println(" hi am here " + phonetype + " dfsdf" + contact
+					+ "freelistingbusinessdetailsId "
+					+ freelistingbusinessdetailsId);
+			FreeListingPhoneEntity phoneEntity = context.getBean(
+					"freeListingPhoneEntity", FreeListingPhoneEntity.class);
+			phoneEntity.setPhone(contact.toString());
+			phoneEntity.setPhonetype(phonetype);
+			phoneEntity.setFreeListingBusinessEntity(freeListingService
+					.getFeelistingEntityById(freelistingbusinessdetailsId));
+			System.out.println(" Phone Bean " + phoneEntity.toString());
+			freeListingPhoneService.saveFreeListingPhoneDetails(phoneEntity);
+		} catch (NullPointerException e) {
+             logger.error(e.getMessage());
+		}
+		List<FreeListingPhoneEntity> phoneList = freeListingPhoneService
+				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
+		for (FreeListingPhoneEntity entity : phoneList) {
+			System.out.println(" Business Phones: " + entity.getPhone());
+		}
+
 		return phoneList;
 	}
-	
-	@RequestMapping(value="{freelistingbusinessdetailsId}/savefeature",method=RequestMethod.POST)
-	public @ResponseBody List<FreeListingBusinessFeatureEntity> saveFeature(ModelMap model,@RequestParam("feature")String feature,@PathVariable("freelistingbusinessdetailsId")Long freelistingbusinessdetailsId){
-		System.out.println(" hi am here "+feature+" freelistingbusinessdetailsId "+freelistingbusinessdetailsId);
-		FreeListingBusinessFeatureEntity businessFeatureEntity=context.getBean("freeListingBusinessFeatureEntity",FreeListingBusinessFeatureEntity.class);
-		businessFeatureEntity.setFreelistingBusinessFeature(feature);
-		businessFeatureEntity.setBusiness(freeListingService.getFeelistingEntityById(freelistingbusinessdetailsId));
-		System.out.println(" Feature Entity "+businessFeatureEntity.toString());
-		freeListingBusinessFeatureService.saveFreeListingBusinessFeature(businessFeatureEntity);
-		List<FreeListingBusinessFeatureEntity> fetureList=freeListingBusinessFeatureService.getAllFeturesByBusinessID(freelistingbusinessdetailsId);   
-	    for(FreeListingBusinessFeatureEntity entity:fetureList){
-       System.out.println(" Feature List "+entity.getFreelistingBusinessFeature());	    	
-	    }
-	    return fetureList;
+
+	@RequestMapping(value = "{freelistingbusinessdetailsId}/savefeature", method = RequestMethod.POST)
+	public @ResponseBody List<FreeListingBusinessFeatureEntity> saveFeature(
+			ModelMap model,
+			@RequestParam("feature") String feature,
+			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId) {
+		boolean flag=false;
+		
+		if(feature.equalsIgnoreCase("")||feature.equalsIgnoreCase(null)){
+			logger.info("Feature is Empty");
+			flag=true;
+			
+		}
+		if(flag){
+			logger.info("Feature is Empty");
+		}
+		else{
+		System.out.println(" hi am here " + feature
+				+ " freelistingbusinessdetailsId "
+				+ freelistingbusinessdetailsId);
+		FreeListingBusinessFeatureEntity businessFeatureEntity = context
+				.getBean("freeListingBusinessFeatureEntity",
+						FreeListingBusinessFeatureEntity.class);
+		businessFeatureEntity.setFreelistingBusinessFeature(feature.trim().toUpperCase());
+		businessFeatureEntity.setBusiness(freeListingService
+				.getFeelistingEntityById(freelistingbusinessdetailsId));
+		System.out.println(" Feature Entity "
+				+ businessFeatureEntity.toString());
+		freeListingBusinessFeatureService
+				.saveFreeListingBusinessFeature(businessFeatureEntity);
+		}
+		List<FreeListingBusinessFeatureEntity> fetureList = freeListingBusinessFeatureService
+				.getAllFeturesByBusinessID(freelistingbusinessdetailsId);
+		for (FreeListingBusinessFeatureEntity entity : fetureList) {
+			System.out.println(" Feature List "
+					+ entity.getFreelistingBusinessFeature());
+		}
+		
+		
+		
+		return fetureList;
+	}
+
+	@RequestMapping(value = "/updatephone/{freelistingbusinessdetailsId}/{phoneId}", method = RequestMethod.POST)
+	public @ResponseBody List<FreeListingPhoneEntity> updatePhone(
+			ModelMap model,
+			@RequestParam("phonetype") String phonetype,
+			@RequestParam("contact") Long contact,
+			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId,
+			@PathVariable("phoneId") Long phoneId) {
+
+		FreeListingPhoneEntity phoneEntity = freeListingPhoneService
+				.getPhoneById(phoneId);
+		phoneEntity.setPhone(contact.toString());
+		phoneEntity.setPhonetype(phonetype);
+		System.out.println(" Phone Bean " + phoneEntity.toString());
+		freeListingPhoneService.updateFreeListingPhoneDetails(phoneEntity);
+		List<FreeListingPhoneEntity> phoneList = freeListingPhoneService
+				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
+		for (FreeListingPhoneEntity entity : phoneList) {
+			System.out.println(" Business Phones: " + entity.getPhone());
+		}
+		return phoneList;
+	}
+
+	@RequestMapping(value = "{flBusinessId}/{phoneId}/deletePhone", method = RequestMethod.GET)
+	public String deletePhoneDetails(ModelMap model,
+			@PathVariable("phoneId") Long phoneId,
+			@PathVariable("flBusinessId") Long flBusinessId) {
+		System.out.println(" PhoneId " + phoneId);
+		try {
+			freeListingPhoneService.deletePhone(phoneId);
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+			model.addAttribute("flfeatures", freeListingBusinessFeatureService
+					.getAllFeturesByBusinessID(flBusinessId));
+			model.addAttribute("flphones", freeListingPhoneService
+					.getAllFLBusinessPhonesByBusinessId(flBusinessId));
+		}
+		model.addAttribute("flphones", freeListingPhoneService
+				.getAllFLBusinessPhonesByBusinessId(flBusinessId));
+		/* return "free listing/fl_phone_feature_detail"; */
+		return "redirect:/freelisting/" + flBusinessId + "/phone";
+	}
+
+	@RequestMapping(value = "/updateFeature/{freelistingbusinessdetailsId}/{featureId}", method = RequestMethod.POST)
+	public @ResponseBody List<FreeListingBusinessFeatureEntity> updateFeature(
+			ModelMap model,
+			@RequestParam("feature") String feature,
+			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId,
+			@PathVariable("featureId") Long featureId) {
+		System.out.println("In Update" + feature
+				+ " freelistingbusinessdetailsId "
+				+ freelistingbusinessdetailsId + " feature id " + featureId);
+		FreeListingBusinessFeatureEntity businessFeatureEntity = freeListingBusinessFeatureService
+				.getFeature(featureId);
+		businessFeatureEntity.setFreelistingBusinessFeature(feature.trim().toUpperCase());
+		System.out.println(" Feature Entity "
+				+ businessFeatureEntity.toString());
+		freeListingBusinessFeatureService
+				.updateFLBFeature(businessFeatureEntity);
+		List<FreeListingBusinessFeatureEntity> fetureList = freeListingBusinessFeatureService
+				.getAllFeturesByBusinessID(freelistingbusinessdetailsId);
+		for (FreeListingBusinessFeatureEntity entity : fetureList) {
+			System.out.println(" Feature List "
+					+ entity.getFreelistingBusinessFeature());
+		}
+		return fetureList;
+	}
+
+	@RequestMapping(value = "{flBusinessId}/{featureId}/deleteFeature", method = RequestMethod.GET)
+	public String deleteFeatureDetails(ModelMap model,
+			@PathVariable("featureId") Long featureId,
+			@PathVariable("flBusinessId") Long flBusinessId) {
+		System.out.println(" featureId " + featureId);
+		try {
+			freeListingBusinessFeatureService.deleteFLBFeature(featureId);
+			model.addAttribute("flfeatures", freeListingBusinessFeatureService
+					.getAllFeturesByBusinessID(flBusinessId));
+		} catch (Exception e) {
+			logger.info(e.getMessage());
+			model.addAttribute("flfeatures", freeListingBusinessFeatureService
+					.getAllFeturesByBusinessID(flBusinessId));
+			model.addAttribute("flphones", freeListingPhoneService
+					.getAllFLBusinessPhonesByBusinessId(flBusinessId));
+		}
+		/* return "free listing/fl_phone_feature_detail"; */
+		return "redirect:/freelisting/" + flBusinessId + "/phone";
 	}
 
 }

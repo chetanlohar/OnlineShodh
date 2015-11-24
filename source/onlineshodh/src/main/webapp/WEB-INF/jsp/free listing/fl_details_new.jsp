@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page session="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,16 +22,21 @@
 	rel="stylesheet" />
 
 <!-- tags STYLES-->
-<link href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"  rel="stylesheet" type="text/css"/>
-<link href="${pageContext.request.contextPath}/resources/css/tokenfield-typeahead.min.css" rel="stylesheet" />
-<link href="${pageContext.request.contextPath}/resources/css/bootstrap-tokenfield.min.css" rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/resources/css/jquery-ui.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="${pageContext.request.contextPath}/resources/css/tokenfield-typeahead.min.css"
+	rel="stylesheet" />
+<link
+	href="${pageContext.request.contextPath}/resources/css/bootstrap-tokenfield.min.css"
+	rel="stylesheet" />
 
 
 <style type="text/css">
-body{
-background: #FFB203;
+body {
+	background: #FFB203;
 }
-
 </style>
 
 </head>
@@ -43,7 +51,8 @@ background: #FFB203;
 							alt="onlineshodh" width="70px;" height="40px;" />
 					</div>
 					<div class="col-md-9">
-						<h2 class="free_list_title">List your Business with India's popular Local Search Engine</h2>
+						<h2 class="free_list_title">List your Business with India's
+							popular Local Search Engine</h2>
 
 					</div>
 				</div>
@@ -52,16 +61,20 @@ background: #FFB203;
 				<div class="row">
 					<div class="col-md-12">
 						<div class="new_detail_form">
-							<form action="" id="free_list_first" class="form form-horizontal">
+
+							<form:form method="post" id="free_list_first"
+								class="form form-horizontal"
+								action="${pageContext.request.contextPath}/freelisting/business/save"
+								modelAttribute="flDetails">
 								<div class="space"></div>
 								<div class="col-md-10 space">
 									<label for="company" class="col-sm-3 control-label">Company/business
 										Name</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											name="fr_list_company" id="fr_list_company"
-											class="form-control">
+											class="fa fa-user"></span></span>
+										<form:input path="businessName" name="fr_list_company"
+											id="fr_list_company" class="form-control" />
 									</div>
 								</div>
 								<div class="col-md-10 space">
@@ -69,9 +82,9 @@ background: #FFB203;
 										Name</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-user"></span></span> <input type="text"
-											name="fr_list_person" id="fr_list_person"
-											class="form-control">
+											class="fa fa-user"></span></span>
+										<form:input path="personName" name="fr_list_person"
+											id="fr_list_person" class="form-control" />
 									</div>
 								</div>
 
@@ -80,8 +93,11 @@ background: #FFB203;
 										Id </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-envelope"></span></span> <input type="text"
-											name="fr_list_email" id="fr_list_email" class="form-control">
+											class="fa fa-envelope"></span></span>
+
+										<form:input path="email" name="fr_list_email"
+											id="fr_list_email" class="form-control" />
+
 									</div>
 								</div>
 
@@ -91,22 +107,25 @@ background: #FFB203;
 									</label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
-											class="fa fa-globe"></span></span> <input type="text"
-											name="fr_list_web" id="fr_list_web" class="form-control">
+											class="fa fa-globe"></span></span>
+										<form:input path="website" name="fr_list_web" id="fr_list_web"
+											class="form-control" />
 									</div>
 								</div>
 								<div class="col-md-10 space">
 									<label for="category" class="col-sm-3 control-label">Category
 									</label>
 									<div class="input-group col-md-9">
-										<select class="form-control" name="category">
-											<option value="">category</option>
-											<option value="category">category</option>
-											<option value="category">category</option>
-											<option value="category">category</option>
-											<option value="category">category</option>
-											<option value="category">category</option>
-										</select>
+
+										<form:select path="subCategory.category.categoryId"
+											required="" id="categoryname" name="categoryname"
+											onchange="getSubCategoriesForFreeListing()"
+											class="form-control">
+											<form:option value="0" label="--- Select ---" />
+											<c:forEach var="category" items="${categories}">
+												<form:option value="${category.categoryId}">${category.categoryName}</form:option>
+											</c:forEach>
+										</form:select>
 									</div>
 								</div>
 
@@ -115,14 +134,14 @@ background: #FFB203;
 									<label for="sub-category" class="col-sm-3 control-label">Sub-Category
 									</label>
 									<div class="input-group col-md-9">
-										<select class="form-control" name="subcategory">
-											<option value="">sub-category</option>
-											<option value="category">sub-category</option>
-											<option value="category">sub-category</option>
-											<option value="category">sub-category</option>
-											<option value="category">sub-category</option>
-											<option value="category">sub-category</option>
-										</select>
+										<form:select path="subCategory.subCategoryId"
+											class="form-control" required="" 
+											id="subcategoryname" name="subcategoryname">
+											<form:option value="0" label="--- Select ---" />
+											<c:forEach var="subcategory" items="${subcategories}">
+												<form:option value="${subcategory.subCategoryId}">${subcategory.subCategoryName}</form:option>
+											</c:forEach>
+										</form:select>
 									</div>
 								</div>
 
@@ -130,8 +149,8 @@ background: #FFB203;
 									<label for="person" class="col-sm-3 control-label">Keywords
 									</label>
 									<div class="input-group col-md-9">
-										<input type="text" 
-											class="keyword form-control" id="keyword" name="keyword" />
+										<form:textarea path="keywords" class="keyword form-control"
+											id="keyword" name="keyword" />
 
 									</div>
 								</div>
@@ -140,7 +159,7 @@ background: #FFB203;
 										<i class="fa fa-arrow-circle-o-right"></i> Save & Countinue
 									</button>
 								</div>
-							</form>
+							</form:form>
 
 						</div>
 
@@ -152,45 +171,51 @@ background: #FFB203;
 		</div>
 	</div>
 	<!-- Footer Wrapar Start -->
-		<section id="footer_wrapar" style="margin-top:20%;">
-		<div class="container">
+	<section id="footer_wrapar" style="margin-top:20%;">
+	<div class="container">
 		<div class="row">
-		<div class="col-lg-6 ">
-		<p class="term">
-		<ul>
-		<li><a href="#">About Us</a></li>
-		<li><a href="#">Terms & Conditions</a></li>
-		<li><a href="#">Privacy Policy</a></li>
-		</ul>
-		</p>
-		</div>
-		<div class="col-lg-6">
-		<p class="right_social">
-		<ul>
-		<li><a href="#" class="facebook"><i class=" fa fa-facebook"></i></a></li>
-		<li><a href="#" class="google"><i class=" fa fa-google-plus"></i></a></li>
-		<li><a href="#" class="twitter"><i class=" fa fa-twitter"></i></a></li>
-		<li><a href="#" class="youtube"><i class=" fa fa-youtube"></i></a></li>
-	
-		</ul>
-		
-		</p>
-		
-		</div>
+			<div class="col-lg-6 ">
+				<p class="term">
+				<ul>
+					<li><a href="#">About Us</a></li>
+					<li><a href="#">Terms & Conditions</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
+				</p>
+			</div>
+			<div class="col-lg-6">
+				<p class="right_social">
+				<ul>
+					<li><a href="#" class="facebook"><i
+							class=" fa fa-facebook"></i></a></li>
+					<li><a href="#" class="google"><i
+							class=" fa fa-google-plus"></i></a></li>
+					<li><a href="#" class="twitter"><i class=" fa fa-twitter"></i></a></li>
+					<li><a href="#" class="youtube"><i class=" fa fa-youtube"></i></a></li>
+
+				</ul>
+
+				</p>
+
+			</div>
 		</div>
 		<div class="row bottom-footer">
-		<div class="col-lg-4">
-		<p class="copyright footer-bottom">Copyright &copy; OnlineShodh.Com All Rights Reserved</p>
+			<div class="col-lg-4">
+				<p class="copyright footer-bottom">Copyright &copy;
+					OnlineShodh.Com All Rights Reserved</p>
+			</div>
+			<div class="col-lg-4"></div>
+			<div class="col-lg-4">
+				<p class="designer footer-bottom">
+					Designed By:<a href="#" class="softinfo"> SoftInfoLogy Pvt Ltd.</a>
+				</p>
+			</div>
+
 		</div>
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4">
-		<p class="designer footer-bottom">Designed By:<a href="#" class="softinfo">  SoftInfoLogy Pvt Ltd.</a></p>
-		</div>
-		
-		</div>
-		
-		</div>
-		</section><!-- Footer Wrapar End -->
+
+	</div>
+	</section>
+	<!-- Footer Wrapar End -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
@@ -199,25 +224,34 @@ background: #FFB203;
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 	<!-- FORM VALIDATION SCRIPTS -->
-		 <script
-		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script> 
-		  <script
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/jquery.validate.min.js"></script>
+	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
-		 <script src="${pageContext.request.contextPath}/resources/js/validation/free_listing.js"></script> 
-	
+	<script
+		src="${pageContext.request.contextPath}/resources/js/validation/free_listing.js"></script>
+
 	<!-- keyword SCRIPTS -->
-		<script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/bootstrap-tokenfield.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/bootstrap-tokenfield.min.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#keyword').tokenfield({
-				  autocomplete: {
-				    source: ['computer','travelling','hotel','bus','flight','cargo','hospital','bank','dj'],
-				    delay: 100
-				  },
-				  showAutocompleteOnFocus: true
-				})
-		});
+		$(document).ready(
+				function() {
+					$('#keyword').tokenfield(
+							{
+								autocomplete : {
+									source : [ 'computer', 'travelling',
+											'hotel', 'bus', 'flight', 'cargo',
+											'hospital', 'bank', 'dj' ],
+									delay : 100
+								},
+								showAutocompleteOnFocus : true
+							})
+				});
 	</script>
+	<script type="text/javascript"
+		src="${pageContext.request.contextPath}/resources/js/codejs/viewSubCategory.js"></script>
 </body>
 </html>
