@@ -126,7 +126,7 @@
 						<ul class="list_rel_cat">
 							<li class="rel_head">Related Category</li>
 							<c:forEach var="subCategory" items="${subCategories}">
-								<li><a href="${pageContext.request.contextPath}/search/businesses?cityName=${cityName}&tagName=${subCategory.subCategoryName}">${subCategory.subCategoryName}</a></li>
+								<a href="${pageContext.request.contextPath}/search/businesses?cityName=${cityName}&tagName=${subCategory.subCategoryName}"><li>${subCategory.subCategoryName}</li></a>
 								
 							</c:forEach>
 						</ul>

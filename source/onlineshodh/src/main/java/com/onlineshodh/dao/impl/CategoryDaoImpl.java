@@ -25,12 +25,17 @@ public class CategoryDaoImpl extends AbstractJpaDao<CategoryEntity>implements Ca
 	}
 
 	@Override
-	public void deleteCategory(Integer categoryId) {
+	public void deleteCategoryById(Integer categoryId) {
 		deleteById(categoryId);
 	}
 
 	@Override
 	public CategoryEntity getCategoryById(Integer categoryId) {
 		return findOne(categoryId);
+	}
+
+	@Override
+	public void deleteCategory(CategoryEntity category) {
+		delete(category);
 	}
 }

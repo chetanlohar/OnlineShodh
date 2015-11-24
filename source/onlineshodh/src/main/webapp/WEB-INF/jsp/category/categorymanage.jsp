@@ -392,8 +392,11 @@
 												<c:forEach var="category" items="${categories}">
 												<tr class="odd gradeX">
 													<td>${category.categoryId}</td>
-													<td><img
+													<%-- <td><img
 														src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}"
+														class="img-responsive" width="50px " height="50px;" /></td> --%>
+													<td><img
+														src="${pageContext.request.contextPath}/resources/images/icons/${category.imageFileName}"
 														class="img-responsive" width="50px " height="50px;" /></td>
 													<td>${category.categoryName}</td>
 													<td>${category.categoryDesc}</td>

@@ -1,5 +1,6 @@
 package com.onlineshodh.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,19 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	@Transactional
 	public void deleteCategory(Integer categoryId) {
-		categoryDao.deleteCategory(categoryId);
+		
+		CategoryEntity categoryToDelete = categoryDao.getCategoryById(categoryId);
+		try {
+			File file = new File(categoryToDelete.getPath());
+			if (file.delete()) {
+				System.out.println(file.getName() + " is deleted!");
+			} else {
+				System.out.println("Delete operation is failed.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		categoryDao.deleteCategory(categoryToDelete);
 	}
 
 	@Override

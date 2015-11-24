@@ -133,7 +133,7 @@
 		<div class="container">
 			<!-- Start of Row 1  -->
 			<div class="row">
-				<c:forEach var="category" items="${categories}">
+				<%-- <c:forEach var="category" items="${categories}">
 					<div class="col-sm-1 cat">
 					<div class="row">
 						<div class="col-xs-1 hvr-grow">
@@ -142,18 +142,19 @@
 								</a>
 								<div id="catname">${category.categoryName}</div>
 							</div>
-							<%-- <div class="col-xs-4">
-								<a href="${pageContext.request.contextPath}/search/business/category/91"><img
-									src="${pageContext.request.contextPath}/resources/images/icons/agriculture.png">
+						</div>
+					</div>
+				</c:forEach> --%>
+				<c:forEach var="category" items="${categories}">
+					<div class="col-sm-1 cat">
+					<div class="row">
+						<div class="col-xs-1 hvr-grow">
+								<a href="${pageContext.request.contextPath}/search/business/category/${category.categoryId}">
+									<img src="${pageContext.request.contextPath}/resources/images/icons/${category.imageFileName}">
+									<div id="catname">${category.categoryName}</div>
 								</a>
-								<div id="catname">Agriculture</div>
+								
 							</div>
-							<div class="col-xs-4">
-								<a href="#"><img
-									src="${pageContext.request.contextPath}/resources/images/icons/apparels.png">
-								</a>
-								<div id="catname">Apparels</div>
-							</div> --%>
 						</div>
 					</div>
 				</c:forEach>

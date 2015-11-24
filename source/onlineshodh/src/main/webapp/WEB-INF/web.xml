@@ -22,6 +22,11 @@
 	</context-param>
 	
 	<context-param>
+		<param-name>category_icons</param-name>
+		<param-value>/resources/images/icons</param-value>
+	</context-param>
+	
+	<context-param>
 		<param-name>LuceneIndexFilePath</param-name>
 		<param-value>C:\LuceneIndex\</param-value>
 	</context-param>

@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
@@ -65,6 +64,13 @@ public class CategoryEntity implements Serializable {
 	 */
 	@Column(name="popularity")
 	private Integer popularity;
+	
+	@Column(name="path")
+	private String path;
+	
+	@Column(name="imagefilename")
+	private String imageFileName;
+	
 
 
 	/**
@@ -130,7 +136,6 @@ public class CategoryEntity implements Serializable {
 		this.categoryLogo = categoryLogo;
 	}
 
-
 	/**
 	 * @return the popularity
 	 */
@@ -144,6 +149,36 @@ public class CategoryEntity implements Serializable {
 	 */
 	public void setPopularity(Integer popularity) {
 		this.popularity = popularity;
+	}
+
+	/**
+	 * @return the path
+	 */
+	public String getPath() {
+		return path;
+	}
+
+
+	/**
+	 * @param path the path to set
+	 */
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+
+	/**
+	 * @return the imageFileName
+	 */
+	public String getImageFileName() {
+		return imageFileName;
+	}
+
+	/**
+	 * @param imageFileName the imageFileName to set
+	 */
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
 	}
 
 

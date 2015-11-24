@@ -1,16 +1,19 @@
 package com.onlineshodh.controller;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
-import org.mockito.internal.stubbing.answers.ThrowsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -26,9 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.onlineshodh.entity.BannerEntity;
 import com.onlineshodh.entity.CategoryEntity;
-import com.onlineshodh.entity.PlanEntity;
 import com.onlineshodh.service.CategoryService;
 
 @Controller
@@ -68,7 +69,7 @@ public class CategoryController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveCategory(ModelMap model,
+	public String saveCategory(HttpServletRequest request,ModelMap model,
 			@RequestParam("file") MultipartFile file,
 			@Valid @ModelAttribute("category") CategoryEntity category,
 			BindingResult result) throws IOException {
@@ -94,8 +95,28 @@ public class CategoryController {
 			return "category/categorymanage";
 		else {
 			if (!file.isEmpty()) {
-				byte[] categoryLogo = file.getBytes();
-				category.setCategoryLogo(categoryLogo);
+				String iconsPath = request.getServletContext().getInitParameter(
+						"category_icons");
+				String webapppath = request.getServletContext().getRealPath("/");
+				File iconDir = new File(webapppath+iconsPath);
+				InputStream inputStream = file.getInputStream();
+				String iconFileName = category.getCategoryName().replace(" ", "_")+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+				String iconFilePath = iconDir+"/"+ iconFileName;
+				System.out.println(iconFilePath);
+				OutputStream outputStream = new FileOutputStream(iconFilePath);
+
+				int readBytes = 0;
+				byte[] buffer = new byte[10000];
+				while ((readBytes = inputStream.read(buffer, 0, 10000)) != -1) {
+					outputStream.write(buffer, 0, readBytes);
+				}
+				outputStream.close();
+				inputStream.close();
+				
+				category.setImageFileName(iconFileName);
+				category.setPath(iconFilePath);
+				/*byte[] categoryLogo = file.getBytes();*/
+				category.setCategoryLogo(null);
 			}
 			String categoryName = category.getCategoryName().toUpperCase();
 			category.setCategoryName(categoryName);

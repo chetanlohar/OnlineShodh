@@ -10,9 +10,10 @@ public class MemoryTest {
     public static void main(String[] args){
         
     	
-    	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    	System.out.println(encoder.matches("chetan777", "$2a$10$gW7zqWNxCfGfD4CIciVos.zsThJRyI7JHhtwiE8qFQSH.Q5r9mm9q"));
+    	/*BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    	System.out.println(encoder.matches("chetan777", "$2a$10$gW7zqWNxCfGfD4CIciVos.zsThJRyI7JHhtwiE8qFQSH.Q5r9mm9q"));*/
     	
+    	System.out.println("Chetan.Lohar.jpeg".substring("Chetan.Lohar.jpeg".lastIndexOf(".")));
     	
     	
     	/*System.out.println("KB: " + (double) (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / 1024);

@@ -1,6 +1,7 @@
 package com.onlineshodh.controller;
 
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.IOUtils;
@@ -52,9 +54,23 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value={"/",""})
-	public String showHome(ModelMap model)
+	public String showHome(HttpServletRequest request,ModelMap model)
 	{
+		init();
+		String iconsPath = request.getServletContext().getInitParameter(
+				"category_icons");
+		String webapppath = request.getServletContext().getRealPath("/");
+		List<String> iconList = new ArrayList<String>();
+		File iconDir = new File(webapppath+iconsPath);
+		System.out.println("iconDir: "+iconDir);
+		
+		for (File imageFile : iconDir.listFiles()) {
+			iconList.add(imageFile.getName());
+		}
+		
+		model.addAttribute("icons", iconList);
 		model.addAttribute("categories", categories);
+		
 		SearchController.towns = townService.getAllTowns();
 		SearchController.strTownsWithCity = new ArrayList<String>();
 		for (TownEntity town : SearchController.towns) {

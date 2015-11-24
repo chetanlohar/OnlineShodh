@@ -9,5 +9,6 @@ public interface CategoryDao {
 	public List<CategoryEntity> getAllCategories();
 	public void saveCategory(CategoryEntity category);
 	public CategoryEntity getCategoryById(Integer categoryId);
-	public void deleteCategory(Integer categoryId);
+	public void deleteCategoryById(Integer categoryId);
+	public void deleteCategory(CategoryEntity category);
 }
