@@ -16,7 +16,10 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
-
+	<!-- HOVER ANIMATION STYLES-->
+<link
+	href="${pageContext.request.contextPath}/resources/css/hover-min.css"
+	rel="stylesheet" />
 <!-- CUSTOME STYLES-->
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet" />
@@ -65,7 +68,7 @@
 
 				<ul class="nav navbar-nav navbar-right">
 
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
+					<li class="dropdown"><a href="#" class="dropdown-toggle explore"
 						data-toggle="dropdown" role="button" aria-expanded="false">Explore<span
 							class="caret"></span></a>
 						<ul class="dropdown-menu" role="menu">
@@ -133,7 +136,7 @@
 				<c:forEach var="category" items="${categories}">
 					<div class="col-sm-1 cat">
 					<div class="row">
-						<div class="col-xs-1">
+						<div class="col-xs-1 hvr-grow">
 								<a href="${pageContext.request.contextPath}/search/business/category/${category.categoryId}"><img
 									src="${pageContext.request.contextPath}/categories/load/logo/${category.categoryId}">
 								</a>
@@ -163,32 +166,31 @@
 		<!-- category Wraper End -->
 		
 		<!-- Footer Wrapar Start -->
-		<section id="footer_wrapar">
+		<div id="footer_wrapar">
+		<div class="top-footer">
 		<div class="container">
 		<div class="row">
-		<div class="col-lg-6 ">
-		<p class="term">
-		<ul>
-		<li><a href="#">About Us</a></li>
-		<li><a href="#">Terms & Conditions</a></li>
-		<li><a href="#">Privacy Policy</a></li>
-		</ul>
-		</p>
-		</div>
-		<div class="col-lg-6">
-		<p class="right_social">
-		<ul>
-		<li><a href="#" class="facebook"><i class=" fa fa-facebook"></i></a></li>
-		<li><a href="#" class="google"><i class=" fa fa-google-plus"></i></a></li>
-		<li><a href="#" class="twitter"><i class=" fa fa-twitter"></i></a></li>
-		<li><a href="#" class="youtube"><i class=" fa fa-youtube"></i></a></li>
-	
-		</ul>
-		
-		</p>
-		
+	       <div class="col-lg-6 col-xs-12">
+	       <div class="useful_links">
+	       <a href="#">About Us</a>
+	       <a href="#">Tearm & Conditions</a>
+	       <a href="#">Privacy & Policy</a>
+	       
+	       </div>
+	       </div>
+	       <div class="col-lg-6 col-xs-12">
+	       <ul class="social_link">
+	       <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+	       <li><a href="#" class="google"><i class="fa fa-envelope"></i></a></li>
+	       <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+	       <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
+	       </ul>
+	       
+	       </div>
 		</div>
 		</div>
+		</div>
+		<div class="container">
 		<div class="row bottom-footer">
 		<div class="col-lg-4">
 		<p class="copyright footer-bottom">Copyright &copy; OnlineShodh.Com All Rights Reserved</p>
@@ -201,7 +203,7 @@
 		</div>
 		
 		</div>
-		</section><!-- Footer Wrapar End -->
+		</div><!-- Footer Wrapar End -->
 		<!-- code for modal -->
 		 
 <div class="modal fade freelisting" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" data-backdrop="static">

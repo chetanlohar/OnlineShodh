@@ -211,7 +211,7 @@
 							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"  class="active-menu"> <i class="fa fa-list"></i> List Business
+					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"> <i class="fa fa-list"></i> List Business
 						</a></li>
 
 					</ul></li>

@@ -242,7 +242,11 @@ public class TestController {
 	{
 		return "error/404error";
 	}
-	
+	@RequestMapping(value="/error_search")
+	public String error_search()
+	{
+		return "error/searcherror";
+	}	
 	
 	@RequestMapping(value="/error_500")
 	public String doerror_500()

@@ -26,13 +26,13 @@
 		<!-- search bar and logo -->
 		<div class="container">
 			<div class="row" id="result_head">
-				<div class="col-lg-3 col-md-3">
+				<div class="col-lg-3 col-md-3 col-xs-3">
 					<a href="${pageContext.request.contextPath}/"> <img
 						src="${pageContext.request.contextPath}/resources/images/logo.jpg"
 						class="result_logo" />
 					</a>
 				</div>
-				<div class="col-lg-9 col-md-9">
+				<div class="col-lg-9 col-md-9 col-xs-9">
 					<div class="form_search row">
 						<form action="${pageContext.request.contextPath}/search/businesses" method="GET" class="form-inline">
 							<input type="hidden" name="cityName" value="${cityName}" />
@@ -70,7 +70,7 @@
 		<!-- search result display -->
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-9 col-md-9">
+				<div class="col-lg-9 col-md-9 col-xs-9">
 					<div class="row">
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/">Home</a></li>
@@ -88,11 +88,11 @@
 								<div class="col-lg-12 col-md-12">
 									<div class="search_cnter">
 										<div class="row">
-											<div class="col-lg-4 col-md-4">
+											<div class="col-lg-3 col-md-3 col-xs-4">
 												<img class="product_img"
 													src="${pageContext.request.contextPath}/search/load/logo/${business.businessId}" />
 											</div>
-											<div class="col-lg-8 col-md-8">
+											<div class="col-lg-8 col-md-8 col-xs-8">
 												<h4 class="product_name">
 													<span class="product_brand"><i
 														class="fa fa-thumbs-up "></i></span> <a
@@ -121,7 +121,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3">
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
 					<div class="rel_category">
 						<ul class="list_rel_cat">
 							<li class="rel_head">Related Category</li>
@@ -136,52 +136,46 @@
 
 		</div>
 		<!-- Footer Wrapar Start -->
-		<section id="footer_wrapar">
+		
+		<!-- Footer Wrapar Start -->
+		<div id="footer_wrapar">
+		<div class="top-footer">
 		<div class="container">
-			<div class="row">
-				<div class="col-lg-6 ">
-					<p class="term">
-					<ul>
-						<li><a href="#">About Us</a></li>
-						<li><a href="#">Terms & Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-					</ul>
-					</p>
-				</div>
-				<div class="col-lg-6">
-					<p class="right_social">
-					<ul>
-						<li><a href="#" class="facebook"><i
-								class=" fa fa-facebook"></i></a></li>
-						<li><a href="#" class="google"><i
-								class=" fa fa-google-plus"></i></a></li>
-						<li><a href="#" class="twitter"><i class=" fa fa-twitter"></i></a></li>
-						<li><a href="#" class="youtube"><i class=" fa fa-youtube"></i></a></li>
-
-					</ul>
-
-					</p>
-
-				</div>
-			</div>
-			<div class="row bottom-footer">
-				<div class="col-lg-4">
-					<p class="copyright footer-bottom">Copyright &copy;
-						OnlineShodh.Com All Rights Reserved</p>
-				</div>
-				<div class="col-lg-4"></div>
-				<div class="col-lg-4">
-					<p class="designer footer-bottom">
-						Designed By:<a href="#" class="softinfo"> SoftInfoLogy Pvt
-							Ltd.</a>
-					</p>
-				</div>
-
-			</div>
-
+		<div class="row">
+	       <div class="col-lg-6 col-xs-12">
+	       <div class="useful_links">
+	       <a href="#">About Us</a>
+	       <a href="#">Tearm & Conditions</a>
+	       <a href="#">Privacy & Policy</a>
+	       
+	       </div>
+	       </div>
+	       <div class="col-lg-6 col-xs-12">
+	       <ul class="social_link">
+	       <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+	       <li><a href="#" class="google"><i class="fa fa-envelope"></i></a></li>
+	       <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+	       <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
+	       </ul>
+	       
+	       </div>
 		</div>
-		</section>
-		<!-- Footer Wrapar End -->
+		</div>
+		</div>
+		<div class="container">
+		<div class="row bottom-footer">
+		<div class="col-lg-4">
+		<p class="copyright footer-bottom">Copyright &copy; OnlineShodh.Com All Rights Reserved</p>
+		</div>
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+		<p class="designer footer-bottom">Designed By:<a href="#" class="softinfo">  SoftInfoLogy Pvt Ltd.</a></p>
+		</div>
+		
+		</div>
+		
+		</div>
+		</div><!-- Footer Wrapar End -->
 	</div>
 
 

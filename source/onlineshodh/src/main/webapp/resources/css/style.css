@@ -16,16 +16,12 @@
 /*   03 - Logo Style               */
 /*   04 - Search bar style         */
 /*   05 - Search Result style         */
-
-
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 
 /*=============================== 
 
  01 -General & Basic Style
 ==================================*/
-
-
 body {
 	font-family: 'Raleway', sans-serif;
 	background-color: #fff;
@@ -46,7 +42,7 @@ body {
 	border-color: #ebccd1;
 }
 
-.fl_error{
+.fl_error {
 	color: #a94442;
 	margin-left: 280px;
 }
@@ -75,514 +71,509 @@ body {
 
   02 -Header & Navigation Style
 ==================================*/
-#home_nav{
+#home_nav {
 	width: 100%;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b6ed3+19,2c539e+63,2c539e+69,2c539e+80,2c539e+89,2c539e+91 */
-background: rgb(59,110,211); /* Old browsers */
-/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxOSUiIHN0b3AtY29sb3I9IiMzYjZlZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MyUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2OSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4MCUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4OSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5MSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-background: -moz-linear-gradient(top,  rgba(59,110,211,1) 19%, rgba(44,83,158,1) 63%, rgba(44,83,158,1) 69%, rgba(44,83,158,1) 80%, rgba(44,83,158,1) 89%, rgba(44,83,158,1) 91%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(19%,rgba(59,110,211,1)), color-stop(63%,rgba(44,83,158,1)), color-stop(69%,rgba(44,83,158,1)), color-stop(80%,rgba(44,83,158,1)), color-stop(89%,rgba(44,83,158,1)), color-stop(91%,rgba(44,83,158,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b6ed3', endColorstr='#2c539e',GradientType=0 ); /* IE6-8 */
-	
-	
+	background: rgb(59, 110, 211); /* Old browsers */
 }
 
-#home_nav .home_navbar{
-		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b6ed3+19,2c539e+63,2c539e+69,2c539e+80,2c539e+89,2c539e+91 */
-background: rgb(59,110,211); /* Old browsers */
-/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxOSUiIHN0b3AtY29sb3I9IiMzYjZlZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MyUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2OSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4MCUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4OSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5MSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-background: -moz-linear-gradient(top,  rgba(59,110,211,1) 19%, rgba(44,83,158,1) 63%, rgba(44,83,158,1) 69%, rgba(44,83,158,1) 80%, rgba(44,83,158,1) 89%, rgba(44,83,158,1) 91%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(19%,rgba(59,110,211,1)), color-stop(63%,rgba(44,83,158,1)), color-stop(69%,rgba(44,83,158,1)), color-stop(80%,rgba(44,83,158,1)), color-stop(89%,rgba(44,83,158,1)), color-stop(91%,rgba(44,83,158,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* W3C */
-
-border: 0px;
+#home_nav .home_navbar {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b6ed3+19,2c539e+63,2c539e+69,2c539e+80,2c539e+89,2c539e+91 */
+	background: rgb(59, 110, 211); /* Old browsers */
+	border: 0px;
+}
+.navbar-right .explore{
+	color:#fff !important;
 }
 
 /*=============================== 
 
    03 -Logo  Style
 ==================================*/
-
-#logo_wrapar{
+#logo_wrapar {
 	text-align: center;
 }
-#logo_wrapar .logo_img{
+
+#logo_wrapar .logo_img {
 	width: 25%;
-	
 }
 
 /*=============================== 
 
   04 - SearchBar  Style
 ==================================*/
-
-#search_wraper{
+#search_wraper {
 	width: 100%;
-	margin-top:5%;
-	padding:15px;
-	background:#E9BD07;
-	
+	margin-top: 5%;
+	padding: 15px;
+	background: #E9BD07;
 }
 
-#search_wraper input{
+#search_wraper input {
 	height: 40px;
 	margin: 5px;
 }
+
 #search_wraper button {
 	width: 100%;
 	padding: 12px 50px;
 	margin: 5px;
-    background: #305AAC;
+	background: #305AAC;
+	border-color:#305AAC;
+	border-radius:0px; 
 }
 
-.modal-title{
+.modal-title {
 	font-size: 15px;
 	font-weight: bold;
 }
 
-.navbar-right a{
+.navbar-right a {
 	color: #fff;
+}
+.open{
+	background: #E9BD07 !important;
 }
 /*=============================== 
 
  Category Style
 ==================================*/
-#category{
+#category {
 	width: 100%;
 	margin-top: 30px;
 }
+
 .cat {
 	margin-bottom: 35px;
 }
-.cat img{
-	width: 50px;
-	height: 50px;
-	
+
+.cat:hover{
+	transition:
 }
 
-#catname{
+.cat img {
+	width: 50px;
+	height: 50px;
+}
+
+#catname {
 	font-size: 10px;
 	text-align: center;
 }
-.col-xs-3 img
-{
-   /* box-shadow: 0px 5px 1px #888888;*/
+
+.col-xs-3 img {
+	/* box-shadow: 0px 5px 1px #888888;*/
+	
 }
 
-.col-xs-3 img:hover
-{
-	width:90px;
-   /* box-shadow: 0px 5px 1px #888888;*/
+.col-xs-3 img:hover {
+	width: 90px;
+	/* box-shadow: 0px 5px 1px #888888;*/
 }
 /*
 .col-xs-4 img:hover
 {
 	width:81px;
 }*/
-
-.col-xs-4
-{
-	text-align:center;
+.col-xs-4 {
+	text-align: center;
 }
 
-.col-xs-4 img
-{
-	width:35px;
+.cat .col-xs-4 img {
+	width: 35px;
 }
 
-.col-xs-4 #catname
-{
-	font-size:12px;
-	margin:2px;
+.col-xs-4 #catname {
+	font-size: 12px;
+	margin: 2px;
 	/*font-weight:bold;*/
 }
 
-#center
-{
-	text-align:center;
+#center {
+	text-align: center;
 }
 
-#font12
-{
-	font-size:15px;
+#font12 {
+	font-size: 15px;
 }
 
 /*=============================== 
 
 Search Result Style
 ==================================*/
-.space{
+.space {
 	margin-bottom: 10px;
 }
 
-
-#topbar_line{
+#topbar_line {
 	height: 5px;
 	background: #E2C216;
 }
 
-#result_head{
+#result_head {
 	padding: 8px 0px 0px 0px;
 	text-align: center;
 }
-.result_logo{
-	
+
+.result_logo {
 	width: 150px;
 	height: 80px;
 	vertical-align: middle;
 }
-.form_search{
-	margin-top:15px;
+
+.form_search {
+	margin-top: 15px;
 	padding: 10px 10px;
 	background: #F7D417;
 }
-.form_search .search_input{
+
+.form_search .search_input {
 	height: 40px;
 	width: 85%;
 }
-.search{
+
+.search {
 	padding: 10px 40px;
 }
 
-.banner_img{
-	padding: 8px ;
+.banner_img {
+	padding: 8px;
 }
-.banner_img img{
+
+.banner_img img {
 	width: 100%;
 }
 
-.search_cnter{
-    background: #fff;
-    border: 1px solid #f7f7f7;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-    float: left;
-    margin: 12px 0 0;
-    padding: 15px 15px 10px;
-    width: 100%;
+.search_cnter {
+	background: #fff;
+	border: 1px solid #f7f7f7;
+	box-shadow: 0 2px 2px 4px rgba(255, 216, 8, 1);
+	float: left;
+	margin: 12px 0 0;
+	padding: 15px 15px 10px;
+	width: 100%;
 }
-.search_cnter a,a:hover{
+
+.search_cnter a, a:hover {
 	text-decoration: none;
 }
-.search_cnter p {
-	
-		margin: 15px 10px;
-}
-.search_cnter p span{
 
+.search_cnter p {
+	margin: 15px 10px;
+}
+
+.search_cnter p span {
 	font-size: 16px;
 	margin-left: 8px;
 }
-.product_img{
-	width: 220px;
-	height: 210px;
+
+.product_img {
+	width: 170px;
+	height: 180px;
 }
-.product_brand{
-	padding:5px 8px;
+
+.product_brand {
+	padding: 5px 8px;
 	background: #F7D417;
-	border-radius:50%;
+	border-radius: 50%;
 }
-.product_brand i{
+
+.product_brand i {
 	color: #000;
 }
-.product_name{
+
+.product_name {
 	padding-bottom: 15px;
 	border-bottom: 2px solid blue;
 }
+
 .product_title {
 	text-decoration: none;
 	margin-left: 4px;
 	font-size: 20px;
 }
 
-
 #keywords {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 5px;
-    background-color: #CCCCCC;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	background-color: #CCCCCC;
 }
 
-
-.rel_category{
-	background:#c0c0c0;
+.rel_category {
+	background: #c0c0c0;
 	text-align: center;
 }
-.rel_category .list_rel_cat{
+
+.rel_category .list_rel_cat {
 	list-style: none;
-    overflow: hidden;
-    padding: 5px;
-    cursor: pointer;
+	overflow: hidden;
+	padding: 5px;
+	cursor: pointer;
 }
-.rel_category .list_rel_cat .rel_head{
+
+.rel_category .list_rel_cat .rel_head {
 	margin-top: 10px;
 	padding-bottom: 5px;
 	border-bottom: 2px solid #000;
 	font-size: 16px;
 	font-weight: bold;
-	
 }
-.rel_category .list_rel_cat li{
+
+.rel_category .list_rel_cat li {
 	padding: 5px;
 	border-bottom: 1px dotted #000;
 }
 
-.rel_category .list_rel_cat li:HOVER{
+.rel_category .list_rel_cat li:HOVER {
 	color: yellow;
 	background: skyblue;
-	text-shadow: 1px 0px 1px #000;
+	font-size: 15px;
 }
 
 #businessname {
-    background-color: #F7D417;
-    padding: 10px;
-    margin: 15px auto;
-    box-shadow: 0 0 5px #F7D417;
+	background-color: #F7D417;
+	padding: 10px;
+	margin: 15px auto;
+	box-shadow: 0 0 5px #F7D417;
 }
 
-
-
-
-.breadcrumb
-{
-	margin-top:5px;
-	background-color:#FFFFFF;
+.breadcrumb {
+	margin-top: 5px;
+	background-color: #FFFFFF;
 }
 
-#businessname
-{
-	background-color:#F7D417;
-	//height:100px;	
-	padding:10px;
-	margin-top:15px;
-	box-shadow:0 0 5px #F7D417;
-
+#businessname {
+	background-color: #F7D417; //
+	height: 100px;
+	padding: 10px;
+	margin-top: 15px;
+	box-shadow: 0 0 5px #F7D417;
 }
 
-#businessname h1
-{
-	color:#000099;
-	font-weight:bold;
+#businessname h1 {
+	color: #000099;
+	font-weight: bold;
 }
 
-
-#imageslider
-{
-	margin-top:10px;
-	margin-bottom:10px;
-	
+#imageslider {
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
-#contactinfo
-{
-	margin-top:10px;
-	margin-bottom:10px;
-	border-color:#000000;
-	border-style:solid;
-	border-width:thin;
-	padding:20px;
+#contactinfo {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	border-color: #000000;
+	border-style: solid;
+	border-width: thin;
+	padding: 20px;
 }
 
-#contactinfo #contacts
-{
-	border-left:solid;
-	border-left-color:#000099;
-	border-left-width:medium;
+#contactinfo #contacts {
+	border-left: solid;
+	border-left-color: #000099;
+	border-left-width: medium;
 }
 
-#contactinfo #description
-{
-	text-align:justify;
-	
-	
+#contactinfo #description {
+	text-align: justify;
 }
 
-#personname
-{
-	font-size:18px;
-	color:#0000FF;
-	font-weight:bold;
-	margin:5px;
-	text-transform:uppercase;
+#personname {
+	font-size: 18px;
+	color: #0000FF;
+	font-weight: bold;
+	margin: 5px;
+	text-transform: uppercase;
 }
 
-#addr
-{
-	font-size:16px;
-	margin:5px;
+#addr {
+	font-size: 16px;
+	margin: 5px;
 }
 
-#myh2
-{
-
-	border-bottom-width:medium;
-	border-bottom-style:solid;
-	border-bottom-color:#F7D417;
-	margin-top:50px;
-	margin-bottom:25px;
-	padding-bottom:10px;
-	color:#000099;
-	
+#myh2 {
+	border-bottom-width: medium;
+	border-bottom-style: solid;
+	border-bottom-color: #F7D417;
+	margin-top: 50px;
+	margin-bottom: 25px;
+	padding-bottom: 10px;
+	color: #000099;
 }
 
-.form-control
-{
-	border-radius:0px;
+.form-control {
+	border-radius: 0px;
 }
 
-#generalinformation #gi
-{
-	padding:10px;	
-	
+#generalinformation #gi {
+	padding: 10px;
 }
-
-
 
 /*=============================== 
 
 Free Listing  Style
 ==================================*/
-
 .listing_header {
 	width: 100%;
 	padding: 20px;
-	background:#FFDF00;
+	background: #FFDF00;
 	margin: 15px auto 0px;
 }
 
-.listing_header .free_list_title{
+.listing_header .free_list_title {
 	margin: 0px;
 	color: #fff;
 	font-size: 30px;
-	text-shadow:  -1px 0px 4px rgba(150, 150, 150, 0.8);
+	text-shadow: -1px 0px 4px rgba(150, 150, 150, 0.8);
 }
 
-.list_form_container{
-	box-shadow:0px 0px 1px 0px rgba(150, 150, 150, 1);
+.list_form_container {
+	box-shadow: 0px 0px 1px 0px rgba(150, 150, 150, 1);
 	background: #fff;
 }
-.sub_header{
+
+.sub_header {
 	text-align: center;
 	padding: 5px;
 }
 
-.header_bar{
-	background:#FFDF00 ;
+.header_bar {
+	background: #FFDF00 !important;
 }
-.header_bar .search{
-	border-radius:0px;
+
+.header_bar .search {
+	border-radius: 0px;
 }
-.header_bar .free_list_link{
-	margin-left: 50px ;
+
+.header_bar .free_list_link {
+	margin-left: 50px;
 	line-height: 85px;
 	font-size: 18px;
 	font-weight: bold;
 }
 
-.image_search_wrap{
+.image_search_wrap {
 	border: 2px solid #ccc;
-	
 }
-.img-search{
+
+.img-search {
 	width: 50%;
 	height: 150px;
 	margin: 0px 25%;
-	
 }
-.error_msg{
-	width: 100%;
-    float: left;
-    padding: 16px 15px 8px 15px;
-    margin: 0%;
-    border-bottom: 1px solid #d7d7d7;
-    font-size: 18px;
-    color: #222222;
-    font-weight: bold;
-}
-.search_tip_title:before{
-	    position: absolute; 
-    content: " ";
-    width: 50px;
-    bottom: 15px;
-    margin-left: 0;
-    margin-right: 0;
-    border-bottom: 3px solid #e74c3c;
 
+.error_msg {
+	width: 100%;
+	float: left;
+	padding: 16px 15px 8px 15px;
+	margin: 0%;
+	border-bottom: 1px solid #d7d7d7;
+	font-size: 18px;
+	color: #222222;
+	font-weight: bold;
+}
+
+.srchn {
+	position: absolute;
+	width: 95%;
+	height: 1px;
+	border: 1px dashed #b0b0b0;
+	left: 4%;
+	top: 100%;
+	bottom: 4%;
+}
+
+.srchntor {
+	position: relative;
+	top: -8px;
+	left: 500px;
+	background: #ffffff;
+	color: #f97d22;
+	font-size: 14px;
+	padding: 5px 5px;
 }
 /*=============================== 
 
 Footer Style
 ==================================*/
-#footer_wrapar{
+#footer_wrapar {
 	margin-top: 20px;
-		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3b6ed3+19,2c539e+63,2c539e+69,2c539e+80,2c539e+89,2c539e+91 */
-background: rgb(59,110,211); /* Old browsers */
-/* IE9 SVG, needs conditional override of 'filter' to 'none' */
-background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIxOSUiIHN0b3AtY29sb3I9IiMzYjZlZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2MyUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI2OSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4MCUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI4OSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSI5MSUiIHN0b3AtY29sb3I9IiMyYzUzOWUiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-background: -moz-linear-gradient(top,  rgba(59,110,211,1) 19%, rgba(44,83,158,1) 63%, rgba(44,83,158,1) 69%, rgba(44,83,158,1) 80%, rgba(44,83,158,1) 89%, rgba(44,83,158,1) 91%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(19%,rgba(59,110,211,1)), color-stop(63%,rgba(44,83,158,1)), color-stop(69%,rgba(44,83,158,1)), color-stop(80%,rgba(44,83,158,1)), color-stop(89%,rgba(44,83,158,1)), color-stop(91%,rgba(44,83,158,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(59,110,211,1) 19%,rgba(44,83,158,1) 63%,rgba(44,83,158,1) 69%,rgba(44,83,158,1) 80%,rgba(44,83,158,1) 89%,rgba(44,83,158,1) 91%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b6ed3', endColorstr='#2c539e',GradientType=0 ); /* IE6-8 */
+	background: rgb(59, 110, 211); /* Old browsers */
 	color: #fff;
 }
-#footer_wrapar ul{
+.top-footer{
+	background:rgb(59, 110, 211);
+	border-bottom: 1px dotted #fff;
+}
+.top-footer .useful_links{
+	padding: 10px 0px;
+}
+.top-footer .useful_links a{
+	padding: 5px;
+	color: #fff;
+}
+.top-footer .social_link{
+	padding: 10px 0px;
+	margin-left: 35%;
+}
+
+.top-footer .social_link a{
+	padding:10px;
+	border-radius:50%;
+}
+
+#footer_wrapar ul {
 	list-style: none;
 }
-#footer_wrapar ul li{
+
+#footer_wrapar ul li {
 	list-style: none;
 	display: inline;
 	padding: 5px;
 }
-#footer_wrapar ul li a{
+
+#footer_wrapar ul li a {
 	text-decoration: none;
 	color: #fff;
 	padding: 10px;
 }
 
-#footer_wrapar .facebook{
-	background:#3b5998;
-	padding: 10px 15px;
-	border-radius:5px;
+#footer_wrapar .facebook:hover {
+	color: #3b5998;
+
 }
-#footer_wrapar .google{
-	background: #dd4b39;
-	padding: 10px 15px;
-	border-radius:5px;
+
+#footer_wrapar .google:hover {
+	color: #dd4b39;
+
 }
-#footer_wrapar .twitter{
-	background: #00aced;
-	padding: 10px 15px;
-	border-radius:5px;
+
+#footer_wrapar .twitter:hover {
+	color: #00aced;
+
 }
-#footer_wrapar .youtube{
-	background: #bb0000;
-	padding: 10px 15px;
-	border-radius:5px;
+
+#footer_wrapar .youtube:hover {
+	color: #bb0000;
+	
+
 }
-#footer_wrapar .bottom-footer{
-	border-top: 2px solid yellow;
+
+#footer_wrapar .bottom-footer {
+
 }
-#footer_wrapar .bottom-footer .footer-bottom{
+
+#footer_wrapar .bottom-footer .footer-bottom {
 	margin: 8px 0 8px;
 }
 
-#footer_wrapar .bottom-footer .footer-bottom .softinfo{
-	color: orange;
+#footer_wrapar .bottom-footer .footer-bottom .softinfo {
+	color: yellow;
 }
 
-
 .modal-backdrop {
-  bottom: 0;
-  position: fixed;
+	bottom: 0;
+	position: fixed;
 }
