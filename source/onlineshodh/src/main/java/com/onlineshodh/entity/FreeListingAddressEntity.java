@@ -12,7 +12,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -25,6 +28,8 @@ public class FreeListingAddressEntity implements Serializable {
 	/**
 	 * 
 	 */
+	
+	
 	private static final long serialVersionUID = 1L;
 	@Id
 	@SequenceGenerator(name="pk_fl_address",sequenceName="seq_fl_address_addressid",allocationSize=1)
@@ -32,8 +37,10 @@ public class FreeListingAddressEntity implements Serializable {
 	@Column(name="freelistingbusinessaddressid",nullable=false,unique=true)
 	private Integer fl_AddressId;
 	@Column(name="fl_address")
+	@NotNull(message="mandatory")
 	private String fl_Address;
     @Column(name="fl_street")
+    @NotNull(message="mandatory")
     private String fl_Street;
 	@Column(name="fl_landmark")
 	private String fl_LandMark;
@@ -44,6 +51,7 @@ public class FreeListingAddressEntity implements Serializable {
 	@JoinColumn(name="townId")
 	private TownEntity town;
 	@Column(name="fl_pincode")
+	/*@NotNull(message="mandatory")*/
 	private Integer pincode;
 	@ManyToOne(targetEntity=FreeListingBusinessEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="freelistingbusinessdetailsId")

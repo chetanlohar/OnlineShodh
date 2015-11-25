@@ -347,7 +347,7 @@ body {
 						success : function(response) {
 							/* alert(response) */
 							console.log(response)
-							$('#phoneTable').find('#tbody').remove();
+							$('#phoneTable').find('tbody').remove();
 							jQuery
 									.each(
 											response,
@@ -395,7 +395,7 @@ body {
 						success : function(response) {
 
 							console.log(response)
-							$('#featureTable').find('#tbody').remove();
+							$('#featureTable').find('tbody').remove();
 
 							jQuery
 									.each(

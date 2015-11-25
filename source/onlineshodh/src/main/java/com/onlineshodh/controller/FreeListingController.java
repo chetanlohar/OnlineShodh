@@ -3,11 +3,16 @@ package com.onlineshodh.controller;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.Flags.Flag;
+import javax.swing.text.StyledEditorKit.BoldAction;
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +36,8 @@ import com.onlineshodh.service.FreeListingService;
 import com.onlineshodh.service.SubCategoryService;
 import com.onlineshodh.service.TownService;
 import com.onlineshodh.service.impl.FreeListingAddresServiceImpl;
+import com.onlineshodh.support.validator.FLBusinessValidator;
+import com.onlineshodh.support.validator.FlBusinessAddressValidator;
 
 @Controller
 @RequestMapping(value = "/freelisting")
@@ -63,6 +70,17 @@ public class FreeListingController {
 	@Autowired
 	FreeListingBusinessFeatureService freeListingBusinessFeatureService;
 
+	FLBusinessValidator businessValidator;
+	FlBusinessAddressValidator addressValidator;
+
+	@Autowired
+	public FreeListingController(FLBusinessValidator businessValidator,
+			FlBusinessAddressValidator addressValidator) {
+		super();
+		this.businessValidator = businessValidator;
+		this.addressValidator = addressValidator;
+	}
+
 	private static final Logger logger = Logger
 			.getLogger(FreeListingController.class);
 
@@ -82,14 +100,36 @@ public class FreeListingController {
 				.intValue());
 	}
 
+	@RequestMapping(value = { "/business/save", "" }, method = RequestMethod.GET)
+	public String redirectToFlBusiness() {
+		return "redirect:/freelisting/";
+	}
+
 	@RequestMapping(value = { "/business/save", "" }, method = RequestMethod.POST)
 	public String saveFreeListingBusinessDetails(
-			@ModelAttribute("flDetails") FreeListingBusinessEntity flDetails) {
+			@Valid @ModelAttribute("flDetails") FreeListingBusinessEntity flDetails,
+			ModelMap model, BindingResult result) {
+		boolean flag = false;
 		System.out.println(flDetails);
-		Long freelistingId = freeListingService
-				.saveFreeListingBusinessDetails(flDetails);
-		System.out.println("freelistingId " + freelistingId);
-		return "redirect:/freelisting/address/show/" + freelistingId;
+		businessValidator.validate(flDetails, result);
+
+		if (result.hasErrors()) {
+			List<FieldError> errors = result.getFieldErrors();
+			for (FieldError error : errors) {
+				logger.info(error.getDefaultMessage());
+			}
+			flag = true;
+		}
+		if (flag) {
+			model.addAttribute("categories", categoryService.getAllCategories());
+			return "free listing/fl_details_new";
+		} else {
+			Long freelistingId = freeListingService
+					.saveFreeListingBusinessDetails(flDetails);
+			System.out.println("freelistingId " + freelistingId);
+
+			return "redirect:/freelisting/address/show/" + freelistingId;
+		}
 	}
 
 	@RequestMapping(value = "/showTowns", method = RequestMethod.POST)
@@ -124,16 +164,51 @@ public class FreeListingController {
 	@RequestMapping(value = "/address/save", method = RequestMethod.POST)
 	public String saveFLAddress(
 			ModelMap model,
-			@ModelAttribute("FreeListing_Address") FreeListingAddressEntity address,
+			@Valid@ModelAttribute("FreeListing_Address") FreeListingAddressEntity address,
 			BindingResult result) {
+		boolean flag = false;
+
+		addressValidator.validate(address, result);
+		if(result.hasErrors()){
+			List<FieldError> errors=result.getFieldErrors();
+			System.out.println(" Error Count :"+result.getErrorCount());
+			for(FieldError error:errors){
+				logger.info(error.getDefaultMessage());
+			}
+			
+			flag=true;
+		}
+		
 		Long businessId = address.getBusinessEntity()
 				.getFreelistingbusinessdetailsId();
 		System.out.println(" freelisting address bean " + address);
+         
+		
+		
+		if (flag) {
+			model.addAttribute("cities", cityService.getAllCities());
+			return "free listing/fl_address_details_new";
+		} else {
 
-		freeListingAddressService.saveFreeListingAddress(address);
-		return "redirect:/freelisting/" + businessId + "/phone";
+			//try {
+				freeListingAddressService.saveFreeListingAddress(address);
+			//} catch (Exception e) {
+				//logger.info(e.getMessage());
+				//return "redirect:/freelisting/address/show/" + businessId;
+			//}
+			return "redirect:/freelisting/" + businessId + "/phone";
+		}
 	}
 
+	@RequestMapping(value = "/address/save", method = RequestMethod.GET)
+	public String redirectToAddressShow(){
+		
+		return "redirect:/freelisting";
+		
+	}
+	
+	
+	
 	@RequestMapping(value = "/{businessId}/phone", method = RequestMethod.GET)
 	public String phoneDetails(ModelMap model,
 			@PathVariable("businessId") Long businessId) {
@@ -166,7 +241,9 @@ public class FreeListingController {
 			System.out.println(" Phone Bean " + phoneEntity.toString());
 			freeListingPhoneService.saveFreeListingPhoneDetails(phoneEntity);
 		} catch (NullPointerException e) {
-             logger.error(e.getMessage());
+			logger.error(e.getMessage());
+		} catch (Exception e) {
+			logger.error(e.getMessage());
 		}
 		List<FreeListingPhoneEntity> phoneList = freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
@@ -182,30 +259,30 @@ public class FreeListingController {
 			ModelMap model,
 			@RequestParam("feature") String feature,
 			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId) {
-		boolean flag=false;
-		
-		if(feature.equalsIgnoreCase("")||feature.equalsIgnoreCase(null)){
+		boolean flag = false;
+
+		if (feature.equalsIgnoreCase("") || feature.equalsIgnoreCase(null)) {
 			logger.info("Feature is Empty");
-			flag=true;
-			
+			flag = true;
+
 		}
-		if(flag){
+		if (flag) {
 			logger.info("Feature is Empty");
-		}
-		else{
-		System.out.println(" hi am here " + feature
-				+ " freelistingbusinessdetailsId "
-				+ freelistingbusinessdetailsId);
-		FreeListingBusinessFeatureEntity businessFeatureEntity = context
-				.getBean("freeListingBusinessFeatureEntity",
-						FreeListingBusinessFeatureEntity.class);
-		businessFeatureEntity.setFreelistingBusinessFeature(feature.trim().toUpperCase());
-		businessFeatureEntity.setBusiness(freeListingService
-				.getFeelistingEntityById(freelistingbusinessdetailsId));
-		System.out.println(" Feature Entity "
-				+ businessFeatureEntity.toString());
-		freeListingBusinessFeatureService
-				.saveFreeListingBusinessFeature(businessFeatureEntity);
+		} else {
+			System.out.println(" hi am here " + feature
+					+ " freelistingbusinessdetailsId "
+					+ freelistingbusinessdetailsId);
+			FreeListingBusinessFeatureEntity businessFeatureEntity = context
+					.getBean("freeListingBusinessFeatureEntity",
+							FreeListingBusinessFeatureEntity.class);
+			businessFeatureEntity.setFreelistingBusinessFeature(feature.trim()
+					.toUpperCase());
+			businessFeatureEntity.setBusiness(freeListingService
+					.getFeelistingEntityById(freelistingbusinessdetailsId));
+			System.out.println(" Feature Entity "
+					+ businessFeatureEntity.toString());
+			freeListingBusinessFeatureService
+					.saveFreeListingBusinessFeature(businessFeatureEntity);
 		}
 		List<FreeListingBusinessFeatureEntity> fetureList = freeListingBusinessFeatureService
 				.getAllFeturesByBusinessID(freelistingbusinessdetailsId);
@@ -213,9 +290,7 @@ public class FreeListingController {
 			System.out.println(" Feature List "
 					+ entity.getFreelistingBusinessFeature());
 		}
-		
-		
-		
+
 		return fetureList;
 	}
 
@@ -272,7 +347,8 @@ public class FreeListingController {
 				+ freelistingbusinessdetailsId + " feature id " + featureId);
 		FreeListingBusinessFeatureEntity businessFeatureEntity = freeListingBusinessFeatureService
 				.getFeature(featureId);
-		businessFeatureEntity.setFreelistingBusinessFeature(feature.trim().toUpperCase());
+		businessFeatureEntity.setFreelistingBusinessFeature(feature.trim()
+				.toUpperCase());
 		System.out.println(" Feature Entity "
 				+ businessFeatureEntity.toString());
 		freeListingBusinessFeatureService

@@ -15,6 +15,8 @@ public class FreeListingServiceImpl implements FreeListingService {
 	
 	@Override
 	public Long saveFreeListingBusinessDetails(FreeListingBusinessEntity entity) {
+		String businessName=entity.getBusinessName().toUpperCase();
+		entity.setBusinessName(businessName);
 		return freeListingDao.saveFreeListingBusinessDetails(entity);
 	}
 

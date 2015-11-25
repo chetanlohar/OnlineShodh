@@ -75,6 +75,7 @@ body {
 											class="fa fa-user"></span></span>
 										<form:input path="businessName" name="fr_list_company"
 											id="fr_list_company" class="form-control" />
+										<form:errors path="businessName" cssClass="errors"/>	
 									</div>
 								</div>
 								<div class="col-md-10 space">
@@ -85,6 +86,7 @@ body {
 											class="fa fa-user"></span></span>
 										<form:input path="personName" name="fr_list_person"
 											id="fr_list_person" class="form-control" />
+										<form:errors path="personName" cssClass="errors"/>	
 									</div>
 								</div>
 
@@ -97,7 +99,7 @@ body {
 
 										<form:input path="email" name="fr_list_email"
 											id="fr_list_email" class="form-control" />
-
+										<form:errors path="email" cssClass="errors"/>
 									</div>
 								</div>
 
@@ -110,6 +112,7 @@ body {
 											class="fa fa-globe"></span></span>
 										<form:input path="website" name="fr_list_web" id="fr_list_web"
 											class="form-control" />
+										<form:errors path="website" cssClass="errors"/>	
 									</div>
 								</div>
 								<div class="col-md-10 space">
@@ -126,6 +129,7 @@ body {
 												<form:option value="${category.categoryId}">${category.categoryName}</form:option>
 											</c:forEach>
 										</form:select>
+										<form:errors path="subCategory.category.categoryId" cssClass="errors"/>
 									</div>
 								</div>
 
@@ -142,6 +146,7 @@ body {
 												<form:option value="${subcategory.subCategoryId}">${subcategory.subCategoryName}</form:option>
 											</c:forEach>
 										</form:select>
+										<form:errors path="subCategory.subCategoryId" cssClass="errors"/>
 									</div>
 								</div>
 
@@ -151,6 +156,7 @@ body {
 									<div class="input-group col-md-9">
 										<form:textarea path="keywords" class="keyword form-control"
 											id="keyword" name="keyword" />
+										<form:errors path="keywords" cssClass="errors"/>	
 
 									</div>
 								</div>

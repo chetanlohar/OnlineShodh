@@ -98,7 +98,7 @@ body {
 
 										<form:select path="city.cityId" class="form-control"
 											name="clientcity" id="cityId" onchange="getTown();">
-											<form:option value="">--Select--</form:option>
+											<form:option value="0">--Select--</form:option>
 											<c:forEach var="city" items="${cities}">
 												<form:option value="${city.cityId}">${city.cityName}</form:option>
 											</c:forEach>

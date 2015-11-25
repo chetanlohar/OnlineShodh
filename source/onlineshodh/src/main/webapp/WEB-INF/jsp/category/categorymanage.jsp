@@ -409,7 +409,7 @@
 
 													<td class="center"><a
 														href="${pageContext.request.contextPath}/admin/categories/delete/${category.categoryId}"
-														onclick="confirm('Do you want to Remove Country: ${category.categoryName}')"><button
+														onclick="return confirm('Do you want to Remove Category: ${category.categoryName}')"><button
 																class="btn btn-danger btn-xs">
 																<i class="fa fa-trash"></i> Delete
 															</button></a></td>
