@@ -92,6 +92,11 @@ public class FreeListingController {
 		model.addAttribute("categories", categoryService.getAllCategories());
 		return "free listing/fl_details_new";
 	}
+	
+	@RequestMapping(value = {"/flsucess" })
+	public String sucessOnFreeListing(ModelMap model) {
+		return "free listing/FreeListingSucess";
+	}
 
 	@RequestMapping(value = { "/view/categories", "/view/categories/" }, method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody List<SubCategoryEntity> listCategories(

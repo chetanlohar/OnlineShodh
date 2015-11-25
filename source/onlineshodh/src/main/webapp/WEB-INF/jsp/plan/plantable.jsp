@@ -300,7 +300,7 @@
 											<th>Description</th>
 											<th>Email</th>
 											<th>Contact</th>
-											<th>Enquiry Form</th>
+											<th>Enquiry</th>
 											<th>Information</th>
 											<th>Map</th>
 											<th>Website</th>

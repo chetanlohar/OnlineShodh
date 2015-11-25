@@ -252,14 +252,14 @@
 						class="fa arrow"></span></a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/admin/business/Businessenqury"><i
-						class="fa fa-search "></i>Enquiry</a></li>
+						class="fa fa-search "></i>Enquiry <small class="label pull-middle bg-green">8</small></a></li>
 				<li><a href="#"><i class="fa fa-signal "></i>Logs <span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a></li>
 					</ul></li>
 				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
-						class="fa arrow"></span></a>
+						class="fa arrow"></span><small class="label pull-middle bg-yellow">3</small></a>
 					<ul class="nav nav-second-level">
 						<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
 						</li>

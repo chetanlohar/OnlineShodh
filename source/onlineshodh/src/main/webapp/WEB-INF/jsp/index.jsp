@@ -42,8 +42,8 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" style="color: #FFFFFF" data-toggle="modal"
-					data-target=".freelisting">Free Listing</a>
+				<a class="navbar-brand" style="color: #FFFFFF" 
+					href="${pageContext.request.contextPath}/freelisting/">Free Listing</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->

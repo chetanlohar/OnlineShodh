@@ -423,7 +423,7 @@ footer a:hover, footer a:focus {
 	font-size: 14px;
 	font-weight: 800;
 	color: #080808;
-	text-shadow: 1px 0px 1px red;
+	text-shadow: 1px 0px 1px #ccc;
 }
 
 .plan-table img {

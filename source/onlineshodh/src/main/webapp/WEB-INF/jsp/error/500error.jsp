@@ -56,7 +56,7 @@
 
 						<p>
                 We will work on fixing that right away.
-                Meanwhile, you may <a href="${pageContext.request.contextPath}/admin/home">return to Home</a> or try using the search form.
+                Meanwhile, you may return to Home</a> or try using the search form.
               </p>
 						</div>
 					</div>

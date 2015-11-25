@@ -209,7 +209,7 @@
 					</ul></li>
 
 
-				<li><a href="#"><i class="fa fa-"></i>Business
+				<li><a href="#"><i class="fa fa-briefcase"></i>Business
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a 

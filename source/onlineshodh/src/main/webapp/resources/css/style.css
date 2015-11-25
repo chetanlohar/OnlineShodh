@@ -147,8 +147,8 @@ body {
 	margin-bottom: 35px;
 }
 
-.cat:hover{
-	transition:
+.cat a{
+	color: #000;
 }
 
 .cat img {

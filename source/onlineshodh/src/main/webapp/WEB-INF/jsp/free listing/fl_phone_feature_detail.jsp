@@ -243,7 +243,7 @@ body {
 				<!-- /.row -->
 				<div class="row space">
 					<div class="col-md-5 col-md-offset-5 space">
-						<button type="button" class="btn btn-info">Countinue</button>
+						<a href="${pageContext.request.contextPath}/freelisting/flsucess"><button type="button" class="btn btn-info">Countinue</button></a>
 
 					</div>
 

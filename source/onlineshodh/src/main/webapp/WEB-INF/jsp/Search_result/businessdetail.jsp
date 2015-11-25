@@ -95,13 +95,7 @@
 					<div class="col-lg-12" id="imageslider">
 						<div id="carousel-example-generic" class="carousel slide"
 							data-ride="carousel" data-interval="3000">
-							<!-- Indicators -->
-							<ol class="carousel-indicators">
-								<li data-target="#carousel-example-generic" data-slide-to="0"
-									class="active"></li>
-								<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-								<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-							</ol>
+					
 
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
@@ -340,6 +334,14 @@
 		
 		</div>
 		</div><!-- Footer Wrapar End -->
-
+		
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+	<!-- JQUERY SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+		<script
+		src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
 </body>
 </html>
