@@ -82,7 +82,7 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.html">Online Shodh </a>
+			<a class="navbar-brand" href="${pageContext.request.contextPath}/admin/home">Online Shodh </a>
 		</div>
 
 		<div class="notifications-wrapper">
@@ -225,7 +225,7 @@
 					</ul></li>
 
 
-				<li><a href="#"><i class="fa fa-"></i>Business
+				<li><a href="#"><i class="fa fa-briefcase"></i>Business
 						Management <span class="fa arrow"></span></a>
 					<ul class=" nav nav-second-level">
 						<li><a
