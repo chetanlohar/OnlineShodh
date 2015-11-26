@@ -636,9 +636,9 @@ $('#clientform').validate({
         	minlength: 6
         },
 
-        "clietpass": {
+      confpass: {
             required: true,
-            equalTo:"user.password"
+            equalTo:"#clientpass"
         	
         },
 
@@ -705,10 +705,16 @@ $('#clientform').validate({
     	  "user.userName":"Please Enter Valid Email Id",
     	  "userDetails.name":"Please Enter Valid Name",
     	  
-    	  filec:{
+    	  file:{
     		  required: "This Is Deafault Image Please Select Image",
 	        	extension:"Please select valid image",
 	        		maxfilesize:"File size should be less than 300 KB"
+    	  },
+    	  "user.password":{
+    		  required: "Please enter valid password" 
+    	  },
+    	  confpass:{
+    		  required: "Please enter valid password"
     	  }
      
       },
@@ -802,11 +808,12 @@ $('#clientformupdate').validate({
         "address.pincode": {
             required: true,
             minlength: 6,
-        	maxlength: 6
+        	maxlength: 6,
+        	number:true
         },
         
         file:{
-        	required: true,
+        	
         	extension:"jpg|jpeg|png|bmp",
         	maxfilesize:true
         },
@@ -822,6 +829,11 @@ $('#clientformupdate').validate({
     	  },
     	  "address.city.cityId":{
     		  min:"please Select Valid City Name"
+    	  },
+    	  "address.pincode":{
+    		  required:"Please enter valid pincode",
+    		  minlength:"Please enter valid pincode",
+    		  maxlength:"Please enter valid pincode"
     	  }
      
       },
@@ -886,7 +898,32 @@ $('#bus_conta').validate({
 });
 
 
+$('#busd_feature').validate({
+	 rules: {
+		 features: {
+	 		
+	              required: true
+	              
+	     },
+	     
+	 },
+	   messages:{
+	 
+		   features:"Enter Features",
+		   
+	   },
+	   
+	   highlight: function(element) {
+	       $(element).closest('.space').addClass('has-error');
+	   },
+	   unhighlight: function(element) {
+	       $(element).closest('.space').removeClass('has-error');
+	   },
+	   errorElement: 'span',
+	   errorClass: 'error1',
 
+
+	});
 
 
 

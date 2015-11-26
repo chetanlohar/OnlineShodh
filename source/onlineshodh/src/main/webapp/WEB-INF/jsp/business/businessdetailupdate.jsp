@@ -586,7 +586,7 @@
 								id="busd_feature">
 								<div class="form-group">
 									<label for="Features">Add Features:</label> <input type="text"
-										class="form-control" id="bus_Features" placeholder="Features">
+										class="form-control" id="bus_Features" placeholder="Features" name="features" required >
 								</div>
 								<input type="hidden" id="featureurl"
 									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/feature/save" />

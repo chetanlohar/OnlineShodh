@@ -197,7 +197,7 @@
 					</ul> <!-- /.nav-second-level of location management --></li>
 
 				<li><a href="forms.html"><i class="fa fa-user fa-fw"></i>
-						Client Management<span class="fa arrow"></a>
+						Client Management<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a
 							href="${pageContext.request.contextPath}/admin/clients/">Manage

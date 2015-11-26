@@ -202,8 +202,11 @@ $(document).ready(function() {
 
 				
 			},
-			"clietpin":{
-				required : true
+			pincode:{
+				required : true,
+				minlength:6,
+				maxlength:6,
+				number:true
 			}
 
 		},

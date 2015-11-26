@@ -209,7 +209,7 @@
 							href="${pageContext.request.contextPath}/admin/clients/view/">
 								<i class="fa fa-user-plus"></i> Add Business
 						</a></li>
-					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness"  class="active-menu"> <i class="fa fa-list"></i> List Business
+					<li><a href="${pageContext.request.contextPath}/admin/business/getAllBusiness" > <i class="fa fa-list"></i> List Business
 						</a></li>
 
 					</ul></li>
@@ -440,9 +440,17 @@
 									<div class="fileinput fileinput-new" data-provides="fileinput">
 										<div class="fileinput-preview thumbnail"
 											data-trigger="fileinput" style="width: 200px; height: 150px;">
-											<img
-												src="${pageContext.request.contextPath}/admin/business/load/logo/${businessdetail.businessId}"
+											
+											<c:if test="${empty businessdetail.businessId}">
+												<img
+												src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
 												alt="...">
+
+											</c:if>
+											<c:if test="${not empty businessdetail.businessId}">
+												<img src="${pageContext.request.contextPath}/admin/business/load/logo/${businessdetail.businessId}"	alt="...">
+											</c:if>
+											<%-- <img src="${pageContext.request.contextPath}/admin/business/load/logo/${businessdetail.businessId}"	alt="..."> --%>
 
 										</div>
 										<div>

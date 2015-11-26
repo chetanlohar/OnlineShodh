@@ -23,7 +23,7 @@ $(document).ready(function(){
 	        
 	        "name": {
 	        	 required: true,
-	        	 CustEmail:true
+	        	
 	            
 	        },
 	        
