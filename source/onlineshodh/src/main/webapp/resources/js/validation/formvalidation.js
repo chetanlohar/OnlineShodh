@@ -618,10 +618,16 @@ $.validator.addMethod(
 	    'The file size can not exceed 300KB.'
 	);
 
+jQuery.validator.addMethod("CustEmail", function(value, element) {
+ 	 
+	  return this.optional( element ) || /^([a-zA-Z0-9_\-])+(\.([a-zA-Z0-9_\-])+)*@((\[(((([0-1])?([0-9])?[0-9])|(2[0-4][0-9])|(2[0-5][0-5])))\.(((([0-1])?([0-9])?[0-9])|(2[0-4][0-9])|(2[0-5][0-5])))\.(((([0-1])?([0-9])?[0-9])|(2[0-4][0-9])|(2[0-5][0-5])))\.(((([0-1])?([0-9])?[0-9])|(2[0-4][0-9])|(2[0-5][0-5]))\]))|((([a-zA-Z0-9])+(([\-])+([a-zA-Z0-9])+)*\.)+([a-zA-Z])+(([\-])+([a-zA-Z0-9])+)*))$/.test( value );
+	}, 'Please enter a valid email address.');
+
+
 $('#clientform').validate({
     rules: {
     	"user.userName": {
-    		email:true,
+    		 CustEmail:true,
             required: true
         },
         

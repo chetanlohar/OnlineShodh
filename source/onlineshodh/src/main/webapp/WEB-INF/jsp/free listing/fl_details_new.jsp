@@ -35,7 +35,12 @@
 
 <style type="text/css">
 body {
-	background: #FFB203;
+	background: #FFF;
+}
+
+#footer_wrapar{
+margin-top: 14%;
+
 }
 </style>
 
@@ -176,52 +181,45 @@ body {
 			</div>
 		</div>
 	</div>
-	<!-- Footer Wrapar Start -->
-	<section id="footer_wrapar" style="margin-top:20%;">
-	<div class="container">
+			<!-- Footer Wrapar Start -->
+		<div id="footer_wrapar">
+		<div class="top-footer">
+		<div class="container">
 		<div class="row">
-			<div class="col-lg-6 ">
-				<p class="term">
-				<ul>
-					<li><a href="#">About Us</a></li>
-					<li><a href="#">Terms & Conditions</a></li>
-					<li><a href="#">Privacy Policy</a></li>
-				</ul>
-				</p>
-			</div>
-			<div class="col-lg-6">
-				<p class="right_social">
-				<ul>
-					<li><a href="#" class="facebook"><i
-							class=" fa fa-facebook"></i></a></li>
-					<li><a href="#" class="google"><i
-							class=" fa fa-google-plus"></i></a></li>
-					<li><a href="#" class="twitter"><i class=" fa fa-twitter"></i></a></li>
-					<li><a href="#" class="youtube"><i class=" fa fa-youtube"></i></a></li>
-
-				</ul>
-
-				</p>
-
-			</div>
+	       <div class="col-lg-6 col-xs-12">
+	       <div class="useful_links">
+	       <a href="#">About Us</a>
+	       <a href="#">Tearm & Conditions</a>
+	       <a href="#">Privacy & Policy</a>
+	       
+	       </div>
+	       </div>
+	       <div class="col-lg-6 col-xs-12">
+	       <ul class="social_link">
+	       <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+	       <li><a href="#" class="google"><i class="fa fa-envelope"></i></a></li>
+	       <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+	       <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
+	       </ul>
+	       
+	       </div>
 		</div>
+		</div>
+		</div>
+		<div class="container">
 		<div class="row bottom-footer">
-			<div class="col-lg-4">
-				<p class="copyright footer-bottom">Copyright &copy;
-					OnlineShodh.Com All Rights Reserved</p>
-			</div>
-			<div class="col-lg-4"></div>
-			<div class="col-lg-4">
-				<p class="designer footer-bottom">
-					Designed By:<a href="#" class="softinfo"> SoftInfoLogy Pvt Ltd.</a>
-				</p>
-			</div>
-
+		<div class="col-lg-4">
+		<p class="copyright footer-bottom">Copyright &copy; OnlineShodh.Com All Rights Reserved</p>
 		</div>
-
-	</div>
-	</section>
-	<!-- Footer Wrapar End -->
+		<div class="col-lg-4"></div>
+		<div class="col-lg-4">
+		<p class="designer footer-bottom">Designed By:<a href="#" class="softinfo">  SoftInfoLogy Pvt Ltd.</a></p>
+		</div>
+		
+		</div>
+		
+		</div>
+		</div><!-- Footer Wrapar End -->
 	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
 	<script
