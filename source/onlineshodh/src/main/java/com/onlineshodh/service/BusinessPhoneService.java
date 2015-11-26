@@ -16,4 +16,5 @@ public interface BusinessPhoneService {
 	
 	public BusinessPhoneEntity getBusinessPhoneDetails(Long businessPhoneId);
 
+	public BusinessPhoneEntity getBusinessPhoneByPhoneId(Long phoneId);
 }

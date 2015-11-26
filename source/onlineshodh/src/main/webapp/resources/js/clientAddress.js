@@ -10,7 +10,7 @@ function getTown() {
 			"cityId" : cityId
 		},
 		success : function(response) {
-			alert(response)
+			/*alert(response)*/
 			console.log(response)
 
 			

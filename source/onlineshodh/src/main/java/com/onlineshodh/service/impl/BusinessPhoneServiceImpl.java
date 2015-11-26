@@ -45,6 +45,11 @@ public class BusinessPhoneServiceImpl implements BusinessPhoneService {
 		return null;
 	}
 
+	@Override
+	public BusinessPhoneEntity getBusinessPhoneByPhoneId(Long phoneId) {
+		return businessphoneDao.getBusinessPhoneByPhoneId(phoneId);
+	}
+
 	
 
 }

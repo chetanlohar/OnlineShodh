@@ -266,7 +266,7 @@ public class ClientController {
 			flag = true;
 			logger.info(error.getDefaultMessage());
 		}
-		if (!userDetails.getPhone2().matches(regex)
+		/*if (!userDetails.getPhone2().matches(regex)
 				&& userDetails.getPhone2() != "") {
 			FieldError error = new FieldError("clientdetails",
 					"userDetails.phone2", onlyDigits);
@@ -274,7 +274,7 @@ public class ClientController {
 			System.out.println(" not selected " + error.getDefaultMessage());
 			flag = true;
 			logger.info(error.getDefaultMessage());
-		}
+		}*/
 
 		System.out.println(" Addres Enity " + addressEntity);
 

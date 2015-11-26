@@ -43,6 +43,13 @@ public class BusinessPhoneDaoImpl extends AbstractJpaDao<BusinessPhoneEntity> im
 		return findOne(businessPhoneId);
 	}
 
+	@Override
+	public BusinessPhoneEntity getBusinessPhoneByPhoneId(Long phoneId) {
+	setClazz(BusinessPhoneEntity.class);
+	System.out.println(" Business Phone Entity "+findOne(phoneId));
+	return findOne(phoneId);
+	}
+
 	
 
 }

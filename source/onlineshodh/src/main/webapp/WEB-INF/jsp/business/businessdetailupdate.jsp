@@ -539,6 +539,8 @@
 								<input type="hidden" id="phoneurl"
 									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" />
 								<%-- <a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" class="bd_contact"> --%>
+								<input type="hidden" id="phoneurl1"
+									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/update/" />
 								<button type="button" id="phonebutton"
 									class="btn btn-success b_contact">Add</button>
 								<button type="reset" class="btn btn-danger">Cancel</button>

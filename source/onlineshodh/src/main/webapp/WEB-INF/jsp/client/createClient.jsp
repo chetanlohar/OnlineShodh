@@ -359,7 +359,7 @@
 
 										<form:input path="userDetails.phone2"
 											class="form-control mobile-number" name="clietphone2" />
-										<form:errors path="userDetails.phone2" cssClass="errors" />
+										<%-- <form:errors path="userDetails.phone2" cssClass="errors" /> --%>
 
 									</div>
 								</div>

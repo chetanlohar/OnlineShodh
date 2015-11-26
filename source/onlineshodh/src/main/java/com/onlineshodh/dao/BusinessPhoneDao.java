@@ -15,5 +15,7 @@ public interface BusinessPhoneDao {
 	public List<BusinessPhoneEntity> getAllBusinessPhoneDetails();
 	
 	public BusinessPhoneEntity getBusinessPhoneDetails(Long businessPhoneId);
+	
+	public BusinessPhoneEntity getBusinessPhoneByPhoneId(Long phoneId);
 
 }

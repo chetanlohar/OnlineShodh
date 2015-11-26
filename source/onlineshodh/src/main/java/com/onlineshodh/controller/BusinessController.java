@@ -429,6 +429,37 @@ public class BusinessController {
 			System.out.println(b.getPhone());
 		return l;
 	}
+	
+	
+	@RequestMapping(value = "/{businessId}/phone/update/{phoneId}", method = RequestMethod.POST, produces = "application/json")
+	public void updateBusinessPhoneDetails(
+			@PathVariable("businessId") Long businessId,
+			@RequestParam("businessPhone") Long businessPhone, @RequestParam("phonetype") String phonetype,@PathVariable("phoneId")Long phoneId) {
+		//try{
+		/*BusinessDetailsEntity business = businessService
+				.getBusinessDetails(businessId);*/
+		System.out.println("In update");	
+		BusinessPhoneEntity businesPhoneEntity = businessPhoneService.getBusinessPhoneByPhoneId(phoneId);
+		System.out.println(" yes here "+phoneId+" business phone Entity"+businesPhoneEntity);
+		businesPhoneEntity.setPhone(businessPhone.toString());
+		businesPhoneEntity.setPhonetype(phonetype);
+		/*businesPhoneEntity.setBusiness(business);*/
+		
+		businessPhoneService.updateBusinessPhoneDetails(businesPhoneEntity);
+		
+		//}catch(NullPointerException e){
+			//System.out.println(e.getLocalizedMessage());
+		//}
+		/*List<BusinessPhoneEntity> l = businessPhoneService
+				.getBusinessPhoneDetailByBusinessId(businessId);
+		for (BusinessPhoneEntity b : l)
+			System.out.println(b.getPhone());
+		return l;*/
+	}
+	
+	
+	
+	
 
 	@RequestMapping(value = "/{businessId}/feature/save", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody List<BusinessGeneralInfoEntity> saveBusinessGeneralInfo(

@@ -2,9 +2,13 @@
 
    
 ========================================================  */           
+var flag = false;
+var flag1 = false;
 
 $(document).ready(function () {
 
+	
+	
     /*====================================
            METIS MENU 
      ======================================*/
@@ -42,10 +46,13 @@ $(document).ready(function(){
 */	
 	$(".upcontact").on('click',function(e){
 	var valc =$(this).parent().siblings(":nth-child(2)").text()
+	var valcid=$(this).parent().siblings(":nth-child(1)").text()
+	var url2=$('#phoneurl1').val()
+	$('#phoneurl1').val(url2+valcid)
      $("#bdetail_contact").val(valc);
 	
     $("#phonebutton").html('Update');
-	
+	flag=true;
 	});
 	
 	
@@ -91,13 +98,23 @@ $(document).ready(function(){
 	 var n=0;
 	  
 	  $('#phonebutton').click(function(e){
-          var url = $('#phoneurl').val();
+		  alert("dsada")
+		  var phurl;
+			if (flag==true) {
+				
+				phurl = $('#phoneurl1').val();
+			} else {
+				phurl = $("#phoneurl").val();
+			}
+           
+          
           var contact = $('#bdetail_contact').val();
           var phonetype = $('#bdetail_phonetype').val();
           $("#phonebutton").html('Add');
+          alert(phurl)
 	      $.ajax({
 	    	type: "POST",
-	        url:url,
+	        url:phurl,
 	        dataType:"json",
 	        timeout:5000,
 	        data:{
