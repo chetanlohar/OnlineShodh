@@ -418,6 +418,9 @@ public class BusinessController {
 		businesPhoneEntity.setPhonetype(phonetype);
 		businesPhoneEntity.setBusiness(business);
 		businessPhoneService.saveBusinessPhoneDetails(businesPhoneEntity);
+		}catch(NullPointerException e){
+			System.out.println(e.getLocalizedMessage());
+		}
 		List<BusinessPhoneEntity> l = businessPhoneService
 				.getBusinessPhoneDetailByBusinessId(businessId);
 		for (BusinessPhoneEntity b : l)
