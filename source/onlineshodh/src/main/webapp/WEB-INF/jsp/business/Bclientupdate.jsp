@@ -232,7 +232,7 @@
 					</ul></li>
 
 
-				<li><a href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i class="fa fa-photo "></i>Advt. Banner<span
+				<li><a href="${pageContext.request.contextPath}/admin/banners/showBanners"><i class="fa fa-photo "></i>Advt. Banner<span
 						class="fa arrow"></span></a>
 
 					<ul class="nav nav-second-level">

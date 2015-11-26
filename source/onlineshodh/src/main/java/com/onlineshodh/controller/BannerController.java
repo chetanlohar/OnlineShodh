@@ -140,7 +140,7 @@ public class BannerController {
 	}
 	
 	
-	@RequestMapping(value="/getAllBanners",method=RequestMethod.GET)
+	@RequestMapping(value="/showBanners",method=RequestMethod.GET)
 	public String ListAllBanners(ModelMap model){
 		
 	   model.addAttribute("banners", bannerService.getAllBanners());

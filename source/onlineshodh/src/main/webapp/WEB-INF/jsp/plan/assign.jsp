@@ -243,7 +243,7 @@
 							href="${pageContext.request.contextPath}/admin/banners"><i
 								class="fa fa-cogs "></i>Add New Advt. Banner</a></li>
 						<li><a
-							href="${pageContext.request.contextPath}/admin/banners/getAllBanners"><i
+							href="${pageContext.request.contextPath}/admin/banners/showBanners"><i
 								class="fa fa-bullhorn "></i>List All Advt. Banner</a></li>
 					</ul></li>
 

@@ -409,6 +409,7 @@ public class BusinessController {
 	public @ResponseBody List<BusinessPhoneEntity> saveBusinessPhoneDetails(
 			@PathVariable("businessId") Long businessId,
 			@RequestParam("businessPhone") Long businessPhone, @RequestParam("phonetype") String phonetype) {
+		try{
 		BusinessDetailsEntity business = businessService
 				.getBusinessDetails(businessId);
 		BusinessPhoneEntity businesPhoneEntity = context.getBean(

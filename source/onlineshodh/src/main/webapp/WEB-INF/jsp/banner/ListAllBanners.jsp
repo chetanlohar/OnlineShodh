@@ -370,8 +370,8 @@
 												<th>URL Link</th>
 												<th>Total Hits</th>
 												<th>Status</th>
-												<!-- <th>Edit</th>
-												<th>Delete</th> -->
+												<th>Edit</th>
+												<th>Delete</th> 
 
 											</tr>
 										</thead>
@@ -395,7 +395,7 @@
 													<td>${banner.status}</td>
 
 
-													<%-- <td><a
+													 <td><a
 														href="${pageContext.request.contextPath}/admin/banners/edit/${banner.bannerId}"
 														class="edit"><button class="btn btn-info btn-xs">
 																<i class="fa fa-pencil"></i> Edit
@@ -405,7 +405,7 @@
 														onclick="return confirm('Do you want to Remove Banner: ${banner.bannerId}')"><button
 																class="btn btn-danger btn-xs">
 																<i class="fa fa-trash"></i> Delete
-															</button> </a></td> --%>
+															</button> </a></td> 
 											</tr>
 
 											</c:forEach>
