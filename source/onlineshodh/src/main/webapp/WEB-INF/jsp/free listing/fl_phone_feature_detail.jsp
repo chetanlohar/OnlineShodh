@@ -173,7 +173,7 @@ body {
 
 								<div class="col-md-2 space">
 
-									<button type="button" class="btn btn-info"
+									<button type="button" class="btn btn-info flfeatures"
 										onclick="addFeature()">
 										<i class="fa fa-plus-circle"></i> Add
 									</button>
@@ -445,6 +445,7 @@ body {
 								$("#feature").val(valfeature);
 								/* $("#feature").val(valfeatureid) */
 								$("#featureurl1").val(url2 + valfeatureid)
+								$(".flfeatures").html('Update');
 								flag1 = true;
 							});
 				});

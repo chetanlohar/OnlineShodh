@@ -97,6 +97,8 @@ public class BusinessController {
 	BusinessDetailsValidator businessDetailsValidator;
 
 	BusinessAddressValidator businessAddressValidator;
+	
+	
 
 	@Autowired
 	public BusinessController(
@@ -432,6 +434,16 @@ public class BusinessController {
 	public @ResponseBody List<BusinessGeneralInfoEntity> saveBusinessGeneralInfo(
 			@PathVariable("businessId") Long businessId,
 			@RequestParam("generalInfo") String generalInfo) {
+		boolean flag = false;
+
+		if (generalInfo.equalsIgnoreCase("") || generalInfo.equalsIgnoreCase(null)) {
+			/*logger.info("Feature is Empty");*/
+			flag = true;
+
+		}
+		if (flag) {
+			/*logger.info("Feature is Empty");*/
+		} else {
 		BusinessDetailsEntity business = businessService
 				.getBusinessDetails(businessId);
 		BusinessGeneralInfoEntity entity = context.getBean(
@@ -439,6 +451,7 @@ public class BusinessController {
 		entity.setGeneralInfoName(generalInfo);
 		entity.setBusiness(business);
 		businessGeneralInfoService.saveBusinessGeneralInfo(entity);
+		}
 		List<BusinessGeneralInfoEntity> l = businessGeneralInfoService
 				.getBusinessGeneralInfoByBusinessId(businessId);
 		for (BusinessGeneralInfoEntity b : l)

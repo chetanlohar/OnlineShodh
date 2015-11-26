@@ -306,15 +306,19 @@ public class FreeListingController {
 			@RequestParam("contact") Long contact,
 			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId,
 			@PathVariable("phoneId") Long phoneId) {
-
+try{
 		FreeListingPhoneEntity phoneEntity = freeListingPhoneService
 				.getPhoneById(phoneId);
 		phoneEntity.setPhone(contact.toString());
 		phoneEntity.setPhonetype(phonetype);
 		System.out.println(" Phone Bean " + phoneEntity.toString());
 		freeListingPhoneService.updateFreeListingPhoneDetails(phoneEntity);
+}catch(NullPointerException e){
+	logger.info(e.getLocalizedMessage());
+}
 		List<FreeListingPhoneEntity> phoneList = freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
+
 		for (FreeListingPhoneEntity entity : phoneList) {
 			System.out.println(" Business Phones: " + entity.getPhone());
 		}
@@ -347,6 +351,16 @@ public class FreeListingController {
 			@RequestParam("feature") String feature,
 			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId,
 			@PathVariable("featureId") Long featureId) {
+		boolean flag = false;
+
+		if (feature.equalsIgnoreCase("") || feature.equalsIgnoreCase(null)) {
+			logger.info("Feature is Empty");
+			flag = true;
+
+		}
+		if (flag) {
+			logger.info("Feature is Empty");
+		} else {
 		System.out.println("In Update" + feature
 				+ " freelistingbusinessdetailsId "
 				+ freelistingbusinessdetailsId + " feature id " + featureId);
@@ -358,6 +372,7 @@ public class FreeListingController {
 				+ businessFeatureEntity.toString());
 		freeListingBusinessFeatureService
 				.updateFLBFeature(businessFeatureEntity);
+		}
 		List<FreeListingBusinessFeatureEntity> fetureList = freeListingBusinessFeatureService
 				.getAllFeturesByBusinessID(freelistingbusinessdetailsId);
 		for (FreeListingBusinessFeatureEntity entity : fetureList) {

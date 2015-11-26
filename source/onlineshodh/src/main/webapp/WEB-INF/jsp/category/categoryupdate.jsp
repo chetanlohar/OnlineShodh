@@ -324,9 +324,9 @@
 								<div class="fileinput fileinput-new" data-provides="fileinput">
 									<div class="fileinput-preview thumbnail"
 										data-trigger="fileinput" style="width: 200px; height: 150px;">
-										<img
-											src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}"
-											id="categorylogo" height="50" width="50" />
+										<%-- <img src="${pageContext.request.contextPath}/admin/categories/load/logo/${category.categoryId}" id="categorylogo" height="50" width="50" /> --%>
+										<img src="${pageContext.request.contextPath}/resources/images/icons/${category.imageFileName}" id="categorylogo" height="50" width="50" />
+										
 
 									</div>
 									<div>
