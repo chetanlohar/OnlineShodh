@@ -494,6 +494,11 @@ Free Listing  Style
 	font-size: 14px;
 	padding: 5px 5px;
 }
+
+.modal-header{
+	background-color: #db8b0b !important;
+	color: #fff;
+}
 /*=============================== 
 
 Footer Style

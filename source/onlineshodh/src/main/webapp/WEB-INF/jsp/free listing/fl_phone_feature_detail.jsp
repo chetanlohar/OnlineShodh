@@ -81,7 +81,7 @@ body {
 
 								<div class="col-md-2 space">
 
-									<button type="button" class="btn btn-info" id="phonebutton"
+									<button type="button" class="btn btn-info flcontact" id="phonebutton"
 										onclick="addPhone()">
 										<i class="fa fa-plus-circle"></i> Add
 									</button>
@@ -109,7 +109,7 @@ body {
 							<!-- /.panel-heading -->
 							<div class="panel-body">
 								<div class="dataTable_wrapper table-responsive">
-									<table class="table table-striped table-bordered table-hover"
+									<table class="table table-striped table-bordered phoneTable table-hover"
 										id="phoneTable">
 										<thead>
 											<tr>
@@ -243,7 +243,7 @@ body {
 				<!-- /.row -->
 				<div class="row space">
 					<div class="col-md-5 col-md-offset-5 space">
-						<a href="${pageContext.request.contextPath}/freelisting/flsucess"><button type="button" class="btn btn-info">Countinue</button></a>
+						<a  data-toggle="modal" data-target="#myModal" href="<%-- ${pageContext.request.contextPath}/freelisting/flsucess --%>"><button type="button" class="btn btn-info" >Countinue</button></a>
 
 					</div>
 
@@ -291,6 +291,27 @@ body {
 		
 		</div>
 		</div><!-- Footer Wrapar End -->
+		
+		
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Business Listing Success</h4>
+      </div>
+      <div class="modal-body">
+       <p class="text-center">You Just have to verify your listing and it will be Dispaly on ONLINESHODH.COM </p>
+        <p class="text-center">
+       <button class="btn btn-info">Get verification Code</button>
+       </p>
+       <p class="text-center">The Verification Code Will be sent on your Registerd contact number </p>
+      </div>
+
+    </div>
+  </div>
+</div>
 		
 			<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 	<!-- JQUERY SCRIPTS -->
@@ -341,22 +362,20 @@ body {
 						success : function(response) {
 							/* alert(response) */
 							console.log(response)
-							$('#phoneTable').find('tbody').remove();
-							jQuery
-									.each(
-											response,
-											function(index, item) {
-
-												var newRow = jQuery('<tr><td>'
+							$('.phoneTable tr').find('tbody').remove();
+							jQuery.each(response,function(index, item) {
+								
+								$('.phoneTable tbody').append('<tr class="child"><td>'+this.freeBuinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete<button></a></td><td>Verify</td></tr>');
+												/* var newRow = jQuery('<tr><td>'
 														+ item.freeBuinessPhoneId
 														+ '</td><td>'
 														+ item.phone
 														+ '</td><td>'
 														+ item.phonetype
-														+ '</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone">Delete</a></td><td>Verify</td></tr>')
+														+ '</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete<button></a></td><td>Verify</td></tr>')
 
 												jQuery('#phoneTable')
-														.append(newRow);
+														.append(newRow); */
 											});
 
 						},
@@ -400,7 +419,7 @@ body {
 														+ item.freelistingBusinessFeatureId
 														+ '</td><td>'
 														+ item.freelistingBusinessFeature
-														+ '</td><td><button class="EditFeature btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.business.freelistingbusinessdetailsId+'/'+item.freelistingBusinessFeatureId+'/deleteFeature">Delete</a></td></tr>')
+														+ '</td><td><button class="EditFeature btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.business.freelistingbusinessdetailsId+'/'+item.freelistingBusinessFeatureId+'/deleteFeature"><button class="btn btn-xs btn-danger">Delete</button></a></td></tr>')
 												jQuery('#featureTable').append(
 														newRow);
 											});
@@ -415,7 +434,7 @@ body {
 		$(document).ready(function() {
 
 			$(".upcontact").on('click', function(e) {
-
+				
 				flag = true;
 
 				var valp = $(this).parent().siblings(":nth-child(2)").text()
@@ -432,11 +451,14 @@ body {
 	<script type="text/javascript">
 		$(document).ready(
 				function() {
-
+					
+					$(".flfeatures,.flcontact").on('click', function(e) {
+						location.reload();
+					});
 					$(".EditFeature").on(
 							'click',
 							function(e) {
-
+								
 								var valfeature = $(this).parent().siblings(
 										":nth-child(2)").text()
 								var valfeatureid = $(this).parent().siblings(
