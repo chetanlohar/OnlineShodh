@@ -70,7 +70,7 @@ body {
 								</div>
 								<div class="col-md-4 space">
 									<label for="street" class="col-sm-3 control-label">Contact
-									</label>
+									</label><c:out value="${alreadyexistexception}" />
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-phone"></span></span> <input type="text"
@@ -134,7 +134,7 @@ body {
 													<td><button class="upcontact btn-info btn-xs">Edit</button></td>
 
 													<td><a
-														href="${pageContext.request.contextPath}/freelisting/${freeListingBusiness.freelistingbusinessdetailsId}/${phones.freeBuinessPhoneId}/deletePhone">Delete</a></td>
+														href="${pageContext.request.contextPath}/freelisting/${freeListingBusiness.freelistingbusinessdetailsId}/${phones.freeBuinessPhoneId}/deletePhone"><button class="btn btn-xs btn-danger">Delete</button></a></td>
 													<td><a href="#">Verify</a></td>
 												</tr>
 											</c:forEach>
@@ -224,7 +224,7 @@ body {
 													<td><button class="EditFeature btn-info btn-xs">Edit</button></td>
 													<td>
 													<a
-														href="${pageContext.request.contextPath}/freelisting/${freeListingBusiness.freelistingbusinessdetailsId}/${features.freelistingBusinessFeatureId}/deleteFeature">Delete</a></td>
+														href="${pageContext.request.contextPath}/freelisting/${freeListingBusiness.freelistingbusinessdetailsId}/${features.freelistingBusinessFeatureId}/deleteFeature"><button class="btn btn-xs btn-danger">Delete</button></a></td>
 												</tr>
 											</c:forEach>
 
@@ -341,15 +341,19 @@ body {
 		<script type="text/javascript">
 		var flag = false;
 		var flag1 = false;
+		var phUrl;
 
 		function addPhone() {
 			var phoneurl;
 			if (flag == true) {
 
-				phoneurl = $('#phoneurl1').val();
+				phoneurl=phUrl;
+				/* phoneurl = $("#phoneurl1").val(); */
 			} else {
 				phoneurl = $("#phoneurl").val();
 			}
+			alert(phoneurl)
+			$("#phonebutton").html('Add');
 			$
 					.ajax({
 						type : "POST",
@@ -360,23 +364,29 @@ body {
 							"contact" : $('#contact').val(),
 						},
 						success : function(response) {
-							/* alert(response) */
+							 alert(response) 
 							console.log(response)
-							$('.phoneTable tr').find('tbody').remove();
+							$('#phoneTable').find('tbody').remove();
 							jQuery.each(response,function(index, item) {
 								
-								$('.phoneTable tbody').append('<tr class="child"><td>'+this.freeBuinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete<button></a></td><td>Verify</td></tr>');
-												/* var newRow = jQuery('<tr><td>'
+								/* $('.phoneTable tbody').append('<tr class="child"><td>'+this.freeBuinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete<button></a></td><td>Verify</td></tr>'); */
+												 var newRow = jQuery('<tr><td>'
 														+ item.freeBuinessPhoneId
 														+ '</td><td>'
 														+ item.phone
 														+ '</td><td>'
 														+ item.phonetype
-														+ '</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete<button></a></td><td>Verify</td></tr>')
+														+ '</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete</button></a></td><td>Verify</td></tr>')
 
 												jQuery('#phoneTable')
-														.append(newRow); */
+														.append(newRow); 
 											});
+							
+								 
+								flag=false;
+								 $('#contact').val('');
+								//location.reload(); 
+							  
 
 						},
 						error : function(error) {
@@ -396,7 +406,7 @@ body {
 			} else {
 				url = $('#featureurl').val();
 			}
-
+			$(".flfeatures").html('Add');
 			$
 					.ajax({
 						type : "POST",
@@ -423,6 +433,8 @@ body {
 												jQuery('#featureTable').append(
 														newRow);
 											});
+							
+							$('#feature').val('');
 						},
 						error : function(error) {
 							console.log(error)
@@ -433,7 +445,7 @@ body {
 
 		$(document).ready(function() {
 
-			$(".upcontact").on('click', function(e) {
+			$("#phoneTable").on('click','.upcontact', function() {
 				
 				flag = true;
 
@@ -441,7 +453,9 @@ body {
 				var valpid = $(this).parent().siblings(":nth-child(1)").text()
 				$("#contact").val(valp);
 				var url1 = $("#phoneurl1").val();
-				$("#phoneurl1").val(url1 + valpid);
+				phUrl=url1 + valpid;
+				alert(phUrl)
+				/* $("#phoneurl1").val(url1 + valpid); */
 
 				$("#phonebutton").html('Update');
 
@@ -449,14 +463,15 @@ body {
 		});
 	</script>
 	<script type="text/javascript">
+	
+ 	 /* $(".flfeatures,.flcontact").on('click', function(e) {
+		location.reload();
+	}); */   
 		$(document).ready(
 				function() {
-					
-					$(".flfeatures,.flcontact").on('click', function(e) {
-						location.reload();
-					});
-					$(".EditFeature").on(
-							'click',
+				 
+					$("#featureTable").on(
+							'click', '.EditFeature',
 							function(e) {
 								
 								var valfeature = $(this).parent().siblings(

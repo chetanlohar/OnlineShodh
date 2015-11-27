@@ -4,11 +4,15 @@ import java.util.List;
 import java.util.Map;
 
 import javax.mail.Flags.Flag;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.text.StyledEditorKit.BoldAction;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -305,7 +309,9 @@ public class FreeListingController {
 			@RequestParam("phonetype") String phonetype,
 			@RequestParam("contact") Long contact,
 			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId,
-			@PathVariable("phoneId") Long phoneId) {
+			@PathVariable("phoneId") Long phoneId,HttpServletRequest request,HttpServletResponse response) {
+		HttpSession session= request.getSession();
+		boolean flag=false;
 try{
 		FreeListingPhoneEntity phoneEntity = freeListingPhoneService
 				.getPhoneById(phoneId);
@@ -315,6 +321,9 @@ try{
 		freeListingPhoneService.updateFreeListingPhoneDetails(phoneEntity);
 }catch(NullPointerException e){
 	logger.info(e.getLocalizedMessage());
+}catch(DataIntegrityViolationException exception){
+	flag=true;
+    
 }
 		List<FreeListingPhoneEntity> phoneList = freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
@@ -322,6 +331,12 @@ try{
 		for (FreeListingPhoneEntity entity : phoneList) {
 			System.out.println(" Business Phones: " + entity.getPhone());
 		}
+		if(flag==true){
+			session.setAttribute("alreadyexistexception","Already Exist");
+		}else{
+			
+		}
+		
 		return phoneList;
 	}
 
