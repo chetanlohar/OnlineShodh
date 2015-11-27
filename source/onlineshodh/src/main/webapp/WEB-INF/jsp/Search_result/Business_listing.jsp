@@ -11,6 +11,9 @@
 <link
 	href="${pageContext.request.contextPath}/resources/css/bootstrap.css"
 	rel="stylesheet" />
+	<!-- slider STYLES-->
+<link href="${pageContext.request.contextPath}/resources/css/owl-carousal.css"
+	rel="stylesheet" />
 <!-- FONTAWESOME ICONS STYLES-->
 <link
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
@@ -18,6 +21,8 @@
 <!-- PAGE STYLES-->
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet" />
+	
+	
 </head>
 <body>
 	<div id="result_container">
@@ -34,10 +39,13 @@
 				</div>
 				<div class="col-lg-9 col-md-9 col-xs-9">
 					<div class="form_search row">
-						<form action="${pageContext.request.contextPath}/search/businesses" method="GET" class="form-inline">
-							<input type="hidden" name="cityName" value="${cityName}" />
-							<input id="searchid" name="tagName" type="text" class="search_input col-lg-8 col-xs-10 "
-								placeholder="Serach For Hotels,Taxis,Movies and Much More"/>
+						<form
+							action="${pageContext.request.contextPath}/search/businesses"
+							method="GET" class="form-inline">
+							<input type="hidden" name="cityName" value="${cityName}" /> <input
+								id="searchid" name="tagName" type="text"
+								class="search_input col-lg-8 col-xs-10 "
+								placeholder="Serach For Hotels,Taxis,Movies and Much More" />
 
 							<button class="btn-lg btn btn-info " type="submit">
 								<i class="fa fa-search "></i>
@@ -57,8 +65,25 @@
 			<div class="row">
 				<div class="col-lg-12 banner_img">
 
-					<img
-						src="${pageContext.request.contextPath}/resources/images/ad.jpg" />
+
+					<div id="owl-demo" class="owl-carousel owl-theme">
+
+						<div class="item">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/hotel.jpg" />
+						</div>
+						<div class="item">
+							<img
+								src="${pageContext.request.contextPath}/resources/images/ad.jpg" />
+						</div>
+						<div class="item">
+						
+							<img
+								src="${pageContext.request.contextPath}/resources/images/ad.jpg" />
+						</div>
+
+					</div>
+
 
 				</div>
 
@@ -74,14 +99,15 @@
 					<div class="row">
 						<ol class="breadcrumb">
 							<li><a href="${pageContext.request.contextPath}/">Home</a></li>
-							<li><a href="${pageContext.request.contextPath}/search/business/category/${subCategory.category.categoryId}/city/${cityName}">${subCategory.category.categoryName}</a></li>
+							<li><a
+								href="${pageContext.request.contextPath}/search/business/category/${subCategory.category.categoryId}/city/${cityName}">${subCategory.category.categoryName}</a></li>
 							<c:if test="${byCategory eq false}">
 								<li class="active">${subCategory.subCategoryName}</li>
 							</c:if>
 						</ol>
 					</div>
-					
-					
+
+
 					<div id="pageStuff" class="nav nav-tabs nav-stacked">
 						<c:forEach var="business" items="${businesses}">
 							<div class="row">
@@ -101,11 +127,13 @@
 													</a>
 												</h4>
 												<p class="product_location">
-													<i class="fa fa-map-marker fa-2x"></i><span>${business.address.address} , ${business.address.street}, ${business.address.town.city.cityName}, ${business.address.town.townName}</span>
+													<i class="fa fa-map-marker fa-2x"></i><span>${business.address.address}
+														, ${business.address.street},
+														${business.address.town.city.cityName},
+														${business.address.town.townName}</span>
 												</p>
-												<p class="product_contact">	<i class="fa fa-phone-square fa-2x"></i>
-												
-													<span>+918600249455</span>
+												<p class="product_contact">
+													<i class="fa fa-phone-square fa-2x"></i> <span>+918600249455</span>
 													<span>+91 8600249455</span>
 												</p>
 											</div>
@@ -126,8 +154,9 @@
 						<ul class="list_rel_cat">
 							<li class="rel_head">Related Category</li>
 							<c:forEach var="subCategory" items="${subCategories}">
-								<a href="${pageContext.request.contextPath}/search/businesses?cityName=${cityName}&tagName=${subCategory.subCategoryName}"><li>${subCategory.subCategoryName}</li></a>
-								
+								<a
+									href="${pageContext.request.contextPath}/search/businesses?cityName=${cityName}&tagName=${subCategory.subCategoryName}"><li>${subCategory.subCategoryName}</li></a>
+
 							</c:forEach>
 						</ul>
 					</div>
@@ -136,46 +165,54 @@
 
 		</div>
 		<!-- Footer Wrapar Start -->
-		
+
 		<!-- Footer Wrapar Start -->
 		<div id="footer_wrapar">
-		<div class="top-footer">
-		<div class="container">
-		<div class="row">
-	       <div class="col-lg-6 col-xs-12">
-	       <div class="useful_links">
-	       <a href="#">About Us</a>
-	       <a href="#">Tearm & Conditions</a>
-	       <a href="#">Privacy & Policy</a>
-	       
-	       </div>
-	       </div>
-	       <div class="col-lg-6 col-xs-12">
-	       <ul class="social_link">
-	       <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-	       <li><a href="#" class="google"><i class="fa fa-envelope"></i></a></li>
-	       <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-	       <li><a href="#" class="youtube"><i class="fa fa-youtube"></i></a></li>
-	       </ul>
-	       
-	       </div>
+			<div class="top-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-6 col-xs-12">
+							<div class="useful_links">
+								<a href="#">About Us</a> <a href="#">Tearm & Conditions</a> <a
+									href="#">Privacy & Policy</a>
+
+							</div>
+						</div>
+						<div class="col-lg-6 col-xs-12">
+							<ul class="social_link">
+								<li><a href="#" class="facebook"><i
+										class="fa fa-facebook"></i></a></li>
+								<li><a href="#" class="google"><i
+										class="fa fa-envelope"></i></a></li>
+								<li><a href="#" class="twitter"><i
+										class="fa fa-twitter"></i></a></li>
+								<li><a href="#" class="youtube"><i
+										class="fa fa-youtube"></i></a></li>
+							</ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="row bottom-footer">
+					<div class="col-lg-4">
+						<p class="copyright footer-bottom">Copyright &copy;
+							OnlineShodh.Com All Rights Reserved</p>
+					</div>
+					<div class="col-lg-4"></div>
+					<div class="col-lg-4">
+						<p class="designer footer-bottom">
+							Designed By:<a href="#" class="softinfo"> SoftInfoLogy Pvt
+								Ltd.</a>
+						</p>
+					</div>
+
+				</div>
+
+			</div>
 		</div>
-		</div>
-		</div>
-		<div class="container">
-		<div class="row bottom-footer">
-		<div class="col-lg-4">
-		<p class="copyright footer-bottom">Copyright &copy; OnlineShodh.Com All Rights Reserved</p>
-		</div>
-		<div class="col-lg-4"></div>
-		<div class="col-lg-4">
-		<p class="designer footer-bottom">Designed By:<a href="#" class="softinfo">  SoftInfoLogy Pvt Ltd.</a></p>
-		</div>
-		
-		</div>
-		
-		</div>
-		</div><!-- Footer Wrapar End -->
+		<!-- Footer Wrapar End -->
 	</div>
 
 
@@ -183,11 +220,41 @@
 	<!-- JQUERY SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/jquery-1.11.1.js"></script>
-		<script
+	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
 	<!-- BOOTSTRAP SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
+		
+			<!-- BOOTSTRAP SCRIPTS -->
+	<script
+		src="${pageContext.request.contextPath}/resources/js/owl.carousel.min.js"></script>
+		
+		
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$(document).ready(function() {
+				 
+				  $("#owl-demo").owlCarousel({
+					   autoPlay: 3000,
+				      navigation : false, // Show next and prev buttons
+				      slideSpeed : 300,
+				      paginationSpeed : 1000,
+				      singleItem:true
+				    
+				 
+				     
+				 
+				  });
+				 
+				});
+			
+			
+		});
+		
+		</script>
+		
+		<!-- Pagination Script-->
 	<script type="text/javascript">
 		$(document)
 				.ready(
@@ -246,14 +313,22 @@
 						});
 	</script>
 	<script>
-			$(document).ready(function() {
-				console.log("in auto_complete..path: ${pageContext.request.contextPath}");
-				$("#searchid").on("keyup",function(){
-					 $( "#searchid" ).autocomplete({
-							source: '${pageContext.request.contextPath}/search/dosearch?cityName=${cityName}'
-					});
-				});
-			});
+		$(document)
+				.ready(
+						function() {
+							console
+									.log("in auto_complete..path: ${pageContext.request.contextPath}");
+							$("#searchid")
+									.on(
+											"keyup",
+											function() {
+												$("#searchid")
+														.autocomplete(
+																{
+																	source : '${pageContext.request.contextPath}/search/dosearch?cityName=${cityName}'
+																});
+											});
+						});
 	</script>
 </body>
 </html>

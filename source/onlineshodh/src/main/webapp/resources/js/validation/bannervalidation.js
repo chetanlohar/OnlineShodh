@@ -4,6 +4,11 @@
 	 ===========================*/
 
 $(document).ready(function(){	
+	
+	  $.validator.addMethod("endDate", function(value, element) {
+          var startDate = $('.startDate').val();
+          return Date.parse(startDate) <= Date.parse(value) || value == "";
+      }, "* End date must be after start date");
 
 	$('#managebanner').validate({
 		
@@ -41,7 +46,7 @@ $(document).ready(function(){
 		        
 		        "expiryDate":{
 		        	required: true,
-		        	greaterThan: "#StartDate" 
+		        	
 		        },
 		        
 		        "regDate":{
@@ -144,7 +149,7 @@ $(document).ready(function(){
 		    },
 		    'The file size can not exceed 300KB.'
 		);
-	$.validator.addMethod("greaterThan", 
+/*	$.validator.addMethod("greaterThan", 
 			function(value, element, params) {
 
 			    if (!/Invalid|NaN/.test(new Date(value))) {
@@ -155,7 +160,7 @@ $(document).ready(function(){
 			        || (Number(value) > Number($(params).val())); 
 			},'Must be greater than {0}.');
 	
-	$("#expiryDate").rules('add', { greaterThan: "#startDate" });
+	$("#expiryDate").rules('add', { greaterThan: "#startDate" });*/
 	
 
 	
@@ -294,39 +299,6 @@ $(document).ready(function(){
 		
 		
 	});
-	
-	
-	
-	jQuery.validator.addMethod("lettersonly", function(value, element) {
-		  return this.optional(element) || /^[a-z," "]+$/i.test(value);
-		}, "Letters only please"); 
-	jQuery.validator.addMethod("validurl", function(value, element) {
-		  return this.optional(element) || /^(https?|s?ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(value);
-		}, "Valid Url only please"); 
-
-	$.validator.addMethod(
-		    "maxfilesize",
-		    function (value, element) {
-		        return this.optional(element) || (element.files && element.files[0]
-		                               && element.files[0].size < 1024  * 300);
-		    },
-		    'The file size can not exceed 300KB.'
-		);
-
-	
-	$.validator.addMethod("greaterThan", 
-			function(value, element, params) {
-
-			    if (!/Invalid|NaN/.test(new Date(value))) {
-			        return new Date(value) > new Date($(params).val());
-			    }
-
-			    return isNaN(value) && isNaN($(params).val()) 
-			        || (Number(value) > Number($(params).val())); 
-			},'Must be greater than {0}.');
-	
-	$("#expiryDate").rules('add', { greaterThan: "#startDate" });
-	
 	
 	
 

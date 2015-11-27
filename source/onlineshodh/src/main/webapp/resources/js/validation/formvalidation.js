@@ -159,7 +159,8 @@ $(document).ready(function(){
 	        },
 	        subCategoryName:{
 	        	 required: true,
-	        	 minlength:5
+	        	 minlength:5,
+	        	 lettersonly:true
 	        },
 	       
 	        subCategoryDesc:{
@@ -180,7 +181,8 @@ $(document).ready(function(){
 	    	  },
 	    	  subCategoryName:{
 	    		  required:"Please enter sub category name",
-	    		  minlength:"Please enter minimum 5 charcters"
+	    		  minlength:"Please enter minimum 5 charcters",
+	    		  lettersonly:"Please enter valid sub category name"
 	    	  },
 	    	  subCategoryDesc:{
 	    		  required:"Please enter category description",
@@ -233,7 +235,8 @@ $(document).ready(function(){
 	  	        },
 	  	        subCategoryName:{
 	  	        	 required: true,
-	  	        	 minlength:5
+	  	        	 minlength:5,
+	  	        	 lettersonly:true
 	  	        },
 	  	       
 	  	        subCategoryDesc:{
@@ -254,11 +257,13 @@ $(document).ready(function(){
 	  	    	  },
 	  	    	  subCategoryName:{
 	  	    		  required:"Please enter sub category name",
-	  	    		  minlength:"Please enter minimum 5 charcters"
+	  	    		  minlength:"Please enter minimum 5 charcters",
+	  	    		 lettersonly:"Please enter valid sub category name"
 	  	    	  },
 	  	    	  subCategoryDesc:{
 	  	    		  required:"Please enter category description",
 	  	    		  minlength:"Please enter few more description"
+	  	    		 
 	  	    	  },
 	  	    	  file:{
 	  	    		  
@@ -643,14 +648,16 @@ $('#clientform').validate({
         },
 
         "userDetails.name": {
-        	 required: true
+        	 required: true,
+        	 lettersonly:true
             
         },
         
         "userDetails.phone1":{
         	required: true,
         	minlength: 10,
-        	maxlength: 10
+        	maxlength: 10,
+        	number:true
 
 
         },
@@ -691,7 +698,8 @@ $('#clientform').validate({
         "address.pincode": {
             required: true,
            minlength:6,
-           maxlength: 6
+           maxlength: 6,
+           number:true
         },
         
         file:{
@@ -769,7 +777,8 @@ $('#clientformupdate').validate({
         "phone1":{
         	required: true,
         	minlength: 10,
-        	maxlength: 10
+        	maxlength: 10,
+        	number:true
 
 
         },

@@ -387,12 +387,12 @@
 
 							</div>
 						</div>
-						<div class="col-lg-7  space">
+						<div class="col-lg-10  space">
 							<label for="banner" class="col-sm-2 control-label">Banner</label>
-							<div class="fileinput fileinput-new col-lg-offset-1"
+							<div class="fileinput fileinput-new col-lg-10"
 								data-provides="fileinput">
 								<div class="fileinput-preview thumbnail"
-									data-trigger="fileinput" style="width: 200px; height: 150px;">
+									data-trigger="fileinput" style="width: 100%; height: 110px;">
 									<img id="bannerLogo"
 										src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
 										height="50" width="50" />
@@ -433,8 +433,8 @@
 								<span class="input-group-addon"><span
 									class="fa fa-calendar"></span></span>
 
-								<form:input path="startDate" class="form-control"
-									name="startdate" id="StartDate" />
+								<form:input path="startDate" class="form-control startDate"
+									name="startdate" id="StartDate1" />
 								<form:errors path="startDate" cssClass="errors" />
 
 							</div>
@@ -446,8 +446,8 @@
 								<span class="input-group-addon"><span
 									class="fa fa-calendar"></span></span>
 
-								<form:input path="expiryDate" class="form-control"
-									name="Expirydate" id="expiryDate" />
+								<form:input path="expiryDate" class="form-control endDate"
+									name="Expirydate" id="expiryDate1" />
 								<form:errors path="expiryDate" cssClass="errors" />
 							</div>
 						</div>

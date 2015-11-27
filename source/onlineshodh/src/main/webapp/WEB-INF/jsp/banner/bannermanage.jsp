@@ -385,14 +385,14 @@
 
 						</div>
 					</div>
-					<div class="col-lg-7  space">
+					<div class="col-lg-10  space">
 						<label for="banner" class="col-sm-2 control-label">Banner</label>
-						<div class="fileinput fileinput-new col-lg-offset-1"
+						<div class="fileinput fileinput-new col-lg-10"
 							data-provides="fileinput">
-							<div class="fileinput-preview thumbnail" data-trigger="fileinput"
-								style="width: 200px; height: 150px;">
+							<div class="fileinput-preview baner-preview thumbnail" data-trigger="fileinput"
+								style="width: 100%; height: 110px;">
 									<img
-							src="<%=request.getContextPath()%>/resources/images/user_pic.jpg"
+							src="<%=request.getContextPath()%>/resources/images/ad.jpg"
 							class="img-responsive" />
 									
 					</div>
@@ -431,7 +431,7 @@
 							<span class="input-group-addon"><span
 								class="fa fa-calendar"></span></span>
 
-							<form:input path="startDate" class="form-control" id="startDate"
+							<form:input path="startDate" class="form-control startDate" id="startDate"
 								/>
 							<form:errors path="startDate" cssClass="errors" />
 
@@ -444,7 +444,7 @@
 							<span class="input-group-addon"><span
 								class="fa fa-calendar"></span></span>
 
-							<form:input path="expiryDate" class="form-control" id="expiryDate"
+							<form:input path="expiryDate" class="form-control endDate" id="expiryDate"
 								/>
 							<form:errors path="expiryDate" cssClass="error" />
 						</div>

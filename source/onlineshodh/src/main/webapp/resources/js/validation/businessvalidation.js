@@ -84,7 +84,8 @@ $(document).ready(function() {
 				
 			},
 			"personName":{
-				required : true
+				required : true,
+				lettersonly:true
 			},
 			"email":{
 				required : true,
@@ -120,7 +121,10 @@ $(document).ready(function() {
 			
 			},
 			"businessDesc":"Please Enter Valid Business Description", 
-			"personName":"Please Enter Valid Person Name",
+			"personName":{
+				          required:"Please Enter Valid Person Name",
+				          lettersonly:"Please Enter Valid Person Name"
+				},
 			"email":"Please Enter Valid Email Id",
 			
 			"subCategory.category.categoryId":"Please Enter Valid Category",
@@ -152,7 +156,10 @@ $(document).ready(function() {
 
 	});
 	
-	
+	jQuery.validator.addMethod("lettersonly", function(value, element) {
+		  return this.optional(element) || /^[a-z," "]+$/i.test(value);
+		}, "Letters only please"); 
+
 	
 	/*
 	  =========================
