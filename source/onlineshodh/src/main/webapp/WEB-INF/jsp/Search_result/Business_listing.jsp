@@ -67,12 +67,13 @@
 
 
 					<div id="owl-demo" class="owl-carousel owl-theme">
-
-						<div class="item">
-							<img
-								src="${pageContext.request.contextPath}/resources/images/hotel.jpg" />
-						</div>
-						<div class="item">
+						<c:forEach var="banner" items="${banners}">
+							<div class="item">
+								<img
+									src="${pageContext.request.contextPath}/resources/images/banners/${banner.bannerFileName}" />
+							</div>
+						</c:forEach>
+						<%-- <div class="item">
 							<img
 								src="${pageContext.request.contextPath}/resources/images/ad.jpg" />
 						</div>
@@ -80,7 +81,7 @@
 						
 							<img
 								src="${pageContext.request.contextPath}/resources/images/ad.jpg" />
-						</div>
+						</div> --%>
 
 					</div>
 

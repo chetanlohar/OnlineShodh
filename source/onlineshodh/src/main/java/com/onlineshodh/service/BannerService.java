@@ -11,4 +11,5 @@ public interface BannerService {
 	public void deleteBanner(Integer bannerId);
 	public List<BannerEntity> getBannerByBannerName(
 			String bannerName);
+	public List<BannerEntity> getBanners(Integer CategoryId);
 }

@@ -57,6 +57,7 @@ public class HomeController {
 	public String showHome(HttpServletRequest request,ModelMap model)
 	{
 		init();
+		
 		String iconsPath = request.getServletContext().getInitParameter(
 				"category_icons");
 		String webapppath = request.getServletContext().getRealPath("/");

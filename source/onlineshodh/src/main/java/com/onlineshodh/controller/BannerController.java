@@ -249,8 +249,6 @@ public class BannerController {
 		List<CityEntity> cities = null;
 		states = stateService.getAllStates();
 		cities = cityService.getAllCities();
-		for (StateEntity state : states)
-			System.out.println(" States :" + bannerId);
 		model.addAttribute("banner", bannerService.getBannerById(bannerId));
 		model.addAttribute("cities", cities);
 		model.addAttribute("states", states);

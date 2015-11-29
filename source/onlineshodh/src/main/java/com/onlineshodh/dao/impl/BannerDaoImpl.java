@@ -29,7 +29,7 @@ public class BannerDaoImpl extends AbstractJpaDao<BannerEntity> implements Banne
 
 	@Override
 	public BannerEntity getBannerById(Integer bannerId) {
-		
+		setClazz(BannerEntity.class);
 		return findOne(bannerId);
 	}
 
@@ -48,6 +48,14 @@ public class BannerDaoImpl extends AbstractJpaDao<BannerEntity> implements Banne
 							BannerEntity.class)
 					.setParameter("bannerName", bannerName + '%')
 					.getResultList();
+	}
+
+	@Override
+	public List<BannerEntity> getBanners(Integer CategoryId) {
+		entityManager = getEntityManager();
+		return entityManager.createQuery(
+						"from BannerEntity banner where banner.category.categoryId = :categoryId",
+						BannerEntity.class)	.setParameter("categoryId", CategoryId).getResultList();
 	}
 	
 }

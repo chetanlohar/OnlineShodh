@@ -14,7 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Past;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
@@ -68,6 +67,12 @@ public class BannerEntity implements Serializable{
 	
 	@Column(name="status")
 	private String status;
+	
+	@Column(name="bannerfilename")
+	private String bannerFileName;
+	
+	@Column(name="bannerfilepath")
+	private String bannerFilePath;
 	
 	
 	public Integer getBannerId() {
@@ -139,6 +144,31 @@ public class BannerEntity implements Serializable{
 	}
 	public void setBannerName(String bannerName) {
 		this.bannerName = bannerName;
+	}
+	
+	/**
+	 * @return the bannerFileName
+	 */
+	public String getBannerFileName() {
+		return bannerFileName;
+	}
+	/**
+	 * @param bannerFileName the bannerFileName to set
+	 */
+	public void setBannerFileName(String bannerFileName) {
+		this.bannerFileName = bannerFileName;
+	}
+	/**
+	 * @return the bannerFilePath
+	 */
+	public String getBannerFilePath() {
+		return bannerFilePath;
+	}
+	/**
+	 * @param bannerFilePath the bannerFilePath to set
+	 */
+	public void setBannerFilePath(String bannerFilePath) {
+		this.bannerFilePath = bannerFilePath;
 	}
 	@Override
 	public String toString() {

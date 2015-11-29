@@ -33,6 +33,7 @@ import com.onlineshodh.entity.TownEntity;
 import com.onlineshodh.model.BusinessComparator;
 import com.onlineshodh.model.SuggestBusiness;
 import com.onlineshodh.model.SuggestSubCategory;
+import com.onlineshodh.service.BannerService;
 import com.onlineshodh.service.BusinessDetailsService;
 import com.onlineshodh.service.BusinessEnquiryService;
 import com.onlineshodh.service.BusinessGeneralInfoService;
@@ -86,6 +87,9 @@ public class SearchController {
 	@Autowired
 	@Qualifier(value="emailNotificationService")
 	EmailNotificationService emailService;
+	
+	@Autowired
+	BannerService bannerService;
 
 	static List<TownEntity> towns;
 
@@ -212,6 +216,7 @@ public class SearchController {
 		model.addAttribute("cityName", cityName);
 		model.addAttribute("businesses", matchedBusinesses);
 		model.addAttribute("byCategory",false);
+		System.out.println(bannerService.getBannerById(185).getBannerFileName());
 		return "Search_result/Business_listing";
 	}
 
@@ -228,7 +233,7 @@ public class SearchController {
 
 		model.addAttribute("generalinfo", businessGeneralInfoService
 				.getBusinessGeneralInfoByBusinessId(businessId));
-
+		
 		return "Search_result/businessdetail";
 
 	}
@@ -335,6 +340,7 @@ public class SearchController {
 			model.addAttribute("businesses", businesses);
 			model.addAttribute("byCategory",true);
 		}
+		model.addAttribute("banners",bannerService.getBanners(categoryId.intValue()));
 		return "Search_result/Business_listing";
 	}
 }

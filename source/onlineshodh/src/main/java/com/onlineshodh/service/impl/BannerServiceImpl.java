@@ -45,4 +45,9 @@ public class BannerServiceImpl implements BannerService {
 		
 		return bannerDao.getBannerByBannerName(bannerName);
 	}
+
+	@Override
+	public List<BannerEntity> getBanners(Integer CategoryId) {
+		return bannerDao.getBanners(CategoryId);
+	}
 }
