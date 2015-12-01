@@ -25,16 +25,16 @@ public class FreeListingPhoneDaoImpl extends
 	public void updateFreeListingPhoneDetails(FreeListingPhoneEntity phoneEntity) {
 		update(phoneEntity);
 	}
-	
+
 	@Override
 	public List<FreeListingPhoneEntity> getAllFLBusinessPhonesByBusinessId(
 			Long businessId) {
-		em=getEntityManager();
+		em = getEntityManager();
 		return em
 				.createQuery(
-						"from FreeListingPhoneEntity phones where freeListingBusinessEntity.freelistingbusinessdetailsId=:businessId",
-						FreeListingPhoneEntity.class).setParameter(
-						"businessId", businessId).getResultList();
+						"from FreeListingPhoneEntity phones where phones.freeListingBusinessEntity.freelistingbusinessdetailsId = :businessId order by 1",
+						FreeListingPhoneEntity.class)
+				.setParameter("businessId", businessId).getResultList();
 	}
 
 	@Override
@@ -42,12 +42,11 @@ public class FreeListingPhoneDaoImpl extends
 		setClazz(FreeListingPhoneEntity.class);
 		return findOne(phoneId);
 	}
-	
+
 	@Override
 	public void deletePhone(Long phoneId) {
-		FreeListingPhoneEntity phoneEntity=getPhoneById(phoneId);
+		FreeListingPhoneEntity phoneEntity = getPhoneById(phoneId);
 		delete(phoneEntity);
 	}
 
-	
 }

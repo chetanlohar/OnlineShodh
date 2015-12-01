@@ -23,6 +23,7 @@ public class BusinessPhoneServiceImpl implements BusinessPhoneService {
 	}
 	
 	@Override
+	@Transactional
 	public void updateBusinessPhoneDetails(BusinessPhoneEntity entity) {
 		businessphoneDao.updateBusinessPhoneDetails(entity);
 	}
@@ -48,6 +49,12 @@ public class BusinessPhoneServiceImpl implements BusinessPhoneService {
 	@Override
 	public BusinessPhoneEntity getBusinessPhoneByPhoneId(Long phoneId) {
 		return businessphoneDao.getBusinessPhoneByPhoneId(phoneId);
+	}
+
+	@Override
+	@Transactional
+	public void deleteBusinessPhone(Long phoneId) {
+		businessphoneDao.deleteBusinessPhone(phoneId);
 	}
 
 	

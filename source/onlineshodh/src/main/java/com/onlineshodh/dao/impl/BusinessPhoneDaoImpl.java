@@ -29,7 +29,7 @@ public class BusinessPhoneDaoImpl extends AbstractJpaDao<BusinessPhoneEntity> im
 	public List<BusinessPhoneEntity> getBusinessPhoneDetailByBusinessId(
 			Long businessId) {
 		em = getEntityManager();
-		String qry = "from BusinessPhoneEntity businessphone where businessphone.business.businessId=:businessId";
+		String qry = "from BusinessPhoneEntity businessphone where businessphone.business.businessId=:businessId order by 1";
 		return em.createQuery(qry,BusinessPhoneEntity.class).setParameter("businessId", businessId).getResultList();
 	}
 
@@ -46,8 +46,14 @@ public class BusinessPhoneDaoImpl extends AbstractJpaDao<BusinessPhoneEntity> im
 	@Override
 	public BusinessPhoneEntity getBusinessPhoneByPhoneId(Long phoneId) {
 	setClazz(BusinessPhoneEntity.class);
-	System.out.println(" Business Phone Entity "+findOne(phoneId));
 	return findOne(phoneId);
+	}
+
+	@Override
+	public void deleteBusinessPhone(Long phoneId) {
+		setClazz(BusinessPhoneEntity.class);
+		BusinessPhoneEntity entity=findOne(phoneId);
+		delete(entity);
 	}
 
 	

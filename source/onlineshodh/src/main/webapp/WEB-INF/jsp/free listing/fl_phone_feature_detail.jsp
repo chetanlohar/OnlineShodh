@@ -70,7 +70,7 @@ body {
 								</div>
 								<div class="col-md-4 space">
 									<label for="street" class="col-sm-3 control-label">Contact
-									</label><c:out value="${alreadyexistexception}" />
+									</label><%-- <c:out value="${alreadyexistexception}" /> --%>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-phone"></span></span> <input type="text"
@@ -323,8 +323,11 @@ body {
 	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
+		
+<script
+		src="${pageContext.request.contextPath}/resources/js/freelisting.js"></script>		
 
-	<script>
+	<!-- <script>
 		$(document).ready(function() {
 			/* 		$('#fl_contact').DataTable({
 						  "paging":   false,
@@ -342,6 +345,7 @@ body {
 		var flag = false;
 		var flag1 = false;
 		var phUrl;
+		var ftUrl;
 
 		function addPhone() {
 			var phoneurl;
@@ -352,7 +356,7 @@ body {
 			} else {
 				phoneurl = $("#phoneurl").val();
 			}
-			alert(phoneurl)
+			
 			$("#phonebutton").html('Add');
 			$
 					.ajax({
@@ -364,13 +368,14 @@ body {
 							"contact" : $('#contact').val(),
 						},
 						success : function(response) {
-							 alert(response) 
+							 
 							console.log(response)
 							$('#phoneTable').find('tbody').remove();
 							jQuery.each(response,function(index, item) {
 								
 								/* $('.phoneTable tbody').append('<tr class="child"><td>'+this.freeBuinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="${pageContext.request.contextPath}/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete<button></a></td><td>Verify</td></tr>'); */
-												 var newRow = jQuery('<tr><td>'
+								if(item.freeBuinessPhoneId!=null){
+								var newRow = jQuery('<tr><td>'
 														+ item.freeBuinessPhoneId
 														+ '</td><td>'
 														+ item.phone
@@ -380,7 +385,10 @@ body {
 
 												jQuery('#phoneTable')
 														.append(newRow); 
-											});
+								}else{
+									alert("exist")
+								}
+					});
 							
 								 
 								flag=false;
@@ -402,7 +410,7 @@ body {
 			var url;
 			if (flag1 == true) {
 				/* alert($('#featureurl1').val())    */
-				url = $('#featureurl1').val();
+				url = ftUrl;
 			} else {
 				url = $('#featureurl').val();
 			}
@@ -454,7 +462,7 @@ body {
 				$("#contact").val(valp);
 				var url1 = $("#phoneurl1").val();
 				phUrl=url1 + valpid;
-				alert(phUrl)
+				
 				/* $("#phoneurl1").val(url1 + valpid); */
 
 				$("#phonebutton").html('Update');
@@ -480,14 +488,13 @@ body {
 										":nth-child(1)").text()
 								var url2 = $("#featureurl1").val();
 								$("#feature").val(valfeature);
-								/* $("#feature").val(valfeatureid) */
-								$("#featureurl1").val(url2 + valfeatureid)
+								ftUrl=(url2 + valfeatureid)
 								$(".flfeatures").html('Update');
 								flag1 = true;
 							});
 				});
 	</script>
-
+ -->
 		
 		
 	

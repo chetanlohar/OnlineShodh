@@ -17,4 +17,6 @@ public interface BusinessPhoneService {
 	public BusinessPhoneEntity getBusinessPhoneDetails(Long businessPhoneId);
 
 	public BusinessPhoneEntity getBusinessPhoneByPhoneId(Long phoneId);
+	
+	public void deleteBusinessPhone(Long phoneId);
 }

@@ -2,13 +2,10 @@
 
    
 ========================================================  */           
-var flag = false;
-var flag1 = false;
+var AJURL;
+var Bflag;
 
 $(document).ready(function () {
-
-	
-	
     /*====================================
            METIS MENU 
      ======================================*/
@@ -44,15 +41,18 @@ $(document).ready(function(){
 	$(this).parent().parent().siblings().removeClass('active-menu');
 	});
 */	
-	$(".upcontact").on('click',function(e){
+	$(".Bupcontact").on('click',function(e){
 	var valc =$(this).parent().siblings(":nth-child(2)").text()
-	var valcid=$(this).parent().siblings(":nth-child(1)").text()
-	var url2=$('#phoneurl1').val()
-	$('#phoneurl1').val(url2+valcid)
-     $("#bdetail_contact").val(valc);
+	var valcid =$(this).parent().siblings(":nth-child(1)").text()
+
+	$("#bdetail_contact").val(valc);
 	
     $("#phonebutton").html('Update');
-	flag=true;
+	
+   var BPhoneURl=$("#Bphoneurl1").val();
+    AJURL=BPhoneURl+valcid;
+    Bflag=true;
+    
 	});
 	
 	
@@ -97,24 +97,21 @@ $(document).ready(function(){
 	 var m=0;
 	 var n=0;
 	  
-	  $('#phonebutton').click(function(e){
-		  alert("dsada")
-		  var phurl;
-			if (flag==true) {
-				
-				phurl = $('#phoneurl1').val();
-			} else {
-				phurl = $("#phoneurl").val();
-			}
-           
-          
-          var contact = $('#bdetail_contact').val();
+	  $('#Bphonebutton').click(function(e){
+          var phonebyajaxURl;
+		  var contact = $('#bdetail_contact').val();
           var phonetype = $('#bdetail_phonetype').val();
           $("#phonebutton").html('Add');
-          alert(phurl)
+         
+         if(Bflag==true){
+        	 phonebyajaxURl=AJURL;
+         }else{
+        	 phonebyajaxURl=$("#Bphoneurl").val();
+         }
+         alert(phonebyajaxURl);
 	      $.ajax({
 	    	type: "POST",
-	        url:phurl,
+	        url:phonebyajaxURl,
 	        dataType:"json",
 	        timeout:5000,
 	        data:{
@@ -125,7 +122,7 @@ $(document).ready(function(){
 	        	console.log(response);
 	        	$('.busi_contact tbody tr').remove();
 	        	jQuery.each(response, function(index, item) {
-	        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</button></a></td><td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
+	        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="btn btn-info btn-xs Bupcontact"><i class="fa fa-pencil"></i> Edit</button></td><td><a href="#" onclick="deleteBusinessPhone('+this.buinessPhoneId+')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
 				});
 
 	        },
@@ -135,6 +132,7 @@ $(document).ready(function(){
 	        
 	      });
 	      $('#bdetail_contact').val('');
+	      Bflag=false;
 	  });
 	  
 	  
@@ -228,3 +226,33 @@ $(document).ready(function(){
 	  
 
 });
+
+
+function deleteBusinessPhone(phoneId){
+	var phoneId=phoneId;
+	var deleteurl=$('#BphoneDeleteUrl').val()+this.phoneId+"/delete";
+	$.ajax({
+		
+		
+		type:"POST",
+		url:deleteurl,
+		data:{ 
+			"phoneId":phoneId
+		},
+		sucess:function() {
+			console.log(response);
+        	$('.busi_contact tbody tr').remove();
+        	jQuery.each(response, function(index, item) {
+        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="btn btn-info btn-xs Bupcontact"><i class="fa fa-pencil"></i> Edit</button></td><td><a href="#" onclick="deleteBusinessPhone('+this.buinessPhoneId+')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
+			});
+		},
+		error:function() {
+			alert("error")
+		}
+		
+	});
+}
+
+
+
+

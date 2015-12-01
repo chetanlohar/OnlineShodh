@@ -422,6 +422,8 @@ public class BusinessController {
 		businessPhoneService.saveBusinessPhoneDetails(businesPhoneEntity);
 		}catch(NullPointerException e){
 			System.out.println(e.getLocalizedMessage());
+		}catch(Exception e){
+			System.out.println("Caught");
 		}
 		List<BusinessPhoneEntity> l = businessPhoneService
 				.getBusinessPhoneDetailByBusinessId(businessId);
@@ -431,30 +433,27 @@ public class BusinessController {
 	}
 	
 	
-	@RequestMapping(value = "/{businessId}/phone/update/{phoneId}", method = RequestMethod.POST, produces = "application/json")
-	public void updateBusinessPhoneDetails(
-			@PathVariable("businessId") Long businessId,
-			@RequestParam("businessPhone") Long businessPhone, @RequestParam("phonetype") String phonetype,@PathVariable("phoneId")Long phoneId) {
-		//try{
-		/*BusinessDetailsEntity business = businessService
-				.getBusinessDetails(businessId);*/
-		System.out.println("In update");	
+	@RequestMapping(value = "/{businessId}/phone/update/{phoneId}")
+	public @ResponseBody List<BusinessPhoneEntity> updateBPhoneDetails(
+			
+			@RequestParam("businessPhone") String businessPhone, @RequestParam("phonetype") String phonetype,@PathVariable("businessId") Long businessId,@PathVariable("phoneId")Long phoneId) {
+		
+		System.out.println("In update");
+		try{
+		
 		BusinessPhoneEntity businesPhoneEntity = businessPhoneService.getBusinessPhoneByPhoneId(phoneId);
 		System.out.println(" yes here "+phoneId+" business phone Entity"+businesPhoneEntity);
 		businesPhoneEntity.setPhone(businessPhone.toString());
 		businesPhoneEntity.setPhonetype(phonetype);
-		/*businesPhoneEntity.setBusiness(business);*/
-		
 		businessPhoneService.updateBusinessPhoneDetails(businesPhoneEntity);
-		
-		//}catch(NullPointerException e){
-			//System.out.println(e.getLocalizedMessage());
-		//}
-		/*List<BusinessPhoneEntity> l = businessPhoneService
+		}catch(NullPointerException e){
+			System.out.println(e.getLocalizedMessage());
+		}
+		List<BusinessPhoneEntity> l = businessPhoneService
 				.getBusinessPhoneDetailByBusinessId(businessId);
 		for (BusinessPhoneEntity b : l)
 			System.out.println(b.getPhone());
-		return l;*/
+		return l;
 	}
 	
 	
@@ -550,6 +549,15 @@ public class BusinessController {
 		List<BusinessEnquiryEntity> enquiries = businessEnquiryService.getAllEnquiries();
 		model.addAttribute("enquiries", enquiries);
 		return "business/Enquiry";
+	} 
+	@RequestMapping(value="{businessId}/{phoneId}/delete",method=RequestMethod.POST) 
+	public @ResponseBody List<BusinessPhoneEntity> deleteBusinessPhone(@RequestParam("phoneId")Long phoneId,@PathVariable("businessId")Long businessId) {
+		businessPhoneService.deleteBusinessPhone(phoneId);
+		List<BusinessPhoneEntity> l = businessPhoneService
+				.getBusinessPhoneDetailByBusinessId(businessId);
+		for (BusinessPhoneEntity b : l)
+			System.out.println(b.getPhone());
+		return l;
 	} 
 	
 	

@@ -1,5 +1,6 @@
 package com.onlineshodh.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import javax.swing.text.StyledEditorKit.BoldAction;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -237,7 +239,10 @@ public class FreeListingController {
 			@RequestParam("phonetype") String phonetype,
 			@RequestParam("contact") Long contact,
 			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId) {
+		
+		boolean flag=false;
 		try {
+			
 			System.out.println(" hi am here " + phonetype + " dfsdf" + contact
 					+ "freelistingbusinessdetailsId "
 					+ freelistingbusinessdetailsId);
@@ -251,13 +256,30 @@ public class FreeListingController {
 			freeListingPhoneService.saveFreeListingPhoneDetails(phoneEntity);
 		} catch (NullPointerException e) {
 			logger.error(e.getMessage());
-		} catch (Exception e) {
-			logger.error(e.getMessage());
 		}
-		List<FreeListingPhoneEntity> phoneList = freeListingPhoneService
+		catch (Exception e) {
+			
+			logger.error(e.getMessage());
+				if(e.getMessage().contains("ConstraintViolationException")){
+					flag=true;
+			}
+		}
+		List<FreeListingPhoneEntity> phoneList =new ArrayList<FreeListingPhoneEntity>();
+		
+		phoneList=freeListingPhoneService
+				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
+
+				phoneList=freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 		for (FreeListingPhoneEntity entity : phoneList) {
 			System.out.println(" Business Phones: " + entity.getPhone());
+		}
+		if(flag==true){
+			System.out.println(" Duplicate ");
+			phoneList.add(new FreeListingPhoneEntity());
+		}else{
+			phoneList=freeListingPhoneService
+					.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);			
 		}
 
 		return phoneList;
@@ -310,7 +332,7 @@ public class FreeListingController {
 			@RequestParam("contact") Long contact,
 			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId,
 			@PathVariable("phoneId") Long phoneId,HttpServletRequest request,HttpServletResponse response) {
-		HttpSession session= request.getSession();
+		
 		boolean flag=false;
 try{
 		FreeListingPhoneEntity phoneEntity = freeListingPhoneService
@@ -323,18 +345,22 @@ try{
 	logger.info(e.getLocalizedMessage());
 }catch(DataIntegrityViolationException exception){
 	flag=true;
-    
 }
-		List<FreeListingPhoneEntity> phoneList = freeListingPhoneService
+		List<FreeListingPhoneEntity> phoneList =new ArrayList<FreeListingPhoneEntity>();
+				
+		phoneList=freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 
+				phoneList=freeListingPhoneService
+				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 		for (FreeListingPhoneEntity entity : phoneList) {
 			System.out.println(" Business Phones: " + entity.getPhone());
 		}
 		if(flag==true){
-			session.setAttribute("alreadyexistexception","Already Exist");
+			phoneList.add(new FreeListingPhoneEntity());
 		}else{
-			
+			phoneList=freeListingPhoneService
+					.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);			
 		}
 		
 		return phoneList;

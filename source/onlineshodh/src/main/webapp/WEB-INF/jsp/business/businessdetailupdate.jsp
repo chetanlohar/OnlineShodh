@@ -536,30 +536,32 @@
 										class="form-control" id="bdetail_contact"
 										placeholder="Contact" name="businessd_contact" maxlength="10">
 								</div>
-								<input type="hidden" id="phoneurl"
-									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" />
-								<%-- <a href="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save" class="bd_contact"> --%>
-								<input type="hidden" id="phoneurl1"
-									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/update/" />
-								<button type="button" id="phonebutton"
+								<input type="hidden" id="Bphoneurl"
+									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/save"/>
+								<input type="hidden" id="Bphoneurl1"
+									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/phone/update/"/>
+								
+								<input type="hidden" id="BphoneDeleteUrl" value="${pageContext.request.contextPath}/admin/business/${business.businessId}/">
+								<button type="button" id="Bphonebutton"
 									class="btn btn-success b_contact">Add</button>
 								<button type="reset" class="btn btn-danger">Cancel</button>
 							</form>
 
 						</div>
 						<div class="detail-wraper space">
-							<table class="table busi_contact">
+							<table class="table busi_contact" id="bphoneTable">
 								<tbody>
 									<c:forEach var="businessphone" items="${businessPhones}">
 										<tr>
 											<td>${businessphone.buinessPhoneId}</td>
 											<td>${businessphone.phone}</td>
 											<td>${businessphone.phonetype}</td>
-											<td><button class="btn btn-info btn-xs upcontact">
+											<td><button class="btn btn-info btn-xs Bupcontact">
 														<i class="fa fa-pencil"></i> Edit
 													</button></td>
-											<td><a href="#"><button
+											<td><a href="#" onclick="deleteBusinessPhone(${businessphone.buinessPhoneId})"><button
 														class="btn btn-danger btn-xs">
+														
 														<i class="fa fa-trash"></i> Delete
 													</button></a></td>
 										</tr>
