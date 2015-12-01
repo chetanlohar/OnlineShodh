@@ -61,7 +61,7 @@ body {
 									<label for="address" class="col-sm-3 control-label">Phone
 										Type </label>
 									<div class="input-group col-md-5">
-										<select class="form-control" id="phonetype">
+										<select class="form-control" id="phonetype" style="z-index:0;">
 											<option value="Landline">Landline</option>
 											<option value="Mobile">Mobile</option>
 
@@ -166,7 +166,7 @@ body {
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-leaf"></span></span> <input type="text"
-											name="fr_list_feature" id="feature" class="form-control">
+											name="fr_list_feature" id="feature" class="form-control" style="z-index:0;">
 									</div>
 								</div>
 
@@ -302,11 +302,11 @@ body {
         <h4 class="modal-title text-center" id="myModalLabel">Business Listing Success</h4>
       </div>
       <div class="modal-body">
-       <p class="text-center">You Just have to verify your listing and it will be Dispaly on ONLINESHODH.COM </p>
+       <p class="text-center">Thank you for you Business listing. It will be Dispaly on ONLINESHODH.COM </p>
         <p class="text-center">
-       <button class="btn btn-info">Get verification Code</button>
+       <a href="${pageContext.request.contextPath}/" class="btn btn-info">Go To HomePage</a>
        </p>
-       <p class="text-center">The Verification Code Will be sent on your Registerd contact number </p>
+       <p class="text-center">Thank you for Register your business. Our represntative will be contact you shortly. </p>
       </div>
 
     </div>
