@@ -559,11 +559,11 @@
 											<td><button class="btn btn-info btn-xs Bupcontact">
 														<i class="fa fa-pencil"></i> Edit
 													</button></td>
-											<td><a href="#" onclick="deleteBusinessPhone(${businessphone.buinessPhoneId})"><button
-														class="btn btn-danger btn-xs">
+											<td><button
+														class="btn btn-danger btn-xs" onclick="deleteBusinessPhone(${businessphone.buinessPhoneId})">
 														
 														<i class="fa fa-trash"></i> Delete
-													</button></a></td>
+													</button></td>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -594,6 +594,9 @@
 								</div>
 								<input type="hidden" id="featureurl"
 									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/feature/save" />
+								<input type="hidden" id="BFeatureUrl1"
+									value="${pageContext.request.contextPath}/admin/business/${business.businessId}/feature/update/" />	
+								<input type="hidden" id="BfeatureDeleteUrl" value="${pageContext.request.contextPath}/admin/business/feature/${business.businessId}/">	
 								<!-- <a href="" class="bd_features"></a> -->
 								<button type="button" id="featurebutton" class="btn btn-success">Add</button>
 								<button type="reset" class="btn btn-danger">Cancel</button>
@@ -610,10 +613,10 @@
 											<td><button class="btn btn-info btn-xs modyfeature">
 														<i class="fa fa-pencil"></i> Modify
 													</button></td>
-											<td><a href="#"><button
-														class="btn btn-danger btn-xs">
+											<td><button
+														class="btn btn-danger btn-xs" onclick="deleteBusinessfeature(${info.businessGenInfoId})">
 														<i class="fa fa-trash"></i> Delete
-													</button></a></td>
+													</button></td>
 										</tr>
 									</c:forEach>
 								</tbody>

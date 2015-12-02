@@ -27,6 +27,7 @@ public class BusinessGeneralInfoDaoImpl extends AbstractJpaDao<BusinessGeneralIn
 
 	@Override
 	public void deleteBusinessGeneralInfo(Long businessGeneralInfo) {
+		setClazz(BusinessGeneralInfoEntity.class);
 		deleteById(businessGeneralInfo);
 	}
 

@@ -1,7 +1,10 @@
 package com.onlineshodh.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.FreeListingDao;
 import com.onlineshodh.entity.FreeListingBusinessEntity;
@@ -19,11 +22,23 @@ public class FreeListingServiceImpl implements FreeListingService {
 		entity.setBusinessName(businessName);
 		return freeListingDao.saveFreeListingBusinessDetails(entity);
 	}
-
+    @Override
+    @Transactional
+	public void updateFreeListingBusinessDetails(FreeListingBusinessEntity entity) 
+	{
+    	freeListingDao.updateFreeListingBusinessDetails(entity);
+	}
+	
 	@Override
 	public FreeListingBusinessEntity getFeelistingEntityById(Long freeListingId) {
 		
 		return freeListingDao.getFeelistingEntityById(freeListingId);
+	}
+
+	@Override
+	public List<FreeListingBusinessEntity> getALlFreeListingBusiness() {
+		
+		return freeListingDao.getALlFreeListingBusiness();
 	}
 
 }

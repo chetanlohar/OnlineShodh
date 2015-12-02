@@ -3,7 +3,9 @@
    
 ========================================================  */           
 var AJURL;
-var Bflag;
+var AJXURL;
+var Bflag=false;
+var Bflag1=false; 
 
 $(document).ready(function () {
     /*====================================
@@ -41,13 +43,13 @@ $(document).ready(function(){
 	$(this).parent().parent().siblings().removeClass('active-menu');
 	});
 */	
-	$(".Bupcontact").on('click',function(e){
+	$("#bphoneTable").on('click','.Bupcontact',function(e){
 	var valc =$(this).parent().siblings(":nth-child(2)").text()
 	var valcid =$(this).parent().siblings(":nth-child(1)").text()
 
 	$("#bdetail_contact").val(valc);
 	
-    $("#phonebutton").html('Update');
+    $(".b_contact").html('Update');
 	
    var BPhoneURl=$("#Bphoneurl1").val();
     AJURL=BPhoneURl+valcid;
@@ -56,11 +58,15 @@ $(document).ready(function(){
 	});
 	
 	
-	$(".modyfeature").on('click',function(e){
+	$(".busi_feature").on('click','.modyfeature',function(e){
+		alert("work");
 		var valf =$(this).parent().siblings(":nth-child(2)").text()
 	     $("#bus_Features").val(valf);
-		
-	    $("#featurebutton").html('Update');
+		var valfid =$(this).parent().siblings(":nth-child(1)").text()
+	    var BFeatureUrl=$('#BFeatureUrl1').val()
+	    AJXURL=BFeatureUrl+valfid
+	    Bflag1=true;
+		$("#featurebutton").html('Update');
 		
 		});
 		
@@ -122,7 +128,7 @@ $(document).ready(function(){
 	        	console.log(response);
 	        	$('.busi_contact tbody tr').remove();
 	        	jQuery.each(response, function(index, item) {
-	        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="btn btn-info btn-xs Bupcontact"><i class="fa fa-pencil"></i> Edit</button></td><td><a href="#" onclick="deleteBusinessPhone('+this.buinessPhoneId+')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
+	        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="btn btn-info btn-xs Bupcontact"><i class="fa fa-pencil"></i> Edit</button></td><td><a onclick="deleteBusinessPhone('+this.buinessPhoneId+')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
 				});
 
 	        },
@@ -146,12 +152,19 @@ $(document).ready(function(){
 	  
 	  $('#featurebutton').click(function(e){
        
-          var url = $('#featureurl').val();
+		  
           var feature = $('#bus_Features').val();
+          
+          if(Bflag1==true){
+        	  featuresUrl=AJXURL;
+          }else{
+        	  featuresUrl=$('#featureurl').val();
+          }
+          
           $("#featurebutton").html('Add');
 	      $.ajax({
 	    	  	type: "POST",
-		        url:url,
+		        url:featuresUrl,
 		        dataType:"json",
 		        timeout:5000,
 		        data:{
@@ -162,13 +175,15 @@ $(document).ready(function(){
 		        	
 		        	$('.busi_feature tbody tr').remove();
 		        	jQuery.each(response, function(index, item) {
-		        		$('.busi_feature tbody').append('<tr class="child"><td>'+this.businessGenInfoId+'</td><td>'+this.generalInfoName+'</td><td><a href="#"><button class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Modify</button></a></td><td><a href="#"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
+		        		$('.busi_feature tbody').append('<tr class="child"><td>'+this.businessGenInfoId+'</td><td>'+this.generalInfoName+'</td><td><button class="btn btn-info btn-xs modyfeature"><i class="fa fa-pencil"></i> Modify</button></td><td><button class="btn btn-danger btn-xs" onclick="deleteBusinessfeature('+this.businessGenInfoId+')"><i class="fa fa-trash"></i> Delete</button></td></tr>');
 					});
 		        },
 		        error: function(){
 		        	console.log("not working");
 	        },
+	        
 	      });
+          Bflag1=false;
 	      $('#bus_Features').val('');
 	  });
 
@@ -229,30 +244,59 @@ $(document).ready(function(){
 
 
 function deleteBusinessPhone(phoneId){
-	var phoneId=phoneId;
-	var deleteurl=$('#BphoneDeleteUrl').val()+this.phoneId+"/delete";
+	var phoneid=phoneId;
+	alert(phoneid)
+	var deleteurl=$('#BphoneDeleteUrl').val()+phoneid+"/delete";
+	alert(deleteurl)
 	$.ajax({
-		
-		
 		type:"POST",
 		url:deleteurl,
+		dataType:"json",
 		data:{ 
 			"phoneId":phoneId
 		},
-		sucess:function() {
+		success:function(response) {
+			alert(response)
 			console.log(response);
-        	$('.busi_contact tbody tr').remove();
+        	
+			$('.busi_contact tbody tr').remove();
         	jQuery.each(response, function(index, item) {
-        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="btn btn-info btn-xs Bupcontact"><i class="fa fa-pencil"></i> Edit</button></td><td><a href="#" onclick="deleteBusinessPhone('+this.buinessPhoneId+')"><button class="btn btn-danger btn-xs"><i class="fa fa-trash"></i> Delete</button></a></td></tr>');
+        		$('.busi_contact tbody').append('<tr class="child"><td>'+this.buinessPhoneId+'</td><td>'+this.phone+'</td><td>'+this.phonetype+'</td><td><button class="btn btn-info btn-xs Bupcontact"><i class="fa fa-pencil"></i> Edit</button></td><td><button class="btn btn-danger btn-xs" onclick="deleteBusinessPhone('+this.buinessPhoneId+')"><i class="fa fa-trash"></i> Delete</button></td></tr>');
 			});
+        	
 		},
-		error:function() {
-			alert("error")
+		error:function(e) {
+			alert("error"+e)
 		}
 		
 	});
 }
 
-
+function deleteBusinessfeature(featureId){
+	var featureid=featureId;
+	alert(featureid)
+	var deleteurl=$('#BfeatureDeleteUrl').val()+featureid+"/delete";
+	alert(deleteurl)
+	$.ajax({
+		type:"POST",
+		url:deleteurl,
+		dataType:"json",
+		data:{ 
+			"featureid":featureid
+		},
+		success:function(response) {
+			alert(response)
+			console.log(response);
+			$('.busi_feature tbody tr').remove();
+        	jQuery.each(response, function(index, item) {
+        		$('.busi_feature tbody').append('<tr class="child"><td>'+this.businessGenInfoId+'</td><td>'+this.generalInfoName+'</td><td><button class="btn btn-info btn-xs modyfeature"><i class="fa fa-pencil"></i> Modify</button></td><td><button class="btn btn-danger btn-xs" onclick="deleteBusinessfeature('+this.businessGenInfoId+')"><i class="fa fa-trash"></i> Delete</button></td></tr>');
+			});
+		},
+		error:function(e) {
+			alert("error"+e)
+		}
+		
+	});
+}
 
 

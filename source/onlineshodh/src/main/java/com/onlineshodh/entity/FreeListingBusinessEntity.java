@@ -1,6 +1,8 @@
 package com.onlineshodh.entity;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +16,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.springframework.context.annotation.Scope;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -47,6 +50,22 @@ public class FreeListingBusinessEntity implements Serializable {
 	
 	@Column(name="fl_business_keywords")
 	private String keywords;
+	
+	@Column(name="fl_regdate")
+	@DateTimeFormat(pattern="MM/dd/yyyy")
+	private Date regdate;
+	
+	@Column(name="fl_logo")
+	private byte[] logo;
+	
+	@Column(name="fl_logoname")
+	private String imagename;
+	
+	@Column(name="fl_logopath")
+	private String imagepath;
+	
+	@Column(name="fl_businessdesc")
+	private String businessDesc;
 	
 	@ManyToOne(targetEntity=SubCategoryEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="subCategoryId")
@@ -110,14 +129,63 @@ public class FreeListingBusinessEntity implements Serializable {
 		this.subCategory = subCategory;
 	}
 
+	public Date getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(Date regdate) {
+		this.regdate = regdate;
+	}
+
+	public byte[] getLogo() {
+		return logo;
+	}
+
+	public void setLogo(byte[] logo) {
+		this.logo = logo;
+	}
+
+	public String getBusinessDesc() {
+		return businessDesc;
+	}
+
+	public void setBusinessDesc(String businessDesc) {
+		this.businessDesc = businessDesc;
+	}
+
+	public String getImagename() {
+		return imagename;
+	}
+
+	public void setImagename(String imagename) {
+		this.imagename = imagename;
+	}
+
+	public String getImagepath() {
+		return imagepath;
+	}
+
+	public void setImagepath(String imagepath) {
+		this.imagepath = imagepath;
+	}
+
 	@Override
 	public String toString() {
 		return "FreeListingBusinessEntity [freelistingbusinessdetailsId="
 				+ freelistingbusinessdetailsId + ", businessName="
 				+ businessName + ", personName=" + personName + ", email="
 				+ email + ", website=" + website + ", keywords=" + keywords
-				+ ", subCategory=" + subCategory + "]";
+				+ ", regdate=" + regdate + ", logo=" + Arrays.toString(logo)
+				+ ", imagename=" + imagename + ", imagepath=" + imagepath
+				+ ", businessDesc=" + businessDesc + ", subCategory="
+				+ subCategory + "]";
 	}
+
+	
+
+	
+
+	
 
 	
 	

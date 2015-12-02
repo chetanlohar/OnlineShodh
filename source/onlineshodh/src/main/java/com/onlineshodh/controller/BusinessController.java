@@ -489,25 +489,33 @@ public class BusinessController {
 		return l;
 	}
 
-	/*
-	 * @RequestMapping(value="/{businessId}/features/save",method=RequestMethod.POST
-	 * ,produces="application/json") public @ResponseBody
-	 * List<BusinessGeneralInfoEntity>
-	 * saveBusinessGeneralInfo(@PathVariable("businessId") Long
-	 * businessId,@RequestParam("generalInfo") String generalInfo) {
-	 * BusinessDetailsEntity business =
-	 * businessService.getBusinessDetails(businessId); BusinessGeneralInfoEntity
-	 * entity =
-	 * context.getBean("businessGeneralInfoEntity",BusinessGeneralInfoEntity
-	 * .class); entity.setGeneralInfoName(generalInfo);
-	 * entity.setBusiness(business);
-	 * businessGeneralInfoService.saveBusinessGeneralInfo(entity);
-	 * List<BusinessGeneralInfoEntity> l =
-	 * businessGeneralInfoService.getBusinessGeneralInfoByBusinessId
-	 * (businessId); for(BusinessGeneralInfoEntity b:l)
-	 * System.out.println(b.getGeneralInfoName()); return l; }
-	 */
+	@RequestMapping(value = "/{businessId}/feature/update/{featureId}", method = RequestMethod.POST, produces = "application/json")
+	public @ResponseBody List<BusinessGeneralInfoEntity> updateBusinessGeneralInfo(
+			@PathVariable("businessId") Long businessId,
+			@RequestParam("generalInfo") String generalInfo,
+			@PathVariable("featureId")Long featureId) {
+		boolean flag = false;
 
+		if (generalInfo.equalsIgnoreCase("") || generalInfo.equalsIgnoreCase(null)) {
+			/*logger.info("Feature is Empty");*/
+			flag = true;
+
+		}
+		if (flag) {
+			/*logger.info("Feature is Empty");*/
+		} else {
+	
+		BusinessGeneralInfoEntity entity =businessGeneralInfoService.getBusinessGeneralInfo(featureId) ;
+		entity.setGeneralInfoName(generalInfo);
+	
+		businessGeneralInfoService.updateBusinessGeneralInfo(entity);
+		}
+		List<BusinessGeneralInfoEntity> l = businessGeneralInfoService
+				.getBusinessGeneralInfoByBusinessId(businessId);
+		for (BusinessGeneralInfoEntity b : l)
+			System.out.println(b.getGeneralInfoName());
+		return l;
+	}
 	@RequestMapping(value = "/searchBusiness", method = RequestMethod.GET)
 	public @ResponseBody List<String> serachBusinesData(
 			@RequestParam("term") String keyword) {
@@ -557,6 +565,16 @@ public class BusinessController {
 				.getBusinessPhoneDetailByBusinessId(businessId);
 		for (BusinessPhoneEntity b : l)
 			System.out.println(b.getPhone());
+		return l;
+	} 
+	
+	@RequestMapping(value="/feature/{businessId}/{featureid}/delete",method=RequestMethod.POST) 
+	public @ResponseBody List<BusinessGeneralInfoEntity> deleteBusinessFeature(@RequestParam("featureid")Long featureId,@PathVariable("businessId")Long businessId) {
+		businessGeneralInfoService.deleteBusinessGeneralInfo(featureId);
+		List<BusinessGeneralInfoEntity> l = businessGeneralInfoService
+				.getBusinessGeneralInfoByBusinessId(businessId);
+		for (BusinessGeneralInfoEntity b : l)
+			System.out.println(b.getGeneralInfoName());
 		return l;
 	} 
 	

@@ -27,6 +27,17 @@
 	</context-param>
 	
 	<context-param>
+	<param-name>freelisting_icons</param-name>
+	<param-value>/resources/images/icons</param-value>
+	</context-param>
+	
+	<context-param>
+	<param-name>freelisting_dir_path</param-name>
+	<param-value>C:\Users\onlineshodh\images\</param-value> 
+	</context-param>
+	
+	
+	<context-param>
 		<param-name>LuceneIndexFilePath</param-name>
 		<param-value>C:\LuceneIndex\</param-value>
 	</context-param>

@@ -1,6 +1,12 @@
 package com.onlineshodh.controller;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +32,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.onlineshodh.entity.FreeListingAddressEntity;
 import com.onlineshodh.entity.FreeListingBusinessEntity;
@@ -46,7 +54,7 @@ import com.onlineshodh.support.validator.FLBusinessValidator;
 import com.onlineshodh.support.validator.FlBusinessAddressValidator;
 
 @Controller
-@RequestMapping(value = "/freelisting")
+@RequestMapping(value = {"/freelisting","/admin/Freelisting"})
 public class FreeListingController {
 
 	@Autowired
@@ -94,6 +102,7 @@ public class FreeListingController {
 	public String freeListing(ModelMap model) {
 		FreeListingBusinessEntity flEntity = context.getBean(
 				"freeListingBusinessEntity", FreeListingBusinessEntity.class);
+		flEntity.setRegdate(new Date());
 		model.addAttribute("flDetails", flEntity);
 		model.addAttribute("categories", categoryService.getAllCategories());
 		return "free listing/fl_details_new";
@@ -119,7 +128,7 @@ public class FreeListingController {
 	@RequestMapping(value = { "/business/save", "" }, method = RequestMethod.POST)
 	public String saveFreeListingBusinessDetails(
 			@Valid @ModelAttribute("flDetails") FreeListingBusinessEntity flDetails,
-			ModelMap model, BindingResult result) {
+			ModelMap model,@RequestParam("file") MultipartFile file, HttpServletRequest request,HttpServletResponse response,BindingResult result)throws IOException,MaxUploadSizeExceededException {
 		boolean flag = false;
 		System.out.println(flDetails);
 		businessValidator.validate(flDetails, result);
@@ -131,13 +140,61 @@ public class FreeListingController {
 			}
 			flag = true;
 		}
+		if(file.isEmpty() && flDetails.getLogo().length==0){
+			FieldError logoNotSelected = new FieldError("flDetails", "logo", "mandatory");
+			result.addError(logoNotSelected);
+			flag=true;
+		}
 		if (flag) {
 			model.addAttribute("categories", categoryService.getAllCategories());
 			return "free listing/fl_details_new";
 		} else {
+			if (!file.isEmpty()) {
+				/*byte[] logo = file.getBytes();
+				flDetails.setLogo(logo);
+				System.out.println(" file lenght"+file.getBytes().length);
+				System.out.println(" file size "+file.getSize());
+				System.out.println(" file name "+file.getOriginalFilename());*/
+				String iconsPath = request.getServletContext().getInitParameter(
+						"freelisting_icons");
+                System.out.println(" Icons Path: "+iconsPath);			
+				String webapppath = request.getServletContext().getInitParameter("freelisting_dir_path");
+				System.out.println(" webapp Path: "+webapppath);	
+				/*File iconDir = new File(webapppath+iconsPath);*/
+				File iconDir = new File(webapppath);
+				System.out.println("iconDir: "+iconDir);	
+				InputStream inputStream = file.getInputStream();
+				String iconFileName = flDetails.getBusinessName().replace(" ", "_")+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
+				System.out.println("iconFileName: "+iconFileName);
+				String iconFilePath = iconDir+File.separator+ iconFileName;
+				/*iconFilePath=iconFilePath.replace("\\", "/");*/
+						System.out.println(iconFilePath);
+				
+				OutputStream outputStream = new FileOutputStream(iconFilePath);
+
+				int readBytes = 0;
+				byte[] buffer = new byte[10000];
+				while ((readBytes = inputStream.read(buffer, 0, 10000)) != -1) {
+					outputStream.write(buffer, 0, readBytes);
+				}
+				outputStream.close();
+				inputStream.close();
+				
+				/*category.setImageFileName(iconFileName);
+				category.setPath(iconFilePath);
+				byte[] categoryLogo = file.getBytes();
+				category.setCategoryLogo(null);*/
+				flDetails.setImagepath(iconFilePath);
+			}
 			Long freelistingId = freeListingService
 					.saveFreeListingBusinessDetails(flDetails);
 			System.out.println("freelistingId " + freelistingId);
+			String imageName=freelistingId+"-logo";
+			
+			flDetails.setFreelistingbusinessdetailsId(freelistingId);
+			flDetails.setImagename(imageName);
+			
+			freeListingService.updateFreeListingBusinessDetails(flDetails);
 
 			return "redirect:/freelisting/address/show/" + freelistingId;
 		}
@@ -442,5 +499,14 @@ try{
 		/* return "free listing/fl_phone_feature_detail"; */
 		return "redirect:/freelisting/" + flBusinessId + "/phone";
 	}
+	
+	@RequestMapping(value="/listfl",method=RequestMethod.GET)
+	public String getAllFreeListingBusiness(ModelMap model){
+
+		model.addAttribute("FlBusiness",freeListingService.getALlFreeListingBusiness());
+		return "free listing/ListFLBusiness";
+	}
+	
+	
 
 }
