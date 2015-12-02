@@ -377,7 +377,7 @@
 							$
 									.ajax({
 										type : "POST",
-										url : "/onlineshodh/admin/business/getBusiness",
+										url : '${pageContext.request.contextPath}'+"/admin/business/getBusiness",
 										dataType : 'json',
 										data : {
 											"keyword" : $('#keyword').val()

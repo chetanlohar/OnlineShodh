@@ -1,24 +1,13 @@
-var lat1;
-
-var longitude1;
-
-var flag;
-
 function getLocation() {
-	if(!flag)
-	{
 		if (navigator.geolocation) {
 			navigator.geolocation.getCurrentPosition(showPosition, showError);
 		} else {
 			
 		}
-	}
 }
 
 function showPosition(position) {
 	getAddress(position.coords.latitude,position.coords.longitude);
-
-	/*getAddress(17.6316851,74.0347404);*/
 }
 
 function showError(error) {
@@ -40,13 +29,6 @@ function showError(error) {
 
 function getAddress(lat,longitude)
 {
-	console.log("lat: "+lat+":"+longitude);
-	
-	if(lat1!="" && longitude1!="")
-		flag=true;
-	
-	console.log(flag);
-	if(flag)
 		$.ajax({
 			type : "GET",
 			url : "http://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+longitude+"&sensor=true",
@@ -55,7 +37,11 @@ function getAddress(lat,longitude)
 				console.log(response);
 				var district; // administrative_area_level_2
 				
-				if(response.results[0].address_components[4].types[0] == "administrative_area_level_2")
+				if(response.results[0].address_components[5].types[0] == "administrative_area_level_2")
+				{
+					district = response.results[0].address_components[5].long_name;
+				}
+				else if(response.results[0].address_components[4].types[0] == "administrative_area_level_2")
 				{
 					district = response.results[0].address_components[4].long_name;
 				}
@@ -73,8 +59,11 @@ function getAddress(lat,longitude)
 				}
 				
 				var locality = "";
-				
-				if(response.results[0].address_components[3].types[0] == "locality")
+				if(response.results[0].address_components[4].types[0] == "locality")
+				{
+					locality = response.results[0].address_components[4].long_name;
+				}
+				else if(response.results[0].address_components[3].types[0] == "locality")
 				{
 					locality = response.results[0].address_components[3].long_name;
 				}
@@ -94,8 +83,13 @@ function getAddress(lat,longitude)
 				
 				if(district == locality)
 				{
-					
-					if(response.results[0].address_components[2].types[0]=="sublocality_level_1")
+					if(response.results[0].address_components[3].types[0]=="sublocality_level_1")
+					{
+						sublocality = response.results[0].address_components[3].long_name;
+						if(sublocality!="")
+							targetCityTown = district+" ("+sublocality+")";
+					}
+					else if(response.results[0].address_components[2].types[0]=="sublocality_level_1")
 					{
 						sublocality = response.results[0].address_components[2].long_name;
 						if(sublocality!="")

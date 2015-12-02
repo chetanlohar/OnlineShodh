@@ -82,7 +82,7 @@ body {
 								<div class="col-md-2 space">
 
 									<button type="button" class="btn btn-info flcontact" id="phonebutton"
-										onclick="addPhone()">
+										onclick="addPhone('${pageContext.request.contextPath}')">
 										<i class="fa fa-plus-circle"></i> Add
 									</button>
 									<input type="hidden" id="phoneurl"
@@ -174,7 +174,7 @@ body {
 								<div class="col-md-2 space">
 
 									<button type="button" class="btn btn-info flfeatures"
-										onclick="addFeature()">
+										onclick="addFeature('${pageContext.request.contextPath}')">
 										<i class="fa fa-plus-circle"></i> Add
 									</button>
 									<input type="hidden" id="featureurl"

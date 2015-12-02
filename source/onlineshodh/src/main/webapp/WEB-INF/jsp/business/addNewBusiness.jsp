@@ -21,7 +21,7 @@
 							$
 									.ajax({
 										type : "POST",
-										url : "/onlineshodh/admin/clients/getClient",
+										url : '${pageContext.request.contextPath}'+"/admin/clients/getClient",
 										dataType : 'json',
 										data : {
 											"searchBy" : $('#searchBy').val(),

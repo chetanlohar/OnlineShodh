@@ -344,7 +344,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-flag"></span></span>
 										<form:select path="city.state.country.countryId"
-											id="countryId" onchange="getState()" class="form-control"
+											id="countryId" onchange="getState('${pageContext.request.contextPath}')" class="form-control"
 											name="tcountry">
 											<form:option value="0" label="---Select-------" />
 											<c:forEach var="country" items="${countries}">
@@ -362,7 +362,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span>
 										<form:select path="city.state.stateId" id="townStates"
-											onchange="getCity()" class="form-control">
+											onchange="getCity('${pageContext.request.contextPath}')" class="form-control">
 											<form:option value="0" label="---Select-------" />
 											<c:forEach var="state" items="${states}">
 												<form:option value="${state.stateId}">${state.stateName}</form:option>
@@ -379,7 +379,7 @@
 										<span class="input-group-addon"><span
 											class="fa fa-user"></span></span>
 										<form:select path="city.cityId" id="stateCities"
-											class="form-control" onchange="getTowns()">
+											class="form-control" onchange="getTowns('${pageContext.request.contextPath}')">
 											<form:option value="0" label="---Select-------" />
 											<c:forEach var="city" items="${cities}">
 												<form:option value="${city.cityId}">${city.cityName}</form:option>

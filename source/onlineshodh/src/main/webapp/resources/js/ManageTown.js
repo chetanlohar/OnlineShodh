@@ -1,9 +1,9 @@
-function getState() {
+function getState(path) {
 	var countryId = $('#countryId').val();
 	
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/admin/towns/showStates",
+		url : path+"/admin/towns/showStates",
 		dataType : 'json',
 		data : {
 			"countryID" : countryId
@@ -36,12 +36,12 @@ function getState() {
 }
 
 //get All Cities
-function getCity() {
+function getCity(path) {
 	var StateId = $('#townStates').val();
 	
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/admin/towns/showCities",
+		url : path+"/admin/towns/showCities",
 		dataType : 'json',
 		data : {
 			"stateID" : StateId
@@ -73,12 +73,12 @@ function getCity() {
 }
 
 //get All Towns
-function getTowns() {
+function getTowns(path) {
 	var cityId = $('#stateCities').val();
 	
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/admin/towns/showTowns",
+		url : path+"/admin/towns/showTowns",
 		dataType : 'json',
 		data : {
 			"cityId" : cityId

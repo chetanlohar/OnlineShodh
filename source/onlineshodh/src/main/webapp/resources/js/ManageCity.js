@@ -1,9 +1,9 @@
-function getState() {
+function getState(path) {
 	var countryId = $('#countryId').val();
 	
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/admin/cities/showstates",
+		url : path+"/admin/cities/showstates",
 		dataType : 'json',
 		data : {
 			"countryID" : countryId

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
@@ -11,6 +12,7 @@ import com.onlineshodh.dao.SubCategoryDao;
 import com.onlineshodh.entity.SubCategoryEntity;
 
 @Repository
+@Cacheable(value = { "categoryCache" })
 public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implements SubCategoryDao {
 
 	EntityManager em;
@@ -39,6 +41,7 @@ public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implem
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Cacheable(value="categoryCache")
 	public List<SubCategoryEntity> listSubCategoriesByCategoryId(
 			Integer categoryId) {
 		em = getEntityManager();

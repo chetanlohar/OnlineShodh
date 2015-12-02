@@ -149,8 +149,8 @@
 					<div class="col-sm-1 cat">
 					<div class="row">
 						<div class="col-xs-1 hvr-grow">
-								<a href="${pageContext.request.contextPath}/search/business/category/${category.categoryId}/city/">
-									<img src="${pageContext.request.contextPath}/resources/images/icons/${category.imageFileName}">
+								<a href="${pageContext.request.contextPath}/search/business/category/${category.categoryId}">
+									<img src="${category.path}">
 									<div id="catname">${category.categoryName}</div>
 								</a>
 								
@@ -288,19 +288,17 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/js/assets/bootstrap.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-		<script src="${pageContext.request.contextPath}/resources/js/codejs/mainpage.js"></script>
+		<%-- <script src="${pageContext.request.contextPath}/resources/js/codejs/mainpage.js"></script> --%>
 		<script src="${pageContext.request.contextPath}/resources/js/codejs/geolocation.js"></script>
-		<!-- <script type="text/javascript">
+		<script type="text/javascript">
   			var myip;
 		</script>
 		<script type="text/javascript" src="https://l2.io/ip.js?var=myip" ></script> -->
 		<input id="flag" type="hidden" value="${flag}">
 	<script>
 			$(document).ready(function() {
-				/* console.log(myip); */
-				console.log(flag);
-				if(!flag)
-					getLocation();
+				console.log(myip);
+				getLocation();
 				$("#searchid").on("keyup",function(){
 					 $( "#searchid" ).autocomplete({
 							source: '${pageContext.request.contextPath}/search/dosearch?cityName='+$( "#citysearch" ).val()

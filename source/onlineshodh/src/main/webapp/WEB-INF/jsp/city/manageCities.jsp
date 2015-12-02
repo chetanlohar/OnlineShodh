@@ -299,7 +299,7 @@
 
 
 								<form:select path="state.country.countryId" id="countryId"
-									class="form-control" name="country" onchange="getState()">
+									class="form-control" name="country" onchange="getState('${pageContext.request.contextPath}')">
 									<form:option value="" label="--- Select ---" />
 									<c:forEach var="country" items="${countries}">
 										<form:option value="${country.countryId}">${country.countryName}</form:option>

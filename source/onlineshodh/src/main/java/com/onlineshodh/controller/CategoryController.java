@@ -1,11 +1,10 @@
 package com.onlineshodh.controller;
 
 import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,6 +28,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dropbox.core.DbxException;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.v1.DbxClientV1;
+import com.dropbox.core.v2.DbxClientV2;
+import com.dropbox.core.v2.DbxFiles.FileMetadata;
+import com.dropbox.core.v2.DbxFiles.Metadata;
+import com.dropbox.core.v2.DbxUsers.FullAccount;
+import com.dropbox.core.v2.DbxUsers.GetCurrentAccountException;
 import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.service.CategoryService;
 
@@ -38,6 +45,8 @@ public class CategoryController {
 
 	private static final Logger logger = Logger
 			.getLogger(CategoryController.class);
+	
+	static final String ACCESS_TOKEN = "OQurutdpfeAAAAAAAAAAMkKKiex3Jr7eVPfUvQ5bIEcImn_1vyVgnVP6iVBOu101";
 
 	@Autowired
 	public WebApplicationContext context;
@@ -57,7 +66,7 @@ public class CategoryController {
 	@RequestMapping(value = { "/", "" })
 	public String showManageCategory(ModelMap model) {
 		//model.addAttribute("category",context.getBean("categoryEntity", CategoryEntity.class));
-         model.addAttribute("category",new CategoryEntity());  		
+        model.addAttribute("category",new CategoryEntity());  		
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("categories", categories);
 		return "category/categorymanage";
@@ -95,7 +104,7 @@ public class CategoryController {
 			return "category/categorymanage";
 		else {
 			if (!file.isEmpty()) {
-				String iconsPath = request.getServletContext().getInitParameter(
+				/*String iconsPath = request.getServletContext().getInitParameter(
 						"category_icons");
 				String webapppath = request.getServletContext().getRealPath("/");
 				File iconDir = new File(webapppath+iconsPath);
@@ -114,8 +123,21 @@ public class CategoryController {
 				inputStream.close();
 				
 				category.setImageFileName(iconFileName);
-				category.setPath(iconFilePath);
+				category.setPath(iconFilePath);*/
+				
+				
 				/*byte[] categoryLogo = file.getBytes();*/
+				
+				try {
+					String filePath = uploadToDropBox(file.getOriginalFilename(),file.getInputStream());
+					filePath = filePath.replace("www.dropbox.com", "dl.dropboxusercontent.com");
+					System.out.println("filePath: "+filePath);
+					category.setImageFileName(file.getOriginalFilename());
+					category.setPath(filePath);
+				} catch (DbxException e) {
+					e.printStackTrace();
+				}
+				
 				category.setCategoryLogo(null);
 			}
 			String categoryName = category.getCategoryName().toUpperCase();
@@ -201,6 +223,25 @@ public class CategoryController {
 		result.addError(FileSizeExceedException);
 		return "category/categorymanage";
 
+	}
+	
+	public String uploadToDropBox(String fileName,InputStream in) throws GetCurrentAccountException, DbxException, IOException
+	{
+		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial", "en_US");
+        DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+        FullAccount account = client.users.getCurrentAccount();
+        System.out.println(account.name.displayName);
+        // Get files and folder metadata from Dropbox root directory
+        ArrayList<Metadata> entries = client.files.listFolder("").entries;
+        for (Metadata metadata : entries) {
+            System.out.println(metadata.pathLower);
+        }
+		FileMetadata metadata = client.files.uploadBuilder("/categories/"+fileName).run(in);
+        System.out.println("Hi:"+metadata.toStringMultiline());
+        DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
+        String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
+        System.out.println("sharedLink: "+sharedLink);
+		return sharedLink;
 	}
 	
 	

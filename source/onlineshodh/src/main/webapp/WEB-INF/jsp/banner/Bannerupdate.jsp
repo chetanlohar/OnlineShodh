@@ -348,7 +348,7 @@
 								<span class="input-group-addon"><span class="fa fa-flag"></span></span>
 
 								<form:select path="city.state.country.countryId" id="countryId"
-									onchange="getState()" class="form-control" name="bannerCountry">
+									onchange="getState('${pageContext.request.contextPath}')" class="form-control" name="bannerCountry">
 									<form:option value="0" label="---Select-------" />
 									<c:forEach var="country" items="${countries}">
 										<form:option value="${country.countryId}">${country.countryName}</form:option>
@@ -362,7 +362,7 @@
 							<div class="input-group">
 								<span class="input-group-addon"><span class="fa fa-flag"></span></span>
 								<form:select path="city.state.stateId" id="townStates"
-									onchange="getCity()" class="form-control" name="bannerstate">
+									onchange="getCity('${pageContext.request.contextPath}')" class="form-control" name="bannerstate">
 									<form:option value="0" label="---Select-------" />
 									<c:forEach var="state" items="${states}">
 										<form:option value="${state.stateId}">${state.stateName}</form:option>

@@ -1,10 +1,10 @@
 //getAllTowns
-function getTown() {
+function getTown(path) {
 	
 	var cityId = $('#cityId').val();
   $.ajax({
 		type : "POST",
-		url : "/onlineshodh/admin/clients/showTowns",
+		url : path+"/admin/clients/showTowns",
 		dataType : 'json',
 		data : {
 			"cityId" : cityId

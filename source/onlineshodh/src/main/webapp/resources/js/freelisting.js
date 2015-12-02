@@ -23,7 +23,7 @@ var flag1 = false;
 var phUrl;
 var ftUrl;
 
-function addPhone() {
+function addPhone(path) {
 	var phoneurl;
 	if (flag == true) {
 
@@ -33,6 +33,7 @@ function addPhone() {
 		phoneurl = $("#phoneurl").val();
 	}
 	
+	var path;
 	$("#phonebutton").html('Add');
 	$
 			.ajax({
@@ -57,7 +58,7 @@ function addPhone() {
 												+ item.phone
 												+ '</td><td>'
 												+ item.phonetype
-												+ '</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href="/onlineshodh/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete</button></a></td><td>Verify</td></tr>')
+												+ '</td><td><button class="upcontact btn-info btn-xs">Edit</button></td><td><a href='+path+'"/freelisting/'+item.freeListingBusinessEntity.freelistingbusinessdetailsId+'/'+item.freeBuinessPhoneId+'/deletePhone"><button class="btn btn-xs btn-danger">Delete</button></a></td><td>Verify</td></tr>')
 
 										jQuery('#phoneTable')
 												.append(newRow); 
@@ -81,7 +82,7 @@ function addPhone() {
 
 }
 
-function addFeature() {
+function addFeature(path) {
 
 	var url;
 	if (flag1 == true) {
@@ -113,7 +114,7 @@ function addFeature() {
 												+ item.freelistingBusinessFeatureId
 												+ '</td><td>'
 												+ item.freelistingBusinessFeature
-												+ '</td><td><button class="EditFeature btn-info btn-xs">Edit</button></td><td><a href="/onlineshodh/freelisting/'+item.business.freelistingbusinessdetailsId+'/'+item.freelistingBusinessFeatureId+'/deleteFeature"><button class="btn btn-xs btn-danger">Delete</button></a></td></tr>')
+												+ '</td><td><button class="EditFeature btn-info btn-xs">Edit</button></td><td><a href='+path+'"/freelisting/'+item.business.freelistingbusinessdetailsId+'/'+item.freelistingBusinessFeatureId+'/deleteFeature"><button class="btn btn-xs btn-danger">Delete</button></a></td></tr>')
 										jQuery('#featureTable').append(
 												newRow);
 									});

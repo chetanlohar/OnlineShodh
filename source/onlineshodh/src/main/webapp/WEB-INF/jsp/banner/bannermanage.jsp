@@ -346,7 +346,7 @@
 							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
 
 							<form:select path="city.state.country.countryId" id="countryId"
-								onchange="getState()" class="form-control" >
+								onchange="getState('${pageContext.request.contextPath}')" class="form-control" >
 								<form:option value="0" label="---Select-------" />
 								<c:forEach var="country" items="${countries}">
 									<form:option value="${country.countryId}">${country.countryName}</form:option>
@@ -360,7 +360,7 @@
 						<div class="input-group">
 							<span class="input-group-addon"><span class="fa fa-flag"></span></span>
 							<form:select path="city.state.stateId" id="townStates"
-								onchange="getCity()" class="form-control" >
+								onchange="getCity('${pageContext.request.contextPath}')" class="form-control" >
 								<form:option value="0" label="---Select-------" />
 								 <c:forEach var="state" items="${states}">
 									<form:option value="${state.stateId}">${state.stateName}</form:option>
@@ -392,7 +392,7 @@
 							<div class="fileinput-preview baner-preview thumbnail" data-trigger="fileinput"
 								style="width: 100%; height: 110px;">
 									<img
-							src="<%=request.getContextPath()%>/resources/images/ad.jpg"
+							src="${pageContext.request.contextPath}/resources/images/ad.jpg"
 							class="img-responsive" />
 									
 					</div>

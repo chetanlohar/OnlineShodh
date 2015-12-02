@@ -382,7 +382,7 @@
 
 										<form:select path="subCategory.category.categoryId"
 											required="" class="form-control" id="categoryname"
-											name="categoryname" onchange="getSubCategories()">
+											name="categoryname" onchange="getSubCategories('${pageContext.request.contextPath}')">
 											<form:option value="0" label="--- Select ---" />
 											<c:forEach var="category" items="${categories}">
 												<form:option value="${category.categoryId}">${category.categoryName}</form:option>

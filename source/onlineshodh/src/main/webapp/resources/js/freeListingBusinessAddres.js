@@ -1,11 +1,11 @@
-function getTown() {
+function getTown(path) {
 	
 	var cityId = $('#cityId').val();
     
 	
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/freelisting/showTowns",
+		url : path+"/freelisting/showTowns",
 		dataType : 'json',
 		data : {
 			"cityId" : cityId

@@ -304,7 +304,7 @@
 
 
 								<form:select path="city.state.country.countryId" id="countryId"
-									class="form-control" onchange="getState()">
+									class="form-control" onchange="getState('${pageContext.request.contextPath}')">
 									<form:option value="0" label="---Select-------" />
 									<c:forEach var="country" items="${countries}">
 										<form:option value="${country.countryId}">${country.countryName}</form:option>
@@ -318,7 +318,7 @@
 							<div class="form-group input-group col-md-9">
 
 								<form:select path="city.state.stateId" id="townStates"
-									onchange="getCity()" class="form-control">
+									onchange="getCity(${pageContext.request.contextPath}')" class="form-control">
 									<form:option value="0" label="---Select-------" />
 									<c:forEach var="state" items="${states}">
 										<form:option value="${state.stateId}">${state.stateName}</form:option>

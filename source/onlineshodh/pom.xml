@@ -213,16 +213,10 @@
 			<artifactId>lucene-queries</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-test-framework</artifactId>
-			<version>5.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.lucene</groupId>
-			<artifactId>lucene-analyzers-common</artifactId>
-			<version>5.1.0</version>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.apache.lucene</groupId> <artifactId>lucene-test-framework</artifactId> 
+			<version>5.1.0</version> </dependency> <dependency> <groupId>org.apache.lucene</groupId> 
+			<artifactId>lucene-analyzers-common</artifactId> <version>5.1.0</version> 
+			</dependency> -->
 		<dependency>
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-queryparser</artifactId>
@@ -233,6 +227,14 @@
 			<groupId>org.apache.lucene</groupId>
 			<artifactId>lucene-suggest</artifactId>
 			<version>5.1.0</version>
+		</dependency>
+
+		<!-- DropBox -->
+
+		<dependency>
+			<groupId>com.dropbox.core</groupId>
+			<artifactId>dropbox-core-sdk</artifactId>
+			<version>2.0-beta-2</version>
 		</dependency>
 
 

@@ -101,7 +101,7 @@ margin-top: 16%;
 									<div class="input-group col-md-9 col-xs-12">
 
 										<form:select path="city.cityId" class="form-control"
-											name="clientcity" id="cityId" onchange="getTown();">
+											name="clientcity" id="cityId" onchange="getTown('${pageContext.request.contextPath}');">
 											<form:option value="0">--Select--</form:option>
 											<c:forEach var="city" items="${cities}">
 												<form:option value="${city.cityId}">${city.cityName}</form:option>

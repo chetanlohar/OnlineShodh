@@ -1,8 +1,8 @@
-function getSubCategories() {
+function getSubCategories(path) {
 	var categoryId = $('#categoryname').val();
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/admin/subcategories/view/categories",
+		url : path+"/admin/subcategories/view/categories",
 		dataType : 'json',
 		data : {
 			"categoryId" : categoryId
@@ -26,11 +26,11 @@ function getSubCategories() {
 
 }
 
-function getSubCategoriesForFreeListing() {
+function getSubCategoriesForFreeListing(path) {
 	var categoryId = $('#categoryname').val();
 	$.ajax({
 		type : "POST",
-		url : "/onlineshodh/freelisting/view/categories",
+		url : path+"/freelisting/view/categories",
 		dataType : 'json',
 		data : {
 			"categoryId" : categoryId

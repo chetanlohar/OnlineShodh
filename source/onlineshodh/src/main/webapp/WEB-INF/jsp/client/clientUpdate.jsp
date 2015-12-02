@@ -414,7 +414,7 @@
 									<span class="input-group-addon"><span class="fa fa-user"></span></span>
 
 									<form:select path="address.city.cityId" class="form-control"
-										name="clientcity" id="cityId" onchange="getTown();">
+										name="clientcity" id="cityId" onchange="getTown('${pageContext.request.contextPath}');">
 										<form:option value="0">--Select--</form:option>
 										<c:forEach var="city" items="${cities}">
 											<form:option value="${city.cityId}">${city.cityName}</form:option>
