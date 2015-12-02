@@ -20,6 +20,11 @@
 <!-- PAGE STYLES-->
 <link href="${pageContext.request.contextPath}/resources/css/style.css"
 	rel="stylesheet" />
+	<!--Jancy STYLES-->
+<link
+	href="<%=request.getContextPath()%>/resources/css/jasny-bootstrap.min.css"
+	rel="stylesheet" />
+	
 
 <!-- tags STYLES-->
 <link
@@ -70,7 +75,7 @@ margin-top: 14%;
 							<form:form method="post" id="free_list_first"
 								class="form form-horizontal"
 								action="${pageContext.request.contextPath}/freelisting/business/save"
-								modelAttribute="flDetails">
+								modelAttribute="flDetails" enctype="multipart/form-data">
 								<div class="space"></div>
 								<div class="col-md-10 space">
 									<label for="company" class="col-sm-3 control-label">Company/business
@@ -83,6 +88,17 @@ margin-top: 14%;
 										<form:errors path="businessName" cssClass="errors"/>	
 									</div>
 								</div>
+								<div class="col-md-10 space">
+									<label for="pname" class="col-sm-3 control-label">Business
+										Description </label>
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-align-justify"></span></span>
+										<form:textarea path="businessDesc" class="form-control" />
+										<form:errors path="businessDesc" cssClass="errors" />
+									</div>
+								</div>
+								
 								<div class="col-md-10 space">
 									<label for="person" class="col-sm-3 control-label">Person
 										Name</label>
@@ -127,7 +143,7 @@ margin-top: 14%;
 
 										<form:select path="subCategory.category.categoryId"
 											required="" id="categoryname" name="categoryname"
-											onchange="getSubCategoriesForFreeListing('${pageContext.request.contextPath}')"
+											onchange="getSubCategoriesForFreeListing()"
 											class="form-control">
 											<form:option value="0" label="--- Select ---" />
 											<c:forEach var="category" items="${categories}">
@@ -154,6 +170,45 @@ margin-top: 14%;
 										<form:errors path="subCategory.subCategoryId" cssClass="errors"/>
 									</div>
 								</div>
+								
+								
+								<div class="col-md-10  space">
+						<label for="logo" class="col-sm-2 control-label">Logo</label>
+						<div class="fileinput fileinput-new col-lg-10"
+							data-provides="fileinput">
+							<div class="fileinput-preview thumbnail"
+											data-trigger="fileinput" style="width: 200px; height: 150px;">
+							<%-- 		<img
+							src="<%=request.getContextPath()%>/resources/images/ad.jpg"
+							class="img-responsive" /> --%>
+							<img
+												src="${pageContext.request.contextPath}/resources/images/user_pic.jpg"
+												alt="...">
+									
+					</div>
+							<div>
+								<span class="btn btn-default btn-file"><span
+									class="fileinput-new">Select image</span><span
+									class="fileinput-exists">Change Image</span> <input type="file"
+									id="file" name="file" onchange="changeImage(this);">
+									<form:errors path="logo" cssClass="errors" />
+									<!-- <img id="bannerLogo" height="50" width="50" /> </span> --> 
+								
+							</div>
+						</div>
+					</div>
+								
+
+                                 <div class="col-md-10 space">
+									<label for="person" class="col-sm-3 control-label">RegDate
+									</label>
+									<div class="input-group col-md-9">
+										<form:input path="regdate" class="keyword form-control"
+											id="regdate" name="regdate" />
+										<form:errors path="regdate" cssClass="errors"/>	
+
+									</div>
+								</div>    
 
 								<div class="col-md-10 space">
 									<label for="person" class="col-sm-3 control-label">Keywords
@@ -234,7 +289,9 @@ margin-top: 14%;
 		src="${pageContext.request.contextPath}/resources/js/validation/additional-methods.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/validation/free_listing.js"></script>
-
+<!-- JANSY BOOTSTRAP SCRIPTS -->
+	<script
+		src="<%=request.getContextPath()%>/resources/js/assets/jasny-bootstrap.js"></script>
 	<!-- keyword SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
