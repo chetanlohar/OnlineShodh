@@ -35,6 +35,14 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dropbox.core.DbxException;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.v1.DbxClientV1;
+import com.dropbox.core.v2.DbxClientV2;
+import com.dropbox.core.v2.DbxFiles.FileMetadata;
+import com.dropbox.core.v2.DbxFiles.Metadata;
+import com.dropbox.core.v2.DbxUsers.FullAccount;
+import com.dropbox.core.v2.DbxUsers.GetCurrentAccountException;
 import com.onlineshodh.entity.FreeListingAddressEntity;
 import com.onlineshodh.entity.FreeListingBusinessEntity;
 import com.onlineshodh.entity.FreeListingBusinessFeatureEntity;
@@ -54,8 +62,10 @@ import com.onlineshodh.support.validator.FLBusinessValidator;
 import com.onlineshodh.support.validator.FlBusinessAddressValidator;
 
 @Controller
-@RequestMapping(value = {"/freelisting","/admin/Freelisting"})
+@RequestMapping(value = { "/freelisting", "/admin/Freelisting" })
 public class FreeListingController {
+
+	static final String ACCESS_TOKEN = "CLYM2AeSMvAAAAAAAAAABtAeGrRghvyirnOVGPWXkG1bs-A_dN6byd4Yzy-fPcoN";
 
 	@Autowired
 	WebApplicationContext context;
@@ -107,8 +117,8 @@ public class FreeListingController {
 		model.addAttribute("categories", categoryService.getAllCategories());
 		return "free listing/fl_details_new";
 	}
-	
-	@RequestMapping(value = {"/flsucess" })
+
+	@RequestMapping(value = { "/flsucess" })
 	public String sucessOnFreeListing(ModelMap model) {
 		return "free listing/FreeListingSucess";
 	}
@@ -116,6 +126,7 @@ public class FreeListingController {
 	@RequestMapping(value = { "/view/categories", "/view/categories/" }, method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody List<SubCategoryEntity> listCategories(
 			@RequestParam("categoryId") Long categoryId) {
+		System.out.println(" category Id " + categoryId);
 		return subCategoryService.listSubCategoriesByCategoryId(categoryId
 				.intValue());
 	}
@@ -128,7 +139,10 @@ public class FreeListingController {
 	@RequestMapping(value = { "/business/save", "" }, method = RequestMethod.POST)
 	public String saveFreeListingBusinessDetails(
 			@Valid @ModelAttribute("flDetails") FreeListingBusinessEntity flDetails,
-			ModelMap model,@RequestParam("file") MultipartFile file, HttpServletRequest request,HttpServletResponse response,BindingResult result)throws IOException,MaxUploadSizeExceededException {
+			ModelMap model, @RequestParam("file") MultipartFile file,
+			HttpServletRequest request, HttpServletResponse response,
+			BindingResult result) throws IOException,
+			MaxUploadSizeExceededException {
 		boolean flag = false;
 		System.out.println(flDetails);
 		businessValidator.validate(flDetails, result);
@@ -140,64 +154,63 @@ public class FreeListingController {
 			}
 			flag = true;
 		}
-		if(file.isEmpty() && flDetails.getLogo().length==0){
-			FieldError logoNotSelected = new FieldError("flDetails", "logo", "mandatory");
+		if (file.isEmpty() && flDetails.getLogo().length == 0) {
+			FieldError logoNotSelected = new FieldError("flDetails", "logo",
+					"mandatory");
 			result.addError(logoNotSelected);
-			flag=true;
+			flag = true;
 		}
 		if (flag) {
 			model.addAttribute("categories", categoryService.getAllCategories());
 			return "free listing/fl_details_new";
 		} else {
 			if (!file.isEmpty()) {
-				/*byte[] logo = file.getBytes();
-				flDetails.setLogo(logo);
-				System.out.println(" file lenght"+file.getBytes().length);
-				System.out.println(" file size "+file.getSize());
-				System.out.println(" file name "+file.getOriginalFilename());*/
-				String iconsPath = request.getServletContext().getInitParameter(
-						"freelisting_icons");
-                System.out.println(" Icons Path: "+iconsPath);			
-				String webapppath = request.getServletContext().getInitParameter("freelisting_dir_path");
-				System.out.println(" webapp Path: "+webapppath);	
-				/*File iconDir = new File(webapppath+iconsPath);*/
-				File iconDir = new File(webapppath);
-				System.out.println("iconDir: "+iconDir);	
-				InputStream inputStream = file.getInputStream();
-				String iconFileName = flDetails.getBusinessName().replace(" ", "_")+file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-				System.out.println("iconFileName: "+iconFileName);
-				String iconFilePath = iconDir+File.separator+ iconFileName;
-				/*iconFilePath=iconFilePath.replace("\\", "/");*/
-						System.out.println(iconFilePath);
-				
-				OutputStream outputStream = new FileOutputStream(iconFilePath);
-
-				int readBytes = 0;
-				byte[] buffer = new byte[10000];
-				while ((readBytes = inputStream.read(buffer, 0, 10000)) != -1) {
-					outputStream.write(buffer, 0, readBytes);
-				}
-				outputStream.close();
-				inputStream.close();
-				
-				/*category.setImageFileName(iconFileName);
-				category.setPath(iconFilePath);
-				byte[] categoryLogo = file.getBytes();
-				category.setCategoryLogo(null);*/
-				flDetails.setImagepath(iconFilePath);
+				flDetails.setLogo(null);
 			}
 			Long freelistingId = freeListingService
 					.saveFreeListingBusinessDetails(flDetails);
 			System.out.println("freelistingId " + freelistingId);
-			String imageName=freelistingId+"-logo";
-			
-			flDetails.setFreelistingbusinessdetailsId(freelistingId);
-			flDetails.setImagename(imageName);
-			
+			int startindex = file.getOriginalFilename().lastIndexOf(".");
+			String extension = file.getOriginalFilename().substring(startindex);
+			String imageName = freelistingId + "-logo" + extension;
+			try {
+
+				String filePath = uploadToDropBox(imageName,
+						file.getInputStream());
+				filePath = filePath.replace("www.dropbox.com",
+						"dl.dropboxusercontent.com");
+				System.out.println("filePath: " + filePath);
+				flDetails.setFreelistingbusinessdetailsId(freelistingId);
+				flDetails.setImagename(imageName);
+				flDetails.setImagepath(filePath);
+			} catch (DbxException e) {
+				e.printStackTrace();
+			}
 			freeListingService.updateFreeListingBusinessDetails(flDetails);
 
 			return "redirect:/freelisting/address/show/" + freelistingId;
 		}
+	}
+
+	public String uploadToDropBox(String fileName, InputStream in)
+			throws GetCurrentAccountException, DbxException, IOException {
+		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial",
+				"en_US");
+		DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+		FullAccount account = client.users.getCurrentAccount();
+		System.out.println(account.name.displayName);
+		// Get files and folder metadata from Dropbox root directory
+		ArrayList<Metadata> entries = client.files.listFolder("").entries;
+		for (Metadata metadata : entries) {
+			System.out.println(metadata.pathLower);
+		}
+		FileMetadata metadata = client.files.uploadBuilder(
+				"/freelisting/business_logo/" + fileName).run(in);
+		System.out.println("Hi:" + metadata.toStringMultiline());
+		DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
+		String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
+		System.out.println("sharedLink: " + sharedLink);
+		return sharedLink;
 	}
 
 	@RequestMapping(value = "/showTowns", method = RequestMethod.POST)
@@ -232,51 +245,47 @@ public class FreeListingController {
 	@RequestMapping(value = "/address/save", method = RequestMethod.POST)
 	public String saveFLAddress(
 			ModelMap model,
-			@Valid@ModelAttribute("FreeListing_Address") FreeListingAddressEntity address,
+			@Valid @ModelAttribute("FreeListing_Address") FreeListingAddressEntity address,
 			BindingResult result) {
 		boolean flag = false;
 
 		addressValidator.validate(address, result);
-		if(result.hasErrors()){
-			List<FieldError> errors=result.getFieldErrors();
-			System.out.println(" Error Count :"+result.getErrorCount());
-			for(FieldError error:errors){
+		if (result.hasErrors()) {
+			List<FieldError> errors = result.getFieldErrors();
+			System.out.println(" Error Count :" + result.getErrorCount());
+			for (FieldError error : errors) {
 				logger.info(error.getDefaultMessage());
 			}
-			
-			flag=true;
+
+			flag = true;
 		}
-		
+
 		Long businessId = address.getBusinessEntity()
 				.getFreelistingbusinessdetailsId();
 		System.out.println(" freelisting address bean " + address);
-         
-		
-		
+
 		if (flag) {
 			model.addAttribute("cities", cityService.getAllCities());
 			return "free listing/fl_address_details_new";
 		} else {
 
-			//try {
-				freeListingAddressService.saveFreeListingAddress(address);
-			//} catch (Exception e) {
-				//logger.info(e.getMessage());
-				//return "redirect:/freelisting/address/show/" + businessId;
-			//}
+			// try {
+			freeListingAddressService.saveFreeListingAddress(address);
+			// } catch (Exception e) {
+			// logger.info(e.getMessage());
+			// return "redirect:/freelisting/address/show/" + businessId;
+			// }
 			return "redirect:/freelisting/" + businessId + "/phone";
 		}
 	}
 
 	@RequestMapping(value = "/address/save", method = RequestMethod.GET)
-	public String redirectToAddressShow(){
-		
+	public String redirectToAddressShow() {
+
 		return "redirect:/freelisting";
-		
+
 	}
-	
-	
-	
+
 	@RequestMapping(value = "/{businessId}/phone", method = RequestMethod.GET)
 	public String phoneDetails(ModelMap model,
 			@PathVariable("businessId") Long businessId) {
@@ -296,10 +305,10 @@ public class FreeListingController {
 			@RequestParam("phonetype") String phonetype,
 			@RequestParam("contact") Long contact,
 			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId) {
-		
-		boolean flag=false;
+
+		boolean flag = false;
 		try {
-			
+
 			System.out.println(" hi am here " + phonetype + " dfsdf" + contact
 					+ "freelistingbusinessdetailsId "
 					+ freelistingbusinessdetailsId);
@@ -313,30 +322,29 @@ public class FreeListingController {
 			freeListingPhoneService.saveFreeListingPhoneDetails(phoneEntity);
 		} catch (NullPointerException e) {
 			logger.error(e.getMessage());
-		}
-		catch (Exception e) {
-			
+		} catch (Exception e) {
+
 			logger.error(e.getMessage());
-				if(e.getMessage().contains("ConstraintViolationException")){
-					flag=true;
+			if (e.getMessage().contains("ConstraintViolationException")) {
+				flag = true;
 			}
 		}
-		List<FreeListingPhoneEntity> phoneList =new ArrayList<FreeListingPhoneEntity>();
-		
-		phoneList=freeListingPhoneService
+		List<FreeListingPhoneEntity> phoneList = new ArrayList<FreeListingPhoneEntity>();
+
+		phoneList = freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 
-				phoneList=freeListingPhoneService
+		phoneList = freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 		for (FreeListingPhoneEntity entity : phoneList) {
 			System.out.println(" Business Phones: " + entity.getPhone());
 		}
-		if(flag==true){
+		if (flag == true) {
 			System.out.println(" Duplicate ");
 			phoneList.add(new FreeListingPhoneEntity());
-		}else{
-			phoneList=freeListingPhoneService
-					.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);			
+		} else {
+			phoneList = freeListingPhoneService
+					.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 		}
 
 		return phoneList;
@@ -388,38 +396,39 @@ public class FreeListingController {
 			@RequestParam("phonetype") String phonetype,
 			@RequestParam("contact") Long contact,
 			@PathVariable("freelistingbusinessdetailsId") Long freelistingbusinessdetailsId,
-			@PathVariable("phoneId") Long phoneId,HttpServletRequest request,HttpServletResponse response) {
-		
-		boolean flag=false;
-try{
-		FreeListingPhoneEntity phoneEntity = freeListingPhoneService
-				.getPhoneById(phoneId);
-		phoneEntity.setPhone(contact.toString());
-		phoneEntity.setPhonetype(phonetype);
-		System.out.println(" Phone Bean " + phoneEntity.toString());
-		freeListingPhoneService.updateFreeListingPhoneDetails(phoneEntity);
-}catch(NullPointerException e){
-	logger.info(e.getLocalizedMessage());
-}catch(DataIntegrityViolationException exception){
-	flag=true;
-}
-		List<FreeListingPhoneEntity> phoneList =new ArrayList<FreeListingPhoneEntity>();
-				
-		phoneList=freeListingPhoneService
+			@PathVariable("phoneId") Long phoneId, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		boolean flag = false;
+		try {
+			FreeListingPhoneEntity phoneEntity = freeListingPhoneService
+					.getPhoneById(phoneId);
+			phoneEntity.setPhone(contact.toString());
+			phoneEntity.setPhonetype(phonetype);
+			System.out.println(" Phone Bean " + phoneEntity.toString());
+			freeListingPhoneService.updateFreeListingPhoneDetails(phoneEntity);
+		} catch (NullPointerException e) {
+			logger.info(e.getLocalizedMessage());
+		} catch (DataIntegrityViolationException exception) {
+			flag = true;
+		}
+		List<FreeListingPhoneEntity> phoneList = new ArrayList<FreeListingPhoneEntity>();
+
+		phoneList = freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 
-				phoneList=freeListingPhoneService
+		phoneList = freeListingPhoneService
 				.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 		for (FreeListingPhoneEntity entity : phoneList) {
 			System.out.println(" Business Phones: " + entity.getPhone());
 		}
-		if(flag==true){
+		if (flag == true) {
 			phoneList.add(new FreeListingPhoneEntity());
-		}else{
-			phoneList=freeListingPhoneService
-					.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);			
+		} else {
+			phoneList = freeListingPhoneService
+					.getAllFLBusinessPhonesByBusinessId(freelistingbusinessdetailsId);
 		}
-		
+
 		return phoneList;
 	}
 
@@ -459,17 +468,19 @@ try{
 		if (flag) {
 			logger.info("Feature is Empty");
 		} else {
-		System.out.println("In Update" + feature
-				+ " freelistingbusinessdetailsId "
-				+ freelistingbusinessdetailsId + " feature id " + featureId);
-		FreeListingBusinessFeatureEntity businessFeatureEntity = freeListingBusinessFeatureService
-				.getFeature(featureId);
-		businessFeatureEntity.setFreelistingBusinessFeature(feature.trim()
-				.toUpperCase());
-		System.out.println(" Feature Entity "
-				+ businessFeatureEntity.toString());
-		freeListingBusinessFeatureService
-				.updateFLBFeature(businessFeatureEntity);
+			System.out
+					.println("In Update" + feature
+							+ " freelistingbusinessdetailsId "
+							+ freelistingbusinessdetailsId + " feature id "
+							+ featureId);
+			FreeListingBusinessFeatureEntity businessFeatureEntity = freeListingBusinessFeatureService
+					.getFeature(featureId);
+			businessFeatureEntity.setFreelistingBusinessFeature(feature.trim()
+					.toUpperCase());
+			System.out.println(" Feature Entity "
+					+ businessFeatureEntity.toString());
+			freeListingBusinessFeatureService
+					.updateFLBFeature(businessFeatureEntity);
 		}
 		List<FreeListingBusinessFeatureEntity> fetureList = freeListingBusinessFeatureService
 				.getAllFeturesByBusinessID(freelistingbusinessdetailsId);
@@ -499,13 +510,26 @@ try{
 		/* return "free listing/fl_phone_feature_detail"; */
 		return "redirect:/freelisting/" + flBusinessId + "/phone";
 	}
-	
-	@RequestMapping(value="/listfl",method=RequestMethod.GET)
-	public String getAllFreeListingBusiness(ModelMap model){
 
-		model.addAttribute("FlBusiness",freeListingService.getALlFreeListingBusiness());
+	@RequestMapping(value = "/listfl", method = RequestMethod.GET)
+	public String getAllFreeListingBusiness(ModelMap model) {
+
+		model.addAttribute("FlBusiness",
+				freeListingService.getALlFreeListingBusiness());
 		return "free listing/ListFLBusiness";
 	}
+	
+	@RequestMapping(value="/verify/{flBusinessId}",method=RequestMethod.GET)
+	public String verifyFLBusiness(ModelMap model,@PathVariable("flBusinessId")Long flBusinessId){
+		System.out.println("flBusinessId "+flBusinessId);
+		FreeListingBusinessEntity fLEntity=freeListingService.getFeelistingEntityById(flBusinessId);
+		List<FreeListingPhoneEntity> phonelist=freeListingPhoneService.getAllFLBusinessPhonesByBusinessId(flBusinessId);
+	    List<FreeListingAddressEntity> addresslist=freeListingAddressService.getBusinessFeatureDetailByBusinessId(flBusinessId); 
+	    model.addAttribute("addressList",addresslist);
+	    model.addAttribute("phoneList",phonelist);
+		model.addAttribute("fLBEntity",fLEntity);
+		return "free listing/verifyFl";
+	} 
 	
 	
 

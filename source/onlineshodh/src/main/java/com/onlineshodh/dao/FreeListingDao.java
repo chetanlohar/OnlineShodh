@@ -10,6 +10,7 @@ public interface FreeListingDao {
 	public FreeListingBusinessEntity getFeelistingEntityById(Long freeListingId);
 	public List<FreeListingBusinessEntity> getALlFreeListingBusiness(); 
 	public void updateFreeListingBusinessDetails(FreeListingBusinessEntity entity); 
+	public List<FreeListingBusinessEntity> getAllFLBusinessById(Long freeListingId);
 
 
 }

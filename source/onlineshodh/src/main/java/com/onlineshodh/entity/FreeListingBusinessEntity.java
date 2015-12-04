@@ -67,6 +67,10 @@ public class FreeListingBusinessEntity implements Serializable {
 	@Column(name="fl_businessdesc")
 	private String businessDesc;
 	
+	@Column(name="fl_status")
+	private String status;
+	
+	
 	@ManyToOne(targetEntity=SubCategoryEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="subCategoryId")
 	private SubCategoryEntity subCategory;
@@ -169,6 +173,14 @@ public class FreeListingBusinessEntity implements Serializable {
 		this.imagepath = imagepath;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "FreeListingBusinessEntity [freelistingbusinessdetailsId="
@@ -177,17 +189,9 @@ public class FreeListingBusinessEntity implements Serializable {
 				+ email + ", website=" + website + ", keywords=" + keywords
 				+ ", regdate=" + regdate + ", logo=" + Arrays.toString(logo)
 				+ ", imagename=" + imagename + ", imagepath=" + imagepath
-				+ ", businessDesc=" + businessDesc + ", subCategory="
-				+ subCategory + "]";
+				+ ", businessDesc=" + businessDesc + ", status=" + status
+				+ ", subCategory=" + subCategory + "]";
 	}
 
-	
-
-	
-
-	
-
-	
-	
-	
+		
 }

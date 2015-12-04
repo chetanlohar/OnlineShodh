@@ -40,5 +40,10 @@ public class FreeListingServiceImpl implements FreeListingService {
 		
 		return freeListingDao.getALlFreeListingBusiness();
 	}
+	@Override
+	public List<FreeListingBusinessEntity> getAllFLBusinessById(
+			Long freeListingId) {
+		return freeListingDao.getAllFLBusinessById(freeListingId);
+	}
 
 }

@@ -143,7 +143,7 @@ margin-top: 14%;
 
 										<form:select path="subCategory.category.categoryId"
 											required="" id="categoryname" name="categoryname"
-											onchange="getSubCategoriesForFreeListing()"
+											onchange="getSubCategoriesForFreeListing('${pageContext.request.contextPath}')"
 											class="form-control">
 											<form:option value="0" label="--- Select ---" />
 											<c:forEach var="category" items="${categories}">
