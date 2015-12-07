@@ -17,9 +17,17 @@ public class BannerDaoImpl extends AbstractJpaDao<BannerEntity> implements Banne
 	 EntityManager entityManager;
 	
 	@Override
-	public void saveBanner(BannerEntity banner) {
+	public Integer saveBanner(BannerEntity banner) {
+		create(banner);
+		return banner.getBannerId(); 
+	}
+	
+	@Override
+	public void updateBanner(BannerEntity banner) {
 		update(banner);
 	}
+
+	
 
 	@Override
 	public List<BannerEntity> getAllBanners() {

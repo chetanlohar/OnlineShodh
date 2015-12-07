@@ -18,10 +18,16 @@ public class BannerServiceImpl implements BannerService {
 
 	@Override
 	@Transactional
-	public void saveBanner(BannerEntity banner) {
-		bannerDao.saveBanner(banner);
+	public Integer saveBanner(BannerEntity banner) {
+		return bannerDao.saveBanner(banner);
 		
 	}
+	@Override
+	@Transactional
+	public void updateBanner(BannerEntity banner) {
+		bannerDao.updateBanner(banner);
+	}
+	
 
 	@Override
 	public List<BannerEntity> getAllBanners() {
@@ -50,4 +56,6 @@ public class BannerServiceImpl implements BannerService {
 	public List<BannerEntity> getBanners(Integer CategoryId) {
 		return bannerDao.getBanners(CategoryId);
 	}
+
+	
 }

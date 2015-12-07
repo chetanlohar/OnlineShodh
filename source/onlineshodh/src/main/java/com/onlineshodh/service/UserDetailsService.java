@@ -14,9 +14,10 @@ public interface UserDetailsService {
 
 	/**
 	 * @param userDetails User Details to be stored in Persistance Storage
+	 * @return 
 	 * @throws ConstraintViolationException 
 	 */
-	public void saveUserDetails(UserDetailsEntity userDetails) throws ConstraintViolationException;
+	public Integer saveUserDetails(UserDetailsEntity userDetails) throws ConstraintViolationException;
 	
 	
 	/**

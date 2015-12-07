@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.apache.velocity.app.event.ReferenceInsertionEventHandler.referenceInsertExecutor;
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
@@ -18,10 +19,12 @@ public class UserDetailsDaoImpl extends AbstractJpaDao<UserDetailsEntity>
 	EntityManager entityManager;
 
 	@Override
-	public void saveUserDetails(UserDetailsEntity userDetails) {
+	public Integer saveUserDetails(UserDetailsEntity userDetails) {
 		create(userDetails);
+		return userDetails.getUserDetailsId();
 	}
-
+	
+	
 	@Override
 	public UserDetailsEntity getUserDetails(Integer userDetailsId) {
 		setClazz(UserDetailsEntity.class);

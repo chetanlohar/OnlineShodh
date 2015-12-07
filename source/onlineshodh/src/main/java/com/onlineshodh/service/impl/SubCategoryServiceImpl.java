@@ -36,8 +36,14 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 	 */
 	@Override
 	@Transactional
-	public void saveSubCategory(SubCategoryEntity subCategory) {
-		subcategorydao.saveSubCategory(subCategory);
+	public Integer saveSubCategory(SubCategoryEntity subCategory) {
+		return subcategorydao.saveSubCategory(subCategory);
+	}
+	
+	@Override
+	@Transactional
+	public void updateSubCategory(SubCategoryEntity subCategory) {
+		subcategorydao.updateSubCategory(subCategory);
 	}
 
 	@Override
@@ -61,4 +67,6 @@ public class SubCategoryServiceImpl implements SubCategoryService {
 	public SubCategoryEntity getSubCategory(String subCatName) {
 		return subcategorydao.getSubCategory(subCatName);
 	}
+
+	
 }

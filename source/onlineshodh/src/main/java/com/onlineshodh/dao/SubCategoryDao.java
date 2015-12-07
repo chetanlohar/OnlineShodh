@@ -20,7 +20,9 @@ public interface SubCategoryDao {
 	/**
 	 * @param subCategory to be store in Persistance Storage
 	 */
-	public void saveSubCategory(SubCategoryEntity subCategory);
+	public Integer saveSubCategory(SubCategoryEntity subCategory);
+	
+	public void updateSubCategory(SubCategoryEntity subCategory);
 	
 	/**
 	 * @param subCategoryId

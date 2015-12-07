@@ -393,8 +393,11 @@
 								data-provides="fileinput">
 								<div class="fileinput-preview thumbnail"
 									data-trigger="fileinput" style="width: 100%; height: 110px;">
-									<img id="bannerLogo"
+									<%-- <img id="bannerLogo"
 										src="${pageContext.request.contextPath}/admin/banners/load/logo/${banner.bannerId}"
+										height="50" width="50" /> --%>
+										<img id="bannerLogo"
+										src="${banner.bannerFilePath}"
 										height="50" width="50" />
 
 								</div>

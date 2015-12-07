@@ -88,6 +88,12 @@ public class UserDetailsEntity implements Serializable {
 	@JoinColumn(name="addressId")
 	private AddressEntity address;
 	
+	@Column(name="userdetailsfilename")
+	private String userdetailsFileName;
+	
+	@Column(name="userdetailsfilepath")
+	private String userdetailsFilePath;
+	
 	/*@ManyToMany(targetEntity=UserEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="userid")*/
 	
@@ -226,6 +232,22 @@ public class UserDetailsEntity implements Serializable {
 	 */
 	public void setAddress(AddressEntity address) {
 		this.address = address;
+	}
+
+	public String getUserdetailsFileName() {
+		return userdetailsFileName;
+	}
+
+	public void setUserdetailsFileName(String userdetailsFileName) {
+		this.userdetailsFileName = userdetailsFileName;
+	}
+
+	public String getUserdetailsFilePath() {
+		return userdetailsFilePath;
+	}
+
+	public void setUserdetailsFilePath(String userdetailsFilePath) {
+		this.userdetailsFilePath = userdetailsFilePath;
 	}
 
 	@Override

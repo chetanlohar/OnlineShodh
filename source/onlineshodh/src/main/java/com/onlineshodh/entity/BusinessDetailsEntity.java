@@ -2,6 +2,7 @@ package com.onlineshodh.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -98,6 +99,14 @@ public class BusinessDetailsEntity implements Serializable {
 	
 	@Column(name="keywords")
 	private String keywords;
+	
+	
+	@Column(name="businessfilename")
+	private String businessFileName;
+	
+	@Column(name="businessfilepath")
+	private String businessFilePath;
+	
 	
 	/**
 	 * @return the businessId
@@ -281,17 +290,40 @@ public class BusinessDetailsEntity implements Serializable {
 		this.keywords = keywords;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	public String getBusinessFileName() {
+		return businessFileName;
+	}
+
+	public void setBusinessFileName(String businessFileName) {
+		this.businessFileName = businessFileName;
+	}
+
+	public String getBusinessFilePath() {
+		return businessFilePath;
+	}
+
+	public void setBusinessFilePath(String businessFilePath) {
+		this.businessFilePath = businessFilePath;
+	}
+
 	@Override
 	public String toString() {
 		return "BusinessDetailsEntity [businessId=" + businessId
 				+ ", businessName=" + businessName + ", personName="
 				+ personName + ", businessLogo="
-				+ ", email=" + email
+				+ Arrays.toString(businessLogo) + ", email=" + email
 				+ ", website=" + website + ", businessDesc=" + businessDesc
 				+ ", subCategory=" + subCategory + ", userDetails="
-				+ userDetails + "]";
+				+ userDetails + ", regDate=" + regDate + ", address=" + address
+				+ ", rank=" + rank + ", keywords=" + keywords
+				+ ", businessFileName=" + businessFileName
+				+ ", businessFilePath=" + businessFilePath + "]";
 	}
+
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	
 }

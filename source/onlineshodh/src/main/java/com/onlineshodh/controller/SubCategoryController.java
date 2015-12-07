@@ -2,7 +2,9 @@ package com.onlineshodh.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -26,6 +28,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dropbox.core.DbxException;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.v1.DbxClientV1;
+import com.dropbox.core.v2.DbxClientV2;
+import com.dropbox.core.v2.DbxFiles.FileMetadata;
+import com.dropbox.core.v2.DbxFiles.Metadata;
+import com.dropbox.core.v2.DbxUsers.FullAccount;
+import com.dropbox.core.v2.DbxUsers.GetCurrentAccountException;
 import com.onlineshodh.entity.CategoryEntity;
 import com.onlineshodh.entity.SubCategoryEntity;
 import com.onlineshodh.service.CategoryService;
@@ -37,6 +47,8 @@ public class SubCategoryController {
 	
 	private static final Logger logger = Logger
 			.getLogger(SubCategoryController.class);
+	
+	static final String ACCESS_TOKEN = "CLYM2AeSMvAAAAAAAAAABtAeGrRghvyirnOVGPWXkG1bs-A_dN6byd4Yzy-fPcoN";
 	
 	@Autowired
 	WebApplicationContext context;
@@ -105,8 +117,9 @@ public class SubCategoryController {
 		else {
 			if (!file.isEmpty()) {
 				logger.info("file is not empty...");
-				byte[] subCategoryLogo = file.getBytes();
-				subCategory.setSubCategoryLogo(subCategoryLogo);
+				/*byte[] subCategoryLogo = file.getBytes();
+				subCategory.setSubCategoryLogo(subCategoryLogo);*/
+				subCategory.setSubCategoryLogo(null);
 			}
 			String subCategoryName = subCategory.getSubCategoryName().toUpperCase();
 			subCategory.setSubCategoryName(subCategoryName);
@@ -115,7 +128,26 @@ public class SubCategoryController {
 			if (subCategory.getPopularity() == null)
 				subCategory.setPopularity(0);
 			try {
-				subCategoryService.saveSubCategory(subCategory);
+				Integer subcategoryId=subCategoryService.saveSubCategory(subCategory);
+				
+				int startIndex=file.getOriginalFilename().lastIndexOf(".");
+				String extension=file.getOriginalFilename().substring(startIndex);
+				String fileName=subcategoryId+"-logo"+extension;
+				try {
+
+					String filePath = uploadToDropBox(fileName,
+							file.getInputStream());
+					filePath = filePath.replace("www.dropbox.com",
+							"dl.dropboxusercontent.com");
+					System.out.println("filePath: " + filePath);
+				
+					subCategory.setSubCategoryId(subcategoryId);
+					subCategory.setSubcategoryFileName(fileName);
+					subCategory.setSubcategoryFilePath(filePath);
+				} catch (DbxException e) {
+					e.printStackTrace();
+				}
+				subCategoryService.updateSubCategory(subCategory);
 				return "redirect:/admin/subcategories";
 			} catch (DataIntegrityViolationException e) {
 				FieldError countryNameAvailableError;
@@ -139,6 +171,54 @@ public class SubCategoryController {
 			return "category/Subcategoryupdate";
 	}
 
+	public String uploadToDropBox(String fileName, InputStream in)
+			throws GetCurrentAccountException, DbxException, IOException {
+		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial",
+				"en_US");
+		DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+		FullAccount account = client.users.getCurrentAccount();
+		System.out.println(account.name.displayName);
+		// Get files and folder metadata from Dropbox root directory
+		ArrayList<Metadata> entries = client.files.listFolder("").entries;
+		for (Metadata metadata : entries) {
+			System.out.println(metadata.pathLower);
+		}
+		FileMetadata metadata = client.files.uploadBuilder(
+				"/subcategory/subcategory_logo/" + fileName).run(in);
+		System.out.println("Hi:" + metadata.toStringMultiline());
+		DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
+		String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
+		System.out.println("sharedLink: " + sharedLink);
+		return sharedLink;
+	}
+	
+	
+	/*public void deleteFromDropBox(String filepath)
+			throws GetCurrentAccountException, DbxException, IOException {
+		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial",
+				"en_US");
+		DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+		FullAccount account = client.users.getCurrentAccount();
+		System.out.println(account.name.displayName);
+		// Get files and folder metadata from Dropbox root directory
+		ArrayList<Metadata> entries = client.files.listFolder("").entries;
+		for (Metadata metadata : entries) {
+			System.out.println(metadata.pathLower);
+		}
+		FileMetadata metadata = client.files.uploadBuilder(
+				"/subcategory/subcategory_logo/" + fileName).run(in);
+		System.out.println("File Path "+filepath);
+		FileMetadata metadata=(FileMetadata)client.files.delete(filepath);
+		System.out.println("Hi:" + metadata.toStringMultiline());
+		DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
+		String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
+		System.out.println("sharedLink: " + sharedLink);
+		
+	}
+	
+	*/
+	
+	
 	@RequestMapping(value = "/edit/{subCategoryId}", method = RequestMethod.GET)
 	public String editSubCategory(ModelMap model,@PathVariable("subCategoryId") Integer subCategoryId) {
 		model.addAttribute("categories", categoryService.getAllCategories());
@@ -148,7 +228,10 @@ public class SubCategoryController {
 
 	@RequestMapping(value = "/delete/{subCategoryId}", method = RequestMethod.GET)
 	public String deleteSubCategory(ModelMap model,
-			@PathVariable("subCategoryId") Integer subCategoryId) {
+			@PathVariable("subCategoryId") Integer subCategoryId) throws GetCurrentAccountException, DbxException, IOException {
+        SubCategoryEntity entity=subCategoryService.getSubCategoryById(subCategoryId);
+        /*String filepath= entity.getSubcategoryFilePath();
+		deleteFromDropBox(filepath);	*/
 		subCategoryService.deleteSubCategory(subCategoryId);
 		return "redirect:/admin/subcategories";
 	}

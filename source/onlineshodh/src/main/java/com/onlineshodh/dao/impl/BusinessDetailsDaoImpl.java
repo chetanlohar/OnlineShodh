@@ -17,8 +17,9 @@ public class BusinessDetailsDaoImpl extends
 	EntityManager entityManager;
 
 	@Override
-	public void saveBusinessDetails(BusinessDetailsEntity business) {
-		create(business);
+	public Long saveBusinessDetails(BusinessDetailsEntity business) {
+		 create(business);
+		 return business.getBusinessId();
 	}
 
 	@Override

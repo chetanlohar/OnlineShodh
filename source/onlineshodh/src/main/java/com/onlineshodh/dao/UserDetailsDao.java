@@ -13,7 +13,8 @@ public interface UserDetailsDao {
 	/**
 	 * @param userDetails User Details to be stored in Persistance Storage
 	 */
-	public void saveUserDetails(UserDetailsEntity userDetails);
+	public Integer saveUserDetails(UserDetailsEntity userDetails);
+	
 	
 	/**
 	 * @param userDetails Updates the User Details in Persistance Storage

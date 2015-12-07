@@ -575,9 +575,13 @@
 														${userdetail.address.landMark} ${userdetail.address.city.cityName} ${userdetail.address.town.townName} ${userdetail.address.townOther} ${userdetail.address.pincode}
 													</td>
 													<td>${userdetail.regDate}</td>
-													<td class="text-center"><img
+													<td class="text-center"><%-- <img
 														src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetail.userDetailsId}"
-														height="50" width="50" alt="*No Image" /></td>
+														height="50" width="50" alt="*No Image" /> --%>
+														<img
+														src="${userdetail.userdetailsFilePath}"
+														height="50" width="50" alt="*No Image" />
+														</td>
 													<td><a
 														href="${pageContext.request.contextPath}/admin/clients/edit/${userdetail.userDetailsId}"
 														class="edit"><button class="btn btn-info btn-xs">

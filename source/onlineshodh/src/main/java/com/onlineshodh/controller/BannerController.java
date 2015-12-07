@@ -2,10 +2,14 @@ package com.onlineshodh.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+
+
 
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +21,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,8 +34,15 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dropbox.core.DbxException;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.v1.DbxClientV1;
+import com.dropbox.core.v2.DbxClientV2;
+import com.dropbox.core.v2.DbxFiles.FileMetadata;
+import com.dropbox.core.v2.DbxFiles.Metadata;
+import com.dropbox.core.v2.DbxUsers.FullAccount;
+import com.dropbox.core.v2.DbxUsers.GetCurrentAccountException;
 import com.onlineshodh.entity.BannerEntity;
-
 import com.onlineshodh.entity.CityEntity;
 import com.onlineshodh.entity.StateEntity;
 import com.onlineshodh.service.BannerService;
@@ -82,6 +91,8 @@ public class BannerController {
 	String mandatory;
 	
 	BannerEntityValidator bannerEntityValidator; 
+	static final String ACCESS_TOKEN = "CLYM2AeSMvAAAAAAAAAABtAeGrRghvyirnOVGPWXkG1bs-A_dN6byd4Yzy-fPcoN";
+
 
 	@Autowired
 	public BannerController(BannerEntityValidator bannerEntityValidator) {
@@ -190,14 +201,32 @@ public class BannerController {
 		} else {
 			if (!file.isEmpty()) {
 				byte[] bannerLogo = file.getBytes();
-				banner.setBannerLogo(bannerLogo);
+				/*banner.setBannerLogo(bannerLogo);
 				System.out.println(" file lenght"+file.getBytes().length);
-				System.out.println(" file size "+file.getSize());
+				System.out.println(" file size "+file.getSize());*/
+				banner.setBannerLogo(null);
 			}
 
 			banner.setTotalHit(1);
 			try {
-				bannerService.saveBanner(banner);
+				Integer bannerId=bannerService.saveBanner(banner);
+				int startIndex=file.getOriginalFilename().lastIndexOf(".");
+				String extension=file.getOriginalFilename().substring(startIndex);
+				String fileName=bannerId+"-logo"+extension;
+				try {
+
+					String filePath = uploadToDropBox(fileName,
+							file.getInputStream());
+					filePath = filePath.replace("www.dropbox.com",
+							"dl.dropboxusercontent.com");
+					System.out.println("filePath: " + filePath);
+					banner.setBannerId(bannerId);
+					banner.setBannerFileName(fileName);
+					banner.setBannerFilePath(filePath);
+				} catch (DbxException e) {
+					e.printStackTrace();
+				}
+				bannerService.updateBanner(banner);
 				return "redirect:/admin/banners";
 			} catch (DataIntegrityViolationException e) {
 
@@ -213,10 +242,30 @@ public class BannerController {
 				logger.debug("Exception Occured!", new Exception(e));
 			}
 		}
-
 		return "banner/bannermanage";
 	}
-
+	
+	public String uploadToDropBox(String fileName, InputStream in)
+			throws GetCurrentAccountException, DbxException, IOException {
+		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial",
+				"en_US");
+		DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+		FullAccount account = client.users.getCurrentAccount();
+		System.out.println(account.name.displayName);
+		// Get files and folder metadata from Dropbox root directory
+		ArrayList<Metadata> entries = client.files.listFolder("").entries;
+		for (Metadata metadata : entries) {
+			System.out.println(metadata.pathLower);
+		}
+		FileMetadata metadata = client.files.uploadBuilder(
+				"/banner/banner_logo/" + fileName).run(in);
+		System.out.println("Hi:" + metadata.toStringMultiline());
+		DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
+		String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
+		System.out.println("sharedLink: " + sharedLink);
+		return sharedLink;
+	}
+	
 	@RequestMapping("/load/logo/{bannerId}")
 	public String downloadPicture(@PathVariable("bannerId") Integer bannerId,
 			HttpServletResponse response) {

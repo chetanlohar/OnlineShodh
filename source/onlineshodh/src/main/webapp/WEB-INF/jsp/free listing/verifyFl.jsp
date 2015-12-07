@@ -371,7 +371,7 @@
 				<!-- /. row  -->
 
 
-				<div class="row space">
+				<%-- <div class="row space">
 					<div class="col-lg-12">
 						<div class="detail-title">
 							<span class="detail-titile-header font17">Business
@@ -399,7 +399,7 @@
 							</table>
 						</div>
 					</div>
-				</div>
+				</div> --%>
 				<!-- /. row  -->
 
 

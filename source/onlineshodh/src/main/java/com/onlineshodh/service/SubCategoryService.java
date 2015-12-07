@@ -21,8 +21,9 @@ public interface SubCategoryService {
 	/**
 	 * @param subCategory the subCategory to be save in Persistance Storage
 	 */
-	public void saveSubCategory(SubCategoryEntity subCategory);
+	public Integer saveSubCategory(SubCategoryEntity subCategory);
 	
+	public void updateSubCategory(SubCategoryEntity subCategory);
 	/**
 	 * @param subCategoryId
 	 * @return SubCategoryEntity of subCategoryId

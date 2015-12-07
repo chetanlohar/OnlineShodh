@@ -73,6 +73,15 @@ public class SubCategoryEntity implements Serializable {
 	@ManyToOne(targetEntity=CategoryEntity.class,fetch=FetchType.EAGER)
 	@JoinColumn(name="categoryId")
 	private CategoryEntity category;
+	
+	
+	
+	@Column(name="subcategoryfilename")
+	private String subcategoryFileName;
+	
+	@Column(name="subcategoryfilepath")
+	private String subcategoryFilePath;
+	
 
 	/**
 	 * @return the subCategoryId
@@ -170,15 +179,40 @@ public class SubCategoryEntity implements Serializable {
 	}
 
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
+	public String getSubcategoryFileName() {
+		return subcategoryFileName;
+	}
+
+
+	public void setSubcategoryFileName(String subcategoryFileName) {
+		this.subcategoryFileName = subcategoryFileName;
+	}
+
+
+	public String getSubcategoryFilePath() {
+		return subcategoryFilePath;
+	}
+
+
+	public void setSubcategoryFilePath(String subcategoryFilePath) {
+		this.subcategoryFilePath = subcategoryFilePath;
+	}
+
+
 	@Override
 	public String toString() {
 		return "SubCategoryEntity [subCategoryId=" + subCategoryId
 				+ ", subCategoryName=" + subCategoryName + ", subCategoryLogo="
 				+ Arrays.toString(subCategoryLogo) + ", popularity="
 				+ popularity + ", subCategoryDesc=" + subCategoryDesc
-				+ ", category=" + category + "]";
+				+ ", category=" + category + ", subcategoryFileName="
+				+ subcategoryFileName + ", subcategoryFilePath="
+				+ subcategoryFilePath + "]";
 	}
+
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	
 }

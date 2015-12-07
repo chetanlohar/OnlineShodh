@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.SubCategoryDao;
@@ -24,7 +25,13 @@ public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implem
 	}
 
 	@Override
-	public void saveSubCategory(SubCategoryEntity subCategory) {
+	public Integer saveSubCategory(SubCategoryEntity subCategory) {
+		create(subCategory);
+		return subCategory.getSubCategoryId();
+	}
+
+	@Override
+	public void updateSubCategory(SubCategoryEntity subCategory) {
 		update(subCategory);
 	}
 
@@ -57,4 +64,6 @@ public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implem
 		SubCategoryEntity result = em.createQuery(query,SubCategoryEntity.class).setParameter("subCatName",subCatName.trim().toLowerCase()).getSingleResult();
 		return result;
 	}
+
+	
 }

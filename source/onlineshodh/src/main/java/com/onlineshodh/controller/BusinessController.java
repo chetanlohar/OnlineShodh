@@ -2,6 +2,7 @@ package com.onlineshodh.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dropbox.core.DbxException;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.v1.DbxClientV1;
+import com.dropbox.core.v2.DbxClientV2;
+import com.dropbox.core.v2.DbxFiles.FileMetadata;
+import com.dropbox.core.v2.DbxFiles.Metadata;
+import com.dropbox.core.v2.DbxUsers.FullAccount;
+import com.dropbox.core.v2.DbxUsers.GetCurrentAccountException;
 import com.onlineshodh.entity.AddressEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
 import com.onlineshodh.entity.BusinessEnquiryEntity;
@@ -97,6 +106,8 @@ public class BusinessController {
 	BusinessDetailsValidator businessDetailsValidator;
 
 	BusinessAddressValidator businessAddressValidator;
+	
+	static final String ACCESS_TOKEN = "CLYM2AeSMvAAAAAAAAAABtAeGrRghvyirnOVGPWXkG1bs-A_dN6byd4Yzy-fPcoN";
 	
 	
 
@@ -281,6 +292,35 @@ public class BusinessController {
 		model.addAttribute("userDetailsId", userDetailsId);
 		return "business/businessadd";
 	}
+	
+	
+	public String uploadToDropBox(String fileName, InputStream in)
+			throws GetCurrentAccountException, DbxException, IOException {
+		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial",
+				"en_US");
+		DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+		FullAccount account = client.users.getCurrentAccount();
+		System.out.println(account.name.displayName);
+		// Get files and folder metadata from Dropbox root directory
+		ArrayList<Metadata> entries = client.files.listFolder("").entries;
+		for (Metadata metadata : entries) {
+			System.out.println(metadata.pathLower);
+		}
+		FileMetadata metadata = client.files.uploadBuilder(
+				"/business/business_logo/" + fileName).run(in);
+		System.out.println("Hi:" + metadata.toStringMultiline());
+		DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
+		String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
+		System.out.println("sharedLink: " + sharedLink);
+		return sharedLink;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	@RequestMapping("/update/businessinfo/{businessId}")
 	public String updateBusinessInfo(

@@ -5,7 +5,8 @@ import java.util.List;
 import com.onlineshodh.entity.BannerEntity;
 public interface BannerService {
 
-	public void saveBanner(BannerEntity banner);
+	public Integer saveBanner(BannerEntity banner);
+	public void  updateBanner(BannerEntity banner);
 	public List<BannerEntity> getAllBanners();
 	public BannerEntity getBannerById(Integer bannerId);
 	public void deleteBanner(Integer bannerId);

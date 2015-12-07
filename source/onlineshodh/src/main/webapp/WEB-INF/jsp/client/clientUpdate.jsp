@@ -354,9 +354,15 @@
 								<div class="fileinput fileinput-new" data-provides="fileinput">
 									<div class="fileinput-preview thumbnail"
 										data-trigger="fileinput" style="width: 200px; height: 150px;">
-										<img
+										<%-- <img
 											src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDetails.userDetailsId}"
-											id="userDetailsLogo" height="50" width="50" />
+											id="userDetailsLogo" height="50" width="50" /> --%>
+											
+										
+											
+										<img
+														src="${userDetails.userdetailsFilePath}"
+														height="50" width="50" alt="*No Image" />	
 
 									</div>
 									<div>

@@ -8,8 +8,9 @@ public interface BusinessDetailsDao {
 	
 	/**
 	 * @param business Describes the Business Data to be Store
+	 * @return 
 	 */
-	public void saveBusinessDetails(BusinessDetailsEntity business);
+	public Long saveBusinessDetails(BusinessDetailsEntity business);
 	
 	/**
 	 * @param business Updates the Business Details for the Business

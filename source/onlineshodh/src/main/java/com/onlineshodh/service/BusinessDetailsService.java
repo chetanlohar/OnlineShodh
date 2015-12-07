@@ -9,8 +9,9 @@ public interface BusinessDetailsService {
 	/**
 	 * @param business
 	 *            Describes the Business Data to be Store
+	 * @return 
 	 */
-	public void saveBusinessDetails(BusinessDetailsEntity business);
+	public Long saveBusinessDetails(BusinessDetailsEntity business);
 
 	/**
 	 * @param business

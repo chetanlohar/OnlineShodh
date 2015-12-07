@@ -2,6 +2,7 @@ package com.onlineshodh.controller;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -29,6 +30,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.dropbox.core.DbxException;
+import com.dropbox.core.DbxRequestConfig;
+import com.dropbox.core.v1.DbxClientV1;
+import com.dropbox.core.v2.DbxClientV2;
+import com.dropbox.core.v2.DbxFiles.FileMetadata;
+import com.dropbox.core.v2.DbxFiles.Metadata;
+import com.dropbox.core.v2.DbxUsers.FullAccount;
+import com.dropbox.core.v2.DbxUsers.GetCurrentAccountException;
 import com.onlineshodh.entity.AddressEntity;
 import com.onlineshodh.entity.BannerEntity;
 import com.onlineshodh.entity.BusinessDetailsEntity;
@@ -83,6 +92,10 @@ public class ClientController {
 
 	@Value("${onlyDigits}")
 	String onlyDigits;
+	
+	static final String ACCESS_TOKEN = "CLYM2AeSMvAAAAAAAAAABtAeGrRghvyirnOVGPWXkG1bs-A_dN6byd4Yzy-fPcoN";
+
+	
 
 	@RequestMapping(value = { "/", "" })
 	public String manageClients(ModelMap model) {
@@ -242,7 +255,7 @@ public class ClientController {
 			ModelMap model,
 			@RequestParam("file") MultipartFile file,
 			@Valid @ModelAttribute("clientdetails") ClientDetails clientdetails,
-			BindingResult result) {
+			BindingResult result) throws IOException {
 		System.out.println(clientdetails);
 
 		logger.info(clientdetails.getUser().getPassword());
@@ -396,13 +409,34 @@ public class ClientController {
 								.println("address entity before store to userde"
 										+ addressEntity);
 						userDetails.setAddress(addressEntity);
-						try {
-							if (!file.isEmpty())
-								userDetails.setPhotograph(file.getBytes());
-						} catch (IOException e) {
-							e.printStackTrace();
+						if (!file.isEmpty()){
+							/*userDetails.setPhotograph(file.getBytes());*/
+							userDetails.setPhotograph(null);
 						}
-						userDetailsService.saveUserDetails(userDetails);
+					java.util.Date utildate=new java.util.Date();
+					userDetails.setRegDate(new Date(utildate.getTime()));	
+					Integer userDetailsId=userDetailsService.saveUserDetails(userDetails);
+					System.out.println(" userDetailsId :"+userDetailsId);
+					int startIndex=file.getOriginalFilename().lastIndexOf(".");
+					String extension=file.getOriginalFilename().substring(startIndex);
+					String fileName=userDetailsId+"-logo"+extension;
+					try {
+
+						String filePath = uploadToDropBox(fileName,
+								file.getInputStream());
+						filePath = filePath.replace("www.dropbox.com",
+								"dl.dropboxusercontent.com");
+						System.out.println("filePath: " + filePath);
+						
+						userDetails.setUserDetailsId(userDetailsId);
+						userDetails.setUserdetailsFileName(fileName);
+						userDetails.setUserdetailsFilePath(filePath);
+					} catch (DbxException e) {
+						e.printStackTrace();
+					}
+					
+					userDetailsService.updateUserDetails(userDetails);
+					
 					}
 				}
 			} catch (ConstraintViolationException e) {
@@ -424,6 +458,27 @@ public class ClientController {
 
 		return "client/createClient";
 	}
+	public String uploadToDropBox(String fileName, InputStream in)
+			throws GetCurrentAccountException, DbxException, IOException {
+		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial",
+				"en_US");
+		DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+		FullAccount account = client.users.getCurrentAccount();
+		System.out.println(account.name.displayName);
+		// Get files and folder metadata from Dropbox root directory
+		ArrayList<Metadata> entries = client.files.listFolder("").entries;
+		for (Metadata metadata : entries) {
+			System.out.println(metadata.pathLower);
+		}
+		FileMetadata metadata = client.files.uploadBuilder(
+				"/client/client_logo/" + fileName).run(in);
+		System.out.println("Hi:" + metadata.toStringMultiline());
+		DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
+		String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
+		System.out.println("sharedLink: " + sharedLink);
+		return sharedLink;
+	}
+	
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String redirectToUpdate() {
@@ -564,6 +619,7 @@ public class ClientController {
 	@RequestMapping(value = "/edit/{userDetailsId}", method = RequestMethod.GET)
 	public String editClientDetails(ModelMap model,
 			@PathVariable("userDetailsId") Integer userDetailsId) {
+		try{
 		System.out.println("UserDetails "
 				+ userDetailsService.getUserDetails(userDetailsId));
 		UserDetailsEntity userDetailsEntity = userDetailsService
@@ -574,9 +630,12 @@ public class ClientController {
 				userDetailsService.getUserDetails(userDetailsId));
 		model.addAttribute("cities", cityService.getAllCities());
 		model.addAttribute("towns", towns);
-		System.out.println(" File Size before Update :"
+		/*System.out.println(" File Size before Update :"
 				+ userDetailsService.getUserDetails(userDetailsId)
-						.getPhotograph().length);
+						.getPhotograph().length);*/
+		}catch(NullPointerException e){
+			System.out.println(e.getMessage());
+		}
 		return "client/clientUpdate";
 	}
 

@@ -394,9 +394,13 @@
 											<c:forEach var="subcategory" items="${subcategories}">
 												<tr class="odd gradeX">
 													<td>${subcategory.subCategoryId}</td>
-													<td><img
+													<td><%-- <img
 														src="${pageContext.request.contextPath}/admin/subcategories/load/logo/${subcategory.subCategoryId}"
-														class="img-responsive" width="50px " height="50px;" /></td>
+														class="img-responsive" width="50px " height="50px;" /> --%>
+														<img
+														src="${subcategory.subcategoryFilePath}"
+														class="img-responsive" width="50px " height="50px;" />
+														</td>
 													<td>${subcategory.subCategoryName}</td>
 													<td>${subcategory.subCategoryDesc}</td>
 													<td>${subcategory.category.categoryName}&nbsp|&nbsp(${subcategory.category.categoryId})</td>

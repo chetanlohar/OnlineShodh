@@ -31,10 +31,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	
 	@Override
 	@Transactional
-	public void saveUserDetails(UserDetailsEntity userDetails) throws ConstraintViolationException {
+	public Integer saveUserDetails(UserDetailsEntity userDetails) throws ConstraintViolationException {
+		Integer userdetailsId=0;
 		try
 		{
-			userDetailsDao.saveUserDetails(userDetails);
+			userdetailsId=userDetailsDao.saveUserDetails(userDetails);
 		}
 		catch(DataIntegrityViolationException e)
 		{
@@ -49,6 +50,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		{
 			throw new ConstraintViolationException("userName","**Invalid Data in Some Fields");
 		}
+		return userdetailsId;
 	}
 
 	@Override
