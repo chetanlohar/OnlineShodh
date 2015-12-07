@@ -262,7 +262,7 @@
 						<li><a href="#"><i class="fa fa-cogs "></i>List All Logs</a>
 						</li>
 					</ul></li>
-				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span
+				<li><a href="#"><i class="fa fa-envelope "></i>Mails <span class="badge bg-red">5</span><span
 						class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li><a href="#"><i class="fa fa-cogs "></i>List All Mails</a>
@@ -364,10 +364,10 @@
 								</div>
 							</div>
 
-							<div class="hide_cheque">
+							<div class="hide_neft">
 								<div class="col-lg-8 space">
-									<label for="cheque_no" class="col-sm-3 control-label">Cheque
-										No </label>
+									<label for="Benif_name" class="col-sm-3 control-label">
+										Beneficiary Name </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="fa fa-ticket"></span></span> 
@@ -387,8 +387,19 @@
 									</div>
 								</div>
 								<div class="col-lg-8 space">
-									<label for="cheque_date" class="col-sm-3 control-label">Cheque
-										Date </label>
+									<label for="cheque_date" class="col-sm-3 control-label"> Branch
+										Name </label>
+									<div class="input-group sandbox-container">
+										<span class="input-group-addon"><span
+											class="fa fa-calendar"></span></span>
+											<form:input path="check.checkDate" class=" form-control" />
+											<form:errors path="check.checkDate" cssClass="errors"/>
+									</div>
+								</div>
+								
+									<div class="col-lg-8 space">
+									<label for="cheque_date" class="col-sm-3 control-label">Account
+										No. </label>
 									<div class="input-group sandbox-container">
 										<span class="input-group-addon"><span
 											class="fa fa-calendar"></span></span>
@@ -398,7 +409,7 @@
 								</div>
 
 								<div class="col-lg-8 space">
-									<label for="cheque_amount" class="col-sm-3 control-label">Cheque
+									<label for="neft_amount" class="col-sm-3 control-label">NEFT
 										Amount </label>
 									<div class="input-group">
 										<span class="input-group-addon"><span class="fa fa-inr"></span></span>

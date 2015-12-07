@@ -281,13 +281,13 @@
 				</div>
 				<div class="row">
 					<div class="col-lg-12">
-						<form class="form-horizontal" id="search_Bplan">
+						<form class="form-horizontal" id="search_Bplan"  onsubmit="search();return false;">
 							<div class="col-lg-10 space">
 								<label for="planname" class="col-sm-2 control-label">
 									Search</label>
 								<div class="input-group">
 									<span class="input-group-addon"><span class="fa fa-search"></span></span>
-									<input type="text" class="form-control"  id="keyword"  name="business_name" placeholder="Business Name">
+									<input type="text" class="form-control"  id="keyword"  name="business_name" placeholder="Business Name" onClick="search();">
 
 								</div>
 							</div>
@@ -300,6 +300,7 @@
 						</form>
 
 					</div>
+					<div class="col-md-12 text-center space" id="loading"></div>
 
 				</div>
 				<div class="row space">
@@ -368,10 +369,8 @@
 		});
 	</script>
 <script type="text/javascript">
-	$(function() {
-		$('#searchButton')
-				.click(
-						function() {
+
+						function search() {
 							
 							
 							$
@@ -382,8 +381,13 @@
 										data : {
 											"keyword" : $('#keyword').val()
 										},
+										
+										 beforeSend:function(){
+												
+												$('#loading').html('<p class="bg-yellow"><i class="fa fa-spinner sucess_spin"></i>  Loading...</p>');
+											},
 										success : function(response) {
-
+											$('#loading').html('');
 											console.log(response)
 
 											$('#dataTables-assign')
@@ -416,14 +420,15 @@
 										},
 										error : function(e) {
 											console.log(e)
-											alert("Please Enter Valid keywords")
+											alert("Please Enter Valid keywords");
 											/* jQuery('#error')
 											.append(e); */
 										}
-									})
+									});
+						}
 
-						});
-	});
+						
+
 </script>
 
 <script type="text/javascript">

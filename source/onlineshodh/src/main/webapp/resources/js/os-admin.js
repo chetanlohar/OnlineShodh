@@ -107,7 +107,7 @@ $(document).ready(function(){
           var phonebyajaxURl;
 		  var contact = $('#bdetail_contact').val();
           var phonetype = $('#bdetail_phonetype').val();
-          $("#phonebutton").html('Add');
+          $("#Bphonebutton").html('Add');
          
          if(Bflag==true){
         	 phonebyajaxURl=AJURL;
@@ -223,17 +223,18 @@ $(document).ready(function(){
 			var temp1 = $("#pay_mode").val();
 	
 				if(temp1 == '1'){
-					$(".hide_cheque").hide();
+					$(".hide_neft").hide();
 					$(".hide_cashamount").show();
 					
 				}
 				else if(temp1 == '2'){
 					
 					$(".hide_cashamount").hide();
-					$(".hide_cheque").show();
+					$(".hide_neft").show();
 				}
 				else{
 					$(".hide_cashamount").show();
+					$(".hide_neft").hide();
 				
 				}
 			});

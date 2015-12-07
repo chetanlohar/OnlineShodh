@@ -35,7 +35,7 @@ $(document).ready(function(){
 		        
 		        file:{
 		        	extension:"jpg|jpeg|png|bmp",
-		        	maxfilesize:true
+		        	maxfilesizeb:true
 		        },
 		        
 		     
@@ -86,7 +86,7 @@ $(document).ready(function(){
 		    	  file:{
 			        	
 			        	extension:"Please select valid image",
-			        		maxfilesize:"File size should be less than 300 KB"
+			        	maxfilesizeb:"File size should be less than 1 MB"
 		    	  },
 		    	  bannerName:{
 		    		  required: "Please enter banner name",
@@ -142,12 +142,12 @@ $(document).ready(function(){
 		}, "Valid Url only please"); 
 
 	$.validator.addMethod(
-		    "maxfilesize",
+		    "maxfilesizeb",
 		    function (value, element) {
 		        return this.optional(element) || (element.files && element.files[0]
-		                               && element.files[0].size < 1024  * 300);
+		                               && element.files[0].size < 1024  * 1000);
 		    },
-		    'The file size can not exceed 300KB.'
+		    'The file size can not exceed 1 MB.'
 		);
 /*	$.validator.addMethod("greaterThan", 
 			function(value, element, params) {
@@ -199,7 +199,7 @@ $(document).ready(function(){
 		        file:{
 		        	
 		        	extension:"jpg|jpeg|png|bmp",
-		        	maxfilesize:true
+		        	maxfilesizeb:true
 		        },
 		        
 		        
@@ -253,7 +253,7 @@ $(document).ready(function(){
 		    	  file:{
 			        	
 			        	extension:"Please select valid image",
-			        		maxfilesize:"File size should be less than 300 KB"
+			        	maxfilesizeb:"File size should be less than 1 MB"
 		    	  },
 		    	 " bannerName":{
 		    		  required: "Please enter banner name",

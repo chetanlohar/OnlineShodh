@@ -27,6 +27,10 @@
 											"searchBy" : $('#searchBy').val(),
 											"keyword" : $('#keyword').val()
 										},
+									    beforeSend:function(){
+											alert("wait for while");
+											console.log('work');
+										},
 										success : function(response) {
 
 											console.log(response)

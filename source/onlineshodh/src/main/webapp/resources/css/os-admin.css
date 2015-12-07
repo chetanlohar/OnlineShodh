@@ -158,7 +158,7 @@ textarea {
 }
 
 .nav-second-level li a {
-	padding-left: 37px;
+	padding-left: 20px;
 }
 
 .nav-third-level li a {
@@ -468,7 +468,7 @@ input[type=radio]:checked+label {
 	display: none;
 }
 
-.hide_cheque {
+.hide_neft{
 	display: none;
 }
 
@@ -498,8 +498,27 @@ input[type=radio]:checked+label {
 .error-no .text-red {
 	color: red;
 }
+#loading p{
+	padding: 15px;
+	font-size: 16px;
+}
 
+.sucess_spin {
+	color:#000;
+  -webkit-animation: spinner 3s infinite; /* Safari 4+ */
+  -moz-animation:    spinner 3s infinite; /* Fx 5+ */
+  -o-animation:      spinner 3s infinite; /* Opera 12+ */
+  animation:        spinner 3s infinite; /* IE 10+, Fx 29+ */
+}
 
+@keyframes spinner{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 /*==============================================
 Login Page 
   =============================================*/

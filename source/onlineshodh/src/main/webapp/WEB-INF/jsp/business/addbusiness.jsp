@@ -18,10 +18,7 @@
 	href="${pageContext.request.contextPath}/resources/css/font-awesome.css"
 	rel="stylesheet" />
 
-<!-- FONTAWESOME ICONS STYLES-->
-<link
-	href="${pageContext.request.contextPath}/resources/css/intlTelInput.css"
-	rel="stylesheet" />
+
 
 <!-- DATA TABLE STYLES-->
 <link
@@ -301,8 +298,8 @@
 				<div class="row">
 					<div class="col-lg-10">
 						<form class="form-horizontal" name="clientsearch"
-							id="clientsearch">
-							<div class="col-lg-10">
+							id="clientsearch" onsubmit="send();return false;" >
+							<div class="col-lg-10 ">
 								<div class="col-lg-6 space">
 									<label for="mailid" class="col-sm-5 control-label">Search
 										By:</label>
@@ -323,14 +320,17 @@
 									</div>
 								</div>
 								<div class="col-lg-6 col-lg-offset-6 space">
-									<button type="button" class="btn btn-info" id="searchButton">
+									<button type="button" class="btn btn-info" id="searchButton"  onClick="send();">
 										<i class="fa fa-search"></i> Search
 									</button>
 
 								</div>
+								</div>
 						</form>
+						
 					</div>
 					<!-- /.col-lg-12 -->
+					<div class="col-md-12  text-center space" id="loading"></div>
 				</div>
 				<!-- /.row -->
 
@@ -412,10 +412,7 @@
 
 
 
-	<!-- Input Telephone SCRIPTS -->
-	<script
-		src="${pageContext.request.contextPath}/resources/js/intlTelInput.js"></script>
-
+	
 	<!-- DATATABLE SCRIPTS -->
 	<script
 		src="${pageContext.request.contextPath}/resources/js/jquery.dataTables.min.js"></script>
@@ -448,10 +445,8 @@
 											});
 						});
 
-		$(function() {
-			$('#searchButton')
-					.click(
-							function() {
+
+							function send() { 
 								$
 										.ajax({
 											type : "POST",
@@ -462,8 +457,12 @@
 														.val(),
 												"keyword" : $('#keyword').val()
 											},
+											  beforeSend:function(){
+													
+													$('#loading').html('<p class="bg-yellow"><i class="fa fa-spinner sucess_spin"></i>  Loading...</p>');
+												},
 											success : function(response) {
-
+												$('#loading').html('');
 												console.log(response)
 
 												$('#dataTables-example').find(
@@ -502,17 +501,17 @@
 
 											},
 											error : function(e) {
-												console.log(e)
+												console.log(e);
 												alert("Please Enter Valid keywords")
 												/* jQuery('#error')
 												.append(e); */
 											}
 										})
 
-							});
+							};
 			
 			
-		});
+	
 	</script>
 
 	<c:url value="/j_spring_security_logout" var="logoutUrl" />

@@ -309,7 +309,12 @@ margin-top: 14%;
 									delay : 100
 								},
 								showAutocompleteOnFocus : true
-							})
+							});
+					
+				    $('#fr_list_web').on('change', function () {
+				        var text = $('#fr_list_web');
+				        text.val( 'http://' + text.val() );    
+				    });
 				});
 	</script>
 	<script type="text/javascript"
