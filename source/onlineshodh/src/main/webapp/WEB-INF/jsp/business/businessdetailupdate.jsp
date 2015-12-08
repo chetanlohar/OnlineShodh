@@ -316,7 +316,7 @@
 								<tr>
 									<td>Business Logo</td>
 									<td><img
-										src="${pageContext.request.contextPath}/admin/business/load/logo/${business.businessId}"
+										src="${business.businessFilePath}"
 										class="img-responsive" width="50px " height="50px;" /></td>
 
 								</tr>

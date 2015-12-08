@@ -143,7 +143,11 @@ public class BusinessController {
 			BindingResult result) throws IOException {
 
 		if (!file.isEmpty())
-			businessDetails.setBusinessLogo(file.getBytes());
+		{
+			/*businessDetails.setBusinessLogo(file.getBytes());*/
+			businessDetails.setBusinessLogo(null);
+		}
+		       
 		boolean flag = false;
 
 		/*
@@ -187,7 +191,24 @@ public class BusinessController {
 		}
 
 		else {
-			businessService.saveBusinessDetails(businessDetails);
+			Long businessId=businessService.saveBusinessDetails(businessDetails);
+			int startIndex=file.getOriginalFilename().lastIndexOf(".");
+			String extension=file.getOriginalFilename().substring(startIndex);
+			String fileName=businessId+"-logo"+extension; 	
+			try {
+
+				String filePath = uploadToDropBox(fileName,
+						file.getInputStream());
+				filePath = filePath.replace("www.dropbox.com",
+						"dl.dropboxusercontent.com");
+				System.out.println("filePath: " + filePath);
+				businessDetails.setBusinessId(businessId);
+				businessDetails.setBusinessFileName(fileName);
+                businessDetails.setBusinessFilePath(filePath);
+       		} catch (DbxException e) {
+					e.printStackTrace();
+				}
+	            businessService.updateBusinessDetails(businessDetails);  			
 			return "redirect:/admin/business/"
 					+ businessDetails.getUserDetails().getUserDetailsId()
 					+ "/update/" + businessDetails.getBusinessId();
@@ -209,6 +230,32 @@ public class BusinessController {
 	 * 
 	 * }
 	 */
+	
+	
+	public String uploadToDropBox(String fileName, InputStream in)
+			throws GetCurrentAccountException, DbxException, IOException {
+		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial",
+				"en_US");
+		DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+		FullAccount account = client.users.getCurrentAccount();
+		System.out.println(account.name.displayName);
+		// Get files and folder metadata from Dropbox root directory
+		ArrayList<Metadata> entries = client.files.listFolder("").entries;
+		for (Metadata metadata : entries) {
+			System.out.println(metadata.pathLower);
+		}
+		FileMetadata metadata = client.files.uploadBuilder(
+				"/business/business_logo/" + fileName).run(in);
+		System.out.println("Hi:" + metadata.toStringMultiline());
+		DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
+		String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
+		System.out.println("sharedLink: " + sharedLink);
+		return sharedLink;
+	}
+	
+	
+	
+	
 
 	@RequestMapping("/load/logo/{businessId}")
 	public String downloadPicture(@PathVariable("businessId") Long businessId,
@@ -294,26 +341,6 @@ public class BusinessController {
 	}
 	
 	
-	public String uploadToDropBox(String fileName, InputStream in)
-			throws GetCurrentAccountException, DbxException, IOException {
-		DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial",
-				"en_US");
-		DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
-		FullAccount account = client.users.getCurrentAccount();
-		System.out.println(account.name.displayName);
-		// Get files and folder metadata from Dropbox root directory
-		ArrayList<Metadata> entries = client.files.listFolder("").entries;
-		for (Metadata metadata : entries) {
-			System.out.println(metadata.pathLower);
-		}
-		FileMetadata metadata = client.files.uploadBuilder(
-				"/business/business_logo/" + fileName).run(in);
-		System.out.println("Hi:" + metadata.toStringMultiline());
-		DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
-		String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
-		System.out.println("sharedLink: " + sharedLink);
-		return sharedLink;
-	}
 	
 	
 	

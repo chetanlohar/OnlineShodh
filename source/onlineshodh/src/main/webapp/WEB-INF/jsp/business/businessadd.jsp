@@ -448,7 +448,8 @@
 
 											</c:if>
 											<c:if test="${not empty businessdetail.businessId}">
-												<img src="${pageContext.request.contextPath}/admin/business/load/logo/${businessdetail.businessId}"	alt="...">
+												<%-- <img src="${pageContext.request.contextPath}/admin/business/load/logo/${businessdetail.businessId}"	alt="..."> --%>
+											    <img src="${businessdetail.businessFilePath}"	alt="...">
 											</c:if>
 											<%-- <img src="${pageContext.request.contextPath}/admin/business/load/logo/${businessdetail.businessId}"	alt="..."> --%>
 
