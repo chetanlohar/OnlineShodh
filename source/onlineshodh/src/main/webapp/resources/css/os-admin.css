@@ -60,6 +60,11 @@ textarea {
 	color: red;
 	margin-left: 210px;
 }
+.locerror {
+	display: block;
+	color: red;
+	margin-left: 5px;
+}
 
 .page-head-line {
 	font-size: 30px;

@@ -327,7 +327,7 @@
 						<div class="col-lg-10 space">
 							<label for="mailid" class="col-sm-3 control-label">Plan
 								Name:</label>
-							<div class="input-group">
+							<div class="input-group col-md-9">
 								<c:if test="${msg}">
 									<c:out value="Plan SucessfullyAssigned..." />
 								</c:if>
@@ -369,7 +369,7 @@
 						<div class="col-lg-10 space ">
 							<label for="mailid" class="col-sm-3 control-label">Status
 								:</label>
-							<div class="input-group">
+							<div class="input-group col-md-9">
 								<form:select path="status" class="form-control">
 									<form:option value="">---Select--</form:option>
 									<form:option value="NotActive">Not Active</form:option>

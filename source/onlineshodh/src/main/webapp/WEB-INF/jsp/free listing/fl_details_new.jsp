@@ -173,8 +173,8 @@ margin-top: 14%;
 								
 								
 								<div class="col-md-10  space">
-						<label for="logo" class="col-sm-2 control-label">Logo</label>
-						<div class="fileinput fileinput-new col-lg-10"
+						<label for="logo" class="col-sm-3 control-label">Logo</label>
+						<div class="fileinput fileinput-new col-lg-8 col-md-0"
 							data-provides="fileinput">
 							<div class="fileinput-preview thumbnail"
 											data-trigger="fileinput" style="width: 200px; height: 150px;">

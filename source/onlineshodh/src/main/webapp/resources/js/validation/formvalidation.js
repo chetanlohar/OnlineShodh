@@ -336,7 +336,7 @@ $('#citymanage').validate({
       },
       
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'locerror',
 
 });
 
@@ -377,7 +377,7 @@ $('#cityupdate').validate({
       },
       
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'locerror',
 
 });
 
@@ -424,7 +424,7 @@ $('#townmanage').validate({
       },
       
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'locerror',
 
 });
 
@@ -468,7 +468,7 @@ $('#townupdate').validate({
       },
       
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'locerror',
 
 });
 
@@ -505,7 +505,7 @@ $('#statemanage').validate({
       },
       
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'locerror',
 
 });
 
@@ -541,7 +541,7 @@ $('#stateupdate').validate({
       },
       
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'locerror',
 
 });
 
@@ -570,7 +570,7 @@ $('#countrymanage').validate({
       },
       
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'locerror',
 
 });
 
@@ -599,7 +599,7 @@ $('#countryupdate').validate({
       },
       
       errorElement: 'span',
-      errorClass: 'error',
+      errorClass: 'locerror',
       errorPlacement: function(error, element) {
           if(element.parent('.input-group').length) {
               error.insertAfter(element.parent());

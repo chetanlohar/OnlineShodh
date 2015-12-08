@@ -2,6 +2,7 @@ package com.onlineshodh.dao.impl;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
@@ -13,6 +14,7 @@ import com.onlineshodh.entity.CityEntity;
 public class CategoryDaoImpl extends AbstractJpaDao<CategoryEntity>implements CategoryDao {
 
 	@Override
+	@Cacheable(value="categoryCache")
 	public List<CategoryEntity> getAllCategories() {
 		setClazz(CategoryEntity.class);
 		return findAll();
