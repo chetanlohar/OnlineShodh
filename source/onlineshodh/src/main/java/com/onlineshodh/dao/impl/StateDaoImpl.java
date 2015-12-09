@@ -4,11 +4,11 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
 import com.onlineshodh.dao.StateDao;
-
 import com.onlineshodh.entity.StateEntity;
 
 @Repository
@@ -30,6 +30,7 @@ public class StateDaoImpl extends AbstractJpaDao<StateEntity> implements StateDa
 	}
 
 	@Override
+	@Cacheable(value="state")
 	public List<StateEntity> getAllStates() {
 		setClazz(StateEntity.class);
 		return findAll();
@@ -39,6 +40,7 @@ public class StateDaoImpl extends AbstractJpaDao<StateEntity> implements StateDa
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Cacheable(value="state")
 	public List<StateEntity> getAllStates(Integer countryId) {
 		em = getEntityManager();
 		String query = "from StateEntity state where state.country.countryId = :countryId";

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
@@ -25,6 +26,7 @@ public class CityDaoImpl extends AbstractJpaDao<CityEntity> implements CityDao {
 	}
 
 	@Override
+	@Cacheable(value="city")
 	public List<CityEntity> getAllCities() {
 		setClazz(CityEntity.class);
 		return findAll();
@@ -32,6 +34,7 @@ public class CityDaoImpl extends AbstractJpaDao<CityEntity> implements CityDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Cacheable(value="city")
 	public List<CityEntity> getAllCities(Integer stateId) {
 		em = getEntityManager();
 		String query = "from CityEntity city where city.state.stateId = :stateId";

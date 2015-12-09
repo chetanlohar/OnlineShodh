@@ -24,7 +24,6 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="category")
 @Scope(value="prototype")
-@Cacheable(value="categoryCache")
 public class CategoryEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

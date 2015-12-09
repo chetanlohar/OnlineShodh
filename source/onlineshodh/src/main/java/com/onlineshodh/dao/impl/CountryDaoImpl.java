@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import com.onlineshodh.dao.AbstractJpaDao;
@@ -18,6 +19,7 @@ public class CountryDaoImpl extends AbstractJpaDao<CountryEntity> implements Cou
 	EntityManager em;
 	
 	@Override
+	@Cacheable(value="country")
 	public List<CountryEntity> getAllCountries() {
 		setClazz(CountryEntity.class);
 		return findAll();
