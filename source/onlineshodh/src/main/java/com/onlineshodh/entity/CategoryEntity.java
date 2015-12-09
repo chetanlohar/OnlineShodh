@@ -12,6 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name="category")
 @Scope(value="prototype")
+@Cacheable(value="categoryCache")
 public class CategoryEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

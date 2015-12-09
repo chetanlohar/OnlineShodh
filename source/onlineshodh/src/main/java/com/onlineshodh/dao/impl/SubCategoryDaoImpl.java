@@ -19,6 +19,7 @@ public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implem
 	EntityManager em;
 	
 	@Override
+	@Cacheable(value={"subcategoryCache"})
 	public List<SubCategoryEntity> getAllSubCategories() {
 		setClazz(SubCategoryEntity.class);
 		return findAll();
@@ -48,7 +49,7 @@ public class SubCategoryDaoImpl extends AbstractJpaDao<SubCategoryEntity> implem
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Cacheable(value="categoryCache")
+	@Cacheable(value={"categoryCache","subcategoryCache"})
 	public List<SubCategoryEntity> listSubCategoriesByCategoryId(
 			Integer categoryId) {
 		em = getEntityManager();

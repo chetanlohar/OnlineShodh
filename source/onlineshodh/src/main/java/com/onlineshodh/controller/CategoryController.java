@@ -69,8 +69,8 @@ public class CategoryController {
         model.addAttribute("category",new CategoryEntity());  		
 		List<CategoryEntity> categories = categoryService.getAllCategories();
 		model.addAttribute("categories", categories);
-		System.out.println("category "+categoryService.getAllCategories());
-		System.out.println("category "+categoryService.getAllCategories());
+		/*System.out.println("category "+categoryService.getAllCategories());
+		System.out.println("category "+categoryService.getAllCategories());*/
 		return "category/categorymanage";
 	}
 	

@@ -406,9 +406,9 @@
 											class="form-control" id="subcategoryname"
 											name="subcategoryname">
 											<form:option value="0" label="--- Select ---" />
-											<c:forEach var="subcategory" items="${subcategories}">
+											<%-- <c:forEach var="subcategory" items="${subcategories}">
 												<form:option value="${subcategory.subCategoryId}">${subcategory.subCategoryName}</form:option>
-											</c:forEach>
+											</c:forEach> --%>
 										</form:select>
 										<form:errors path="subCategory.subCategoryId"
 											cssClass="errors" />
