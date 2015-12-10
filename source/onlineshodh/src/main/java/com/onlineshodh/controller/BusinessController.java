@@ -75,7 +75,6 @@ public class BusinessController {
 
 	@Autowired
 	CategoryService categoryService;
-
 	@Autowired
 	CountryService countryService;
 
