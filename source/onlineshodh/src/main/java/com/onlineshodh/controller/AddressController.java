@@ -7,5 +7,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/admin/addresses")
 public class AddressController {
 
-	
 }
