@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 public class BusinessSearchEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

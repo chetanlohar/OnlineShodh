@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 @Entity
 @Table(name="country")
 public class CountryEntity implements Comparable<CountryEntity>,Serializable{

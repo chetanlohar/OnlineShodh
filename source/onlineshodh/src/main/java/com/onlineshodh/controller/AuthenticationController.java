@@ -1,5 +1,7 @@
 package com.onlineshodh.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,9 +27,12 @@ public class AuthenticationController {
 	}*/
 	
 	@RequestMapping(value={"/","","/login","/login/"})
-	public String login(@RequestParam(value = "error", required = false) String error,
+	public String login(HttpServletRequest request,@RequestParam(value = "error", required = false) String error,
 			@RequestParam(value = "logout", required = false) String logout,ModelMap model)
 	{
+		String referrer = request.getHeader("Referer");
+	    request.getSession().setAttribute("url_prior_login", referrer);
+	    
 		if (error != null) {
 			model.addAttribute("error", "Invalid username and password!");
 		}

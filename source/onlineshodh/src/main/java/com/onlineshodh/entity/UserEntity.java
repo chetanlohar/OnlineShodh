@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
  * UserEntity is main actor for the system. 
  */
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 @Entity
 @Table(name="users")
 public class UserEntity implements Serializable {
@@ -323,7 +323,6 @@ public class UserEntity implements Serializable {
 		this.credentialsNonExpired = true;
 		this.emailVerified = false;
 		this.uuidForEmail = null;
-		this.role = "ROLE_USER";
 	}
 
 	/* (non-Javadoc)

@@ -22,7 +22,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Entity
 @Table(name="category")
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 /*@Cache(usage=CacheConcurrencyStrategy.READ_WRITE)*/
 @javax.persistence.Cacheable(true)
 public class CategoryEntity implements Serializable {

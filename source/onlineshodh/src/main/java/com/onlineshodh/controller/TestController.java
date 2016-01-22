@@ -2,14 +2,13 @@ package com.onlineshodh.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 @RequestMapping(value="/prashant")
 public class TestController {
 	
 	
-	@RequestMapping(value="/address",method=RequestMethod.GET)
+	/*@RequestMapping(value="/address",method=RequestMethod.GET)
 	public String getAddr()
 	{
 		return"addr";
@@ -274,6 +273,6 @@ public class TestController {
 	public String fl_condetail()
 	{
 		return "free listing/fl_phone_feature_detail";
-	}
+	}*/
 	
 }

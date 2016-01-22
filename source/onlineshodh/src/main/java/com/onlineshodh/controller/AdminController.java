@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.onlineshodh.entity.UserDetailsEntity;
 import com.onlineshodh.entity.UserEntity;
 import com.onlineshodh.service.UserDetailsService;
 import com.onlineshodh.service.UserService;
@@ -39,9 +40,11 @@ public class AdminController {
 		if(users.size()==1)
 		{
 			logger.info("Logged Admin: "+users.get(0).getUserName());
-			Integer userDeailsId = userDetailsService.getUserDetailsByUserId(users.get(0).getUserId()).getUserDetailsId();
-			model.addAttribute("userDeailsId", userDeailsId);
-			session.setAttribute("userDeailsId", userDeailsId);
+			
+			UserDetailsEntity userDet = userDetailsService.getUserDetailsByUserId(users.get(0).getUserId());
+			model.addAttribute("userDeailsId", userDet.getUserDetailsId());
+			session.setAttribute("userDeailsId", userDet.getUserDetailsId());
+			/*session.setAttribute("photograph", userDet.getPhtographPath());*/
 		}
 		return "admin/admin";
 	}

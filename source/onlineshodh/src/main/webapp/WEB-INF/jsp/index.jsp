@@ -298,7 +298,7 @@
 	<script>
 			$(document).ready(function() {
 				console.log(myip);
-				getLocation();
+				/* getLocation(); */
 				$("#searchid").on("keyup",function(){
 					 $( "#searchid" ).autocomplete({
 							source: '${pageContext.request.contextPath}/search/dosearch?cityName='+$( "#citysearch" ).val()

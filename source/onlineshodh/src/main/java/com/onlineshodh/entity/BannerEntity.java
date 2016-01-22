@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 
 @Table(name="banner_details")
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 @Entity
 public class BannerEntity implements Serializable{
 

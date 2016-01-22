@@ -156,7 +156,7 @@
 			<ul class="nav" id="main-menu">
 				<li>
 					<div class="user-img-div">
-					<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
+					<img src="${userPhoto}" class="img-circle" />
 
 					</div>
 

@@ -56,7 +56,7 @@ public class HomeController {
 	@RequestMapping(value={"/",""})
 	public String showHome(HttpServletRequest request,ModelMap model)
 	{
-		init();
+		/*init();*/
 		
 		String iconsPath = request.getServletContext().getInitParameter(
 				"category_icons");

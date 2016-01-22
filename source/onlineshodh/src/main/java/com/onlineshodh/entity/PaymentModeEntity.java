@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+/*@Scope("prototype")*/
 @Entity
 @Table(name="payment_mode")
 public class PaymentModeEntity implements Serializable{

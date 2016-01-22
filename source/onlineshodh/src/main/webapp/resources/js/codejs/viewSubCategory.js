@@ -40,10 +40,9 @@ function getSubCategoriesForFreeListing(path) {
 			$('#subcategoryname').find('option').remove().end();
 		     $('#subcategoryname').append(
 			 $("<option value='0'></option>").text("--Select--"));
-			jQuery.each(response, function(index, item) {
+			 $.each(response, function(key, value) {
 				$('#subcategoryname').append(
-						$("<option></option>").text(this.subCategoryName).val(
-								this.subCategoryId));
+						$("<option></option>").text(value).val(key));
 			});
 		},
 		error : function(e) {

@@ -23,6 +23,7 @@ public class DropBoxTest {
         // Create Dropbox client
         DbxRequestConfig config = new DbxRequestConfig("dropbox/java-tutorial", "en_US");
         DbxClientV2 client = new DbxClientV2(config, ACCESS_TOKEN);
+        DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
 
         // Get current account info
         FullAccount account = client.users.getCurrentAccount();
@@ -42,11 +43,11 @@ public class DropBoxTest {
         FileMetadata metadata = client.files.uploadBuilder("/test.txt").run(in);
         System.out.println("Hi:"+metadata.toStringMultiline());
         
-        DbxClientV1 dbxClient = new DbxClientV1(config, ACCESS_TOKEN);
-        
         String sharedLink = dbxClient.createShareableUrl(metadata.pathLower);
         System.out.println("sharedLink: "+sharedLink);
         
+        
+        /*dbxClient.delete("/test.txt");*/
         
     }
 

@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 @Table(name="check_details")
 @Entity
 public class CheckEntity implements Serializable {

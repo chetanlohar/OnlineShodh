@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+/*@Scope("prototype")*/
 @Entity
 @Table(name="freelisting_business_phone_details")
 public class FreeListingPhoneEntity implements Serializable {

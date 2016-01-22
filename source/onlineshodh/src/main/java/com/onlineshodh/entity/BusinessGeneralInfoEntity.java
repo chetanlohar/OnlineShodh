@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+/*@Scope("prototype")*/
 @Entity
 @Table(name="business_generalinfo_details")
 public class BusinessGeneralInfoEntity implements Serializable {

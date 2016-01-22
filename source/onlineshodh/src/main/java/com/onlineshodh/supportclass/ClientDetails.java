@@ -12,7 +12,7 @@ import com.onlineshodh.entity.UserDetailsEntity;
 import com.onlineshodh.entity.UserEntity;
 
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 public class ClientDetails implements Serializable {
 
 	private static final long serialVersionUID = 1L;

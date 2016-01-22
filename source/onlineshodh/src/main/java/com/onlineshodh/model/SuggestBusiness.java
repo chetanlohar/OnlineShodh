@@ -23,7 +23,7 @@ import com.onlineshodh.entity.BusinessDetailsEntity;
 import com.onlineshodh.service.BusinessDetailsService;
 
 @Component
-@Scope("prototype")
+/*@Scope("prototype")*/
 public class SuggestBusiness{
 
 	@Autowired

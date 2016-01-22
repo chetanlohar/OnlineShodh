@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value = "prototype")
+/*@Scope(value = "prototype")*/
 @Entity
 @Table(name = "state")
 public class StateEntity implements  Serializable {

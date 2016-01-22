@@ -25,7 +25,7 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 @Entity
 @Table(name="user_details")
 public class UserDetailsEntity implements Serializable {

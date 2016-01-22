@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 @Entity
 @Table(name="fl_business_details")
 public class FreeListingBusinessEntity implements Serializable {

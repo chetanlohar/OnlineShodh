@@ -116,7 +116,6 @@ public class ClientController {
 	@RequestMapping(value = "/showTowns", method = RequestMethod.POST)
 	public @ResponseBody List<TownEntity> showTowns(ModelMap model,
 			@RequestParam("cityId") Integer cityId) {
-		System.out.println("Town ");
 		for(TownEntity town:townService.getAllTowns(cityId)){
 			 System.out.println("Town "+town.getTownName());	
 		}
@@ -263,6 +262,7 @@ public class ClientController {
 		model.addAttribute("userDetails",
 				userDetailsService.getAllUserDetails());
 		UserEntity user = clientdetails.getUser();
+		user.setRole("ROLE_USER");
 		UserDetailsEntity userDetails = clientdetails.getUserDetails();
 		AddressEntity addressEntity = clientdetails.getAddress();
 		System.out.println("phone1" + userDetails.getPhone1());

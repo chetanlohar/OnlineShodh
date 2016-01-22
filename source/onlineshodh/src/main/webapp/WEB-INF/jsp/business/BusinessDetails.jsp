@@ -159,7 +159,7 @@
 			<ul class="nav" id="main-menu">
 				<li>
 					<div class="user-img-div">
-						<img src="${pageContext.request.contextPath}/admin/clients/load/logo/${userDeailsId}" class="img-circle" />
+						<img src="${userPhoto}" class="img-circle" />
 
 
 					</div>
@@ -329,9 +329,7 @@
 								</tr>
 								<tr>
 									<td class="lable">Photograph</td>
-									<td><img
-										src="${pageContext.request.contextPath}/admin/clients/load/logo/${userdetails.userDetailsId}"
-										class="img-responsive" width="50px " height="50px;" /></td>
+									<td><img src="${userdetails.userdetailsFilePath}"	class="img-responsive" width="50px " height="50px;" /></td>
 								</tr>
 							</table>
 

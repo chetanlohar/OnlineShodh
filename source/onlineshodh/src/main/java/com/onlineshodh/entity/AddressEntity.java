@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("prototype")
+/*@Scope("prototype")*/
 @Entity
 @Table(name="address")
 public class AddressEntity implements Serializable {

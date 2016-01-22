@@ -24,7 +24,7 @@ import com.onlineshodh.entity.SubCategoryEntity;
 import com.onlineshodh.service.SubCategoryService;
 
 @Component
-@Scope("prototype")
+/*@Scope("prototype")*/
 public class SuggestSubCategory {
 
 	@Autowired

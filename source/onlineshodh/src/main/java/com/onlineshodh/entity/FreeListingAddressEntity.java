@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 @Entity
 @Table(name="fl_address")
 public class FreeListingAddressEntity implements Serializable {

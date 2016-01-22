@@ -1,24 +1,18 @@
 package com.onlineshodh.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.mail.Flags.Flag;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.swing.text.StyledEditorKit.BoldAction;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -57,7 +51,6 @@ import com.onlineshodh.service.FreeListingPhoneService;
 import com.onlineshodh.service.FreeListingService;
 import com.onlineshodh.service.SubCategoryService;
 import com.onlineshodh.service.TownService;
-import com.onlineshodh.service.impl.FreeListingAddresServiceImpl;
 import com.onlineshodh.support.validator.FLBusinessValidator;
 import com.onlineshodh.support.validator.FlBusinessAddressValidator;
 
@@ -124,11 +117,16 @@ public class FreeListingController {
 	}
 
 	@RequestMapping(value = { "/view/categories", "/view/categories/" }, method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody List<SubCategoryEntity> listCategories(
+	public @ResponseBody Map<Integer, String> listCategories(
 			@RequestParam("categoryId") Long categoryId) {
 		System.out.println(" category Id " + categoryId);
-		return subCategoryService.listSubCategoriesByCategoryId(categoryId
-				.intValue());
+		
+		List<SubCategoryEntity> subCategories =  subCategoryService.listSubCategoriesByCategoryId(categoryId.intValue());
+		Map<Integer, String> map = new LinkedHashMap<Integer, String>();
+		
+		for(SubCategoryEntity subcat:subCategories)
+			map.put(subcat.getSubCategoryId(), subcat.getSubCategoryName());
+		return map;
 	}
 
 	@RequestMapping(value = { "/business/save", "" }, method = RequestMethod.GET)

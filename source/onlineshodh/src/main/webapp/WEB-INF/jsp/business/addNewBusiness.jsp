@@ -56,7 +56,7 @@
 																			+ item.phone2
 																			+ '</td><td>'
 																			+ item.userId
-																			+ '</td><td><img src=${pageContext.request.contextPath}/admin/clients/load/logo/'+item.userDetailsId+'/>'
+																			+ '</td><td><img src='+item.userdetailsFilePath+'/>'
 
 																			+ '</td><td>'
 																			+ '<a href=${pageContext.request.contextPath}/admin/business/'+item.userDetailsId+'>'

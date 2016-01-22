@@ -11,7 +11,7 @@ import com.onlineshodh.entity.CheckEntity;
 import com.onlineshodh.entity.PaymentEntity;
 
 @Component
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 public class PaymentStatus implements Serializable{
 
 	/**

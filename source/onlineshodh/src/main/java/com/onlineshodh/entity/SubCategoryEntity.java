@@ -24,9 +24,9 @@ import org.springframework.stereotype.Component;
  *
  */
 @Component
-@Scope(value="prototype")
-@Entity()
+@Entity
 @Table(name="subcategory")
+@Scope(value="prototype")
 public class SubCategoryEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;

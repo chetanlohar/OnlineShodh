@@ -20,7 +20,7 @@ import org.springframework.stereotype.Component;
 
 @Table(name="town")
 @Entity
-@Scope(value="prototype")
+/*@Scope(value="prototype")*/
 @Component
 public class TownEntity implements Serializable {
 
