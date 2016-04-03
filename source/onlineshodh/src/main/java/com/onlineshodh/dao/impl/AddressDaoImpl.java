@@ -35,7 +35,7 @@ public class AddressDaoImpl extends AbstractJpaDao<AddressEntity> implements Add
 	public List<AddressEntity> getAllAddress() {
 		setClazz(AddressEntity.class);
 		return findAll();
-	}
+ 	}
 
 	//get Last Entity
 		public Long getLastAddress(){
